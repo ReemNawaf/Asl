@@ -1,11 +1,11 @@
 name: asl
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0-60.0.dev <4.0.0'
+  sdk: ">=3.4.0-60.0.dev <4.0.0"
 
 dependencies:
   flutter:
@@ -14,6 +14,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   graphview: ^1.2.0
   flutter_svg: ^2.0.10+1
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences_riverpod: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -22,9 +25,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
-
   uses-material-design: true
-
 
   fonts:
     - family: GHAITHSANS
@@ -52,3 +53,5 @@ flutter:
     - assets/images/
     - assets/avatars/
     - assets/icons/
+    - lib/localization/lang/ar.json
+    - lib/localization/lang/en.json

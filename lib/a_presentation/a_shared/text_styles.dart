@@ -67,14 +67,14 @@ const kCalloutStyle = TextStyle(
 
 const kBodyMedium = TextStyle(
   fontSize: 15.0,
-  fontWeight: FontWeight.normal,
+  fontWeight: FontWeight.bold,
   color: kPrimaryLabelColor,
   fontFamily: 'GHAITHSANS',
 );
 
 const kFootnoteStyle = TextStyle(
   fontSize: 13.0,
-  fontWeight: FontWeight.normal,
+  fontWeight: FontWeight.w600,
   color: kSecondaryLabelColor,
   fontFamily: 'GHAITHSANS',
 );

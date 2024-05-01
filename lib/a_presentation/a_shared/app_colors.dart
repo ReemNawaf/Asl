@@ -12,7 +12,7 @@ const MaterialColor kBlacksColor = MaterialColor(
     200: Color(0xFF303030), //  For icons
     300: Color(0xFF262626), //  1
     400: Color(0xFF383C41), //  2
-    600: Color(0xFFBEBEBE), //  for learning ressouce chip
+    600: Color(0xFF696969), //  Unselected words
     700: Color(0xFFDDDDDD), //  for form field active color
     800: Color(0xFFDDDDDD), //  for form field inactive color
   },

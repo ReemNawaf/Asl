@@ -1,5 +1,7 @@
+import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/fixed.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/a_presentation/widgets/node_panel/main_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,13 +14,9 @@ class AppNode extends StatelessWidget {
     required this.yearOfBirth,
     required this.yearOfDeath,
     required this.isAlie,
-    required this.colorOne,
-    required this.colorTwo,
-    required this.colorThree,
-    required this.colorFour,
-    required this.colorFive,
-    required this.hasImage,
+    required this.color,
     required this.gender,
+    required this.hasImage,
     this.image,
   });
 
@@ -29,11 +27,7 @@ class AppNode extends StatelessWidget {
   final String yearOfDeath;
   final bool isAlie;
   final bool hasImage;
-  final Color colorOne;
-  final Color colorTwo;
-  final Color colorThree;
-  final Color colorFour;
-  final Color colorFive;
+  final MaterialColor color;
   final String? image;
   final Gender gender;
 
@@ -53,7 +47,7 @@ class AppNode extends StatelessWidget {
     );
 
     return GestureDetector(
-      onTap: () => showPanel(context, size, imageWidget),
+      onTap: () => showPanel(context, size, imageWidget, color, hasImage),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -63,7 +57,7 @@ class AppNode extends StatelessWidget {
             height: size.height * 0.11,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.0),
-              color: colorOne,
+              color: color[600]!,
             ),
           ),
           if (hasImage)
@@ -74,11 +68,11 @@ class AppNode extends StatelessWidget {
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: colorFive,
+                    color: kBlacksColor[100]!,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(6.0),
-                  color: colorFour,
+                  color: color[500]!,
                 ),
                 child: imageWidget),
           Padding(
@@ -90,7 +84,7 @@ class AppNode extends StatelessWidget {
                     height: kTextHeight,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.0),
-                      color: colorTwo,
+                      color: color[300]!,
                     ),
                     child: Text(
                       name,
@@ -105,7 +99,7 @@ class AppNode extends StatelessWidget {
                         height: kTextHeight,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6.0),
-                          color: colorThree,
+                          color: color[400]!,
                         ),
                         child: Text(
                           isAlie ? 'العمى كله' : yearOfDeath,
@@ -118,7 +112,7 @@ class AppNode extends StatelessWidget {
                       height: kTextHeight,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6.0),
-                        color: colorThree,
+                        color: color[400]!,
                       ),
                       child: Text(
                         yearOfBirth,
@@ -132,7 +126,7 @@ class AppNode extends StatelessWidget {
                       height: kTextHeight,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6.0),
-                        color: colorThree,
+                        color: color[400]!,
                       ),
                       child: Text(
                         relation,
@@ -149,58 +143,18 @@ class AppNode extends StatelessWidget {
       ),
     );
   }
-
-  void showPanel(BuildContext context, Size size, ClipRRect imageWidget) =>
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return Stack(
-            alignment: Alignment.center,
-            children: [
-              AlertDialog(
-                backgroundColor: colorOne,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14.0),
-                ),
-                scrollable: true,
-                content: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      alignment: Alignment.topRight,
-                      padding: const EdgeInsets.all(8.0),
-                      width: size.width * 0.6,
-                      height: size.height * 0.6,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6.0),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              hasImage
-                  ? Container(
-                      width: size.width * 0.15,
-                      height: size.width * 0.15,
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(6),
-                      margin: EdgeInsets.only(
-                        bottom: size.height * 0.62,
-                        left: size.width * 0.62,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: colorFive,
-                          width: 2.5,
-                        ),
-                        borderRadius: BorderRadius.circular(14.0),
-                        color: colorFour,
-                      ),
-                      child: imageWidget,
-                    )
-                  : const SizedBox(),
-            ],
-          );
-        },
-      );
 }
+
+void showPanel(BuildContext context, Size size, ClipRRect imageWidget,
+        MaterialColor color, bool hasImage) =>
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return MainPanel(
+          color: color,
+          size: size,
+          hasImage: hasImage,
+          imageWidget: imageWidget,
+        );
+      },
+    );

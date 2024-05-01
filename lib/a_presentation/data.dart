@@ -1,6 +1,6 @@
 const Map<String, dynamic> dTree = {
   "root": {
-    "name": "الملك فيصل بن عبرالعلايلا أل سعةر",
+    "name": "الملك فيصل بن عبرالعزيز آل سعود",
     "yearOfBirth": "١٩٠٦م",
     "yearOfDeath": "١٩٧٥م",
     "isAlie": false,
