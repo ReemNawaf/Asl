@@ -26,7 +26,7 @@ const summaryNumberTextStyle = TextStyle(
 final kTitleLarge = TextStyle(
   fontSize: 28.0,
   fontWeight: FontWeight.bold,
-  color: kRedsColor[400],
+  color: kBlacksColor[400],
   fontFamily: 'GHAITHSANS',
 );
 const kHeadlineSmall = TextStyle(
@@ -61,20 +61,20 @@ const kBodyLarge = TextStyle(
 const kCalloutStyle = TextStyle(
   fontSize: 16.0,
   fontWeight: FontWeight.bold,
-  color: kSecondaryLabelColor,
+  color: kBlacksColor,
   fontFamily: 'GHAITHSANS',
 );
 
 const kBodyMedium = TextStyle(
   fontSize: 15.0,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.normal,
   color: kPrimaryLabelColor,
   fontFamily: 'GHAITHSANS',
 );
 
 const kFootnoteStyle = TextStyle(
   fontSize: 13.0,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.normal,
   color: kSecondaryLabelColor,
   fontFamily: 'GHAITHSANS',
 );

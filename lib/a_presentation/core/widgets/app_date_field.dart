@@ -69,7 +69,7 @@
 //             height: widget.isValid ? 45.0 : 64.0,
 //             child: TextFormField(
 //               style: kBodyMedium.copyWith(color: kBlacksColor),
-//               cursorColor: kRedsColor,
+//               cursorColor: kRootColors,
 //               cursorHeight: 20.0,
 //               controller: dateController,
 //               decoration: kAppFormsInputDecor(

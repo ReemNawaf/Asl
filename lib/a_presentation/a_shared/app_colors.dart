@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 //  ------------------------
 
 //  Blacks
-const int kBlackColor = 0xFF0A0E14;
+const int kBlackColor = 0xFF000000;
 const MaterialColor kBlacksColor = MaterialColor(
   kBlackColor,
   <int, Color>{
     100: Color(0xFF000000), //  True black for text
-    200: Color(0xFF3F3F40), //  For icons
+    200: Color(0xFF303030), //  For icons
     300: Color(0xFF262626), //  1
     400: Color(0xFF383C41), //  2
     600: Color(0xFFBEBEBE), //  for learning ressouce chip
@@ -32,56 +32,56 @@ const MaterialColor kWhitesColor = MaterialColor(
   },
 );
 
-// Red
-const int kRedColor = 0xFFFF5450;
-const MaterialColor kRedsColor = MaterialColor(
-  kRedColor,
+// Root
+const int kRootColor = 0xFFF5B980;
+const MaterialColor kRootColors = MaterialColor(
+  kRootColor,
   <int, Color>{
-    300: Color(0xFFFF0600),
-    400: Color(0xFFFF5450),
-    500: Color(0xFFFF6955),
-    600: Color(0xFFFF8D8D),
-    700: Color(0xFFFFC6C6),
-    800: Color(0xFFFFE3E1),
-    900: Color(0xFFFFDDDD),
+    200: Color(0xFF936233),
+    300: Color(0xFFF5B980),
+    400: Color(0xFFFFD0A3),
+    500: Color(0xFFFFCA98),
+    600: Color(0xFFFFE4CA),
+    700: Color(0xFFFFE4CA)
   },
 );
 
-//  Orange
-const int kOrangeColor = 0xFFFF8564;
-const MaterialColor kOrangesColor = MaterialColor(
-  kOrangeColor,
+// Stem
+const int kStemColor = 0xFFFFDD64;
+const MaterialColor kStemColors = MaterialColor(
+  kStemColor,
   <int, Color>{
-    400: Color(0xFFFF7E00),
-    500: Color(0xFFFF985F),
-    600: Color(0xFFFFC2B1),
-    700: Color(0xFFBFFFEF),
+    200: Color(0xFFD78C1D),
+    300: Color(0xFFFFDD64),
+    400: Color(0xFFFFE380),
+    500: Color(0xFFFFE299),
+    600: Color(0xFFFFF0BA),
+    700: Color(0xFFFFF0BA),
   },
 );
 
-// Yellow
-const int kYellowColor = 0xFFFFAA55;
-const MaterialColor kYellowsColor = MaterialColor(
-  kYellowColor,
+// Leaf
+const int kLeafColor = 0xFFC7E26B;
+const MaterialColor kLeafColors = MaterialColor(
+  kLeafColor,
   <int, Color>{
-    300: Color(0xFFFF403B),
-    400: Color(0xFFFFAA55),
-    500: Color(0xFFFFCE51),
-    600: Color(0xFFFFDDBB),
-    700: Color(0xFFFFECBA),
+    200: Color(0xFF6D8323),
+    300: Color(0xFFC7E26B),
+    400: Color(0xFFE0F695),
+    500: Color(0xFFE0F695),
+    600: Color(0xFFF8FFC1),
+    700: Color(0xFFF8FFC1),
   },
 );
 
-// Green
-const int kGreenColor = 0xFF06D6A0;
-const MaterialColor kGreensColor = MaterialColor(
-  kGreenColor,
+// Out
+const int kOutColor = 0xFFABABAB;
+const MaterialColor kOutColors = MaterialColor(
+  kOutColor,
   <int, Color>{
-    300: Color(0xFF00C992),
-    400: Color(0xFF01C791),
-    500: Color(0xFF06D6A0), // kGreenColor
-    600: Color(0xFF73FFDB),
-    700: Color(0xFFBFFFEF),
+    300: Color(0xFFABABAB),
+    400: Color(0xFFC7C7C7),
+    500: Color(0xFFE0E0E0),
   },
 );
 
@@ -100,12 +100,3 @@ const kWarningUIColor = Color(0xFFFFDA57);
 const kErrorUIColor = Color(0xFFFF7A92);
 const kShadowColor = Color.fromRGBO(72, 76, 82, 0.16);
 const kIconColor = Color(0xFF6A6D81);
-
-final kAppGradient = LinearGradient(
-  begin: Alignment.topCenter,
-  end: Alignment.bottomCenter,
-  colors: [
-    kWhitesColor,
-    kRedsColor[900]!,
-  ],
-);
