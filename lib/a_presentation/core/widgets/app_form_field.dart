@@ -40,7 +40,7 @@ class AppFormField extends StatelessWidget {
           SizedBox(
             height: isValid ? 45.0 : 64.0,
             child: TextFormField(
-              cursorColor: kRedsColor,
+              cursorColor: kBlacksColor,
               cursorHeight: 20.0,
               initialValue: initialValue,
               style: kHeadlineMedium,

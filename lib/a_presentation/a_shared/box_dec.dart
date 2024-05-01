@@ -25,12 +25,12 @@ InputDecoration kLoginInputDecoration({required icon, required hintText}) =>
         fontSize: 15.0,
         color: kBlacksColor[600]!,
       ),
-      iconColor: kRedsColor,
+      iconColor: kRootColors,
       isCollapsed: true,
       contentPadding:
           const EdgeInsets.symmetric(vertical: 14.0, horizontal: 10.0),
       enabledBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: kRedsColor, width: 0.75),
+        borderSide: BorderSide(color: kRootColors, width: 0.75),
         borderRadius: BorderRadius.all(kAppRadius),
       ),
       border: const OutlineInputBorder(
@@ -74,7 +74,8 @@ InputDecoration kAppFormsRequiredInputDecor(
       // ERROR
       // 1. INACTIVE
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: kRedsColor[600]!, width: kAppBorderWidth),
+        borderSide:
+            BorderSide(color: kRootColors[600]!, width: kAppBorderWidth),
         borderRadius: const BorderRadius.all(Radius.circular(32.0)),
       ),
 
@@ -123,7 +124,8 @@ InputDecoration kAppFormsInputDecor({
       // ERROR
       // 1. INACTIVE
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: kRedsColor[600]!, width: kAppBorderWidth),
+        borderSide:
+            BorderSide(color: kRootColors[600]!, width: kAppBorderWidth),
         borderRadius: const BorderRadius.all(kAppRadius),
       ),
 
@@ -137,7 +139,7 @@ InputDecoration kAppFormsInputDecor({
 
 InputDecoration kSearchBarInputDecor() => InputDecoration(
       hintText: 'بحث عن فرد من العائلة',
-      hintStyle: kFootnoteStyle.copyWith(color: const Color(0xFF696969)),
+      hintStyle: kBodyMedium.copyWith(color: const Color(0xFF696969)),
       errorStyle: kCaption1Style.copyWith(color: kErrorUIColor),
       filled: true,
       fillColor: const Color(0xFFFFEFE2),
@@ -166,7 +168,7 @@ InputDecoration kSearchBarInputDecor() => InputDecoration(
       // 1. INACTIVE
       errorBorder: OutlineInputBorder(
         borderSide:
-            BorderSide(color: kRedsColor[600]!, width: kSearchBarBorderWidth),
+            BorderSide(color: kRootColors[600]!, width: kSearchBarBorderWidth),
         borderRadius: const BorderRadius.all(Radius.circular(searchBarRadius)),
       ),
 
