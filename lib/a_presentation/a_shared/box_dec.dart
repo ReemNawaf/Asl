@@ -94,7 +94,7 @@ InputDecoration kAppFormsInputDecor({
 }) =>
     InputDecoration(
       hintText: hint,
-      hintStyle: kFootnoteStyle.copyWith(color: kTertiaryLabelColor),
+      hintStyle: kFootnoteStyle.copyWith(color: kBlacksColor),
       errorStyle: kCaption1Style.copyWith(color: kErrorUIColor, height: 1.0),
 
       icon: icon,
@@ -109,10 +109,9 @@ InputDecoration kAppFormsInputDecor({
       // Borders
       // NORMAL
       // 1. INACTIVE
-      enabledBorder: OutlineInputBorder(
-        borderSide:
-            BorderSide(color: kBlacksColor.shade800, width: kAppBorderWidth),
-        borderRadius: const BorderRadius.all(kAppRadius),
+      enabledBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: kBlacksColor, width: kAppBorderWidth),
+        borderRadius: BorderRadius.all(kAppRadius),
       ),
       // 2. ACTIVE
       focusedBorder: OutlineInputBorder(

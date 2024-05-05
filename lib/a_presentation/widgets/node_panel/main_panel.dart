@@ -1,5 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/a_presentation/widgets/node_panel/info_panel.dart';
 import 'package:flutter/material.dart';
 
 class MainPanel extends StatelessWidget {
@@ -22,7 +23,7 @@ class MainPanel extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         AlertDialog(
-          backgroundColor: color[600] ?? color,
+          backgroundColor: color[700] ?? color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14.0),
           ),
@@ -46,32 +47,33 @@ class MainPanel extends StatelessWidget {
                     width: size.width * 0.6,
                     height: size.height * 0.6,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         SizedBox(
-                          width: size.width * 0.6,
+                          width: size.width * 0.55,
                           height: size.height * 0.1,
                           child: TabBar(
                             unselectedLabelColor: kBlacksColor[600],
                             indicatorColor: kBlacksColor,
                             indicatorWeight: 2.5,
                             labelPadding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
+                                const EdgeInsets.symmetric(horizontal: 50.0),
                             padding: EdgeInsets.zero,
                             indicatorPadding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
+                                const EdgeInsets.symmetric(horizontal: 5.0),
                             labelColor: kBlacksColor,
-                            labelStyle: kFootnoteStyle.copyWith(
+                            labelStyle: kBodyMedium.copyWith(
                                 fontWeight: FontWeight.w900),
-                            unselectedLabelStyle: kFootnoteStyle,
+                            unselectedLabelStyle: kBodyMedium,
                             dividerColor: Colors.transparent,
                             indicatorSize: TabBarIndicatorSize.label,
                             dividerHeight: 0.0,
                             isScrollable: true,
                             tabs: const [
-                              Tab(text: 'نبذة وملاحظات'),
-                              Tab(text: 'الزوجة والأبناء'),
-                              Tab(text: 'الوالدين والأخوة'),
                               Tab(text: 'معلومات شخصية'),
+                              Tab(text: 'الوالدين والأخوة'),
+                              Tab(text: 'الزوجة والأبناء'),
+                              Tab(text: 'نبذة وملاحظات'),
                             ],
                           ),
                         ),
@@ -80,10 +82,10 @@ class MainPanel extends StatelessWidget {
                           height: size.height * 0.45,
                           child: TabBarView(
                             children: [
-                              Icon(Icons.directions_car),
-                              Icon(Icons.directions_transit),
-                              Icon(Icons.directions_bike),
-                              Icon(Icons.directions_bike),
+                              InfoPanel(size: size, color: color),
+                              const Icon(Icons.directions_transit),
+                              const Icon(Icons.directions_bike),
+                              const Icon(Icons.directions_bike),
                             ],
                           ),
                         ),
@@ -111,7 +113,7 @@ class MainPanel extends StatelessWidget {
                     width: 1.5,
                   ),
                   borderRadius: BorderRadius.circular(14.0),
-                  color: color[500] ?? color,
+                  color: color[600] ?? color,
                 ),
                 child: imageWidget,
               )

@@ -67,7 +67,7 @@ const kCalloutStyle = TextStyle(
 
 const kBodyMedium = TextStyle(
   fontSize: 15.0,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w700,
   color: kPrimaryLabelColor,
   fontFamily: 'GHAITHSANS',
 );
@@ -75,7 +75,7 @@ const kBodyMedium = TextStyle(
 const kFootnoteStyle = TextStyle(
   fontSize: 13.0,
   fontWeight: FontWeight.w600,
-  color: kSecondaryLabelColor,
+  color: kBlacksColor,
   fontFamily: 'GHAITHSANS',
 );
 

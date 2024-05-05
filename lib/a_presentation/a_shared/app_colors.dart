@@ -42,7 +42,7 @@ const MaterialColor kRootColors = MaterialColor(
     400: Color(0xFFFFD0A3),
     500: Color(0xFFFFCA98),
     600: Color(0xFFFFE4CA),
-    700: Color(0xFFFFE4CA)
+    700: Color(0xFFFFEFE2)
   },
 );
 
@@ -56,7 +56,7 @@ const MaterialColor kStemColors = MaterialColor(
     400: Color(0xFFFFE380),
     500: Color(0xFFFFE299),
     600: Color(0xFFFFF0BA),
-    700: Color(0xFFFFF0BA),
+    700: Color(0xFFFFFAF5),
   },
 );
 
@@ -70,7 +70,7 @@ const MaterialColor kLeafColors = MaterialColor(
     400: Color(0xFFE0F695),
     500: Color(0xFFE0F695),
     600: Color(0xFFF8FFC1),
-    700: Color(0xFFF8FFC1),
+    700: Color(0xFFEEF3CC),
   },
 );
 
