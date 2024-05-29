@@ -91,14 +91,15 @@ InputDecoration kAppFormsInputDecor({
   String hint = '',
   bool isDense = false,
   Icon? icon,
+  Color? color,
 }) =>
     InputDecoration(
       hintText: hint,
       hintStyle: kFootnoteStyle.copyWith(color: kBlacksColor),
       errorStyle: kCaption1Style.copyWith(color: kErrorUIColor, height: 1.0),
-
       icon: icon,
-
+      filled: true,
+      fillColor: color ?? Colors.transparent,
       errorMaxLines: 2,
       isDense: isDense,
       contentPadding:
@@ -137,7 +138,7 @@ InputDecoration kAppFormsInputDecor({
     );
 
 InputDecoration kSearchBarInputDecor() => InputDecoration(
-      hintText: 'بحث عن فرد من العائلة',
+      hintText: 'ابحث عن فرد من العائلة',
       hintStyle: kBodyMedium.copyWith(color: const Color(0xFF696969)),
       errorStyle: kCaption1Style.copyWith(color: kErrorUIColor),
       filled: true,

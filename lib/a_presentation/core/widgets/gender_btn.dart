@@ -1,4 +1,4 @@
-import 'package:asl/a_presentation/a_shared/fixed.dart';
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -57,13 +57,13 @@ class GenderButton extends StatelessWidget {
         color: color[600],
         borderRadius: BorderRadius.circular(8.0),
       ),
-      height: size.height * 0.09,
+      height: size.height * 0.1,
       width: size.width * 0.04,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset('icons/${gender.name}.svg', height: 32),
+          SvgPicture.asset('icons/${gender.name}.svg', height: 28),
           Text(text),
         ],
       ),

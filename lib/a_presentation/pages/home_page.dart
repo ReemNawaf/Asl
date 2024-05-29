@@ -9,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  static const String routeName = '/';
+  static const String routeName = 'HomePage';
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       body: Row(
         children: [
           Container(
-            color: const Color(0xFFFFFAF5),
+            color: kWhitesColor[600],
             width: size.width * 0.15,
             height: size.height,
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14.0),

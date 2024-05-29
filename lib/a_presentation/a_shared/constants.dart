@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 const double transactionCardHeight = 75.0;
 
 // Adding Forms
-enum AddingFrom {
-  cameraPage,
-  homePage,
-  other,
-}
+enum AddingFrom { cameraPage, homePage, other }
+
+enum NodeType { root, child, grandchild, partner }
+
+enum Gender { male, female }
+
+enum FieldType { email, password, text }
 
 const kVSpacer10 = SizedBox(height: 10.0);
 const kVSpacer20 = SizedBox(height: 20.0);

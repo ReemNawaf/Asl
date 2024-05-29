@@ -60,7 +60,7 @@ class _AppDateFieldState extends State<AppDateField> {
         children: [
           Text(
             widget.label,
-            style: kHeadlineMedium.copyWith(
+            style: kFootnoteStyle.copyWith(
                 fontWeight: FontWeight.bold, height: 1.5),
           ),
           SizedBox(height: widget.spacing),
@@ -76,7 +76,7 @@ class _AppDateFieldState extends State<AppDateField> {
                 isDense: true,
                 icon: const Icon(
                   Icons.calendar_today,
-                  size: 30.0,
+                  size: 25.0,
                 ),
               ),
               textAlign: TextAlign.start,

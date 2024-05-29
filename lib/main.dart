@@ -1,5 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/a_presentation/pages/auth_page.dart';
 import 'package:asl/a_presentation/pages/home_page.dart';
 import 'package:asl/localization/app_localization.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -32,8 +33,6 @@ class MyApp extends StatelessWidget {
             .apply(fontFamily: 'GHAITHSANS'),
         primaryColor: kRootColors,
         colorScheme: const ColorScheme(
-          background: kWhitesColor,
-          onBackground: kWhitesColor,
           primary: kRootColors,
           secondary: kBlacksColor,
           surface: kBlacksColor,
@@ -65,8 +64,9 @@ class MyApp extends StatelessWidget {
         }
         return supportedLocales.first;
       },
-      initialRoute: HomePage.routeName,
+      initialRoute: AuthPage.routeName,
       routes: {
+        AuthPage.routeName: (context) => const AuthPage(),
         HomePage.routeName: (context) => const HomePage(),
       },
     );

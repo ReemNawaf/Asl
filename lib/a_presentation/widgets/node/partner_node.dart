@@ -1,5 +1,5 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
-import 'package:asl/a_presentation/a_shared/fixed.dart';
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/widgets/node/app_node.dart';
 import 'package:flutter/material.dart';
 

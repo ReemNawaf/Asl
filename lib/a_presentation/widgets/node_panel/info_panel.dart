@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_date_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/core/widgets/gender_btn.dart';
@@ -14,21 +15,20 @@ class InfoPanel extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
 
     return Container(
-      padding: EdgeInsets.only(right: size.width * 0.07),
-      height: size.height * 0.55,
+      height: size.height * 0.45,
       alignment: Alignment.center,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: size.height * 0.02),
+          SizedBox(height: size.height * 0.01),
           SizedBox(
-            width: size.width * 0.55,
-            height: size.height * 0.1,
+            width: size.width * 0.58,
+            height: size.height * 0.15,
             child: Row(
               children: [
                 SizedBox(
                   width: size.width * 0.25,
-                  height: size.height * 0.1,
+                  height: size.height * 0.15,
                   child: AppFormField(
                     label: 'الاسم',
                     hint: 'الاسم الأول والأخير',
@@ -37,6 +37,7 @@ class InfoPanel extends StatelessWidget {
                     initialValue: '',
                   ),
                 ),
+                kHSpacer20,
                 GenderBtn(
                   color: color,
                   size: size,
@@ -44,16 +45,16 @@ class InfoPanel extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: size.height * 0.02),
+          SizedBox(height: size.height * 0.01),
           SizedBox(
-            width: size.width * 0.55,
-            height: size.height * 0.1,
+            width: size.width * 0.58,
+            height: size.height * 0.15,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: size.width * 0.25,
-                  height: size.height * 0.1,
+                  width: size.width * 0.23,
+                  height: size.height * 0.15,
                   child: AppDateField(
                     formKey: formKey,
                     label: 'الاسم',
@@ -63,22 +64,20 @@ class InfoPanel extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: size.width * 0.25,
-                  height: size.height * 0.1,
+                  width: size.width * 0.23,
+                  height: size.height * 0.15,
                   child: AppDateField(
                     formKey: formKey,
                     label: 'الاسم',
                     hint: 'الاسم الأول والأخير',
-                    validate: (validate) {
-                      return "";
-                    },
+                    validate: (validate) => "",
                     save: (_) {},
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: size.height * 0.02),
+          SizedBox(height: size.height * 0.01),
           TreeButton(color: color, size: size)
         ],
       ),

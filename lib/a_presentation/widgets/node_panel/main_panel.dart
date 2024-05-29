@@ -35,7 +35,7 @@ class MainPanel extends StatelessWidget {
                 alignment: Alignment.topRight,
                 padding: const EdgeInsets.all(8.0),
                 width: size.width * 0.6,
-                height: size.height * 0.6,
+                height: size.height * 0.58,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.0),
                 ),
@@ -43,21 +43,23 @@ class MainPanel extends StatelessWidget {
                 //  Make Tabs
                 child: DefaultTabController(
                   length: 4,
-                  child: SizedBox(
+                  child: Container(
                     width: size.width * 0.6,
-                    height: size.height * 0.6,
+                    height: size.height * 0.55,
+                    alignment: Alignment.topRight,
+                    padding: EdgeInsets.only(right: size.width * 0.04),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         SizedBox(
-                          width: size.width * 0.55,
+                          width: size.width * 0.58,
                           height: size.height * 0.1,
                           child: TabBar(
                             unselectedLabelColor: kBlacksColor[600],
                             indicatorColor: kBlacksColor,
                             indicatorWeight: 2.5,
                             labelPadding:
-                                const EdgeInsets.symmetric(horizontal: 50.0),
+                                const EdgeInsets.symmetric(horizontal: 40.0),
                             padding: EdgeInsets.zero,
                             indicatorPadding:
                                 const EdgeInsets.symmetric(horizontal: 5.0),
@@ -77,9 +79,10 @@ class MainPanel extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          width: size.width * 0.6,
+                        Container(
+                          width: size.width * 0.58,
                           height: size.height * 0.45,
+                          padding: EdgeInsets.only(right: size.width * 0.07),
                           child: TabBarView(
                             children: [
                               InfoPanel(size: size, color: color),
