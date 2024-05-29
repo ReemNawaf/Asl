@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
             .apply(fontFamily: 'GHAITHSANS'),
         primaryColor: kRootColors,
         colorScheme: const ColorScheme(
+          background: kWhitesColor,
+          onBackground: kWhitesColor,
           primary: kRootColors,
           secondary: kBlacksColor,
           surface: kBlacksColor,
