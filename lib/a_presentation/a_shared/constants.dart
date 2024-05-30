@@ -12,6 +12,8 @@ enum Gender { male, female }
 
 enum FieldType { email, password, text }
 
+enum AuthMode { signin, signup }
+
 const kVSpacer10 = SizedBox(height: 10.0);
 const kVSpacer20 = SizedBox(height: 20.0);
 const kVSpacer40 = SizedBox(height: 40.0);

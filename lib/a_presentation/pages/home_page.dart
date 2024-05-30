@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
         children: [
           Container(
             color: kWhitesColor[600],
-            width: size.width * 0.15,
+            width: size.width * 0.18,
             height: size.height,
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14.0),
             child: Column(
@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
-            width: size.width * 0.85,
+            width: size.width * 0.82,
             child: const TreeView(),
           ),
         ],

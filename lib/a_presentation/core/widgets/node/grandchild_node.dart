@@ -1,10 +1,10 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/widgets/node/app_node.dart';
+import 'package:asl/a_presentation/core/widgets/node/app_node.dart';
 import 'package:flutter/material.dart';
 
-class RootNode extends StatelessWidget {
-  const RootNode({
+class GrandchildNode extends StatelessWidget {
+  const GrandchildNode({
     super.key,
     required this.name,
     required this.yearOfBirth,
@@ -23,13 +23,13 @@ class RootNode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppNode(
-      type: NodeType.root,
+      type: NodeType.grandchild,
       name: name,
-      relation: gender == Gender.female ? 'الجدة' : 'الجد',
+      relation: gender == Gender.female ? 'الحفيد' : 'الحفيدة',
       yearOfBirth: yearOfBirth,
       yearOfDeath: yearOfDeath,
       isAlie: isAlie,
-      color: kRootColors,
+      color: kLeafColors,
       hasImage: true,
       image: image,
       gender: gender,

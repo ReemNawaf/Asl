@@ -138,9 +138,9 @@ InputDecoration kAppFormsInputDecor({
     );
 
 InputDecoration kSearchBarInputDecor() => InputDecoration(
-      hintText: 'ابحث عن فرد من العائلة',
+      hintText: 'ابحث عن فرد',
       hintStyle: kBodyMedium.copyWith(color: const Color(0xFF696969)),
-      errorStyle: kCaption1Style.copyWith(color: kErrorUIColor),
+      errorStyle: kCaption2Style.copyWith(color: kErrorUIColor),
       filled: true,
       fillColor: const Color(0xFFFFEFE2),
       errorMaxLines: 2,
