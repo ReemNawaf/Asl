@@ -47,7 +47,7 @@ class MainPanel extends StatelessWidget {
                     width: size.width * 0.6,
                     height: size.height * 0.55,
                     alignment: Alignment.topRight,
-                    padding: EdgeInsets.only(right: size.width * 0.04),
+                    padding: EdgeInsets.only(right: size.width * 0.03),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -59,7 +59,7 @@ class MainPanel extends StatelessWidget {
                             indicatorColor: kBlacksColor,
                             indicatorWeight: 2.5,
                             labelPadding:
-                                const EdgeInsets.symmetric(horizontal: 40.0),
+                                const EdgeInsets.symmetric(horizontal: 30.0),
                             padding: EdgeInsets.zero,
                             indicatorPadding:
                                 const EdgeInsets.symmetric(horizontal: 5.0),

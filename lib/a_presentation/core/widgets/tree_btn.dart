@@ -14,26 +14,26 @@ class TreeButton extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(10.0),
       ),
-      width: size.width * 0.2,
-      height: size.height * 0.1,
+      width: size.width * 0.21,
+      height: size.height * 0.11,
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SvgPicture.asset(
             'icons/tree.svg',
-            height: 70,
+            height: 72,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
                 'استعراض شجرة العائلة',
-                style: kBodyLarge,
+                style: kCalloutStyle,
               ),
               Text(
                 'استعراضه كجذر لشجرة العائلة',
-                style: kFootnoteStyle.copyWith(fontSize: 14.0),
+                style: kFootnoteStyle.copyWith(fontSize: 12.0),
               ),
             ],
           ),
