@@ -13,6 +13,7 @@ class InfoPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    const isAlive = false;
 
     return Container(
       height: size.height * 0.45,
@@ -57,23 +58,24 @@ class InfoPanel extends StatelessWidget {
                   height: size.height * 0.15,
                   child: AppDateField(
                     formKey: formKey,
-                    label: 'الاسم',
-                    hint: 'الاسم الأول والأخير',
+                    label: 'تاريخ الميلاد',
+                    hint: '',
                     validate: (validate) => "",
                     save: (_) {},
                   ),
                 ),
-                SizedBox(
-                  width: size.width * 0.23,
-                  height: size.height * 0.15,
-                  child: AppDateField(
-                    formKey: formKey,
-                    label: 'الاسم',
-                    hint: 'الاسم الأول والأخير',
-                    validate: (validate) => "",
-                    save: (_) {},
+                if (!isAlive)
+                  SizedBox(
+                    width: size.width * 0.23,
+                    height: size.height * 0.15,
+                    child: AppDateField(
+                      formKey: formKey,
+                      label: 'تاريخ الوفاة',
+                      hint: '',
+                      validate: (validate) => "",
+                      save: (_) {},
+                    ),
                   ),
-                ),
               ],
             ),
           ),

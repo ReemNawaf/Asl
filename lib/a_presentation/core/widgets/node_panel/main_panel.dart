@@ -47,7 +47,7 @@ class MainPanel extends StatelessWidget {
                     width: size.width * 0.6,
                     height: size.height * 0.55,
                     alignment: Alignment.topRight,
-                    padding: EdgeInsets.only(right: size.width * 0.03),
+                    padding: EdgeInsets.only(right: size.width * 0.025),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [

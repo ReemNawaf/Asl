@@ -13,14 +13,14 @@ const String arabic = 'ar';
 const String englishCode = 'languageCode';
 
 Future<void> setLocale(String languageCode) async {
-  final _prefs = await SharedPreferences.getInstance();
-  await _prefs.setString(englishCode, languageCode);
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString(englishCode, languageCode);
 }
 
 Future<Locale> getLocale() async {
   // final Locale appLocale = Localizations.localeOf(context);
-  final _prefs = await SharedPreferences.getInstance();
+  final prefs = await SharedPreferences.getInstance();
 
-  final languageCode = _prefs.getString(englishCode) ?? arabic;
+  final languageCode = prefs.getString(englishCode) ?? arabic;
   return Locale(languageCode);
 }
