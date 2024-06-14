@@ -33,8 +33,8 @@ class InfoPanel extends StatelessWidget {
                   child: AppFormField(
                     label: 'الاسم',
                     hint: 'الاسم الأول والأخير',
-                    validate: (validate) => "",
-                    save: (_) {},
+                    validator: (validate) => "",
+                    onSaved: (_) {},
                     initialValue: '',
                   ),
                 ),

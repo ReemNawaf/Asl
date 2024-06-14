@@ -9,25 +9,37 @@ class AppFormField extends StatelessWidget {
   final String hint;
   final bool isValid;
   final double spacing;
-  final String initialValue;
+  final String? initialValue;
   final bool isArabic;
   final Color? color;
   final FieldType fieldType;
-  final String? Function(String? value) validate;
-  final void Function(String? value) save;
 
-  const AppFormField(
-      {super.key,
-      required this.label,
-      required this.hint,
-      required this.validate,
-      required this.save,
-      required this.initialValue,
-      this.fieldType = FieldType.text,
-      this.color,
-      this.spacing = 6,
-      this.isValid = true,
-      this.isArabic = true});
+  final String? Function(String? value) validator;
+
+  final void Function(String? value)? onSaved;
+  final void Function(String? value)? onChanged;
+  final void Function(String? value)? onFieldSubmitted;
+
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
+
+  const AppFormField({
+    super.key,
+    required this.label,
+    required this.hint,
+    required this.validator,
+    this.onChanged,
+    this.onSaved,
+    this.onFieldSubmitted,
+    this.initialValue,
+    this.fieldType = FieldType.text,
+    this.color,
+    this.spacing = 6,
+    this.isValid = true,
+    this.isArabic = true,
+    this.controller,
+    this.focusNode,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +55,7 @@ class AppFormField extends StatelessWidget {
         SizedBox(
           height: isValid ? 45.0 : 64.0,
           child: TextFormField(
+            obscureText: fieldType == FieldType.password,
             cursorColor: kBlacksColor,
             cursorHeight: 20.0,
             initialValue: initialValue,
@@ -55,8 +68,12 @@ class AppFormField extends StatelessWidget {
                 : (fieldType == FieldType.password
                     ? TextInputType.visiblePassword
                     : TextInputType.multiline),
-            onSaved: save,
-            validator: validate,
+            onSaved: onSaved,
+            validator: validator,
+            onChanged: onChanged,
+            onFieldSubmitted: onFieldSubmitted,
+            focusNode: focusNode,
+            controller: controller,
           ),
         ),
       ],

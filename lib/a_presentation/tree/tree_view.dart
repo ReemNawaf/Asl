@@ -23,17 +23,17 @@ class _TreeViewState extends State<TreeView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AppButton(
-                label: 'أضف جذر العائلة',
+                label: 'أنشئ شجرة عائلة',
                 onPressed: () {
                   final node = Node.Id(0);
                   graph.addNode(node);
                   setState(() {});
                 },
                 hasIcon: true,
-                icon: Icon(
-                  Icons.add,
-                  color: kRootColors[200]!,
-                  size: 25,
+                icon: Image.asset(
+                  'assets/images/tree.png',
+                  height: 30,
+                  width: 30,
                 ),
                 fillColor: kRootColors[700]!,
                 textColor: kRootColors[200]!,

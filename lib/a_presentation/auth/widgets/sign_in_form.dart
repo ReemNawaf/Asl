@@ -3,7 +3,7 @@ import 'package:asl/a_presentation/auth/widgets/action_btn.dart';
 import 'package:asl/a_presentation/auth/widgets/email_field.dart';
 import 'package:asl/a_presentation/auth/widgets/helper.dart';
 import 'package:asl/a_presentation/auth/widgets/password_field.dart';
-import 'package:asl/routes/app_router.dart';
+import 'package:asl/a_presentation/routes/app_router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +12,6 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/auth/auth_bloc.dart';
 import 'package:asl/b_application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
-import 'package:asl/localization/localization_constants.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm(this.screenSize, {super.key});
@@ -54,12 +53,11 @@ class _SignInFormState extends State<SignInForm> {
             (failure) {
               FlushbarHelper.createError(
                 message: failure.map(
-                  cancelledByUser: (_) => getTr(context, 'cancelled')!,
-                  emailAlreadyInUse: (_) =>
-                      getTr(context, 'email_already_in_use')!,
+                  cancelledByUser: (_) => 'إلغاء',
+                  emailAlreadyInUse: (_) => 'البريد الإلكتروني مستخدم بالفعل',
                   invalidEmailAndPasswordCombination: (_) =>
-                      getTr(context, 'invalid_email_and_password_combination')!,
-                  serverError: (_) => getTr(context, 'server_error')!,
+                      'البريد الإلكتروني أو الرقم السري غير صحيح',
+                  serverError: (_) => 'حدث خطأ ما',
                 ),
               ).show(context).then((value) => context
                   .read<SignInFormBloc>()
@@ -67,7 +65,7 @@ class _SignInFormState extends State<SignInForm> {
             },
             // when it's succeeded
             (_) {
-              context.router.push(const GoalsRoute());
+              context.router.push(const HomeRoute());
 
               // to update the state of auth
               context
@@ -78,80 +76,64 @@ class _SignInFormState extends State<SignInForm> {
         );
       },
       builder: (context, state) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            kVSpacer40,
-            Form(
-              autovalidateMode: state.showErrorMessage,
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Column(
-                    children: [
-                      EmailField(
-                          emailFocusNode: _emailFocusNode,
-                          passwordFocusNode: _passwordFocusNode),
-                      kVSpacer20,
-                      PasswordField(
-                        passwordController: _passwordController,
-                        passwordFocusNode: _passwordFocusNode,
-                        authMode: _authMode,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            kVSpacer10,
-            if (_authMode == AuthMode.signin)
-              GestureDetector(
-                onTap: () {},
-                child: Text(
-                  getTr(context, 'forgot_password')!,
-                  textAlign: TextAlign.end,
-                  style: kFootnoteStyle,
+        final size = MediaQuery.of(context).size;
+        return SizedBox(
+          width: size.width * 0.25,
+          child: Form(
+            autovalidateMode: state.showErrorMessage,
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/logo.png', height: 160),
+                EmailField(
+                    emailFocusNode: _emailFocusNode,
+                    passwordFocusNode: _passwordFocusNode),
+                kVSpacer10,
+                PasswordField(
+                  passwordController: _passwordController,
+                  passwordFocusNode: _passwordFocusNode,
+                  authMode: _authMode,
                 ),
-              ),
-            kVSpacer20,
-            ActionButton(
-                isLoading: state.isSubmitting,
-                authMode: _authMode,
-                screenSize: screenSize),
-            kVSpacer20,
-            signInWithGoogleBtn(context, () {
-              context
-                  .read<SignInFormBloc>()
-                  .add(const SignInFormEvent.signInWithEmailGooglePressed());
-            }),
-            kVSpacer20,
-            GestureDetector(
-              onTap: () => switchAuthMode(),
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: _authMode == AuthMode.signin
-                      ? 'ما عندك حساب؟'
-                      : 'عندك حساب؟',
-                  style: kBodyMedium,
-                  children: [
-                    TextSpan(
+                kVSpacer10,
+                ActionButton(
+                  isLoading: state.isSubmitting,
+                  authMode: _authMode,
+                  screenSize: screenSize,
+                ),
+                kVSpacer20,
+                signInWithGoogleBtn(context, () {
+                  context.read<SignInFormBloc>().add(
+                      const SignInFormEvent.signInWithEmailGooglePressed());
+                }),
+                kVSpacer20,
+                GestureDetector(
+                  onTap: () => switchAuthMode(),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
                       text: _authMode == AuthMode.signin
-                          ? ' أنشئ حساب'
-                          : ' سجل دخولك',
-                      style: kBodyMedium.copyWith(
-                        color: kBlacksColor,
-                        fontWeight: FontWeight.w600,
-                      ),
+                          ? 'ما عندك حساب؟'
+                          : 'عندك حساب؟',
+                      style: kBodyMedium,
+                      children: [
+                        TextSpan(
+                          text: _authMode == AuthMode.signin
+                              ? ' أنشئ حساب'
+                              : ' سجل دخولك',
+                          style: kBodyMedium.copyWith(
+                            color: kRootColors,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );

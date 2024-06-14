@@ -1,5 +1,6 @@
+import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/core/widgets/primary_btn.dart';
+import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/b_application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
@@ -18,17 +19,20 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryButton(
-        screenSize: screenSize,
-        onTap: () {
-          _authMode == AuthMode.signin
-              ? context.read<SignInFormBloc>().add(
-                  const SignInFormEvent.signInWithEmailAndPasswordPressed())
-              : context.read<SignInFormBloc>().add(
-                  const SignInFormEvent.registerWithEmailAndPasswordPressed());
-          FocusScope.of(context).unfocus();
-        },
-        isLoading: context.read<SignInFormBloc>().state.isSubmitting,
-        label: _authMode == AuthMode.signin ? 'تسجيل الدخول' : 'تسجيل');
+    return AppButton(
+      onPressed: () {
+        _authMode == AuthMode.signin
+            ? context
+                .read<SignInFormBloc>()
+                .add(const SignInFormEvent.signInWithEmailAndPasswordPressed())
+            : context.read<SignInFormBloc>().add(
+                const SignInFormEvent.registerWithEmailAndPasswordPressed());
+        FocusScope.of(context).unfocus();
+      },
+      label: _authMode == AuthMode.signin ? 'تسجيل الدخول' : 'تسجيل',
+      isLoading: context.read<SignInFormBloc>().state.isSubmitting,
+      textColor: kBlacksColor[300]!,
+      fillColor: kRootColors[600]!,
+    );
   }
 }

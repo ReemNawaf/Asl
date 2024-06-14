@@ -90,6 +90,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();
+
     if (isEmailValid && isPasswordValid) {
       failureOrSuccess = await forwardedCall(
           emailAddress: state.emailAddress, password: state.password);

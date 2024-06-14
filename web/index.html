@@ -19,6 +19,7 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
+  <meta name="google-signin-client_id" content="684970788591-ged2hpudi5t2ps13lm4acrc2n4dirart.apps.googleusercontent.com">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = null;
+    var serviceWorkerVersion = '{{flutter_service_worker_version}}';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -43,7 +44,7 @@
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
+      _flutter.loader.load({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
@@ -55,5 +56,34 @@
       });
     });
   </script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script> 
+
+  <script type="module"> 
+
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB-2q-j2veLLngIXjNlMlaY4f0l0l4xWOg",
+      authDomain: "a-292e9.firebaseapp.com",
+      projectId: "a-292e9",
+      storageBucket: "a-292e9.appspot.com",
+      messagingSenderId: "684970788591",
+      appId: "1:684970788591:web:4423d058b1851367323d1a",
+      measurementId: "G-GTD3PKXK3Y"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+      
+  </script>
+
+  <script src="main.dart.js" type="application/javascript"></script>
+
 </body>
 </html>
+

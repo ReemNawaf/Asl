@@ -10,6 +10,7 @@ class AppButton extends StatelessWidget {
   final Widget? icon;
   final Color fillColor;
   final Color textColor;
+  final bool isLoading;
   const AppButton({
     super.key,
     required this.onPressed,
@@ -18,6 +19,7 @@ class AppButton extends StatelessWidget {
     this.hasIcon = false,
     required this.fillColor,
     this.textColor = kWhitesColor,
+    this.isLoading = false,
   });
 
   @override
@@ -50,20 +52,29 @@ class AppButton extends StatelessWidget {
               )
             : BorderSide.none,
       ),
-      child: !hasIcon
-          ? text
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 25.0,
-                  width: 25.0,
-                  child: icon ?? const SizedBox(),
-                ),
-                const SizedBox(width: 8),
-                text,
-              ],
-            ),
+      child: isLoading
+          ? SizedBox(
+              height: 20.0,
+              width: 20.0,
+              child: CircularProgressIndicator(
+                backgroundColor: kBlacksColor[600],
+                color: kBlacksColor,
+              ),
+            )
+          : (!hasIcon
+              ? text
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 25.0,
+                      width: 25.0,
+                      child: icon ?? const SizedBox(),
+                    ),
+                    const SizedBox(width: 8),
+                    text,
+                  ],
+                )),
     );
   }
 }

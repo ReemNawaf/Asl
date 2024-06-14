@@ -2,10 +2,13 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
-import 'package:asl/a_presentation/pages/tree_view.dart';
+import 'package:asl/a_presentation/home/widgets/tree_list.dart';
+import 'package:asl/a_presentation/tree/tree_view.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -24,10 +27,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14.0),
             child: Column(
               children: [
-                TextField(
-                  textAlign: TextAlign.right,
-                  decoration: kSearchBarInputDecor(),
-                ),
+                const TreeList(),
                 const Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -91,9 +91,27 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 14.0),
             width: size.width * 0.82,
-            child: const TreeView(),
+            child: Column(
+              children: [
+                TextField(
+                  textAlign: TextAlign.right,
+                  decoration: kSearchBarInputDecor(),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  height: size.height * 0.9,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TreeView(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

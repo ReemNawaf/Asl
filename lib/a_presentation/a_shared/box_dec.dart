@@ -142,7 +142,7 @@ InputDecoration kSearchBarInputDecor() => InputDecoration(
       hintStyle: kBodyMedium.copyWith(color: const Color(0xFF696969)),
       errorStyle: kCaption2Style.copyWith(color: kErrorUIColor),
       filled: true,
-      fillColor: const Color(0xFFFFEFE2),
+      fillColor: kWhitesColor,
       errorMaxLines: 2,
 
       isDense: true,
