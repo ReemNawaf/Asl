@@ -53,10 +53,10 @@ class _MyAppState extends State<MyApp> {
               )
               .apply(fontFamily: 'GHAITHSANS'),
           primaryColor: kRootColors,
-          colorScheme: const ColorScheme(
+          colorScheme: ColorScheme(
             primary: kRootColors,
-            secondary: kBlacksColor,
-            surface: kBlacksColor,
+            secondary: kStemColors,
+            surface: kRootColors[700]!,
             error: kRootColors,
             onPrimary: kWhitesColor,
             onSecondary: kRootColors,

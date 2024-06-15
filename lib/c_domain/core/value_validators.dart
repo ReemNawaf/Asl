@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:asl/c_domain/core/failures.dart';
 
 // Considered to be more of a general validation of any String:-
-// 1. For Gategory name to not exceed the allowed length
+// 1. For name to not exceed the allowed length
 Either<ValueFailure<String>, String> validateMaxStringLength(
   String input,
   int maxLength,
@@ -31,7 +31,7 @@ Either<ValueFailure<double>, double> validateMaxDoubleLength(
   }
 }
 
-// 2. For Gategory name to not be empty
+// 2. For tree name to not be empty
 Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
   if (input.isNotEmpty) {
     return right(input);
@@ -57,7 +57,7 @@ Either<ValueFailure<double>, double> validatdoubleNotEmpty(double input) {
   }
 }
 
-// 3. For Purchase name to not exceed on single line
+// 3. For tree name to not exceed on single line
 Either<ValueFailure<String>, String> validateSingleLine(String input) {
   if (input.contains('\n')) {
     return left(ValueFailure.multiline(failedValue: input));
@@ -66,20 +66,13 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
   }
 }
 
-// App list not greater than 1000
-// Either<ValueFailure<List<T>>, List<T>> validateMaxListLength<T>(
-//   List<T> input,
-//   int maxLength,
-// ) {
-//   if (input.length <= maxLength) {
-//     return right(input);
-//   } else {
-//     return left(ValueFailure.listTooLong(
-//       failedValue: input,
-//       max: maxLength,
-//     ));
-//   }
-// }
+Either<ValueFailure<String>, String> validateFirstName(String input) {
+  if (input.contains(' ')) {
+    return left(ValueFailure.spacedFirstName(failedValue: input));
+  } else {
+    return right(input);
+  }
+}
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   // check the email expression

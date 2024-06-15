@@ -77,9 +77,14 @@ void showNewTreePanel(
                       child: Divider(thickness: 1.4, color: kRootColors),
                     ),
                     kVSpacer20,
-                    const Padding(
-                      padding: EdgeInsets.only(right: 28.0),
-                      child: Text('معلومات جذر العائلة', style: kBodyLarge),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 28.0),
+                      child: Text(
+                        'معلومات جذر العائلة',
+                        style: kBodyLarge.copyWith(
+                          color: kRootColors[200]!,
+                        ),
+                      ),
                     ),
                     InfoPanel(
                       size: size,

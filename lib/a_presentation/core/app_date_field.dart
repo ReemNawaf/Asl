@@ -3,6 +3,7 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:intl/intl.dart';
 
 class AppDateField extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -39,15 +40,13 @@ class _AppDateFieldState extends State<AppDateField> {
       final DateTime? picked = await showDatePicker(
         context: context,
         // initialDate: initialDate,
-        firstDate: DateTime.now(),
-        lastDate: DateTime.now().add(
-          const Duration(days: 365),
-        ),
+        firstDate: DateTime.now().subtract(const Duration(days: 500 * 365)),
+        lastDate: DateTime.now(),
       );
 
       if (picked != null) {
         setState(() {
-          // dateController.text = DateFormat('yyyy-MM-dd').format(picked);
+          dateController.text = DateFormat('yyyy-MM-dd').format(picked);
         });
       }
       return picked;

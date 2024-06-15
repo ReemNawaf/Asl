@@ -1,5 +1,6 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
+import 'package:asl/a_presentation/core/widgets/alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/core/widgets/gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
@@ -11,6 +12,7 @@ class InfoPanel extends StatelessWidget {
     required this.size,
     required this.color,
     this.isRootPanel = false,
+    this.isAlive = true,
     this.height = 0.45,
   });
 
@@ -18,11 +20,11 @@ class InfoPanel extends StatelessWidget {
   final MaterialColor color;
   final bool isRootPanel;
   final double height;
+  final bool isAlive;
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    const isAlive = false;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +55,7 @@ class InfoPanel extends StatelessWidget {
         ),
         kVSpacer20,
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               width: 250,
@@ -66,7 +68,10 @@ class InfoPanel extends StatelessWidget {
                 save: (_) {},
               ),
             ),
-            if (!isAlive)
+            if (isAlive) ...[
+              kHSpacer20,
+              AliveBtn(color: color, size: size)
+            ] else
               SizedBox(
                 width: 250,
                 height: 80,
