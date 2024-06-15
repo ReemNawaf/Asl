@@ -16,6 +16,7 @@ enum AuthMode { signin, signup }
 
 const kVSpacer10 = SizedBox(height: 10.0);
 const kVSpacer20 = SizedBox(height: 20.0);
+const kVSpacer30 = SizedBox(height: 30.0);
 const kVSpacer40 = SizedBox(height: 40.0);
 const kVSpacer60 = SizedBox(height: 60.0);
 

@@ -90,19 +90,17 @@ class _SignInFormState extends State<SignInForm> {
                 EmailField(
                     emailFocusNode: _emailFocusNode,
                     passwordFocusNode: _passwordFocusNode),
-                kVSpacer10,
                 PasswordField(
                   passwordController: _passwordController,
                   passwordFocusNode: _passwordFocusNode,
                   authMode: _authMode,
                 ),
-                kVSpacer10,
                 ActionButton(
                   isLoading: state.isSubmitting,
                   authMode: _authMode,
                   screenSize: screenSize,
                 ),
-                kVSpacer20,
+                kVSpacer30,
                 signInWithGoogleBtn(context, () {
                   context.read<SignInFormBloc>().add(
                       const SignInFormEvent.signInWithEmailGooglePressed());

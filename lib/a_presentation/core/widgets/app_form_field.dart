@@ -59,7 +59,7 @@ class AppFormField extends StatelessWidget {
             cursorColor: kBlacksColor,
             cursorHeight: 20.0,
             initialValue: initialValue,
-            style: kHeadlineMedium,
+            style: kCalloutStyle,
             textAlign: isArabic ? TextAlign.start : TextAlign.end,
             decoration:
                 kAppFormsInputDecor(hint: hint, color: color, isDense: true),

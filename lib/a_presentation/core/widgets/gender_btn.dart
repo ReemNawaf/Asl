@@ -14,22 +14,25 @@ class GenderBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        GenderButton(
-          color: color,
-          size: size,
-          text: 'ذكر',
-          gender: Gender.male,
-        ),
-        const SizedBox(width: 16.0),
-        GenderButton(
-          color: color,
-          size: size,
-          text: 'أنثى',
-          gender: Gender.female,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 24.0),
+      child: Row(
+        children: [
+          GenderButton(
+            color: color,
+            size: size,
+            text: 'ذكر',
+            gender: Gender.male,
+          ),
+          const SizedBox(width: 16.0),
+          GenderButton(
+            color: color,
+            size: size,
+            text: 'أنثى',
+            gender: Gender.female,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -57,13 +60,13 @@ class GenderButton extends StatelessWidget {
         color: color[600],
         borderRadius: BorderRadius.circular(8.0),
       ),
-      height: size.height * 0.1,
-      width: size.width * 0.04,
-      child: Column(
+      height: 40,
+      width: 94,
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset('icons/${gender.name}.svg', height: 28),
+          SvgPicture.asset('icons/${gender.name}.svg', height: 22),
           Text(text),
         ],
       ),

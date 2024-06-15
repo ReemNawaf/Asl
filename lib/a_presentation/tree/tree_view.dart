@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:asl/a_presentation/data.dart';
-import 'package:asl/a_presentation/core/widgets/node/root_node.dart';
+import 'package:asl/a_presentation/tree/widgets/node/root_node.dart';
+import 'package:asl/a_presentation/tree/widgets/add_new_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
@@ -18,26 +18,13 @@ class TreeView extends StatefulWidget {
 class _TreeViewState extends State<TreeView> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return graph.nodes.isEmpty
         ? Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppButton(
-                label: 'أنشئ شجرة عائلة',
-                onPressed: () {
-                  final node = Node.Id(0);
-                  graph.addNode(node);
-                  setState(() {});
-                },
-                hasIcon: true,
-                icon: Image.asset(
-                  'assets/images/tree.png',
-                  height: 30,
-                  width: 30,
-                ),
-                fillColor: kRootColors[700]!,
-                textColor: kRootColors[200]!,
-              ),
+              AddNewTree(size: size),
             ],
           )
         : InteractiveViewer(
