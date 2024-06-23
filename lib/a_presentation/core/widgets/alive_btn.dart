@@ -1,54 +1,58 @@
+import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AliveBtn extends StatefulWidget {
+class AliveBtn extends StatelessWidget {
   const AliveBtn({
     super.key,
     required this.color,
     required this.size,
+    required this.ctx,
   });
 
   final MaterialColor color;
   final Size size;
-
-  @override
-  State<AliveBtn> createState() => _AliveBtnState();
-}
-
-class _AliveBtnState extends State<AliveBtn> {
-  var isAlive = true;
+  final BuildContext ctx;
 
   @override
   Widget build(BuildContext context) {
     void aliveOrDead({required bool isAliveSelected}) {
-      setState(() {
-        if (isAliveSelected == true) {
-          isAlive = true;
-        } else {
-          isAlive = false;
-        }
-      });
+      if (isAliveSelected == true) {
+        ctx
+            .read<TreeFormBloc>()
+            .add(const TreeFormEvent.changeRootIsAvlive(true));
+      } else {
+        ctx
+            .read<TreeFormBloc>()
+            .add(const TreeFormEvent.changeRootIsAvlive(false));
+      }
     }
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 16.0),
-      child: Row(
-        children: [
-          AliveButton(
-              onTap: () => aliveOrDead(isAliveSelected: true),
-              color: widget.color,
-              size: widget.size,
-              text: 'عائش',
-              selected: isAlive),
-          const SizedBox(width: 16.0),
-          AliveButton(
-            onTap: () => aliveOrDead(isAliveSelected: false),
-            color: widget.color,
-            size: widget.size,
-            text: 'متوفي',
-            selected: !isAlive,
+    return BlocBuilder<TreeFormBloc, TreeFormState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 16.0),
+          child: Row(
+            children: [
+              AliveButton(
+                onTap: () => aliveOrDead(isAliveSelected: true),
+                color: color,
+                size: size,
+                text: 'عائش',
+                selected: state.root.isAlive,
+              ),
+              const SizedBox(width: 16.0),
+              AliveButton(
+                onTap: () => aliveOrDead(isAliveSelected: false),
+                color: color,
+                size: size,
+                text: 'متوفي',
+                selected: !state.root.isAlive,
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

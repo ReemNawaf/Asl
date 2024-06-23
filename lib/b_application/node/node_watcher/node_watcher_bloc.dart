@@ -4,6 +4,7 @@ import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
+import 'package:asl/c_domain/tree/tree.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,43 +15,48 @@ part 'node_watcher_state.dart';
 part 'node_watcher_bloc.freezed.dart';
 
 @injectable
-class PurchaseWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
+class NodeWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
   // link it to domain layer
   // inject the instance
   final INodeRepository _nodeRepository;
 
-  PurchaseWatcherBloc(this._nodeRepository)
-      : super(const NodeWatcherState.initial());
+  NodeWatcherBloc(this._nodeRepository)
+      : super(const NodeWatcherState.initial()) {
+    on<NodeWatcherEvent>(mapEventToState);
+  }
 
   StreamSubscription<Either<TNodeFailure, List<TNode>>>?
       _nodeStreamSubscription;
 
   Future<void> mapEventToState(
     NodeWatcherEvent event,
+    Emitter<NodeWatcherState> emit,
   ) async {
-    event.map(
+    await event.map(
       watchAllStarted: (e) async {
-        const NodeWatcherState.loadInProgress();
+        emit(const NodeWatcherState.loadInProgress());
 
-        _nodeStreamSubscription = _nodeRepository.watchAll(e.treeId).listen(
+        _nodeStreamSubscription = _nodeRepository
+            .watchAll(e.tree.treeId)
+            .listen(
               (failureOrNodes) =>
-                  add(NodeWatcherEvent.nodesReceived(failureOrNodes)),
+                  add(NodeWatcherEvent.nodesReceived(failureOrNodes, e.tree)),
             );
       },
       nodesReceived: (e) async {
-        e.failureOrNodes.fold(
+        emit(e.failureOrNodes.fold(
           (f) => NodeWatcherState.loadFailure(f),
-          (nodes) => NodeWatcherState.loadSuccess(nodes),
-        );
+          (nodes) => NodeWatcherState.loadSuccess(tree: e.tree, nodes: nodes),
+        ));
       },
       getNode: (e) async {
         const NodeWatcherState.inProgress();
         final possibleFailure =
-            await _nodeRepository.getNode(id: e.nodeId, treeId: e.treeId);
-        possibleFailure.fold(
+            await _nodeRepository.getNode(nodeId: e.nodeId, treeId: e.treeId);
+        emit(possibleFailure.fold(
           (f) => NodeWatcherState.gettingNodeFailure(f),
           (node) => NodeWatcherState.gettingNodeSuccess(node),
-        );
+        ));
       },
     );
   }

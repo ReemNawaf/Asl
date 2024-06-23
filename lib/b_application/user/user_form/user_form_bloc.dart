@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
@@ -78,6 +79,12 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
           // to get rid of any previous failure
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         );
+      },
+      addTree: (e) async* {
+        yield state.copyWith(
+            user: state.user.copyWith(trees: e.trees),
+            // to get rid of any previous failure
+            saveFailureOrSuccessOption: none());
       },
     );
   }

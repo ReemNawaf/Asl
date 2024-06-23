@@ -18,25 +18,28 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$NodeWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId) watchAllStarted,
+    required TResult Function(Tree tree) watchAllStarted,
     required TResult Function(UniqueId treeId, UniqueId nodeId) getNode,
-    required TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)
+    required TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)
         nodesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId)? watchAllStarted,
+    TResult? Function(Tree tree)? watchAllStarted,
     TResult? Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult? Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult? Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId)? watchAllStarted,
+    TResult Function(Tree tree)? watchAllStarted,
     TResult Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
     required TResult orElse(),
   }) =>
@@ -89,7 +92,9 @@ abstract class _$$WatchAllStartedImplCopyWith<$Res> {
           $Res Function(_$WatchAllStartedImpl) then) =
       __$$WatchAllStartedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UniqueId treeId});
+  $Res call({Tree tree});
+
+  $TreeCopyWith<$Res> get tree;
 }
 
 /// @nodoc
@@ -103,28 +108,36 @@ class __$$WatchAllStartedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? treeId = null,
+    Object? tree = null,
   }) {
     return _then(_$WatchAllStartedImpl(
-      null == treeId
-          ? _value.treeId
-          : treeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+      null == tree
+          ? _value.tree
+          : tree // ignore: cast_nullable_to_non_nullable
+              as Tree,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TreeCopyWith<$Res> get tree {
+    return $TreeCopyWith<$Res>(_value.tree, (value) {
+      return _then(_value.copyWith(tree: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$WatchAllStartedImpl implements _WatchAllStarted {
-  const _$WatchAllStartedImpl(this.treeId);
+  const _$WatchAllStartedImpl(this.tree);
 
   @override
-  final UniqueId treeId;
+  final Tree tree;
 
   @override
   String toString() {
-    return 'NodeWatcherEvent.watchAllStarted(treeId: $treeId)';
+    return 'NodeWatcherEvent.watchAllStarted(tree: $tree)';
   }
 
   @override
@@ -132,11 +145,11 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WatchAllStartedImpl &&
-            (identical(other.treeId, treeId) || other.treeId == treeId));
+            (identical(other.tree, tree) || other.tree == tree));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, treeId);
+  int get hashCode => Object.hash(runtimeType, tree);
 
   @JsonKey(ignore: true)
   @override
@@ -148,36 +161,39 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId) watchAllStarted,
+    required TResult Function(Tree tree) watchAllStarted,
     required TResult Function(UniqueId treeId, UniqueId nodeId) getNode,
-    required TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)
+    required TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)
         nodesReceived,
   }) {
-    return watchAllStarted(treeId);
+    return watchAllStarted(tree);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId)? watchAllStarted,
+    TResult? Function(Tree tree)? watchAllStarted,
     TResult? Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult? Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult? Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
   }) {
-    return watchAllStarted?.call(treeId);
+    return watchAllStarted?.call(tree);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId)? watchAllStarted,
+    TResult Function(Tree tree)? watchAllStarted,
     TResult Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
     required TResult orElse(),
   }) {
     if (watchAllStarted != null) {
-      return watchAllStarted(treeId);
+      return watchAllStarted(tree);
     }
     return orElse();
   }
@@ -218,9 +234,9 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
 }
 
 abstract class _WatchAllStarted implements NodeWatcherEvent {
-  const factory _WatchAllStarted(final UniqueId treeId) = _$WatchAllStartedImpl;
+  const factory _WatchAllStarted(final Tree tree) = _$WatchAllStartedImpl;
 
-  UniqueId get treeId;
+  Tree get tree;
   @JsonKey(ignore: true)
   _$$WatchAllStartedImplCopyWith<_$WatchAllStartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -298,9 +314,10 @@ class _$GetNodeImpl implements _GetNode {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId) watchAllStarted,
+    required TResult Function(Tree tree) watchAllStarted,
     required TResult Function(UniqueId treeId, UniqueId nodeId) getNode,
-    required TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)
+    required TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)
         nodesReceived,
   }) {
     return getNode(treeId, nodeId);
@@ -309,9 +326,10 @@ class _$GetNodeImpl implements _GetNode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId)? watchAllStarted,
+    TResult? Function(Tree tree)? watchAllStarted,
     TResult? Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult? Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult? Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
   }) {
     return getNode?.call(treeId, nodeId);
@@ -320,9 +338,10 @@ class _$GetNodeImpl implements _GetNode {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId)? watchAllStarted,
+    TResult Function(Tree tree)? watchAllStarted,
     TResult Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
     required TResult orElse(),
   }) {
@@ -385,7 +404,9 @@ abstract class _$$NodesReceivedImplCopyWith<$Res> {
           _$NodesReceivedImpl value, $Res Function(_$NodesReceivedImpl) then) =
       __$$NodesReceivedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Either<TNodeFailure, List<TNode>> failureOrNodes});
+  $Res call({Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree});
+
+  $TreeCopyWith<$Res> get tree;
 }
 
 /// @nodoc
@@ -400,27 +421,42 @@ class __$$NodesReceivedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failureOrNodes = null,
+    Object? tree = null,
   }) {
     return _then(_$NodesReceivedImpl(
       null == failureOrNodes
           ? _value.failureOrNodes
           : failureOrNodes // ignore: cast_nullable_to_non_nullable
               as Either<TNodeFailure, List<TNode>>,
+      null == tree
+          ? _value.tree
+          : tree // ignore: cast_nullable_to_non_nullable
+              as Tree,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TreeCopyWith<$Res> get tree {
+    return $TreeCopyWith<$Res>(_value.tree, (value) {
+      return _then(_value.copyWith(tree: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$NodesReceivedImpl implements _NodesReceived {
-  const _$NodesReceivedImpl(this.failureOrNodes);
+  const _$NodesReceivedImpl(this.failureOrNodes, this.tree);
 
   @override
   final Either<TNodeFailure, List<TNode>> failureOrNodes;
+  @override
+  final Tree tree;
 
   @override
   String toString() {
-    return 'NodeWatcherEvent.nodesReceived(failureOrNodes: $failureOrNodes)';
+    return 'NodeWatcherEvent.nodesReceived(failureOrNodes: $failureOrNodes, tree: $tree)';
   }
 
   @override
@@ -429,11 +465,12 @@ class _$NodesReceivedImpl implements _NodesReceived {
         (other.runtimeType == runtimeType &&
             other is _$NodesReceivedImpl &&
             (identical(other.failureOrNodes, failureOrNodes) ||
-                other.failureOrNodes == failureOrNodes));
+                other.failureOrNodes == failureOrNodes) &&
+            (identical(other.tree, tree) || other.tree == tree));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failureOrNodes);
+  int get hashCode => Object.hash(runtimeType, failureOrNodes, tree);
 
   @JsonKey(ignore: true)
   @override
@@ -444,36 +481,39 @@ class _$NodesReceivedImpl implements _NodesReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId) watchAllStarted,
+    required TResult Function(Tree tree) watchAllStarted,
     required TResult Function(UniqueId treeId, UniqueId nodeId) getNode,
-    required TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)
+    required TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)
         nodesReceived,
   }) {
-    return nodesReceived(failureOrNodes);
+    return nodesReceived(failureOrNodes, tree);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId)? watchAllStarted,
+    TResult? Function(Tree tree)? watchAllStarted,
     TResult? Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult? Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult? Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
   }) {
-    return nodesReceived?.call(failureOrNodes);
+    return nodesReceived?.call(failureOrNodes, tree);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId)? watchAllStarted,
+    TResult Function(Tree tree)? watchAllStarted,
     TResult Function(UniqueId treeId, UniqueId nodeId)? getNode,
-    TResult Function(Either<TNodeFailure, List<TNode>> failureOrNodes)?
+    TResult Function(
+            Either<TNodeFailure, List<TNode>> failureOrNodes, Tree tree)?
         nodesReceived,
     required TResult orElse(),
   }) {
     if (nodesReceived != null) {
-      return nodesReceived(failureOrNodes);
+      return nodesReceived(failureOrNodes, tree);
     }
     return orElse();
   }
@@ -515,10 +555,11 @@ class _$NodesReceivedImpl implements _NodesReceived {
 
 abstract class _NodesReceived implements NodeWatcherEvent {
   const factory _NodesReceived(
-          final Either<TNodeFailure, List<TNode>> failureOrNodes) =
-      _$NodesReceivedImpl;
+      final Either<TNodeFailure, List<TNode>> failureOrNodes,
+      final Tree tree) = _$NodesReceivedImpl;
 
   Either<TNodeFailure, List<TNode>> get failureOrNodes;
+  Tree get tree;
   @JsonKey(ignore: true)
   _$$NodesReceivedImplCopyWith<_$NodesReceivedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -531,7 +572,7 @@ mixin _$NodeWatcherState {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
@@ -542,7 +583,7 @@ mixin _$NodeWatcherState {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -553,7 +594,7 @@ mixin _$NodeWatcherState {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -655,7 +696,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
@@ -669,7 +710,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -683,7 +724,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -787,7 +828,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
@@ -801,7 +842,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -815,7 +856,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -919,7 +960,7 @@ class _$InProgressImpl implements _InProgress {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
@@ -933,7 +974,7 @@ class _$InProgressImpl implements _InProgress {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -947,7 +988,7 @@ class _$InProgressImpl implements _InProgress {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -1016,7 +1057,9 @@ abstract class _$$LoadSuccessImplCopyWith<$Res> {
           _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
       __$$LoadSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<TNode> nodes});
+  $Res call({Tree tree, List<TNode> nodes});
+
+  $TreeCopyWith<$Res> get tree;
 }
 
 /// @nodoc
@@ -1030,22 +1073,39 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? tree = null,
     Object? nodes = null,
   }) {
     return _then(_$LoadSuccessImpl(
-      null == nodes
+      tree: null == tree
+          ? _value.tree
+          : tree // ignore: cast_nullable_to_non_nullable
+              as Tree,
+      nodes: null == nodes
           ? _value._nodes
           : nodes // ignore: cast_nullable_to_non_nullable
               as List<TNode>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TreeCopyWith<$Res> get tree {
+    return $TreeCopyWith<$Res>(_value.tree, (value) {
+      return _then(_value.copyWith(tree: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$LoadSuccessImpl implements _LoadSuccess {
-  const _$LoadSuccessImpl(final List<TNode> nodes) : _nodes = nodes;
+  const _$LoadSuccessImpl(
+      {required this.tree, required final List<TNode> nodes})
+      : _nodes = nodes;
 
+  @override
+  final Tree tree;
   final List<TNode> _nodes;
   @override
   List<TNode> get nodes {
@@ -1056,7 +1116,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
 
   @override
   String toString() {
-    return 'NodeWatcherState.loadSuccess(nodes: $nodes)';
+    return 'NodeWatcherState.loadSuccess(tree: $tree, nodes: $nodes)';
   }
 
   @override
@@ -1064,12 +1124,13 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadSuccessImpl &&
+            (identical(other.tree, tree) || other.tree == tree) &&
             const DeepCollectionEquality().equals(other._nodes, _nodes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_nodes));
+  int get hashCode => Object.hash(
+      runtimeType, tree, const DeepCollectionEquality().hash(_nodes));
 
   @JsonKey(ignore: true)
   @override
@@ -1083,12 +1144,12 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
   }) {
-    return loadSuccess(nodes);
+    return loadSuccess(tree, nodes);
   }
 
   @override
@@ -1097,12 +1158,12 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
   }) {
-    return loadSuccess?.call(nodes);
+    return loadSuccess?.call(tree, nodes);
   }
 
   @override
@@ -1111,14 +1172,14 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(nodes);
+      return loadSuccess(tree, nodes);
     }
     return orElse();
   }
@@ -1171,8 +1232,11 @@ class _$LoadSuccessImpl implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements NodeWatcherState {
-  const factory _LoadSuccess(final List<TNode> nodes) = _$LoadSuccessImpl;
+  const factory _LoadSuccess(
+      {required final Tree tree,
+      required final List<TNode> nodes}) = _$LoadSuccessImpl;
 
+  Tree get tree;
   List<TNode> get nodes;
   @JsonKey(ignore: true)
   _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
@@ -1257,7 +1321,7 @@ class _$LoadFailureImpl implements _LoadFailure {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
@@ -1271,7 +1335,7 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -1285,7 +1349,7 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -1432,7 +1496,7 @@ class _$GettingNodeSuccessImpl implements _GettingNodeSuccess {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
@@ -1446,7 +1510,7 @@ class _$GettingNodeSuccessImpl implements _GettingNodeSuccess {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -1460,7 +1524,7 @@ class _$GettingNodeSuccessImpl implements _GettingNodeSuccess {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -1608,7 +1672,7 @@ class _$GettingNodeFailureImpl implements _GettingNodeFailure {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() inProgress,
-    required TResult Function(List<TNode> nodes) loadSuccess,
+    required TResult Function(Tree tree, List<TNode> nodes) loadSuccess,
     required TResult Function(TNodeFailure purchaseFailure) loadFailure,
     required TResult Function(TNode node) gettingNodeSuccess,
     required TResult Function(TNodeFailure purchaseFailure) gettingNodeFailure,
@@ -1622,7 +1686,7 @@ class _$GettingNodeFailureImpl implements _GettingNodeFailure {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function()? inProgress,
-    TResult? Function(List<TNode> nodes)? loadSuccess,
+    TResult? Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult? Function(TNode node)? gettingNodeSuccess,
     TResult? Function(TNodeFailure purchaseFailure)? gettingNodeFailure,
@@ -1636,7 +1700,7 @@ class _$GettingNodeFailureImpl implements _GettingNodeFailure {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? inProgress,
-    TResult Function(List<TNode> nodes)? loadSuccess,
+    TResult Function(Tree tree, List<TNode> nodes)? loadSuccess,
     TResult Function(TNodeFailure purchaseFailure)? loadFailure,
     TResult Function(TNode node)? gettingNodeSuccess,
     TResult Function(TNodeFailure purchaseFailure)? gettingNodeFailure,

@@ -16,20 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TreeActorEvent {
-  Tree get tree => throw _privateConstructorUsedError;
+  UniqueId get treeId => throw _privateConstructorUsedError;
+  UniqueId get uderId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree) deleted,
+    required TResult Function(UniqueId treeId, UniqueId uderId) deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree)? deleted,
+    TResult? Function(UniqueId treeId, UniqueId uderId)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree)? deleted,
+    TResult Function(UniqueId treeId, UniqueId uderId)? deleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,9 +62,7 @@ abstract class $TreeActorEventCopyWith<$Res> {
           TreeActorEvent value, $Res Function(TreeActorEvent) then) =
       _$TreeActorEventCopyWithImpl<$Res, TreeActorEvent>;
   @useResult
-  $Res call({Tree tree});
-
-  $TreeCopyWith<$Res> get tree;
+  $Res call({UniqueId treeId, UniqueId uderId});
 }
 
 /// @nodoc
@@ -79,22 +78,19 @@ class _$TreeActorEventCopyWithImpl<$Res, $Val extends TreeActorEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tree = null,
+    Object? treeId = null,
+    Object? uderId = null,
   }) {
     return _then(_value.copyWith(
-      tree: null == tree
-          ? _value.tree
-          : tree // ignore: cast_nullable_to_non_nullable
-              as Tree,
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      uderId: null == uderId
+          ? _value.uderId
+          : uderId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TreeCopyWith<$Res> get tree {
-    return $TreeCopyWith<$Res>(_value.tree, (value) {
-      return _then(_value.copyWith(tree: value) as $Val);
-    });
   }
 }
 
@@ -106,10 +102,7 @@ abstract class _$$DeletedImplCopyWith<$Res>
       __$$DeletedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Tree tree});
-
-  @override
-  $TreeCopyWith<$Res> get tree;
+  $Res call({UniqueId treeId, UniqueId uderId});
 }
 
 /// @nodoc
@@ -123,13 +116,18 @@ class __$$DeletedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tree = null,
+    Object? treeId = null,
+    Object? uderId = null,
   }) {
     return _then(_$DeletedImpl(
-      null == tree
-          ? _value.tree
-          : tree // ignore: cast_nullable_to_non_nullable
-              as Tree,
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      uderId: null == uderId
+          ? _value.uderId
+          : uderId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
     ));
   }
 }
@@ -137,14 +135,16 @@ class __$$DeletedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeletedImpl implements _Deleted {
-  const _$DeletedImpl(this.tree);
+  const _$DeletedImpl({required this.treeId, required this.uderId});
 
   @override
-  final Tree tree;
+  final UniqueId treeId;
+  @override
+  final UniqueId uderId;
 
   @override
   String toString() {
-    return 'TreeActorEvent.deleted(tree: $tree)';
+    return 'TreeActorEvent.deleted(treeId: $treeId, uderId: $uderId)';
   }
 
   @override
@@ -152,11 +152,12 @@ class _$DeletedImpl implements _Deleted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeletedImpl &&
-            (identical(other.tree, tree) || other.tree == tree));
+            (identical(other.treeId, treeId) || other.treeId == treeId) &&
+            (identical(other.uderId, uderId) || other.uderId == uderId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tree);
+  int get hashCode => Object.hash(runtimeType, treeId, uderId);
 
   @JsonKey(ignore: true)
   @override
@@ -167,27 +168,27 @@ class _$DeletedImpl implements _Deleted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree) deleted,
+    required TResult Function(UniqueId treeId, UniqueId uderId) deleted,
   }) {
-    return deleted(tree);
+    return deleted(treeId, uderId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree)? deleted,
+    TResult? Function(UniqueId treeId, UniqueId uderId)? deleted,
   }) {
-    return deleted?.call(tree);
+    return deleted?.call(treeId, uderId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree)? deleted,
+    TResult Function(UniqueId treeId, UniqueId uderId)? deleted,
     required TResult orElse(),
   }) {
     if (deleted != null) {
-      return deleted(tree);
+      return deleted(treeId, uderId);
     }
     return orElse();
   }
@@ -222,10 +223,14 @@ class _$DeletedImpl implements _Deleted {
 }
 
 abstract class _Deleted implements TreeActorEvent {
-  const factory _Deleted(final Tree tree) = _$DeletedImpl;
+  const factory _Deleted(
+      {required final UniqueId treeId,
+      required final UniqueId uderId}) = _$DeletedImpl;
 
   @override
-  Tree get tree;
+  UniqueId get treeId;
+  @override
+  UniqueId get uderId;
   @override
   @JsonKey(ignore: true)
   _$$DeletedImplCopyWith<_$DeletedImpl> get copyWith =>

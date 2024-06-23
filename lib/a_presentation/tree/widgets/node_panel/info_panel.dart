@@ -4,7 +4,10 @@ import 'package:asl/a_presentation/core/widgets/alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/core/widgets/gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
+import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class InfoPanel extends StatelessWidget {
   const InfoPanel({
@@ -14,6 +17,8 @@ class InfoPanel extends StatelessWidget {
     this.isRootPanel = false,
     this.isAlive = true,
     this.height = 0.45,
+    required this.ctx,
+    this.showErrorMessages,
   });
 
   final Size size;
@@ -21,6 +26,8 @@ class InfoPanel extends StatelessWidget {
   final bool isRootPanel;
   final double height;
   final bool isAlive;
+  final BuildContext ctx;
+  final AutovalidateMode? showErrorMessages;
 
   @override
   Widget build(BuildContext context) {
@@ -37,53 +44,92 @@ class InfoPanel extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(right: 28.0),
               width: 250,
-              height: 70,
+              height: 90,
               child: AppFormField(
                 label: 'الاسم',
                 hint: 'الاسم الأول والأخير',
-                validator: (validate) => "",
                 onSaved: (_) {},
                 initialValue: '',
+                onChanged: (value) => context
+                    .read<TreeFormBloc>()
+                    .add(TreeFormEvent.changeRootName(value!.trim())),
+                validator: (_) {
+                  return context
+                      .read<TreeFormBloc>()
+                      .state
+                      .tree
+                      .fullName
+                      .value
+                      .fold(
+                        (f) => f.maybeMap(
+                          empty: (_) => 'اسم جذر العائلة يمكن أن يكون فارغًا',
+                          orElse: () => null,
+                        ),
+                        (_) => null,
+                      );
+                },
+                isValid: AutovalidateMode.always != showErrorMessages ||
+                    context.read<TreeFormBloc>().state.tree.fullName.isValid(),
               ),
             ),
-            kHSpacer20,
-            GenderBtn(
-              color: color,
-              size: size,
-            ),
+            kHSpacer10,
+            GenderBtn(color: color, size: size, ctx: ctx),
           ],
         ),
-        kVSpacer20,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 250,
-              height: 80,
-              child: AppDateField(
-                formKey: formKey,
-                label: 'تاريخ الميلاد',
-                hint: '',
-                validate: (validate) => "",
-                save: (_) {},
-              ),
-            ),
-            if (isAlive) ...[
-              kHSpacer20,
-              AliveBtn(color: color, size: size)
-            ] else
-              SizedBox(
-                width: 250,
-                height: 80,
-                child: AppDateField(
-                  formKey: formKey,
-                  label: 'تاريخ الوفاة',
-                  hint: '',
-                  validate: (validate) => "",
-                  save: (_) {},
+        BlocBuilder<TreeFormBloc, TreeFormState>(
+          builder: (context, state) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 250,
+                  height: 80,
+                  child: AppDateField(
+                    formKey: formKey,
+                    label: 'تاريخ الميلاد',
+                    hint: '',
+                    validate: (validate) => "",
+                    save: (_) {},
+                    changeDate: (pickedDate) {
+                      context
+                          .read<TreeFormBloc>()
+                          .add(TreeFormEvent.changeRootBirthDate(pickedDate));
+                    },
+                    dateController: TextEditingController(
+                      text: state.root.birthDate == null
+                          ? ''
+                          : DateFormat.yMMMd().format(state.root.birthDate!),
+                    ),
+                  ),
                 ),
-              ),
-          ],
+                if (isAlive) ...[
+                  kHSpacer20,
+                  AliveBtn(color: color, size: size, ctx: ctx)
+                ] else
+                  SizedBox(
+                    width: 250,
+                    height: 80,
+                    child: AppDateField(
+                      formKey: formKey,
+                      label: 'تاريخ الوفاة',
+                      hint: '',
+                      validate: (validate) => "",
+                      save: (_) {},
+                      changeDate: (pickedDate) {
+                        context
+                            .read<TreeFormBloc>()
+                            .add(TreeFormEvent.changeRootDeathDate(pickedDate));
+                      },
+                      dateController: TextEditingController(
+                        text: state.root.birthDate == null
+                            ? ''
+                            : DateFormat.yMMMd().format(state.root.deathDate!),
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
         ),
         if (!isRootPanel) ...[kVSpacer20, TreeButton(color: color, size: size)]
       ],

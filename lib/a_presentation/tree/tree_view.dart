@@ -1,42 +1,34 @@
-import 'dart:math';
-
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/data.dart';
+import 'package:asl/a_presentation/tree/widgets/node/child_node.dart';
+import 'package:asl/a_presentation/tree/widgets/node/grandchild_node.dart';
+import 'package:asl/a_presentation/tree/widgets/node/partner.dart';
 import 'package:asl/a_presentation/tree/widgets/node/root_node.dart';
-import 'package:asl/a_presentation/tree/widgets/add_new_tree.dart';
+import 'package:asl/b_application/tree/tree_draw/tree_draw_bloc.dart';
+import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphview/GraphView.dart';
 
-class TreeView extends StatefulWidget {
-  const TreeView({super.key});
+class TreeView extends StatelessWidget {
+  const TreeView({
+    super.key,
+  });
 
-  @override
-  State<TreeView> createState() => _TreeViewState();
-}
-
-class _TreeViewState extends State<TreeView> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    return BlocBuilder<TreeDrawBloc, TreeDrawState>(
+      builder: (context, state) {
+        return state.map(
+          initial: (_) => const SizedBox(),
+          graphDrawn: (state) {
+            return GraphView(
+              graph: state.graph,
 
-    return graph.nodes.isEmpty
-        ? Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AddNewTree(size: size),
-            ],
-          )
-        : InteractiveViewer(
-            constrained: false,
-            alignment: Alignment.centerRight,
-            boundaryMargin: const EdgeInsets.all(100),
-            minScale: 0.01,
-            maxScale: 5.6,
-            child: GraphView(
-              graph: graph,
-              algorithm:
-                  BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder)),
+              algorithm: BuchheimWalkerAlgorithm(
+                state.builder,
+                TreeEdgeRenderer(state.builder),
+              ),
 
               // Styling
               paint: Paint()
@@ -45,42 +37,25 @@ class _TreeViewState extends State<TreeView> {
                 ..style = PaintingStyle.stroke,
 
               builder: (Node node) {
-                // I can decide what widget should be shown here based on the id
-
-                return RootNode(
-                  name: dTree['root']['name'],
-                  yearOfBirth: dTree['root']['yearOfBirth'],
-                  yearOfDeath: dTree['root']['yearOfDeath'],
-                  isAlie: dTree['root']['isAlie'],
-                  gender: Gender.values.byName(dTree['root']['gender']),
-                );
+                final nodeType = node.key!.value['type'] as NodeType;
+                final tnode = node.key!.value['tnode'] as TNode;
+                print('nodeType: $nodeType');
+                if (nodeType == NodeType.root) {
+                  return RootNode(node: tnode);
+                } else if (nodeType == NodeType.partner) {
+                  return PartnerNode(node: tnode);
+                } else if (nodeType == NodeType.child) {
+                  return ChildNode(node: tnode);
+                } else if (nodeType == NodeType.grandchild) {
+                  return GrandchildNode(node: tnode);
+                } else {
+                  return const SizedBox();
+                }
               },
-            ),
-          );
+            );
+          },
+        );
+      },
+    );
   }
-
-  Random r = Random();
-
-  final Graph graph = Graph()..isTree = true;
-
-  BuchheimWalkerConfiguration builder = BuchheimWalkerConfiguration();
-
-  @override
-  void initState() {
-    super.initState();
-
-    builder
-      ..siblingSeparation = (50)
-      ..levelSeparation = (100)
-      ..subtreeSeparation = (100)
-      ..orientation = (BuchheimWalkerConfiguration.ORIENTATION_BOTTOM_TOP);
-  }
-}
-
-void addNode(Graph graph, Random r, StateSetter setState) {
-  final node = Node.Id(0);
-  // var edge = graph.getNodeAtPosition(r.nextInt(graph.nodeCount()));
-  // graph.addEdge(edge, node);
-  graph.addNode(node);
-  setState(() {});
 }

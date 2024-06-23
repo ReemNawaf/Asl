@@ -22,6 +22,7 @@ AppUserDto _$AppUserDtoFromJson(Map<String, dynamic> json) {
 mixin _$AppUserDto {
   String get name => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
+  List<String> get trees => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $AppUserDtoCopyWith<$Res> {
           AppUserDto value, $Res Function(AppUserDto) then) =
       _$AppUserDtoCopyWithImpl<$Res, AppUserDto>;
   @useResult
-  $Res call({String name, String avatar});
+  $Res call({String name, String avatar, List<String> trees});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$AppUserDtoCopyWithImpl<$Res, $Val extends AppUserDto>
   $Res call({
     Object? name = null,
     Object? avatar = null,
+    Object? trees = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -63,6 +65,10 @@ class _$AppUserDtoCopyWithImpl<$Res, $Val extends AppUserDto>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String,
+      trees: null == trees
+          ? _value.trees
+          : trees // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$AppUserDtoImplCopyWith<$Res>
       __$$AppUserDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String avatar});
+  $Res call({String name, String avatar, List<String> trees});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$AppUserDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? avatar = null,
+    Object? trees = null,
   }) {
     return _then(_$AppUserDtoImpl(
       name: null == name
@@ -101,6 +108,10 @@ class __$$AppUserDtoImplCopyWithImpl<$Res>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String,
+      trees: null == trees
+          ? _value._trees
+          : trees // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -108,8 +119,12 @@ class __$$AppUserDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AppUserDtoImpl extends _AppUserDto {
-  const _$AppUserDtoImpl({required this.name, required this.avatar})
-      : super._();
+  const _$AppUserDtoImpl(
+      {required this.name,
+      required this.avatar,
+      required final List<String> trees})
+      : _trees = trees,
+        super._();
 
   factory _$AppUserDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppUserDtoImplFromJson(json);
@@ -118,10 +133,17 @@ class _$AppUserDtoImpl extends _AppUserDto {
   final String name;
   @override
   final String avatar;
+  final List<String> _trees;
+  @override
+  List<String> get trees {
+    if (_trees is EqualUnmodifiableListView) return _trees;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trees);
+  }
 
   @override
   String toString() {
-    return 'AppUserDto(name: $name, avatar: $avatar)';
+    return 'AppUserDto(name: $name, avatar: $avatar, trees: $trees)';
   }
 
   @override
@@ -130,12 +152,14 @@ class _$AppUserDtoImpl extends _AppUserDto {
         (other.runtimeType == runtimeType &&
             other is _$AppUserDtoImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar));
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            const DeepCollectionEquality().equals(other._trees, _trees));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, avatar);
+  int get hashCode => Object.hash(
+      runtimeType, name, avatar, const DeepCollectionEquality().hash(_trees));
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +178,8 @@ class _$AppUserDtoImpl extends _AppUserDto {
 abstract class _AppUserDto extends AppUserDto {
   const factory _AppUserDto(
       {required final String name,
-      required final String avatar}) = _$AppUserDtoImpl;
+      required final String avatar,
+      required final List<String> trees}) = _$AppUserDtoImpl;
   const _AppUserDto._() : super._();
 
   factory _AppUserDto.fromJson(Map<String, dynamic> json) =
@@ -164,6 +189,8 @@ abstract class _AppUserDto extends AppUserDto {
   String get name;
   @override
   String get avatar;
+  @override
+  List<String> get trees;
   @override
   @JsonKey(ignore: true)
   _$$AppUserDtoImplCopyWith<_$AppUserDtoImpl> get copyWith =>

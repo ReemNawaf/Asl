@@ -6,4 +6,6 @@ class UserWatcherEvent with _$UserWatcherEvent {
   const factory UserWatcherEvent.userReceived(
     Either<UserFailure, AppUser> failureOrUser,
   ) = _UserReceived;
+
+  const factory UserWatcherEvent.get() = _Get;
 }

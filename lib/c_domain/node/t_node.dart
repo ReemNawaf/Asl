@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/failures.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/value_objects.dart';
@@ -14,14 +15,28 @@ abstract class TNode implements _$TNode {
     required UniqueId treeId,
     required UniqueId nodeId,
     required FirstName firstName,
-    DateTime? date,
+    DateTime? birthDate,
+    DateTime? deathDate,
+    required bool isAlive,
+    required Gender gender,
+    required UniqueId father,
+    required UniqueId mother,
+    required List<UniqueId> partners,
+    required List<UniqueId> children,
+    required List<UniqueId> fosterChildren,
   }) = _TNode;
 
   factory TNode.empty() => TNode(
         treeId: UniqueId(),
         nodeId: UniqueId(),
         firstName: FirstName(''),
-        date: DateTime.now(),
+        isAlive: true,
+        gender: Gender.female,
+        father: UniqueId(),
+        mother: UniqueId(),
+        partners: [],
+        children: [],
+        fosterChildren: [],
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

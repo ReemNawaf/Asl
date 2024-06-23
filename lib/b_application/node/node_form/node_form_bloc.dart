@@ -26,8 +26,8 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
     NodeFormEvent event,
     Emitter<NodeFormState> emit,
   ) async {
-    event.map(
-      initialized: (e) async* {
+    await event.map(
+      initialized: (e) async {
         emit(e.initialNodeOption.fold(
           () => state,
           (initialNode) => state.copyWith(
@@ -37,7 +37,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           ),
         ));
       },
-      added: (e) async* {
+      added: (e) async {
         emit(e.initialNodeOption.fold(
           () => state,
           (initialNode) => state.copyWith(
@@ -49,7 +49,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           ),
         ));
       },
-      edited: (e) async* {
+      edited: (e) async {
         emit(e.existingNodeOption.fold(
           () => state,
           (existingNode) => state.copyWith(
@@ -60,20 +60,20 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           ),
         ));
       },
-      firstNameChanged: (e) async* {
+      firstNameChanged: (e) async {
         emit(state.copyWith(
           node: state.node.copyWith(firstName: FirstName(e.title)),
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
-      dateChanged: (e) async* {
+      dateChanged: (e) async {
         emit(state.copyWith(
-            node: state.node.copyWith(date: e.date),
+            node: state.node.copyWith(birthDate: e.date),
             // to get rid of any previous failure
             saveFailureOrSuccessOption: none()));
       },
-      saved: (e) async* {
+      saved: (e) async {
         Either<TNodeFailure, Unit>? failureOrSuccess;
         emit(state.copyWith(
           isSaving: true,
@@ -122,7 +122,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
       },
-      ended: (e) async* {
+      ended: (e) async {
         emit(e.initialNodeOption.fold(
           () => state,
           (initialNode) {

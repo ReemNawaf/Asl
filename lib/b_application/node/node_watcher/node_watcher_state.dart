@@ -6,7 +6,8 @@ abstract class NodeWatcherState with _$NodeWatcherState {
   const factory NodeWatcherState.loadInProgress() = _LoadInProgress;
   const factory NodeWatcherState.inProgress() = _InProgress;
 
-  const factory NodeWatcherState.loadSuccess(List<TNode> nodes) = _LoadSuccess;
+  const factory NodeWatcherState.loadSuccess(
+      {required Tree tree, required List<TNode> nodes}) = _LoadSuccess;
   const factory NodeWatcherState.loadFailure(TNodeFailure purchaseFailure) =
       _LoadFailure;
 

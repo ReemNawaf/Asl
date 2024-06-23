@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppUser {
   UserName get name => throw _privateConstructorUsedError;
   UserAvater get avater => throw _privateConstructorUsedError;
+  List<UniqueId> get trees => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res, AppUser>;
   @useResult
-  $Res call({UserName name, UserAvater avater});
+  $Res call({UserName name, UserAvater avater, List<UniqueId> trees});
 }
 
 /// @nodoc
@@ -46,6 +47,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   $Res call({
     Object? name = null,
     Object? avater = null,
+    Object? trees = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -56,6 +58,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.avater
           : avater // ignore: cast_nullable_to_non_nullable
               as UserAvater,
+      trees: null == trees
+          ? _value.trees
+          : trees // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
     ) as $Val);
   }
 }
@@ -67,7 +73,7 @@ abstract class _$$AppUserImplCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       __$$AppUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserName name, UserAvater avater});
+  $Res call({UserName name, UserAvater avater, List<UniqueId> trees});
 }
 
 /// @nodoc
@@ -83,6 +89,7 @@ class __$$AppUserImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? avater = null,
+    Object? trees = null,
   }) {
     return _then(_$AppUserImpl(
       name: null == name
@@ -93,6 +100,10 @@ class __$$AppUserImplCopyWithImpl<$Res>
           ? _value.avater
           : avater // ignore: cast_nullable_to_non_nullable
               as UserAvater,
+      trees: null == trees
+          ? _value._trees
+          : trees // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
     ));
   }
 }
@@ -100,16 +111,28 @@ class __$$AppUserImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppUserImpl extends _AppUser {
-  const _$AppUserImpl({required this.name, required this.avater}) : super._();
+  const _$AppUserImpl(
+      {required this.name,
+      required this.avater,
+      required final List<UniqueId> trees})
+      : _trees = trees,
+        super._();
 
   @override
   final UserName name;
   @override
   final UserAvater avater;
+  final List<UniqueId> _trees;
+  @override
+  List<UniqueId> get trees {
+    if (_trees is EqualUnmodifiableListView) return _trees;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trees);
+  }
 
   @override
   String toString() {
-    return 'AppUser(name: $name, avater: $avater)';
+    return 'AppUser(name: $name, avater: $avater, trees: $trees)';
   }
 
   @override
@@ -118,11 +141,13 @@ class _$AppUserImpl extends _AppUser {
         (other.runtimeType == runtimeType &&
             other is _$AppUserImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.avater, avater) || other.avater == avater));
+            (identical(other.avater, avater) || other.avater == avater) &&
+            const DeepCollectionEquality().equals(other._trees, _trees));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, avater);
+  int get hashCode => Object.hash(
+      runtimeType, name, avater, const DeepCollectionEquality().hash(_trees));
 
   @JsonKey(ignore: true)
   @override
@@ -134,13 +159,16 @@ class _$AppUserImpl extends _AppUser {
 abstract class _AppUser extends AppUser {
   const factory _AppUser(
       {required final UserName name,
-      required final UserAvater avater}) = _$AppUserImpl;
+      required final UserAvater avater,
+      required final List<UniqueId> trees}) = _$AppUserImpl;
   const _AppUser._() : super._();
 
   @override
   UserName get name;
   @override
   UserAvater get avater;
+  @override
+  List<UniqueId> get trees;
   @override
   @JsonKey(ignore: true)
   _$$AppUserImplCopyWith<_$AppUserImpl> get copyWith =>

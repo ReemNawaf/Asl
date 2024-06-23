@@ -38,5 +38,9 @@ class FirstName extends ValueObject<String> {
     );
   }
 
+  static FirstName fromString(String name) {
+    return FirstName(name.split(' ')[0]);
+  }
+
   const FirstName._(this.value);
 }

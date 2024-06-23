@@ -11,19 +11,20 @@ abstract class Tree implements _$Tree {
   const Tree._();
 
   const factory Tree({
-    required UniqueId id,
+    required UniqueId treeId,
+    required UniqueId creatorId,
+    required UniqueId rootId,
     required TreeName treeName,
     required FullName fullName,
-    DateTime? birthDate,
-    DateTime? deathDate,
-    required bool isAlive,
   }) = _Tree;
 
   factory Tree.empty() => Tree(
-      id: UniqueId(),
-      treeName: TreeName(''),
-      fullName: FullName(''),
-      isAlive: true);
+        treeId: UniqueId(),
+        treeName: TreeName(''),
+        rootId: UniqueId(),
+        fullName: FullName(''),
+        creatorId: UniqueId(),
+      );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure
   //  when validating the whole entity

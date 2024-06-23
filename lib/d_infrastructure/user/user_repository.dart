@@ -15,17 +15,16 @@ class UserRepository implements IUserRepository {
   UserRepository(this._firestore);
 
   @override
-  Stream<Either<UserFailure, AppUser>> get() async* {
+  Future<Either<UserFailure, AppUser>> get() async {
     // using helpers and extensions
 
-    final userDocRef = await _firestore.userDocument();
-    final userDoc = userDocRef.snapshots()
-        as Stream<DocumentSnapshot<Map<String, dynamic>>>;
-
-    yield* userDoc
-        .map((doc) => right<UserFailure, AppUser>(
-            AppUserDto.fromFirestore(doc).toDomain()))
-        .handleError((e) {
+    try {
+      final userDocRef = await _firestore.userDocument();
+      final userDoc =
+          await userDocRef.get() as DocumentSnapshot<Map<String, dynamic>>;
+      return right<UserFailure, AppUser>(
+          AppUserDto.fromFirestore(userDoc).toDomain());
+    } catch (e) {
       if (e is FirebaseException &&
           (e.message!.contains('PERMISSION_DENIED') ||
               e.message!.contains('permission-denied'))) {
@@ -33,7 +32,7 @@ class UserRepository implements IUserRepository {
       } else {
         return left(const UserFailure.unexpected());
       }
-    });
+    }
   }
 
   @override

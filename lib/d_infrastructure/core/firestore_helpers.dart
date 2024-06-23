@@ -14,9 +14,12 @@ extension FirestoreX on FirebaseFirestore {
         .collection('users')
         .doc(user.id.getOrCrash());
   }
+
+  CollectionReference treesCollection() =>
+      FirebaseFirestore.instance.collection('trees');
 }
 
-extension DocumentReferenceX on DocumentReference {
-  // for calling collection('categories') as better way of doing
-  CollectionReference get treesCollection => collection('trees');
-}
+// extension DocumentReferenceX on DocumentReference {
+//   // for calling collection('categories') as better way of doing
+//   CollectionReference get treesCollection => collection('trees');
+// }

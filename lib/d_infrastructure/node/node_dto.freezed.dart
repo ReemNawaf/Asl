@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 't_node.dart';
+part of 'node_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,49 +14,54 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-/// @nodoc
-mixin _$TNode {
-  UniqueId get treeId => throw _privateConstructorUsedError;
-  UniqueId get nodeId => throw _privateConstructorUsedError;
-  FirstName get firstName => throw _privateConstructorUsedError;
-  DateTime? get birthDate => throw _privateConstructorUsedError;
-  DateTime? get deathDate => throw _privateConstructorUsedError;
-  bool get isAlive => throw _privateConstructorUsedError;
-  Gender get gender => throw _privateConstructorUsedError;
-  UniqueId get father => throw _privateConstructorUsedError;
-  UniqueId get mother => throw _privateConstructorUsedError;
-  List<UniqueId> get partners => throw _privateConstructorUsedError;
-  List<UniqueId> get children => throw _privateConstructorUsedError;
-  List<UniqueId> get fosterChildren => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TNodeCopyWith<TNode> get copyWith => throw _privateConstructorUsedError;
+NodeDto _$NodeDtoFromJson(Map<String, dynamic> json) {
+  return _NodeDto.fromJson(json);
 }
 
 /// @nodoc
-abstract class $TNodeCopyWith<$Res> {
-  factory $TNodeCopyWith(TNode value, $Res Function(TNode) then) =
-      _$TNodeCopyWithImpl<$Res, TNode>;
+mixin _$NodeDto {
+  String? get nodeId => throw _privateConstructorUsedError;
+  String get treeId => throw _privateConstructorUsedError;
+  String get firstName => throw _privateConstructorUsedError;
+  String? get birthDate => throw _privateConstructorUsedError;
+  String? get deathDate => throw _privateConstructorUsedError;
+  bool get isAlive => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
+  String get mother => throw _privateConstructorUsedError;
+  String get father => throw _privateConstructorUsedError;
+  List<String> get partners => throw _privateConstructorUsedError;
+  List<String> get children => throw _privateConstructorUsedError;
+  List<String> get fosterChildren => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NodeDtoCopyWith<NodeDto> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NodeDtoCopyWith<$Res> {
+  factory $NodeDtoCopyWith(NodeDto value, $Res Function(NodeDto) then) =
+      _$NodeDtoCopyWithImpl<$Res, NodeDto>;
   @useResult
   $Res call(
-      {UniqueId treeId,
-      UniqueId nodeId,
-      FirstName firstName,
-      DateTime? birthDate,
-      DateTime? deathDate,
+      {String? nodeId,
+      String treeId,
+      String firstName,
+      String? birthDate,
+      String? deathDate,
       bool isAlive,
-      Gender gender,
-      UniqueId father,
-      UniqueId mother,
-      List<UniqueId> partners,
-      List<UniqueId> children,
-      List<UniqueId> fosterChildren});
+      String gender,
+      String mother,
+      String father,
+      List<String> partners,
+      List<String> children,
+      List<String> fosterChildren});
 }
 
 /// @nodoc
-class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
-    implements $TNodeCopyWith<$Res> {
-  _$TNodeCopyWithImpl(this._value, this._then);
+class _$NodeDtoCopyWithImpl<$Res, $Val extends NodeDto>
+    implements $NodeDtoCopyWith<$Res> {
+  _$NodeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,40 +71,40 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? nodeId = freezed,
     Object? treeId = null,
-    Object? nodeId = null,
     Object? firstName = null,
     Object? birthDate = freezed,
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? father = null,
     Object? mother = null,
+    Object? father = null,
     Object? partners = null,
     Object? children = null,
     Object? fosterChildren = null,
   }) {
     return _then(_value.copyWith(
+      nodeId: freezed == nodeId
+          ? _value.nodeId
+          : nodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       treeId: null == treeId
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      nodeId: null == nodeId
-          ? _value.nodeId
-          : nodeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as FirstName,
+              as String,
       birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       deathDate: freezed == deathDate
           ? _value.deathDate
           : deathDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       isAlive: null == isAlive
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
@@ -107,98 +112,98 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
       gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
-      father: null == father
-          ? _value.father
-          : father // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       mother: null == mother
           ? _value.mother
           : mother // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
+      father: null == father
+          ? _value.father
+          : father // ignore: cast_nullable_to_non_nullable
+              as String,
       partners: null == partners
           ? _value.partners
           : partners // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<String>,
       children: null == children
           ? _value.children
           : children // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<String>,
       fosterChildren: null == fosterChildren
           ? _value.fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<String>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
-  factory _$$TNodeImplCopyWith(
-          _$TNodeImpl value, $Res Function(_$TNodeImpl) then) =
-      __$$TNodeImplCopyWithImpl<$Res>;
+abstract class _$$NodeDtoImplCopyWith<$Res> implements $NodeDtoCopyWith<$Res> {
+  factory _$$NodeDtoImplCopyWith(
+          _$NodeDtoImpl value, $Res Function(_$NodeDtoImpl) then) =
+      __$$NodeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {UniqueId treeId,
-      UniqueId nodeId,
-      FirstName firstName,
-      DateTime? birthDate,
-      DateTime? deathDate,
+      {String? nodeId,
+      String treeId,
+      String firstName,
+      String? birthDate,
+      String? deathDate,
       bool isAlive,
-      Gender gender,
-      UniqueId father,
-      UniqueId mother,
-      List<UniqueId> partners,
-      List<UniqueId> children,
-      List<UniqueId> fosterChildren});
+      String gender,
+      String mother,
+      String father,
+      List<String> partners,
+      List<String> children,
+      List<String> fosterChildren});
 }
 
 /// @nodoc
-class __$$TNodeImplCopyWithImpl<$Res>
-    extends _$TNodeCopyWithImpl<$Res, _$TNodeImpl>
-    implements _$$TNodeImplCopyWith<$Res> {
-  __$$TNodeImplCopyWithImpl(
-      _$TNodeImpl _value, $Res Function(_$TNodeImpl) _then)
+class __$$NodeDtoImplCopyWithImpl<$Res>
+    extends _$NodeDtoCopyWithImpl<$Res, _$NodeDtoImpl>
+    implements _$$NodeDtoImplCopyWith<$Res> {
+  __$$NodeDtoImplCopyWithImpl(
+      _$NodeDtoImpl _value, $Res Function(_$NodeDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? nodeId = freezed,
     Object? treeId = null,
-    Object? nodeId = null,
     Object? firstName = null,
     Object? birthDate = freezed,
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? father = null,
     Object? mother = null,
+    Object? father = null,
     Object? partners = null,
     Object? children = null,
     Object? fosterChildren = null,
   }) {
-    return _then(_$TNodeImpl(
+    return _then(_$NodeDtoImpl(
+      nodeId: freezed == nodeId
+          ? _value.nodeId
+          : nodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       treeId: null == treeId
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      nodeId: null == nodeId
-          ? _value.nodeId
-          : nodeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as FirstName,
+              as String,
       birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       deathDate: freezed == deathDate
           ? _value.deathDate
           : deathDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       isAlive: null == isAlive
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
@@ -206,89 +211,92 @@ class __$$TNodeImplCopyWithImpl<$Res>
       gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
-      father: null == father
-          ? _value.father
-          : father // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       mother: null == mother
           ? _value.mother
           : mother // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
+      father: null == father
+          ? _value.father
+          : father // ignore: cast_nullable_to_non_nullable
+              as String,
       partners: null == partners
           ? _value._partners
           : partners // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<String>,
       children: null == children
           ? _value._children
           : children // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<String>,
       fosterChildren: null == fosterChildren
           ? _value._fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-
-class _$TNodeImpl extends _TNode {
-  const _$TNodeImpl(
-      {required this.treeId,
-      required this.nodeId,
+@JsonSerializable()
+class _$NodeDtoImpl extends _NodeDto {
+  const _$NodeDtoImpl(
+      {this.nodeId,
+      required this.treeId,
       required this.firstName,
       this.birthDate,
       this.deathDate,
       required this.isAlive,
       required this.gender,
-      required this.father,
       required this.mother,
-      required final List<UniqueId> partners,
-      required final List<UniqueId> children,
-      required final List<UniqueId> fosterChildren})
+      required this.father,
+      required final List<String> partners,
+      required final List<String> children,
+      required final List<String> fosterChildren})
       : _partners = partners,
         _children = children,
         _fosterChildren = fosterChildren,
         super._();
 
+  factory _$NodeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NodeDtoImplFromJson(json);
+
   @override
-  final UniqueId treeId;
+  final String? nodeId;
   @override
-  final UniqueId nodeId;
+  final String treeId;
   @override
-  final FirstName firstName;
+  final String firstName;
   @override
-  final DateTime? birthDate;
+  final String? birthDate;
   @override
-  final DateTime? deathDate;
+  final String? deathDate;
   @override
   final bool isAlive;
   @override
-  final Gender gender;
+  final String gender;
   @override
-  final UniqueId father;
+  final String mother;
   @override
-  final UniqueId mother;
-  final List<UniqueId> _partners;
+  final String father;
+  final List<String> _partners;
   @override
-  List<UniqueId> get partners {
+  List<String> get partners {
     if (_partners is EqualUnmodifiableListView) return _partners;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_partners);
   }
 
-  final List<UniqueId> _children;
+  final List<String> _children;
   @override
-  List<UniqueId> get children {
+  List<String> get children {
     if (_children is EqualUnmodifiableListView) return _children;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_children);
   }
 
-  final List<UniqueId> _fosterChildren;
+  final List<String> _fosterChildren;
   @override
-  List<UniqueId> get fosterChildren {
+  List<String> get fosterChildren {
     if (_fosterChildren is EqualUnmodifiableListView) return _fosterChildren;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_fosterChildren);
@@ -296,16 +304,16 @@ class _$TNodeImpl extends _TNode {
 
   @override
   String toString() {
-    return 'TNode(treeId: $treeId, nodeId: $nodeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, father: $father, mother: $mother, partners: $partners, children: $children, fosterChildren: $fosterChildren)';
+    return 'NodeDto(nodeId: $nodeId, treeId: $treeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, mother: $mother, father: $father, partners: $partners, children: $children, fosterChildren: $fosterChildren)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TNodeImpl &&
-            (identical(other.treeId, treeId) || other.treeId == treeId) &&
+            other is _$NodeDtoImpl &&
             (identical(other.nodeId, nodeId) || other.nodeId == nodeId) &&
+            (identical(other.treeId, treeId) || other.treeId == treeId) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.birthDate, birthDate) ||
@@ -314,26 +322,27 @@ class _$TNodeImpl extends _TNode {
                 other.deathDate == deathDate) &&
             (identical(other.isAlive, isAlive) || other.isAlive == isAlive) &&
             (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.father, father) || other.father == father) &&
             (identical(other.mother, mother) || other.mother == mother) &&
+            (identical(other.father, father) || other.father == father) &&
             const DeepCollectionEquality().equals(other._partners, _partners) &&
             const DeepCollectionEquality().equals(other._children, _children) &&
             const DeepCollectionEquality()
                 .equals(other._fosterChildren, _fosterChildren));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      treeId,
       nodeId,
+      treeId,
       firstName,
       birthDate,
       deathDate,
       isAlive,
       gender,
-      father,
       mother,
+      father,
       const DeepCollectionEquality().hash(_partners),
       const DeepCollectionEquality().hash(_children),
       const DeepCollectionEquality().hash(_fosterChildren));
@@ -341,52 +350,61 @@ class _$TNodeImpl extends _TNode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TNodeImplCopyWith<_$TNodeImpl> get copyWith =>
-      __$$TNodeImplCopyWithImpl<_$TNodeImpl>(this, _$identity);
+  _$$NodeDtoImplCopyWith<_$NodeDtoImpl> get copyWith =>
+      __$$NodeDtoImplCopyWithImpl<_$NodeDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NodeDtoImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _TNode extends TNode {
-  const factory _TNode(
-      {required final UniqueId treeId,
-      required final UniqueId nodeId,
-      required final FirstName firstName,
-      final DateTime? birthDate,
-      final DateTime? deathDate,
+abstract class _NodeDto extends NodeDto {
+  const factory _NodeDto(
+      {final String? nodeId,
+      required final String treeId,
+      required final String firstName,
+      final String? birthDate,
+      final String? deathDate,
       required final bool isAlive,
-      required final Gender gender,
-      required final UniqueId father,
-      required final UniqueId mother,
-      required final List<UniqueId> partners,
-      required final List<UniqueId> children,
-      required final List<UniqueId> fosterChildren}) = _$TNodeImpl;
-  const _TNode._() : super._();
+      required final String gender,
+      required final String mother,
+      required final String father,
+      required final List<String> partners,
+      required final List<String> children,
+      required final List<String> fosterChildren}) = _$NodeDtoImpl;
+  const _NodeDto._() : super._();
+
+  factory _NodeDto.fromJson(Map<String, dynamic> json) = _$NodeDtoImpl.fromJson;
 
   @override
-  UniqueId get treeId;
+  String? get nodeId;
   @override
-  UniqueId get nodeId;
+  String get treeId;
   @override
-  FirstName get firstName;
+  String get firstName;
   @override
-  DateTime? get birthDate;
+  String? get birthDate;
   @override
-  DateTime? get deathDate;
+  String? get deathDate;
   @override
   bool get isAlive;
   @override
-  Gender get gender;
+  String get gender;
   @override
-  UniqueId get father;
+  String get mother;
   @override
-  UniqueId get mother;
+  String get father;
   @override
-  List<UniqueId> get partners;
+  List<String> get partners;
   @override
-  List<UniqueId> get children;
+  List<String> get children;
   @override
-  List<UniqueId> get fosterChildren;
+  List<String> get fosterChildren;
   @override
   @JsonKey(ignore: true)
-  _$$TNodeImplCopyWith<_$TNodeImpl> get copyWith =>
+  _$$NodeDtoImplCopyWith<_$NodeDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

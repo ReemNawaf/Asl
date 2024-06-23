@@ -6,7 +6,7 @@ const double transactionCardHeight = 75.0;
 // Adding Forms
 enum AddingFrom { cameraPage, homePage, other }
 
-enum NodeType { root, child, grandchild, partner }
+enum NodeType { none, root, child, grandchild, partner }
 
 enum Gender { male, female }
 

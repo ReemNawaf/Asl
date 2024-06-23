@@ -13,5 +13,5 @@ abstract class INodeRepository {
       {required String treeId, required TNode node});
 
   Future<Either<TNodeFailure, TNode>> getNode(
-      {required UniqueId treeId, required UniqueId id});
+      {required UniqueId treeId, required UniqueId nodeId});
 }

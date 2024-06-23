@@ -18,42 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TreeWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() watchAllStarted,
-    required TResult Function(Either<TreeFailure, List<Tree>> failureOrTrees)
-        treesReceived,
+    required TResult Function() getAllTrees,
+    required TResult Function(UniqueId treeId) getTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? watchAllStarted,
-    TResult? Function(Either<TreeFailure, List<Tree>> failureOrTrees)?
-        treesReceived,
+    TResult? Function()? getAllTrees,
+    TResult? Function(UniqueId treeId)? getTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function(Either<TreeFailure, List<Tree>> failureOrTrees)?
-        treesReceived,
+    TResult Function()? getAllTrees,
+    TResult Function(UniqueId treeId)? getTree,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_TreesReceived value) treesReceived,
+    required TResult Function(_GetAllTrees value) getAllTrees,
+    required TResult Function(_GetTree value) getTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_WatchAllStarted value)? watchAllStarted,
-    TResult? Function(_TreesReceived value)? treesReceived,
+    TResult? Function(_GetAllTrees value)? getAllTrees,
+    TResult? Function(_GetTree value)? getTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_TreesReceived value)? treesReceived,
+    TResult Function(_GetAllTrees value)? getAllTrees,
+    TResult Function(_GetTree value)? getTree,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,35 +75,35 @@ class _$TreeWatcherEventCopyWithImpl<$Res, $Val extends TreeWatcherEvent>
 }
 
 /// @nodoc
-abstract class _$$WatchAllStartedImplCopyWith<$Res> {
-  factory _$$WatchAllStartedImplCopyWith(_$WatchAllStartedImpl value,
-          $Res Function(_$WatchAllStartedImpl) then) =
-      __$$WatchAllStartedImplCopyWithImpl<$Res>;
+abstract class _$$GetAllTreesImplCopyWith<$Res> {
+  factory _$$GetAllTreesImplCopyWith(
+          _$GetAllTreesImpl value, $Res Function(_$GetAllTreesImpl) then) =
+      __$$GetAllTreesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WatchAllStartedImplCopyWithImpl<$Res>
-    extends _$TreeWatcherEventCopyWithImpl<$Res, _$WatchAllStartedImpl>
-    implements _$$WatchAllStartedImplCopyWith<$Res> {
-  __$$WatchAllStartedImplCopyWithImpl(
-      _$WatchAllStartedImpl _value, $Res Function(_$WatchAllStartedImpl) _then)
+class __$$GetAllTreesImplCopyWithImpl<$Res>
+    extends _$TreeWatcherEventCopyWithImpl<$Res, _$GetAllTreesImpl>
+    implements _$$GetAllTreesImplCopyWith<$Res> {
+  __$$GetAllTreesImplCopyWithImpl(
+      _$GetAllTreesImpl _value, $Res Function(_$GetAllTreesImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WatchAllStartedImpl implements _WatchAllStarted {
-  const _$WatchAllStartedImpl();
+class _$GetAllTreesImpl implements _GetAllTrees {
+  const _$GetAllTreesImpl();
 
   @override
   String toString() {
-    return 'TreeWatcherEvent.watchAllStarted()';
+    return 'TreeWatcherEvent.getAllTrees()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WatchAllStartedImpl);
+        (other.runtimeType == runtimeType && other is _$GetAllTreesImpl);
   }
 
   @override
@@ -115,33 +112,30 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() watchAllStarted,
-    required TResult Function(Either<TreeFailure, List<Tree>> failureOrTrees)
-        treesReceived,
+    required TResult Function() getAllTrees,
+    required TResult Function(UniqueId treeId) getTree,
   }) {
-    return watchAllStarted();
+    return getAllTrees();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? watchAllStarted,
-    TResult? Function(Either<TreeFailure, List<Tree>> failureOrTrees)?
-        treesReceived,
+    TResult? Function()? getAllTrees,
+    TResult? Function(UniqueId treeId)? getTree,
   }) {
-    return watchAllStarted?.call();
+    return getAllTrees?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function(Either<TreeFailure, List<Tree>> failureOrTrees)?
-        treesReceived,
+    TResult Function()? getAllTrees,
+    TResult Function(UniqueId treeId)? getTree,
     required TResult orElse(),
   }) {
-    if (watchAllStarted != null) {
-      return watchAllStarted();
+    if (getAllTrees != null) {
+      return getAllTrees();
     }
     return orElse();
   }
@@ -149,131 +143,127 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_TreesReceived value) treesReceived,
+    required TResult Function(_GetAllTrees value) getAllTrees,
+    required TResult Function(_GetTree value) getTree,
   }) {
-    return watchAllStarted(this);
+    return getAllTrees(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_WatchAllStarted value)? watchAllStarted,
-    TResult? Function(_TreesReceived value)? treesReceived,
+    TResult? Function(_GetAllTrees value)? getAllTrees,
+    TResult? Function(_GetTree value)? getTree,
   }) {
-    return watchAllStarted?.call(this);
+    return getAllTrees?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_TreesReceived value)? treesReceived,
+    TResult Function(_GetAllTrees value)? getAllTrees,
+    TResult Function(_GetTree value)? getTree,
     required TResult orElse(),
   }) {
-    if (watchAllStarted != null) {
-      return watchAllStarted(this);
+    if (getAllTrees != null) {
+      return getAllTrees(this);
     }
     return orElse();
   }
 }
 
-abstract class _WatchAllStarted implements TreeWatcherEvent {
-  const factory _WatchAllStarted() = _$WatchAllStartedImpl;
+abstract class _GetAllTrees implements TreeWatcherEvent {
+  const factory _GetAllTrees() = _$GetAllTreesImpl;
 }
 
 /// @nodoc
-abstract class _$$TreesReceivedImplCopyWith<$Res> {
-  factory _$$TreesReceivedImplCopyWith(
-          _$TreesReceivedImpl value, $Res Function(_$TreesReceivedImpl) then) =
-      __$$TreesReceivedImplCopyWithImpl<$Res>;
+abstract class _$$GetTreeImplCopyWith<$Res> {
+  factory _$$GetTreeImplCopyWith(
+          _$GetTreeImpl value, $Res Function(_$GetTreeImpl) then) =
+      __$$GetTreeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Either<TreeFailure, List<Tree>> failureOrTrees});
+  $Res call({UniqueId treeId});
 }
 
 /// @nodoc
-class __$$TreesReceivedImplCopyWithImpl<$Res>
-    extends _$TreeWatcherEventCopyWithImpl<$Res, _$TreesReceivedImpl>
-    implements _$$TreesReceivedImplCopyWith<$Res> {
-  __$$TreesReceivedImplCopyWithImpl(
-      _$TreesReceivedImpl _value, $Res Function(_$TreesReceivedImpl) _then)
+class __$$GetTreeImplCopyWithImpl<$Res>
+    extends _$TreeWatcherEventCopyWithImpl<$Res, _$GetTreeImpl>
+    implements _$$GetTreeImplCopyWith<$Res> {
+  __$$GetTreeImplCopyWithImpl(
+      _$GetTreeImpl _value, $Res Function(_$GetTreeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failureOrTrees = null,
+    Object? treeId = null,
   }) {
-    return _then(_$TreesReceivedImpl(
-      null == failureOrTrees
-          ? _value.failureOrTrees
-          : failureOrTrees // ignore: cast_nullable_to_non_nullable
-              as Either<TreeFailure, List<Tree>>,
+    return _then(_$GetTreeImpl(
+      null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
     ));
   }
 }
 
 /// @nodoc
 
-class _$TreesReceivedImpl implements _TreesReceived {
-  const _$TreesReceivedImpl(this.failureOrTrees);
+class _$GetTreeImpl implements _GetTree {
+  const _$GetTreeImpl(this.treeId);
 
   @override
-  final Either<TreeFailure, List<Tree>> failureOrTrees;
+  final UniqueId treeId;
 
   @override
   String toString() {
-    return 'TreeWatcherEvent.treesReceived(failureOrTrees: $failureOrTrees)';
+    return 'TreeWatcherEvent.getTree(treeId: $treeId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TreesReceivedImpl &&
-            (identical(other.failureOrTrees, failureOrTrees) ||
-                other.failureOrTrees == failureOrTrees));
+            other is _$GetTreeImpl &&
+            (identical(other.treeId, treeId) || other.treeId == treeId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failureOrTrees);
+  int get hashCode => Object.hash(runtimeType, treeId);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TreesReceivedImplCopyWith<_$TreesReceivedImpl> get copyWith =>
-      __$$TreesReceivedImplCopyWithImpl<_$TreesReceivedImpl>(this, _$identity);
+  _$$GetTreeImplCopyWith<_$GetTreeImpl> get copyWith =>
+      __$$GetTreeImplCopyWithImpl<_$GetTreeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() watchAllStarted,
-    required TResult Function(Either<TreeFailure, List<Tree>> failureOrTrees)
-        treesReceived,
+    required TResult Function() getAllTrees,
+    required TResult Function(UniqueId treeId) getTree,
   }) {
-    return treesReceived(failureOrTrees);
+    return getTree(treeId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? watchAllStarted,
-    TResult? Function(Either<TreeFailure, List<Tree>> failureOrTrees)?
-        treesReceived,
+    TResult? Function()? getAllTrees,
+    TResult? Function(UniqueId treeId)? getTree,
   }) {
-    return treesReceived?.call(failureOrTrees);
+    return getTree?.call(treeId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function(Either<TreeFailure, List<Tree>> failureOrTrees)?
-        treesReceived,
+    TResult Function()? getAllTrees,
+    TResult Function(UniqueId treeId)? getTree,
     required TResult orElse(),
   }) {
-    if (treesReceived != null) {
-      return treesReceived(failureOrTrees);
+    if (getTree != null) {
+      return getTree(treeId);
     }
     return orElse();
   }
@@ -281,43 +271,41 @@ class _$TreesReceivedImpl implements _TreesReceived {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_TreesReceived value) treesReceived,
+    required TResult Function(_GetAllTrees value) getAllTrees,
+    required TResult Function(_GetTree value) getTree,
   }) {
-    return treesReceived(this);
+    return getTree(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_WatchAllStarted value)? watchAllStarted,
-    TResult? Function(_TreesReceived value)? treesReceived,
+    TResult? Function(_GetAllTrees value)? getAllTrees,
+    TResult? Function(_GetTree value)? getTree,
   }) {
-    return treesReceived?.call(this);
+    return getTree?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_TreesReceived value)? treesReceived,
+    TResult Function(_GetAllTrees value)? getAllTrees,
+    TResult Function(_GetTree value)? getTree,
     required TResult orElse(),
   }) {
-    if (treesReceived != null) {
-      return treesReceived(this);
+    if (getTree != null) {
+      return getTree(this);
     }
     return orElse();
   }
 }
 
-abstract class _TreesReceived implements TreeWatcherEvent {
-  const factory _TreesReceived(
-          final Either<TreeFailure, List<Tree>> failureOrTrees) =
-      _$TreesReceivedImpl;
+abstract class _GetTree implements TreeWatcherEvent {
+  const factory _GetTree(final UniqueId treeId) = _$GetTreeImpl;
 
-  Either<TreeFailure, List<Tree>> get failureOrTrees;
+  UniqueId get treeId;
   @JsonKey(ignore: true)
-  _$$TreesReceivedImplCopyWith<_$TreesReceivedImpl> get copyWith =>
+  _$$GetTreeImplCopyWith<_$GetTreeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -327,24 +315,33 @@ mixin _$TreeWatcherState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Tree> categories) loadSuccess,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
     required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Tree> categories)? loadSuccess,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
     TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Tree> categories)? loadSuccess,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
     TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -352,24 +349,33 @@ mixin _$TreeWatcherState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -433,8 +439,11 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Tree> categories) loadSuccess,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
     required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
   }) {
     return initial();
   }
@@ -444,8 +453,11 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Tree> categories)? loadSuccess,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
     TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
   }) {
     return initial?.call();
   }
@@ -455,8 +467,11 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Tree> categories)? loadSuccess,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
     TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -470,8 +485,11 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
     return initial(this);
   }
@@ -481,8 +499,11 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
     return initial?.call(this);
   }
@@ -492,8 +513,11 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -547,8 +571,11 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Tree> categories) loadSuccess,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
     required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
   }) {
     return loadInProgress();
   }
@@ -558,8 +585,11 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Tree> categories)? loadSuccess,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
     TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -569,8 +599,11 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Tree> categories)? loadSuccess,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
     TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -584,8 +617,11 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
     return loadInProgress(this);
   }
@@ -595,8 +631,11 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
     return loadInProgress?.call(this);
   }
@@ -606,8 +645,11 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -622,12 +664,144 @@ abstract class _LoadInProgress implements TreeWatcherState {
 }
 
 /// @nodoc
+abstract class _$$InProgressImplCopyWith<$Res> {
+  factory _$$InProgressImplCopyWith(
+          _$InProgressImpl value, $Res Function(_$InProgressImpl) then) =
+      __$$InProgressImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InProgressImplCopyWithImpl<$Res>
+    extends _$TreeWatcherStateCopyWithImpl<$Res, _$InProgressImpl>
+    implements _$$InProgressImplCopyWith<$Res> {
+  __$$InProgressImplCopyWithImpl(
+      _$InProgressImpl _value, $Res Function(_$InProgressImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InProgressImpl implements _InProgress {
+  const _$InProgressImpl();
+
+  @override
+  String toString() {
+    return 'TreeWatcherState.inProgress()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InProgressImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
+    required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
+  }) {
+    return inProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
+    TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
+  }) {
+    return inProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
+    TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
+  }) {
+    return inProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
+  }) {
+    return inProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InProgress implements TreeWatcherState {
+  const factory _InProgress() = _$InProgressImpl;
+}
+
+/// @nodoc
 abstract class _$$LoadSuccessImplCopyWith<$Res> {
   factory _$$LoadSuccessImplCopyWith(
           _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
       __$$LoadSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Tree> categories});
+  $Res call({List<Tree> trees});
 }
 
 /// @nodoc
@@ -641,12 +815,12 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categories = null,
+    Object? trees = null,
   }) {
     return _then(_$LoadSuccessImpl(
-      null == categories
-          ? _value._categories
-          : categories // ignore: cast_nullable_to_non_nullable
+      null == trees
+          ? _value._trees
+          : trees // ignore: cast_nullable_to_non_nullable
               as List<Tree>,
     ));
   }
@@ -655,20 +829,19 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadSuccessImpl implements _LoadSuccess {
-  const _$LoadSuccessImpl(final List<Tree> categories)
-      : _categories = categories;
+  const _$LoadSuccessImpl(final List<Tree> trees) : _trees = trees;
 
-  final List<Tree> _categories;
+  final List<Tree> _trees;
   @override
-  List<Tree> get categories {
-    if (_categories is EqualUnmodifiableListView) return _categories;
+  List<Tree> get trees {
+    if (_trees is EqualUnmodifiableListView) return _trees;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categories);
+    return EqualUnmodifiableListView(_trees);
   }
 
   @override
   String toString() {
-    return 'TreeWatcherState.loadSuccess(categories: $categories)';
+    return 'TreeWatcherState.loadSuccess(trees: $trees)';
   }
 
   @override
@@ -676,13 +849,12 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadSuccessImpl &&
-            const DeepCollectionEquality()
-                .equals(other._categories, _categories));
+            const DeepCollectionEquality().equals(other._trees, _trees));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_categories));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_trees));
 
   @JsonKey(ignore: true)
   @override
@@ -695,10 +867,13 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Tree> categories) loadSuccess,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
     required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
   }) {
-    return loadSuccess(categories);
+    return loadSuccess(trees);
   }
 
   @override
@@ -706,10 +881,13 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Tree> categories)? loadSuccess,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
     TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
   }) {
-    return loadSuccess?.call(categories);
+    return loadSuccess?.call(trees);
   }
 
   @override
@@ -717,12 +895,15 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Tree> categories)? loadSuccess,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
     TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(categories);
+      return loadSuccess(trees);
     }
     return orElse();
   }
@@ -732,8 +913,11 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
     return loadSuccess(this);
   }
@@ -743,8 +927,11 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
     return loadSuccess?.call(this);
   }
@@ -754,8 +941,11 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -766,9 +956,9 @@ class _$LoadSuccessImpl implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements TreeWatcherState {
-  const factory _LoadSuccess(final List<Tree> categories) = _$LoadSuccessImpl;
+  const factory _LoadSuccess(final List<Tree> trees) = _$LoadSuccessImpl;
 
-  List<Tree> get categories;
+  List<Tree> get trees;
   @JsonKey(ignore: true)
   _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -851,8 +1041,11 @@ class _$LoadFailureImpl implements _LoadFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Tree> categories) loadSuccess,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
     required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
   }) {
     return loadFailure(treeFailure);
   }
@@ -862,8 +1055,11 @@ class _$LoadFailureImpl implements _LoadFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Tree> categories)? loadSuccess,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
     TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
   }) {
     return loadFailure?.call(treeFailure);
   }
@@ -873,8 +1069,11 @@ class _$LoadFailureImpl implements _LoadFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Tree> categories)? loadSuccess,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
     TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -888,8 +1087,11 @@ class _$LoadFailureImpl implements _LoadFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
     return loadFailure(this);
   }
@@ -899,8 +1101,11 @@ class _$LoadFailureImpl implements _LoadFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
     return loadFailure?.call(this);
   }
@@ -910,8 +1115,11 @@ class _$LoadFailureImpl implements _LoadFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -927,5 +1135,355 @@ abstract class _LoadFailure implements TreeWatcherState {
   TreeFailure get treeFailure;
   @JsonKey(ignore: true)
   _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GettingTreeSuccessImplCopyWith<$Res> {
+  factory _$$GettingTreeSuccessImplCopyWith(_$GettingTreeSuccessImpl value,
+          $Res Function(_$GettingTreeSuccessImpl) then) =
+      __$$GettingTreeSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Tree tree});
+
+  $TreeCopyWith<$Res> get tree;
+}
+
+/// @nodoc
+class __$$GettingTreeSuccessImplCopyWithImpl<$Res>
+    extends _$TreeWatcherStateCopyWithImpl<$Res, _$GettingTreeSuccessImpl>
+    implements _$$GettingTreeSuccessImplCopyWith<$Res> {
+  __$$GettingTreeSuccessImplCopyWithImpl(_$GettingTreeSuccessImpl _value,
+      $Res Function(_$GettingTreeSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tree = null,
+  }) {
+    return _then(_$GettingTreeSuccessImpl(
+      null == tree
+          ? _value.tree
+          : tree // ignore: cast_nullable_to_non_nullable
+              as Tree,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TreeCopyWith<$Res> get tree {
+    return $TreeCopyWith<$Res>(_value.tree, (value) {
+      return _then(_value.copyWith(tree: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GettingTreeSuccessImpl implements _GettingTreeSuccess {
+  const _$GettingTreeSuccessImpl(this.tree);
+
+  @override
+  final Tree tree;
+
+  @override
+  String toString() {
+    return 'TreeWatcherState.gettingTreeSuccess(tree: $tree)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GettingTreeSuccessImpl &&
+            (identical(other.tree, tree) || other.tree == tree));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tree);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GettingTreeSuccessImplCopyWith<_$GettingTreeSuccessImpl> get copyWith =>
+      __$$GettingTreeSuccessImplCopyWithImpl<_$GettingTreeSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
+    required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
+  }) {
+    return gettingTreeSuccess(tree);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
+    TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
+  }) {
+    return gettingTreeSuccess?.call(tree);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
+    TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
+    required TResult orElse(),
+  }) {
+    if (gettingTreeSuccess != null) {
+      return gettingTreeSuccess(tree);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
+  }) {
+    return gettingTreeSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
+  }) {
+    return gettingTreeSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
+    required TResult orElse(),
+  }) {
+    if (gettingTreeSuccess != null) {
+      return gettingTreeSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GettingTreeSuccess implements TreeWatcherState {
+  const factory _GettingTreeSuccess(final Tree tree) = _$GettingTreeSuccessImpl;
+
+  Tree get tree;
+  @JsonKey(ignore: true)
+  _$$GettingTreeSuccessImplCopyWith<_$GettingTreeSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GettingTreeFailureImplCopyWith<$Res> {
+  factory _$$GettingTreeFailureImplCopyWith(_$GettingTreeFailureImpl value,
+          $Res Function(_$GettingTreeFailureImpl) then) =
+      __$$GettingTreeFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TreeFailure purchaseFailure});
+
+  $TreeFailureCopyWith<$Res> get purchaseFailure;
+}
+
+/// @nodoc
+class __$$GettingTreeFailureImplCopyWithImpl<$Res>
+    extends _$TreeWatcherStateCopyWithImpl<$Res, _$GettingTreeFailureImpl>
+    implements _$$GettingTreeFailureImplCopyWith<$Res> {
+  __$$GettingTreeFailureImplCopyWithImpl(_$GettingTreeFailureImpl _value,
+      $Res Function(_$GettingTreeFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? purchaseFailure = null,
+  }) {
+    return _then(_$GettingTreeFailureImpl(
+      null == purchaseFailure
+          ? _value.purchaseFailure
+          : purchaseFailure // ignore: cast_nullable_to_non_nullable
+              as TreeFailure,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TreeFailureCopyWith<$Res> get purchaseFailure {
+    return $TreeFailureCopyWith<$Res>(_value.purchaseFailure, (value) {
+      return _then(_value.copyWith(purchaseFailure: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GettingTreeFailureImpl implements _GettingTreeFailure {
+  const _$GettingTreeFailureImpl(this.purchaseFailure);
+
+  @override
+  final TreeFailure purchaseFailure;
+
+  @override
+  String toString() {
+    return 'TreeWatcherState.gettingTreeFailure(purchaseFailure: $purchaseFailure)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GettingTreeFailureImpl &&
+            (identical(other.purchaseFailure, purchaseFailure) ||
+                other.purchaseFailure == purchaseFailure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, purchaseFailure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GettingTreeFailureImplCopyWith<_$GettingTreeFailureImpl> get copyWith =>
+      __$$GettingTreeFailureImplCopyWithImpl<_$GettingTreeFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function() inProgress,
+    required TResult Function(List<Tree> trees) loadSuccess,
+    required TResult Function(TreeFailure treeFailure) loadFailure,
+    required TResult Function(Tree tree) gettingTreeSuccess,
+    required TResult Function(TreeFailure purchaseFailure) gettingTreeFailure,
+  }) {
+    return gettingTreeFailure(purchaseFailure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function()? inProgress,
+    TResult? Function(List<Tree> trees)? loadSuccess,
+    TResult? Function(TreeFailure treeFailure)? loadFailure,
+    TResult? Function(Tree tree)? gettingTreeSuccess,
+    TResult? Function(TreeFailure purchaseFailure)? gettingTreeFailure,
+  }) {
+    return gettingTreeFailure?.call(purchaseFailure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function()? inProgress,
+    TResult Function(List<Tree> trees)? loadSuccess,
+    TResult Function(TreeFailure treeFailure)? loadFailure,
+    TResult Function(Tree tree)? gettingTreeSuccess,
+    TResult Function(TreeFailure purchaseFailure)? gettingTreeFailure,
+    required TResult orElse(),
+  }) {
+    if (gettingTreeFailure != null) {
+      return gettingTreeFailure(purchaseFailure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
+    required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
+  }) {
+    return gettingTreeFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
+  }) {
+    return gettingTreeFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_InProgress value)? inProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
+    TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
+    required TResult orElse(),
+  }) {
+    if (gettingTreeFailure != null) {
+      return gettingTreeFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GettingTreeFailure implements TreeWatcherState {
+  const factory _GettingTreeFailure(final TreeFailure purchaseFailure) =
+      _$GettingTreeFailureImpl;
+
+  TreeFailure get purchaseFailure;
+  @JsonKey(ignore: true)
+  _$$GettingTreeFailureImplCopyWith<_$GettingTreeFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -21,6 +21,7 @@ mixin _$UserFormEvent {
     required TResult Function(Option<AppUser> initialUserOption) initialized,
     required TResult Function(Option<AppUser> existingUserOption) edited,
     required TResult Function(String name) nameChanged,
+    required TResult Function(List<UniqueId> trees) addTree,
     required TResult Function(String avatar) avatarChanged,
     required TResult Function() saved,
   }) =>
@@ -30,6 +31,7 @@ mixin _$UserFormEvent {
     TResult? Function(Option<AppUser> initialUserOption)? initialized,
     TResult? Function(Option<AppUser> existingUserOption)? edited,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(List<UniqueId> trees)? addTree,
     TResult? Function(String avatar)? avatarChanged,
     TResult? Function()? saved,
   }) =>
@@ -39,6 +41,7 @@ mixin _$UserFormEvent {
     TResult Function(Option<AppUser> initialUserOption)? initialized,
     TResult Function(Option<AppUser> existingUserOption)? edited,
     TResult Function(String name)? nameChanged,
+    TResult Function(List<UniqueId> trees)? addTree,
     TResult Function(String avatar)? avatarChanged,
     TResult Function()? saved,
     required TResult orElse(),
@@ -49,6 +52,7 @@ mixin _$UserFormEvent {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Edited value) edited,
     required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_AddTree value) addTree,
     required TResult Function(_AvatarChanged value) avatarChanged,
     required TResult Function(_Saved value) saved,
   }) =>
@@ -58,6 +62,7 @@ mixin _$UserFormEvent {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_AddTree value)? addTree,
     TResult? Function(_AvatarChanged value)? avatarChanged,
     TResult? Function(_Saved value)? saved,
   }) =>
@@ -67,6 +72,7 @@ mixin _$UserFormEvent {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Edited value)? edited,
     TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_AddTree value)? addTree,
     TResult Function(_AvatarChanged value)? avatarChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -160,6 +166,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(Option<AppUser> initialUserOption) initialized,
     required TResult Function(Option<AppUser> existingUserOption) edited,
     required TResult Function(String name) nameChanged,
+    required TResult Function(List<UniqueId> trees) addTree,
     required TResult Function(String avatar) avatarChanged,
     required TResult Function() saved,
   }) {
@@ -172,6 +179,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(Option<AppUser> initialUserOption)? initialized,
     TResult? Function(Option<AppUser> existingUserOption)? edited,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(List<UniqueId> trees)? addTree,
     TResult? Function(String avatar)? avatarChanged,
     TResult? Function()? saved,
   }) {
@@ -184,6 +192,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(Option<AppUser> initialUserOption)? initialized,
     TResult Function(Option<AppUser> existingUserOption)? edited,
     TResult Function(String name)? nameChanged,
+    TResult Function(List<UniqueId> trees)? addTree,
     TResult Function(String avatar)? avatarChanged,
     TResult Function()? saved,
     required TResult orElse(),
@@ -200,6 +209,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Edited value) edited,
     required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_AddTree value) addTree,
     required TResult Function(_AvatarChanged value) avatarChanged,
     required TResult Function(_Saved value) saved,
   }) {
@@ -212,6 +222,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_AddTree value)? addTree,
     TResult? Function(_AvatarChanged value)? avatarChanged,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -224,6 +235,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Edited value)? edited,
     TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_AddTree value)? addTree,
     TResult Function(_AvatarChanged value)? avatarChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -313,6 +325,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(Option<AppUser> initialUserOption) initialized,
     required TResult Function(Option<AppUser> existingUserOption) edited,
     required TResult Function(String name) nameChanged,
+    required TResult Function(List<UniqueId> trees) addTree,
     required TResult Function(String avatar) avatarChanged,
     required TResult Function() saved,
   }) {
@@ -325,6 +338,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(Option<AppUser> initialUserOption)? initialized,
     TResult? Function(Option<AppUser> existingUserOption)? edited,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(List<UniqueId> trees)? addTree,
     TResult? Function(String avatar)? avatarChanged,
     TResult? Function()? saved,
   }) {
@@ -337,6 +351,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(Option<AppUser> initialUserOption)? initialized,
     TResult Function(Option<AppUser> existingUserOption)? edited,
     TResult Function(String name)? nameChanged,
+    TResult Function(List<UniqueId> trees)? addTree,
     TResult Function(String avatar)? avatarChanged,
     TResult Function()? saved,
     required TResult orElse(),
@@ -353,6 +368,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Edited value) edited,
     required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_AddTree value) addTree,
     required TResult Function(_AvatarChanged value) avatarChanged,
     required TResult Function(_Saved value) saved,
   }) {
@@ -365,6 +381,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_AddTree value)? addTree,
     TResult? Function(_AvatarChanged value)? avatarChanged,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -377,6 +394,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Edited value)? edited,
     TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_AddTree value)? addTree,
     TResult Function(_AvatarChanged value)? avatarChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -465,6 +483,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(Option<AppUser> initialUserOption) initialized,
     required TResult Function(Option<AppUser> existingUserOption) edited,
     required TResult Function(String name) nameChanged,
+    required TResult Function(List<UniqueId> trees) addTree,
     required TResult Function(String avatar) avatarChanged,
     required TResult Function() saved,
   }) {
@@ -477,6 +496,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(Option<AppUser> initialUserOption)? initialized,
     TResult? Function(Option<AppUser> existingUserOption)? edited,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(List<UniqueId> trees)? addTree,
     TResult? Function(String avatar)? avatarChanged,
     TResult? Function()? saved,
   }) {
@@ -489,6 +509,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(Option<AppUser> initialUserOption)? initialized,
     TResult Function(Option<AppUser> existingUserOption)? edited,
     TResult Function(String name)? nameChanged,
+    TResult Function(List<UniqueId> trees)? addTree,
     TResult Function(String avatar)? avatarChanged,
     TResult Function()? saved,
     required TResult orElse(),
@@ -505,6 +526,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Edited value) edited,
     required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_AddTree value) addTree,
     required TResult Function(_AvatarChanged value) avatarChanged,
     required TResult Function(_Saved value) saved,
   }) {
@@ -517,6 +539,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_AddTree value)? addTree,
     TResult? Function(_AvatarChanged value)? avatarChanged,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -529,6 +552,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Edited value)? edited,
     TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_AddTree value)? addTree,
     TResult Function(_AvatarChanged value)? avatarChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -546,6 +570,169 @@ abstract class _NameChanged implements UserFormEvent {
   String get name;
   @JsonKey(ignore: true)
   _$$NameChangedImplCopyWith<_$NameChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddTreeImplCopyWith<$Res> {
+  factory _$$AddTreeImplCopyWith(
+          _$AddTreeImpl value, $Res Function(_$AddTreeImpl) then) =
+      __$$AddTreeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<UniqueId> trees});
+}
+
+/// @nodoc
+class __$$AddTreeImplCopyWithImpl<$Res>
+    extends _$UserFormEventCopyWithImpl<$Res, _$AddTreeImpl>
+    implements _$$AddTreeImplCopyWith<$Res> {
+  __$$AddTreeImplCopyWithImpl(
+      _$AddTreeImpl _value, $Res Function(_$AddTreeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trees = null,
+  }) {
+    return _then(_$AddTreeImpl(
+      null == trees
+          ? _value._trees
+          : trees // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddTreeImpl implements _AddTree {
+  const _$AddTreeImpl(final List<UniqueId> trees) : _trees = trees;
+
+  final List<UniqueId> _trees;
+  @override
+  List<UniqueId> get trees {
+    if (_trees is EqualUnmodifiableListView) return _trees;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trees);
+  }
+
+  @override
+  String toString() {
+    return 'UserFormEvent.addTree(trees: $trees)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddTreeImpl &&
+            const DeepCollectionEquality().equals(other._trees, _trees));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_trees));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddTreeImplCopyWith<_$AddTreeImpl> get copyWith =>
+      __$$AddTreeImplCopyWithImpl<_$AddTreeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<AppUser> initialUserOption) initialized,
+    required TResult Function(Option<AppUser> existingUserOption) edited,
+    required TResult Function(String name) nameChanged,
+    required TResult Function(List<UniqueId> trees) addTree,
+    required TResult Function(String avatar) avatarChanged,
+    required TResult Function() saved,
+  }) {
+    return addTree(trees);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<AppUser> initialUserOption)? initialized,
+    TResult? Function(Option<AppUser> existingUserOption)? edited,
+    TResult? Function(String name)? nameChanged,
+    TResult? Function(List<UniqueId> trees)? addTree,
+    TResult? Function(String avatar)? avatarChanged,
+    TResult? Function()? saved,
+  }) {
+    return addTree?.call(trees);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<AppUser> initialUserOption)? initialized,
+    TResult Function(Option<AppUser> existingUserOption)? edited,
+    TResult Function(String name)? nameChanged,
+    TResult Function(List<UniqueId> trees)? addTree,
+    TResult Function(String avatar)? avatarChanged,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (addTree != null) {
+      return addTree(trees);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_AddTree value) addTree,
+    required TResult Function(_AvatarChanged value) avatarChanged,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return addTree(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_AddTree value)? addTree,
+    TResult? Function(_AvatarChanged value)? avatarChanged,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return addTree?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_AddTree value)? addTree,
+    TResult Function(_AvatarChanged value)? avatarChanged,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (addTree != null) {
+      return addTree(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddTree implements UserFormEvent {
+  const factory _AddTree(final List<UniqueId> trees) = _$AddTreeImpl;
+
+  List<UniqueId> get trees;
+  @JsonKey(ignore: true)
+  _$$AddTreeImplCopyWith<_$AddTreeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -616,6 +803,7 @@ class _$AvatarChangedImpl implements _AvatarChanged {
     required TResult Function(Option<AppUser> initialUserOption) initialized,
     required TResult Function(Option<AppUser> existingUserOption) edited,
     required TResult Function(String name) nameChanged,
+    required TResult Function(List<UniqueId> trees) addTree,
     required TResult Function(String avatar) avatarChanged,
     required TResult Function() saved,
   }) {
@@ -628,6 +816,7 @@ class _$AvatarChangedImpl implements _AvatarChanged {
     TResult? Function(Option<AppUser> initialUserOption)? initialized,
     TResult? Function(Option<AppUser> existingUserOption)? edited,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(List<UniqueId> trees)? addTree,
     TResult? Function(String avatar)? avatarChanged,
     TResult? Function()? saved,
   }) {
@@ -640,6 +829,7 @@ class _$AvatarChangedImpl implements _AvatarChanged {
     TResult Function(Option<AppUser> initialUserOption)? initialized,
     TResult Function(Option<AppUser> existingUserOption)? edited,
     TResult Function(String name)? nameChanged,
+    TResult Function(List<UniqueId> trees)? addTree,
     TResult Function(String avatar)? avatarChanged,
     TResult Function()? saved,
     required TResult orElse(),
@@ -656,6 +846,7 @@ class _$AvatarChangedImpl implements _AvatarChanged {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Edited value) edited,
     required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_AddTree value) addTree,
     required TResult Function(_AvatarChanged value) avatarChanged,
     required TResult Function(_Saved value) saved,
   }) {
@@ -668,6 +859,7 @@ class _$AvatarChangedImpl implements _AvatarChanged {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_AddTree value)? addTree,
     TResult? Function(_AvatarChanged value)? avatarChanged,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -680,6 +872,7 @@ class _$AvatarChangedImpl implements _AvatarChanged {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Edited value)? edited,
     TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_AddTree value)? addTree,
     TResult Function(_AvatarChanged value)? avatarChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -741,6 +934,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(Option<AppUser> initialUserOption) initialized,
     required TResult Function(Option<AppUser> existingUserOption) edited,
     required TResult Function(String name) nameChanged,
+    required TResult Function(List<UniqueId> trees) addTree,
     required TResult Function(String avatar) avatarChanged,
     required TResult Function() saved,
   }) {
@@ -753,6 +947,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(Option<AppUser> initialUserOption)? initialized,
     TResult? Function(Option<AppUser> existingUserOption)? edited,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(List<UniqueId> trees)? addTree,
     TResult? Function(String avatar)? avatarChanged,
     TResult? Function()? saved,
   }) {
@@ -765,6 +960,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(Option<AppUser> initialUserOption)? initialized,
     TResult Function(Option<AppUser> existingUserOption)? edited,
     TResult Function(String name)? nameChanged,
+    TResult Function(List<UniqueId> trees)? addTree,
     TResult Function(String avatar)? avatarChanged,
     TResult Function()? saved,
     required TResult orElse(),
@@ -781,6 +977,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Edited value) edited,
     required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_AddTree value) addTree,
     required TResult Function(_AvatarChanged value) avatarChanged,
     required TResult Function(_Saved value) saved,
   }) {
@@ -793,6 +990,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_AddTree value)? addTree,
     TResult? Function(_AvatarChanged value)? avatarChanged,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -805,6 +1003,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Edited value)? edited,
     TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_AddTree value)? addTree,
     TResult Function(_AvatarChanged value)? avatarChanged,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),

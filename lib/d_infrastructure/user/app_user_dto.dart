@@ -1,3 +1,4 @@
+import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:asl/c_domain/app_user/user.dart';
@@ -14,6 +15,7 @@ abstract class AppUserDto implements _$AppUserDto {
   const factory AppUserDto({
     required String name,
     required String avatar,
+    required List<String> trees,
   }) = _AppUserDto;
 
   //  converting Entity => DTO
@@ -21,6 +23,7 @@ abstract class AppUserDto implements _$AppUserDto {
     return AppUserDto(
       name: appUser.name.getOrCrash(),
       avatar: appUser.avater.getOrCrash(),
+      trees: appUser.trees.map((id) => id.getOrCrash()).toList(),
     );
   }
 
@@ -29,6 +32,7 @@ abstract class AppUserDto implements _$AppUserDto {
     return AppUser(
       name: UserName(name),
       avater: UserAvater(avatar),
+      trees: trees.map((treeId) => UniqueId.fromUniqueString(treeId)).toList(),
     );
   }
 

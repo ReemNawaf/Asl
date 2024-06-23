@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tree.dart';
+part of 'tree_dtos.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,41 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-/// @nodoc
-mixin _$Tree {
-  UniqueId get treeId => throw _privateConstructorUsedError;
-  UniqueId get creatorId => throw _privateConstructorUsedError;
-  UniqueId get rootId => throw _privateConstructorUsedError;
-  TreeName get treeName => throw _privateConstructorUsedError;
-  FullName get fullName => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TreeCopyWith<Tree> get copyWith => throw _privateConstructorUsedError;
+TreeDto _$TreeDtoFromJson(Map<String, dynamic> json) {
+  return _TreeDto.fromJson(json);
 }
 
 /// @nodoc
-abstract class $TreeCopyWith<$Res> {
-  factory $TreeCopyWith(Tree value, $Res Function(Tree) then) =
-      _$TreeCopyWithImpl<$Res, Tree>;
+mixin _$TreeDto {
+//  document id in firebase used as the identifier of that doc, and isn't stored inside it
+  String get treeId => throw _privateConstructorUsedError;
+  String get creatorId => throw _privateConstructorUsedError;
+  String get rootId => throw _privateConstructorUsedError;
+  String get treeName => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TreeDtoCopyWith<TreeDto> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TreeDtoCopyWith<$Res> {
+  factory $TreeDtoCopyWith(TreeDto value, $Res Function(TreeDto) then) =
+      _$TreeDtoCopyWithImpl<$Res, TreeDto>;
   @useResult
   $Res call(
-      {UniqueId treeId,
-      UniqueId creatorId,
-      UniqueId rootId,
-      TreeName treeName,
-      FullName fullName});
+      {String treeId,
+      String creatorId,
+      String rootId,
+      String treeName,
+      String fullName});
 }
 
 /// @nodoc
-class _$TreeCopyWithImpl<$Res, $Val extends Tree>
-    implements $TreeCopyWith<$Res> {
-  _$TreeCopyWithImpl(this._value, this._then);
+class _$TreeDtoCopyWithImpl<$Res, $Val extends TreeDto>
+    implements $TreeDtoCopyWith<$Res> {
+  _$TreeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,47 +68,48 @@ class _$TreeCopyWithImpl<$Res, $Val extends Tree>
       treeId: null == treeId
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       creatorId: null == creatorId
           ? _value.creatorId
           : creatorId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       rootId: null == rootId
           ? _value.rootId
           : rootId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       treeName: null == treeName
           ? _value.treeName
           : treeName // ignore: cast_nullable_to_non_nullable
-              as TreeName,
+              as String,
       fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as FullName,
+              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$TreeImplCopyWith<$Res> implements $TreeCopyWith<$Res> {
-  factory _$$TreeImplCopyWith(
-          _$TreeImpl value, $Res Function(_$TreeImpl) then) =
-      __$$TreeImplCopyWithImpl<$Res>;
+abstract class _$$TreeDtoImplCopyWith<$Res> implements $TreeDtoCopyWith<$Res> {
+  factory _$$TreeDtoImplCopyWith(
+          _$TreeDtoImpl value, $Res Function(_$TreeDtoImpl) then) =
+      __$$TreeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {UniqueId treeId,
-      UniqueId creatorId,
-      UniqueId rootId,
-      TreeName treeName,
-      FullName fullName});
+      {String treeId,
+      String creatorId,
+      String rootId,
+      String treeName,
+      String fullName});
 }
 
 /// @nodoc
-class __$$TreeImplCopyWithImpl<$Res>
-    extends _$TreeCopyWithImpl<$Res, _$TreeImpl>
-    implements _$$TreeImplCopyWith<$Res> {
-  __$$TreeImplCopyWithImpl(_$TreeImpl _value, $Res Function(_$TreeImpl) _then)
+class __$$TreeDtoImplCopyWithImpl<$Res>
+    extends _$TreeDtoCopyWithImpl<$Res, _$TreeDtoImpl>
+    implements _$$TreeDtoImplCopyWith<$Res> {
+  __$$TreeDtoImplCopyWithImpl(
+      _$TreeDtoImpl _value, $Res Function(_$TreeDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,35 +121,35 @@ class __$$TreeImplCopyWithImpl<$Res>
     Object? treeName = null,
     Object? fullName = null,
   }) {
-    return _then(_$TreeImpl(
+    return _then(_$TreeDtoImpl(
       treeId: null == treeId
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       creatorId: null == creatorId
           ? _value.creatorId
           : creatorId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       rootId: null == rootId
           ? _value.rootId
           : rootId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       treeName: null == treeName
           ? _value.treeName
           : treeName // ignore: cast_nullable_to_non_nullable
-              as TreeName,
+              as String,
       fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as FullName,
+              as String,
     ));
   }
 }
 
 /// @nodoc
-
-class _$TreeImpl extends _Tree {
-  const _$TreeImpl(
+@JsonSerializable()
+class _$TreeDtoImpl extends _TreeDto {
+  const _$TreeDtoImpl(
       {required this.treeId,
       required this.creatorId,
       required this.rootId,
@@ -150,27 +157,31 @@ class _$TreeImpl extends _Tree {
       required this.fullName})
       : super._();
 
+  factory _$TreeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TreeDtoImplFromJson(json);
+
+//  document id in firebase used as the identifier of that doc, and isn't stored inside it
   @override
-  final UniqueId treeId;
+  final String treeId;
   @override
-  final UniqueId creatorId;
+  final String creatorId;
   @override
-  final UniqueId rootId;
+  final String rootId;
   @override
-  final TreeName treeName;
+  final String treeName;
   @override
-  final FullName fullName;
+  final String fullName;
 
   @override
   String toString() {
-    return 'Tree(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName)';
+    return 'TreeDto(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TreeImpl &&
+            other is _$TreeDtoImpl &&
             (identical(other.treeId, treeId) || other.treeId == treeId) &&
             (identical(other.creatorId, creatorId) ||
                 other.creatorId == creatorId) &&
@@ -181,6 +192,7 @@ class _$TreeImpl extends _Tree {
                 other.fullName == fullName));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, treeId, creatorId, rootId, treeName, fullName);
@@ -188,31 +200,40 @@ class _$TreeImpl extends _Tree {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TreeImplCopyWith<_$TreeImpl> get copyWith =>
-      __$$TreeImplCopyWithImpl<_$TreeImpl>(this, _$identity);
+  _$$TreeDtoImplCopyWith<_$TreeDtoImpl> get copyWith =>
+      __$$TreeDtoImplCopyWithImpl<_$TreeDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TreeDtoImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _Tree extends Tree {
-  const factory _Tree(
-      {required final UniqueId treeId,
-      required final UniqueId creatorId,
-      required final UniqueId rootId,
-      required final TreeName treeName,
-      required final FullName fullName}) = _$TreeImpl;
-  const _Tree._() : super._();
+abstract class _TreeDto extends TreeDto {
+  const factory _TreeDto(
+      {required final String treeId,
+      required final String creatorId,
+      required final String rootId,
+      required final String treeName,
+      required final String fullName}) = _$TreeDtoImpl;
+  const _TreeDto._() : super._();
 
+  factory _TreeDto.fromJson(Map<String, dynamic> json) = _$TreeDtoImpl.fromJson;
+
+  @override //  document id in firebase used as the identifier of that doc, and isn't stored inside it
+  String get treeId;
   @override
-  UniqueId get treeId;
+  String get creatorId;
   @override
-  UniqueId get creatorId;
+  String get rootId;
   @override
-  UniqueId get rootId;
+  String get treeName;
   @override
-  TreeName get treeName;
-  @override
-  FullName get fullName;
+  String get fullName;
   @override
   @JsonKey(ignore: true)
-  _$$TreeImplCopyWith<_$TreeImpl> get copyWith =>
+  _$$TreeDtoImplCopyWith<_$TreeDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

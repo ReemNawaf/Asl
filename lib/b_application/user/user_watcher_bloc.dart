@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:asl/c_domain/app_user/i_user_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:asl/c_domain/app_user/i_user_repo.dart';
 import 'package:asl/c_domain/app_user/user.dart';
 import 'package:asl/c_domain/app_user/user_failure.dart';
 
@@ -23,8 +23,6 @@ class UserWatcherBloc extends Bloc<UserWatcherEvent, UserWatcherState> {
     on<UserWatcherEvent>(mapUserWatchEventToState);
   }
 
-  StreamSubscription<Either<UserFailure, AppUser>>? _appUserStreamSubscription;
-
   Future<void> mapUserWatchEventToState(
     UserWatcherEvent event,
     Emitter<UserWatcherState> emit,
@@ -33,10 +31,9 @@ class UserWatcherBloc extends Bloc<UserWatcherEvent, UserWatcherState> {
       getStarted: (e) async {
         emit(const UserWatcherState.loadInProgress());
 
-        _appUserStreamSubscription = _userRepository.get().listen(
-              (failureOrUser) =>
-                  add(UserWatcherEvent.userReceived(failureOrUser)),
-            );
+        final failureOrUser = await _userRepository.get();
+
+        add(UserWatcherEvent.userReceived(failureOrUser));
       },
       userReceived: (e) async {
         emit(e.failureOrUser.fold(
@@ -44,12 +41,14 @@ class UserWatcherBloc extends Bloc<UserWatcherEvent, UserWatcherState> {
           (user) => UserWatcherState.loadSuccess(user),
         ));
       },
+      get: (e) async {
+        const UserWatcherState.inProgress();
+        final possibleFailure = await _userRepository.get();
+        emit(possibleFailure.fold(
+          (f) => UserWatcherState.gettingUserFailure(f),
+          (node) => UserWatcherState.gettingUserSuccess(node),
+        ));
+      },
     );
-  }
-
-  @override
-  Future<void> close() async {
-    await _appUserStreamSubscription!.cancel();
-    return super.close();
   }
 }

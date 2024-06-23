@@ -1,59 +1,62 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-class GenderBtn extends StatefulWidget {
+class GenderBtn extends StatelessWidget {
   const GenderBtn({
     super.key,
     required this.color,
     required this.size,
+    required this.ctx,
   });
 
   final MaterialColor color;
   final Size size;
-
-  @override
-  State<GenderBtn> createState() => _GenderBtnState();
-}
-
-class _GenderBtnState extends State<GenderBtn> {
-  var isMale = true;
+  final BuildContext ctx;
 
   @override
   Widget build(BuildContext context) {
-    void maleOrFemale({required bool isMaleSelected}) {
-      setState(() {
-        if (isMaleSelected == true) {
-          isMale = true;
-        } else {
-          isMale = false;
-        }
-      });
+    void maleOrFemale(BuildContext ctx, {required bool isMaleSelected}) {
+      if (isMaleSelected == true) {
+        ctx
+            .read<TreeFormBloc>()
+            .add(const TreeFormEvent.changeRootGender(Gender.male));
+      } else {
+        ctx
+            .read<TreeFormBloc>()
+            .add(const TreeFormEvent.changeRootGender(Gender.female));
+      }
     }
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 24.0),
-      child: Row(
-        children: [
-          GenderButton(
-            onTap: () => maleOrFemale(isMaleSelected: true),
-            color: widget.color,
-            size: widget.size,
-            text: 'ذكر',
-            gender: Gender.male,
-            selected: isMale,
+    return BlocBuilder<TreeFormBloc, TreeFormState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 24.0),
+          child: Row(
+            children: [
+              GenderButton(
+                onTap: () => maleOrFemale(context, isMaleSelected: true),
+                color: color,
+                size: size,
+                text: 'ذكر',
+                gender: Gender.male,
+                selected: Gender.male == state.root.gender,
+              ),
+              const SizedBox(width: 16.0),
+              GenderButton(
+                onTap: () => maleOrFemale(context, isMaleSelected: false),
+                color: color,
+                size: size,
+                text: 'أنثى',
+                gender: Gender.female,
+                selected: Gender.female == state.root.gender,
+              ),
+            ],
           ),
-          const SizedBox(width: 16.0),
-          GenderButton(
-            onTap: () => maleOrFemale(isMaleSelected: false),
-            color: widget.color,
-            size: widget.size,
-            text: 'أنثى',
-            gender: Gender.female,
-            selected: !isMale,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -59,9 +59,7 @@ class _SignInFormState extends State<SignInForm> {
                       'البريد الإلكتروني أو الرقم السري غير صحيح',
                   serverError: (_) => 'حدث خطأ ما',
                 ),
-              ).show(context).then((value) => context
-                  .read<SignInFormBloc>()
-                  .add(const SignInFormEvent.reLogin()));
+              ).show(context);
             },
             // when it's succeeded
             (_) {

@@ -10,10 +10,12 @@ _$AppUserDtoImpl _$$AppUserDtoImplFromJson(Map<String, dynamic> json) =>
     _$AppUserDtoImpl(
       name: json['name'] as String,
       avatar: json['avatar'] as String,
+      trees: (json['trees'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$AppUserDtoImplToJson(_$AppUserDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'avatar': instance.avatar,
+      'trees': instance.trees,
     };

@@ -85,7 +85,7 @@ class MainPanel extends StatelessWidget {
                           padding: EdgeInsets.only(right: size.width * 0.07),
                           child: TabBarView(
                             children: [
-                              InfoPanel(size: size, color: color),
+                              InfoPanel(size: size, color: color, ctx: context),
                               const Icon(Icons.directions_transit),
                               const Icon(Icons.directions_bike),
                               const Icon(Icons.directions_bike),

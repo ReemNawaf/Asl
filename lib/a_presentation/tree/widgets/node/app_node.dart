@@ -13,7 +13,7 @@ class AppNode extends StatelessWidget {
     required this.relation,
     required this.yearOfBirth,
     required this.yearOfDeath,
-    required this.isAlie,
+    required this.isAlive,
     required this.color,
     required this.gender,
     required this.hasImage,
@@ -25,7 +25,7 @@ class AppNode extends StatelessWidget {
   final String relation;
   final String yearOfBirth;
   final String yearOfDeath;
-  final bool isAlie;
+  final bool isAlive;
   final bool hasImage;
   final MaterialColor color;
   final String? image;
@@ -34,7 +34,7 @@ class AppNode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final kTextHeight = size.height * 0.033;
+    const kTextHeight = 30.0;
 
     final imageWidget = ClipRRect(
       borderRadius: BorderRadius.circular(6.0),
@@ -53,8 +53,8 @@ class AppNode extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            width: size.width * 0.22,
-            height: size.height * 0.11,
+            width: 250,
+            height: 95,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.0),
               color: color[600]!,
@@ -62,9 +62,9 @@ class AppNode extends StatelessWidget {
           ),
           if (hasImage)
             Container(
-                width: size.width * 0.11,
-                height: size.width * 0.11,
-                margin: EdgeInsets.only(bottom: size.height * 0.07),
+                width: 110,
+                height: 110,
+                margin: const EdgeInsets.only(bottom: 70),
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -80,12 +80,13 @@ class AppNode extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                    width: size.width * 0.2,
+                    width: 220,
                     height: kTextHeight,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.0),
                       color: color[300]!,
                     ),
+                    alignment: Alignment.center,
                     child: Text(
                       name,
                       style: kCalloutStyle,
@@ -95,21 +96,23 @@ class AppNode extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                        width: size.width * 0.055,
+                        width: 60,
                         height: kTextHeight,
+                        alignment: Alignment.center,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6.0),
-                          color: color[400]!,
+                          color: color[300]!,
                         ),
                         child: Text(
-                          isAlie ? 'العمى كله' : yearOfDeath,
+                          isAlive ? '' : yearOfDeath,
                           style: kCalloutStyle,
                           textAlign: TextAlign.center,
                         )),
                     const SizedBox(width: 8),
                     Container(
-                      width: size.width * 0.055,
+                      width: 60,
                       height: kTextHeight,
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6.0),
                         color: color[400]!,
@@ -122,8 +125,9 @@ class AppNode extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     Container(
-                      width: size.width * 0.075,
+                      width: 85,
                       height: kTextHeight,
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6.0),
                         color: color[400]!,
