@@ -5,24 +5,6 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 
 class AppFormField extends StatelessWidget {
-  final String label;
-  final String hint;
-  final bool isValid;
-  final double spacing;
-  final String? initialValue;
-  final bool isArabic;
-  final Color? color;
-  final FieldType fieldType;
-
-  final String? Function(String? value) validator;
-
-  final void Function(String? value)? onSaved;
-  final void Function(String? value)? onChanged;
-  final void Function(String? value)? onFieldSubmitted;
-
-  final TextEditingController? controller;
-  final FocusNode? focusNode;
-
   const AppFormField({
     super.key,
     required this.label,
@@ -39,7 +21,27 @@ class AppFormField extends StatelessWidget {
     this.isArabic = true,
     this.controller,
     this.focusNode,
+    this.isEditing = true,
   });
+
+  final String label;
+  final String hint;
+  final bool isValid;
+  final double spacing;
+  final String? initialValue;
+  final bool isArabic;
+  final Color? color;
+  final FieldType fieldType;
+
+  final String? Function(String? value) validator;
+
+  final void Function(String? value)? onSaved;
+  final void Function(String? value)? onChanged;
+  final void Function(String? value)? onFieldSubmitted;
+  final bool isEditing;
+
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,7 @@ class AppFormField extends StatelessWidget {
             cursorHeight: 20.0,
             initialValue: initialValue,
             style: kCalloutStyle,
+            readOnly: !isEditing,
             textAlign: isArabic ? TextAlign.start : TextAlign.end,
             decoration:
                 kAppFormsInputDecor(hint: hint, color: color, isDense: true),

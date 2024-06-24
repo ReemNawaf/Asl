@@ -9,7 +9,7 @@ abstract class NodeFormState with _$NodeFormState {
     required bool isSaving,
     required bool isViewing,
     required bool isAdding,
-    required bool isMoving,
+    required bool hasNode,
     required Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption,
   }) = _NodeFormState;
 
@@ -20,7 +20,7 @@ abstract class NodeFormState with _$NodeFormState {
         isSaving: false,
         isViewing: true,
         isAdding: false,
-        isMoving: false,
+        hasNode: false,
         saveFailureOrSuccessOption: none(),
       );
 }

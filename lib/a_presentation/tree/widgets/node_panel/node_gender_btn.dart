@@ -10,11 +10,13 @@ class NodeGenderBtn extends StatelessWidget {
     required this.color,
     required this.size,
     required this.ctx,
+    this.isEditing = true,
   });
 
   final MaterialColor color;
   final Size size;
   final BuildContext ctx;
+  final bool isEditing;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,9 @@ class NodeGenderBtn extends StatelessWidget {
           child: Row(
             children: [
               GenderButton(
-                onTap: () => maleOrFemale(context, isMaleSelected: true),
+                onTap: () => isEditing
+                    ? maleOrFemale(context, isMaleSelected: true)
+                    : null,
                 color: color,
                 size: size,
                 text: 'ذكر',
@@ -46,7 +50,9 @@ class NodeGenderBtn extends StatelessWidget {
               ),
               const SizedBox(width: 16.0),
               GenderButton(
-                onTap: () => maleOrFemale(context, isMaleSelected: false),
+                onTap: () => isEditing
+                    ? maleOrFemale(context, isMaleSelected: false)
+                    : null,
                 color: color,
                 size: size,
                 text: 'أنثى',

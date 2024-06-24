@@ -19,12 +19,10 @@ class PartnerNode extends StatelessWidget {
       type: NodeType.root,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'زوجة' : 'زوج',
-      yearOfBirth:
-          node.birthDate != null ? node.birthDate!.year.toString() : '',
-      yearOfDeath:
-          node.deathDate != null ? node.deathDate!.year.toString() : '',
-      isAlive: node.isAlive,
       color: kOutColors,
+      yearOfBirth: node.birthDate,
+      yearOfDeath: node.deathDate,
+      isAlive: node.isAlive,
       hasImage: true,
       gender: node.gender,
       node: node,

@@ -31,113 +31,119 @@ class InfoPanel extends StatelessWidget {
 
     return BlocBuilder<NodeFormBloc, NodeFormState>(
       builder: (context, state) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            kVSpacer20,
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(right: 28.0),
-                  width: 250,
-                  height: 90,
-                  child: AppFormField(
-                    label: 'الاسم الأول',
-                    hint: 'مثل: محمد',
-                    onSaved: (_) {},
-                    initialValue: state.node.firstName.getOrCrash(),
-                    onChanged: (value) => context
-                        .read<NodeFormBloc>()
-                        .add(NodeFormEvent.firstNameChanged(value!.trim())),
-                    validator: (_) {
-                      return context
-                          .read<NodeFormBloc>()
-                          .state
-                          .node
-                          .firstName
-                          .value
-                          .fold(
-                            (f) => f.maybeMap(
-                              empty: (_) => 'الاسم الأول يمكن أن يكون فارغًا',
-                              spacedFirstName: (_) =>
-                                  'الاسم الأول لا يمكن أن يحتوي على مسافات',
-                              orElse: () => null,
-                            ),
-                            (_) => null,
-                          );
-                    },
-                    isValid: AutovalidateMode.always != showErrorMessages ||
-                        context
-                            .read<NodeFormBloc>()
-                            .state
-                            .node
-                            .firstName
-                            .isValid(),
-                  ),
-                ),
-                kHSpacer10,
-                NodeGenderBtn(color: color, size: size, ctx: ctx),
-              ],
-            ),
-            BlocBuilder<NodeFormBloc, NodeFormState>(
-              builder: (context, state) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 250,
-                      height: 80,
-                      child: AppDateField(
-                        formKey: formKey,
-                        label: 'تاريخ الميلاد',
-                        hint: '',
-                        validate: (validate) => "",
-                        save: (_) {},
-                        changeDate: (pickedDate) => context
-                            .read<NodeFormBloc>()
-                            .add(NodeFormEvent.birthDateChanged(pickedDate)),
-                        dateController: TextEditingController(
-                          text: state.node.birthDate == null
-                              ? ''
-                              : DateFormat.yMMMd()
-                                  .format(state.node.birthDate!),
-                        ),
-                      ),
-                    ),
-                    if (state.node.isAlive) ...[
-                      kHSpacer20,
-                      NodeAliveBtn(color: color, size: size, ctx: ctx)
-                    ] else
-                      SizedBox(
+        return state.hasNode
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  kVSpacer30,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(right: 28.0),
                         width: 250,
-                        height: 80,
-                        child: AppDateField(
-                          formKey: formKey,
-                          label: 'تاريخ الوفاة',
-                          hint: '',
-                          validate: (validate) => "",
-                          save: (_) {},
-                          changeDate: (pickedDate) => context
+                        height: 90,
+                        child: AppFormField(
+                          label: 'الاسم الأول',
+                          hint: 'مثل: محمد',
+                          onSaved: (_) {},
+                          initialValue: state.node.firstName.getOrCrash(),
+                          onChanged: (value) => context
                               .read<NodeFormBloc>()
-                              .add(NodeFormEvent.deathDateChanged(pickedDate)),
-                          dateController: TextEditingController(
-                            text: state.node.birthDate == null
-                                ? ''
-                                : DateFormat.yMMMd()
-                                    .format(state.node.deathDate!),
-                          ),
+                              .add(NodeFormEvent.firstNameChanged(
+                                  value!.trim())),
+                          validator: (_) {
+                            return state.node.firstName.value.fold(
+                              (f) => f.maybeMap(
+                                empty: (_) => 'الاسم الأول يمكن أن يكون فارغًا',
+                                spacedFirstName: (_) =>
+                                    'الاسم الأول لا يمكن أن يحتوي على مسافات',
+                                orElse: () => null,
+                              ),
+                              (_) => null,
+                            );
+                          },
+                          isValid:
+                              AutovalidateMode.always != showErrorMessages ||
+                                  state.node.firstName.isValid(),
+                          isEditing: state.isEditing,
                         ),
                       ),
-                  ],
-                );
-              },
-            ),
-            kVSpacer20,
-            TreeButton(color: color, size: size)
-          ],
-        );
+                      kHSpacer10,
+                      NodeGenderBtn(
+                          color: color,
+                          size: size,
+                          ctx: ctx,
+                          isEditing: state.isEditing),
+                    ],
+                  ),
+                  BlocBuilder<NodeFormBloc, NodeFormState>(
+                    builder: (context, state) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 250,
+                            height: 80,
+                            child: AppDateField(
+                              formKey: formKey,
+                              label: 'تاريخ الميلاد',
+                              hint: '',
+                              validate: (validate) => "",
+                              save: (_) {},
+                              changeDate: (pickedDate) => context
+                                  .read<NodeFormBloc>()
+                                  .add(NodeFormEvent.birthDateChanged(
+                                      pickedDate)),
+                              dateController: TextEditingController(
+                                text: state.node.birthDate == null
+                                    ? ''
+                                    : DateFormat.yMMMd()
+                                        .format(state.node.birthDate!),
+                              ),
+                              isEditing: state.isEditing,
+                            ),
+                          ),
+                          if (state.node.isAlive) ...[
+                            kHSpacer20,
+                            NodeAliveBtn(
+                                color: color,
+                                size: size,
+                                ctx: ctx,
+                                isEditing: state.isEditing),
+                          ] else
+                            SizedBox(
+                              width: 250,
+                              height: 80,
+                              child: AppDateField(
+                                formKey: formKey,
+                                label: 'تاريخ الوفاة',
+                                hint: '',
+                                validate: (validate) => "",
+                                save: (_) {},
+                                changeDate: (pickedDate) => context
+                                    .read<NodeFormBloc>()
+                                    .add(NodeFormEvent.deathDateChanged(
+                                        pickedDate)),
+                                dateController: TextEditingController(
+                                  text: state.node.birthDate == null
+                                      ? ''
+                                      : DateFormat.yMMMd()
+                                          .format(state.node.deathDate!),
+                                ),
+                                isEditing: state.isEditing,
+                              ),
+                            ),
+                        ],
+                      );
+                    },
+                  ),
+                  kVSpacer20,
+                  TreeButton(color: color)
+                ],
+              )
+            : const SizedBox();
       },
     );
   }

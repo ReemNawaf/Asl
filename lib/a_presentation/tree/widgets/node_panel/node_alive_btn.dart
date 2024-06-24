@@ -8,11 +8,13 @@ class NodeAliveBtn extends StatelessWidget {
     required this.color,
     required this.size,
     required this.ctx,
+    this.isEditing = true,
   });
 
   final MaterialColor color;
   final Size size;
   final BuildContext ctx;
+  final bool isEditing;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,8 @@ class NodeAliveBtn extends StatelessWidget {
           child: Row(
             children: [
               AliveButton(
-                onTap: () => aliveOrDead(isAliveSelected: true),
+                onTap: () =>
+                    isEditing ? aliveOrDead(isAliveSelected: true) : null,
                 color: color,
                 size: size,
                 text: 'عائش',
@@ -39,7 +42,8 @@ class NodeAliveBtn extends StatelessWidget {
               ),
               const SizedBox(width: 16.0),
               AliveButton(
-                onTap: () => aliveOrDead(isAliveSelected: false),
+                onTap: () =>
+                    isEditing ? aliveOrDead(isAliveSelected: false) : null,
                 color: color,
                 size: size,
                 text: 'متوفي',

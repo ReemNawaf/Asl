@@ -1921,7 +1921,7 @@ mixin _$NodeFormState {
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isViewing => throw _privateConstructorUsedError;
   bool get isAdding => throw _privateConstructorUsedError;
-  bool get isMoving => throw _privateConstructorUsedError;
+  bool get hasNode => throw _privateConstructorUsedError;
   Option<Either<TNodeFailure, Unit>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -1943,7 +1943,7 @@ abstract class $NodeFormStateCopyWith<$Res> {
       bool isSaving,
       bool isViewing,
       bool isAdding,
-      bool isMoving,
+      bool hasNode,
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
   $TNodeCopyWith<$Res> get node;
@@ -1968,7 +1968,7 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
     Object? isSaving = null,
     Object? isViewing = null,
     Object? isAdding = null,
-    Object? isMoving = null,
+    Object? hasNode = null,
     Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -1996,9 +1996,9 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
           ? _value.isAdding
           : isAdding // ignore: cast_nullable_to_non_nullable
               as bool,
-      isMoving: null == isMoving
-          ? _value.isMoving
-          : isMoving // ignore: cast_nullable_to_non_nullable
+      hasNode: null == hasNode
+          ? _value.hasNode
+          : hasNode // ignore: cast_nullable_to_non_nullable
               as bool,
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
@@ -2031,7 +2031,7 @@ abstract class _$$NodeFormStateImplCopyWith<$Res>
       bool isSaving,
       bool isViewing,
       bool isAdding,
-      bool isMoving,
+      bool hasNode,
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
   @override
@@ -2055,7 +2055,7 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
     Object? isSaving = null,
     Object? isViewing = null,
     Object? isAdding = null,
-    Object? isMoving = null,
+    Object? hasNode = null,
     Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_$NodeFormStateImpl(
@@ -2083,9 +2083,9 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
           ? _value.isAdding
           : isAdding // ignore: cast_nullable_to_non_nullable
               as bool,
-      isMoving: null == isMoving
-          ? _value.isMoving
-          : isMoving // ignore: cast_nullable_to_non_nullable
+      hasNode: null == hasNode
+          ? _value.hasNode
+          : hasNode // ignore: cast_nullable_to_non_nullable
               as bool,
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
@@ -2105,7 +2105,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
       required this.isSaving,
       required this.isViewing,
       required this.isAdding,
-      required this.isMoving,
+      required this.hasNode,
       required this.saveFailureOrSuccessOption});
 
   @override
@@ -2122,13 +2122,13 @@ class _$NodeFormStateImpl implements _NodeFormState {
   @override
   final bool isAdding;
   @override
-  final bool isMoving;
+  final bool hasNode;
   @override
   final Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, isViewing: $isViewing, isAdding: $isAdding, isMoving: $isMoving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, isViewing: $isViewing, isAdding: $isAdding, hasNode: $hasNode, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2147,8 +2147,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
                 other.isViewing == isViewing) &&
             (identical(other.isAdding, isAdding) ||
                 other.isAdding == isAdding) &&
-            (identical(other.isMoving, isMoving) ||
-                other.isMoving == isMoving) &&
+            (identical(other.hasNode, hasNode) || other.hasNode == hasNode) &&
             (identical(other.saveFailureOrSuccessOption,
                     saveFailureOrSuccessOption) ||
                 other.saveFailureOrSuccessOption ==
@@ -2164,7 +2163,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
       isSaving,
       isViewing,
       isAdding,
-      isMoving,
+      hasNode,
       saveFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -2182,7 +2181,7 @@ abstract class _NodeFormState implements NodeFormState {
       required final bool isSaving,
       required final bool isViewing,
       required final bool isAdding,
-      required final bool isMoving,
+      required final bool hasNode,
       required final Option<Either<TNodeFailure, Unit>>
           saveFailureOrSuccessOption}) = _$NodeFormStateImpl;
 
@@ -2199,7 +2198,7 @@ abstract class _NodeFormState implements NodeFormState {
   @override
   bool get isAdding;
   @override
-  bool get isMoving;
+  bool get hasNode;
   @override
   Option<Either<TNodeFailure, Unit>> get saveFailureOrSuccessOption;
   @override

@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TreeButton extends StatelessWidget {
-  const TreeButton({super.key, required this.color, required this.size});
+  const TreeButton({super.key, required this.color});
   final Color color;
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +13,19 @@ class TreeButton extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(10.0),
       ),
-      width: size.width * 0.21,
-      height: size.height * 0.11,
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      width: 220,
+      height: 80,
+      padding: const EdgeInsets.only(left: 10.0, right: 2.4),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(
-            'icons/tree.svg',
-            height: 72,
+          SizedBox(
+            height: 60,
+            width: 60,
+            child: SvgPicture.asset(
+              'icons/tree.svg',
+              alignment: Alignment.centerLeft,
+            ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -15,6 +15,7 @@ class AppDateField extends StatelessWidget {
   final void Function(String? value) save;
   final void Function(DateTime? date) changeDate;
   final TextEditingController dateController;
+  final bool isEditing;
 
   const AppDateField({
     super.key,
@@ -27,6 +28,7 @@ class AppDateField extends StatelessWidget {
     required this.formKey,
     required this.changeDate,
     required this.dateController,
+    this.isEditing = false,
   });
 
   @override
@@ -69,7 +71,7 @@ class AppDateField extends StatelessWidget {
               ),
               textAlign: TextAlign.start,
               keyboardType: TextInputType.multiline,
-              onTap: () => selectDate().then(changeDate),
+              onTap: () => isEditing ? selectDate().then(changeDate) : null,
               readOnly: true,
             ),
           ),

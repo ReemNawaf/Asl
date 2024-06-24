@@ -19,12 +19,10 @@ class GrandchildNode extends StatelessWidget {
       type: NodeType.root,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'الحفيد' : 'الحفيدة',
-      yearOfBirth:
-          node.birthDate != null ? node.birthDate!.year.toString() : '',
-      yearOfDeath:
-          node.deathDate != null ? node.deathDate!.year.toString() : '',
-      isAlive: node.isAlive,
       color: kLeafColors,
+      yearOfBirth: node.birthDate,
+      yearOfDeath: node.deathDate,
+      isAlive: node.isAlive,
       hasImage: true,
       gender: node.gender,
       node: node,

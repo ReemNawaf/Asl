@@ -11,6 +11,7 @@ class AppButton extends StatelessWidget {
   final Color fillColor;
   final Color textColor;
   final bool isLoading;
+
   const AppButton({
     super.key,
     required this.onPressed,
@@ -26,7 +27,8 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = Text(
       label,
-      style: kBodyLarge.copyWith(color: textColor, fontWeight: FontWeight.w800),
+      style:
+          kBodyMedium.copyWith(color: textColor, fontWeight: FontWeight.w800),
     );
     return RawMaterialButton(
       onPressed: onPressed,
@@ -37,7 +39,7 @@ class AppButton extends StatelessWidget {
       splashColor: fillColor.withOpacity(0.5),
       padding: const EdgeInsets.symmetric(
         vertical: 10.0,
-        horizontal: 30,
+        horizontal: 4.0,
       ),
       elevation: 0,
       hoverElevation: 0,

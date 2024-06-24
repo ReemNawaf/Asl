@@ -13,7 +13,6 @@ class RootInfoPanel extends StatelessWidget {
     super.key,
     required this.size,
     required this.color,
-    this.isAlive = true,
     this.height = 0.45,
     required this.ctx,
     this.showErrorMessages,
@@ -22,7 +21,6 @@ class RootInfoPanel extends StatelessWidget {
   final Size size;
   final MaterialColor color;
   final double height;
-  final bool isAlive;
   final BuildContext ctx;
   final AutovalidateMode? showErrorMessages;
 
@@ -99,7 +97,7 @@ class RootInfoPanel extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (isAlive) ...[
+                if (state.root.isAlive) ...[
                   kHSpacer20,
                   RootAliveBtn(color: color, size: size, ctx: ctx)
                 ] else
@@ -118,7 +116,7 @@ class RootInfoPanel extends StatelessWidget {
                             .add(TreeFormEvent.changeRootDeathDate(pickedDate));
                       },
                       dateController: TextEditingController(
-                        text: state.root.birthDate == null
+                        text: state.root.deathDate == null
                             ? ''
                             : DateFormat.yMMMd().format(state.root.deathDate!),
                       ),

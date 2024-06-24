@@ -31,11 +31,14 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       initialized: (e) async {
         emit(e.initialNodeOption.fold(
           () => state,
-          (initialNode) => state.copyWith(
-            node: initialNode,
-            isViewing: true,
-            showErrorMessages: AutovalidateMode.disabled,
-          ),
+          (initialNode) {
+            return state.copyWith(
+              node: initialNode,
+              isViewing: true,
+              hasNode: true,
+              showErrorMessages: AutovalidateMode.disabled,
+            );
+          },
         ));
       },
       added: (e) async {
@@ -107,23 +110,11 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         if (state.node.failureOption.isNone()) {
           // save the purchase, need instance
           if (state.isEditing) {
-            if (state.isMoving) {
-              failureOrSuccess = await _nodeRepository.create(
-                treeId: state.node.treeId.getOrCrash(),
-                node: state.node,
-              );
-
-              failureOrSuccess = await _nodeRepository.delete(
-                treeId: state.node.treeId.getOrCrash(),
-                node: state.node,
-              );
-            } else {
-              // update purchase
-              failureOrSuccess = await _nodeRepository.update(
-                treeId: state.node.treeId.getOrCrash(),
-                node: state.node,
-              );
-            }
+            // update purchase
+            failureOrSuccess = await _nodeRepository.update(
+              treeId: state.node.treeId.getOrCrash(),
+              node: state.node,
+            );
           } else {
             failureOrSuccess = await _nodeRepository.create(
               // Watcher category
@@ -137,7 +128,6 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         emit(state.copyWith(
           // isViewing: true,
           isSaving: false,
-          isMoving: false,
           showErrorMessages: AutovalidateMode.always,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),

@@ -19,10 +19,8 @@ class RootNode extends StatelessWidget {
       type: NodeType.root,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'الجدة' : 'الجد',
-      yearOfBirth:
-          node.birthDate != null ? node.birthDate!.year.toString() : '',
-      yearOfDeath:
-          node.deathDate != null ? node.deathDate!.year.toString() : '',
+      yearOfBirth: node.birthDate,
+      yearOfDeath: node.deathDate,
       isAlive: node.isAlive,
       color: kRootColors,
       hasImage: true,
