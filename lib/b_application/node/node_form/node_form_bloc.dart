@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
@@ -67,11 +68,31 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: none(),
         ));
       },
-      dateChanged: (e) async {
+      birthDateChanged: (e) async {
         emit(state.copyWith(
             node: state.node.copyWith(birthDate: e.date),
             // to get rid of any previous failure
             saveFailureOrSuccessOption: none()));
+      },
+      deathDateChanged: (e) async {
+        emit(state.copyWith(
+            node: state.node.copyWith(deathDate: e.date),
+            // to get rid of any previous failure
+            saveFailureOrSuccessOption: none()));
+      },
+      changeIsAvlive: (e) async {
+        emit(state.copyWith(
+          node: state.node.copyWith(isAlive: e.isAlive),
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      changeGender: (e) async {
+        emit(state.copyWith(
+          node: state.node.copyWith(gender: e.gender),
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: none(),
+        ));
       },
       saved: (e) async {
         Either<TNodeFailure, Unit>? failureOrSuccess;

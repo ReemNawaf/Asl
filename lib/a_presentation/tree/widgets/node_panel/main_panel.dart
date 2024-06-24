@@ -1,6 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
-import 'package:asl/a_presentation/tree/widgets/node_panel/info_panel.dart';
+import 'package:asl/a_presentation/tree/widgets/node_panel/node_info_panel.dart';
 import 'package:flutter/material.dart';
 
 class MainPanel extends StatelessWidget {

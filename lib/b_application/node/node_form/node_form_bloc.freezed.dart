@@ -23,7 +23,10 @@ mixin _$NodeFormEvent {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,7 +37,10 @@ mixin _$NodeFormEvent {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,7 +51,10 @@ mixin _$NodeFormEvent {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) =>
@@ -57,7 +66,10 @@ mixin _$NodeFormEvent {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,7 +80,10 @@ mixin _$NodeFormEvent {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -79,7 +94,10 @@ mixin _$NodeFormEvent {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) =>
@@ -174,7 +192,10 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
     return initialized(initialNodeOption);
@@ -188,7 +209,10 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
     return initialized?.call(initialNodeOption);
@@ -202,7 +226,10 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -220,7 +247,10 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
     return initialized(this);
@@ -234,7 +264,10 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
     return initialized?.call(this);
@@ -248,7 +281,10 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -339,7 +375,10 @@ class _$EndedImpl implements _Ended {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
     return ended(initialNodeOption);
@@ -353,7 +392,10 @@ class _$EndedImpl implements _Ended {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
     return ended?.call(initialNodeOption);
@@ -367,7 +409,10 @@ class _$EndedImpl implements _Ended {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -385,7 +430,10 @@ class _$EndedImpl implements _Ended {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
     return ended(this);
@@ -399,7 +447,10 @@ class _$EndedImpl implements _Ended {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
     return ended?.call(this);
@@ -413,7 +464,10 @@ class _$EndedImpl implements _Ended {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -503,7 +557,10 @@ class _$AddedImpl implements _Added {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
     return added(initialNodeOption);
@@ -517,7 +574,10 @@ class _$AddedImpl implements _Added {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
     return added?.call(initialNodeOption);
@@ -531,7 +591,10 @@ class _$AddedImpl implements _Added {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -549,7 +612,10 @@ class _$AddedImpl implements _Added {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
     return added(this);
@@ -563,7 +629,10 @@ class _$AddedImpl implements _Added {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
     return added?.call(this);
@@ -577,7 +646,10 @@ class _$AddedImpl implements _Added {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -667,7 +739,10 @@ class _$EditedImpl implements _Edited {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
     return edited(existingNodeOption);
@@ -681,7 +756,10 @@ class _$EditedImpl implements _Edited {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
     return edited?.call(existingNodeOption);
@@ -695,7 +773,10 @@ class _$EditedImpl implements _Edited {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -713,7 +794,10 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
     return edited(this);
@@ -727,7 +811,10 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
     return edited?.call(this);
@@ -741,7 +828,10 @@ class _$EditedImpl implements _Edited {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -831,7 +921,10 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
     return firstNameChanged(title);
@@ -845,7 +938,10 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
     return firstNameChanged?.call(title);
@@ -859,7 +955,10 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -877,7 +976,10 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
     return firstNameChanged(this);
@@ -891,7 +993,10 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
     return firstNameChanged?.call(this);
@@ -905,7 +1010,10 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -926,54 +1034,54 @@ abstract class _FirstNameChanged implements NodeFormEvent {
 }
 
 /// @nodoc
-abstract class _$$DateChangedImplCopyWith<$Res> {
-  factory _$$DateChangedImplCopyWith(
-          _$DateChangedImpl value, $Res Function(_$DateChangedImpl) then) =
-      __$$DateChangedImplCopyWithImpl<$Res>;
+abstract class _$$BirthDateChangedImplCopyWith<$Res> {
+  factory _$$BirthDateChangedImplCopyWith(_$BirthDateChangedImpl value,
+          $Res Function(_$BirthDateChangedImpl) then) =
+      __$$BirthDateChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({DateTime date});
+  $Res call({DateTime? date});
 }
 
 /// @nodoc
-class __$$DateChangedImplCopyWithImpl<$Res>
-    extends _$NodeFormEventCopyWithImpl<$Res, _$DateChangedImpl>
-    implements _$$DateChangedImplCopyWith<$Res> {
-  __$$DateChangedImplCopyWithImpl(
-      _$DateChangedImpl _value, $Res Function(_$DateChangedImpl) _then)
+class __$$BirthDateChangedImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$BirthDateChangedImpl>
+    implements _$$BirthDateChangedImplCopyWith<$Res> {
+  __$$BirthDateChangedImplCopyWithImpl(_$BirthDateChangedImpl _value,
+      $Res Function(_$BirthDateChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = null,
+    Object? date = freezed,
   }) {
-    return _then(_$DateChangedImpl(
-      null == date
+    return _then(_$BirthDateChangedImpl(
+      freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DateChangedImpl implements _DateChanged {
-  const _$DateChangedImpl(this.date);
+class _$BirthDateChangedImpl implements _BirthDateChanged {
+  const _$BirthDateChangedImpl(this.date);
 
   @override
-  final DateTime date;
+  final DateTime? date;
 
   @override
   String toString() {
-    return 'NodeFormEvent.dateChanged(date: $date)';
+    return 'NodeFormEvent.birthDateChanged(date: $date)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DateChangedImpl &&
+            other is _$BirthDateChangedImpl &&
             (identical(other.date, date) || other.date == date));
   }
 
@@ -983,8 +1091,9 @@ class _$DateChangedImpl implements _DateChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DateChangedImplCopyWith<_$DateChangedImpl> get copyWith =>
-      __$$DateChangedImplCopyWithImpl<_$DateChangedImpl>(this, _$identity);
+  _$$BirthDateChangedImplCopyWith<_$BirthDateChangedImpl> get copyWith =>
+      __$$BirthDateChangedImplCopyWithImpl<_$BirthDateChangedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -994,10 +1103,13 @@ class _$DateChangedImpl implements _DateChanged {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
-    return dateChanged(date);
+    return birthDateChanged(date);
   }
 
   @override
@@ -1008,10 +1120,13 @@ class _$DateChangedImpl implements _DateChanged {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
-    return dateChanged?.call(date);
+    return birthDateChanged?.call(date);
   }
 
   @override
@@ -1022,12 +1137,15 @@ class _$DateChangedImpl implements _DateChanged {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
-    if (dateChanged != null) {
-      return dateChanged(date);
+    if (birthDateChanged != null) {
+      return birthDateChanged(date);
     }
     return orElse();
   }
@@ -1040,10 +1158,13 @@ class _$DateChangedImpl implements _DateChanged {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
-    return dateChanged(this);
+    return birthDateChanged(this);
   }
 
   @override
@@ -1054,10 +1175,13 @@ class _$DateChangedImpl implements _DateChanged {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
-    return dateChanged?.call(this);
+    return birthDateChanged?.call(this);
   }
 
   @override
@@ -1068,23 +1192,573 @@ class _$DateChangedImpl implements _DateChanged {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
-    if (dateChanged != null) {
-      return dateChanged(this);
+    if (birthDateChanged != null) {
+      return birthDateChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _DateChanged implements NodeFormEvent {
-  const factory _DateChanged(final DateTime date) = _$DateChangedImpl;
+abstract class _BirthDateChanged implements NodeFormEvent {
+  const factory _BirthDateChanged(final DateTime? date) =
+      _$BirthDateChangedImpl;
 
-  DateTime get date;
+  DateTime? get date;
   @JsonKey(ignore: true)
-  _$$DateChangedImplCopyWith<_$DateChangedImpl> get copyWith =>
+  _$$BirthDateChangedImplCopyWith<_$BirthDateChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeathDateChangedImplCopyWith<$Res> {
+  factory _$$DeathDateChangedImplCopyWith(_$DeathDateChangedImpl value,
+          $Res Function(_$DeathDateChangedImpl) then) =
+      __$$DeathDateChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime? date});
+}
+
+/// @nodoc
+class __$$DeathDateChangedImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$DeathDateChangedImpl>
+    implements _$$DeathDateChangedImplCopyWith<$Res> {
+  __$$DeathDateChangedImplCopyWithImpl(_$DeathDateChangedImpl _value,
+      $Res Function(_$DeathDateChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = freezed,
+  }) {
+    return _then(_$DeathDateChangedImpl(
+      freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeathDateChangedImpl implements _DeathDateChanged {
+  const _$DeathDateChangedImpl(this.date);
+
+  @override
+  final DateTime? date;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.deathDateChanged(date: $date)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeathDateChangedImpl &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeathDateChangedImplCopyWith<_$DeathDateChangedImpl> get copyWith =>
+      __$$DeathDateChangedImplCopyWithImpl<_$DeathDateChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<TNode> initialNodeOption) initialized,
+    required TResult Function(Option<TNode> initialNodeOption) ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(Option<TNode> existingNodeOption) edited,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function() saved,
+  }) {
+    return deathDateChanged(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<TNode> initialNodeOption)? initialized,
+    TResult? Function(Option<TNode> initialNodeOption)? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(Option<TNode> existingNodeOption)? edited,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function()? saved,
+  }) {
+    return deathDateChanged?.call(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<TNode> initialNodeOption)? initialized,
+    TResult Function(Option<TNode> initialNodeOption)? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(Option<TNode> existingNodeOption)? edited,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (deathDateChanged != null) {
+      return deathDateChanged(date);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return deathDateChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return deathDateChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (deathDateChanged != null) {
+      return deathDateChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeathDateChanged implements NodeFormEvent {
+  const factory _DeathDateChanged(final DateTime? date) =
+      _$DeathDateChangedImpl;
+
+  DateTime? get date;
+  @JsonKey(ignore: true)
+  _$$DeathDateChangedImplCopyWith<_$DeathDateChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangedIsAvliveImplCopyWith<$Res> {
+  factory _$$ChangedIsAvliveImplCopyWith(_$ChangedIsAvliveImpl value,
+          $Res Function(_$ChangedIsAvliveImpl) then) =
+      __$$ChangedIsAvliveImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isAlive});
+}
+
+/// @nodoc
+class __$$ChangedIsAvliveImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$ChangedIsAvliveImpl>
+    implements _$$ChangedIsAvliveImplCopyWith<$Res> {
+  __$$ChangedIsAvliveImplCopyWithImpl(
+      _$ChangedIsAvliveImpl _value, $Res Function(_$ChangedIsAvliveImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isAlive = null,
+  }) {
+    return _then(_$ChangedIsAvliveImpl(
+      null == isAlive
+          ? _value.isAlive
+          : isAlive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
+  const _$ChangedIsAvliveImpl(this.isAlive);
+
+  @override
+  final bool isAlive;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.changeIsAvlive(isAlive: $isAlive)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangedIsAvliveImpl &&
+            (identical(other.isAlive, isAlive) || other.isAlive == isAlive));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isAlive);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangedIsAvliveImplCopyWith<_$ChangedIsAvliveImpl> get copyWith =>
+      __$$ChangedIsAvliveImplCopyWithImpl<_$ChangedIsAvliveImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<TNode> initialNodeOption) initialized,
+    required TResult Function(Option<TNode> initialNodeOption) ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(Option<TNode> existingNodeOption) edited,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function() saved,
+  }) {
+    return changeIsAvlive(isAlive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<TNode> initialNodeOption)? initialized,
+    TResult? Function(Option<TNode> initialNodeOption)? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(Option<TNode> existingNodeOption)? edited,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function()? saved,
+  }) {
+    return changeIsAvlive?.call(isAlive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<TNode> initialNodeOption)? initialized,
+    TResult Function(Option<TNode> initialNodeOption)? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(Option<TNode> existingNodeOption)? edited,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (changeIsAvlive != null) {
+      return changeIsAvlive(isAlive);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return changeIsAvlive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return changeIsAvlive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (changeIsAvlive != null) {
+      return changeIsAvlive(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangedIsAvlive implements NodeFormEvent {
+  const factory _ChangedIsAvlive(final bool isAlive) = _$ChangedIsAvliveImpl;
+
+  bool get isAlive;
+  @JsonKey(ignore: true)
+  _$$ChangedIsAvliveImplCopyWith<_$ChangedIsAvliveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangedGenderImplCopyWith<$Res> {
+  factory _$$ChangedGenderImplCopyWith(
+          _$ChangedGenderImpl value, $Res Function(_$ChangedGenderImpl) then) =
+      __$$ChangedGenderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Gender gender});
+}
+
+/// @nodoc
+class __$$ChangedGenderImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$ChangedGenderImpl>
+    implements _$$ChangedGenderImplCopyWith<$Res> {
+  __$$ChangedGenderImplCopyWithImpl(
+      _$ChangedGenderImpl _value, $Res Function(_$ChangedGenderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? gender = null,
+  }) {
+    return _then(_$ChangedGenderImpl(
+      null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as Gender,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangedGenderImpl implements _ChangedGender {
+  const _$ChangedGenderImpl(this.gender);
+
+  @override
+  final Gender gender;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.changeGender(gender: $gender)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangedGenderImpl &&
+            (identical(other.gender, gender) || other.gender == gender));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, gender);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangedGenderImplCopyWith<_$ChangedGenderImpl> get copyWith =>
+      __$$ChangedGenderImplCopyWithImpl<_$ChangedGenderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<TNode> initialNodeOption) initialized,
+    required TResult Function(Option<TNode> initialNodeOption) ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(Option<TNode> existingNodeOption) edited,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function() saved,
+  }) {
+    return changeGender(gender);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<TNode> initialNodeOption)? initialized,
+    TResult? Function(Option<TNode> initialNodeOption)? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(Option<TNode> existingNodeOption)? edited,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function()? saved,
+  }) {
+    return changeGender?.call(gender);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<TNode> initialNodeOption)? initialized,
+    TResult Function(Option<TNode> initialNodeOption)? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(Option<TNode> existingNodeOption)? edited,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (changeGender != null) {
+      return changeGender(gender);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return changeGender(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return changeGender?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (changeGender != null) {
+      return changeGender(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangedGender implements NodeFormEvent {
+  const factory _ChangedGender(final Gender gender) = _$ChangedGenderImpl;
+
+  Gender get gender;
+  @JsonKey(ignore: true)
+  _$$ChangedGenderImplCopyWith<_$ChangedGenderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1131,7 +1805,10 @@ class _$SavedImpl implements _Saved {
     required TResult Function(Option<TNode> initialNodeOption) added,
     required TResult Function(Option<TNode> existingNodeOption) edited,
     required TResult Function(String title) firstNameChanged,
-    required TResult Function(DateTime date) dateChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
     return saved();
@@ -1145,7 +1822,10 @@ class _$SavedImpl implements _Saved {
     TResult? Function(Option<TNode> initialNodeOption)? added,
     TResult? Function(Option<TNode> existingNodeOption)? edited,
     TResult? Function(String title)? firstNameChanged,
-    TResult? Function(DateTime date)? dateChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
     return saved?.call();
@@ -1159,7 +1839,10 @@ class _$SavedImpl implements _Saved {
     TResult Function(Option<TNode> initialNodeOption)? added,
     TResult Function(Option<TNode> existingNodeOption)? edited,
     TResult Function(String title)? firstNameChanged,
-    TResult Function(DateTime date)? dateChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -1177,7 +1860,10 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_Added value) added,
     required TResult Function(_Edited value) edited,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
-    required TResult Function(_DateChanged value) dateChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
     return saved(this);
@@ -1191,7 +1877,10 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_Added value)? added,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
-    TResult? Function(_DateChanged value)? dateChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
     return saved?.call(this);
@@ -1205,7 +1894,10 @@ class _$SavedImpl implements _Saved {
     TResult Function(_Added value)? added,
     TResult Function(_Edited value)? edited,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
-    TResult Function(_DateChanged value)? dateChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {

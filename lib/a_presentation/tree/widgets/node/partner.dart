@@ -27,6 +27,7 @@ class PartnerNode extends StatelessWidget {
       color: kOutColors,
       hasImage: true,
       gender: node.gender,
+      node: node,
       //image: image,
     );
   }

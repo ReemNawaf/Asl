@@ -1,20 +1,18 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
-import 'package:asl/a_presentation/core/widgets/alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
-import 'package:asl/a_presentation/core/widgets/gender_btn.dart';
-import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
+import 'package:asl/a_presentation/tree/widgets/root_panel/root_alive_btn.dart';
+import 'package:asl/a_presentation/tree/widgets/root_panel/root_gender_btn.dart';
 import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-class InfoPanel extends StatelessWidget {
-  const InfoPanel({
+class RootInfoPanel extends StatelessWidget {
+  const RootInfoPanel({
     super.key,
     required this.size,
     required this.color,
-    this.isRootPanel = false,
     this.isAlive = true,
     this.height = 0.45,
     required this.ctx,
@@ -23,7 +21,6 @@ class InfoPanel extends StatelessWidget {
 
   final Size size;
   final MaterialColor color;
-  final bool isRootPanel;
   final double height;
   final bool isAlive;
   final BuildContext ctx;
@@ -73,7 +70,7 @@ class InfoPanel extends StatelessWidget {
               ),
             ),
             kHSpacer10,
-            GenderBtn(color: color, size: size, ctx: ctx),
+            RootGenderBtn(color: color, size: size, ctx: ctx),
           ],
         ),
         BlocBuilder<TreeFormBloc, TreeFormState>(
@@ -104,7 +101,7 @@ class InfoPanel extends StatelessWidget {
                 ),
                 if (isAlive) ...[
                   kHSpacer20,
-                  AliveBtn(color: color, size: size, ctx: ctx)
+                  RootAliveBtn(color: color, size: size, ctx: ctx)
                 ] else
                   SizedBox(
                     width: 250,
@@ -131,7 +128,6 @@ class InfoPanel extends StatelessWidget {
             );
           },
         ),
-        if (!isRootPanel) ...[kVSpacer20, TreeButton(color: color, size: size)]
       ],
     );
   }

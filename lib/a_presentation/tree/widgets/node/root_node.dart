@@ -27,6 +27,7 @@ class RootNode extends StatelessWidget {
       color: kRootColors,
       hasImage: true,
       gender: node.gender,
+      node: node,
       //image: image,
     );
   }

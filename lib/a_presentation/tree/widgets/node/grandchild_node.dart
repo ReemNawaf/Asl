@@ -27,6 +27,7 @@ class GrandchildNode extends StatelessWidget {
       color: kLeafColors,
       hasImage: true,
       gender: node.gender,
+      node: node,
       //image: image,
     );
   }

@@ -13,7 +13,13 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.firstNameChanged(String title) =
       _FirstNameChanged;
 
-  const factory NodeFormEvent.dateChanged(DateTime date) = _DateChanged;
+  const factory NodeFormEvent.birthDateChanged(DateTime? date) =
+      _BirthDateChanged;
+  const factory NodeFormEvent.deathDateChanged(DateTime? date) =
+      _DeathDateChanged;
+
+  const factory NodeFormEvent.changeIsAvlive(bool isAlive) = _ChangedIsAvlive;
+  const factory NodeFormEvent.changeGender(Gender gender) = _ChangedGender;
 
   const factory NodeFormEvent.saved() = _Saved;
 }

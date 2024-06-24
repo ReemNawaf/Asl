@@ -27,6 +27,7 @@ class ChildNode extends StatelessWidget {
       color: kStemColors,
       hasImage: true,
       gender: node.gender,
+      node: node,
       //image: image,
     );
   }

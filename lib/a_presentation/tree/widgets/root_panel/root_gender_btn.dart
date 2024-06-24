@@ -1,9 +1,11 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
-class AliveBtn extends StatelessWidget {
-  const AliveBtn({
+class RootGenderBtn extends StatelessWidget {
+  const RootGenderBtn({
     super.key,
     required this.color,
     required this.size,
@@ -16,38 +18,40 @@ class AliveBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void aliveOrDead({required bool isAliveSelected}) {
-      if (isAliveSelected == true) {
+    void maleOrFemale(BuildContext ctx, {required bool isMaleSelected}) {
+      if (isMaleSelected == true) {
         ctx
             .read<TreeFormBloc>()
-            .add(const TreeFormEvent.changeRootIsAvlive(true));
+            .add(const TreeFormEvent.changeRootGender(Gender.male));
       } else {
         ctx
             .read<TreeFormBloc>()
-            .add(const TreeFormEvent.changeRootIsAvlive(false));
+            .add(const TreeFormEvent.changeRootGender(Gender.female));
       }
     }
 
     return BlocBuilder<TreeFormBloc, TreeFormState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.only(top: 16.0),
+          padding: const EdgeInsets.only(top: 24.0),
           child: Row(
             children: [
-              AliveButton(
-                onTap: () => aliveOrDead(isAliveSelected: true),
+              GenderButton(
+                onTap: () => maleOrFemale(context, isMaleSelected: true),
                 color: color,
                 size: size,
-                text: 'عائش',
-                selected: state.root.isAlive,
+                text: 'ذكر',
+                gender: Gender.male,
+                selected: Gender.male == state.root.gender,
               ),
               const SizedBox(width: 16.0),
-              AliveButton(
-                onTap: () => aliveOrDead(isAliveSelected: false),
+              GenderButton(
+                onTap: () => maleOrFemale(context, isMaleSelected: false),
                 color: color,
                 size: size,
-                text: 'متوفي',
-                selected: !state.root.isAlive,
+                text: 'أنثى',
+                gender: Gender.female,
+                selected: Gender.female == state.root.gender,
               ),
             ],
           ),
@@ -57,12 +61,13 @@ class AliveBtn extends StatelessWidget {
   }
 }
 
-class AliveButton extends StatelessWidget {
-  const AliveButton({
+class GenderButton extends StatelessWidget {
+  const GenderButton({
     super.key,
     required this.color,
     required this.size,
     required this.text,
+    required this.gender,
     required this.selected,
     required this.onTap,
   });
@@ -70,6 +75,7 @@ class AliveButton extends StatelessWidget {
   final MaterialColor color;
   final Size size;
   final String text;
+  final Gender gender;
   final bool selected;
   final Function() onTap;
 
@@ -86,7 +92,14 @@ class AliveButton extends StatelessWidget {
         ),
         height: 36,
         width: 94,
-        child: Text(text),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset('icons/${gender.name}.svg', height: 22),
+            Text(text),
+          ],
+        ),
       ),
     );
   }

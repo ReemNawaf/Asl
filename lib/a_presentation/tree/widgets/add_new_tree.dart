@@ -5,7 +5,7 @@ import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/tree/widgets/new_tree_btn.dart';
-import 'package:asl/a_presentation/tree/widgets/node_panel/info_panel.dart';
+import 'package:asl/a_presentation/tree/widgets/root_panel/root_info_panel.dart';
 import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/user/user_watcher_bloc.dart';
 import 'package:asl/injection.dart';
@@ -143,10 +143,9 @@ Future<dynamic> showNewTreePanel(
                             ),
                           ),
                         ),
-                        InfoPanel(
+                        RootInfoPanel(
                           size: size,
                           color: kRootColors,
-                          isRootPanel: true,
                           height: 0.18,
                           ctx: context,
                           showErrorMessages: state.showErrorMessages,
