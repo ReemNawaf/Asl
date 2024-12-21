@@ -25,8 +25,7 @@ mixin _$TNode {
   Gender get gender => throw _privateConstructorUsedError;
   UniqueId get father => throw _privateConstructorUsedError;
   UniqueId get mother => throw _privateConstructorUsedError;
-  List<UniqueId> get partners => throw _privateConstructorUsedError;
-  List<UniqueId> get children => throw _privateConstructorUsedError;
+  List<Relation> get relations => throw _privateConstructorUsedError;
   List<UniqueId> get fosterChildren => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,8 +47,7 @@ abstract class $TNodeCopyWith<$Res> {
       Gender gender,
       UniqueId father,
       UniqueId mother,
-      List<UniqueId> partners,
-      List<UniqueId> children,
+      List<Relation> relations,
       List<UniqueId> fosterChildren});
 }
 
@@ -75,8 +73,7 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
     Object? gender = null,
     Object? father = null,
     Object? mother = null,
-    Object? partners = null,
-    Object? children = null,
+    Object? relations = null,
     Object? fosterChildren = null,
   }) {
     return _then(_value.copyWith(
@@ -116,14 +113,10 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
           ? _value.mother
           : mother // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      partners: null == partners
-          ? _value.partners
-          : partners // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
-      children: null == children
-          ? _value.children
-          : children // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+      relations: null == relations
+          ? _value.relations
+          : relations // ignore: cast_nullable_to_non_nullable
+              as List<Relation>,
       fosterChildren: null == fosterChildren
           ? _value.fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
@@ -149,8 +142,7 @@ abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
       Gender gender,
       UniqueId father,
       UniqueId mother,
-      List<UniqueId> partners,
-      List<UniqueId> children,
+      List<Relation> relations,
       List<UniqueId> fosterChildren});
 }
 
@@ -174,8 +166,7 @@ class __$$TNodeImplCopyWithImpl<$Res>
     Object? gender = null,
     Object? father = null,
     Object? mother = null,
-    Object? partners = null,
-    Object? children = null,
+    Object? relations = null,
     Object? fosterChildren = null,
   }) {
     return _then(_$TNodeImpl(
@@ -215,14 +206,10 @@ class __$$TNodeImplCopyWithImpl<$Res>
           ? _value.mother
           : mother // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      partners: null == partners
-          ? _value._partners
-          : partners // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
-      children: null == children
-          ? _value._children
-          : children // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+      relations: null == relations
+          ? _value._relations
+          : relations // ignore: cast_nullable_to_non_nullable
+              as List<Relation>,
       fosterChildren: null == fosterChildren
           ? _value._fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
@@ -244,11 +231,9 @@ class _$TNodeImpl extends _TNode {
       required this.gender,
       required this.father,
       required this.mother,
-      required final List<UniqueId> partners,
-      required final List<UniqueId> children,
+      required final List<Relation> relations,
       required final List<UniqueId> fosterChildren})
-      : _partners = partners,
-        _children = children,
+      : _relations = relations,
         _fosterChildren = fosterChildren,
         super._();
 
@@ -270,20 +255,12 @@ class _$TNodeImpl extends _TNode {
   final UniqueId father;
   @override
   final UniqueId mother;
-  final List<UniqueId> _partners;
+  final List<Relation> _relations;
   @override
-  List<UniqueId> get partners {
-    if (_partners is EqualUnmodifiableListView) return _partners;
+  List<Relation> get relations {
+    if (_relations is EqualUnmodifiableListView) return _relations;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_partners);
-  }
-
-  final List<UniqueId> _children;
-  @override
-  List<UniqueId> get children {
-    if (_children is EqualUnmodifiableListView) return _children;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_children);
+    return EqualUnmodifiableListView(_relations);
   }
 
   final List<UniqueId> _fosterChildren;
@@ -296,7 +273,7 @@ class _$TNodeImpl extends _TNode {
 
   @override
   String toString() {
-    return 'TNode(treeId: $treeId, nodeId: $nodeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, father: $father, mother: $mother, partners: $partners, children: $children, fosterChildren: $fosterChildren)';
+    return 'TNode(treeId: $treeId, nodeId: $nodeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, father: $father, mother: $mother, relations: $relations, fosterChildren: $fosterChildren)';
   }
 
   @override
@@ -316,8 +293,8 @@ class _$TNodeImpl extends _TNode {
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.father, father) || other.father == father) &&
             (identical(other.mother, mother) || other.mother == mother) &&
-            const DeepCollectionEquality().equals(other._partners, _partners) &&
-            const DeepCollectionEquality().equals(other._children, _children) &&
+            const DeepCollectionEquality()
+                .equals(other._relations, _relations) &&
             const DeepCollectionEquality()
                 .equals(other._fosterChildren, _fosterChildren));
   }
@@ -334,8 +311,7 @@ class _$TNodeImpl extends _TNode {
       gender,
       father,
       mother,
-      const DeepCollectionEquality().hash(_partners),
-      const DeepCollectionEquality().hash(_children),
+      const DeepCollectionEquality().hash(_relations),
       const DeepCollectionEquality().hash(_fosterChildren));
 
   @JsonKey(ignore: true)
@@ -356,8 +332,7 @@ abstract class _TNode extends TNode {
       required final Gender gender,
       required final UniqueId father,
       required final UniqueId mother,
-      required final List<UniqueId> partners,
-      required final List<UniqueId> children,
+      required final List<Relation> relations,
       required final List<UniqueId> fosterChildren}) = _$TNodeImpl;
   const _TNode._() : super._();
 
@@ -380,9 +355,7 @@ abstract class _TNode extends TNode {
   @override
   UniqueId get mother;
   @override
-  List<UniqueId> get partners;
-  @override
-  List<UniqueId> get children;
+  List<Relation> get relations;
   @override
   List<UniqueId> get fosterChildren;
   @override

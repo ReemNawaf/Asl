@@ -19,6 +19,7 @@ class AppFormField extends StatelessWidget {
     this.spacing = 6,
     this.isValid = true,
     this.isArabic = true,
+    this.withLabel = true,
     this.controller,
     this.focusNode,
     this.isEditing = true,
@@ -32,6 +33,7 @@ class AppFormField extends StatelessWidget {
   final bool isArabic;
   final Color? color;
   final FieldType fieldType;
+  final bool withLabel;
 
   final String? Function(String? value) validator;
 
@@ -48,11 +50,13 @@ class AppFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: kFootnoteStyle.copyWith(fontWeight: FontWeight.bold),
-          textAlign: TextAlign.start,
-        ),
+        if (withLabel) ...[
+          Text(
+            label,
+            style: kFootnoteStyle.copyWith(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.start,
+          ),
+        ],
         SizedBox(height: spacing),
         SizedBox(
           height: isValid ? 45.0 : 64.0,

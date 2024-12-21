@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:flutter/material.dart';
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
@@ -11,17 +12,18 @@ class AppButton extends StatelessWidget {
   final Color fillColor;
   final Color textColor;
   final bool isLoading;
+  final bool smallButton;
 
-  const AppButton({
-    super.key,
-    required this.onPressed,
-    required this.label,
-    this.icon,
-    this.hasIcon = false,
-    required this.fillColor,
-    this.textColor = kWhitesColor,
-    this.isLoading = false,
-  });
+  const AppButton(
+      {super.key,
+      required this.onPressed,
+      required this.label,
+      this.icon,
+      this.hasIcon = false,
+      required this.fillColor,
+      this.textColor = kWhitesColor,
+      this.isLoading = false,
+      this.smallButton = false});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class AppButton extends StatelessWidget {
       splashColor: fillColor.withOpacity(0.5),
       padding: const EdgeInsets.symmetric(
         vertical: 10.0,
-        horizontal: 4.0,
+        horizontal: 12.0,
       ),
       elevation: 0,
       hoverElevation: 0,
@@ -55,14 +57,7 @@ class AppButton extends StatelessWidget {
             : BorderSide.none,
       ),
       child: isLoading
-          ? SizedBox(
-              height: 20.0,
-              width: 20.0,
-              child: CircularProgressIndicator(
-                backgroundColor: kBlacksColor[600],
-                color: kBlacksColor,
-              ),
-            )
+          ? const LoadingWidget()
           : (!hasIcon
               ? text
               : Row(

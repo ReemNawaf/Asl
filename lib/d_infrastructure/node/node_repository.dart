@@ -1,5 +1,3 @@
-import 'dart:async' show Stream;
-
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -11,19 +9,22 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
+const String NODES_COLLECTION = 'nodes';
+
 @LazySingleton(as: INodeRepository)
 class NodeRepository implements INodeRepository {
   final FirebaseFirestore _firestore;
 
   NodeRepository(this._firestore);
-
   @override
   Stream<Either<TNodeFailure, List<TNode>>> watchAll(UniqueId treeId) async* {
     final treeCol = _firestore.treesCollection();
-    final nodes =
-        treeCol.doc(treeId.getOrCrash()).collection('nodes').snapshots();
+    final nodesSnapshot = treeCol
+        .doc(treeId.getOrCrash())
+        .collection(NODES_COLLECTION)
+        .snapshots();
 
-    yield* nodes
+    yield* nodesSnapshot
         .map((snapshot) => right<TNodeFailure, List<TNode>>(snapshot.docs
             .map((doc) => NodeDto.fromFirestore(doc).toDomain())
             .toList()))
@@ -47,7 +48,7 @@ class NodeRepository implements INodeRepository {
       final node = _firestore
           .treesCollection()
           .doc(treeId.getOrCrash())
-          .collection('children')
+          .collection(NODES_COLLECTION)
           .doc(nodeId.getOrCrash())
           .get() as DocumentSnapshot<Map<String, dynamic>>;
 
@@ -65,14 +66,14 @@ class NodeRepository implements INodeRepository {
 
   @override
   Future<Either<TNodeFailure, Unit>> create(
-      {required TNode node, required String treeId}) async {
+      {required TNode node, required UniqueId treeId}) async {
     try {
       final nodeDto = NodeDto.fromDomain(node.copyWith(nodeId: node.nodeId));
 
       await _firestore
           .treesCollection()
-          .doc(treeId)
-          .collection('children')
+          .doc(treeId.getOrCrash())
+          .collection(NODES_COLLECTION)
           .doc(nodeDto.nodeId)
           .set(nodeDto.toJson());
 
@@ -90,14 +91,13 @@ class NodeRepository implements INodeRepository {
 
   @override
   Future<Either<TNodeFailure, Unit>> update(
-      {required TNode node, required String treeId}) async {
+      {required TNode node, required UniqueId treeId}) async {
     try {
       final nodeDto = NodeDto.fromDomain(node.copyWith(nodeId: node.nodeId));
-
       await _firestore
           .treesCollection()
-          .doc(treeId)
-          .collection('children')
+          .doc(treeId.getOrCrash())
+          .collection(NODES_COLLECTION)
           .doc(nodeDto.nodeId)
           .update(nodeDto.toJson());
 
@@ -119,15 +119,16 @@ class NodeRepository implements INodeRepository {
 
   @override
   Future<Either<TNodeFailure, Unit>> delete(
-      {required TNode node, required String treeId}) async {
+      {required UniqueId nodeId, required UniqueId treeId}) async {
     try {
-      final nodeId = node.nodeId.getOrCrash();
+      final nodeIdVal = nodeId.getOrCrash();
+      final treeIdVal = treeId.getOrCrash();
 
       await _firestore
           .treesCollection()
-          .doc(treeId)
-          .collection('children')
-          .doc(nodeId)
+          .doc(treeIdVal)
+          .collection(NODES_COLLECTION)
+          .doc(nodeIdVal)
           .delete();
 
       return right(unit);

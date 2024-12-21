@@ -17,10 +17,9 @@ _$NodeDtoImpl _$$NodeDtoImplFromJson(Map<String, dynamic> json) =>
       gender: json['gender'] as String,
       mother: json['mother'] as String,
       father: json['father'] as String,
-      partners:
-          (json['partners'] as List<dynamic>).map((e) => e as String).toList(),
-      children:
-          (json['children'] as List<dynamic>).map((e) => e as String).toList(),
+      relations: (json['relations'] as List<dynamic>)
+          .map((e) => RelationDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
       fosterChildren: (json['fosterChildren'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -37,7 +36,6 @@ Map<String, dynamic> _$$NodeDtoImplToJson(_$NodeDtoImpl instance) =>
       'gender': instance.gender,
       'mother': instance.mother,
       'father': instance.father,
-      'partners': instance.partners,
-      'children': instance.children,
+      'relations': instance.relations,
       'fosterChildren': instance.fosterChildren,
     };

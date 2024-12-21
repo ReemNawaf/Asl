@@ -102,6 +102,7 @@ InputDecoration kAppFormsInputDecor({
       fillColor: color ?? Colors.transparent,
       errorMaxLines: 2,
       isDense: isDense,
+
       contentPadding:
           const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
       border: const OutlineInputBorder(

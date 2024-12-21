@@ -1,14 +1,16 @@
-import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/tree/widgets/new_tree_btn.dart';
 import 'package:asl/a_presentation/tree/widgets/root_panel/root_info_panel.dart';
-import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
-import 'package:asl/b_application/user/user_watcher_bloc.dart';
-import 'package:asl/injection.dart';
+import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
+import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
+import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,8 +22,8 @@ class AddNewTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppButton(
-      label: 'أنشئ شجرة عائلة',
-      onPressed: () => showNewTreePanel(context, size),
+      label: 'إنشاء شجرة عائلة',
+      onPressed: () => showNewTreePanel(context),
       hasIcon: true,
       icon: SvgPicture.asset(
         'assets/icons/root.svg',
@@ -34,12 +36,11 @@ class AddNewTree extends StatelessWidget {
 
 Future<dynamic> showNewTreePanel(
   BuildContext contextPage,
-  Size size,
 ) {
   final formKey = GlobalKey<FormState>();
   return showDialog(
     context: contextPage,
-    builder: (BuildContext context) {
+    builder: (BuildContext dialogContext) {
       return AlertDialog(
         backgroundColor: kRootColors[700],
         shape:
@@ -48,117 +49,131 @@ Future<dynamic> showNewTreePanel(
         content: Container(
           alignment: Alignment.topRight,
           padding: const EdgeInsets.all(8.0),
-          width: size.width * 0.48,
-          height: size.height * 0.4,
+          width: PAN_SM_WIDTH,
+          height: PAN_HEIGHT,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.0),
           ),
-          child: BlocProvider(
-            create: (cttx) => getIt<TreeFormBloc>(),
-            child: BlocConsumer<TreeFormBloc, TreeFormState>(
-              listener: (ctx, state) async {
-                state.saveFailureOrSuccessOption.fold(
-                  () {},
-                  (either) => either.fold(
-                    (failure) {
-                      FlushbarHelper.createError(
-                        message: failure.map(
-                          unexpected: (_) => 'حدث خطأ غير متوقع',
-                          insufficientPermission: (_) => 'لا تملك الصلاحية',
-                          unableToUpdate: (_) => 'لا يمكن التحديث',
-                        ),
-                      ).show(contextPage);
-                    },
-                    (_) {
-                      contextPage
-                          .read<UserWatcherBloc>()
-                          .add(const UserWatcherEvent.getStarted());
+          child: BlocConsumer<TreeFormBloc, TreeFormState>(
+            listener: (ctx, state) async {
+              state.saveFailureOrSuccessOption.fold(
+                () {},
+                (either) => either.fold(
+                  (failure) {
+                    appSnackBar(
+                      contextPage,
+                      text: failure.map(
+                        unexpected: (_) => 'حدث خطأ غير متوقع',
+                        insufficientPermission: (_) => 'لا تملك الصلاحية',
+                        unableToUpdate: (_) => 'لا يمكن التحديث',
+                      ),
+                      type: SnackBarType.error,
+                    );
+                  },
+                  (_) {
+                    appSnackBar(
+                      contextPage,
+                      text: 'تم إنشاء الشجرة بنجاح',
+                      type: SnackBarType.success,
+                    );
 
-                      Navigator.pop(contextPage);
-                    },
-                  ),
-                );
-              },
-              builder: (context, state) {
-                return BlocProvider<UserWatcherBloc>(
-                  create: (context) => getIt<UserWatcherBloc>()
-                    ..add(const UserWatcherEvent.getStarted()),
-                  child: Form(
-                    autovalidateMode: state.showErrorMessages,
-                    key: formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        kVSpacer10,
-                        Container(
-                          padding: const EdgeInsets.only(right: 28.0),
-                          width: 300,
-                          child: AppFormField(
-                            label: 'اسم الشجرة',
-                            hint: 'شجرة عائلة ...',
-                            onSaved: (_) {},
-                            initialValue: '',
-                            onChanged: (value) => context
+                    //  (1) Update the Tree
+                    //  1. Update the current tree
+                    contextPage
+                        .read<CurrentTreeBloc>()
+                        .add(CurrentTreeEvent.updated(currentTree: state.tree));
+
+                    //  2. Update the current nodes
+                    contextPage
+                        .read<NodeWatcherBloc>()
+                        .add(NodeWatcherEvent.watchAllStarted(state.tree));
+
+                    //  3. Update the share settings
+                    contextPage.read<ShareOptionBloc>().add(
+                        ShareOptionEvent.initialized(
+                            state.tree.shareOption ?? 0));
+
+                    contextPage
+                        .read<TreeWatcherBloc>()
+                        .add(const TreeWatcherEvent.getAllTrees());
+
+                    Navigator.pop(dialogContext);
+                  },
+                ),
+              );
+            },
+            builder: (context, state) {
+              return Form(
+                autovalidateMode: state.showErrorMessages,
+                key: formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    kVSpacer10,
+                    Container(
+                      padding: const EdgeInsets.only(right: 28.0),
+                      width: 300,
+                      child: AppFormField(
+                        label: 'اسم الشجرة',
+                        hint: 'شجرة عائلة ...',
+                        onSaved: (_) {},
+                        initialValue: '',
+                        onChanged: (value) => context
+                            .read<TreeFormBloc>()
+                            .add(TreeFormEvent.changeTreeName(value!.trim())),
+                        validator: (_) {
+                          return context
+                              .read<TreeFormBloc>()
+                              .state
+                              .tree
+                              .treeName
+                              .value
+                              .fold(
+                                (f) => f.maybeMap(
+                                  empty: (_) =>
+                                      'اسم الشجرة لا يمكن أن يكون فارغًا',
+                                  orElse: () => null,
+                                ),
+                                (_) => null,
+                              );
+                        },
+                        isValid: AutovalidateMode.always !=
+                                state.showErrorMessages ||
+                            context
                                 .read<TreeFormBloc>()
-                                .add(TreeFormEvent.changeTreeName(
-                                    value!.trim())),
-                            validator: (_) {
-                              return context
-                                  .read<TreeFormBloc>()
-                                  .state
-                                  .tree
-                                  .treeName
-                                  .value
-                                  .fold(
-                                    (f) => f.maybeMap(
-                                      empty: (_) =>
-                                          'اسم الشجرة لا يمكن أن يكون فارغًا',
-                                      orElse: () => null,
-                                    ),
-                                    (_) => null,
-                                  );
-                            },
-                            isValid: AutovalidateMode.always !=
-                                    state.showErrorMessages ||
-                                context
-                                    .read<TreeFormBloc>()
-                                    .state
-                                    .tree
-                                    .treeName
-                                    .isValid(),
-                          ),
-                        ),
-                        kVSpacer10,
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 42.0),
-                          child: Divider(thickness: 1.4, color: kRootColors),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 28.0),
-                          child: Text(
-                            'معلومات جذر العائلة',
-                            style: kBodyLarge.copyWith(
-                              color: kRootColors[200]!,
-                            ),
-                          ),
-                        ),
-                        RootInfoPanel(
-                          size: size,
-                          color: kRootColors,
-                          height: 0.18,
-                          ctx: context,
-                          showErrorMessages: state.showErrorMessages,
-                        ),
-                        kVSpacer20,
-                        NewTreeButton(
-                            screenSize: size, isLoading: state.isSaving)
-                      ],
+                                .state
+                                .tree
+                                .treeName
+                                .isValid(),
+                      ),
                     ),
-                  ),
-                );
-              },
-            ),
+                    kVSpacer10,
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 42.0),
+                      child: Divider(thickness: 1.4, color: kRootColors),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 28.0),
+                      child: Text(
+                        'معلومات جذر العائلة',
+                        style: kBodyLarge.copyWith(
+                          color: kRootColors[200]!,
+                        ),
+                      ),
+                    ),
+                    RootInfoPanel(
+                      color: kRootColors,
+                      height: 0.18,
+                      ctx: context,
+                      showErrorMessages: state.showErrorMessages,
+                    ),
+                    kVSpacer20,
+                    NewTreeButton(isLoading: state.isSaving)
+                  ],
+                ),
+              );
+            },
           ),
         ),
       );

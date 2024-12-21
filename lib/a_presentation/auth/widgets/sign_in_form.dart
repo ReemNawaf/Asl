@@ -1,4 +1,4 @@
-import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/auth/widgets/action_btn.dart';
 import 'package:asl/a_presentation/auth/widgets/email_field.dart';
 import 'package:asl/a_presentation/auth/widgets/helper.dart';
@@ -10,8 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
-import 'package:asl/b_application/auth/auth_bloc.dart';
-import 'package:asl/b_application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
+import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm(this.screenSize, {super.key});
@@ -51,15 +51,17 @@ class _SignInFormState extends State<SignInForm> {
           (either) => either.fold(
             // when there is failure
             (failure) {
-              FlushbarHelper.createError(
-                message: failure.map(
+              appSnackBar(
+                context,
+                text: failure.map(
                   cancelledByUser: (_) => 'إلغاء',
                   emailAlreadyInUse: (_) => 'البريد الإلكتروني مستخدم بالفعل',
                   invalidEmailAndPasswordCombination: (_) =>
                       'البريد الإلكتروني أو الرقم السري غير صحيح',
                   serverError: (_) => 'حدث خطأ ما',
                 ),
-              ).show(context);
+                type: SnackBarType.error,
+              );
             },
             // when it's succeeded
             (_) {
@@ -86,8 +88,9 @@ class _SignInFormState extends State<SignInForm> {
               children: [
                 Image.asset('assets/images/logo.png', height: 160),
                 EmailField(
-                    emailFocusNode: _emailFocusNode,
-                    passwordFocusNode: _passwordFocusNode),
+                  emailFocusNode: _emailFocusNode,
+                  passwordFocusNode: _passwordFocusNode,
+                ),
                 PasswordField(
                   passwordController: _passwordController,
                   passwordFocusNode: _passwordFocusNode,
@@ -110,13 +113,13 @@ class _SignInFormState extends State<SignInForm> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: _authMode == AuthMode.signin
-                          ? 'ما عندك حساب؟'
-                          : 'عندك حساب؟',
+                          ? 'ما عندك حساب؟  '
+                          : 'عندك حساب؟  ',
                       style: kBodyMedium,
                       children: [
                         TextSpan(
                           text: _authMode == AuthMode.signin
-                              ? ' أنشئ حساب'
+                              ? ' إنشاء حساب'
                               : ' سجل دخولك',
                           style: kBodyMedium.copyWith(
                             color: kRootColors,

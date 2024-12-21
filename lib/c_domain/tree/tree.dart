@@ -16,6 +16,7 @@ abstract class Tree implements _$Tree {
     required UniqueId rootId,
     required TreeName treeName,
     required FullName fullName,
+    int? shareOption,
   }) = _Tree;
 
   factory Tree.empty() => Tree(
@@ -24,6 +25,7 @@ abstract class Tree implements _$Tree {
         rootId: UniqueId(),
         fullName: FullName(''),
         creatorId: UniqueId(),
+        shareOption: 0,
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

@@ -2,7 +2,7 @@ import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
-import 'package:asl/b_application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart';
 
 class EmailField extends StatelessWidget {
   const EmailField({
@@ -37,7 +37,8 @@ class EmailField extends StatelessWidget {
               (_) => null,
             );
       },
-      isValid: context.read<SignInFormBloc>().state.emailAddress.isValid(),
+      isValid: !context.read<SignInFormBloc>().state.isValidated ||
+          context.read<SignInFormBloc>().state.emailAddress.isValid(),
 
       // for the email to not be null, when the user hit 'Forgot Password'
       // before onSave for triggered

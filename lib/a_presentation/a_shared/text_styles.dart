@@ -53,7 +53,7 @@ const kHeadLineStyle = TextStyle(
 const kBodyLarge = TextStyle(
   fontSize: 17.0,
   fontWeight: FontWeight.bold,
-  color: kPrimaryLabelColor,
+  color: kBlacksColor,
   fontFamily: 'GHAITHSANS',
   textBaseline: TextBaseline.ideographic,
 );

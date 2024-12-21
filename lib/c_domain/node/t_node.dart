@@ -1,6 +1,7 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/failures.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/node/relation.dart';
 import 'package:asl/c_domain/node/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -21,8 +22,7 @@ abstract class TNode implements _$TNode {
     required Gender gender,
     required UniqueId father,
     required UniqueId mother,
-    required List<UniqueId> partners,
-    required List<UniqueId> children,
+    required List<Relation> relations,
     required List<UniqueId> fosterChildren,
   }) = _TNode;
 
@@ -34,8 +34,7 @@ abstract class TNode implements _$TNode {
         gender: Gender.female,
         father: UniqueId(),
         mother: UniqueId(),
-        partners: [],
-        children: [],
+        relations: [],
         fosterChildren: [],
       );
 

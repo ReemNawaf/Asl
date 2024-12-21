@@ -3,7 +3,7 @@ import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/b_application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart';
 
 class PasswordField extends StatelessWidget {
   const PasswordField({
@@ -41,12 +41,12 @@ class PasswordField extends StatelessWidget {
           controller: passwordController,
           focusNode: passwordFocusNode,
           fieldType: FieldType.password,
-          isValid: context.read<SignInFormBloc>().state.password.isValid(),
+          isValid: !context.read<SignInFormBloc>().state.isValidated ||
+              context.read<SignInFormBloc>().state.password.isValid(),
         ),
 
         //  CONFIRM PASSWORD FIELD
         if (authMode == AuthMode.signup) ...[
-          kVSpacer20,
           AppFormField(
             label: 'الرقم السري',
             hint: '**************',

@@ -1,4 +1,4 @@
-import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,12 +6,10 @@ class RootAliveBtn extends StatelessWidget {
   const RootAliveBtn({
     super.key,
     required this.color,
-    required this.size,
     required this.ctx,
   });
 
   final MaterialColor color;
-  final Size size;
   final BuildContext ctx;
 
   @override
@@ -37,16 +35,14 @@ class RootAliveBtn extends StatelessWidget {
               AliveButton(
                 onTap: () => aliveOrDead(isAliveSelected: true),
                 color: color,
-                size: size,
-                text: 'عائش',
+                text: 'حيّ',
                 selected: state.root.isAlive,
               ),
               const SizedBox(width: 16.0),
               AliveButton(
                 onTap: () => aliveOrDead(isAliveSelected: false),
                 color: color,
-                size: size,
-                text: 'متوفي',
+                text: 'ميت',
                 selected: !state.root.isAlive,
               ),
             ],
@@ -61,14 +57,12 @@ class AliveButton extends StatelessWidget {
   const AliveButton({
     super.key,
     required this.color,
-    required this.size,
     required this.text,
     required this.selected,
     required this.onTap,
   });
 
   final MaterialColor color;
-  final Size size;
   final String text;
   final bool selected;
   final Function() onTap;

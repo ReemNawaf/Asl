@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/value_objects.dart';
+import 'package:asl/d_infrastructure/node/relation_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -24,8 +25,7 @@ abstract class NodeDto implements _$NodeDto {
     required String gender,
     required String mother,
     required String father,
-    required List<String> partners,
-    required List<String> children,
+    required List<RelationDto> relations,
     required List<String> fosterChildren,
   }) = _NodeDto;
 
@@ -45,8 +45,7 @@ abstract class NodeDto implements _$NodeDto {
       gender: node.gender.name,
       mother: node.mother.getOrCrash(),
       father: node.father.getOrCrash(),
-      partners: node.partners.map((e) => e.getOrCrash()).toList(),
-      children: node.children.map((e) => e.getOrCrash()).toList(),
+      relations: node.relations.map((r) => RelationDto.fromDomain(r)).toList(),
       fosterChildren: node.fosterChildren.map((e) => e.getOrCrash()).toList(),
     );
   }
@@ -63,8 +62,7 @@ abstract class NodeDto implements _$NodeDto {
       gender: Gender.values.byName(gender),
       mother: UniqueId.fromUniqueString(mother),
       father: UniqueId.fromUniqueString(father),
-      partners: partners.map((e) => UniqueId.fromUniqueString(e)).toList(),
-      children: children.map((e) => UniqueId.fromUniqueString(e)).toList(),
+      relations: relations.map((r) => r.toDomain()).toList(),
       fosterChildren:
           fosterChildren.map((e) => UniqueId.fromUniqueString(e)).toList(),
     );

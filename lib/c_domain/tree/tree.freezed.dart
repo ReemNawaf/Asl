@@ -21,6 +21,7 @@ mixin _$Tree {
   UniqueId get rootId => throw _privateConstructorUsedError;
   TreeName get treeName => throw _privateConstructorUsedError;
   FullName get fullName => throw _privateConstructorUsedError;
+  int? get shareOption => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TreeCopyWith<Tree> get copyWith => throw _privateConstructorUsedError;
@@ -36,7 +37,8 @@ abstract class $TreeCopyWith<$Res> {
       UniqueId creatorId,
       UniqueId rootId,
       TreeName treeName,
-      FullName fullName});
+      FullName fullName,
+      int? shareOption});
 }
 
 /// @nodoc
@@ -57,6 +59,7 @@ class _$TreeCopyWithImpl<$Res, $Val extends Tree>
     Object? rootId = null,
     Object? treeName = null,
     Object? fullName = null,
+    Object? shareOption = freezed,
   }) {
     return _then(_value.copyWith(
       treeId: null == treeId
@@ -79,6 +82,10 @@ class _$TreeCopyWithImpl<$Res, $Val extends Tree>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as FullName,
+      shareOption: freezed == shareOption
+          ? _value.shareOption
+          : shareOption // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -95,7 +102,8 @@ abstract class _$$TreeImplCopyWith<$Res> implements $TreeCopyWith<$Res> {
       UniqueId creatorId,
       UniqueId rootId,
       TreeName treeName,
-      FullName fullName});
+      FullName fullName,
+      int? shareOption});
 }
 
 /// @nodoc
@@ -113,6 +121,7 @@ class __$$TreeImplCopyWithImpl<$Res>
     Object? rootId = null,
     Object? treeName = null,
     Object? fullName = null,
+    Object? shareOption = freezed,
   }) {
     return _then(_$TreeImpl(
       treeId: null == treeId
@@ -135,6 +144,10 @@ class __$$TreeImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as FullName,
+      shareOption: freezed == shareOption
+          ? _value.shareOption
+          : shareOption // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -147,7 +160,8 @@ class _$TreeImpl extends _Tree {
       required this.creatorId,
       required this.rootId,
       required this.treeName,
-      required this.fullName})
+      required this.fullName,
+      this.shareOption})
       : super._();
 
   @override
@@ -160,10 +174,12 @@ class _$TreeImpl extends _Tree {
   final TreeName treeName;
   @override
   final FullName fullName;
+  @override
+  final int? shareOption;
 
   @override
   String toString() {
-    return 'Tree(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName)';
+    return 'Tree(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName, shareOption: $shareOption)';
   }
 
   @override
@@ -178,12 +194,14 @@ class _$TreeImpl extends _Tree {
             (identical(other.treeName, treeName) ||
                 other.treeName == treeName) &&
             (identical(other.fullName, fullName) ||
-                other.fullName == fullName));
+                other.fullName == fullName) &&
+            (identical(other.shareOption, shareOption) ||
+                other.shareOption == shareOption));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, treeId, creatorId, rootId, treeName, fullName);
+  int get hashCode => Object.hash(
+      runtimeType, treeId, creatorId, rootId, treeName, fullName, shareOption);
 
   @JsonKey(ignore: true)
   @override
@@ -198,7 +216,8 @@ abstract class _Tree extends Tree {
       required final UniqueId creatorId,
       required final UniqueId rootId,
       required final TreeName treeName,
-      required final FullName fullName}) = _$TreeImpl;
+      required final FullName fullName,
+      final int? shareOption}) = _$TreeImpl;
   const _Tree._() : super._();
 
   @override
@@ -211,6 +230,8 @@ abstract class _Tree extends Tree {
   TreeName get treeName;
   @override
   FullName get fullName;
+  @override
+  int? get shareOption;
   @override
   @JsonKey(ignore: true)
   _$$TreeImplCopyWith<_$TreeImpl> get copyWith =>

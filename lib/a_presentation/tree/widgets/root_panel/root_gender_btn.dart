@@ -1,5 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/b_application/tree/tree_form/tree_form_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,12 +8,10 @@ class RootGenderBtn extends StatelessWidget {
   const RootGenderBtn({
     super.key,
     required this.color,
-    required this.size,
     required this.ctx,
   });
 
   final MaterialColor color;
-  final Size size;
   final BuildContext ctx;
 
   @override
@@ -39,7 +37,6 @@ class RootGenderBtn extends StatelessWidget {
               GenderButton(
                 onTap: () => maleOrFemale(context, isMaleSelected: true),
                 color: color,
-                size: size,
                 text: 'ذكر',
                 gender: Gender.male,
                 selected: Gender.male == state.root.gender,
@@ -48,7 +45,6 @@ class RootGenderBtn extends StatelessWidget {
               GenderButton(
                 onTap: () => maleOrFemale(context, isMaleSelected: false),
                 color: color,
-                size: size,
                 text: 'أنثى',
                 gender: Gender.female,
                 selected: Gender.female == state.root.gender,
@@ -65,7 +61,6 @@ class GenderButton extends StatelessWidget {
   const GenderButton({
     super.key,
     required this.color,
-    required this.size,
     required this.text,
     required this.gender,
     required this.selected,
@@ -73,7 +68,6 @@ class GenderButton extends StatelessWidget {
   });
 
   final MaterialColor color;
-  final Size size;
   final String text;
   final Gender gender;
   final bool selected;

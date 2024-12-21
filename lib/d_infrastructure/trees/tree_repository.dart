@@ -37,14 +37,17 @@ class TreeRepository implements ITreeRepository {
       final appUser = eitherAppUser.fold((l) => null, (r) => r);
 
       final treeCol = _firestore.treesCollection();
+      final trees = <Tree>[];
 
-      return right(appUser!.trees.map((treeId) {
-        //
-        final tree = treeCol.doc(treeId.getOrCrash()).get()
+      for (UniqueId treeId in appUser!.trees) {
+        final treeDoc = await treeCol.doc(treeId.getOrCrash()).get()
             as DocumentSnapshot<Map<String, dynamic>>;
+        final tree = TreeDto.fromFirestore(treeDoc).toDomain();
 
-        return TreeDto.fromFirestore(tree).toDomain();
-      }).toList());
+        trees.add(tree);
+      }
+
+      return right(trees);
     } catch (e) {
       if (e is FirebaseException &&
           (e.message!.contains(cPermissionDeniedCp) ||

@@ -1,8 +1,16 @@
+import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
+import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
+import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
 import 'package:dartz/dartz.dart' as z;
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
-import 'package:asl/b_application/auth/auth_bloc.dart';
-import 'package:asl/b_application/user/user_form/user_form_bloc.dart';
+import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
+import 'package:asl/b_application/user_bloc/user_form/user_form_bloc.dart';
 import 'package:asl/c_domain/app_user/user.dart';
 import 'package:asl/injection.dart';
 import 'package:asl/localization/app_localization.dart';
@@ -26,13 +34,28 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
+        BlocProvider<AuthBloc>(
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
-        BlocProvider(
+        BlocProvider<UserFormBloc>(
             create: (context) => getIt<UserFormBloc>()
               ..add(UserFormEvent.initialized(z.optionOf(AppUser.empty())))),
+        BlocProvider<TreeFormBloc>(create: (context) => getIt<TreeFormBloc>()),
+        BlocProvider<TreeWatcherBloc>(
+          create: (context) => getIt<TreeWatcherBloc>()
+            ..add(const TreeWatcherEvent.getAllTrees()),
+        ),
+        BlocProvider<CurrentTreeBloc>(create: (context) => CurrentTreeBloc()),
+        BlocProvider<NodeWatcherBloc>(
+            create: (context) => getIt<NodeWatcherBloc>()),
+        BlocProvider<ShareOptionBloc>(
+            create: (context) => getIt<ShareOptionBloc>()),
+        BlocProvider<SignInFormBloc>(
+            create: (context) => getIt<SignInFormBloc>()),
+        BlocProvider<TreeFormBloc>(create: (cttx) => getIt<TreeFormBloc>()),
+        BlocProvider<NodeFormBloc>(create: (cttx) => getIt<NodeFormBloc>()),
+        BlocProvider<DrawTreeBloc>(create: (cttx) => getIt<DrawTreeBloc>())
       ],
       child: MaterialApp.router(
         routerConfig: appRouter.config(),
