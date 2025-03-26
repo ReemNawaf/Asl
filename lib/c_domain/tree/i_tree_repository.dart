@@ -9,8 +9,7 @@ abstract class ITreeRepository {
   Future<Either<TreeFailure, Unit>> create(
       {required Tree tree, required TNode root});
   Future<Either<TreeFailure, Unit>> update(Tree tree);
-  Future<Either<TreeFailure, Unit>> delete(
-      {required UniqueId treeId, required UniqueId userId});
+  Future<Either<TreeFailure, Unit>> delete({required UniqueId treeId});
 
   Future<Either<TreeFailure, Tree>> getTree(UniqueId treeId);
 }

@@ -20,6 +20,7 @@ class PasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AppFormField(
           label: 'الرقم السري',
@@ -47,6 +48,7 @@ class PasswordField extends StatelessWidget {
 
         //  CONFIRM PASSWORD FIELD
         if (authMode == AuthMode.signup) ...[
+          kVSpacer10,
           AppFormField(
             label: 'الرقم السري',
             hint: '**************',
@@ -60,7 +62,6 @@ class PasswordField extends StatelessWidget {
               return null;
             },
             fieldType: FieldType.password,
-            isValid: false,
           ),
         ]
       ],

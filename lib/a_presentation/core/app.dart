@@ -1,9 +1,12 @@
 import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
+import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_actor/tree_actor_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
 import 'package:dartz/dartz.dart' as z;
@@ -47,6 +50,7 @@ class _MyAppState extends State<MyApp> {
             ..add(const TreeWatcherEvent.getAllTrees()),
         ),
         BlocProvider<CurrentTreeBloc>(create: (context) => CurrentTreeBloc()),
+        BlocProvider<TreeActorBloc>(create: (cttx) => getIt<TreeActorBloc>()),
         BlocProvider<NodeWatcherBloc>(
             create: (context) => getIt<NodeWatcherBloc>()),
         BlocProvider<ShareOptionBloc>(
@@ -55,7 +59,11 @@ class _MyAppState extends State<MyApp> {
             create: (context) => getIt<SignInFormBloc>()),
         BlocProvider<TreeFormBloc>(create: (cttx) => getIt<TreeFormBloc>()),
         BlocProvider<NodeFormBloc>(create: (cttx) => getIt<NodeFormBloc>()),
-        BlocProvider<DrawTreeBloc>(create: (cttx) => getIt<DrawTreeBloc>())
+        BlocProvider<DrawTreeBloc>(create: (cttx) => getIt<DrawTreeBloc>()),
+        BlocProvider<PartnerFormBloc>(
+            create: (context) => getIt<PartnerFormBloc>()),
+        BlocProvider<ChildFormBloc>(
+            create: (context) => getIt<ChildFormBloc>()),
       ],
       child: MaterialApp.router(
         routerConfig: appRouter.config(),

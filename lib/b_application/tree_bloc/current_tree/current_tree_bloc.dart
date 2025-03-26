@@ -17,12 +17,16 @@ class CurrentTreeBloc extends Bloc<CurrentTreeEvent, CurrentTreeState> {
     CurrentTreeEvent event,
     Emitter<CurrentTreeState> emit,
   ) async {
-    await event.map(
-      initialized: (e) async {
+    event.map(
+      initialized: (e) {
         emit(CurrentTreeState(currentTree: e.currentTree, trees: e.trees));
       },
-      updated: (e) async {
+      updated: (e) {
         emit(CurrentTreeState(currentTree: e.currentTree, trees: state.trees));
+      },
+      updateAllTree: (e) {
+        emit(CurrentTreeState(
+            currentTree: state.currentTree ?? e.trees[0], trees: e.trees));
       },
     );
   }

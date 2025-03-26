@@ -27,6 +27,7 @@ mixin _$NodeFormEvent {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) =>
@@ -42,6 +43,7 @@ mixin _$NodeFormEvent {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) =>
@@ -57,6 +59,7 @@ mixin _$NodeFormEvent {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -73,6 +76,7 @@ mixin _$NodeFormEvent {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) =>
@@ -88,6 +92,7 @@ mixin _$NodeFormEvent {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) =>
@@ -103,6 +108,7 @@ mixin _$NodeFormEvent {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -211,6 +217,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -229,6 +236,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -247,6 +255,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -269,6 +278,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -287,6 +297,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -305,6 +316,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -372,6 +384,7 @@ class _$EndedImpl implements _Ended {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -390,6 +403,7 @@ class _$EndedImpl implements _Ended {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -408,6 +422,7 @@ class _$EndedImpl implements _Ended {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -430,6 +445,7 @@ class _$EndedImpl implements _Ended {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -448,6 +464,7 @@ class _$EndedImpl implements _Ended {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -466,6 +483,7 @@ class _$EndedImpl implements _Ended {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -555,6 +573,7 @@ class _$AddedImpl implements _Added {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -573,6 +592,7 @@ class _$AddedImpl implements _Added {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -591,6 +611,7 @@ class _$AddedImpl implements _Added {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -613,6 +634,7 @@ class _$AddedImpl implements _Added {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -631,6 +653,7 @@ class _$AddedImpl implements _Added {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -649,6 +672,7 @@ class _$AddedImpl implements _Added {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -743,6 +767,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -761,6 +786,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -779,6 +805,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -801,6 +828,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -819,6 +847,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -837,6 +866,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -932,6 +962,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -950,6 +981,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -968,6 +1000,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -990,6 +1023,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -1008,6 +1042,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -1026,6 +1061,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -1121,6 +1157,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -1139,6 +1176,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -1157,6 +1195,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -1179,6 +1218,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -1197,6 +1237,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -1215,6 +1256,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -1309,6 +1351,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -1327,6 +1370,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -1345,6 +1389,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -1367,6 +1412,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -1385,6 +1431,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -1403,6 +1450,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -1498,6 +1546,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -1516,6 +1565,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -1534,6 +1584,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -1556,6 +1607,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -1574,6 +1626,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -1592,6 +1645,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -1687,6 +1741,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -1705,6 +1760,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -1723,6 +1779,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -1745,6 +1802,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -1763,6 +1821,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -1781,6 +1840,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -1799,6 +1859,168 @@ abstract class _ChangedIsAvlive implements NodeFormEvent {
   @JsonKey(ignore: true)
   _$$ChangedIsAvliveImplCopyWith<_$ChangedIsAvliveImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MakeItRootImplCopyWith<$Res> {
+  factory _$$MakeItRootImplCopyWith(
+          _$MakeItRootImpl value, $Res Function(_$MakeItRootImpl) then) =
+      __$$MakeItRootImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$MakeItRootImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$MakeItRootImpl>
+    implements _$$MakeItRootImplCopyWith<$Res> {
+  __$$MakeItRootImplCopyWithImpl(
+      _$MakeItRootImpl _value, $Res Function(_$MakeItRootImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$MakeItRootImpl implements _MakeItRoot {
+  const _$MakeItRootImpl();
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.makeItRoot()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$MakeItRootImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) initialized,
+    required TResult Function() ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(int isEditing) edited,
+    required TResult Function(int panelIndex) updateCurrentPanel,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function() saved,
+  }) {
+    return makeItRoot();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? initialized,
+    TResult? Function()? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(int isEditing)? edited,
+    TResult? Function(int panelIndex)? updateCurrentPanel,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function()? saved,
+  }) {
+    return makeItRoot?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? initialized,
+    TResult Function()? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(int isEditing)? edited,
+    TResult Function(int panelIndex)? updateCurrentPanel,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (makeItRoot != null) {
+      return makeItRoot();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_UpdateCurrentPanel value) updateCurrentPanel,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return makeItRoot(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return makeItRoot?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (makeItRoot != null) {
+      return makeItRoot(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MakeItRoot implements NodeFormEvent {
+  const factory _MakeItRoot() = _$MakeItRootImpl;
 }
 
 /// @nodoc
@@ -1874,6 +2096,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -1892,6 +2115,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -1910,6 +2134,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -1932,6 +2157,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -1950,6 +2176,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -1968,6 +2195,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
@@ -2035,6 +2263,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(DateTime? date) birthDateChanged,
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
@@ -2053,6 +2282,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(DateTime? date)? birthDateChanged,
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
@@ -2071,6 +2301,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(DateTime? date)? birthDateChanged,
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function()? saved,
     required TResult orElse(),
@@ -2093,6 +2324,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_BirthDateChanged value) birthDateChanged,
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_Saved value) saved,
   }) {
@@ -2111,6 +2343,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_BirthDateChanged value)? birthDateChanged,
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_Saved value)? saved,
   }) {
@@ -2129,6 +2362,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(_BirthDateChanged value)? birthDateChanged,
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),

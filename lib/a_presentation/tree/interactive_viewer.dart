@@ -13,14 +13,14 @@ class InteractiveView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NodeWatcherBloc, NodeWatcherState>(
       builder: (context, nState) {
-        print('InteractiveView: rebuild after NodeWatcherBloc state changes');
+        // print('InteractiveView: rebuild after NodeWatcherBloc state changes');
         return nState.map(
           initial: (_) => const SizedBox(),
           loadInProgress: (_) => const LoadingWidget(),
           inProgress: (_) => const LoadingWidget(),
           loadSuccess: (nState) {
-            print(
-                '=========== InteractiveView: rebuild with new tree nodes ${nState.nodes}');
+            // print(
+            //     '=========== InteractiveView: rebuild with new tree nodes ${nState.nodes}');
 
             return BlocBuilder<CurrentTreeBloc, CurrentTreeState>(
               builder: (context, state) {
@@ -32,12 +32,13 @@ class InteractiveView extends StatelessWidget {
                 }
 
                 return InteractiveViewer(
-                    constrained: false,
-                    alignment: Alignment.center,
-                    boundaryMargin: const EdgeInsets.all(100),
-                    minScale: 0.01,
-                    maxScale: 5.6,
-                    child: const TreeView());
+                  constrained: false,
+                  alignment: Alignment.center,
+                  boundaryMargin: const EdgeInsets.all(100),
+                  minScale: 0.01,
+                  maxScale: 5.6,
+                  child: const TreeView(),
+                );
               },
             );
           },

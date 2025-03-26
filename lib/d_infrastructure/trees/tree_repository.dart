@@ -67,23 +67,18 @@ class TreeRepository implements ITreeRepository {
     try {
       final userOption = await getIt<IAuthFacade>().getSignedInUser();
       final user = userOption.getOrElse(() => throw NotAuthenticatedError());
-
       final userDoc = await _firestore.userDocument();
       final treesCol = _firestore.treesCollection();
-
       final treeDto = TreeDto.fromDomain(tree.copyWith(creatorId: user.id));
       final rootDto = NodeDto.fromDomain(root);
-
       //  Create Tree Doc
       await treesCol.doc(treeDto.treeId).set(treeDto.toJson());
-
       //  Create Root node doc
       await treesCol
           .doc(treeDto.treeId)
           .collection(cNodes)
           .doc(rootDto.nodeId)
           .set(rootDto.toJson());
-
       // Update user Doc with the new tree id
       await userDoc.update({
         cTrees: FieldValue.arrayUnion([tree.treeId.getOrCrash()])
@@ -128,13 +123,13 @@ class TreeRepository implements ITreeRepository {
   }
 
   @override
-  Future<Either<TreeFailure, Unit>> delete(
-      {required UniqueId treeId, required UniqueId userId}) async {
+  Future<Either<TreeFailure, Unit>> delete({required UniqueId treeId}) async {
     try {
-      // TODO: Delete the tree id from th user doc
-      // final userDoc = await _firestore.userDocument();
-
+      final userDoc = await _firestore.userDocument();
       await _firestore.treesCollection().doc(treeId.getOrCrash()).delete();
+      await userDoc.update({
+        'trees': FieldValue.arrayRemove([treeId.getOrCrash()])
+      });
 
       return right(unit);
     } on PlatformException catch (e) {

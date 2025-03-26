@@ -317,7 +317,7 @@ mixin _$TreeWatcherState {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) =>
@@ -328,7 +328,7 @@ mixin _$TreeWatcherState {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) =>
@@ -339,7 +339,7 @@ mixin _$TreeWatcherState {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
@@ -351,7 +351,7 @@ mixin _$TreeWatcherState {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) =>
@@ -362,7 +362,7 @@ mixin _$TreeWatcherState {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) =>
@@ -373,7 +373,7 @@ mixin _$TreeWatcherState {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
@@ -441,7 +441,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) {
@@ -455,7 +455,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) {
@@ -469,7 +469,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
@@ -487,7 +487,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
@@ -501,7 +501,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
@@ -515,7 +515,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
@@ -573,7 +573,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) {
@@ -587,7 +587,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) {
@@ -601,7 +601,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
@@ -619,7 +619,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
@@ -633,7 +633,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
@@ -647,7 +647,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
@@ -705,7 +705,7 @@ class _$InProgressImpl implements _InProgress {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) {
@@ -719,7 +719,7 @@ class _$InProgressImpl implements _InProgress {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) {
@@ -733,7 +733,7 @@ class _$InProgressImpl implements _InProgress {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
@@ -751,7 +751,7 @@ class _$InProgressImpl implements _InProgress {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
@@ -765,7 +765,7 @@ class _$InProgressImpl implements _InProgress {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
@@ -779,7 +779,7 @@ class _$InProgressImpl implements _InProgress {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
@@ -869,7 +869,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) {
@@ -883,7 +883,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) {
@@ -897,7 +897,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
@@ -915,7 +915,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
@@ -929,7 +929,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
@@ -943,7 +943,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
@@ -1015,7 +1015,7 @@ class _$LoadFailureImpl implements _LoadFailure {
 
   @override
   String toString() {
-    return 'TreeWatcherState.lgettingAllTreesFailure(treeFailure: $treeFailure)';
+    return 'TreeWatcherState.gettingAllTreesFailure(treeFailure: $treeFailure)';
   }
 
   @override
@@ -1043,11 +1043,11 @@ class _$LoadFailureImpl implements _LoadFailure {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) {
-    return lgettingAllTreesFailure(treeFailure);
+    return gettingAllTreesFailure(treeFailure);
   }
 
   @override
@@ -1057,11 +1057,11 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) {
-    return lgettingAllTreesFailure?.call(treeFailure);
+    return gettingAllTreesFailure?.call(treeFailure);
   }
 
   @override
@@ -1071,13 +1071,13 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
   }) {
-    if (lgettingAllTreesFailure != null) {
-      return lgettingAllTreesFailure(treeFailure);
+    if (gettingAllTreesFailure != null) {
+      return gettingAllTreesFailure(treeFailure);
     }
     return orElse();
   }
@@ -1089,11 +1089,11 @@ class _$LoadFailureImpl implements _LoadFailure {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
-    return lgettingAllTreesFailure(this);
+    return gettingAllTreesFailure(this);
   }
 
   @override
@@ -1103,11 +1103,11 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
-    return lgettingAllTreesFailure?.call(this);
+    return gettingAllTreesFailure?.call(this);
   }
 
   @override
@@ -1117,13 +1117,13 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
   }) {
-    if (lgettingAllTreesFailure != null) {
-      return lgettingAllTreesFailure(this);
+    if (gettingAllTreesFailure != null) {
+      return gettingAllTreesFailure(this);
     }
     return orElse();
   }
@@ -1217,7 +1217,7 @@ class _$GettingTreeSuccessImpl implements _GettingTreeSuccess {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) {
@@ -1231,7 +1231,7 @@ class _$GettingTreeSuccessImpl implements _GettingTreeSuccess {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) {
@@ -1245,7 +1245,7 @@ class _$GettingTreeSuccessImpl implements _GettingTreeSuccess {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
@@ -1263,7 +1263,7 @@ class _$GettingTreeSuccessImpl implements _GettingTreeSuccess {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
@@ -1277,7 +1277,7 @@ class _$GettingTreeSuccessImpl implements _GettingTreeSuccess {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
@@ -1291,7 +1291,7 @@ class _$GettingTreeSuccessImpl implements _GettingTreeSuccess {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),
@@ -1392,7 +1392,7 @@ class _$GettingTreeFailureImpl implements _GettingTreeFailure {
     required TResult Function() getAllTreesInProgress,
     required TResult Function() getTreeInProgress,
     required TResult Function(List<Tree> trees) gettingAllTreesSuccess,
-    required TResult Function(TreeFailure treeFailure) lgettingAllTreesFailure,
+    required TResult Function(TreeFailure treeFailure) gettingAllTreesFailure,
     required TResult Function(Tree tree) gettingTreeSuccess,
     required TResult Function(TreeFailure treeFailure) gettingTreeFailure,
   }) {
@@ -1406,7 +1406,7 @@ class _$GettingTreeFailureImpl implements _GettingTreeFailure {
     TResult? Function()? getAllTreesInProgress,
     TResult? Function()? getTreeInProgress,
     TResult? Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult? Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult? Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult? Function(Tree tree)? gettingTreeSuccess,
     TResult? Function(TreeFailure treeFailure)? gettingTreeFailure,
   }) {
@@ -1420,7 +1420,7 @@ class _$GettingTreeFailureImpl implements _GettingTreeFailure {
     TResult Function()? getAllTreesInProgress,
     TResult Function()? getTreeInProgress,
     TResult Function(List<Tree> trees)? gettingAllTreesSuccess,
-    TResult Function(TreeFailure treeFailure)? lgettingAllTreesFailure,
+    TResult Function(TreeFailure treeFailure)? gettingAllTreesFailure,
     TResult Function(Tree tree)? gettingTreeSuccess,
     TResult Function(TreeFailure treeFailure)? gettingTreeFailure,
     required TResult orElse(),
@@ -1438,7 +1438,7 @@ class _$GettingTreeFailureImpl implements _GettingTreeFailure {
     required TResult Function(_LoadInProgress value) getAllTreesInProgress,
     required TResult Function(_InProgress value) getTreeInProgress,
     required TResult Function(_LoadSuccess value) gettingAllTreesSuccess,
-    required TResult Function(_LoadFailure value) lgettingAllTreesFailure,
+    required TResult Function(_LoadFailure value) gettingAllTreesFailure,
     required TResult Function(_GettingTreeSuccess value) gettingTreeSuccess,
     required TResult Function(_GettingTreeFailure value) gettingTreeFailure,
   }) {
@@ -1452,7 +1452,7 @@ class _$GettingTreeFailureImpl implements _GettingTreeFailure {
     TResult? Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult? Function(_InProgress value)? getTreeInProgress,
     TResult? Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult? Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult? Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult? Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult? Function(_GettingTreeFailure value)? gettingTreeFailure,
   }) {
@@ -1466,7 +1466,7 @@ class _$GettingTreeFailureImpl implements _GettingTreeFailure {
     TResult Function(_LoadInProgress value)? getAllTreesInProgress,
     TResult Function(_InProgress value)? getTreeInProgress,
     TResult Function(_LoadSuccess value)? gettingAllTreesSuccess,
-    TResult Function(_LoadFailure value)? lgettingAllTreesFailure,
+    TResult Function(_LoadFailure value)? gettingAllTreesFailure,
     TResult Function(_GettingTreeSuccess value)? gettingTreeSuccess,
     TResult Function(_GettingTreeFailure value)? gettingTreeFailure,
     required TResult orElse(),

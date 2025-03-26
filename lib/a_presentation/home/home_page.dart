@@ -4,8 +4,10 @@ import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/home/widgets/layer_widget.dart';
 import 'package:asl/a_presentation/home/widgets/share_btn.dart';
 import 'package:asl/a_presentation/home/widgets/tree_list.dart';
+import 'package:asl/a_presentation/routes/app_router.dart';
 import 'package:asl/a_presentation/tree/interactive_viewer.dart';
 import 'package:asl/a_presentation/tree/widgets/add_new_tree.dart';
+import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
@@ -46,24 +48,24 @@ class HomePage extends StatelessWidget {
                 const EdgeInsets.symmetric(vertical: 20.0, horizontal: 14.0),
             width: size.width * 0.82,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 TextField(
                   textAlign: TextAlign.right,
                   decoration: kSearchBarInputDecor(),
                 ),
                 Container(
+                  width: size.width * 0.82,
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  height: size.height * 0.9,
+                  height: size.height * 0.813,
                   child: BlocBuilder<TreeWatcherBloc, TreeWatcherState>(
                     builder: (context, state) {
-                      print(
-                          '--------------- rebuild after loading new tree ---------------');
-
                       return state.map(
                         initial: (_) => const SizedBox(),
                         getAllTreesInProgress: (_) => const LoadingWidget(),
                         getTreeInProgress: (_) => const SizedBox(),
                         gettingAllTreesSuccess: (state) {
+                          // print('---- | state.trees: ${state.trees} | ----');
                           if (state.trees.isNotEmpty) {
                             //  (1) Update the Tree
                             //  1. Update the current tree
@@ -86,10 +88,10 @@ class HomePage extends StatelessWidget {
                             return BlocBuilder<CurrentTreeBloc,
                                 CurrentTreeState>(
                               builder: (context, state) {
-                                print(
-                                    'HomePage: rebuild after CurrentTreeBloc state changes');
-                                print(
-                                    'HomePage: CurrentTreeState.tree ${state.currentTree}');
+                                // print(
+                                //     'HomePage: rebuild after CurrentTreeBloc state changes');
+                                // print(
+                                //     'HomePage: CurrentTreeState.tree ${state.currentTree}');
                                 if (state.currentTree != null) {
                                   return const InteractiveView();
                                 } else {
@@ -108,13 +110,20 @@ class HomePage extends StatelessWidget {
                             );
                           }
                         },
-                        lgettingAllTreesFailure: (_) => const SizedBox(),
+                        gettingAllTreesFailure: (_) => const SizedBox(),
                         gettingTreeSuccess: (_) => const SizedBox(),
                         gettingTreeFailure: (_) => const SizedBox(),
                       );
                     },
                   ),
                 ),
+                IconButton(
+                  icon: const Icon(Icons.logout_outlined),
+                  onPressed: () {
+                    context.read<AuthBloc>().add(const AuthEvent.singedOut());
+                    context.router.push(const AuthRoute());
+                  },
+                )
               ],
             ),
           ),

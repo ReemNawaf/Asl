@@ -1,5 +1,7 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/failures.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/node/t_node.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,23 +13,16 @@ abstract class Relation implements _$Relation {
 
   const factory Relation({
     required UniqueId treeId,
+    required UniqueId partnerTreeId,
     required UniqueId relationId,
-    DateTime? startDate,
+    DateTime? marriageDate,
     DateTime? endDate,
-    required bool isActive,
+    required MarriageStatus marriageStatus,
     required UniqueId father,
     required UniqueId mother,
     required List<UniqueId> children,
+    TNode? partnerNode,
   }) = _Relation;
-
-  factory Relation.empty() => Relation(
-        treeId: UniqueId(),
-        relationId: UniqueId(),
-        isActive: true,
-        father: UniqueId(),
-        mother: UniqueId(),
-        children: [],
-      );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure
   //  when validating the whole entity

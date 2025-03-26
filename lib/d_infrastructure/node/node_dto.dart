@@ -2,7 +2,6 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/value_objects.dart';
-import 'package:asl/d_infrastructure/node/relation_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -23,9 +22,8 @@ abstract class NodeDto implements _$NodeDto {
     String? deathDate,
     required bool isAlive,
     required String gender,
-    required String mother,
-    required String father,
-    required List<RelationDto> relations,
+    required String upperFamily,
+    required List<String> relations,
     required List<String> fosterChildren,
   }) = _NodeDto;
 
@@ -43,9 +41,8 @@ abstract class NodeDto implements _$NodeDto {
           : DateFormat("yyyy-MM-dd").format(node.deathDate!),
       isAlive: node.isAlive,
       gender: node.gender.name,
-      mother: node.mother.getOrCrash(),
-      father: node.father.getOrCrash(),
-      relations: node.relations.map((r) => RelationDto.fromDomain(r)).toList(),
+      upperFamily: node.upperFamily.getOrCrash(),
+      relations: node.relations.map((r) => r.getOrCrash()).toList(),
       fosterChildren: node.fosterChildren.map((e) => e.getOrCrash()).toList(),
     );
   }
@@ -60,9 +57,8 @@ abstract class NodeDto implements _$NodeDto {
       deathDate: deathDate == null ? null : DateTime.parse(deathDate!),
       isAlive: isAlive,
       gender: Gender.values.byName(gender),
-      mother: UniqueId.fromUniqueString(mother),
-      father: UniqueId.fromUniqueString(father),
-      relations: relations.map((r) => r.toDomain()).toList(),
+      upperFamily: UniqueId.fromUniqueString(upperFamily),
+      relations: relations.map((r) => UniqueId.fromUniqueString(r)).toList(),
       fosterChildren:
           fosterChildren.map((e) => UniqueId.fromUniqueString(e)).toList(),
     );

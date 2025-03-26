@@ -59,7 +59,7 @@ class AppFormField extends StatelessWidget {
         ],
         SizedBox(height: spacing),
         SizedBox(
-          height: isValid ? 45.0 : 64.0,
+          height: isValid ? 38.0 : 64.0,
           child: TextFormField(
             obscureText: fieldType == FieldType.password,
             cursorColor: kBlacksColor,

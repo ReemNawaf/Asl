@@ -91,11 +91,13 @@ class _SignInFormState extends State<SignInForm> {
                   emailFocusNode: _emailFocusNode,
                   passwordFocusNode: _passwordFocusNode,
                 ),
+                kVSpacer10,
                 PasswordField(
                   passwordController: _passwordController,
                   passwordFocusNode: _passwordFocusNode,
                   authMode: _authMode,
                 ),
+                kVSpacer10,
                 ActionButton(
                   isLoading: state.isSubmitting,
                   authMode: _authMode,

@@ -1,7 +1,7 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
-import 'package:asl/a_presentation/node/widgets/siblings_wg.dart';
+import 'package:asl/a_presentation/node/widgets/siblings_wdg.dart';
 
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:flutter/material.dart';
@@ -66,12 +66,10 @@ class ParentsSiblingsPanel extends StatelessWidget {
                           ],
                         ),
                       ),
-                      kVSpacer20,
-                      const SiblingsWidget(width: T_PAN_WIDTH, ratio: 7.0),
-                      kVSpacer20,
+                      kHSpacer10,
                       const SizedBox(
                         width: T_PAN_WIDTH - 10,
-                        height: 154 - 36,
+                        height: 215,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [

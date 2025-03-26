@@ -18,14 +18,14 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TNode {
   UniqueId get treeId => throw _privateConstructorUsedError;
   UniqueId get nodeId => throw _privateConstructorUsedError;
+  bool? get isTreeRoot => throw _privateConstructorUsedError;
   FirstName get firstName => throw _privateConstructorUsedError;
   DateTime? get birthDate => throw _privateConstructorUsedError;
   DateTime? get deathDate => throw _privateConstructorUsedError;
   bool get isAlive => throw _privateConstructorUsedError;
   Gender get gender => throw _privateConstructorUsedError;
-  UniqueId get father => throw _privateConstructorUsedError;
-  UniqueId get mother => throw _privateConstructorUsedError;
-  List<Relation> get relations => throw _privateConstructorUsedError;
+  UniqueId get upperFamily => throw _privateConstructorUsedError;
+  List<UniqueId> get relations => throw _privateConstructorUsedError;
   List<UniqueId> get fosterChildren => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,14 +40,14 @@ abstract class $TNodeCopyWith<$Res> {
   $Res call(
       {UniqueId treeId,
       UniqueId nodeId,
+      bool? isTreeRoot,
       FirstName firstName,
       DateTime? birthDate,
       DateTime? deathDate,
       bool isAlive,
       Gender gender,
-      UniqueId father,
-      UniqueId mother,
-      List<Relation> relations,
+      UniqueId upperFamily,
+      List<UniqueId> relations,
       List<UniqueId> fosterChildren});
 }
 
@@ -66,13 +66,13 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
   $Res call({
     Object? treeId = null,
     Object? nodeId = null,
+    Object? isTreeRoot = freezed,
     Object? firstName = null,
     Object? birthDate = freezed,
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? father = null,
-    Object? mother = null,
+    Object? upperFamily = null,
     Object? relations = null,
     Object? fosterChildren = null,
   }) {
@@ -85,6 +85,10 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
           ? _value.nodeId
           : nodeId // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      isTreeRoot: freezed == isTreeRoot
+          ? _value.isTreeRoot
+          : isTreeRoot // ignore: cast_nullable_to_non_nullable
+              as bool?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -105,18 +109,14 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender,
-      father: null == father
-          ? _value.father
-          : father // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      mother: null == mother
-          ? _value.mother
-          : mother // ignore: cast_nullable_to_non_nullable
+      upperFamily: null == upperFamily
+          ? _value.upperFamily
+          : upperFamily // ignore: cast_nullable_to_non_nullable
               as UniqueId,
       relations: null == relations
           ? _value.relations
           : relations // ignore: cast_nullable_to_non_nullable
-              as List<Relation>,
+              as List<UniqueId>,
       fosterChildren: null == fosterChildren
           ? _value.fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
@@ -135,14 +135,14 @@ abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
   $Res call(
       {UniqueId treeId,
       UniqueId nodeId,
+      bool? isTreeRoot,
       FirstName firstName,
       DateTime? birthDate,
       DateTime? deathDate,
       bool isAlive,
       Gender gender,
-      UniqueId father,
-      UniqueId mother,
-      List<Relation> relations,
+      UniqueId upperFamily,
+      List<UniqueId> relations,
       List<UniqueId> fosterChildren});
 }
 
@@ -159,13 +159,13 @@ class __$$TNodeImplCopyWithImpl<$Res>
   $Res call({
     Object? treeId = null,
     Object? nodeId = null,
+    Object? isTreeRoot = freezed,
     Object? firstName = null,
     Object? birthDate = freezed,
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? father = null,
-    Object? mother = null,
+    Object? upperFamily = null,
     Object? relations = null,
     Object? fosterChildren = null,
   }) {
@@ -178,6 +178,10 @@ class __$$TNodeImplCopyWithImpl<$Res>
           ? _value.nodeId
           : nodeId // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      isTreeRoot: freezed == isTreeRoot
+          ? _value.isTreeRoot
+          : isTreeRoot // ignore: cast_nullable_to_non_nullable
+              as bool?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -198,20 +202,16 @@ class __$$TNodeImplCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender,
-      father: null == father
-          ? _value.father
-          : father // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      mother: null == mother
-          ? _value.mother
-          : mother // ignore: cast_nullable_to_non_nullable
+      upperFamily: null == upperFamily
+          ? _value.upperFamily
+          : upperFamily // ignore: cast_nullable_to_non_nullable
               as UniqueId,
       relations: null == relations
-          ? _value._relations
+          ? _value.relations
           : relations // ignore: cast_nullable_to_non_nullable
-              as List<Relation>,
+              as List<UniqueId>,
       fosterChildren: null == fosterChildren
-          ? _value._fosterChildren
+          ? _value.fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
               as List<UniqueId>,
     ));
@@ -224,23 +224,23 @@ class _$TNodeImpl extends _TNode {
   const _$TNodeImpl(
       {required this.treeId,
       required this.nodeId,
+      this.isTreeRoot,
       required this.firstName,
       this.birthDate,
       this.deathDate,
       required this.isAlive,
       required this.gender,
-      required this.father,
-      required this.mother,
-      required final List<Relation> relations,
-      required final List<UniqueId> fosterChildren})
-      : _relations = relations,
-        _fosterChildren = fosterChildren,
-        super._();
+      required this.upperFamily,
+      required this.relations,
+      required this.fosterChildren})
+      : super._();
 
   @override
   final UniqueId treeId;
   @override
   final UniqueId nodeId;
+  @override
+  final bool? isTreeRoot;
   @override
   final FirstName firstName;
   @override
@@ -252,28 +252,15 @@ class _$TNodeImpl extends _TNode {
   @override
   final Gender gender;
   @override
-  final UniqueId father;
+  final UniqueId upperFamily;
   @override
-  final UniqueId mother;
-  final List<Relation> _relations;
+  final List<UniqueId> relations;
   @override
-  List<Relation> get relations {
-    if (_relations is EqualUnmodifiableListView) return _relations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_relations);
-  }
-
-  final List<UniqueId> _fosterChildren;
-  @override
-  List<UniqueId> get fosterChildren {
-    if (_fosterChildren is EqualUnmodifiableListView) return _fosterChildren;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_fosterChildren);
-  }
+  final List<UniqueId> fosterChildren;
 
   @override
   String toString() {
-    return 'TNode(treeId: $treeId, nodeId: $nodeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, father: $father, mother: $mother, relations: $relations, fosterChildren: $fosterChildren)';
+    return 'TNode(treeId: $treeId, nodeId: $nodeId, isTreeRoot: $isTreeRoot, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren)';
   }
 
   @override
@@ -283,6 +270,8 @@ class _$TNodeImpl extends _TNode {
             other is _$TNodeImpl &&
             (identical(other.treeId, treeId) || other.treeId == treeId) &&
             (identical(other.nodeId, nodeId) || other.nodeId == nodeId) &&
+            (identical(other.isTreeRoot, isTreeRoot) ||
+                other.isTreeRoot == isTreeRoot) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.birthDate, birthDate) ||
@@ -291,12 +280,11 @@ class _$TNodeImpl extends _TNode {
                 other.deathDate == deathDate) &&
             (identical(other.isAlive, isAlive) || other.isAlive == isAlive) &&
             (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.father, father) || other.father == father) &&
-            (identical(other.mother, mother) || other.mother == mother) &&
+            (identical(other.upperFamily, upperFamily) ||
+                other.upperFamily == upperFamily) &&
+            const DeepCollectionEquality().equals(other.relations, relations) &&
             const DeepCollectionEquality()
-                .equals(other._relations, _relations) &&
-            const DeepCollectionEquality()
-                .equals(other._fosterChildren, _fosterChildren));
+                .equals(other.fosterChildren, fosterChildren));
   }
 
   @override
@@ -304,15 +292,15 @@ class _$TNodeImpl extends _TNode {
       runtimeType,
       treeId,
       nodeId,
+      isTreeRoot,
       firstName,
       birthDate,
       deathDate,
       isAlive,
       gender,
-      father,
-      mother,
-      const DeepCollectionEquality().hash(_relations),
-      const DeepCollectionEquality().hash(_fosterChildren));
+      upperFamily,
+      const DeepCollectionEquality().hash(relations),
+      const DeepCollectionEquality().hash(fosterChildren));
 
   @JsonKey(ignore: true)
   @override
@@ -325,14 +313,14 @@ abstract class _TNode extends TNode {
   const factory _TNode(
       {required final UniqueId treeId,
       required final UniqueId nodeId,
+      final bool? isTreeRoot,
       required final FirstName firstName,
       final DateTime? birthDate,
       final DateTime? deathDate,
       required final bool isAlive,
       required final Gender gender,
-      required final UniqueId father,
-      required final UniqueId mother,
-      required final List<Relation> relations,
+      required final UniqueId upperFamily,
+      required final List<UniqueId> relations,
       required final List<UniqueId> fosterChildren}) = _$TNodeImpl;
   const _TNode._() : super._();
 
@@ -340,6 +328,8 @@ abstract class _TNode extends TNode {
   UniqueId get treeId;
   @override
   UniqueId get nodeId;
+  @override
+  bool? get isTreeRoot;
   @override
   FirstName get firstName;
   @override
@@ -351,11 +341,9 @@ abstract class _TNode extends TNode {
   @override
   Gender get gender;
   @override
-  UniqueId get father;
+  UniqueId get upperFamily;
   @override
-  UniqueId get mother;
-  @override
-  List<Relation> get relations;
+  List<UniqueId> get relations;
   @override
   List<UniqueId> get fosterChildren;
   @override

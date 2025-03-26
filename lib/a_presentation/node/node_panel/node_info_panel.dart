@@ -2,7 +2,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/node/node_panel/node_alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
-import 'package:asl/a_presentation/node/node_panel/node_gender_btn.dart';
+import 'package:asl/a_presentation/node/widgets/node_gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:flutter/material.dart';

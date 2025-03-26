@@ -27,9 +27,8 @@ mixin _$NodeDto {
   String? get deathDate => throw _privateConstructorUsedError;
   bool get isAlive => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
-  String get mother => throw _privateConstructorUsedError;
-  String get father => throw _privateConstructorUsedError;
-  List<RelationDto> get relations => throw _privateConstructorUsedError;
+  String get upperFamily => throw _privateConstructorUsedError;
+  List<String> get relations => throw _privateConstructorUsedError;
   List<String> get fosterChildren => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,9 +49,8 @@ abstract class $NodeDtoCopyWith<$Res> {
       String? deathDate,
       bool isAlive,
       String gender,
-      String mother,
-      String father,
-      List<RelationDto> relations,
+      String upperFamily,
+      List<String> relations,
       List<String> fosterChildren});
 }
 
@@ -76,8 +74,7 @@ class _$NodeDtoCopyWithImpl<$Res, $Val extends NodeDto>
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? mother = null,
-    Object? father = null,
+    Object? upperFamily = null,
     Object? relations = null,
     Object? fosterChildren = null,
   }) {
@@ -110,18 +107,14 @@ class _$NodeDtoCopyWithImpl<$Res, $Val extends NodeDto>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      mother: null == mother
-          ? _value.mother
-          : mother // ignore: cast_nullable_to_non_nullable
-              as String,
-      father: null == father
-          ? _value.father
-          : father // ignore: cast_nullable_to_non_nullable
+      upperFamily: null == upperFamily
+          ? _value.upperFamily
+          : upperFamily // ignore: cast_nullable_to_non_nullable
               as String,
       relations: null == relations
           ? _value.relations
           : relations // ignore: cast_nullable_to_non_nullable
-              as List<RelationDto>,
+              as List<String>,
       fosterChildren: null == fosterChildren
           ? _value.fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
@@ -145,9 +138,8 @@ abstract class _$$NodeDtoImplCopyWith<$Res> implements $NodeDtoCopyWith<$Res> {
       String? deathDate,
       bool isAlive,
       String gender,
-      String mother,
-      String father,
-      List<RelationDto> relations,
+      String upperFamily,
+      List<String> relations,
       List<String> fosterChildren});
 }
 
@@ -169,8 +161,7 @@ class __$$NodeDtoImplCopyWithImpl<$Res>
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? mother = null,
-    Object? father = null,
+    Object? upperFamily = null,
     Object? relations = null,
     Object? fosterChildren = null,
   }) {
@@ -203,18 +194,14 @@ class __$$NodeDtoImplCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      mother: null == mother
-          ? _value.mother
-          : mother // ignore: cast_nullable_to_non_nullable
-              as String,
-      father: null == father
-          ? _value.father
-          : father // ignore: cast_nullable_to_non_nullable
+      upperFamily: null == upperFamily
+          ? _value.upperFamily
+          : upperFamily // ignore: cast_nullable_to_non_nullable
               as String,
       relations: null == relations
           ? _value._relations
           : relations // ignore: cast_nullable_to_non_nullable
-              as List<RelationDto>,
+              as List<String>,
       fosterChildren: null == fosterChildren
           ? _value._fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
@@ -234,9 +221,8 @@ class _$NodeDtoImpl extends _NodeDto {
       this.deathDate,
       required this.isAlive,
       required this.gender,
-      required this.mother,
-      required this.father,
-      required final List<RelationDto> relations,
+      required this.upperFamily,
+      required final List<String> relations,
       required final List<String> fosterChildren})
       : _relations = relations,
         _fosterChildren = fosterChildren,
@@ -260,12 +246,10 @@ class _$NodeDtoImpl extends _NodeDto {
   @override
   final String gender;
   @override
-  final String mother;
+  final String upperFamily;
+  final List<String> _relations;
   @override
-  final String father;
-  final List<RelationDto> _relations;
-  @override
-  List<RelationDto> get relations {
+  List<String> get relations {
     if (_relations is EqualUnmodifiableListView) return _relations;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_relations);
@@ -281,7 +265,7 @@ class _$NodeDtoImpl extends _NodeDto {
 
   @override
   String toString() {
-    return 'NodeDto(nodeId: $nodeId, treeId: $treeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, mother: $mother, father: $father, relations: $relations, fosterChildren: $fosterChildren)';
+    return 'NodeDto(nodeId: $nodeId, treeId: $treeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren)';
   }
 
   @override
@@ -299,8 +283,8 @@ class _$NodeDtoImpl extends _NodeDto {
                 other.deathDate == deathDate) &&
             (identical(other.isAlive, isAlive) || other.isAlive == isAlive) &&
             (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.mother, mother) || other.mother == mother) &&
-            (identical(other.father, father) || other.father == father) &&
+            (identical(other.upperFamily, upperFamily) ||
+                other.upperFamily == upperFamily) &&
             const DeepCollectionEquality()
                 .equals(other._relations, _relations) &&
             const DeepCollectionEquality()
@@ -318,8 +302,7 @@ class _$NodeDtoImpl extends _NodeDto {
       deathDate,
       isAlive,
       gender,
-      mother,
-      father,
+      upperFamily,
       const DeepCollectionEquality().hash(_relations),
       const DeepCollectionEquality().hash(_fosterChildren));
 
@@ -346,9 +329,8 @@ abstract class _NodeDto extends NodeDto {
       final String? deathDate,
       required final bool isAlive,
       required final String gender,
-      required final String mother,
-      required final String father,
-      required final List<RelationDto> relations,
+      required final String upperFamily,
+      required final List<String> relations,
       required final List<String> fosterChildren}) = _$NodeDtoImpl;
   const _NodeDto._() : super._();
 
@@ -369,11 +351,9 @@ abstract class _NodeDto extends NodeDto {
   @override
   String get gender;
   @override
-  String get mother;
+  String get upperFamily;
   @override
-  String get father;
-  @override
-  List<RelationDto> get relations;
+  List<String> get relations;
   @override
   List<String> get fosterChildren;
   @override

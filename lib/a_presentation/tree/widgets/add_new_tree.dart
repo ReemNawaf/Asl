@@ -70,12 +70,11 @@ Future<dynamic> showNewTreePanel(
                       type: SnackBarType.error,
                     );
                   },
-                  (_) {
-                    appSnackBar(
-                      contextPage,
-                      text: 'تم إنشاء الشجرة بنجاح',
-                      type: SnackBarType.success,
-                    );
+                  (unit) {
+                    // print('in unit tree has to be created');
+                    contextPage
+                        .read<TreeWatcherBloc>()
+                        .add(const TreeWatcherEvent.getAllTrees());
 
                     //  (1) Update the Tree
                     //  1. Update the current tree
@@ -93,11 +92,13 @@ Future<dynamic> showNewTreePanel(
                         ShareOptionEvent.initialized(
                             state.tree.shareOption ?? 0));
 
-                    contextPage
-                        .read<TreeWatcherBloc>()
-                        .add(const TreeWatcherEvent.getAllTrees());
-
                     Navigator.pop(dialogContext);
+
+                    appSnackBar(
+                      contextPage,
+                      text: 'تم إنشاء الشجرة بنجاح',
+                      type: SnackBarType.success,
+                    );
                   },
                 ),
               );
@@ -115,7 +116,7 @@ Future<dynamic> showNewTreePanel(
                       padding: const EdgeInsets.only(right: 28.0),
                       width: 300,
                       child: AppFormField(
-                        label: 'اسم الشجرة',
+                        label: 'اسم الشجرة*',
                         hint: 'شجرة عائلة ...',
                         onSaved: (_) {},
                         initialValue: '',
@@ -164,11 +165,11 @@ Future<dynamic> showNewTreePanel(
                     ),
                     RootInfoPanel(
                       color: kRootColors,
-                      height: 0.18,
+                      height: 0.2,
                       ctx: context,
                       showErrorMessages: state.showErrorMessages,
                     ),
-                    kVSpacer20,
+                    kVSpacer10,
                     NewTreeButton(isLoading: state.isSaving)
                   ],
                 ),

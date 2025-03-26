@@ -17,13 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Relation {
   UniqueId get treeId => throw _privateConstructorUsedError;
+  UniqueId get partnerTreeId => throw _privateConstructorUsedError;
   UniqueId get relationId => throw _privateConstructorUsedError;
-  DateTime? get startDate => throw _privateConstructorUsedError;
+  DateTime? get marriageDate => throw _privateConstructorUsedError;
   DateTime? get endDate => throw _privateConstructorUsedError;
-  bool get isActive => throw _privateConstructorUsedError;
+  MarriageStatus get marriageStatus => throw _privateConstructorUsedError;
   UniqueId get father => throw _privateConstructorUsedError;
   UniqueId get mother => throw _privateConstructorUsedError;
   List<UniqueId> get children => throw _privateConstructorUsedError;
+  TNode? get partnerNode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RelationCopyWith<Relation> get copyWith =>
@@ -37,13 +39,17 @@ abstract class $RelationCopyWith<$Res> {
   @useResult
   $Res call(
       {UniqueId treeId,
+      UniqueId partnerTreeId,
       UniqueId relationId,
-      DateTime? startDate,
+      DateTime? marriageDate,
       DateTime? endDate,
-      bool isActive,
+      MarriageStatus marriageStatus,
       UniqueId father,
       UniqueId mother,
-      List<UniqueId> children});
+      List<UniqueId> children,
+      TNode? partnerNode});
+
+  $TNodeCopyWith<$Res>? get partnerNode;
 }
 
 /// @nodoc
@@ -60,35 +66,41 @@ class _$RelationCopyWithImpl<$Res, $Val extends Relation>
   @override
   $Res call({
     Object? treeId = null,
+    Object? partnerTreeId = null,
     Object? relationId = null,
-    Object? startDate = freezed,
+    Object? marriageDate = freezed,
     Object? endDate = freezed,
-    Object? isActive = null,
+    Object? marriageStatus = null,
     Object? father = null,
     Object? mother = null,
     Object? children = null,
+    Object? partnerNode = freezed,
   }) {
     return _then(_value.copyWith(
       treeId: null == treeId
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      partnerTreeId: null == partnerTreeId
+          ? _value.partnerTreeId
+          : partnerTreeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
       relationId: null == relationId
           ? _value.relationId
           : relationId // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      startDate: freezed == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
+      marriageDate: freezed == marriageDate
+          ? _value.marriageDate
+          : marriageDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      marriageStatus: null == marriageStatus
+          ? _value.marriageStatus
+          : marriageStatus // ignore: cast_nullable_to_non_nullable
+              as MarriageStatus,
       father: null == father
           ? _value.father
           : father // ignore: cast_nullable_to_non_nullable
@@ -101,7 +113,23 @@ class _$RelationCopyWithImpl<$Res, $Val extends Relation>
           ? _value.children
           : children // ignore: cast_nullable_to_non_nullable
               as List<UniqueId>,
+      partnerNode: freezed == partnerNode
+          ? _value.partnerNode
+          : partnerNode // ignore: cast_nullable_to_non_nullable
+              as TNode?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res>? get partnerNode {
+    if (_value.partnerNode == null) {
+      return null;
+    }
+
+    return $TNodeCopyWith<$Res>(_value.partnerNode!, (value) {
+      return _then(_value.copyWith(partnerNode: value) as $Val);
+    });
   }
 }
 
@@ -115,13 +143,18 @@ abstract class _$$RelationImplCopyWith<$Res>
   @useResult
   $Res call(
       {UniqueId treeId,
+      UniqueId partnerTreeId,
       UniqueId relationId,
-      DateTime? startDate,
+      DateTime? marriageDate,
       DateTime? endDate,
-      bool isActive,
+      MarriageStatus marriageStatus,
       UniqueId father,
       UniqueId mother,
-      List<UniqueId> children});
+      List<UniqueId> children,
+      TNode? partnerNode});
+
+  @override
+  $TNodeCopyWith<$Res>? get partnerNode;
 }
 
 /// @nodoc
@@ -136,35 +169,41 @@ class __$$RelationImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? treeId = null,
+    Object? partnerTreeId = null,
     Object? relationId = null,
-    Object? startDate = freezed,
+    Object? marriageDate = freezed,
     Object? endDate = freezed,
-    Object? isActive = null,
+    Object? marriageStatus = null,
     Object? father = null,
     Object? mother = null,
     Object? children = null,
+    Object? partnerNode = freezed,
   }) {
     return _then(_$RelationImpl(
       treeId: null == treeId
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      partnerTreeId: null == partnerTreeId
+          ? _value.partnerTreeId
+          : partnerTreeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
       relationId: null == relationId
           ? _value.relationId
           : relationId // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      startDate: freezed == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
+      marriageDate: freezed == marriageDate
+          ? _value.marriageDate
+          : marriageDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      marriageStatus: null == marriageStatus
+          ? _value.marriageStatus
+          : marriageStatus // ignore: cast_nullable_to_non_nullable
+              as MarriageStatus,
       father: null == father
           ? _value.father
           : father // ignore: cast_nullable_to_non_nullable
@@ -177,6 +216,10 @@ class __$$RelationImplCopyWithImpl<$Res>
           ? _value._children
           : children // ignore: cast_nullable_to_non_nullable
               as List<UniqueId>,
+      partnerNode: freezed == partnerNode
+          ? _value.partnerNode
+          : partnerNode // ignore: cast_nullable_to_non_nullable
+              as TNode?,
     ));
   }
 }
@@ -186,26 +229,30 @@ class __$$RelationImplCopyWithImpl<$Res>
 class _$RelationImpl extends _Relation {
   const _$RelationImpl(
       {required this.treeId,
+      required this.partnerTreeId,
       required this.relationId,
-      this.startDate,
+      this.marriageDate,
       this.endDate,
-      required this.isActive,
+      required this.marriageStatus,
       required this.father,
       required this.mother,
-      required final List<UniqueId> children})
+      required final List<UniqueId> children,
+      this.partnerNode})
       : _children = children,
         super._();
 
   @override
   final UniqueId treeId;
   @override
+  final UniqueId partnerTreeId;
+  @override
   final UniqueId relationId;
   @override
-  final DateTime? startDate;
+  final DateTime? marriageDate;
   @override
   final DateTime? endDate;
   @override
-  final bool isActive;
+  final MarriageStatus marriageStatus;
   @override
   final UniqueId father;
   @override
@@ -219,8 +266,11 @@ class _$RelationImpl extends _Relation {
   }
 
   @override
+  final TNode? partnerNode;
+
+  @override
   String toString() {
-    return 'Relation(treeId: $treeId, relationId: $relationId, startDate: $startDate, endDate: $endDate, isActive: $isActive, father: $father, mother: $mother, children: $children)';
+    return 'Relation(treeId: $treeId, partnerTreeId: $partnerTreeId, relationId: $relationId, marriageDate: $marriageDate, endDate: $endDate, marriageStatus: $marriageStatus, father: $father, mother: $mother, children: $children, partnerNode: $partnerNode)';
   }
 
   @override
@@ -229,29 +279,35 @@ class _$RelationImpl extends _Relation {
         (other.runtimeType == runtimeType &&
             other is _$RelationImpl &&
             (identical(other.treeId, treeId) || other.treeId == treeId) &&
+            (identical(other.partnerTreeId, partnerTreeId) ||
+                other.partnerTreeId == partnerTreeId) &&
             (identical(other.relationId, relationId) ||
                 other.relationId == relationId) &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
+            (identical(other.marriageDate, marriageDate) ||
+                other.marriageDate == marriageDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.isActive, isActive) ||
-                other.isActive == isActive) &&
+            (identical(other.marriageStatus, marriageStatus) ||
+                other.marriageStatus == marriageStatus) &&
             (identical(other.father, father) || other.father == father) &&
             (identical(other.mother, mother) || other.mother == mother) &&
-            const DeepCollectionEquality().equals(other._children, _children));
+            const DeepCollectionEquality().equals(other._children, _children) &&
+            (identical(other.partnerNode, partnerNode) ||
+                other.partnerNode == partnerNode));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       treeId,
+      partnerTreeId,
       relationId,
-      startDate,
+      marriageDate,
       endDate,
-      isActive,
+      marriageStatus,
       father,
       mother,
-      const DeepCollectionEquality().hash(_children));
+      const DeepCollectionEquality().hash(_children),
+      partnerNode);
 
   @JsonKey(ignore: true)
   @override
@@ -263,31 +319,37 @@ class _$RelationImpl extends _Relation {
 abstract class _Relation extends Relation {
   const factory _Relation(
       {required final UniqueId treeId,
+      required final UniqueId partnerTreeId,
       required final UniqueId relationId,
-      final DateTime? startDate,
+      final DateTime? marriageDate,
       final DateTime? endDate,
-      required final bool isActive,
+      required final MarriageStatus marriageStatus,
       required final UniqueId father,
       required final UniqueId mother,
-      required final List<UniqueId> children}) = _$RelationImpl;
+      required final List<UniqueId> children,
+      final TNode? partnerNode}) = _$RelationImpl;
   const _Relation._() : super._();
 
   @override
   UniqueId get treeId;
   @override
+  UniqueId get partnerTreeId;
+  @override
   UniqueId get relationId;
   @override
-  DateTime? get startDate;
+  DateTime? get marriageDate;
   @override
   DateTime? get endDate;
   @override
-  bool get isActive;
+  MarriageStatus get marriageStatus;
   @override
   UniqueId get father;
   @override
   UniqueId get mother;
   @override
   List<UniqueId> get children;
+  @override
+  TNode? get partnerNode;
   @override
   @JsonKey(ignore: true)
   _$$RelationImplCopyWith<_$RelationImpl> get copyWith =>

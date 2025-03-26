@@ -22,9 +22,10 @@ RelationDto _$RelationDtoFromJson(Map<String, dynamic> json) {
 mixin _$RelationDto {
   String? get relationId => throw _privateConstructorUsedError;
   String get treeId => throw _privateConstructorUsedError;
+  String get partnerTreeId => throw _privateConstructorUsedError;
   String? get startDate => throw _privateConstructorUsedError;
   String? get endDate => throw _privateConstructorUsedError;
-  bool get isActive => throw _privateConstructorUsedError;
+  String get marriageStatus => throw _privateConstructorUsedError;
   String get mother => throw _privateConstructorUsedError;
   String get father => throw _privateConstructorUsedError;
   List<String> get children => throw _privateConstructorUsedError;
@@ -44,9 +45,10 @@ abstract class $RelationDtoCopyWith<$Res> {
   $Res call(
       {String? relationId,
       String treeId,
+      String partnerTreeId,
       String? startDate,
       String? endDate,
-      bool isActive,
+      String marriageStatus,
       String mother,
       String father,
       List<String> children});
@@ -67,9 +69,10 @@ class _$RelationDtoCopyWithImpl<$Res, $Val extends RelationDto>
   $Res call({
     Object? relationId = freezed,
     Object? treeId = null,
+    Object? partnerTreeId = null,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? isActive = null,
+    Object? marriageStatus = null,
     Object? mother = null,
     Object? father = null,
     Object? children = null,
@@ -83,6 +86,10 @@ class _$RelationDtoCopyWithImpl<$Res, $Val extends RelationDto>
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as String,
+      partnerTreeId: null == partnerTreeId
+          ? _value.partnerTreeId
+          : partnerTreeId // ignore: cast_nullable_to_non_nullable
+              as String,
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -91,10 +98,10 @@ class _$RelationDtoCopyWithImpl<$Res, $Val extends RelationDto>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      marriageStatus: null == marriageStatus
+          ? _value.marriageStatus
+          : marriageStatus // ignore: cast_nullable_to_non_nullable
+              as String,
       mother: null == mother
           ? _value.mother
           : mother // ignore: cast_nullable_to_non_nullable
@@ -122,9 +129,10 @@ abstract class _$$RelationDtoImplCopyWith<$Res>
   $Res call(
       {String? relationId,
       String treeId,
+      String partnerTreeId,
       String? startDate,
       String? endDate,
-      bool isActive,
+      String marriageStatus,
       String mother,
       String father,
       List<String> children});
@@ -143,9 +151,10 @@ class __$$RelationDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? relationId = freezed,
     Object? treeId = null,
+    Object? partnerTreeId = null,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? isActive = null,
+    Object? marriageStatus = null,
     Object? mother = null,
     Object? father = null,
     Object? children = null,
@@ -159,6 +168,10 @@ class __$$RelationDtoImplCopyWithImpl<$Res>
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as String,
+      partnerTreeId: null == partnerTreeId
+          ? _value.partnerTreeId
+          : partnerTreeId // ignore: cast_nullable_to_non_nullable
+              as String,
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -167,10 +180,10 @@ class __$$RelationDtoImplCopyWithImpl<$Res>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      marriageStatus: null == marriageStatus
+          ? _value.marriageStatus
+          : marriageStatus // ignore: cast_nullable_to_non_nullable
+              as String,
       mother: null == mother
           ? _value.mother
           : mother // ignore: cast_nullable_to_non_nullable
@@ -193,9 +206,10 @@ class _$RelationDtoImpl extends _RelationDto {
   const _$RelationDtoImpl(
       {this.relationId,
       required this.treeId,
+      required this.partnerTreeId,
       this.startDate,
       this.endDate,
-      required this.isActive,
+      required this.marriageStatus,
       required this.mother,
       required this.father,
       required final List<String> children})
@@ -210,11 +224,13 @@ class _$RelationDtoImpl extends _RelationDto {
   @override
   final String treeId;
   @override
+  final String partnerTreeId;
+  @override
   final String? startDate;
   @override
   final String? endDate;
   @override
-  final bool isActive;
+  final String marriageStatus;
   @override
   final String mother;
   @override
@@ -229,7 +245,7 @@ class _$RelationDtoImpl extends _RelationDto {
 
   @override
   String toString() {
-    return 'RelationDto(relationId: $relationId, treeId: $treeId, startDate: $startDate, endDate: $endDate, isActive: $isActive, mother: $mother, father: $father, children: $children)';
+    return 'RelationDto(relationId: $relationId, treeId: $treeId, partnerTreeId: $partnerTreeId, startDate: $startDate, endDate: $endDate, marriageStatus: $marriageStatus, mother: $mother, father: $father, children: $children)';
   }
 
   @override
@@ -240,11 +256,13 @@ class _$RelationDtoImpl extends _RelationDto {
             (identical(other.relationId, relationId) ||
                 other.relationId == relationId) &&
             (identical(other.treeId, treeId) || other.treeId == treeId) &&
+            (identical(other.partnerTreeId, partnerTreeId) ||
+                other.partnerTreeId == partnerTreeId) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.isActive, isActive) ||
-                other.isActive == isActive) &&
+            (identical(other.marriageStatus, marriageStatus) ||
+                other.marriageStatus == marriageStatus) &&
             (identical(other.mother, mother) || other.mother == mother) &&
             (identical(other.father, father) || other.father == father) &&
             const DeepCollectionEquality().equals(other._children, _children));
@@ -256,9 +274,10 @@ class _$RelationDtoImpl extends _RelationDto {
       runtimeType,
       relationId,
       treeId,
+      partnerTreeId,
       startDate,
       endDate,
-      isActive,
+      marriageStatus,
       mother,
       father,
       const DeepCollectionEquality().hash(_children));
@@ -281,9 +300,10 @@ abstract class _RelationDto extends RelationDto {
   const factory _RelationDto(
       {final String? relationId,
       required final String treeId,
+      required final String partnerTreeId,
       final String? startDate,
       final String? endDate,
-      required final bool isActive,
+      required final String marriageStatus,
       required final String mother,
       required final String father,
       required final List<String> children}) = _$RelationDtoImpl;
@@ -297,11 +317,13 @@ abstract class _RelationDto extends RelationDto {
   @override
   String get treeId;
   @override
+  String get partnerTreeId;
+  @override
   String? get startDate;
   @override
   String? get endDate;
   @override
-  bool get isActive;
+  String get marriageStatus;
   @override
   String get mother;
   @override

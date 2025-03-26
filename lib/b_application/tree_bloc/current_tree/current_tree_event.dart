@@ -7,4 +7,7 @@ abstract class CurrentTreeEvent with _$CurrentTreeEvent {
       {required Tree currentTree, required List<Tree> trees}) = _Initialized;
   const factory CurrentTreeEvent.updated({required Tree currentTree}) =
       _Updated;
+
+  const factory CurrentTreeEvent.updateAllTree({required List<Tree> trees}) =
+      _UpdateAllTree;
 }

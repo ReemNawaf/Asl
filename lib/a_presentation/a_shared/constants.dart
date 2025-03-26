@@ -2,7 +2,7 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
-const int MIM_HEIGHT = 810;
+const int MIM_HEIGHT = 640;
 const int MIM_WIDTH = 920;
 const double PAN_HEIGHT = 420;
 const double PAN_SM_HEIGHT = 280;
@@ -21,6 +21,14 @@ enum Gender { male, female }
 enum FieldType { email, password, text }
 
 enum AuthMode { signin, signup }
+
+enum MarriageStatus { married, divorced, widowhood }
+
+const marriageSt = {
+  MarriageStatus.divorced: 'مطلق',
+  MarriageStatus.married: 'متزوج',
+  MarriageStatus.widowhood: 'أرمل',
+};
 
 const kVSpacer5 = SizedBox(height: 5.0);
 const kVSpacer10 = SizedBox(height: 10.0);

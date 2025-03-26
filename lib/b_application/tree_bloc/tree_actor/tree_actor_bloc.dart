@@ -23,8 +23,7 @@ class TreeActorBloc extends Bloc<TreeActorEvent, TreeActorState> {
     Emitter<TreeActorState> emit,
   ) async {
     const TreeActorState.actionInProgress();
-    final possibleFailure = await _treeRepository.delete(
-        userId: event.uderId, treeId: event.treeId);
+    final possibleFailure = await _treeRepository.delete(treeId: event.treeId);
     emit(possibleFailure.fold(
       (f) => TreeActorState.deleteFailure(f),
       (_) => const TreeActorState.deleteSuccess(),

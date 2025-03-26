@@ -28,10 +28,10 @@ class SiblingsWidget extends StatelessWidget {
           children: [
             const Text('الأشقاء', style: kFootnoteStyle),
             if (hasSiblings) ...[
-              kVSpacer20,
+              kVSpacer10,
               SizedBox(
                 width: width,
-                height: 151,
+                height: 135,
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,

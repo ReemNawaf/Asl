@@ -5,6 +5,7 @@ import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:asl/a_presentation/core/widgets/icon_only_btn.dart';
 import 'package:asl/a_presentation/node/node_panel/node_info_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/parents_brothers_panel.dart';
+import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
@@ -117,7 +118,7 @@ class MainPanel extends StatelessWidget {
                             children: [
                               InfoPanel(color: color, ctx: context),
                               ParentsSiblingsPanel(color: color),
-                              const Icon(Icons.directions_bike),
+                              RelationsPanel(color: color, node: node),
                               const Icon(Icons.directions_bike),
                             ],
                           ),

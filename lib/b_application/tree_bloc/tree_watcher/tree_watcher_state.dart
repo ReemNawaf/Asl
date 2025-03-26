@@ -8,7 +8,7 @@ abstract class TreeWatcherState with _$TreeWatcherState {
 
   const factory TreeWatcherState.gettingAllTreesSuccess(List<Tree> trees) =
       _LoadSuccess;
-  const factory TreeWatcherState.lgettingAllTreesFailure(
+  const factory TreeWatcherState.gettingAllTreesFailure(
       TreeFailure treeFailure) = _LoadFailure;
 
   const factory TreeWatcherState.gettingTreeSuccess(Tree tree) =

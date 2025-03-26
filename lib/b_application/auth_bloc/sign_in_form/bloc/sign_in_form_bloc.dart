@@ -124,7 +124,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         ));
         // 2.  then directe it to the logic in the domain layer (IAuthFacade)
         final failureOrSuccess = await _authFacade.signInWithGoogle();
-
         // 3. yield the state of done submitting with response
         emit(state.copyWith(
           isGoogleSubmitting: false,
@@ -139,31 +138,31 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     );
   }
 
-  Future<SignInFormState> _performActionFacadeWithEmailAndPassword(
-    Future<Either<AuthFailure, Unit>> Function(
-            {required EmailAddress emailAddress, required Password password})
-        forwardedCall,
-  ) async {
-    Either<AuthFailure, Unit>? failureOrSuccess;
+  // Future<SignInFormState> _performActionFacadeWithEmailAndPassword(
+  //   Future<Either<AuthFailure, Unit>> Function(
+  //           {required EmailAddress emailAddress, required Password password})
+  //       forwardedCall,
+  // ) async {
+  //   Either<AuthFailure, Unit>? failureOrSuccess;
 
-    final isEmailValid = state.emailAddress.isValid();
-    final isPasswordValid = state.password.isValid();
+  //   final isEmailValid = state.emailAddress.isValid();
+  //   final isPasswordValid = state.password.isValid();
 
-    if (isEmailValid && isPasswordValid) {
-      failureOrSuccess = await forwardedCall(
-          emailAddress: state.emailAddress, password: state.password);
+  //   if (isEmailValid && isPasswordValid) {
+  //     failureOrSuccess = await forwardedCall(
+  //         emailAddress: state.emailAddress, password: state.password);
 
-      return state.copyWith(
-        isSubmitting: true,
-        isValidated: true,
-        showErrorMessage: AutovalidateMode.always,
-        authFailureOrSuccessOption: optionOf(failureOrSuccess),
-      );
-    }
-    return state.copyWith(
-      isSubmitting: false,
-      showErrorMessage: AutovalidateMode.always,
-      authFailureOrSuccessOption: optionOf(failureOrSuccess),
-    );
-  }
+  //     return state.copyWith(
+  //       isSubmitting: true,
+  //       isValidated: true,
+  //       showErrorMessage: AutovalidateMode.always,
+  //       authFailureOrSuccessOption: optionOf(failureOrSuccess),
+  //     );
+  //   }
+  //   return state.copyWith(
+  //     isSubmitting: false,
+  //     showErrorMessage: AutovalidateMode.always,
+  //     authFailureOrSuccessOption: optionOf(failureOrSuccess),
+  //   );
+  // }
 }

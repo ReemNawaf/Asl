@@ -69,7 +69,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         ));
       },
       birthDateChanged: (e) async {
-        print('birthDateChanged changed to ${e.date} ');
+        // print('birthDateChanged changed to ${e.date} ');
         emit(state.copyWith(
             node: state.node.copyWith(birthDate: e.date),
             // to get rid of any previous failure
@@ -91,6 +91,13 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       changeGender: (e) async {
         emit(state.copyWith(
           node: state.node.copyWith(gender: e.gender),
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      makeItRoot: (e) async {
+        emit(state.copyWith(
+          node: state.node.copyWith(isTreeRoot: true),
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));

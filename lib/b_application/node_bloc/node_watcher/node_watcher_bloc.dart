@@ -33,7 +33,7 @@ class NodeWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
   ) async {
     await event.map(
       watchAllStarted: (e) async {
-        print('---------- ************* | watchAllStarted');
+        print('---------- | watchAllStarted');
         emit(const NodeWatcherState.loadInProgress());
 
         _nodeStreamSubscription = _nodeRepository
@@ -47,7 +47,7 @@ class NodeWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
         emit(e.failureOrNodes.fold(
           (f) => NodeWatcherState.loadFailure(f),
           (nodes) {
-            print('nodesReceived: get the nodes $nodes');
+            // print('nodesReceived: get the nodes $nodes');
             return NodeWatcherState.loadSuccess(tree: e.tree, nodes: nodes);
           },
         ));

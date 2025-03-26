@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
 const String NODES_COLLECTION = 'nodes';
+const String RELATIONS_COLLECTION = 'relations';
 
 @LazySingleton(as: INodeRepository)
 class NodeRepository implements INodeRepository {
@@ -45,13 +46,12 @@ class NodeRepository implements INodeRepository {
     try {
       // final userDoc = await _firestore.userDocument();
 
-      final node = _firestore
+      final node = await _firestore
           .treesCollection()
           .doc(treeId.getOrCrash())
           .collection(NODES_COLLECTION)
           .doc(nodeId.getOrCrash())
-          .get() as DocumentSnapshot<Map<String, dynamic>>;
-
+          .get();
       return right(NodeDto.fromFirestore(node).toDomain());
     } on PlatformException catch (e) {
       if (e is FirebaseException &&

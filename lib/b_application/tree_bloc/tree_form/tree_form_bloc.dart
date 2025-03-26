@@ -53,7 +53,6 @@ class TreeFormBloc extends Bloc<TreeFormEvent, TreeFormState> {
       changeTreeName: (e) async {
         emit(state.copyWith(
           tree: state.tree.copyWith(treeName: TreeName(e.treeName)),
-          // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
@@ -62,35 +61,30 @@ class TreeFormBloc extends Bloc<TreeFormEvent, TreeFormState> {
           tree: state.tree.copyWith(fullName: FullName(e.rootName)),
           root:
               state.root.copyWith(firstName: FirstName.fromString(e.rootName)),
-          // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
       changeRootBirthDate: (e) async {
         emit(state.copyWith(
           root: state.root.copyWith(birthDate: e.birthdate),
-          // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
       changeRootDeathDate: (e) async {
         emit(state.copyWith(
           root: state.root.copyWith(deathDate: e.deathdate),
-          // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
       changeRootIsAvlive: (e) async {
         emit(state.copyWith(
           root: state.root.copyWith(isAlive: e.isAlive),
-          // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
       changeRootGender: (e) async {
         emit(state.copyWith(
           root: state.root.copyWith(gender: e.gender),
-          // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
@@ -101,7 +95,6 @@ class TreeFormBloc extends Bloc<TreeFormEvent, TreeFormState> {
         emit(state.copyWith(
           isSaving: true,
           isEditing: false,
-          // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
         // check the tree validation

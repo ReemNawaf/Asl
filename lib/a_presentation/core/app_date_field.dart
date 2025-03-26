@@ -18,22 +18,23 @@ class AppDateField extends StatelessWidget {
   final bool isEditing;
   final DateTime? startDate;
   final DateTime? endDate;
+  final bool withPadding;
 
-  const AppDateField({
-    super.key,
-    required this.label,
-    required this.hint,
-    required this.validate,
-    required this.save,
-    this.spacing = 10,
-    this.isValid = true,
-    required this.formKey,
-    required this.changeDate,
-    required this.dateController,
-    this.isEditing = false,
-    this.startDate,
-    this.endDate,
-  });
+  const AppDateField(
+      {super.key,
+      required this.label,
+      required this.hint,
+      required this.validate,
+      required this.save,
+      this.spacing = 10,
+      this.isValid = true,
+      required this.formKey,
+      required this.changeDate,
+      required this.dateController,
+      this.isEditing = false,
+      this.startDate,
+      this.endDate,
+      this.withPadding = true});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class AppDateField extends StatelessWidget {
     }
 
     return Padding(
-      padding: kAppHPadding,
+      padding: withPadding ? kAppHPadding : EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

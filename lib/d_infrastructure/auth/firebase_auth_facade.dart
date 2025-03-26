@@ -88,7 +88,9 @@ class FirebaseAuthFacade implements IAuthFacade {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       // For security purposes || or is used to check email and password as a compenation
-      if ((e.code == 'invalid-credential' || e.code == 'user-not-found')) {
+      if ((e.code == 'wrong-password' ||
+          e.code == 'invalid-credential' ||
+          e.code == 'user-not-found')) {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         // the general one
@@ -102,19 +104,14 @@ class FirebaseAuthFacade implements IAuthFacade {
     try {
       //  web
       GoogleAuthProvider googleProvider = GoogleAuthProvider();
-
       final UserCredential authUserCredential =
-          await firebaseAuth!.signInWithPopup(
-        googleProvider,
-      );
-
-      // // 1.
+          await firebaseAuth!.signInWithPopup(googleProvider);
+      // 1.
       // final googleUser = await googleSignIn!.signIn();
-
       // if (googleUser == null) {
       //   return left(const AuthFailure.cancelledByUser());
       // }
-      // // 2. For FirebaseAuth,
+      // // // 2. For FirebaseAuth,
       // final googleAuthentication = await googleUser.authentication;
       // // 3. For FirebaseFirestore (credential),
       // final authCredential = GoogleAuthProvider.credential(
@@ -124,12 +121,10 @@ class FirebaseAuthFacade implements IAuthFacade {
       // // 4.
       // final authUserCredential =
       //     await firebaseAuth!.signInWithCredential(authCredential);
-
-      if (authUserCredential.additionalUserInfo!.isNewUser) {
-        //  Adding a new user
-        await createNewUserInFirstore(userCredential: authUserCredential);
-      }
-
+      // if (authUserCredential.additionalUserInfo!.isNewUser) {
+      //   //  Adding a new user
+      //   await createNewUserInFirstore(userCredential: authUserCredential);
+      // }
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('id', authUserCredential.user!.uid);
       prefs.setBool('auth', true);

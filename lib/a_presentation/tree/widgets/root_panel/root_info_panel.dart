@@ -39,7 +39,7 @@ class RootInfoPanel extends StatelessWidget {
               width: 250,
               height: 90,
               child: AppFormField(
-                label: 'الاسم',
+                label: 'الاسم*',
                 hint: 'الاسم الأول والأخير',
                 onSaved: (_) {},
                 initialValue: '',

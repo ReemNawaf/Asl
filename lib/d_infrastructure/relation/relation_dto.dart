@@ -1,5 +1,6 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
-import 'package:asl/c_domain/node/relation.dart';
+import 'package:asl/c_domain/relation/relation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -15,9 +16,10 @@ abstract class RelationDto implements _$RelationDto {
   const factory RelationDto({
     String? relationId,
     required String treeId,
+    required String partnerTreeId,
     String? startDate,
     String? endDate,
-    required bool isActive,
+    required String marriageStatus,
     required String mother,
     required String father,
     required List<String> children,
@@ -28,16 +30,17 @@ abstract class RelationDto implements _$RelationDto {
     return RelationDto(
       relationId: relation.relationId.getOrCrash(),
       treeId: relation.treeId.getOrCrash(),
-      startDate: relation.startDate == null
+      startDate: relation.marriageDate == null
           ? null
-          : DateFormat("yyyy-MM-dd").format(relation.startDate!),
+          : DateFormat("yyyy-MM-dd").format(relation.marriageDate!),
       endDate: relation.endDate == null
           ? null
           : DateFormat("yyyy-MM-dd").format(relation.endDate!),
-      isActive: relation.isActive,
+      marriageStatus: relation.marriageStatus.name,
       mother: relation.mother.getOrCrash(),
       father: relation.father.getOrCrash(),
       children: relation.children.map((e) => e.getOrCrash()).toList(),
+      partnerTreeId: relation.partnerTreeId.getOrCrash(),
     );
   }
 
@@ -46,12 +49,13 @@ abstract class RelationDto implements _$RelationDto {
     return Relation(
       relationId: UniqueId.fromUniqueString(relationId!),
       treeId: UniqueId.fromUniqueString(treeId),
-      startDate: startDate == null ? null : DateTime.parse(startDate!),
+      marriageDate: startDate == null ? null : DateTime.parse(startDate!),
       endDate: endDate == null ? null : DateTime.parse(endDate!),
-      isActive: isActive,
+      marriageStatus: MarriageStatus.values.byName(marriageStatus),
       mother: UniqueId.fromUniqueString(mother),
       father: UniqueId.fromUniqueString(father),
       children: children.map((e) => UniqueId.fromUniqueString(e)).toList(),
+      partnerTreeId: UniqueId.fromUniqueString(partnerTreeId),
     );
   }
 

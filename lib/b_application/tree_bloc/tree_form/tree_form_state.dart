@@ -19,8 +19,7 @@ abstract class TreeFormState with _$TreeFormState {
     final root = TNode.empty().copyWith(
       nodeId: tree.rootId,
       treeId: tree.treeId,
-      father: tree.treeId,
-      mother: tree.treeId,
+      upperFamily: tree.treeId,
     );
 
     return TreeFormState(
