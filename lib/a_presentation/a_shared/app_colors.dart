@@ -88,6 +88,7 @@ const MaterialColor kOutColors = MaterialColor(
     300: Color(0xFFABABAB),
     400: Color(0xFFC7C7C7),
     500: Color(0xFFE0E0E0),
+    600: Color(0xFFDFDFDF),
     810: Color(0xFFE0E0E0), // share
     830: Color(0xFF808080), // share
     820: Color(0xFFC7C7C7), // share

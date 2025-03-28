@@ -21,7 +21,9 @@ abstract class Relation implements _$Relation {
     required UniqueId father,
     required UniqueId mother,
     required List<UniqueId> children,
+    TNode? mainNode,
     TNode? partnerNode,
+    List<TNode>? childrenNodes,
   }) = _Relation;
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

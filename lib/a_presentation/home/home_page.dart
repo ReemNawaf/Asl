@@ -43,21 +43,12 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 14.0),
+          SizedBox(
             width: size.width * 0.82,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+            child: Stack(
               children: [
-                TextField(
-                  textAlign: TextAlign.right,
-                  decoration: kSearchBarInputDecor(),
-                ),
-                Container(
+                SizedBox(
                   width: size.width * 0.82,
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  height: size.height * 0.813,
                   child: BlocBuilder<TreeWatcherBloc, TreeWatcherState>(
                     builder: (context, state) {
                       return state.map(
@@ -71,14 +62,14 @@ class HomePage extends StatelessWidget {
                             //  1. Update the current tree
                             context.read<CurrentTreeBloc>().add(
                                   CurrentTreeEvent.initialized(
-                                      currentTree: state.trees.first,
-                                      trees: state.trees),
+                                    currentTree: state.trees.first,
+                                    trees: state.trees,
+                                  ),
                                 );
 
                             //  2. Update the current nodes
                             context.read<NodeWatcherBloc>().add(
-                                NodeWatcherEvent.watchAllStarted(
-                                    state.trees.first));
+                                NodeWatcherEvent.getTree(state.trees.first));
 
                             //  3. Update the share settings
                             context.read<ShareOptionBloc>().add(
@@ -88,10 +79,6 @@ class HomePage extends StatelessWidget {
                             return BlocBuilder<CurrentTreeBloc,
                                 CurrentTreeState>(
                               builder: (context, state) {
-                                // print(
-                                //     'HomePage: rebuild after CurrentTreeBloc state changes');
-                                // print(
-                                //     'HomePage: CurrentTreeState.tree ${state.currentTree}');
                                 if (state.currentTree != null) {
                                   return const InteractiveView();
                                 } else {
@@ -117,13 +104,24 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.logout_outlined),
-                  onPressed: () {
-                    context.read<AuthBloc>().add(const AuthEvent.singedOut());
-                    context.router.push(const AuthRoute());
-                  },
-                )
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 14.0, right: 14.0, top: 14.0),
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    decoration: kSearchBarInputDecor(),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.bottomLeft,
+                  child: IconButton(
+                    icon: const Icon(Icons.logout_outlined),
+                    onPressed: () {
+                      context.read<AuthBloc>().add(const AuthEvent.singedOut());
+                      context.router.push(const AuthRoute());
+                    },
+                  ),
+                ),
               ],
             ),
           ),

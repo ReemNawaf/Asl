@@ -17,23 +17,23 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DrawTreeEvent {
   Tree get tree => throw _privateConstructorUsedError;
-  List<TNode> get nodes => throw _privateConstructorUsedError;
+  TNode get root => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree, List<TNode> nodes) initialized,
-    required TResult Function(Tree tree, List<TNode> nodes) drawNewTree,
+    required TResult Function(Tree tree, TNode root) initialized,
+    required TResult Function(Tree tree, TNode root) drawNewTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree, List<TNode> nodes)? initialized,
-    TResult? Function(Tree tree, List<TNode> nodes)? drawNewTree,
+    TResult? Function(Tree tree, TNode root)? initialized,
+    TResult? Function(Tree tree, TNode root)? drawNewTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree, List<TNode> nodes)? initialized,
-    TResult Function(Tree tree, List<TNode> nodes)? drawNewTree,
+    TResult Function(Tree tree, TNode root)? initialized,
+    TResult Function(Tree tree, TNode root)? drawNewTree,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,9 +68,10 @@ abstract class $DrawTreeEventCopyWith<$Res> {
           DrawTreeEvent value, $Res Function(DrawTreeEvent) then) =
       _$DrawTreeEventCopyWithImpl<$Res, DrawTreeEvent>;
   @useResult
-  $Res call({Tree tree, List<TNode> nodes});
+  $Res call({Tree tree, TNode root});
 
   $TreeCopyWith<$Res> get tree;
+  $TNodeCopyWith<$Res> get root;
 }
 
 /// @nodoc
@@ -87,17 +88,17 @@ class _$DrawTreeEventCopyWithImpl<$Res, $Val extends DrawTreeEvent>
   @override
   $Res call({
     Object? tree = null,
-    Object? nodes = null,
+    Object? root = null,
   }) {
     return _then(_value.copyWith(
       tree: null == tree
           ? _value.tree
           : tree // ignore: cast_nullable_to_non_nullable
               as Tree,
-      nodes: null == nodes
-          ? _value.nodes
-          : nodes // ignore: cast_nullable_to_non_nullable
-              as List<TNode>,
+      root: null == root
+          ? _value.root
+          : root // ignore: cast_nullable_to_non_nullable
+              as TNode,
     ) as $Val);
   }
 
@@ -106,6 +107,14 @@ class _$DrawTreeEventCopyWithImpl<$Res, $Val extends DrawTreeEvent>
   $TreeCopyWith<$Res> get tree {
     return $TreeCopyWith<$Res>(_value.tree, (value) {
       return _then(_value.copyWith(tree: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res> get root {
+    return $TNodeCopyWith<$Res>(_value.root, (value) {
+      return _then(_value.copyWith(root: value) as $Val);
     });
   }
 }
@@ -118,10 +127,12 @@ abstract class _$$InitializedImplCopyWith<$Res>
       __$$InitializedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Tree tree, List<TNode> nodes});
+  $Res call({Tree tree, TNode root});
 
   @override
   $TreeCopyWith<$Res> get tree;
+  @override
+  $TNodeCopyWith<$Res> get root;
 }
 
 /// @nodoc
@@ -136,17 +147,17 @@ class __$$InitializedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tree = null,
-    Object? nodes = null,
+    Object? root = null,
   }) {
     return _then(_$InitializedImpl(
       tree: null == tree
           ? _value.tree
           : tree // ignore: cast_nullable_to_non_nullable
               as Tree,
-      nodes: null == nodes
-          ? _value._nodes
-          : nodes // ignore: cast_nullable_to_non_nullable
-              as List<TNode>,
+      root: null == root
+          ? _value.root
+          : root // ignore: cast_nullable_to_non_nullable
+              as TNode,
     ));
   }
 }
@@ -154,23 +165,16 @@ class __$$InitializedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitializedImpl implements _Initialized {
-  const _$InitializedImpl(
-      {required this.tree, required final List<TNode> nodes})
-      : _nodes = nodes;
+  const _$InitializedImpl({required this.tree, required this.root});
 
   @override
   final Tree tree;
-  final List<TNode> _nodes;
   @override
-  List<TNode> get nodes {
-    if (_nodes is EqualUnmodifiableListView) return _nodes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_nodes);
-  }
+  final TNode root;
 
   @override
   String toString() {
-    return 'DrawTreeEvent.initialized(tree: $tree, nodes: $nodes)';
+    return 'DrawTreeEvent.initialized(tree: $tree, root: $root)';
   }
 
   @override
@@ -179,12 +183,11 @@ class _$InitializedImpl implements _Initialized {
         (other.runtimeType == runtimeType &&
             other is _$InitializedImpl &&
             (identical(other.tree, tree) || other.tree == tree) &&
-            const DeepCollectionEquality().equals(other._nodes, _nodes));
+            (identical(other.root, root) || other.root == root));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, tree, const DeepCollectionEquality().hash(_nodes));
+  int get hashCode => Object.hash(runtimeType, tree, root);
 
   @JsonKey(ignore: true)
   @override
@@ -195,30 +198,30 @@ class _$InitializedImpl implements _Initialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree, List<TNode> nodes) initialized,
-    required TResult Function(Tree tree, List<TNode> nodes) drawNewTree,
+    required TResult Function(Tree tree, TNode root) initialized,
+    required TResult Function(Tree tree, TNode root) drawNewTree,
   }) {
-    return initialized(tree, nodes);
+    return initialized(tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree, List<TNode> nodes)? initialized,
-    TResult? Function(Tree tree, List<TNode> nodes)? drawNewTree,
+    TResult? Function(Tree tree, TNode root)? initialized,
+    TResult? Function(Tree tree, TNode root)? drawNewTree,
   }) {
-    return initialized?.call(tree, nodes);
+    return initialized?.call(tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree, List<TNode> nodes)? initialized,
-    TResult Function(Tree tree, List<TNode> nodes)? drawNewTree,
+    TResult Function(Tree tree, TNode root)? initialized,
+    TResult Function(Tree tree, TNode root)? drawNewTree,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(tree, nodes);
+      return initialized(tree, root);
     }
     return orElse();
   }
@@ -258,12 +261,12 @@ class _$InitializedImpl implements _Initialized {
 abstract class _Initialized implements DrawTreeEvent {
   const factory _Initialized(
       {required final Tree tree,
-      required final List<TNode> nodes}) = _$InitializedImpl;
+      required final TNode root}) = _$InitializedImpl;
 
   @override
   Tree get tree;
   @override
-  List<TNode> get nodes;
+  TNode get root;
   @override
   @JsonKey(ignore: true)
   _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
@@ -278,10 +281,12 @@ abstract class _$$DrawNewTreeImplCopyWith<$Res>
       __$$DrawNewTreeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Tree tree, List<TNode> nodes});
+  $Res call({Tree tree, TNode root});
 
   @override
   $TreeCopyWith<$Res> get tree;
+  @override
+  $TNodeCopyWith<$Res> get root;
 }
 
 /// @nodoc
@@ -296,17 +301,17 @@ class __$$DrawNewTreeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tree = null,
-    Object? nodes = null,
+    Object? root = null,
   }) {
     return _then(_$DrawNewTreeImpl(
       tree: null == tree
           ? _value.tree
           : tree // ignore: cast_nullable_to_non_nullable
               as Tree,
-      nodes: null == nodes
-          ? _value._nodes
-          : nodes // ignore: cast_nullable_to_non_nullable
-              as List<TNode>,
+      root: null == root
+          ? _value.root
+          : root // ignore: cast_nullable_to_non_nullable
+              as TNode,
     ));
   }
 }
@@ -314,23 +319,16 @@ class __$$DrawNewTreeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DrawNewTreeImpl implements _DrawNewTree {
-  const _$DrawNewTreeImpl(
-      {required this.tree, required final List<TNode> nodes})
-      : _nodes = nodes;
+  const _$DrawNewTreeImpl({required this.tree, required this.root});
 
   @override
   final Tree tree;
-  final List<TNode> _nodes;
   @override
-  List<TNode> get nodes {
-    if (_nodes is EqualUnmodifiableListView) return _nodes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_nodes);
-  }
+  final TNode root;
 
   @override
   String toString() {
-    return 'DrawTreeEvent.drawNewTree(tree: $tree, nodes: $nodes)';
+    return 'DrawTreeEvent.drawNewTree(tree: $tree, root: $root)';
   }
 
   @override
@@ -339,12 +337,11 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
         (other.runtimeType == runtimeType &&
             other is _$DrawNewTreeImpl &&
             (identical(other.tree, tree) || other.tree == tree) &&
-            const DeepCollectionEquality().equals(other._nodes, _nodes));
+            (identical(other.root, root) || other.root == root));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, tree, const DeepCollectionEquality().hash(_nodes));
+  int get hashCode => Object.hash(runtimeType, tree, root);
 
   @JsonKey(ignore: true)
   @override
@@ -355,30 +352,30 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree, List<TNode> nodes) initialized,
-    required TResult Function(Tree tree, List<TNode> nodes) drawNewTree,
+    required TResult Function(Tree tree, TNode root) initialized,
+    required TResult Function(Tree tree, TNode root) drawNewTree,
   }) {
-    return drawNewTree(tree, nodes);
+    return drawNewTree(tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree, List<TNode> nodes)? initialized,
-    TResult? Function(Tree tree, List<TNode> nodes)? drawNewTree,
+    TResult? Function(Tree tree, TNode root)? initialized,
+    TResult? Function(Tree tree, TNode root)? drawNewTree,
   }) {
-    return drawNewTree?.call(tree, nodes);
+    return drawNewTree?.call(tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree, List<TNode> nodes)? initialized,
-    TResult Function(Tree tree, List<TNode> nodes)? drawNewTree,
+    TResult Function(Tree tree, TNode root)? initialized,
+    TResult Function(Tree tree, TNode root)? drawNewTree,
     required TResult orElse(),
   }) {
     if (drawNewTree != null) {
-      return drawNewTree(tree, nodes);
+      return drawNewTree(tree, root);
     }
     return orElse();
   }
@@ -418,12 +415,12 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
 abstract class _DrawNewTree implements DrawTreeEvent {
   const factory _DrawNewTree(
       {required final Tree tree,
-      required final List<TNode> nodes}) = _$DrawNewTreeImpl;
+      required final TNode root}) = _$DrawNewTreeImpl;
 
   @override
   Tree get tree;
   @override
-  List<TNode> get nodes;
+  TNode get root;
   @override
   @JsonKey(ignore: true)
   _$$DrawNewTreeImplCopyWith<_$DrawNewTreeImpl> get copyWith =>

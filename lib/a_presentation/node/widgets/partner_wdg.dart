@@ -43,7 +43,7 @@ class PartnerWidget extends StatelessWidget {
                           children: [
                             SizedBox(
                               height: 63,
-                              width: 250,
+                              width: 278,
                               child: AppFormField(
                                 label:
                                     'الزوج${node.gender == Gender.male ? 'ة' : ''}',

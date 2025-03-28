@@ -20,6 +20,7 @@ class RelationRepository implements IRelationRepository {
   final FirebaseFirestore _firestore;
 
   RelationRepository(this._firestore);
+  // TODO: getAll should have node and with the node there is all the relations needed
   @override
   Future<Either<RelationFailure, List<Relation?>>> getAll(
       UniqueId treeId, UniqueId nodeId) async {
@@ -39,28 +40,18 @@ class RelationRepository implements IRelationRepository {
         }
       }).toList();
 
-      print('relations getted ${relations.length}');
-
       for (int i = 0; i < relations.length; i++) {
-        print('1');
         final re = relations[i];
-        print('2');
         final partner = re!.father == nodeId ? re.mother : re.father;
-        print('3');
         final eitherpartnerNode =
             await nodeRepo.getNode(treeId: re.partnerTreeId, nodeId: partner);
-        print('4');
+
         relations[i] = re.copyWith(
             partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
-        print('5');
-      }
-      if (relations.isNotEmpty) {
-        print('relations[0]: ${relations[0]}');
       }
 
       return right(relations);
     } catch (e) {
-      print('e $e');
       if (e is FirebaseException &&
           (e.message!.contains('PERMISSION_DENIED') ||
               e.message!.contains('permission-denied'))) {

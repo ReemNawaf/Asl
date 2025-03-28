@@ -85,7 +85,7 @@ Future<dynamic> showNewTreePanel(
                     //  2. Update the current nodes
                     contextPage
                         .read<NodeWatcherBloc>()
-                        .add(NodeWatcherEvent.watchAllStarted(state.tree));
+                        .add(NodeWatcherEvent.getTree(state.tree));
 
                     //  3. Update the share settings
                     contextPage.read<ShareOptionBloc>().add(

@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/failures.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/value_objects.dart';
+import 'package:asl/c_domain/relation/relation.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,19 +24,20 @@ abstract class TNode implements _$TNode {
     required UniqueId upperFamily,
     required List<UniqueId> relations,
     required List<UniqueId> fosterChildren,
+    List<Relation>? relationsObject,
   }) = _TNode;
 
   factory TNode.empty() => TNode(
-        treeId: UniqueId(),
-        nodeId: UniqueId(),
-        isTreeRoot: false,
-        firstName: FirstName(''),
-        isAlive: true,
-        gender: Gender.female,
-        upperFamily: UniqueId(),
-        relations: [],
-        fosterChildren: [],
-      );
+      treeId: UniqueId(),
+      nodeId: UniqueId(),
+      isTreeRoot: false,
+      firstName: FirstName(''),
+      isAlive: true,
+      gender: Gender.female,
+      upperFamily: UniqueId(),
+      relations: [],
+      fosterChildren: [],
+      relationsObject: []);
 
   //  dynamic; the failure already handled, we just want to know if there is a failure
   //  when validating the whole entity

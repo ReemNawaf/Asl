@@ -5,7 +5,6 @@ import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -24,36 +23,25 @@ class NodeWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
     on<NodeWatcherEvent>(mapEventToState);
   }
 
-  StreamSubscription<Either<TNodeFailure, List<TNode>>>?
-      _nodeStreamSubscription;
-
   Future<void> mapEventToState(
     NodeWatcherEvent event,
     Emitter<NodeWatcherState> emit,
   ) async {
     await event.map(
-      watchAllStarted: (e) async {
-        print('---------- | watchAllStarted');
+      getTree: (e) async {
+        print('---------- | get tree | ----------');
         emit(const NodeWatcherState.loadInProgress());
 
-        _nodeStreamSubscription = _nodeRepository
-            .watchAll(e.tree.treeId)
-            .listen(
-              (failureOrNodes) =>
-                  add(NodeWatcherEvent.nodesReceived(failureOrNodes, e.tree)),
-            );
-      },
-      nodesReceived: (e) async {
-        emit(e.failureOrNodes.fold(
+        emit((await _nodeRepository.getTree(e.tree.treeId)).fold(
           (f) => NodeWatcherState.loadFailure(f),
-          (nodes) {
+          (root) {
             // print('nodesReceived: get the nodes $nodes');
-            return NodeWatcherState.loadSuccess(tree: e.tree, nodes: nodes);
+            return NodeWatcherState.loadSuccess(root: root);
           },
         ));
       },
       getNode: (e) async {
-        const NodeWatcherState.inProgress();
+        emit(const NodeWatcherState.inProgress());
         final possibleFailure =
             await _nodeRepository.getNode(nodeId: e.nodeId, treeId: e.treeId);
         emit(possibleFailure.fold(
@@ -62,12 +50,5 @@ class NodeWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
         ));
       },
     );
-  }
-
-  @override
-  Future<void> close() async {
-    await _nodeStreamSubscription?.cancel();
-
-    return super.close();
   }
 }

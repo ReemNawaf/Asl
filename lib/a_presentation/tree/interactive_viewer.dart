@@ -25,18 +25,20 @@ class InteractiveView extends StatelessWidget {
             return BlocBuilder<CurrentTreeBloc, CurrentTreeState>(
               builder: (context, state) {
                 if (state.currentTree != null) {
-                  context.read<DrawTreeBloc>().add(DrawTreeEvent.drawNewTree(
-                        tree: state.currentTree!,
-                        nodes: nState.nodes,
-                      ));
+                  context.read<DrawTreeBloc>().add(
+                        DrawTreeEvent.drawNewTree(
+                          tree: state.currentTree!,
+                          root: nState.root,
+                        ),
+                      );
                 }
 
                 return InteractiveViewer(
                   constrained: false,
                   alignment: Alignment.center,
-                  boundaryMargin: const EdgeInsets.all(100),
-                  minScale: 0.01,
-                  maxScale: 5.6,
+                  boundaryMargin: const EdgeInsets.all(800),
+                  minScale: 0.001,
+                  maxScale: 1.000,
                   child: const TreeView(),
                 );
               },

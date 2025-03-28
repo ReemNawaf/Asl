@@ -1,7 +1,7 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
-import 'package:asl/c_domain/tree/tree.dart';
+import 'package:asl/c_domain/relation/relation.dart';
 import 'package:graphview/GraphView.dart';
 
 class TreeDraw {
@@ -45,14 +45,38 @@ class TreeDraw {
     // setState(() {});
   }
 
-  Graph drawTree({required Tree tree, required List<TNode> nodes}) {
+  Graph drawTree({required TNode root}) {
     //  Level Roots: Add Root
     //  create first node
     graph = Graph()..isTree = true;
-    // print('==========| drawTree(): tree: $tree');
-    final root = nodes.firstWhere((node) => node.nodeId == tree.rootId);
-    // print('==========| drawTree(): root: $root');
     addLinkedNode(tnode: root, nodeType: NodeType.root);
+
+    //  Level Relation: Get Root Children
+    //  get the node relations
+    if (root.relationsObject == null) {
+      print('root.relationsObject == null)');
+      return graph;
+    }
+
+    //  on each partner (loop 1)
+    for (Relation relation in root.relationsObject!) {
+      final partner = relation.partnerNode!;
+
+      //  on each partner create node + edge with the root
+      addLinkedNode(
+          tnode: partner, nodeType: NodeType.partner, linkedToId: root.nodeId);
+
+      //  Level Stem: Get Children
+
+      //  go to their children (loop 2)
+      for (TNode child in relation.childrenNodes!) {
+        //  on each child create node + edge with the partner
+        addLinkedNode(
+            tnode: child, nodeType: NodeType.child, linkedToId: partner.nodeId);
+      }
+    }
+
+    print('==========| drawTree(): graph ${graph.nodes}');
 
     //  Level Stem: Get Root Children
     //  from tree, root id in nodes, the root node children ids

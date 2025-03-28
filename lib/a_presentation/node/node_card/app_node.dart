@@ -64,7 +64,7 @@ class AppNode extends StatelessWidget {
             height: 95,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.0),
-              color: color[600]!,
+              color: color[600],
             ),
           ),
           if (hasImage)

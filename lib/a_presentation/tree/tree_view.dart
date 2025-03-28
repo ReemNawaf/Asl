@@ -19,10 +19,10 @@ class TreeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DrawTreeBloc, DrawTreeState>(
       builder: (_, state) {
-        // print('XXXXXXXXXXX==| TreeView: Update the graph: ${state.graph}');
+        print('--------| TreeView: Update the graph: ${state.graph}');
         if (state.graph != null && state.builder != null) {
-          // print(
-          //     'XXXXXXXXXXX==| TreeView: Update the graph: ${state.graph!.nodes}');
+          print(
+              '--------| TreeView not null: Update the graph: ${state.graph!.nodes}');
           return GraphView(
             graph: state.graph!,
 
@@ -54,9 +54,7 @@ class TreeView extends StatelessWidget {
             },
           );
         } else {
-          return const SizedBox(
-            child: SizedBox(),
-          );
+          return const SizedBox();
         }
       },
     );

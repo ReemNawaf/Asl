@@ -24,11 +24,11 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
   ) async {
     await event.map(
       initialized: (e) async {
-        final graph = treeDraw.drawTree(tree: e.tree, nodes: e.nodes);
+        final graph = treeDraw.drawTree(root: e.root);
         emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
       },
       drawNewTree: (e) async {
-        final graph = treeDraw.drawTree(tree: e.tree, nodes: e.nodes);
+        final graph = treeDraw.drawTree(root: e.root);
         emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
       },
     );
