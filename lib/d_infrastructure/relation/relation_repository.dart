@@ -1,5 +1,6 @@
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/relation/i_relation_repository.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/c_domain/relation/relation_failure.dart';
@@ -252,10 +253,8 @@ class RelationRepository implements IRelationRepository {
   }
 
   @override
-  Future<Either<RelationFailure, Unit>> addChild(
-      {required UniqueId treeId,
-      required UniqueId relationId,
-      required TNode child}) async {
+  Future<Either<TNodeFailure, Unit>> addChild(
+      {required UniqueId treeId, required TNode child}) async {
     try {
       // Add Child Node
       final childDto = NodeDto.fromDomain(child.copyWith(nodeId: child.nodeId));
@@ -272,7 +271,7 @@ class RelationRepository implements IRelationRepository {
           .treesCollection()
           .doc(treeId.getOrCrash())
           .collection(RELATIONS_COLLECTION)
-          .doc(relationId.getOrCrash())
+          .doc(child.upperFamily.getOrCrash())
           .update({
         'children': FieldValue.arrayUnion([child.nodeId.getOrCrash()])
       });
@@ -282,9 +281,9 @@ class RelationRepository implements IRelationRepository {
       if (e is FirebaseException &&
           (e.message!.contains('PERMISSION_DENIED') ||
               e.message!.contains('permission-denied'))) {
-        return left(const RelationFailure.insufficientPermission());
+        return left(const TNodeFailure.insufficientPermission());
       } else {
-        return left(const RelationFailure.unexpected());
+        return left(const TNodeFailure.unexpected());
       }
     }
   }

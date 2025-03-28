@@ -3,7 +3,9 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
-import 'package:asl/a_presentation/node/widgets/children_wdg.dart';
+import 'package:asl/a_presentation/node/widgets/add_child_wdg.dart';
+import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/injection.dart';
@@ -11,12 +13,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PartnerWidget extends StatelessWidget {
-  const PartnerWidget({
-    super.key,
-    required this.node,
-  });
+  const PartnerWidget(
+      {super.key,
+      required this.node,
+      required this.formState,
+      required this.color});
 
   final TNode node;
+  final MaterialColor color;
+  final PartnerFormState formState;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RelationWatcherBloc>(
@@ -78,31 +84,19 @@ class PartnerWidget extends StatelessWidget {
                           ],
                         ),
                         kVSpacer10,
-                        const SizedBox(
-                          width: (T_PAN_WIDTH - 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ChildrenWidget(),
-                              kVSpacer10,
-                              // if (state.isAdding)
-                              //   AppFormField(
-                              //     label: 'إضافة ابن/ة',
-                              //     hint: 'الاسم الأول',
-                              //     validator: (_) => '',
-                              //   ),
-                              // AddMemberButton(
-                              //   onPressed: () => state == const RelationActorState.startAddingChild() ? context
-                              //       .read<RelationActorBloc>()
-                              //       .add(const RelationActorEvent.startAddChild()) : context
-                              //       .read<RelationActorBloc>()
-                              //       .add( RelationActorEvent.addChild(treeId: node.treeId, relationId: node.nodeId, child: TNode.empty())),
-                              //   label: 'إضافة ابن/ة',
-                              //   color: color,
-                              // ),
-                            ],
-                          ),
+                        BlocBuilder<ChildFormBloc, ChildFormState>(
+                          builder: (context, state) {
+                            final fatherTree = sinRelation.father == node.nodeId
+                                ? node.treeId
+                                : partner.treeId;
+                            return AddChildWidget(
+                              color: color,
+                              treeId: fatherTree,
+                              upperFamily: sinRelation.relationId,
+                              state: state,
+                              node: node,
+                            );
+                          },
                         ),
                       ],
                     );

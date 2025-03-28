@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/node/value_objects.dart';
 import 'package:asl/c_domain/relation/i_relation_repository.dart';
-import 'package:asl/c_domain/relation/relation_failure.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,46 +30,94 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
   ) async {
     await event.map(
       initialized: (e) async {
+        final child = TNode(
+          treeId: e.treeId,
+          nodeId: UniqueId(),
+          firstName: FirstName(''),
+          isAlive: true,
+          gender: Gender.male,
+          upperFamily: e.upperFamily,
+          relations: [],
+          fosterChildren: [],
+        );
+
         emit(state.copyWith(
-          node: e.node,
+          child: child,
           isViewing: true,
+          isAdding: true,
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },
-      addChild: (e) async {
+      edited: (e) async {
         emit(state.copyWith(
-          relationId: e.relationId,
-          child: state.child.copyWith(
-            firstName: FirstName(e.name),
-            treeId: state.node.treeId,
-            isAlive: true,
-            gender: e.gender,
-          ),
-          saveFailureOrSuccessOption: none(),
-          isAdding: true,
+          child: e.child,
+          isEditing: true,
           isViewing: false,
         ));
       },
+      changeName: (e) async {
+        emit(state.copyWith(
+          child: state.child.copyWith(
+            firstName: FirstName(e.name),
+          ),
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      changeBirthDate: (e) async {
+        emit(state.copyWith(
+          child: state.child.copyWith(birthDate: e.date),
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      changeDeathDate: (e) async {
+        emit(state.copyWith(
+          child: state.child.copyWith(deathDate: e.date),
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      changeIsAlive: (e) async {
+        emit(state.copyWith(
+          child: state.child.copyWith(isAlive: e.isAlive),
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      changeGender: (e) async {
+        emit(state.copyWith(
+          child: state.child.copyWith(gender: e.gender),
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
       saved: (e) async {
-        Either<RelationFailure, Unit>? failureOrSuccess;
+        Either<TNodeFailure, Unit>? failureOrSuccess;
+        bool isCreated = false;
+
         emit(state.copyWith(
           isSaving: true,
-          isAdding: false,
+          isEditing: false,
           saveFailureOrSuccessOption: none(),
         ));
 
-        if (state.node.failureOption.isNone()) {
-          failureOrSuccess = await _relationRepository.addChild(
+        // check the tree validation
+        if (state.child.failureOption.isNone() &&
+            state.child.failureOption.isNone()) {
+          failureOrSuccess =
+              // state.isEditing
+              //     ? await _relationRepository.update(
+              //         child: state.child,
+              //         treeId: state.child.treeId,
+              //       ):
+              await _relationRepository.addChild(
             child: state.child,
-            treeId: state.node.treeId,
-            relationId: state.relationId,
+            treeId: state.child.treeId,
           );
+          isCreated = state.isEditing ? false : true;
         }
 
-        // after the trying of update or create
         emit(state.copyWith(
-          isSaving: false,
           isViewing: true,
+          isSaving: false,
+          isAdding: false,
+          isCreated: isCreated,
           showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
