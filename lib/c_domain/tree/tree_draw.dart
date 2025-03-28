@@ -22,10 +22,11 @@ class TreeDraw {
   Graph getGraph() => graph;
   BuchheimWalkerConfiguration getBuilder() => builder;
 
-  void addLinkedNode(
-      {required TNode tnode,
-      required NodeType nodeType,
-      UniqueId? linkedToId}) {
+  void addLinkedNode({
+    required TNode tnode,
+    required NodeType nodeType,
+    UniqueId? linkedToId,
+  }) {
     //  Add node
     final node =
         Node.Id({'type': nodeType, 'id': tnode.nodeId, 'tnode': tnode});
@@ -38,6 +39,11 @@ class TreeDraw {
     //  Add edge in not root
     if (nodeType != NodeType.root && linkedToId != null) {
       final linkedToPosition = positions[linkedToId.getOrCrash()]!;
+
+      print('\nnodeType $nodeType');
+      print('linkedToId: $linkedToId');
+      print('tnode.nodeId: ${tnode.nodeId}\n');
+
       final linkedToNode = graph.getNodeAtPosition(linkedToPosition);
       graph.addEdge(linkedToNode, node);
     }

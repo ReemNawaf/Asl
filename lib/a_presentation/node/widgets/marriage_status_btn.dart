@@ -35,7 +35,7 @@ class MarriageStatusBtn extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AliveButton(
+                  MarriageStatusButton(
                     onTap: () => ctx.read<PartnerFormBloc>().add(
                         const PartnerFormEvent.changeMarriageStatus(
                             MarriageStatus.married)),
@@ -45,7 +45,7 @@ class MarriageStatusBtn extends StatelessWidget {
                         MarriageStatus.married,
                   ),
                   kHSpacer10,
-                  AliveButton(
+                  MarriageStatusButton(
                     onTap: () => ctx.read<PartnerFormBloc>().add(
                         const PartnerFormEvent.changeMarriageStatus(
                             MarriageStatus.divorced)),
@@ -55,7 +55,7 @@ class MarriageStatusBtn extends StatelessWidget {
                         MarriageStatus.divorced,
                   ),
                   kHSpacer10,
-                  AliveButton(
+                  MarriageStatusButton(
                     onTap: () => ctx
                         .read<PartnerFormBloc>()
                         .add(const PartnerFormEvent.changeMarriageStatus(
@@ -76,8 +76,8 @@ class MarriageStatusBtn extends StatelessWidget {
   }
 }
 
-class AliveButton extends StatelessWidget {
-  const AliveButton({
+class MarriageStatusButton extends StatelessWidget {
+  const MarriageStatusButton({
     super.key,
     required this.color,
     required this.text,

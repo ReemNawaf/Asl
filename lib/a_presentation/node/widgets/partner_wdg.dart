@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
+import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/a_presentation/node/widgets/add_child_wdg.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
@@ -13,11 +14,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PartnerWidget extends StatelessWidget {
-  const PartnerWidget(
-      {super.key,
-      required this.node,
-      required this.formState,
-      required this.color});
+  const PartnerWidget({
+    super.key,
+    required this.node,
+    required this.formState,
+    required this.color,
+  });
 
   final TNode node;
   final MaterialColor color;
@@ -104,12 +106,16 @@ class PartnerWidget extends StatelessWidget {
                 ),
               );
             },
-            initial: (_) => const SizedBox(child: Text('1')),
-            getRelationInProgress: (_) => const SizedBox(child: Text('2')),
-            getAllRelationsInProgress: (_) => const SizedBox(child: Text('3')),
-            gettingAllRelationsFailure: (_) => const SizedBox(child: Text('4')),
-            gettingRelationFailure: (_) => const SizedBox(child: Text('5')),
-            gettingRelationSuccess: (_) => const SizedBox(child: Text('6')),
+            initial: (_) => const SizedBox(),
+            getRelationInProgress: (_) => const LoadingWidget(),
+            getAllRelationsInProgress: (_) => const SizedBox(
+              width: (T_PAN_WIDTH - 10),
+              height: PAN_HEIGHT / 2,
+              child: LoadingWidget(),
+            ),
+            gettingAllRelationsFailure: (_) => const SizedBox(),
+            gettingRelationFailure: (_) => const SizedBox(),
+            gettingRelationSuccess: (_) => const SizedBox(),
           );
         },
       ),
