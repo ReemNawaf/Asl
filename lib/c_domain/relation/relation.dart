@@ -7,11 +7,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'relation.freezed.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 abstract class Relation implements _$Relation {
   const Relation._();
 
-  const factory Relation({
+  factory Relation({
     required UniqueId treeId,
     required UniqueId partnerTreeId,
     required UniqueId relationId,
@@ -23,7 +23,7 @@ abstract class Relation implements _$Relation {
     required List<UniqueId> children,
     TNode? mainNode,
     TNode? partnerNode,
-    List<TNode>? childrenNodes,
+    @unfreezed required List<TNode> childrenNodes,
   }) = _Relation;
 
   //  dynamic; the failure already handled, we just want to know if there is a failure
@@ -32,5 +32,22 @@ abstract class Relation implements _$Relation {
     return treeId.failureOrUnit
         .andThen(relationId.failureOrUnit)
         .fold((f) => some(f), (r) => none());
+  }
+
+  factory Relation.setChildren(Relation relation, List<TNode> children) {
+    return Relation(
+      treeId: relation.treeId,
+      partnerTreeId: relation.partnerTreeId,
+      relationId: relation.relationId,
+      marriageStatus: relation.marriageStatus,
+      father: relation.father,
+      mother: relation.mother,
+      children: relation.children,
+      marriageDate: relation.marriageDate,
+      endDate: relation.endDate,
+      childrenNodes: children,
+      mainNode: relation.mainNode,
+      partnerNode: relation.partnerNode,
+    );
   }
 }

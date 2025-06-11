@@ -39,6 +39,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           upperFamily: e.upperFamily,
           relations: [],
           fosterChildren: [],
+          relationsObject: [],
         );
 
         emit(state.copyWith(

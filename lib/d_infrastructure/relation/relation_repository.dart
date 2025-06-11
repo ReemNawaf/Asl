@@ -21,7 +21,6 @@ class RelationRepository implements IRelationRepository {
   final FirebaseFirestore _firestore;
 
   RelationRepository(this._firestore);
-  // TODO: getAll should have node and with the node there is all the relations needed
   @override
   Future<Either<RelationFailure, List<Relation?>>> getAll(
       UniqueId treeId, UniqueId nodeId) async {
@@ -32,25 +31,24 @@ class RelationRepository implements IRelationRepository {
           .doc(treeId.getOrCrash())
           .collection(RELATIONS_COLLECTION)
           .get();
-
-      final relations = relationQuery.docs.map((doc) {
+      final relations = <Relation>[];
+      relationQuery.docs.map((doc) {
         final relation = RelationDto.fromFirestore(doc).toDomain();
         if (relation.father.getOrCrash() == nodeId.getOrCrash() ||
             relation.mother.getOrCrash() == nodeId.getOrCrash()) {
-          return relation;
+          relations.add(relation);
         }
       }).toList();
 
       for (int i = 0; i < relations.length; i++) {
         final re = relations[i];
-        final partner = re!.father == nodeId ? re.mother : re.father;
+        final partner = re.father == nodeId ? re.mother : re.father;
         final eitherpartnerNode =
             await nodeRepo.getNode(treeId: re.partnerTreeId, nodeId: partner);
 
         relations[i] = re.copyWith(
             partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
       }
-
       return right(relations);
     } catch (e) {
       if (e is FirebaseException &&
@@ -155,6 +153,7 @@ class RelationRepository implements IRelationRepository {
         father: relation.father,
         mother: relation.mother,
         children: relation.children,
+        childrenNodes: [],
       );
 
       final relationDto = RelationDto.fromDomain(updatedRelation);

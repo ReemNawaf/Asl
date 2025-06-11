@@ -36,7 +36,7 @@ class SplashPage extends StatelessWidget {
             state.map(
               initial: (_) {},
               authenticated: (_) {
-                context.router.push(const HomeRoute());
+                // context.router.push(const HomeRoute());
               },
               unauthenticated: (_) {
                 context.router.push(const AuthRoute());

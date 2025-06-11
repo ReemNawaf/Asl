@@ -81,7 +81,8 @@ class RootInfoPanel extends StatelessWidget {
                     formKey: formKey,
                     label: 'تاريخ الميلاد',
                     hint: '',
-                    endDate: state.root.birthDate,
+                    endDate:
+                        state.root.deathDate?.subtract(const Duration(days: 1)),
                     validate: (validate) => "",
                     save: (_) {},
                     isEditing: true,

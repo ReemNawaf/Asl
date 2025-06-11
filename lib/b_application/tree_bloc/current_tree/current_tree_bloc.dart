@@ -26,7 +26,8 @@ class CurrentTreeBloc extends Bloc<CurrentTreeEvent, CurrentTreeState> {
       },
       updateAllTree: (e) {
         emit(CurrentTreeState(
-            currentTree: state.currentTree ?? e.trees[0], trees: e.trees));
+            currentTree: state.currentTree ?? e.trees.firstOrNull,
+            trees: e.trees));
       },
     );
   }

@@ -1,10 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/c_domain/core/failures.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/value_objects.dart';
 import 'package:asl/c_domain/relation/relation.dart';
+import 'package:asl/c_domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 't_node.freezed.dart';
 
@@ -24,20 +24,21 @@ abstract class TNode implements _$TNode {
     required UniqueId upperFamily,
     required List<UniqueId> relations,
     required List<UniqueId> fosterChildren,
-    List<Relation>? relationsObject,
+    @unfreezed required List<Relation> relationsObject,
   }) = _TNode;
 
   factory TNode.empty() => TNode(
-      treeId: UniqueId(),
-      nodeId: UniqueId(),
-      isTreeRoot: false,
-      firstName: FirstName(''),
-      isAlive: true,
-      gender: Gender.female,
-      upperFamily: UniqueId(),
-      relations: [],
-      fosterChildren: [],
-      relationsObject: []);
+        treeId: UniqueId(),
+        nodeId: UniqueId(),
+        isTreeRoot: false,
+        firstName: FirstName(''),
+        isAlive: true,
+        gender: Gender.female,
+        upperFamily: UniqueId(),
+        relations: [],
+        fosterChildren: [],
+        relationsObject: [],
+      );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure
   //  when validating the whole entity
@@ -45,5 +46,22 @@ abstract class TNode implements _$TNode {
     return firstName.failureOrUnit
         .andThen(nodeId.failureOrUnit)
         .fold((f) => some(f), (r) => none());
+  }
+
+  factory TNode.setRelationObjects(TNode n, List<Relation> relation) {
+    return TNode(
+      treeId: n.treeId,
+      nodeId: n.nodeId,
+      isTreeRoot: n.isTreeRoot,
+      firstName: n.firstName,
+      isAlive: n.isAlive,
+      gender: n.gender,
+      upperFamily: n.upperFamily,
+      relations: n.relations,
+      fosterChildren: n.fosterChildren,
+      birthDate: n.birthDate,
+      deathDate: n.deathDate,
+      relationsObject: relation,
+    );
   }
 }

@@ -43,6 +43,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           upperFamily: UniqueId(),
           relations: [],
           fosterChildren: [],
+          relationsObject: [],
         );
         final father = isFather ? e.node.nodeId : partner.nodeId;
         final mother = isFather ? partner.nodeId : e.node.nodeId;
@@ -56,6 +57,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           father: father,
           mother: mother,
           children: [],
+          childrenNodes: [],
         );
         emit(state.copyWith(
           relation: relation,

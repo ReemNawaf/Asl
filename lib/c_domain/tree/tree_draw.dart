@@ -12,11 +12,10 @@ class TreeDraw {
 
   TreeDraw() {
     builder
-      ..siblingSeparation = (50)
-      ..levelSeparation = (100)
-      ..subtreeSeparation = (100)
+      ..siblingSeparation = (100)
+      ..levelSeparation = (150)
+      ..subtreeSeparation = (150)
       ..orientation = (BuchheimWalkerConfiguration.ORIENTATION_BOTTOM_TOP);
-    addLinkedNode(tnode: TNode.empty(), nodeType: NodeType.none);
   }
 
   Graph getGraph() => graph;
@@ -31,21 +30,20 @@ class TreeDraw {
     final node =
         Node.Id({'type': nodeType, 'id': tnode.nodeId, 'tnode': tnode});
 
-    graph.addNode(node);
-
     //  Save position
-    positions[tnode.nodeId.getOrCrash()] = position;
+    print('draw node in position $position');
+    graph.addNode(node);
+    positions[tnode.nodeId.getOrCrash()] = position++;
 
     //  Add edge in not root
     if (nodeType != NodeType.root && linkedToId != null) {
       final linkedToPosition = positions[linkedToId.getOrCrash()]!;
 
-      print('\nnodeType $nodeType');
-      print('linkedToId: $linkedToId');
-      print('tnode.nodeId: ${tnode.nodeId}\n');
-
       final linkedToNode = graph.getNodeAtPosition(linkedToPosition);
       graph.addEdge(linkedToNode, node);
+
+      print(
+          '---- | draw ${nodeType.name}: ${tnode.firstName.getOrCrash()} with $linkedToId ($linkedToPosition)');
     }
 
     // setState(() {});
@@ -56,6 +54,7 @@ class TreeDraw {
     //  create first node
     graph = Graph()..isTree = true;
     addLinkedNode(tnode: root, nodeType: NodeType.root);
+    print('draw root: ${root.firstName.getOrCrash()}');
 
     //  Level Relation: Get Root Children
     //  get the node relations
@@ -65,6 +64,7 @@ class TreeDraw {
     }
 
     //  on each partner (loop 1)
+    print('ROOT: root has ${root.relationsObject?.length} partners');
     for (Relation relation in root.relationsObject!) {
       final partner = relation.partnerNode!;
 
@@ -75,14 +75,49 @@ class TreeDraw {
       //  Level Stem: Get Children
 
       //  go to their children (loop 2)
-      for (TNode child in relation.childrenNodes!) {
+
+      print(
+          'STEM: root partner has ${relation.childrenNodes?.length} children');
+
+      for (TNode child in relation.childrenNodes ?? []) {
         //  on each child create node + edge with the partner
         addLinkedNode(
-            tnode: child, nodeType: NodeType.child, linkedToId: partner.nodeId);
+          tnode: child,
+          nodeType: NodeType.child,
+          linkedToId: partner.nodeId,
+        );
+        //
+        final childRelation = child.relationsObject;
+
+        print('STEM: son has ${childRelation?.length} partners');
+
+        for (Relation relation in childRelation ?? []) {
+          // Sons partners
+          final childPartner = relation.partnerNode!;
+
+          //  on each partner create node + edge with the child
+          addLinkedNode(
+            tnode: childPartner,
+            nodeType: NodeType.partner,
+            linkedToId: child.nodeId,
+          );
+
+          //  Level Leaf: Get Grandchildren
+          //  go to the children children (loop 2)
+
+          print(
+              'LEAF: son partner has ${relation.childrenNodes?.length} children');
+          for (TNode grandchild in relation.childrenNodes ?? []) {
+            //  on each grandchild create node + edge with the partner child
+            addLinkedNode(
+              tnode: grandchild,
+              nodeType: NodeType.grandchild,
+              linkedToId: childPartner.nodeId,
+            );
+          }
+        }
       }
     }
-
-    print('==========| drawTree(): graph ${graph.nodes}');
 
     //  Level Stem: Get Root Children
     //  from tree, root id in nodes, the root node children ids
@@ -108,6 +143,9 @@ class TreeDraw {
     // }
 
     // print('==========| drawTree(): graph ${graph.nodes}');
+
+    print('positions $positions');
+
     return graph;
   }
 }

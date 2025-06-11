@@ -19,10 +19,7 @@ class TreeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DrawTreeBloc, DrawTreeState>(
       builder: (_, state) {
-        print('--------| TreeView: Update the graph: ${state.graph}');
         if (state.graph != null && state.builder != null) {
-          print(
-              '--------| TreeView not null: Update the graph: ${state.graph!.nodes}');
           return GraphView(
             graph: state.graph!,
 

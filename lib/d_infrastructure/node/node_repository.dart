@@ -152,22 +152,24 @@ class NodeRepository implements INodeRepository {
   }
 
   @override
-  Future<Either<TNodeFailure, TNode>> getTree(UniqueId treeId) async {
+  Future<Either<TNodeFailure, TNode>> getTree(UniqueId treeId,
+      {UniqueId? rootId}) async {
     try {
       final nodeRepo = NodeRepository(_firestore);
       final treeCol = _firestore.treesCollection();
 
-      print('N1');
       // 1. Get the tree
       final treeDoc = await treeCol.doc(treeId.getOrCrash()).get()
           as DocumentSnapshot<Map<String, dynamic>>;
       final tree = TreeDto.fromFirestore(treeDoc).toDomain();
-      print('N11');
+      print('Get the tree');
 
       // 2. Get the root node
-      TNode root = (await nodeRepo.getNode(treeId: treeId, nodeId: tree.rootId))
+      TNode root = (await nodeRepo.getNode(
+              treeId: treeId, nodeId: rootId ?? tree.rootId))
           .fold((l) => left(RelationFailure), (r) => r) as TNode;
-      print('N2');
+      print('Get the root node');
+
       // 3. Get the root relations
       final rootRelations = <Relation>[];
       for (UniqueId relationId in root.relations) {
@@ -176,45 +178,88 @@ class NodeRepository implements INodeRepository {
             .collection(RELATIONS_COLLECTION)
             .doc(relationId.getOrCrash())
             .get();
-        print('N3');
+
         final relation = RelationDto.fromFirestore(relationDoc).toDomain();
         rootRelations.add(relation);
-        print('N33');
       }
-      root = root.copyWith(relationsObject: rootRelations);
-      print('N333');
+      print('Get the root relations');
+
       // 4. Get the partners nodes
       for (int i = 0; i < rootRelations.length; i++) {
         final re = rootRelations[i];
         final partner = re.father == root.nodeId ? re.mother : re.father;
         final eitherpartnerNode =
             await nodeRepo.getNode(treeId: re.partnerTreeId, nodeId: partner);
-        print('N4');
+
         rootRelations[i] = re.copyWith(
             partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
       }
-      print('N44');
+      print('Get the partners nodes');
 
       // 5. Get the children nodes
       for (int i = 0; i < rootRelations.length; i++) {
         final childrenIds = rootRelations[i].children;
         final children = <TNode>[];
-        print('N5');
+
         for (int i = 0; i < childrenIds.length; i++) {
           final childId = childrenIds[i];
           final eitherChildNode =
               await nodeRepo.getNode(treeId: tree.treeId, nodeId: childId);
-          print('N55');
-          eitherChildNode.fold((l) => null, (r) {
-            children.add(r);
+
+          await eitherChildNode.fold((l) => null, (child) async {
+            // 3. Get the child relations
+            final childRelations = <Relation>[];
+            for (UniqueId relationId in child.relations) {
+              final relationDoc = await treeCol
+                  .doc(treeId.getOrCrash())
+                  .collection(RELATIONS_COLLECTION)
+                  .doc(relationId.getOrCrash())
+                  .get();
+              final relation =
+                  RelationDto.fromFirestore(relationDoc).toDomain();
+              childRelations.add(relation);
+            }
+
+            // 4. Get the partners nodes
+            for (int i = 0; i < childRelations.length; i++) {
+              final re = childRelations[i];
+              final partner = re.father == child.nodeId ? re.mother : re.father;
+              final eitherpartnerNode = await nodeRepo.getNode(
+                  treeId: re.partnerTreeId, nodeId: partner);
+              childRelations[i] = re.copyWith(
+                  partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
+            }
+
+            // 5. Get the grandchildren nodes
+            for (int i = 0; i < childRelations.length; i++) {
+              final grandchildrenIds = childRelations[i].children;
+              final grandchildren = <TNode>[];
+
+              for (int i = 0; i < grandchildrenIds.length; i++) {
+                final grandchildId = grandchildrenIds[i];
+                final eitherGrandChildNode = await nodeRepo.getNode(
+                    treeId: tree.treeId, nodeId: grandchildId);
+                eitherGrandChildNode.fold((l) => null, (r) {
+                  grandchildren.add(r);
+                });
+              }
+              childRelations[i] =
+                  childRelations[i].copyWith(childrenNodes: grandchildren);
+            }
+            print('=====| childRelations $childRelations');
+            children.add(child.copyWith(relationsObject: childRelations));
           });
         }
         rootRelations[i] = rootRelations[i].copyWith(childrenNodes: children);
-        print('N555');
       }
+      print('Get the children nodes');
 
-      // 6. Repeat [3-5] for each child
-
+      // Update the root relationsObject
+      print('NN: rootRelations $rootRelations');
+      root = root.copyWith(relationsObject: rootRelations);
+      print('Update the root relationsObject');
+      print('Root $root');
+      //
       return right(root);
     } catch (e) {
       if (e is FirebaseException &&

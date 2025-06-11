@@ -1,8 +1,8 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_member_btn.dart';
-import 'package:asl/a_presentation/node/node_panel/node_alive_btn.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
+import 'package:asl/a_presentation/node/widgets/child_alive_btn.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -46,7 +46,6 @@ class AddChildWidget extends StatelessWidget {
                   kVSpacer10,
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         width: 250,
@@ -81,9 +80,10 @@ class AddChildWidget extends StatelessWidget {
                           },
                         ),
                       ),
+                      kHSpacer20,
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),
-                        child: NodeAliveBtn(color: color, ctx: context),
+                        child: ChildAliveBtn(color: color, ctx: context),
                       ),
                     ],
                   ),
@@ -94,7 +94,6 @@ class AddChildWidget extends StatelessWidget {
                         width: 600,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
                               width: 230,
@@ -103,14 +102,16 @@ class AddChildWidget extends StatelessWidget {
                                 formKey: formKey,
                                 label: 'تاريخ الميلاد',
                                 hint: '',
-                                endDate: state.child.deathDate,
+                                endDate: state.child.deathDate
+                                    ?.subtract(const Duration(days: 1)),
                                 validate: (validate) => "",
                                 save: (_) {},
                                 isEditing: true,
                                 changeDate: (pickedDate) {
                                   context.read<ChildFormBloc>().add(
-                                      ChildFormEvent.changeBirthDate(
-                                          pickedDate));
+                                        ChildFormEvent.changeBirthDate(
+                                            pickedDate),
+                                      );
                                 },
                                 dateController: TextEditingController(
                                   text: state.child.birthDate == null
@@ -121,7 +122,8 @@ class AddChildWidget extends StatelessWidget {
                                 withPadding: false,
                               ),
                             ),
-                            if (state.child.isAlive != false)
+                            if (state.child.isAlive == false) ...[
+                              kHSpacer20,
                               SizedBox(
                                 width: 230,
                                 height: 80,
@@ -152,6 +154,7 @@ class AddChildWidget extends StatelessWidget {
                                   withPadding: false,
                                 ),
                               ),
+                            ],
                           ],
                         ),
                       );

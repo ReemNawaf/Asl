@@ -41,8 +41,7 @@ class AppDateField extends StatelessWidget {
     Future<DateTime?> selectDate() async {
       final DateTime? picked = await showDatePicker(
         context: context,
-        firstDate: startDate ??
-            DateTime.now().subtract(const Duration(days: 500 * 365)),
+        firstDate: startDate ?? DateTime.now(),
         lastDate: endDate ?? DateTime.now(),
       );
 

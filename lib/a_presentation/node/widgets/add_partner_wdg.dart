@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class AddPartnerWidget extends StatelessWidget {
-  const AddPartnerWidget({
+  AddPartnerWidget({
     super.key,
     required this.node,
     required this.color,
@@ -20,27 +20,34 @@ class AddPartnerWidget extends StatelessWidget {
   final TNode node;
   final MaterialColor color;
   final PartnerFormState state;
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     return Form(
       autovalidateMode: state.showErrorMessages,
       key: formKey,
       child: SizedBox(
         width: (T_PAN_WIDTH - 10),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
-            Column(
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: 250,
-                  height: 90,
                   child: AppFormField(
                     label:
                         node.gender == Gender.male ? 'إضافة زوجة' : 'إضافة زوج',
                     hint: 'الاسم الكامل',
+                    initialValue: context
+                            .read<PartnerFormBloc>()
+                            .state
+                            .partner
+                            ?.firstName
+                            .value
+                            .fold((l) => '', (r) => r) ??
+                        '',
                     onChanged: (value) => context
                         .read<PartnerFormBloc>()
                         .add(PartnerFormEvent.changeName(value!.trim())),
@@ -68,80 +75,77 @@ class AddPartnerWidget extends StatelessWidget {
                     },
                   ),
                 ),
-                BlocBuilder<PartnerFormBloc, PartnerFormState>(
-                  builder: (context, state) {
-                    return SizedBox(
-                      width: 250,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 230,
-                            height: 80,
-                            child: AppDateField(
-                              formKey: formKey,
-                              label: 'تاريخ الزواج',
-                              hint: '',
-                              endDate: state.relation!.endDate,
-                              validate: (validate) => "",
-                              save: (_) {},
-                              isEditing: true,
-                              changeDate: (pickedDate) {
-                                context.read<PartnerFormBloc>().add(
-                                    PartnerFormEvent.changeMarriageDate(
-                                        pickedDate));
-                              },
-                              dateController: TextEditingController(
-                                text: state.relation!.marriageDate == null
-                                    ? ''
-                                    : DateFormat.yMMMd()
-                                        .format(state.relation!.marriageDate!),
-                              ),
-                              withPadding: false,
-                            ),
-                          ),
-                          if (state.relation!.marriageStatus !=
-                              MarriageStatus.married)
-                            SizedBox(
-                              width: 230,
-                              height: 80,
-                              child: AppDateField(
-                                formKey: formKey,
-                                label: 'تاريخ النهاية',
-                                hint: '',
-                                validate: (validate) => "",
-                                isEditing: true,
-                                save: (_) {},
-                                changeDate: (pickedDate) {
-                                  context.read<PartnerFormBloc>().add(
-                                        PartnerFormEvent.changeRelationEndDate(
-                                          pickedDate,
-                                        ),
-                                      );
-                                },
-                                startDate: state.relation!.marriageDate?.add(
-                                  const Duration(days: 1),
-                                ),
-                                endDate: DateTime.now(),
-                                dateController: TextEditingController(
-                                  text: state.relation!.endDate == null
-                                      ? ''
-                                      : DateFormat.yMMMd()
-                                          .format(state.relation!.endDate!),
-                                ),
-                                withPadding: false,
-                              ),
-                            ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                kHSpacer20,
+                MarriageStatusBtn(color: color, ctx: context),
               ],
             ),
-            kHSpacer20,
-            MarriageStatusBtn(color: color, ctx: context),
+            kVSpacer20,
+            BlocBuilder<PartnerFormBloc, PartnerFormState>(
+              builder: (context, state) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 230,
+                      height: 80,
+                      child: AppDateField(
+                        formKey: formKey,
+                        label: 'تاريخ الزواج',
+                        hint: '',
+                        endDate: state.relation!.endDate,
+                        validate: (validate) => "",
+                        save: (_) {},
+                        isEditing: true,
+                        changeDate: (pickedDate) {
+                          context.read<PartnerFormBloc>().add(
+                              PartnerFormEvent.changeMarriageDate(pickedDate));
+                        },
+                        dateController: TextEditingController(
+                          text: state.relation!.marriageDate == null
+                              ? ''
+                              : DateFormat.yMMMd()
+                                  .format(state.relation!.marriageDate!),
+                        ),
+                        withPadding: false,
+                      ),
+                    ),
+                    if (state.relation!.marriageStatus !=
+                        MarriageStatus.married) ...[
+                      kHSpacer20,
+                      SizedBox(
+                        width: 230,
+                        height: 80,
+                        child: AppDateField(
+                          formKey: formKey,
+                          label: 'تاريخ النهاية',
+                          hint: '',
+                          validate: (validate) => "",
+                          isEditing: true,
+                          save: (_) {},
+                          changeDate: (pickedDate) {
+                            context.read<PartnerFormBloc>().add(
+                                  PartnerFormEvent.changeRelationEndDate(
+                                    pickedDate,
+                                  ),
+                                );
+                          },
+                          startDate: state.relation!.marriageDate
+                              ?.add(const Duration(days: 1)),
+                          endDate: DateTime.now().add(const Duration(days: 1)),
+                          dateController: TextEditingController(
+                            text: state.relation!.endDate == null
+                                ? ''
+                                : DateFormat.yMMMd()
+                                    .format(state.relation!.endDate!),
+                          ),
+                          withPadding: false,
+                        ),
+                      ),
+                    ],
+                  ],
+                );
+              },
+            ),
           ],
         ),
       ),

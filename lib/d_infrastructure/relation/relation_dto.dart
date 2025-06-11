@@ -56,6 +56,7 @@ abstract class RelationDto implements _$RelationDto {
       father: UniqueId.fromUniqueString(father),
       children: children.map((e) => UniqueId.fromUniqueString(e)).toList(),
       partnerTreeId: UniqueId.fromUniqueString(partnerTreeId),
+      childrenNodes: [],
     );
   }
 

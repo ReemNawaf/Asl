@@ -87,12 +87,14 @@ class HomePage extends StatelessWidget {
                               },
                             );
                           } else {
-                            return SizedBox(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AddNewTree(size: size),
-                                ],
+                            return Center(
+                              child: SizedBox(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AddNewTree(size: size),
+                                  ],
+                                ),
                               ),
                             );
                           }

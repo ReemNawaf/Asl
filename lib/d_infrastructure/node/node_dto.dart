@@ -61,6 +61,7 @@ abstract class NodeDto implements _$NodeDto {
       relations: relations.map((r) => UniqueId.fromUniqueString(r)).toList(),
       fosterChildren:
           fosterChildren.map((e) => UniqueId.fromUniqueString(e)).toList(),
+      relationsObject: [],
     );
   }
 

@@ -87,6 +87,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      print('e $e');
       // For security purposes || or is used to check email and password as a compenation
       if ((e.code == 'wrong-password' ||
           e.code == 'invalid-credential' ||

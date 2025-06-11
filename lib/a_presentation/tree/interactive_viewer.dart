@@ -36,7 +36,7 @@ class InteractiveView extends StatelessWidget {
                 return InteractiveViewer(
                   constrained: false,
                   alignment: Alignment.center,
-                  boundaryMargin: const EdgeInsets.all(800),
+                  boundaryMargin: const EdgeInsets.all(1000),
                   minScale: 0.001,
                   maxScale: 1.000,
                   child: const TreeView(),
