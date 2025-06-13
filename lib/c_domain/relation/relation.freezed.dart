@@ -27,7 +27,8 @@ mixin _$Relation {
   List<UniqueId> get children => throw _privateConstructorUsedError;
   TNode? get mainNode => throw _privateConstructorUsedError;
   TNode? get partnerNode => throw _privateConstructorUsedError;
-  List<TNode>? get childrenNodes => throw _privateConstructorUsedError;
+  @unfreezed
+  List<TNode> get childrenNodes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RelationCopyWith<Relation> get copyWith =>
@@ -51,7 +52,7 @@ abstract class $RelationCopyWith<$Res> {
       List<UniqueId> children,
       TNode? mainNode,
       TNode? partnerNode,
-      List<TNode>? childrenNodes});
+      @unfreezed List<TNode> childrenNodes});
 
   $TNodeCopyWith<$Res>? get mainNode;
   $TNodeCopyWith<$Res>? get partnerNode;
@@ -81,7 +82,7 @@ class _$RelationCopyWithImpl<$Res, $Val extends Relation>
     Object? children = null,
     Object? mainNode = freezed,
     Object? partnerNode = freezed,
-    Object? childrenNodes = freezed,
+    Object? childrenNodes = null,
   }) {
     return _then(_value.copyWith(
       treeId: null == treeId
@@ -128,10 +129,10 @@ class _$RelationCopyWithImpl<$Res, $Val extends Relation>
           ? _value.partnerNode
           : partnerNode // ignore: cast_nullable_to_non_nullable
               as TNode?,
-      childrenNodes: freezed == childrenNodes
+      childrenNodes: null == childrenNodes
           ? _value.childrenNodes
           : childrenNodes // ignore: cast_nullable_to_non_nullable
-              as List<TNode>?,
+              as List<TNode>,
     ) as $Val);
   }
 
@@ -180,7 +181,7 @@ abstract class _$$RelationImplCopyWith<$Res>
       List<UniqueId> children,
       TNode? mainNode,
       TNode? partnerNode,
-      List<TNode>? childrenNodes});
+      @unfreezed List<TNode> childrenNodes});
 
   @override
   $TNodeCopyWith<$Res>? get mainNode;
@@ -210,7 +211,7 @@ class __$$RelationImplCopyWithImpl<$Res>
     Object? children = null,
     Object? mainNode = freezed,
     Object? partnerNode = freezed,
-    Object? childrenNodes = freezed,
+    Object? childrenNodes = null,
   }) {
     return _then(_$RelationImpl(
       treeId: null == treeId
@@ -246,7 +247,7 @@ class __$$RelationImplCopyWithImpl<$Res>
           : mother // ignore: cast_nullable_to_non_nullable
               as UniqueId,
       children: null == children
-          ? _value._children
+          ? _value.children
           : children // ignore: cast_nullable_to_non_nullable
               as List<UniqueId>,
       mainNode: freezed == mainNode
@@ -257,10 +258,10 @@ class __$$RelationImplCopyWithImpl<$Res>
           ? _value.partnerNode
           : partnerNode // ignore: cast_nullable_to_non_nullable
               as TNode?,
-      childrenNodes: freezed == childrenNodes
-          ? _value._childrenNodes
+      childrenNodes: null == childrenNodes
+          ? _value.childrenNodes
           : childrenNodes // ignore: cast_nullable_to_non_nullable
-              as List<TNode>?,
+              as List<TNode>,
     ));
   }
 }
@@ -268,7 +269,7 @@ class __$$RelationImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RelationImpl extends _Relation {
-  const _$RelationImpl(
+  _$RelationImpl(
       {required this.treeId,
       required this.partnerTreeId,
       required this.relationId,
@@ -277,13 +278,11 @@ class _$RelationImpl extends _Relation {
       required this.marriageStatus,
       required this.father,
       required this.mother,
-      required final List<UniqueId> children,
+      required this.children,
       this.mainNode,
       this.partnerNode,
-      final List<TNode>? childrenNodes})
-      : _children = children,
-        _childrenNodes = childrenNodes,
-        super._();
+      @unfreezed required this.childrenNodes})
+      : super._();
 
   @override
   final UniqueId treeId;
@@ -301,27 +300,15 @@ class _$RelationImpl extends _Relation {
   final UniqueId father;
   @override
   final UniqueId mother;
-  final List<UniqueId> _children;
   @override
-  List<UniqueId> get children {
-    if (_children is EqualUnmodifiableListView) return _children;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_children);
-  }
-
+  final List<UniqueId> children;
   @override
   final TNode? mainNode;
   @override
   final TNode? partnerNode;
-  final List<TNode>? _childrenNodes;
   @override
-  List<TNode>? get childrenNodes {
-    final value = _childrenNodes;
-    if (value == null) return null;
-    if (_childrenNodes is EqualUnmodifiableListView) return _childrenNodes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  @unfreezed
+  final List<TNode> childrenNodes;
 
   @override
   String toString() {
@@ -345,13 +332,13 @@ class _$RelationImpl extends _Relation {
                 other.marriageStatus == marriageStatus) &&
             (identical(other.father, father) || other.father == father) &&
             (identical(other.mother, mother) || other.mother == mother) &&
-            const DeepCollectionEquality().equals(other._children, _children) &&
+            const DeepCollectionEquality().equals(other.children, children) &&
             (identical(other.mainNode, mainNode) ||
                 other.mainNode == mainNode) &&
             (identical(other.partnerNode, partnerNode) ||
                 other.partnerNode == partnerNode) &&
             const DeepCollectionEquality()
-                .equals(other._childrenNodes, _childrenNodes));
+                .equals(other.childrenNodes, childrenNodes));
   }
 
   @override
@@ -365,10 +352,10 @@ class _$RelationImpl extends _Relation {
       marriageStatus,
       father,
       mother,
-      const DeepCollectionEquality().hash(_children),
+      const DeepCollectionEquality().hash(children),
       mainNode,
       partnerNode,
-      const DeepCollectionEquality().hash(_childrenNodes));
+      const DeepCollectionEquality().hash(childrenNodes));
 
   @JsonKey(ignore: true)
   @override
@@ -378,7 +365,7 @@ class _$RelationImpl extends _Relation {
 }
 
 abstract class _Relation extends Relation {
-  const factory _Relation(
+  factory _Relation(
       {required final UniqueId treeId,
       required final UniqueId partnerTreeId,
       required final UniqueId relationId,
@@ -390,8 +377,8 @@ abstract class _Relation extends Relation {
       required final List<UniqueId> children,
       final TNode? mainNode,
       final TNode? partnerNode,
-      final List<TNode>? childrenNodes}) = _$RelationImpl;
-  const _Relation._() : super._();
+      @unfreezed required final List<TNode> childrenNodes}) = _$RelationImpl;
+  _Relation._() : super._();
 
   @override
   UniqueId get treeId;
@@ -416,7 +403,8 @@ abstract class _Relation extends Relation {
   @override
   TNode? get partnerNode;
   @override
-  List<TNode>? get childrenNodes;
+  @unfreezed
+  List<TNode> get childrenNodes;
   @override
   @JsonKey(ignore: true)
   _$$RelationImplCopyWith<_$RelationImpl> get copyWith =>

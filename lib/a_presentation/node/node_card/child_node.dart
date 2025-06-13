@@ -18,7 +18,7 @@ class ChildNode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppNode(
-      type: NodeType.root,
+      type: NodeType.child,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'الابنة' : 'الابن',
       color: kStemColors,

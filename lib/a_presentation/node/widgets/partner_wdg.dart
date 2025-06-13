@@ -6,7 +6,6 @@ import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/a_presentation/node/widgets/add_child_wdg.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/injection.dart';
@@ -17,13 +16,11 @@ class PartnerWidget extends StatelessWidget {
   const PartnerWidget({
     super.key,
     required this.node,
-    required this.formState,
     required this.color,
   });
 
   final TNode node;
   final MaterialColor color;
-  final PartnerFormState formState;
 
   @override
   Widget build(BuildContext context) {

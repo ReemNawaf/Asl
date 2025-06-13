@@ -27,7 +27,8 @@ mixin _$TNode {
   UniqueId get upperFamily => throw _privateConstructorUsedError;
   List<UniqueId> get relations => throw _privateConstructorUsedError;
   List<UniqueId> get fosterChildren => throw _privateConstructorUsedError;
-  List<Relation>? get relationsObject => throw _privateConstructorUsedError;
+  @unfreezed
+  List<Relation> get relationsObject => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TNodeCopyWith<TNode> get copyWith => throw _privateConstructorUsedError;
@@ -50,7 +51,7 @@ abstract class $TNodeCopyWith<$Res> {
       UniqueId upperFamily,
       List<UniqueId> relations,
       List<UniqueId> fosterChildren,
-      List<Relation>? relationsObject});
+      @unfreezed List<Relation> relationsObject});
 }
 
 /// @nodoc
@@ -77,7 +78,7 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
     Object? upperFamily = null,
     Object? relations = null,
     Object? fosterChildren = null,
-    Object? relationsObject = freezed,
+    Object? relationsObject = null,
   }) {
     return _then(_value.copyWith(
       treeId: null == treeId
@@ -124,10 +125,10 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
           ? _value.fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
               as List<UniqueId>,
-      relationsObject: freezed == relationsObject
+      relationsObject: null == relationsObject
           ? _value.relationsObject
           : relationsObject // ignore: cast_nullable_to_non_nullable
-              as List<Relation>?,
+              as List<Relation>,
     ) as $Val);
   }
 }
@@ -151,7 +152,7 @@ abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
       UniqueId upperFamily,
       List<UniqueId> relations,
       List<UniqueId> fosterChildren,
-      List<Relation>? relationsObject});
+      @unfreezed List<Relation> relationsObject});
 }
 
 /// @nodoc
@@ -176,7 +177,7 @@ class __$$TNodeImplCopyWithImpl<$Res>
     Object? upperFamily = null,
     Object? relations = null,
     Object? fosterChildren = null,
-    Object? relationsObject = freezed,
+    Object? relationsObject = null,
   }) {
     return _then(_$TNodeImpl(
       treeId: null == treeId
@@ -223,10 +224,10 @@ class __$$TNodeImplCopyWithImpl<$Res>
           ? _value.fosterChildren
           : fosterChildren // ignore: cast_nullable_to_non_nullable
               as List<UniqueId>,
-      relationsObject: freezed == relationsObject
+      relationsObject: null == relationsObject
           ? _value.relationsObject
           : relationsObject // ignore: cast_nullable_to_non_nullable
-              as List<Relation>?,
+              as List<Relation>,
     ));
   }
 }
@@ -246,7 +247,7 @@ class _$TNodeImpl extends _TNode {
       required this.upperFamily,
       required this.relations,
       required this.fosterChildren,
-      this.relationsObject})
+      @unfreezed required this.relationsObject})
       : super._();
 
   @override
@@ -272,7 +273,8 @@ class _$TNodeImpl extends _TNode {
   @override
   final List<UniqueId> fosterChildren;
   @override
-  final List<Relation>? relationsObject;
+  @unfreezed
+  final List<Relation> relationsObject;
 
   @override
   String toString() {
@@ -341,7 +343,7 @@ abstract class _TNode extends TNode {
       required final UniqueId upperFamily,
       required final List<UniqueId> relations,
       required final List<UniqueId> fosterChildren,
-      final List<Relation>? relationsObject}) = _$TNodeImpl;
+      @unfreezed required final List<Relation> relationsObject}) = _$TNodeImpl;
   const _TNode._() : super._();
 
   @override
@@ -367,7 +369,8 @@ abstract class _TNode extends TNode {
   @override
   List<UniqueId> get fosterChildren;
   @override
-  List<Relation>? get relationsObject;
+  @unfreezed
+  List<Relation> get relationsObject;
   @override
   @JsonKey(ignore: true)
   _$$TNodeImplCopyWith<_$TNodeImpl> get copyWith =>

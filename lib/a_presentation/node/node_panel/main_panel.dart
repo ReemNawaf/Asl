@@ -15,18 +15,21 @@ class MainPanel extends StatelessWidget {
   const MainPanel({
     super.key,
     required this.color,
+    required this.type,
     required this.imageWidget,
     required this.node,
     required this.contextPage,
   });
 
   final MaterialColor color;
+  final NodeType type;
   final Widget imageWidget;
   final TNode node;
   final BuildContext contextPage;
 
   @override
   Widget build(BuildContext context) {
+    print('Type $type');
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -80,11 +83,12 @@ class MainPanel extends StatelessWidget {
                                 indicatorSize: TabBarIndicatorSize.label,
                                 dividerHeight: 0.0,
                                 isScrollable: true,
-                                tabs: const [
-                                  Tab(text: 'معلومات شخصية'),
-                                  Tab(text: 'الوالدين والأخوة'),
-                                  Tab(text: 'الزوجة والأبناء'),
-                                  Tab(text: 'نبذة وملاحظات'),
+                                tabs: [
+                                  const Tab(text: 'معلومات شخصية'),
+                                  const Tab(text: 'الوالدين والأخوة'),
+                                  if (type != NodeType.partner)
+                                    const Tab(text: 'الزوجة والأبناء'),
+                                  const Tab(text: 'نبذة وملاحظات'),
                                 ],
                                 onTap: (index) {
                                   context.read<NodeFormBloc>().add(
@@ -118,7 +122,8 @@ class MainPanel extends StatelessWidget {
                             children: [
                               InfoPanel(color: color, ctx: context),
                               ParentsSiblingsPanel(color: color),
-                              RelationsPanel(color: color, node: node),
+                              if (type != NodeType.partner)
+                                RelationsPanel(color: color, node: node),
                               const Icon(Icons.directions_bike),
                             ],
                           ),

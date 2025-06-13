@@ -21,6 +21,7 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.changeIsAvlive(bool isAlive) = _ChangedIsAvlive;
   const factory NodeFormEvent.makeItRoot() = _MakeItRoot;
   const factory NodeFormEvent.changeGender(Gender gender) = _ChangedGender;
+  const factory NodeFormEvent.addPartner(bool isAdding) = _AddPartner;
 
   const factory NodeFormEvent.saved() = _Saved;
 }

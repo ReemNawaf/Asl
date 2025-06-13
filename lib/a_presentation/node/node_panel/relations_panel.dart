@@ -3,6 +3,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_member_btn.dart';
 import 'package:asl/a_presentation/node/widgets/add_partner_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/partner_wdg.dart';
+import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 
 import 'package:asl/c_domain/node/t_node.dart';
@@ -28,7 +29,7 @@ class RelationsPanel extends StatelessWidget {
       height: PAN_HEIGHT,
       width: T_PAN_WIDTH,
       child: SingleChildScrollView(
-        child: BlocBuilder<PartnerFormBloc, PartnerFormState>(
+        child: BlocBuilder<NodeFormBloc, NodeFormState>(
           builder: (context, state) {
             return SizedBox(
               width: (T_PAN_WIDTH - 10) / 2,
@@ -38,22 +39,29 @@ class RelationsPanel extends StatelessWidget {
                 children: [
                   PartnerWidget(
                     node: node,
-                    formState: state,
                     color: color,
                   ),
                   kVSpacer10,
-                  if (state.isAdding) ...[
-                    AddPartnerWidget(node: node, color: color, state: state),
+                  if (state.addPartner) ...[
+                    AddPartnerWidget(node: node, color: color),
                   ],
                   AddMemberButton(
                     onPressed: () {
-                      state.isAdding
-                          ? context
-                              .read<PartnerFormBloc>()
-                              .add(const PartnerFormEvent.saved())
-                          : context.read<PartnerFormBloc>().add(
-                                PartnerFormEvent.initialized(node),
-                              );
+                      if (state.addPartner) {
+                        context
+                            .read<PartnerFormBloc>()
+                            .add(const PartnerFormEvent.saved());
+                        context.read<NodeFormBloc>().add(
+                              const NodeFormEvent.addPartner(false),
+                            );
+                      } else {
+                        context.read<NodeFormBloc>().add(
+                              const NodeFormEvent.addPartner(true),
+                            );
+                        context.read<PartnerFormBloc>().add(
+                              PartnerFormEvent.initialized(node),
+                            );
+                      }
                     },
                     label: 'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
                     color: color,

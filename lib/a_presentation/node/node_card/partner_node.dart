@@ -18,7 +18,7 @@ class PartnerNode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppNode(
-      type: NodeType.root,
+      type: NodeType.partner,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'زوجة' : 'زوج',
       color: kOutColors,

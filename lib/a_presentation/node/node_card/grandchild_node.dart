@@ -9,6 +9,7 @@ class GrandchildNode extends StatelessWidget {
     super.key,
     required this.node,
     required this.pageContext,
+
     // this.image,
   });
   final TNode node;
@@ -18,7 +19,7 @@ class GrandchildNode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppNode(
-      type: NodeType.root,
+      type: NodeType.grandchild,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'الحفيد' : 'الحفيدة',
       color: kLeafColors,

@@ -54,7 +54,15 @@ class AppNode extends StatelessWidget {
     );
 
     return GestureDetector(
-      onTap: () => showPanel(context, size, imageWidget, color, hasImage, node),
+      onTap: () => showPanel(
+        context,
+        size,
+        imageWidget,
+        color,
+        hasImage,
+        node,
+        type,
+      ),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -158,13 +166,14 @@ class AppNode extends StatelessWidget {
 }
 
 void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
-        MaterialColor color, bool hasImage, TNode node) =>
+        MaterialColor color, bool hasImage, TNode node, NodeType type) =>
     showDialog(
       context: contextPage,
       builder: (BuildContext context) {
         contextPage.read<NodeFormBloc>().add(NodeFormEvent.initialized(node));
         return MainPanel(
           color: color,
+          type: type,
           imageWidget: imageWidget,
           node: node,
           contextPage: contextPage,
