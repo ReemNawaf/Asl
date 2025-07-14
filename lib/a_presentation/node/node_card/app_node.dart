@@ -96,18 +96,19 @@ class AppNode extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                    width: 220,
-                    height: kTextHeight,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.0),
-                      color: color[300]!,
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      name,
-                      style: kCalloutStyle,
-                      textAlign: TextAlign.center,
-                    )),
+                  width: 220,
+                  height: kTextHeight,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6.0),
+                    color: color[300]!,
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    name,
+                    style: kCalloutStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Row(
                   children: [

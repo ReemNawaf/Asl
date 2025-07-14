@@ -58,14 +58,14 @@ class TreeDraw {
 
     //  Level Relation: Get Root Children
     //  get the node relations
-    if (root.relationsObject == null) {
+    if (root.relationsObject.isEmpty) {
       print('root.relationsObject == null)');
       return graph;
     }
 
     //  on each partner (loop 1)
-    print('ROOT: root has ${root.relationsObject?.length} partners');
-    for (Relation relation in root.relationsObject!) {
+    print('ROOT: root has ${root.relationsObject.length} partners');
+    for (Relation relation in root.relationsObject) {
       final partner = relation.partnerNode!;
 
       //  on each partner create node + edge with the root
@@ -76,10 +76,9 @@ class TreeDraw {
 
       //  go to their children (loop 2)
 
-      print(
-          'STEM: root partner has ${relation.childrenNodes?.length} children');
+      print('STEM: root partner has ${relation.childrenNodes.length} children');
 
-      for (TNode child in relation.childrenNodes ?? []) {
+      for (TNode child in relation.childrenNodes) {
         //  on each child create node + edge with the partner
         addLinkedNode(
           tnode: child,
@@ -89,9 +88,9 @@ class TreeDraw {
         //
         final childRelation = child.relationsObject;
 
-        print('STEM: son has ${childRelation?.length} partners');
+        print('STEM: son has ${childRelation.length} partners');
 
-        for (Relation relation in childRelation ?? []) {
+        for (Relation relation in childRelation) {
           // Sons partners
           final childPartner = relation.partnerNode!;
 
@@ -106,8 +105,8 @@ class TreeDraw {
           //  go to the children children (loop 2)
 
           print(
-              'LEAF: son partner has ${relation.childrenNodes?.length} children');
-          for (TNode grandchild in relation.childrenNodes ?? []) {
+              'LEAF: son partner has ${relation.childrenNodes.length} children');
+          for (TNode grandchild in relation.childrenNodes) {
             //  on each grandchild create node + edge with the partner child
             addLinkedNode(
               tnode: grandchild,

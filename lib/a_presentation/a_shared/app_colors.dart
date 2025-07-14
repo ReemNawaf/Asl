@@ -95,6 +95,11 @@ const MaterialColor kOutColors = MaterialColor(
   },
 );
 
+// Color(0xFFABABAB),
+// Color(0xFFC7C7C7),
+// Color(0xFFE0E0E0),
+// Color(0xFFDFDFDF),
+
 const int kRedColor = 0xFFFF7A92;
 const MaterialColor kRedColors = MaterialColor(
   kRedColor,

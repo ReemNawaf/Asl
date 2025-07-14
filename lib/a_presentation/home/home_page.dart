@@ -12,6 +12,7 @@ import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart'
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
+import 'package:asl/b_application/tree_bloc/zoom_tree/zoom_tree_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -80,7 +81,7 @@ class HomePage extends StatelessWidget {
                                 CurrentTreeState>(
                               builder: (context, state) {
                                 if (state.currentTree != null) {
-                                  return const InteractiveView();
+                                  return InteractiveView();
                                 } else {
                                   return const SizedBox();
                                 }
@@ -116,11 +117,32 @@ class HomePage extends StatelessWidget {
                 ),
                 Container(
                   alignment: Alignment.bottomLeft,
+                  padding: const EdgeInsets.only(left: 20, bottom: 18),
                   child: IconButton(
                     icon: const Icon(Icons.logout_outlined),
                     onPressed: () {
                       context.read<AuthBloc>().add(const AuthEvent.singedOut());
                       context.router.push(const AuthRoute());
+                    },
+                  ),
+                ),
+                Container(
+                  width: 150,
+                  padding: EdgeInsets.only(right: 20, top: size.height - 85),
+                  child: BlocBuilder<ZoomTreeBloc, ZoomTreeState>(
+                    builder: (context, state) {
+                      return Slider(
+                        min: MIN_ZOOM,
+                        max: MAX_ZOOM,
+                        divisions: 6,
+                        value: state.scale,
+                        label: "${state.scale.toStringAsFixed(2)}x",
+                        onChanged: (newScale) {
+                          context
+                              .read<ZoomTreeBloc>()
+                              .add(ZoomTreeChanged(newScale));
+                        },
+                      );
                     },
                   ),
                 ),

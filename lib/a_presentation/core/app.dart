@@ -9,6 +9,7 @@ import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_actor/tree_actor_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
+import 'package:asl/b_application/tree_bloc/zoom_tree/zoom_tree_bloc.dart';
 import 'package:dartz/dartz.dart' as z;
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
             ..add(const TreeWatcherEvent.getAllTrees()),
         ),
         BlocProvider<CurrentTreeBloc>(create: (context) => CurrentTreeBloc()),
+        BlocProvider<ZoomTreeBloc>(create: (context) => ZoomTreeBloc()),
         BlocProvider<TreeActorBloc>(create: (cttx) => getIt<TreeActorBloc>()),
         BlocProvider<NodeWatcherBloc>(
             create: (context) => getIt<NodeWatcherBloc>()),
