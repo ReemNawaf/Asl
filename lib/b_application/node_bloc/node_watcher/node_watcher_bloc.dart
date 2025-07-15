@@ -27,18 +27,21 @@ class NodeWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
     NodeWatcherEvent event,
     Emitter<NodeWatcherState> emit,
   ) async {
+    print('015 what event is being calledn on $event');
     await event.map(
       getTree: (e) async {
-        print('---------- | get tree | ----------');
+        print('015 ---------- | get tree | ----------');
         emit(const NodeWatcherState.loadInProgress());
 
+        print('015 before emit');
         emit((await _nodeRepository.getTree(e.tree.treeId)).fold(
           (f) => NodeWatcherState.loadFailure(f),
           (root) {
-            // print('nodesReceived: get the nodes $nodes');
+            print('015 nodesReceived: get the nodes $root');
             return NodeWatcherState.loadSuccess(root: root);
           },
         ));
+        print('015 after emit');
       },
       getNode: (e) async {
         emit(const NodeWatcherState.inProgress());

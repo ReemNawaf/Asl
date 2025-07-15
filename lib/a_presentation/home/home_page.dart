@@ -134,7 +134,6 @@ class HomePage extends StatelessWidget {
                       return Slider(
                         min: MIN_ZOOM,
                         max: MAX_ZOOM,
-                        divisions: 6,
                         value: state.scale,
                         label: "${state.scale.toStringAsFixed(2)}x",
                         onChanged: (newScale) {

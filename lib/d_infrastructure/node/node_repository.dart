@@ -168,7 +168,8 @@ class NodeRepository implements INodeRepository {
       TNode root = (await nodeRepo.getNode(
               treeId: treeId, nodeId: rootId ?? tree.rootId))
           .fold((l) => left(RelationFailure), (r) => r) as TNode;
-      print('Get the root node');
+      print('015 | Get the root node');
+      print('015 | root has ${root.relations.length}');
 
       // 3. Get the root relations
       final rootRelations = <Relation>[];

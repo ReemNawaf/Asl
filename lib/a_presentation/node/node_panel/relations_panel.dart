@@ -4,7 +4,9 @@ import 'package:asl/a_presentation/core/widgets/app_member_btn.dart';
 import 'package:asl/a_presentation/node/widgets/add_partner_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/partner_wdg.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +56,14 @@ class RelationsPanel extends StatelessWidget {
                         context.read<NodeFormBloc>().add(
                               const NodeFormEvent.addPartner(false),
                             );
+
+                        // After new node is added the watcher relation bloc should reload the all trees relation
+                        print('015: getting all nodes again');
+                        context.read<NodeWatcherBloc>().add(
+                            NodeWatcherEvent.getTree(context
+                                .read<CurrentTreeBloc>()
+                                .state
+                                .currentTree!));
                       } else {
                         context.read<NodeFormBloc>().add(
                               const NodeFormEvent.addPartner(true),

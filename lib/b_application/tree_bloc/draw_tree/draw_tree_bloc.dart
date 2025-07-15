@@ -30,6 +30,7 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
       drawNewTree: (e) async {
         final graph = treeDraw.drawTree(root: e.root);
         emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
+        print('015 | drawNewTree');
       },
     );
   }

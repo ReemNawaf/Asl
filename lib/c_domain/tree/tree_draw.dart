@@ -50,6 +50,7 @@ class TreeDraw {
   }
 
   Graph drawTree({required TNode root}) {
+    print('015: ${root.relations.length}\n\n');
     //  Level Roots: Add Root
     //  create first node
     graph = Graph()..isTree = true;
