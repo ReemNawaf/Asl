@@ -16,7 +16,6 @@ class InteractiveView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<NodeWatcherBloc, NodeWatcherState>(
       listener: (_, state) {
-        print('015 | Listen');
         state.map(
           initial: (_) {},
           loadInProgress: (_) {},

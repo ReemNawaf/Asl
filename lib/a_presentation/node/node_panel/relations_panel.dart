@@ -30,56 +30,59 @@ class RelationsPanel extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10.0, top: 20.0),
       height: PAN_HEIGHT,
       width: T_PAN_WIDTH,
-      child: SingleChildScrollView(
-        child: BlocBuilder<NodeFormBloc, NodeFormState>(
-          builder: (context, state) {
-            return SizedBox(
-              width: (T_PAN_WIDTH - 10) / 2,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  PartnerWidget(
-                    node: node,
-                    color: color,
-                  ),
-                  kVSpacer10,
-                  if (state.addPartner) ...[
-                    AddPartnerWidget(node: node, color: color),
+      child: BlocListener<PartnerFormBloc, PartnerFormState>(
+        listener: (context, state) {
+          if (state.saveFailureOrSuccessOption.isSome()) {
+            // After new node is added the watcher relation bloc should reload the all trees relation
+            print('015 | getting all nodes again');
+            context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
+                context.read<CurrentTreeBloc>().state.currentTree!));
+          }
+        },
+        child: SingleChildScrollView(
+          child: BlocBuilder<NodeFormBloc, NodeFormState>(
+            builder: (context, state) {
+              return SizedBox(
+                width: (T_PAN_WIDTH - 10) / 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    PartnerWidget(
+                      node: node,
+                      color: color,
+                    ),
+                    kVSpacer10,
+                    if (state.addPartner) ...[
+                      AddPartnerWidget(node: node, color: color),
+                    ],
+                    AddMemberButton(
+                      onPressed: () {
+                        if (state.addPartner) {
+                          context
+                              .read<PartnerFormBloc>()
+                              .add(const PartnerFormEvent.saved());
+                          context.read<NodeFormBloc>().add(
+                                const NodeFormEvent.addPartner(false),
+                              );
+                        } else {
+                          context.read<NodeFormBloc>().add(
+                                const NodeFormEvent.addPartner(true),
+                              );
+                          context.read<PartnerFormBloc>().add(
+                                PartnerFormEvent.initialized(node),
+                              );
+                        }
+                      },
+                      label:
+                          'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
+                      color: color,
+                    ),
                   ],
-                  AddMemberButton(
-                    onPressed: () {
-                      if (state.addPartner) {
-                        context
-                            .read<PartnerFormBloc>()
-                            .add(const PartnerFormEvent.saved());
-                        context.read<NodeFormBloc>().add(
-                              const NodeFormEvent.addPartner(false),
-                            );
-
-                        // After new node is added the watcher relation bloc should reload the all trees relation
-                        print('015: getting all nodes again');
-                        context.read<NodeWatcherBloc>().add(
-                            NodeWatcherEvent.getTree(context
-                                .read<CurrentTreeBloc>()
-                                .state
-                                .currentTree!));
-                      } else {
-                        context.read<NodeFormBloc>().add(
-                              const NodeFormEvent.addPartner(true),
-                            );
-                        context.read<PartnerFormBloc>().add(
-                              PartnerFormEvent.initialized(node),
-                            );
-                      }
-                    },
-                    label: 'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
-                    color: color,
-                  ),
-                ],
-              ),
-            );
-          },
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

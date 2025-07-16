@@ -19,8 +19,9 @@ class TreeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DrawTreeBloc, DrawTreeState>(
       builder: (_, state) {
-        print('015: Tree View is rebuilt');
         if (state.graph != null && state.builder != null) {
+          print(
+              '015 | Tree View is rebuilt ${state.graph!.nodes.length} nodes');
           return GraphView(
             graph: state.graph!,
 
