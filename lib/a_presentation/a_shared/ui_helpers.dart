@@ -52,7 +52,7 @@ void appSnackBar(
 //
     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
     duration: const Duration(seconds: 2),
-    width: 300.0,
+    width: 400.0,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
       borderRadius: kAppBorderRadius,

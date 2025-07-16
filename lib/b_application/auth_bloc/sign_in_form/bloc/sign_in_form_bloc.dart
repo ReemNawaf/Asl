@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
@@ -123,7 +124,14 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           authFailureOrSuccessOption: none(),
         ));
         // 2.  then directe it to the logic in the domain layer (IAuthFacade)
-        final failureOrSuccess = await _authFacade.signInWithGoogle();
+        Either<AuthFailure, Unit> failureOrSuccess;
+        if (e.mode == AuthMode.signin) {
+          print('016 | ${e.mode}');
+          failureOrSuccess = await _authFacade.signInWithGoogle();
+        } else {
+          print('016 | ${e.mode}');
+          failureOrSuccess = await _authFacade.registerWithGoogle();
+        }
         // 3. yield the state of done submitting with response
         emit(state.copyWith(
           isGoogleSubmitting: false,

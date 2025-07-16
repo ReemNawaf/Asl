@@ -11,7 +11,7 @@ abstract class SignInFormEvent with _$SignInFormEvent {
   const factory SignInFormEvent.signInWithEmailAndPasswordPressed() =
       SignInWithEmailAndPasswordPressed;
 
-  const factory SignInFormEvent.signInWithEmailGooglePressed() =
+  const factory SignInFormEvent.signInWithEmailGooglePressed(AuthMode mode) =
       SignInWithEmailGooglePressed;
 
   const factory SignInFormEvent.reLogin() = ReLogin;

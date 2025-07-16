@@ -22,7 +22,7 @@ mixin _$SignInFormEvent {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailGooglePressed,
+    required TResult Function(AuthMode mode) signInWithEmailGooglePressed,
     required TResult Function() reLogin,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$SignInFormEvent {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
     TResult? Function()? signInWithEmailAndPasswordPressed,
-    TResult? Function()? signInWithEmailGooglePressed,
+    TResult? Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult? Function()? reLogin,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$SignInFormEvent {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailGooglePressed,
+    TResult Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult Function()? reLogin,
     required TResult orElse(),
   }) =>
@@ -176,7 +176,7 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailGooglePressed,
+    required TResult Function(AuthMode mode) signInWithEmailGooglePressed,
     required TResult Function() reLogin,
   }) {
     return emailChanged(emailStr);
@@ -189,7 +189,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
     TResult? Function()? signInWithEmailAndPasswordPressed,
-    TResult? Function()? signInWithEmailGooglePressed,
+    TResult? Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult? Function()? reLogin,
   }) {
     return emailChanged?.call(emailStr);
@@ -202,7 +202,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailGooglePressed,
+    TResult Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult Function()? reLogin,
     required TResult orElse(),
   }) {
@@ -344,7 +344,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailGooglePressed,
+    required TResult Function(AuthMode mode) signInWithEmailGooglePressed,
     required TResult Function() reLogin,
   }) {
     return passwordChanged(passwordStr);
@@ -357,7 +357,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
     TResult? Function()? signInWithEmailAndPasswordPressed,
-    TResult? Function()? signInWithEmailGooglePressed,
+    TResult? Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult? Function()? reLogin,
   }) {
     return passwordChanged?.call(passwordStr);
@@ -370,7 +370,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailGooglePressed,
+    TResult Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult Function()? reLogin,
     required TResult orElse(),
   }) {
@@ -490,7 +490,7 @@ class _$RegisterWithEmailAndPasswordPressedImpl
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailGooglePressed,
+    required TResult Function(AuthMode mode) signInWithEmailGooglePressed,
     required TResult Function() reLogin,
   }) {
     return registerWithEmailAndPasswordPressed();
@@ -503,7 +503,7 @@ class _$RegisterWithEmailAndPasswordPressedImpl
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
     TResult? Function()? signInWithEmailAndPasswordPressed,
-    TResult? Function()? signInWithEmailGooglePressed,
+    TResult? Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult? Function()? reLogin,
   }) {
     return registerWithEmailAndPasswordPressed?.call();
@@ -516,7 +516,7 @@ class _$RegisterWithEmailAndPasswordPressedImpl
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailGooglePressed,
+    TResult Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult Function()? reLogin,
     required TResult orElse(),
   }) {
@@ -631,7 +631,7 @@ class _$SignInWithEmailAndPasswordPressedImpl
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailGooglePressed,
+    required TResult Function(AuthMode mode) signInWithEmailGooglePressed,
     required TResult Function() reLogin,
   }) {
     return signInWithEmailAndPasswordPressed();
@@ -644,7 +644,7 @@ class _$SignInWithEmailAndPasswordPressedImpl
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
     TResult? Function()? signInWithEmailAndPasswordPressed,
-    TResult? Function()? signInWithEmailGooglePressed,
+    TResult? Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult? Function()? reLogin,
   }) {
     return signInWithEmailAndPasswordPressed?.call();
@@ -657,7 +657,7 @@ class _$SignInWithEmailAndPasswordPressedImpl
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailGooglePressed,
+    TResult Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult Function()? reLogin,
     required TResult orElse(),
   }) {
@@ -731,6 +731,8 @@ abstract class _$$SignInWithEmailGooglePressedImplCopyWith<$Res> {
           _$SignInWithEmailGooglePressedImpl value,
           $Res Function(_$SignInWithEmailGooglePressedImpl) then) =
       __$$SignInWithEmailGooglePressedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AuthMode mode});
 }
 
 /// @nodoc
@@ -742,28 +744,53 @@ class __$$SignInWithEmailGooglePressedImplCopyWithImpl<$Res>
       _$SignInWithEmailGooglePressedImpl _value,
       $Res Function(_$SignInWithEmailGooglePressedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mode = null,
+  }) {
+    return _then(_$SignInWithEmailGooglePressedImpl(
+      null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as AuthMode,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SignInWithEmailGooglePressedImpl
     implements SignInWithEmailGooglePressed {
-  const _$SignInWithEmailGooglePressedImpl();
+  const _$SignInWithEmailGooglePressedImpl(this.mode);
+
+  @override
+  final AuthMode mode;
 
   @override
   String toString() {
-    return 'SignInFormEvent.signInWithEmailGooglePressed()';
+    return 'SignInFormEvent.signInWithEmailGooglePressed(mode: $mode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SignInWithEmailGooglePressedImpl);
+            other is _$SignInWithEmailGooglePressedImpl &&
+            (identical(other.mode, mode) || other.mode == mode));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, mode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignInWithEmailGooglePressedImplCopyWith<
+          _$SignInWithEmailGooglePressedImpl>
+      get copyWith => __$$SignInWithEmailGooglePressedImplCopyWithImpl<
+          _$SignInWithEmailGooglePressedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -772,10 +799,10 @@ class _$SignInWithEmailGooglePressedImpl
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailGooglePressed,
+    required TResult Function(AuthMode mode) signInWithEmailGooglePressed,
     required TResult Function() reLogin,
   }) {
-    return signInWithEmailGooglePressed();
+    return signInWithEmailGooglePressed(mode);
   }
 
   @override
@@ -785,10 +812,10 @@ class _$SignInWithEmailGooglePressedImpl
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
     TResult? Function()? signInWithEmailAndPasswordPressed,
-    TResult? Function()? signInWithEmailGooglePressed,
+    TResult? Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult? Function()? reLogin,
   }) {
-    return signInWithEmailGooglePressed?.call();
+    return signInWithEmailGooglePressed?.call(mode);
   }
 
   @override
@@ -798,12 +825,12 @@ class _$SignInWithEmailGooglePressedImpl
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailGooglePressed,
+    TResult Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult Function()? reLogin,
     required TResult orElse(),
   }) {
     if (signInWithEmailGooglePressed != null) {
-      return signInWithEmailGooglePressed();
+      return signInWithEmailGooglePressed(mode);
     }
     return orElse();
   }
@@ -862,8 +889,14 @@ class _$SignInWithEmailGooglePressedImpl
 }
 
 abstract class SignInWithEmailGooglePressed implements SignInFormEvent {
-  const factory SignInWithEmailGooglePressed() =
+  const factory SignInWithEmailGooglePressed(final AuthMode mode) =
       _$SignInWithEmailGooglePressedImpl;
+
+  AuthMode get mode;
+  @JsonKey(ignore: true)
+  _$$SignInWithEmailGooglePressedImplCopyWith<
+          _$SignInWithEmailGooglePressedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -908,7 +941,7 @@ class _$ReLoginImpl implements ReLogin {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailGooglePressed,
+    required TResult Function(AuthMode mode) signInWithEmailGooglePressed,
     required TResult Function() reLogin,
   }) {
     return reLogin();
@@ -921,7 +954,7 @@ class _$ReLoginImpl implements ReLogin {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? registerWithEmailAndPasswordPressed,
     TResult? Function()? signInWithEmailAndPasswordPressed,
-    TResult? Function()? signInWithEmailGooglePressed,
+    TResult? Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult? Function()? reLogin,
   }) {
     return reLogin?.call();
@@ -934,7 +967,7 @@ class _$ReLoginImpl implements ReLogin {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailGooglePressed,
+    TResult Function(AuthMode mode)? signInWithEmailGooglePressed,
     TResult Function()? reLogin,
     required TResult orElse(),
   }) {

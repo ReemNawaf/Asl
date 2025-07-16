@@ -87,7 +87,6 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      print('e $e');
       // For security purposes || or is used to check email and password as a compenation
       if ((e.code == 'wrong-password' ||
           e.code == 'invalid-credential' ||
@@ -101,38 +100,80 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+  Future<Either<AuthFailure, Unit>> registerWithGoogle() async {
     try {
-      //  web
+      print('016 | registerWithGoogle');
+
+      final googleUser = await googleSignIn!.signIn();
+      if (googleUser == null) {
+        googleSignIn!.disconnect();
+        return left(const AuthFailure.cancelledByUser());
+      }
       GoogleAuthProvider googleProvider = GoogleAuthProvider();
       final UserCredential authUserCredential =
           await firebaseAuth!.signInWithPopup(googleProvider);
-      // 1.
-      // final googleUser = await googleSignIn!.signIn();
-      // if (googleUser == null) {
-      //   return left(const AuthFailure.cancelledByUser());
-      // }
-      // // // 2. For FirebaseAuth,
-      // final googleAuthentication = await googleUser.authentication;
-      // // 3. For FirebaseFirestore (credential),
-      // final authCredential = GoogleAuthProvider.credential(
-      //   idToken: googleAuthentication.idToken,
-      //   accessToken: googleAuthentication.accessToken,
-      // );
-      // // 4.
-      // final authUserCredential =
-      //     await firebaseAuth!.signInWithCredential(authCredential);
-      // if (authUserCredential.additionalUserInfo!.isNewUser) {
-      //   //  Adding a new user
-      //   await createNewUserInFirstore(userCredential: authUserCredential);
-      // }
+
+      if (!authUserCredential.additionalUserInfo!.isNewUser) {
+        googleSignIn!.disconnect();
+        return left(const AuthFailure.accountDoesExist());
+      }
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('id', authUserCredential.user!.uid);
       prefs.setBool('auth', true);
+
+      //  Adding a new user
+      await createNewUserInFirstore(userCredential: authUserCredential);
+      googleSignIn!.disconnect();
       return right(unit);
     } on FirebaseAuthException catch (_) {
+      googleSignIn!.disconnect();
       return left(const AuthFailure.serverError());
     } catch (e) {
+      googleSignIn!.disconnect();
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+    try {
+      print('016 | signInWithGoogle');
+      final googleUser = await googleSignIn!.signIn();
+      if (googleUser == null) {
+        googleSignIn!.disconnect();
+        return left(const AuthFailure.cancelledByUser());
+      }
+
+      final email = googleUser.email;
+
+      final signInMethods =
+          await firebaseAuth!.fetchSignInMethodsForEmail(email);
+      if (signInMethods.isEmpty) {
+        googleSignIn!.disconnect();
+        return left(const AuthFailure.accountDoesNotExist());
+      }
+
+      final googleAuth = await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+        accessToken: googleAuth.accessToken,
+      );
+
+      final authUserCredential =
+          await firebaseAuth!.signInWithCredential(credential);
+
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('id', authUserCredential.user!.uid);
+      prefs.setBool('auth', true);
+
+      print('016 | Sign-in successful');
+      googleSignIn!.disconnect();
+      return right(unit);
+    } on FirebaseAuthException catch (_) {
+      googleSignIn!.disconnect();
+      return left(const AuthFailure.serverError());
+    } catch (e) {
+      googleSignIn!.disconnect();
       return left(const AuthFailure.serverError());
     }
   }

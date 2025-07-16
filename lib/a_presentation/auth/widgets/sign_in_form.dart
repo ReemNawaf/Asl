@@ -59,6 +59,10 @@ class _SignInFormState extends State<SignInForm> {
                   invalidEmailAndPasswordCombination: (_) =>
                       'البريد الإلكتروني أو الرقم السري غير صحيح',
                   serverError: (_) => 'حدث خطأ ما',
+                  accountDoesExist: (_) =>
+                      'الحساب مسجل من قبل، يرجى تسجيل الدخول',
+                  accountDoesNotExist: (_) =>
+                      'الحساب غير مسجل من قبل، يرجى التسجيل',
                 ),
                 type: SnackBarType.error,
               );
@@ -106,7 +110,7 @@ class _SignInFormState extends State<SignInForm> {
                 kVSpacer30,
                 signInWithGoogleBtn(context, () {
                   context.read<SignInFormBloc>().add(
-                      const SignInFormEvent.signInWithEmailGooglePressed());
+                      SignInFormEvent.signInWithEmailGooglePressed(_authMode));
                 }),
                 kVSpacer20,
                 GestureDetector(
