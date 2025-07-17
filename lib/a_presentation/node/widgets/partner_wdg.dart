@@ -6,9 +6,10 @@ import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/a_presentation/node/widgets/add_child_wdg.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
+import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
-import 'package:asl/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,9 +25,21 @@ class PartnerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RelationWatcherBloc>(
-      create: (context) => getIt<RelationWatcherBloc>()
-        ..add(RelationWatcherEvent.getAllRelations(node.treeId, node.nodeId)),
+    return BlocListener<PartnerFormBloc, PartnerFormState>(
+      listener: (context, state) {
+        if (state.saveFailureOrSuccessOption.isSome()) {
+          // After a partner is added the RelationWatcherBloc & NodeWatcherBloc
+          // should reload the all the trees relation and nodes and rebuilt the tree UI
+
+          print('017 | Its listening');
+          final currentTree =
+              context.read<CurrentTreeBloc>().state.currentTree!;
+
+          context.read<RelationWatcherBloc>().add(
+              RelationWatcherEvent.getAllRelations(
+                  currentTree.treeId, currentTree.rootId));
+        }
+      },
       child: BlocBuilder<RelationWatcherBloc, RelationWatcherState>(
         builder: (context, state) {
           return state.map(

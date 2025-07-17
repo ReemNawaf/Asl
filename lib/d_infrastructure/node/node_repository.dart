@@ -259,7 +259,7 @@ class NodeRepository implements INodeRepository {
       print('NN: rootRelations $rootRelations');
       root = root.copyWith(relationsObject: rootRelations);
       print('Update the root relationsObject');
-      print('Root $root');
+      print('Root ${root.firstName}');
       //
       return right(root);
     } catch (e) {

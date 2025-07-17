@@ -72,7 +72,6 @@ class TreeList extends StatelessWidget {
                               .add(CurrentTreeEvent.updated(currentTree: t));
 
                           //  2. Update the current nodes
-                          print('015: getTree list tree');
                           context
                               .read<NodeWatcherBloc>()
                               .add(NodeWatcherEvent.getTree(t));
