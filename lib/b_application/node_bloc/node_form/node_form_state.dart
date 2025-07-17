@@ -12,6 +12,7 @@ abstract class NodeFormState with _$NodeFormState {
     required bool isAdding,
     required bool hasNode,
     required bool addPartner,
+    required bool addChild,
     required int currentPanel,
     required Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption,
   }) = _NodeFormState;
@@ -26,6 +27,7 @@ abstract class NodeFormState with _$NodeFormState {
         hasNode: false,
         currentPanel: 0,
         addPartner: false,
+        addChild: false,
         saveFailureOrSuccessOption: none(),
       );
 }

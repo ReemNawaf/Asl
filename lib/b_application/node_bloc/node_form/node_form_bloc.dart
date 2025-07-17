@@ -102,6 +102,13 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: none(),
         ));
       },
+      addChild: (e) async {
+        emit(state.copyWith(
+          addChild: e.isAdding,
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
       makeItRoot: (e) async {
         emit(state.copyWith(
           node: state.node.copyWith(isTreeRoot: true),

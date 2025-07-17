@@ -30,6 +30,7 @@ mixin _$NodeFormEvent {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +48,7 @@ mixin _$NodeFormEvent {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +66,7 @@ mixin _$NodeFormEvent {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) =>
@@ -82,6 +85,7 @@ mixin _$NodeFormEvent {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -99,6 +103,7 @@ mixin _$NodeFormEvent {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
@@ -116,6 +121,7 @@ mixin _$NodeFormEvent {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) =>
@@ -226,6 +232,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return initialized(node);
@@ -246,6 +253,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return initialized?.call(node);
@@ -266,6 +274,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -290,6 +299,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return initialized(this);
@@ -310,6 +320,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return initialized?.call(this);
@@ -330,6 +341,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -399,6 +411,7 @@ class _$EndedImpl implements _Ended {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return ended();
@@ -419,6 +432,7 @@ class _$EndedImpl implements _Ended {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return ended?.call();
@@ -439,6 +453,7 @@ class _$EndedImpl implements _Ended {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -463,6 +478,7 @@ class _$EndedImpl implements _Ended {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return ended(this);
@@ -483,6 +499,7 @@ class _$EndedImpl implements _Ended {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return ended?.call(this);
@@ -503,6 +520,7 @@ class _$EndedImpl implements _Ended {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -594,6 +612,7 @@ class _$AddedImpl implements _Added {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return added(initialNodeOption);
@@ -614,6 +633,7 @@ class _$AddedImpl implements _Added {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return added?.call(initialNodeOption);
@@ -634,6 +654,7 @@ class _$AddedImpl implements _Added {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -658,6 +679,7 @@ class _$AddedImpl implements _Added {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return added(this);
@@ -678,6 +700,7 @@ class _$AddedImpl implements _Added {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return added?.call(this);
@@ -698,6 +721,7 @@ class _$AddedImpl implements _Added {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -794,6 +818,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return edited(isEditing);
@@ -814,6 +839,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return edited?.call(isEditing);
@@ -834,6 +860,7 @@ class _$EditedImpl implements _Edited {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -858,6 +885,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return edited(this);
@@ -878,6 +906,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return edited?.call(this);
@@ -898,6 +927,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -995,6 +1025,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return updateCurrentPanel(panelIndex);
@@ -1015,6 +1046,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return updateCurrentPanel?.call(panelIndex);
@@ -1035,6 +1067,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -1059,6 +1092,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return updateCurrentPanel(this);
@@ -1079,6 +1113,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return updateCurrentPanel?.call(this);
@@ -1099,6 +1134,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -1196,6 +1232,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return firstNameChanged(title);
@@ -1216,6 +1253,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return firstNameChanged?.call(title);
@@ -1236,6 +1274,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -1260,6 +1299,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return firstNameChanged(this);
@@ -1280,6 +1320,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return firstNameChanged?.call(this);
@@ -1300,6 +1341,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -1396,6 +1438,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return birthDateChanged(date);
@@ -1416,6 +1459,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return birthDateChanged?.call(date);
@@ -1436,6 +1480,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -1460,6 +1505,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return birthDateChanged(this);
@@ -1480,6 +1526,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return birthDateChanged?.call(this);
@@ -1500,6 +1547,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -1597,6 +1645,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return deathDateChanged(date);
@@ -1617,6 +1666,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return deathDateChanged?.call(date);
@@ -1637,6 +1687,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -1661,6 +1712,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return deathDateChanged(this);
@@ -1681,6 +1733,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return deathDateChanged?.call(this);
@@ -1701,6 +1754,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -1798,6 +1852,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return changeIsAvlive(isAlive);
@@ -1818,6 +1873,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return changeIsAvlive?.call(isAlive);
@@ -1838,6 +1894,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -1862,6 +1919,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return changeIsAvlive(this);
@@ -1882,6 +1940,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return changeIsAvlive?.call(this);
@@ -1902,6 +1961,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -1971,6 +2031,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return makeItRoot();
@@ -1991,6 +2052,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return makeItRoot?.call();
@@ -2011,6 +2073,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -2035,6 +2098,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return makeItRoot(this);
@@ -2055,6 +2119,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return makeItRoot?.call(this);
@@ -2075,6 +2140,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -2165,6 +2231,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return changeGender(gender);
@@ -2185,6 +2252,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return changeGender?.call(gender);
@@ -2205,6 +2273,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -2229,6 +2298,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return changeGender(this);
@@ -2249,6 +2319,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return changeGender?.call(this);
@@ -2269,6 +2340,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -2365,6 +2437,7 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return addPartner(isAdding);
@@ -2385,6 +2458,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return addPartner?.call(isAdding);
@@ -2405,6 +2479,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -2429,6 +2504,7 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return addPartner(this);
@@ -2449,6 +2525,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return addPartner?.call(this);
@@ -2469,6 +2546,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -2485,6 +2563,212 @@ abstract class _AddPartner implements NodeFormEvent {
   bool get isAdding;
   @JsonKey(ignore: true)
   _$$AddPartnerImplCopyWith<_$AddPartnerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddChildImplCopyWith<$Res> {
+  factory _$$AddChildImplCopyWith(
+          _$AddChildImpl value, $Res Function(_$AddChildImpl) then) =
+      __$$AddChildImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isAdding});
+}
+
+/// @nodoc
+class __$$AddChildImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$AddChildImpl>
+    implements _$$AddChildImplCopyWith<$Res> {
+  __$$AddChildImplCopyWithImpl(
+      _$AddChildImpl _value, $Res Function(_$AddChildImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isAdding = null,
+  }) {
+    return _then(_$AddChildImpl(
+      null == isAdding
+          ? _value.isAdding
+          : isAdding // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddChildImpl implements _AddChild {
+  const _$AddChildImpl(this.isAdding);
+
+  @override
+  final bool isAdding;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.addChild(isAdding: $isAdding)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddChildImpl &&
+            (identical(other.isAdding, isAdding) ||
+                other.isAdding == isAdding));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isAdding);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddChildImplCopyWith<_$AddChildImpl> get copyWith =>
+      __$$AddChildImplCopyWithImpl<_$AddChildImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) initialized,
+    required TResult Function() ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(int isEditing) edited,
+    required TResult Function(int panelIndex) updateCurrentPanel,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
+    required TResult Function() saved,
+  }) {
+    return addChild(isAdding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? initialized,
+    TResult? Function()? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(int isEditing)? edited,
+    TResult? Function(int panelIndex)? updateCurrentPanel,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
+    TResult? Function()? saved,
+  }) {
+    return addChild?.call(isAdding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? initialized,
+    TResult Function()? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(int isEditing)? edited,
+    TResult Function(int panelIndex)? updateCurrentPanel,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (addChild != null) {
+      return addChild(isAdding);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_UpdateCurrentPanel value) updateCurrentPanel,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return addChild(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return addChild?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (addChild != null) {
+      return addChild(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddChild implements NodeFormEvent {
+  const factory _AddChild(final bool isAdding) = _$AddChildImpl;
+
+  bool get isAdding;
+  @JsonKey(ignore: true)
+  _$$AddChildImplCopyWith<_$AddChildImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2538,6 +2822,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
   }) {
     return saved();
@@ -2558,6 +2843,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
   }) {
     return saved?.call();
@@ -2578,6 +2864,7 @@ class _$SavedImpl implements _Saved {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
@@ -2602,6 +2889,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
   }) {
     return saved(this);
@@ -2622,6 +2910,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
   }) {
     return saved?.call(this);
@@ -2642,6 +2931,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
@@ -2667,6 +2957,7 @@ mixin _$NodeFormState {
   bool get isAdding => throw _privateConstructorUsedError;
   bool get hasNode => throw _privateConstructorUsedError;
   bool get addPartner => throw _privateConstructorUsedError;
+  bool get addChild => throw _privateConstructorUsedError;
   int get currentPanel => throw _privateConstructorUsedError;
   Option<Either<TNodeFailure, Unit>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
@@ -2691,6 +2982,7 @@ abstract class $NodeFormStateCopyWith<$Res> {
       bool isAdding,
       bool hasNode,
       bool addPartner,
+      bool addChild,
       int currentPanel,
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
@@ -2718,6 +3010,7 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
     Object? isAdding = null,
     Object? hasNode = null,
     Object? addPartner = null,
+    Object? addChild = null,
     Object? currentPanel = null,
     Object? saveFailureOrSuccessOption = null,
   }) {
@@ -2753,6 +3046,10 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
       addPartner: null == addPartner
           ? _value.addPartner
           : addPartner // ignore: cast_nullable_to_non_nullable
+              as bool,
+      addChild: null == addChild
+          ? _value.addChild
+          : addChild // ignore: cast_nullable_to_non_nullable
               as bool,
       currentPanel: null == currentPanel
           ? _value.currentPanel
@@ -2791,6 +3088,7 @@ abstract class _$$NodeFormStateImplCopyWith<$Res>
       bool isAdding,
       bool hasNode,
       bool addPartner,
+      bool addChild,
       int currentPanel,
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
@@ -2817,6 +3115,7 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
     Object? isAdding = null,
     Object? hasNode = null,
     Object? addPartner = null,
+    Object? addChild = null,
     Object? currentPanel = null,
     Object? saveFailureOrSuccessOption = null,
   }) {
@@ -2853,6 +3152,10 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
           ? _value.addPartner
           : addPartner // ignore: cast_nullable_to_non_nullable
               as bool,
+      addChild: null == addChild
+          ? _value.addChild
+          : addChild // ignore: cast_nullable_to_non_nullable
+              as bool,
       currentPanel: null == currentPanel
           ? _value.currentPanel
           : currentPanel // ignore: cast_nullable_to_non_nullable
@@ -2877,6 +3180,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
       required this.isAdding,
       required this.hasNode,
       required this.addPartner,
+      required this.addChild,
       required this.currentPanel,
       required this.saveFailureOrSuccessOption});
 
@@ -2898,13 +3202,15 @@ class _$NodeFormStateImpl implements _NodeFormState {
   @override
   final bool addPartner;
   @override
+  final bool addChild;
+  @override
   final int currentPanel;
   @override
   final Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, isViewing: $isViewing, isAdding: $isAdding, hasNode: $hasNode, addPartner: $addPartner, currentPanel: $currentPanel, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, isViewing: $isViewing, isAdding: $isAdding, hasNode: $hasNode, addPartner: $addPartner, addChild: $addChild, currentPanel: $currentPanel, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2926,6 +3232,8 @@ class _$NodeFormStateImpl implements _NodeFormState {
             (identical(other.hasNode, hasNode) || other.hasNode == hasNode) &&
             (identical(other.addPartner, addPartner) ||
                 other.addPartner == addPartner) &&
+            (identical(other.addChild, addChild) ||
+                other.addChild == addChild) &&
             (identical(other.currentPanel, currentPanel) ||
                 other.currentPanel == currentPanel) &&
             (identical(other.saveFailureOrSuccessOption,
@@ -2945,6 +3253,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
       isAdding,
       hasNode,
       addPartner,
+      addChild,
       currentPanel,
       saveFailureOrSuccessOption);
 
@@ -2965,6 +3274,7 @@ abstract class _NodeFormState implements NodeFormState {
       required final bool isAdding,
       required final bool hasNode,
       required final bool addPartner,
+      required final bool addChild,
       required final int currentPanel,
       required final Option<Either<TNodeFailure, Unit>>
           saveFailureOrSuccessOption}) = _$NodeFormStateImpl;
@@ -2985,6 +3295,8 @@ abstract class _NodeFormState implements NodeFormState {
   bool get hasNode;
   @override
   bool get addPartner;
+  @override
+  bool get addChild;
   @override
   int get currentPanel;
   @override

@@ -67,12 +67,12 @@ class RelationRepository implements IRelationRepository {
     try {
       // final userDoc = await _firestore.userDocument();
 
-      final node = _firestore
+      final node = await _firestore
           .treesCollection()
           .doc(treeId.getOrCrash())
           .collection(RELATIONS_COLLECTION)
           .doc(relationId.getOrCrash())
-          .get() as DocumentSnapshot<Map<String, dynamic>>;
+          .get();
 
       return right(RelationDto.fromFirestore(node).toDomain());
     } on PlatformException catch (e) {
