@@ -1,7 +1,6 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
-import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/a_presentation/node/widgets/marriage_status_btn.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -22,16 +21,13 @@ class AddPartnerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.read<PartnerFormBloc>().state;
-    return Form(
-      autovalidateMode: state.showErrorMessages,
-      key: formKey,
-      child: SizedBox(
-        width: (T_PAN_WIDTH - 10),
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocBuilder<PartnerFormBloc, PartnerFormState>(
+      builder: (context, state) {
+        return Form(
+          autovalidateMode: state.showErrorMessages,
+          key: formKey,
+          child: SizedBox(
+            child: Column(
               children: [
                 SizedBox(
                   width: 250,
@@ -40,7 +36,6 @@ class AddPartnerWidget extends StatelessWidget {
                         node.gender == Gender.male ? 'إضافة زوجة' : 'إضافة زوج',
                     hint: 'الاسم الكامل',
                     onChanged: (value) {
-                      print('change $value');
                       context
                           .read<PartnerFormBloc>()
                           .add(PartnerFormEvent.changeName(value!.trim()));
@@ -69,14 +64,9 @@ class AddPartnerWidget extends StatelessWidget {
                     },
                   ),
                 ),
-                kHSpacer20,
+                kVSpacer20,
                 MarriageStatusBtn(color: color, ctx: context),
-              ],
-            ),
-            kVSpacer20,
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+                kVSpacer20,
                 SizedBox(
                   width: 230,
                   height: 80,
@@ -135,11 +125,12 @@ class AddPartnerWidget extends StatelessWidget {
                     ),
                   ),
                 ],
+                kHSpacer20,
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

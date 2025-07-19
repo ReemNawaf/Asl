@@ -24,7 +24,6 @@ class TreeView extends StatelessWidget {
               '015 | Tree View is rebuilt ${state.graph!.nodes.length} nodes');
           return GraphView(
             graph: state.graph!,
-
             algorithm: BuchheimWalkerAlgorithm(
               state.builder!,
               TreeEdgeRenderer(state.builder!),

@@ -29,27 +29,24 @@ class ChildAliveBtn extends StatelessWidget {
 
     return BlocBuilder<ChildFormBloc, ChildFormState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(top: 16.0),
-          child: Row(
-            children: [
-              AliveButton(
-                onTap: () =>
-                    isEditing ? aliveOrDead(isAliveSelected: true) : null,
-                color: color,
-                text: 'عائش',
-                selected: state.child.isAlive,
-              ),
-              const SizedBox(width: 16.0),
-              AliveButton(
-                onTap: () =>
-                    isEditing ? aliveOrDead(isAliveSelected: false) : null,
-                color: color,
-                text: 'متوفي',
-                selected: !state.child.isAlive,
-              ),
-            ],
-          ),
+        return Row(
+          children: [
+            AliveButton(
+              onTap: () =>
+                  isEditing ? aliveOrDead(isAliveSelected: true) : null,
+              color: color,
+              text: 'عائش',
+              selected: state.child.isAlive,
+            ),
+            const SizedBox(width: 16.0),
+            AliveButton(
+              onTap: () =>
+                  isEditing ? aliveOrDead(isAliveSelected: false) : null,
+              color: color,
+              text: 'متوفي',
+              selected: !state.child.isAlive,
+            ),
+          ],
         );
       },
     );

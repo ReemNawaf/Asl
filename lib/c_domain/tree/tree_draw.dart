@@ -40,13 +40,11 @@ class TreeDraw {
       final linkedToPosition = positions[linkedToId.getOrCrash()]!;
 
       final linkedToNode = graph.getNodeAtPosition(linkedToPosition);
-      graph.addEdge(linkedToNode, node);
+      graph.addEdge(linkedToNode, node, label: 'زوجه');
 
       print(
           '---- | draw ${nodeType.name}: ${tnode.firstName.getOrCrash()} with $linkedToId ($linkedToPosition)');
     }
-
-    // setState(() {});
   }
 
   Graph drawTree({required TNode root}) {

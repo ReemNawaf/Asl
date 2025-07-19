@@ -52,7 +52,7 @@ class MainPanel extends StatelessWidget {
 
                 //  Make Tabs
                 child: DefaultTabController(
-                  length: 4,
+                  length: type != NodeType.partner ? 4 : 3,
                   child: SizedBox(
                     width: PAN_WIDTH - 16,
                     height: PAN_HEIGHT,

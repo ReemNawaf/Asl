@@ -9,5 +9,5 @@ class ZoomTreeState extends Equatable {
   List<Object?> get props => [scale];
 }
 
-const MIN_ZOOM = 0.35;
+const MIN_ZOOM = 0.15;
 const MAX_ZOOM = 2.25;
