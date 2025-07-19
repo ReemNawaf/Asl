@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
                 bodyLarge: kBodyLarge,
                 bodyMedium: kBodyMedium,
               )
-              .apply(fontFamily: 'GHAITHSANS'),
+              .apply(fontFamily: 'ghaithsans'),
           primaryColor: kRootColors,
           colorScheme: ColorScheme(
             primary: kRootColors,

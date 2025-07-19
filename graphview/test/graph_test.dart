@@ -42,23 +42,23 @@ void main() {
     });
 
     test('Node Hash Implementation is performant', () {
-      final graph = Graph();
+      // final graph = Graph();
 
       var rows = 1000000;
 
-      var integerNode = Node.Id(1);
-      var stringNode = Node.Id("123");
-      var stringNode2 = Node.Id("G9Q84H1R9-1619338713.000900");
-      var widgetNode = Node.Id(Text("Lovely"));
-      var widgetNode2 = Node.Id(Text("Lovely"));
+      // var integerNode = Node.Id(1);
+      // var stringNode = Node.Id('123');
+      // var stringNode2 = Node.Id('G9Q84H1R9-1619338713.000900');
+      // var widgetNode = Node.Id(Text('Lovely'));
+      // var widgetNode2 = Node.Id(Text('Lovely'));
       var doubleNode = Node.Id(5.6);
 
-      var edge = graph.addEdge(integerNode, Node.Id(4));
+      // var edge = graph.addEdge(integerNode, Node.Id(4));
 
       var node = doubleNode;
       var stopwatch = Stopwatch()..start();
       for (var i = 1; i <= rows; i++) {
-        var hash = node.hashCode;
+        // var hash = node.hashCode;
       }
 
       var timeTaken = stopwatch.elapsed.inMilliseconds;

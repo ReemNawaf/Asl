@@ -12,9 +12,9 @@ class TreeDraw {
 
   TreeDraw() {
     builder
-      ..siblingSeparation = (100)
-      ..levelSeparation = (150)
-      ..subtreeSeparation = (150)
+      ..siblingSeparation = (30)
+      ..levelSeparation = (100)
+      ..subtreeSeparation = (100)
       ..orientation = (BuchheimWalkerConfiguration.ORIENTATION_BOTTOM_TOP);
   }
 

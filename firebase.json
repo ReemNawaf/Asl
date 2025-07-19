@@ -1,1 +1,10 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"a-292e9","appId":"1:684970788591:android:6de27fe87021c3dd323d1a","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"a-292e9","appId":"1:684970788591:ios:046c53a7f39e95ae323d1a","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"a-292e9","appId":"1:684970788591:ios:046c53a7f39e95ae323d1a","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"a-292e9","configurations":{"android":"1:684970788591:android:6de27fe87021c3dd323d1a","ios":"1:684970788591:ios:046c53a7f39e95ae323d1a","macos":"1:684970788591:ios:046c53a7f39e95ae323d1a","web":"1:684970788591:web:4423d058b1851367323d1a","windows":"1:684970788591:web:6d2adfda5c4d030e323d1a"}}}}}}
+{
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

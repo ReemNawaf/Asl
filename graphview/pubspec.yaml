@@ -17,24 +17,24 @@ dev_dependencies:
     sdk: flutter
 flutter:
   fonts:
-    - family: GHAITHSANS
+    - family: ghaithsans
       fonts:
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-REGULAR.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_regular.otf
           weight: 400
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-MEDIUM.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_medium.otf
           weight: 500
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-SEMIBOLD.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_semibold.otf
           weight: 600
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-BOLD.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_bold.otf
           weight: 700
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-EXTRABOLD.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_extrabold.otf
           weight: 800
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-BLACK.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_black.otf
           weight: 900
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-LIGHT.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_light.otf
           weight: 300
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-EXTRALIGHT.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_extralight.otf
           weight: 200
-        - asset: assets/fonts/GHAITHSANS/GHAITHSANS-THIN.OTF
+        - asset: ../assets/fonts/ghaithsans/ghaithsans_thin.otf
           weight: 100
 
