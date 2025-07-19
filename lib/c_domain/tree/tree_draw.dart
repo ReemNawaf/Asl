@@ -24,6 +24,8 @@ class TreeDraw {
   void addLinkedNode({
     required TNode tnode,
     required NodeType nodeType,
+    Gender? sourceNodeGender,
+    int sourceNodeNumRelation = 0,
     UniqueId? linkedToId,
   }) {
     //  Add node
@@ -40,7 +42,17 @@ class TreeDraw {
       final linkedToPosition = positions[linkedToId.getOrCrash()]!;
 
       final linkedToNode = graph.getNodeAtPosition(linkedToPosition);
-      graph.addEdge(linkedToNode, node, label: 'زوجه');
+      var graphTitle = '';
+
+      if (nodeType == NodeType.partner) {
+        graphTitle = sourceNodeGender == Gender.female
+            ? (sourceNodeNumRelation > 1 ? 'أزواجها' : 'زوجها')
+            : (sourceNodeNumRelation > 1 ? 'زوجاته' : 'زوجته');
+      } else {
+        graphTitle = sourceNodeGender == Gender.female ? 'أبناءها' : 'أبناءه';
+      }
+
+      graph.addEdge(linkedToNode, node, label: graphTitle);
 
       print(
           '---- | draw ${nodeType.name}: ${tnode.firstName.getOrCrash()} with $linkedToId ($linkedToPosition)');
@@ -55,7 +67,10 @@ class TreeDraw {
     positions.clear();
     position = 0;
 
-    addLinkedNode(tnode: root, nodeType: NodeType.root);
+    addLinkedNode(
+      tnode: root,
+      nodeType: NodeType.root,
+    );
     print('draw root: ${root.firstName.getOrCrash()}');
 
     //  Level Relation: Get Root Children
@@ -72,7 +87,11 @@ class TreeDraw {
 
       //  on each partner create node + edge with the root
       addLinkedNode(
-          tnode: partner, nodeType: NodeType.partner, linkedToId: root.nodeId);
+          sourceNodeGender: root.gender,
+          sourceNodeNumRelation: root.relations.length,
+          tnode: partner,
+          nodeType: NodeType.partner,
+          linkedToId: root.nodeId);
 
       //  Level Stem: Get Children
 
@@ -83,6 +102,8 @@ class TreeDraw {
       for (TNode child in relation.childrenNodes) {
         //  on each child create node + edge with the partner
         addLinkedNode(
+          sourceNodeGender: partner.gender,
+          sourceNodeNumRelation: partner.relations.length,
           tnode: child,
           nodeType: NodeType.child,
           linkedToId: partner.nodeId,
@@ -101,6 +122,8 @@ class TreeDraw {
             tnode: childPartner,
             nodeType: NodeType.partner,
             linkedToId: child.nodeId,
+            sourceNodeGender: child.gender,
+            sourceNodeNumRelation: child.relations.length,
           );
 
           //  Level Leaf: Get Grandchildren
@@ -114,6 +137,8 @@ class TreeDraw {
               tnode: grandchild,
               nodeType: NodeType.grandchild,
               linkedToId: childPartner.nodeId,
+              sourceNodeGender: childPartner.gender,
+              sourceNodeNumRelation: childPartner.relations.length,
             );
           }
         }

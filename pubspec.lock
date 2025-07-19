@@ -477,10 +477,9 @@ packages:
   graphview:
     dependency: "direct main"
     description:
-      name: graphview
-      sha256: bdba183583b23c30c71edea09ad5f0beef612572d3e39e855467a925bd08392f
-      url: "https://pub.dev"
-    source: hosted
+      path: graphview
+      relative: true
+    source: path
     version: "1.2.0"
   http:
     dependency: transitive

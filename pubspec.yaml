@@ -11,8 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  graphview:
+    path: graphview/
+
   cupertino_icons: ^1.0.8
-  graphview: ^1.2.0
   flutter_svg: ^2.0.10+1
   flutter_localizations:
     sdk: flutter
