@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';
@@ -45,11 +46,10 @@ class TreeDraw {
       var graphTitle = '';
 
       if (nodeType == NodeType.partner) {
-        graphTitle = sourceNodeGender == Gender.female
-            ? (sourceNodeNumRelation > 1 ? 'أزواجها' : 'زوجها')
-            : (sourceNodeNumRelation > 1 ? 'زوجاته' : 'زوجته');
+        graphTitle =
+            getNodePartnerTitle(sourceNodeGender, sourceNodeNumRelation);
       } else {
-        graphTitle = sourceNodeGender == Gender.female ? 'أبناءها' : 'أبناءه';
+        graphTitle = getNodeChildrenTitle(sourceNodeGender);
       }
 
       graph.addEdge(linkedToNode, node, label: graphTitle);

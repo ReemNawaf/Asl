@@ -30,6 +30,8 @@ class MainPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('Type $type');
+    final size = MediaQuery.of(context).size;
+
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -43,8 +45,8 @@ class MainPanel extends StatelessWidget {
               Container(
                 alignment: Alignment.topRight,
                 padding: const EdgeInsets.all(8.0),
-                width: PAN_WIDTH,
-                height: PAN_HEIGHT,
+                width: size.width * PAN_WIDTH,
+                height: size.height * PAN_HEIGHT,
 
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.0),
@@ -54,8 +56,8 @@ class MainPanel extends StatelessWidget {
                 child: DefaultTabController(
                   length: type != NodeType.partner ? 4 : 3,
                   child: SizedBox(
-                    width: PAN_WIDTH - 16,
-                    height: PAN_HEIGHT,
+                    width: (size.width * PAN_WIDTH) - 16,
+                    height: (size.height * PAN_HEIGHT),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -64,7 +66,7 @@ class MainPanel extends StatelessWidget {
                           children: [
                             const SizedBox(width: 35),
                             SizedBox(
-                              width: PAN_WIDTH - 97,
+                              width: (size.width * PAN_WIDTH) - 97,
                               height: 50,
                               child: TabBar(
                                 unselectedLabelColor: kBlacksColor[600],
@@ -115,8 +117,8 @@ class MainPanel extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          height: PAN_HEIGHT - 106,
-                          width: PAN_WIDTH - 53,
+                          height: (size.height * PAN_HEIGHT) - 106,
+                          width: (size.width * PAN_WIDTH) - 53,
                           margin: const EdgeInsets.only(right: 80),
                           child: TabBarView(
                             children: [
@@ -170,8 +172,8 @@ class MainPanel extends StatelessWidget {
           height: 150,
           alignment: Alignment.center,
           padding: const EdgeInsets.all(6),
-          margin: const EdgeInsets.only(
-            bottom: 420,
+          margin: EdgeInsets.only(
+            bottom: size.height * PAN_HEIGHT,
             left: 680,
           ),
           decoration: BoxDecoration(

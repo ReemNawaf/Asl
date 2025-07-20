@@ -2,8 +2,8 @@ part of 'child_form_bloc.dart';
 
 @freezed
 abstract class ChildFormEvent with _$ChildFormEvent {
-  const factory ChildFormEvent.initialized(
-      {required UniqueId treeId, required UniqueId upperFamily}) = _Initialized;
+  const factory ChildFormEvent.addParent(
+      {required UniqueId treeId, required UniqueId upperFamily}) = _AddParent;
 
   const factory ChildFormEvent.edited(TNode child) = _Edited;
   const factory ChildFormEvent.changeName(String name) = _ChangedName;

@@ -1,8 +1,8 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
-import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
@@ -64,55 +64,69 @@ class PartnerWidget extends StatelessWidget {
             return state.map(
               gettingAllRelationsSuccess: (state) {
                 final relations = state.relation;
-                return SizedBox(
-                  width: (T_PAN_WIDTH - 10),
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: relations.length,
-                    itemBuilder: (context, index) {
-                      final sinRelation = relations[index];
-                      final partner = sinRelation!.partnerNode!;
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 63,
-                            width: 278,
-                            child: AppFormField(
-                              label:
-                                  'الزوج${node.gender == Gender.male ? 'ة' : ''}',
-                              hint: '',
-                              onSaved: (_) {},
-                              initialValue: partner.firstName.getOrCrash(),
-                              validator: (_) => '',
-                              isEditing: false,
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    kVSpacer20,
+                    Text(
+                      getNodePartnerTitle(node.gender, state.relation.length),
+                      style: kHeadLineStyle,
+                    ),
+                    kVSpacer10,
+                    GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 20,
+                        childAspectRatio: 3.2,
+                      ),
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: relations.length,
+                      itemBuilder: (context, index) {
+                        final sinRelation = relations[index];
+                        final partner = sinRelation!.partnerNode!;
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 63,
+                              width: 278,
+                              child: AppFormField(
+                                label:
+                                    'الزوج${node.gender == Gender.male ? 'ة' : ''}',
+                                hint: '',
+                                onSaved: (_) {},
+                                initialValue: partner.firstName.getOrCrash(),
+                                validator: (_) => '',
+                                isEditing: false,
+                              ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              if (sinRelation.marriageDate != null) ...[
+                            Row(
+                              children: [
+                                if (sinRelation.marriageDate != null) ...[
+                                  Text(
+                                    'تاريخ الزواج: ${sinRelation.marriageDate!.year}',
+                                    style: kCaption1Style.copyWith(
+                                      color: kBlacksColor[600],
+                                    ),
+                                  ),
+                                  kHSpacer20,
+                                ],
                                 Text(
-                                  'تاريخ الزواج: ${sinRelation.marriageDate!.year}',
+                                  'الحالة: ${marriageSt[sinRelation.marriageStatus]}${node.gender == Gender.male ? 'ة' : ''}',
                                   style: kCaption1Style.copyWith(
                                     color: kBlacksColor[600],
                                   ),
                                 ),
-                                kHSpacer20,
                               ],
-                              Text(
-                                'الحالة: ${marriageSt[sinRelation.marriageStatus]}${node.gender == Gender.male ? 'ة' : ''}',
-                                style: kCaption1Style.copyWith(
-                                  color: kBlacksColor[600],
-                                ),
-                              ),
-                            ],
-                          ),
-                          kVSpacer10,
-                        ],
-                      );
-                    },
-                  ),
+                            ),
+                            kVSpacer10,
+                          ],
+                        );
+                      },
+                    ),
+                  ],
                 );
               },
               initial: (_) => const SizedBox(),

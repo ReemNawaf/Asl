@@ -105,3 +105,17 @@ Widget horizontalSpaceLarge() {
 Widget horizontalSpace(double width) {
   return Container(width: width);
 }
+
+String getNodePartnerTitle(gender, number) {
+  return gender == Gender.female
+      ? (number > 1 ? 'أزواجها' : 'زوجها')
+      : (number > 1 ? 'زوجاته' : 'زوجته');
+}
+
+String getNodePartnerTitleSingle(gender) {
+  return gender == Gender.female ? 'زوجها' : 'زوجته';
+}
+
+String getNodeChildrenTitle(gender) {
+  return gender == Gender.female ? 'أبناءها' : 'أبناءه';
+}

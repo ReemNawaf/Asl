@@ -1,9 +1,10 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
-import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
+import 'package:asl/a_presentation/node/widgets/add_parent_list_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/child_alive_btn.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/relation/relation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,29 +12,32 @@ import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:intl/intl.dart';
 
 class AddChildWidget extends StatelessWidget {
-  const AddChildWidget({
-    super.key,
-    required this.node,
-    required this.color,
-  });
+  const AddChildWidget(
+      {super.key,
+      required this.node,
+      required this.color,
+      required this.relations});
 
   final TNode node;
   final MaterialColor color;
+  final List<Relation?> relations;
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    final size = MediaQuery.of(context).size;
     return BlocBuilder<ChildFormBloc, ChildFormState>(
       builder: (context, state) {
         return Form(
           autovalidateMode: state.showErrorMessages,
           key: formKey,
           child: SizedBox(
-            width: (T_PAN_WIDTH - 10),
+            width: ((size.width * PAN_WIDTH) - 116),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 kVSpacer10,
+                AddParentDropListWidget(relations: relations),
                 SizedBox(
                   width: 250,
                   height: 90,
@@ -55,7 +59,7 @@ class AddChildWidget extends StatelessWidget {
                     validator: (_) {
                       return state.child.firstName.value.fold(
                         (f) => f.maybeMap(
-                          empty: (_) => 'الاسم الأول يمكن أن يكون فارغًا',
+                          empty: (_) => 'الاسم الأول لا يمكن أن يكون فارغًا',
                           spacedFirstName: (_) =>
                               'الاسم الأول لا يمكن أن يحتوي على مسافات',
                           orElse: () => null,

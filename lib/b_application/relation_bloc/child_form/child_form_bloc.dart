@@ -29,7 +29,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
     Emitter<ChildFormState> emit,
   ) async {
     await event.map(
-      initialized: (e) async {
+      addParent: (e) {
         final child = TNode(
           treeId: e.treeId,
           nodeId: UniqueId(),

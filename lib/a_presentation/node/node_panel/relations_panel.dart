@@ -1,9 +1,11 @@
+import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 
 import 'package:asl/a_presentation/core/widgets/app_member_btn.dart';
 import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/add_child_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/add_partner_wdg.dart';
+import 'package:asl/a_presentation/node/widgets/children_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/partner_wdg.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
@@ -17,8 +19,6 @@ import 'package:asl/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-const T_PAN_WIDTH = PAN_WIDTH - 106;
-
 class RelationsPanel extends StatelessWidget {
   const RelationsPanel({
     super.key,
@@ -31,16 +31,17 @@ class RelationsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) => getIt<RelationWatcherBloc>()
         ..add(RelationWatcherEvent.getAllRelations(node.treeId, node.nodeId)),
       child: BlocBuilder<RelationWatcherBloc, RelationWatcherState>(
         builder: (context, reState) {
           return reState.map(
-            gettingAllRelationsSuccess: (_) => Container(
+            gettingAllRelationsSuccess: (relState) => Container(
               padding: const EdgeInsets.only(left: 10.0, top: 20.0),
-              height: PAN_HEIGHT,
-              width: T_PAN_WIDTH,
+              height: size.height * PAN_HEIGHT,
+              width: (size.width * PAN_WIDTH) - 106,
               child: BlocListener<PartnerFormBloc, PartnerFormState>(
                 listener: (context, state) {
                   if (state.saveFailureOrSuccessOption.isSome()) {
@@ -57,102 +58,99 @@ class RelationsPanel extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: BlocBuilder<NodeFormBloc, NodeFormState>(
                     builder: (context, state) {
-                      return SizedBox(
-                        width: (T_PAN_WIDTH - 10) / 2,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: (T_PAN_WIDTH - 10) / 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  PartnerWidget(
-                                    node: node,
-                                    color: color,
-                                  ),
-                                  kVSpacer10,
-                                  if (state.addPartner)
-                                    AddPartnerWidget(node: node, color: color),
-                                  AddMemberButton(
-                                    onPressed: () {
-                                      if (state.addPartner) {
-                                        context.read<PartnerFormBloc>().add(
-                                            const PartnerFormEvent.saved());
-                                        context.read<NodeFormBloc>().add(
-                                              const NodeFormEvent.addPartner(
-                                                  false),
-                                            );
-                                      } else {
-                                        context.read<NodeFormBloc>().add(
-                                              const NodeFormEvent.addPartner(
-                                                  true),
-                                            );
-                                        context.read<PartnerFormBloc>().add(
-                                              PartnerFormEvent.initialized(
-                                                  node),
-                                            );
-                                      }
-                                    },
-                                    label:
-                                        'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
-                                    color: color,
-                                  )
-                                ],
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              PartnerWidget(
+                                node: node,
+                                color: color,
                               ),
-                            ),
-                            SizedBox(
-                              width: (T_PAN_WIDTH - 10) / 2,
-                              height: PAN_HEIGHT + 100,
-                              child: BlocBuilder<NodeFormBloc, NodeFormState>(
-                                builder: (context, state) {
-                                  // final treeId = sinRelation.father == node.nodeId
-                                  //     ? node.treeId
-                                  //     : sinRelation.partnerNode!.treeId;
-                                  return Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      if (state.addChild) ...[
-                                        AddChildWidget(
-                                          color: color,
-                                          node: node,
-                                        ),
-                                      ],
-                                      AddMemberButton(
-                                        onPressed: () {
-                                          if (state.addChild) {
-                                            context.read<ChildFormBloc>().add(
-                                                const ChildFormEvent.saved());
-                                            context.read<NodeFormBloc>().add(
-                                                  const NodeFormEvent.addChild(
-                                                      true),
-                                                );
-                                          } else {
-                                            context.read<NodeFormBloc>().add(
-                                                  const NodeFormEvent.addChild(
-                                                      true),
-                                                );
-                                            // context.read<ChildFormBloc>().add(
-                                            //       ChildFormEvent.initialized(
-                                            //         treeId: treeId,
-                                            //         upperFamily: sinRelation.relationId,
-                                            //       ),
-                                            //     );
-                                          }
-                                        },
-                                        label: 'إضافة ابن/ة',
-                                        color: color,
-                                      )
-                                    ],
-                                  );
+                              kVSpacer10,
+                              if (state.addPartner)
+                                AddPartnerWidget(node: node, color: color),
+                              AddMemberButton(
+                                onPressed: () {
+                                  if (state.addPartner) {
+                                    context
+                                        .read<PartnerFormBloc>()
+                                        .add(const PartnerFormEvent.saved());
+                                    context.read<NodeFormBloc>().add(
+                                          const NodeFormEvent.addPartner(false),
+                                        );
+                                  } else {
+                                    context.read<NodeFormBloc>().add(
+                                          const NodeFormEvent.addPartner(true),
+                                        );
+                                    context.read<PartnerFormBloc>().add(
+                                          PartnerFormEvent.initialized(node),
+                                        );
+                                  }
                                 },
-                              ),
+                                label:
+                                    'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
+                                color: color,
+                              )
+                            ],
+                          ),
+                          Divider(thickness: 0.5, color: kBlacksColor[600]),
+                          ChildrenWidget(
+                            node: node,
+                            color: color,
+                          ),
+                          kVSpacer10,
+                          SizedBox(
+                            width: ((size.width * PAN_WIDTH) - 116) / 2,
+                            height: (size.height * PAN_HEIGHT) + 100,
+                            child: BlocBuilder<NodeFormBloc, NodeFormState>(
+                              builder: (context, state) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (state.addChild) ...[
+                                      AddChildWidget(
+                                        color: color,
+                                        node: node,
+                                        relations: relState.relation,
+                                      ),
+                                    ],
+                                    AddMemberButton(
+                                      onPressed: () {
+                                        if (state.addChild) {
+                                          context.read<ChildFormBloc>().add(
+                                              const ChildFormEvent.saved());
+                                          context.read<NodeFormBloc>().add(
+                                                const NodeFormEvent.addChild(
+                                                    true),
+                                              );
+                                        } else {
+                                          context.read<NodeFormBloc>().add(
+                                                const NodeFormEvent.addChild(
+                                                    true),
+                                              );
+                                          context.read<ChildFormBloc>().add(
+                                                ChildFormEvent.addParent(
+                                                    treeId: relState
+                                                        .relation[0]!.treeId,
+                                                    upperFamily: relState
+                                                        .relation[0]!
+                                                        .relationId),
+                                              );
+                                        }
+                                      },
+                                      label: 'إضافة ابن/ة',
+                                      color: color,
+                                    )
+                                  ],
+                                );
+                              },
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       );
                     },
                   ),

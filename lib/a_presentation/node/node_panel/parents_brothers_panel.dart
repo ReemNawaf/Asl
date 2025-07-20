@@ -7,8 +7,6 @@ import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-const T_PAN_WIDTH = PAN_WIDTH - 106;
-
 class ParentsSiblingsPanel extends StatelessWidget {
   const ParentsSiblingsPanel({
     super.key,
@@ -19,13 +17,14 @@ class ParentsSiblingsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return BlocBuilder<NodeFormBloc, NodeFormState>(
       builder: (_, state) {
         return state.hasNode
             ? Container(
                 padding: const EdgeInsets.only(left: 10.0),
-                height: PAN_HEIGHT,
-                width: T_PAN_WIDTH,
+                height: size.height * PAN_HEIGHT,
+                width: (size.width * PAN_WIDTH) - 106,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -33,13 +32,13 @@ class ParentsSiblingsPanel extends StatelessWidget {
                     children: [
                       kVSpacer20,
                       SizedBox(
-                        width: T_PAN_WIDTH,
+                        width: (size.width * PAN_WIDTH) - 106,
                         height: 70,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: (T_PAN_WIDTH - 10) / 2,
+                              width: ((size.width * PAN_WIDTH) - 116) / 2,
                               height: 70,
                               child: AppFormField(
                                 label: 'الأب',
@@ -52,7 +51,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                             ),
                             kHSpacer10,
                             SizedBox(
-                              width: (T_PAN_WIDTH - 10) / 2,
+                              width: ((size.width * PAN_WIDTH) - 116) / 2,
                               height: 70,
                               child: AppFormField(
                                 label: 'الأم',
@@ -67,14 +66,14 @@ class ParentsSiblingsPanel extends StatelessWidget {
                         ),
                       ),
                       kHSpacer10,
-                      const SizedBox(
-                        width: T_PAN_WIDTH - 10,
+                      SizedBox(
+                        width: (size.width * PAN_WIDTH) - 116,
                         height: 215,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SiblingsWidget(),
-                            SizedBox(
+                            SiblingsWidget(size: size),
+                            const SizedBox(
                               width: 250,
                               height: 100,
                             ),

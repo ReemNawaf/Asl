@@ -38,6 +38,7 @@ Future<dynamic> showNewTreePanel(
   BuildContext contextPage,
 ) {
   final formKey = GlobalKey<FormState>();
+  final size = MediaQuery.of(contextPage).size;
   return showDialog(
     context: contextPage,
     builder: (BuildContext dialogContext) {
@@ -50,7 +51,7 @@ Future<dynamic> showNewTreePanel(
           alignment: Alignment.topRight,
           padding: const EdgeInsets.all(8.0),
           width: PAN_SM_WIDTH,
-          height: PAN_HEIGHT,
+          height: size.height * PAN_HEIGHT,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.0),
           ),
