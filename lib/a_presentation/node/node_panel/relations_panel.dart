@@ -103,52 +103,48 @@ class RelationsPanel extends StatelessWidget {
                             color: color,
                           ),
                           kVSpacer10,
-                          SizedBox(
-                            width: ((size.width * PAN_WIDTH) - 116) / 2,
-                            height: (size.height * PAN_HEIGHT) + 100,
-                            child: BlocBuilder<NodeFormBloc, NodeFormState>(
-                              builder: (context, state) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    if (state.addChild) ...[
-                                      AddChildWidget(
-                                        color: color,
-                                        node: node,
-                                        relations: relState.relation,
-                                      ),
-                                    ],
-                                    AddMemberButton(
-                                      onPressed: () {
-                                        if (state.addChild) {
-                                          context.read<ChildFormBloc>().add(
-                                              const ChildFormEvent.saved());
-                                          context.read<NodeFormBloc>().add(
-                                                const NodeFormEvent.addChild(
-                                                    true),
-                                              );
-                                        } else {
-                                          context.read<NodeFormBloc>().add(
-                                                const NodeFormEvent.addChild(
-                                                    true),
-                                              );
-                                          context.read<ChildFormBloc>().add(
-                                                ChildFormEvent.addParent(
-                                                    treeId: relState
-                                                        .relation[0]!.treeId,
-                                                    upperFamily: relState
-                                                        .relation[0]!
-                                                        .relationId),
-                                              );
-                                        }
-                                      },
-                                      label: 'إضافة ابن/ة',
+                          BlocBuilder<NodeFormBloc, NodeFormState>(
+                            builder: (context, state) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if (state.addChild) ...[
+                                    AddChildWidget(
                                       color: color,
-                                    )
+                                      node: node,
+                                      relations: relState.relation,
+                                    ),
                                   ],
-                                );
-                              },
-                            ),
+                                  AddMemberButton(
+                                    onPressed: () {
+                                      if (state.addChild) {
+                                        context
+                                            .read<ChildFormBloc>()
+                                            .add(const ChildFormEvent.saved());
+                                        context.read<NodeFormBloc>().add(
+                                              const NodeFormEvent.addChild(
+                                                  true),
+                                            );
+                                      } else {
+                                        context.read<NodeFormBloc>().add(
+                                              const NodeFormEvent.addChild(
+                                                  true),
+                                            );
+                                        context.read<ChildFormBloc>().add(
+                                              ChildFormEvent.addParent(
+                                                  treeId: relState
+                                                      .relation[0]!.treeId,
+                                                  upperFamily: relState
+                                                      .relation[0]!.relationId),
+                                            );
+                                      }
+                                    },
+                                    label: 'إضافة ابن/ة',
+                                    color: color,
+                                  )
+                                ],
+                              );
+                            },
                           ),
                         ],
                       );

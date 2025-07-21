@@ -180,3 +180,9 @@ InputDecoration kSearchBarInputDecor() => InputDecoration(
         borderRadius: BorderRadius.all(Radius.circular(searchBarRadius)),
       ),
     );
+
+BoxDecoration kAppFormsDecor = BoxDecoration(
+  border:
+      Border.all(color: kBlacksColor.shade200, width: kAppFoucusborderWidth),
+  borderRadius: const BorderRadius.all(kAppRadius),
+);
