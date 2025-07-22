@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<dynamic> showDeleteTreePanel(BuildContext contextPage,
     {required UniqueId id}) {
-  final size = MediaQuery.of(contextPage).size;
   return showDialog(
     context: contextPage,
     builder: (BuildContext dialogContext) {
@@ -35,7 +34,7 @@ Future<dynamic> showDeleteTreePanel(BuildContext contextPage,
               alignment: Alignment.topRight,
               padding: const EdgeInsets.all(8.0),
               width: PAN_SM_WIDTH / 2,
-              height: (size.height * PAN_HEIGHT) / 3,
+              height: PAN_HEIGHT / 3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6.0),
               ),

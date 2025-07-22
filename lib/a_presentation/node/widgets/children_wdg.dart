@@ -81,7 +81,7 @@ class ChildrenWidget extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                kVSpacer10,
+                                kVSpacer20,
                                 GridView.builder(
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(

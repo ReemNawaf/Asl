@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/marriage_status_btn.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class AddPartnerWidget extends StatelessWidget {
-  AddPartnerWidget({
+  const AddPartnerWidget({
     super.key,
     required this.node,
     required this.color,
@@ -17,10 +18,10 @@ class AddPartnerWidget extends StatelessWidget {
 
   final TNode node;
   final MaterialColor color;
-  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
     return BlocBuilder<PartnerFormBloc, PartnerFormState>(
       builder: (context, state) {
         return Form(
@@ -52,15 +53,16 @@ class AddPartnerWidget extends StatelessWidget {
                             context
                                 .read<PartnerFormBloc>()
                                 .state
-                                .partner!
+                                .partner
                                 .firstName
                                 .isValid(),
                         validator: (_) {
-                          return state.partner!.firstName.value.fold(
+                          return state.partner.firstName.value.fold(
                             (f) => f.maybeMap(
-                              empty: (_) => 'الاسم الأول يمكن أن يكون فارغًا',
-                              spacedFirstName: (_) =>
-                                  'الاسم الأول لا يمكن أن يحتوي على مسافات',
+                              empty: (_) =>
+                                  ARABIC_STRINGS['first_name_cannot_be_empty'],
+                              spacedFirstName: (_) => ARABIC_STRINGS[
+                                  'first_name_cannot_contain_spaces'],
                               orElse: () => null,
                             ),
                             (_) => null,

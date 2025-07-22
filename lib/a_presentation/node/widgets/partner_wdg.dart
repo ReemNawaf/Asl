@@ -78,7 +78,7 @@ class PartnerWidget extends StatelessWidget {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 20,
-                        childAspectRatio: 3.2,
+                        childAspectRatio: 3,
                       ),
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,

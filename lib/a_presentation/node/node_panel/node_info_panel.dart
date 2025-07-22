@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/node/node_panel/node_alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
@@ -52,9 +53,10 @@ class InfoPanel extends StatelessWidget {
                           validator: (_) {
                             return state.node.firstName.value.fold(
                               (f) => f.maybeMap(
-                                empty: (_) => 'الاسم الأول يمكن أن يكون فارغًا',
-                                spacedFirstName: (_) =>
-                                    'الاسم الأول لا يمكن أن يحتوي على مسافات',
+                                empty: (_) => ARABIC_STRINGS[
+                                    'first_name_cannot_be_empty'],
+                                spacedFirstName: (_) => ARABIC_STRINGS[
+                                    'first_name_cannot_contain_spaces'],
                                 orElse: () => null,
                               ),
                               (_) => null,

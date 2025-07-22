@@ -78,7 +78,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
       },
       changeName: (e) async {
         emit(state.copyWith(
-          partner: state.partner!.copyWith(
+          partner: state.partner.copyWith(
             firstName: FirstName(e.name),
           ),
           saveFailureOrSuccessOption: none(),
@@ -113,15 +113,15 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         ));
 
         // check the tree validation
-        if (state.partner!.failureOption.isNone() &&
+        if (state.partner.failureOption.isNone() &&
             state.relation!.failureOption.isNone()) {
           failureOrSuccess = state.isEditing
               ? await _relationRepository.update(
-                  partner: state.partner!, relation: state.relation!)
+                  partner: state.partner, relation: state.relation!)
               : await _relationRepository.addRelationNewNode(
                   relation: state.relation!,
                   node: state.node!,
-                  partner: state.partner!,
+                  partner: state.partner,
                 );
           isCreated = state.isEditing ? false : true;
         }

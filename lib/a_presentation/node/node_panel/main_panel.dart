@@ -7,6 +7,8 @@ import 'package:asl/a_presentation/node/node_panel/node_info_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/parents_brothers_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
+import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,9 +31,6 @@ class MainPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Type $type');
-    final size = MediaQuery.of(context).size;
-
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -45,8 +44,8 @@ class MainPanel extends StatelessWidget {
               Container(
                 alignment: Alignment.topRight,
                 padding: const EdgeInsets.all(8.0),
-                width: size.width * PAN_WIDTH,
-                height: size.height * PAN_HEIGHT,
+                width: PAN_WIDTH,
+                height: PAN_HEIGHT,
 
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.0),
@@ -56,8 +55,8 @@ class MainPanel extends StatelessWidget {
                 child: DefaultTabController(
                   length: type != NodeType.partner ? 4 : 3,
                   child: SizedBox(
-                    width: (size.width * PAN_WIDTH) - 16,
-                    height: (size.height * PAN_HEIGHT),
+                    width: PAN_WIDTH,
+                    height: PAN_HEIGHT,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -66,7 +65,7 @@ class MainPanel extends StatelessWidget {
                           children: [
                             const SizedBox(width: 35),
                             SizedBox(
-                              width: (size.width * PAN_WIDTH) - 97,
+                              width: PAN_WIDTH - 97,
                               height: 50,
                               child: TabBar(
                                 unselectedLabelColor: kBlacksColor[600],
@@ -116,48 +115,62 @@ class MainPanel extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
-                          height: (size.height * PAN_HEIGHT) - 106,
-                          width: (size.width * PAN_WIDTH) - 53,
-                          margin: const EdgeInsets.only(right: 80),
-                          child: TabBarView(
-                            children: [
-                              InfoPanel(color: color, ctx: context),
-                              ParentsSiblingsPanel(color: color),
-                              if (type != NodeType.partner)
-                                RelationsPanel(color: color, node: node),
-                              const Icon(Icons.directions_bike),
-                            ],
-                          ),
-                        ),
-                        BlocBuilder<NodeFormBloc, NodeFormState>(
-                          builder: (context, state) {
-                            return SizedBox(
-                              width: 60,
-                              height: 40,
-                              child: AppButton(
-                                onPressed: () {
-                                  if (state.isEditing == -1 ||
-                                      state.isEditing == 1) {
-                                    Navigator.pop(context);
-                                  } else {
-                                    context
-                                        .read<NodeFormBloc>()
-                                        .add(const NodeFormEvent.saved());
-
-                                    context
-                                        .read<NodeFormBloc>()
-                                        .add(const NodeFormEvent.ended());
-                                  }
-                                },
-                                label: (state.isEditing == -1 ||
-                                        state.isEditing == 1)
-                                    ? 'تم'
-                                    : 'حفظ',
-                                fillColor: color,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: PAN_HEIGHT - 106,
+                              width: PAN_WIDTH - 53,
+                              margin: const EdgeInsets.only(right: 80),
+                              child: TabBarView(
+                                children: [
+                                  InfoPanel(color: color, ctx: context),
+                                  ParentsSiblingsPanel(color: color),
+                                  if (type != NodeType.partner)
+                                    RelationsPanel(color: color, node: node),
+                                  const Icon(Icons.directions_bike),
+                                ],
                               ),
-                            );
-                          },
+                            ),
+                            BlocBuilder<NodeFormBloc, NodeFormState>(
+                              builder: (context, state) {
+                                return Container(
+                                  alignment: Alignment.bottomLeft,
+                                  width: PAN_WIDTH,
+                                  height: 40,
+                                  child: AppButton(
+                                    onPressed: () {
+                                      if (state.isEditing == -1 ||
+                                          state.isEditing == 1) {
+                                        Navigator.pop(context);
+                                      } else {
+                                        context
+                                            .read<NodeFormBloc>()
+                                            .add(const NodeFormEvent.saved());
+
+                                        context
+                                            .read<NodeFormBloc>()
+                                            .add(const NodeFormEvent.ended());
+
+                                        context
+                                            .read<ChildFormBloc>()
+                                            .add(const ChildFormEvent.saved());
+
+                                        context.read<PartnerFormBloc>().add(
+                                            const PartnerFormEvent.saved());
+                                      }
+                                    },
+                                    label: (state.isEditing == -1 ||
+                                            state.isEditing == 1)
+                                        ? 'تم'
+                                        : 'حفظ',
+                                    fillColor: color,
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -172,8 +185,8 @@ class MainPanel extends StatelessWidget {
           height: 150,
           alignment: Alignment.center,
           padding: const EdgeInsets.all(6),
-          margin: EdgeInsets.only(
-            bottom: size.height * PAN_HEIGHT,
+          margin: const EdgeInsets.only(
+            bottom: PAN_HEIGHT,
             left: 680,
           ),
           decoration: BoxDecoration(

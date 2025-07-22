@@ -4,7 +4,7 @@ part of 'partner_form_bloc.dart';
 abstract class PartnerFormState with _$PartnerFormState {
   const factory PartnerFormState({
     TNode? node,
-    TNode? partner,
+    required TNode partner,
     Relation? relation,
     required AutovalidateMode showErrorMessages,
     required bool isSaving,
@@ -17,7 +17,7 @@ abstract class PartnerFormState with _$PartnerFormState {
 
   factory PartnerFormState.initial() => PartnerFormState(
         node: null,
-        partner: null,
+        partner: TNode.empty(),
         relation: null,
         showErrorMessages: AutovalidateMode.disabled,
         isSaving: false,

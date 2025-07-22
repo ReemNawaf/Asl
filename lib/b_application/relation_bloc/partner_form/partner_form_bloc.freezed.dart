@@ -1253,7 +1253,7 @@ abstract class _Saved implements PartnerFormEvent {
 /// @nodoc
 mixin _$PartnerFormState {
   TNode? get node => throw _privateConstructorUsedError;
-  TNode? get partner => throw _privateConstructorUsedError;
+  TNode get partner => throw _privateConstructorUsedError;
   Relation? get relation => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
@@ -1278,7 +1278,7 @@ abstract class $PartnerFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {TNode? node,
-      TNode? partner,
+      TNode partner,
       Relation? relation,
       AutovalidateMode showErrorMessages,
       bool isSaving,
@@ -1289,7 +1289,7 @@ abstract class $PartnerFormStateCopyWith<$Res> {
       Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption});
 
   $TNodeCopyWith<$Res>? get node;
-  $TNodeCopyWith<$Res>? get partner;
+  $TNodeCopyWith<$Res> get partner;
   $RelationCopyWith<$Res>? get relation;
 }
 
@@ -1307,7 +1307,7 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
   @override
   $Res call({
     Object? node = freezed,
-    Object? partner = freezed,
+    Object? partner = null,
     Object? relation = freezed,
     Object? showErrorMessages = null,
     Object? isSaving = null,
@@ -1322,10 +1322,10 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
           ? _value.node
           : node // ignore: cast_nullable_to_non_nullable
               as TNode?,
-      partner: freezed == partner
+      partner: null == partner
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
-              as TNode?,
+              as TNode,
       relation: freezed == relation
           ? _value.relation
           : relation // ignore: cast_nullable_to_non_nullable
@@ -1375,12 +1375,8 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
 
   @override
   @pragma('vm:prefer-inline')
-  $TNodeCopyWith<$Res>? get partner {
-    if (_value.partner == null) {
-      return null;
-    }
-
-    return $TNodeCopyWith<$Res>(_value.partner!, (value) {
+  $TNodeCopyWith<$Res> get partner {
+    return $TNodeCopyWith<$Res>(_value.partner, (value) {
       return _then(_value.copyWith(partner: value) as $Val);
     });
   }
@@ -1408,7 +1404,7 @@ abstract class _$$PartnerFormStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {TNode? node,
-      TNode? partner,
+      TNode partner,
       Relation? relation,
       AutovalidateMode showErrorMessages,
       bool isSaving,
@@ -1421,7 +1417,7 @@ abstract class _$$PartnerFormStateImplCopyWith<$Res>
   @override
   $TNodeCopyWith<$Res>? get node;
   @override
-  $TNodeCopyWith<$Res>? get partner;
+  $TNodeCopyWith<$Res> get partner;
   @override
   $RelationCopyWith<$Res>? get relation;
 }
@@ -1438,7 +1434,7 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? node = freezed,
-    Object? partner = freezed,
+    Object? partner = null,
     Object? relation = freezed,
     Object? showErrorMessages = null,
     Object? isSaving = null,
@@ -1453,10 +1449,10 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
           ? _value.node
           : node // ignore: cast_nullable_to_non_nullable
               as TNode?,
-      partner: freezed == partner
+      partner: null == partner
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
-              as TNode?,
+              as TNode,
       relation: freezed == relation
           ? _value.relation
           : relation // ignore: cast_nullable_to_non_nullable
@@ -1498,7 +1494,7 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
 class _$PartnerFormStateImpl implements _PartnerFormState {
   const _$PartnerFormStateImpl(
       {this.node,
-      this.partner,
+      required this.partner,
       this.relation,
       required this.showErrorMessages,
       required this.isSaving,
@@ -1511,7 +1507,7 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
   @override
   final TNode? node;
   @override
-  final TNode? partner;
+  final TNode partner;
   @override
   final Relation? relation;
   @override
@@ -1587,7 +1583,7 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
 abstract class _PartnerFormState implements PartnerFormState {
   const factory _PartnerFormState(
       {final TNode? node,
-      final TNode? partner,
+      required final TNode partner,
       final Relation? relation,
       required final AutovalidateMode showErrorMessages,
       required final bool isSaving,
@@ -1601,7 +1597,7 @@ abstract class _PartnerFormState implements PartnerFormState {
   @override
   TNode? get node;
   @override
-  TNode? get partner;
+  TNode get partner;
   @override
   Relation? get relation;
   @override

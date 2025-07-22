@@ -182,7 +182,6 @@ InputDecoration kSearchBarInputDecor() => InputDecoration(
     );
 
 BoxDecoration kAppFormsDecor = BoxDecoration(
-  border:
-      Border.all(color: kBlacksColor.shade200, width: kAppFoucusborderWidth),
+  border: Border.all(color: kBlacksColor.shade200, width: 1.5),
   borderRadius: const BorderRadius.all(kAppRadius),
 );

@@ -19,7 +19,6 @@ class SiblingsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = (size.width * PAN_WIDTH) - 116;
     return BlocBuilder<NodeFormBloc, NodeFormState>(
       builder: (context, state) {
         // if(state.hasNode && state.node.)
@@ -30,7 +29,7 @@ class SiblingsWidget extends StatelessWidget {
             if (hasSiblings) ...[
               kVSpacer10,
               SizedBox(
-                width: width,
+                width: PAN_WIDTH - 10,
                 height: 135,
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

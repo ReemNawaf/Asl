@@ -23,8 +23,8 @@ class ParentsSiblingsPanel extends StatelessWidget {
         return state.hasNode
             ? Container(
                 padding: const EdgeInsets.only(left: 10.0),
-                height: size.height * PAN_HEIGHT,
-                width: (size.width * PAN_WIDTH) - 106,
+                height: PAN_HEIGHT,
+                width: PAN_WIDTH - 106,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -32,13 +32,13 @@ class ParentsSiblingsPanel extends StatelessWidget {
                     children: [
                       kVSpacer20,
                       SizedBox(
-                        width: (size.width * PAN_WIDTH) - 106,
+                        width: PAN_WIDTH - 106,
                         height: 70,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: ((size.width * PAN_WIDTH) - 116) / 2,
+                              width: (PAN_WIDTH - 116) / 2,
                               height: 70,
                               child: AppFormField(
                                 label: 'الأب',
@@ -51,7 +51,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                             ),
                             kHSpacer10,
                             SizedBox(
-                              width: ((size.width * PAN_WIDTH) - 116) / 2,
+                              width: (PAN_WIDTH - 116) / 2,
                               height: 70,
                               child: AppFormField(
                                 label: 'الأم',
@@ -67,7 +67,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                       ),
                       kHSpacer10,
                       SizedBox(
-                        width: (size.width * PAN_WIDTH) - 116,
+                        width: PAN_WIDTH - 116,
                         height: 215,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,

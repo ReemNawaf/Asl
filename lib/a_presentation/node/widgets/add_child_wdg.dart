@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/add_parent_list_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/child_alive_btn.dart';
@@ -33,10 +34,9 @@ class AddChildWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              kVSpacer10,
-              AddParentDropListWidget(relations: relations),
               kVSpacer20,
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: 250,
@@ -61,9 +61,10 @@ class AddChildWidget extends StatelessWidget {
                       validator: (_) {
                         return state.child.firstName.value.fold(
                           (f) => f.maybeMap(
-                            empty: (_) => 'الاسم الأول لا يمكن أن يكون فارغًا',
-                            spacedFirstName: (_) =>
-                                'الاسم الأول لا يمكن أن يحتوي على مسافات',
+                            empty: (_) =>
+                                ARABIC_STRINGS['first_name_cannot_be_empty'],
+                            spacedFirstName: (_) => ARABIC_STRINGS[
+                                'first_name_cannot_contain_spaces'],
                             orElse: () => null,
                           ),
                           (_) => null,
@@ -72,13 +73,14 @@ class AddChildWidget extends StatelessWidget {
                     ),
                   ),
                   kHSpacer20,
-                  ChildAliveBtn(color: color, ctx: context),
+                  AddParentDropListWidget(
+                      relations: relations, gender: node.gender),
                 ],
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: 230,
+                    width: 250,
                     height: 80,
                     child: AppDateField(
                       formKey: formKey,
@@ -102,41 +104,45 @@ class AddChildWidget extends StatelessWidget {
                       withPadding: false,
                     ),
                   ),
-                  if (!state.child.isAlive) ...[
-                    kHSpacer40,
-                    SizedBox(
-                      width: 230,
-                      height: 80,
-                      child: AppDateField(
-                        formKey: formKey,
-                        label: 'تاريخ الوفاة',
-                        hint: '',
-                        validate: (validate) => "",
-                        isEditing: true,
-                        save: (_) {},
-                        changeDate: (pickedDate) {
-                          context.read<ChildFormBloc>().add(
-                                ChildFormEvent.changeDeathDate(
-                                  pickedDate,
-                                ),
-                              );
-                        },
-                        startDate: state.child.birthDate?.add(
-                          const Duration(days: 1),
-                        ),
-                        endDate: DateTime.now(),
-                        dateController: TextEditingController(
-                          text: state.child.deathDate == null
-                              ? ''
-                              : DateFormat.yMMMd()
-                                  .format(state.child.deathDate!),
-                        ),
-                        withPadding: false,
-                      ),
-                    ),
-                  ]
+                  kHSpacer20,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: ChildAliveBtn(color: color, ctx: context),
+                  ),
                 ],
-              )
+              ),
+              if (!state.child.isAlive) ...[
+                kHSpacer40,
+                SizedBox(
+                  width: 250,
+                  height: 80,
+                  child: AppDateField(
+                    formKey: formKey,
+                    label: 'تاريخ الوفاة',
+                    hint: '',
+                    validate: (validate) => "",
+                    isEditing: true,
+                    save: (_) {},
+                    changeDate: (pickedDate) {
+                      context.read<ChildFormBloc>().add(
+                            ChildFormEvent.changeDeathDate(
+                              pickedDate,
+                            ),
+                          );
+                    },
+                    startDate: state.child.birthDate?.add(
+                      const Duration(days: 1),
+                    ),
+                    endDate: DateTime.now(),
+                    dateController: TextEditingController(
+                      text: state.child.deathDate == null
+                          ? ''
+                          : DateFormat.yMMMd().format(state.child.deathDate!),
+                    ),
+                    withPadding: false,
+                  ),
+                ),
+              ]
             ],
           ),
         );

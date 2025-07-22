@@ -249,7 +249,6 @@ class Home extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.red,
         border: Border.all(color: Colors.white, width: 1),
         borderRadius: BorderRadius.circular(30),
       ),
