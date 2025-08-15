@@ -21,8 +21,7 @@ class InteractiveView extends StatelessWidget {
           loadInProgress: (_) {},
           inProgress: (_) {},
           loadSuccess: (state) {
-            print(
-                '015 | Listen root with ${state.root.relations.length} relations');
+            print('Listen root with ${state.root.relations.length} relations');
             context.read<DrawTreeBloc>().add(
                   DrawTreeEvent.drawNewTree(
                     tree: context.read<CurrentTreeBloc>().state.currentTree!,

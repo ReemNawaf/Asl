@@ -3,7 +3,8 @@ part of 'child_form_bloc.dart';
 @freezed
 abstract class ChildFormState with _$ChildFormState {
   const factory ChildFormState({
-    required TNode child,
+    required Map<String, List<TNode>> children,
+    required TNode tempChild,
     required UniqueId relationId,
     required AutovalidateMode showErrorMessages,
     required bool isSaving,
@@ -15,7 +16,8 @@ abstract class ChildFormState with _$ChildFormState {
   }) = _ChildFormState;
 
   factory ChildFormState.initial() => ChildFormState(
-        child: TNode.empty(),
+        children: {},
+        tempChild: TNode.empty(),
         relationId: UniqueId(),
         showErrorMessages: AutovalidateMode.disabled,
         isSaving: false,

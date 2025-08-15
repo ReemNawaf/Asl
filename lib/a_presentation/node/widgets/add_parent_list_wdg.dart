@@ -42,13 +42,14 @@ class AddParentDropListWidget extends StatelessWidget {
             child: DropdownButton(
               items: menuItems,
               isExpanded: true,
-              value: context.read<ChildFormBloc>().state.child.upperFamily,
+              value: context.read<ChildFormBloc>().state.tempChild.upperFamily,
               onChanged: (value) {
                 final re =
                     relations.firstWhere((ree) => ree!.relationId == value)!;
 
-                context.read<ChildFormBloc>().add(ChildFormEvent.addParent(
-                    treeId: re.treeId, upperFamily: re.relationId));
+                context
+                    .read<ChildFormBloc>()
+                    .add(ChildFormEvent.addParent(re.relationId));
               },
               underline: const SizedBox(),
               icon: const Icon(Icons.expand_more_rounded),

@@ -84,7 +84,8 @@ class AddPartnerWidget extends StatelessWidget {
                         formKey: formKey,
                         label: 'تاريخ الزواج',
                         hint: '',
-                        endDate: state.relation!.endDate,
+                        endDate: state.relation!.endDate ?? DateTime(3000),
+                        startDate: DateTime(1000),
                         validate: (validate) => "",
                         save: (_) {},
                         isEditing: true,
@@ -122,7 +123,8 @@ class AddPartnerWidget extends StatelessWidget {
                                 );
                           },
                           startDate: state.relation!.marriageDate
-                              ?.add(const Duration(days: 1)),
+                                  ?.add(const Duration(days: 1)) ??
+                              DateTime(1000),
                           endDate: DateTime.now().add(const Duration(days: 1)),
                           dateController: TextEditingController(
                             text: state.relation!.endDate == null

@@ -87,6 +87,10 @@ class InfoPanel extends StatelessWidget {
                           hint: '',
                           validate: (validate) => "",
                           save: (_) {},
+                          endDate: state.node.deathDate
+                                  ?.subtract(const Duration(days: 1)) ??
+                              DateTime.now(),
+                          startDate: DateTime(1000),
                           changeDate: (pickedDate) => ctx
                               .read<NodeFormBloc>()
                               .add(NodeFormEvent.birthDateChanged(pickedDate)),
@@ -126,7 +130,10 @@ class InfoPanel extends StatelessWidget {
                                       .format(state.node.deathDate!),
                             ),
                             isEditing: state.isEditing == 0,
-                            startDate: state.node.birthDate,
+                            startDate: state.node.birthDate
+                                    ?.add(const Duration(days: 1)) ??
+                                DateTime(1000),
+                            endDate: DateTime.now(),
                           ),
                         ),
                     ],

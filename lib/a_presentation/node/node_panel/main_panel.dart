@@ -144,6 +144,14 @@ class MainPanel extends StatelessWidget {
                                       if (state.isEditing == -1 ||
                                           state.isEditing == 1) {
                                         Navigator.pop(context);
+
+                                        // Save all the added partner and children
+                                        context
+                                            .read<ChildFormBloc>()
+                                            .add(const ChildFormEvent.saved());
+
+                                        context.read<PartnerFormBloc>().add(
+                                            const PartnerFormEvent.saved());
                                       } else {
                                         context
                                             .read<NodeFormBloc>()
@@ -152,13 +160,6 @@ class MainPanel extends StatelessWidget {
                                         context
                                             .read<NodeFormBloc>()
                                             .add(const NodeFormEvent.ended());
-
-                                        context
-                                            .read<ChildFormBloc>()
-                                            .add(const ChildFormEvent.saved());
-
-                                        context.read<PartnerFormBloc>().add(
-                                            const PartnerFormEvent.saved());
                                       }
                                     },
                                     label: (state.isEditing == -1 ||

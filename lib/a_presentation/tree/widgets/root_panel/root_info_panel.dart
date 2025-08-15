@@ -81,8 +81,10 @@ class RootInfoPanel extends StatelessWidget {
                     formKey: formKey,
                     label: 'تاريخ الميلاد',
                     hint: '',
-                    endDate:
-                        state.root.deathDate?.subtract(const Duration(days: 1)),
+                    endDate: state.root.deathDate
+                            ?.subtract(const Duration(days: 1)) ??
+                        DateTime.now(),
+                    startDate: DateTime(1000),
                     validate: (validate) => "",
                     save: (_) {},
                     isEditing: true,
@@ -117,7 +119,9 @@ class RootInfoPanel extends StatelessWidget {
                             .read<TreeFormBloc>()
                             .add(TreeFormEvent.changeRootDeathDate(pickedDate));
                       },
-                      startDate: state.root.birthDate,
+                      startDate:
+                          state.root.birthDate?.add(const Duration(days: 1)) ??
+                              DateTime(1000),
                       endDate: DateTime.now(),
                       dateController: TextEditingController(
                         text: state.root.deathDate == null

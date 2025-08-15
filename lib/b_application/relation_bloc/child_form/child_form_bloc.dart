@@ -29,21 +29,37 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
     Emitter<ChildFormState> emit,
   ) async {
     await event.map(
-      addParent: (e) {
+      addChild: (e) {
         final child = TNode(
           treeId: e.treeId,
           nodeId: UniqueId(),
           firstName: FirstName(''),
           isAlive: true,
           gender: Gender.male,
-          upperFamily: e.upperFamily,
+          upperFamily: e.relationId,
           relations: [],
           fosterChildren: [],
           relationsObject: [],
         );
-
         emit(state.copyWith(
-          child: child,
+          tempChild: child,
+          isViewing: true,
+          isAdding: true,
+          showErrorMessages: AutovalidateMode.disabled,
+        ));
+      },
+      addChildToList: (e) {
+        print('15 | This is the new child ${state.tempChild}');
+        var newChildren = {...state.children};
+        final relationKey = state.tempChild.upperFamily.getOrCrash();
+
+        newChildren[relationKey] = [
+          ...?newChildren[relationKey],
+          state.tempChild
+        ];
+        print('15 | This is the new childrenlist $newChildren');
+        emit(state.copyWith(
+          children: newChildren,
           isViewing: true,
           isAdding: true,
           showErrorMessages: AutovalidateMode.disabled,
@@ -51,40 +67,45 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
       },
       edited: (e) async {
         emit(state.copyWith(
-          child: e.child,
+          children: e.children,
           isEditing: true,
           isViewing: false,
         ));
       },
-      changeName: (e) async {
+      addParent: (e) {
         emit(state.copyWith(
-          child: state.child.copyWith(
-            firstName: FirstName(e.name),
-          ),
+          tempChild: state.tempChild.copyWith(upperFamily: e.upperFamily),
           saveFailureOrSuccessOption: none(),
         ));
       },
-      changeBirthDate: (e) async {
+      changeName: (e) {
         emit(state.copyWith(
-          child: state.child.copyWith(birthDate: e.date),
+          tempChild:
+              state.tempChild.copyWith(firstName: FirstName.fromString(e.name)),
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      changeBirthDate: (e) {
+        emit(state.copyWith(
+          tempChild: state.tempChild.copyWith(birthDate: e.date),
           saveFailureOrSuccessOption: none(),
         ));
       },
       changeDeathDate: (e) async {
         emit(state.copyWith(
-          child: state.child.copyWith(deathDate: e.date),
+          tempChild: state.tempChild.copyWith(deathDate: e.date),
           saveFailureOrSuccessOption: none(),
         ));
       },
       changeIsAlive: (e) async {
         emit(state.copyWith(
-          child: state.child.copyWith(isAlive: e.isAlive),
+          tempChild: state.tempChild.copyWith(isAlive: e.isAlive),
           saveFailureOrSuccessOption: none(),
         ));
       },
       changeGender: (e) async {
         emit(state.copyWith(
-          child: state.child.copyWith(gender: e.gender),
+          tempChild: state.tempChild.copyWith(gender: e.gender),
           saveFailureOrSuccessOption: none(),
         ));
       },
@@ -97,19 +118,21 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           isEditing: false,
           saveFailureOrSuccessOption: none(),
         ));
+        // convert children dict to list
+        final List<TNode> allchildren =
+            state.children.values.expand((list) => list).toList();
 
         // check the tree validation
-        if (state.child.failureOption.isNone() &&
-            state.child.failureOption.isNone()) {
+        if (allchildren.every((child) => child.failureOption.isNone())) {
           failureOrSuccess =
               // state.isEditing
               //     ? await _relationRepository.update(
               //         child: state.child,
               //         treeId: state.child.treeId,
               //       ):
-              await _relationRepository.addChild(
-            child: state.child,
-            treeId: state.child.treeId,
+              await _relationRepository.addChildren(
+            children: allchildren,
+            treeId: allchildren.first.treeId,
           );
           isCreated = state.isEditing ? false : true;
         }

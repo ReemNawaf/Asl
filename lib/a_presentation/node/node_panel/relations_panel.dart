@@ -122,20 +122,25 @@ class RelationsPanel extends StatelessWidget {
                                                 const NodeFormEvent.addChild(
                                                     false),
                                               );
+                                          // Add the child to the temp children list
+                                          context.read<ChildFormBloc>().add(
+                                                const ChildFormEvent
+                                                    .addChildToList(),
+                                              );
                                         } else {
+                                          // Make the child add button showing add new child
                                           context.read<NodeFormBloc>().add(
                                                 const NodeFormEvent.addChild(
                                                     true),
                                               );
-
+                                          // Add empty child to be ready to add to it
                                           context.read<ChildFormBloc>().add(
-                                                ChildFormEvent.addParent(
-                                                    treeId: relState
-                                                        .relation[0]!.treeId,
-                                                    upperFamily: relState
-                                                        .relation[0]!
-                                                        .relationId),
-                                              );
+                                              ChildFormEvent.addChild(
+                                                  treeId: relState
+                                                      .relation[0]!.treeId,
+                                                  relationId: relState
+                                                      .relation[0]!
+                                                      .relationId));
                                         }
                                       },
                                       label: 'إضافة ابن/ة',

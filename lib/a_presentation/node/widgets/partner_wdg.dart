@@ -35,13 +35,13 @@ class PartnerWidget extends StatelessWidget {
           final currentTree =
               context.read<CurrentTreeBloc>().state.currentTree!;
 
-          context
-              .read<NodeWatcherBloc>()
-              .add(NodeWatcherEvent.getTree(currentTree));
+          // context
+          //     .read<NodeWatcherBloc>()
+          //     .add(NodeWatcherEvent.getTree(currentTree));
 
-          context.read<RelationWatcherBloc>().add(
-              RelationWatcherEvent.getRelation(
-                  currentTree.treeId, state.child.upperFamily));
+          // context.read<RelationWatcherBloc>().add(
+          //     RelationWatcherEvent.getRelation(
+          //         currentTree.treeId, state.child.upperFamily));
         }
       },
       child: BlocListener<PartnerFormBloc, PartnerFormState>(

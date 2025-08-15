@@ -16,8 +16,8 @@ class AppDateField extends StatelessWidget {
   final void Function(DateTime? date) changeDate;
   final TextEditingController dateController;
   final bool isEditing;
-  final DateTime? startDate;
-  final DateTime? endDate;
+  final DateTime startDate;
+  final DateTime endDate;
   final bool withPadding;
 
   const AppDateField(
@@ -32,8 +32,8 @@ class AppDateField extends StatelessWidget {
       required this.changeDate,
       required this.dateController,
       this.isEditing = false,
-      this.startDate,
-      this.endDate,
+      required this.startDate,
+      required this.endDate,
       this.withPadding = true});
 
   @override
@@ -41,8 +41,8 @@ class AppDateField extends StatelessWidget {
     Future<DateTime?> selectDate() async {
       final DateTime? picked = await showDatePicker(
         context: context,
-        firstDate: startDate ?? DateTime.now(),
-        lastDate: endDate ?? DateTime.now(),
+        firstDate: startDate,
+        lastDate: endDate,
       );
 
       return picked;

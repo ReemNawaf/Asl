@@ -37,9 +37,9 @@ class ChildrenWidget extends StatelessWidget {
               .read<NodeWatcherBloc>()
               .add(NodeWatcherEvent.getTree(currentTree));
 
-          context.read<RelationWatcherBloc>().add(
-              RelationWatcherEvent.getRelation(
-                  currentTree.treeId, state.child.upperFamily));
+          // context.read<RelationWatcherBloc>().add(
+          //     RelationWatcherEvent.getRelation(
+          //         currentTree.treeId, state.child.upperFamily));
         }
       },
       child: BlocBuilder<NodeWatcherBloc, NodeWatcherState>(
@@ -56,85 +56,97 @@ class ChildrenWidget extends StatelessWidget {
                     style: kHeadlineMedium,
                   ),
                   kVSpacer10,
-                  ListView.builder(
-                    itemCount: relations.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final sinRelation = relations[index];
-                      final partner = sinRelation.partnerNode!;
-
-                      return sinRelation.childrenNodes.isNotEmpty
-                          ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
+                  BlocBuilder<ChildFormBloc, ChildFormState>(
+                    builder: (context, state) {
+                      return ListView.builder(
+                        itemCount: relations.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          final sinRelation = relations[index];
+                          final partner = sinRelation.partnerNode!;
+                          final tempRelationChildren = state
+                              .children[sinRelation.relationId.getOrCrash()];
+                          print(
+                              '15 | This is the tempRelationChildren $tempRelationChildren');
+                          final allChildren = [
+                            ...sinRelation.childrenNodes,
+                            ...?tempRelationChildren
+                          ];
+                          return allChildren.isNotEmpty
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'من ${getNodePartnerTitleSingle(node.gender)}',
-                                      style: kBodyLarge.copyWith(
-                                          fontWeight: FontWeight.w500),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'من ${getNodePartnerTitleSingle(node.gender)}',
+                                          style: kBodyLarge.copyWith(
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        kHSpacer5,
+                                        Text(
+                                          partner.firstName.getOrCrash(),
+                                          style: kBodyLarge,
+                                        ),
+                                      ],
                                     ),
-                                    kHSpacer5,
-                                    Text(
-                                      partner.firstName.getOrCrash(),
-                                      style: kBodyLarge,
+                                    kVSpacer5,
+                                    GridView.builder(
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 20,
+                                        childAspectRatio: 3.2,
+                                      ),
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: allChildren.length,
+                                      itemBuilder: (context, index) {
+                                        final child = allChildren[index];
+                                        return Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: 63,
+                                              width: 278,
+                                              child: AppFormField(
+                                                label:
+                                                    'الابن${child.gender == Gender.female ? 'ة' : ''}',
+                                                hint: '',
+                                                onSaved: (_) {},
+                                                initialValue: child.firstName
+                                                    .getOrCrash(),
+                                                validator: (_) => '',
+                                                isEditing: false,
+                                              ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                if (sinRelation.marriageDate !=
+                                                    null) ...[
+                                                  Text(
+                                                    'تاريخ الميلاد: ${child.birthDate!.year}',
+                                                    style:
+                                                        kCaption1Style.copyWith(
+                                                      color: kBlacksColor[600],
+                                                    ),
+                                                  ),
+                                                  kHSpacer20,
+                                                ],
+                                              ],
+                                            ),
+                                            kVSpacer10,
+                                          ],
+                                        );
+                                      },
                                     ),
                                   ],
-                                ),
-                                kVSpacer20,
-                                GridView.builder(
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: 20,
-                                    childAspectRatio: 3.2,
-                                  ),
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount: sinRelation.childrenNodes.length,
-                                  itemBuilder: (context, index) {
-                                    final child =
-                                        sinRelation.childrenNodes[index];
-                                    return Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 63,
-                                          width: 278,
-                                          child: AppFormField(
-                                            label:
-                                                'الابن${child.gender == Gender.female ? 'ة' : ''}',
-                                            hint: '',
-                                            onSaved: (_) {},
-                                            initialValue:
-                                                child.firstName.getOrCrash(),
-                                            validator: (_) => '',
-                                            isEditing: false,
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            if (sinRelation.marriageDate !=
-                                                null) ...[
-                                              Text(
-                                                'تاريخ الميلاد: ${child.birthDate!.year}',
-                                                style: kCaption1Style.copyWith(
-                                                  color: kBlacksColor[600],
-                                                ),
-                                              ),
-                                              kHSpacer20,
-                                            ],
-                                          ],
-                                        ),
-                                        kVSpacer10,
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ],
-                            )
-                          : const SizedBox();
+                                )
+                              : const SizedBox();
+                        },
+                      );
                     },
                   ),
                 ],

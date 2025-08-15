@@ -28,12 +28,14 @@ class AddChildWidget extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
     return BlocBuilder<ChildFormBloc, ChildFormState>(
       builder: (context, state) {
+        print('22 | state.child.deathDate ${state.tempChild.deathDate}');
         return Form(
           autovalidateMode: state.showErrorMessages,
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Text('إضافة ابن/ة'),
               kVSpacer20,
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +44,7 @@ class AddChildWidget extends StatelessWidget {
                     width: 250,
                     height: 90,
                     child: AppFormField(
-                      label: 'إضافة ابن/ة',
+                      label: 'الاسم',
                       hint: 'الاسم الأول',
                       onChanged: (value) => context
                           .read<ChildFormBloc>()
@@ -55,11 +57,11 @@ class AddChildWidget extends StatelessWidget {
                           context
                               .read<ChildFormBloc>()
                               .state
-                              .child
+                              .tempChild
                               .firstName
                               .isValid(),
                       validator: (_) {
-                        return state.child.firstName.value.fold(
+                        return state.tempChild.firstName.value.fold(
                           (f) => f.maybeMap(
                             empty: (_) =>
                                 ARABIC_STRINGS['first_name_cannot_be_empty'],
@@ -86,8 +88,10 @@ class AddChildWidget extends StatelessWidget {
                       formKey: formKey,
                       label: 'تاريخ الميلاد',
                       hint: '',
-                      endDate: state.child.deathDate
-                          ?.subtract(const Duration(days: 1)),
+                      endDate: state.tempChild.deathDate
+                              ?.subtract(const Duration(days: 1)) ??
+                          DateTime.now(),
+                      startDate: DateTime(1000),
                       validate: (validate) => "",
                       save: (_) {},
                       isEditing: true,
@@ -97,9 +101,10 @@ class AddChildWidget extends StatelessWidget {
                             );
                       },
                       dateController: TextEditingController(
-                        text: state.child.birthDate == null
+                        text: state.tempChild.birthDate == null
                             ? ''
-                            : DateFormat.yMMMd().format(state.child.birthDate!),
+                            : DateFormat.yMMMd()
+                                .format(state.tempChild.birthDate!),
                       ),
                       withPadding: false,
                     ),
@@ -111,7 +116,7 @@ class AddChildWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              if (!state.child.isAlive) ...[
+              if (!state.tempChild.isAlive) ...[
                 kHSpacer40,
                 SizedBox(
                   width: 250,
@@ -130,14 +135,15 @@ class AddChildWidget extends StatelessWidget {
                             ),
                           );
                     },
-                    startDate: state.child.birthDate?.add(
-                      const Duration(days: 1),
-                    ),
+                    startDate: state.tempChild.birthDate
+                            ?.add(const Duration(days: 1)) ??
+                        DateTime(1000),
                     endDate: DateTime.now(),
                     dateController: TextEditingController(
-                      text: state.child.deathDate == null
+                      text: state.tempChild.deathDate == null
                           ? ''
-                          : DateFormat.yMMMd().format(state.child.deathDate!),
+                          : DateFormat.yMMMd()
+                              .format(state.tempChild.deathDate!),
                     ),
                     withPadding: false,
                   ),

@@ -26,9 +26,9 @@ abstract class IRelationRepository {
   Future<Either<RelationFailure, Unit>> deleteRelationAndChildren(
       {required UniqueId treeId, required UniqueId relationId});
 
-  Future<Either<TNodeFailure, Unit>> addChild({
+  Future<Either<TNodeFailure, Unit>> addChildren({
     required UniqueId treeId,
-    required TNode child,
+    required List<TNode> children,
   });
   Future<Either<RelationFailure, Unit>> deleteChild({
     required UniqueId treeId,

@@ -39,7 +39,7 @@ class RootGenderBtn extends StatelessWidget {
                 color: color,
                 text: 'ذكر',
                 gender: Gender.male,
-                selected: Gender.male == state.child.gender,
+                selected: Gender.male == state.tempChild.gender,
               ),
               const SizedBox(width: 16.0),
               GenderButton(
@@ -47,7 +47,7 @@ class RootGenderBtn extends StatelessWidget {
                 color: color,
                 text: 'أنثى',
                 gender: Gender.female,
-                selected: Gender.female == state.child.gender,
+                selected: Gender.female == state.tempChild.gender,
               ),
             ],
           ),

@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChildFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -30,8 +32,10 @@ mixin _$ChildFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -42,8 +46,10 @@ mixin _$ChildFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -55,7 +61,9 @@ mixin _$ChildFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -67,7 +75,9 @@ mixin _$ChildFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -79,7 +89,9 @@ mixin _$ChildFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -111,12 +123,205 @@ class _$ChildFormEventCopyWithImpl<$Res, $Val extends ChildFormEvent>
 }
 
 /// @nodoc
+abstract class _$$AddChildImplCopyWith<$Res> {
+  factory _$$AddChildImplCopyWith(
+          _$AddChildImpl value, $Res Function(_$AddChildImpl) then) =
+      __$$AddChildImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniqueId treeId, UniqueId relationId});
+}
+
+/// @nodoc
+class __$$AddChildImplCopyWithImpl<$Res>
+    extends _$ChildFormEventCopyWithImpl<$Res, _$AddChildImpl>
+    implements _$$AddChildImplCopyWith<$Res> {
+  __$$AddChildImplCopyWithImpl(
+      _$AddChildImpl _value, $Res Function(_$AddChildImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? treeId = null,
+    Object? relationId = null,
+  }) {
+    return _then(_$AddChildImpl(
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      relationId: null == relationId
+          ? _value.relationId
+          : relationId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddChildImpl implements _AddChild {
+  const _$AddChildImpl({required this.treeId, required this.relationId});
+
+  @override
+  final UniqueId treeId;
+  @override
+  final UniqueId relationId;
+
+  @override
+  String toString() {
+    return 'ChildFormEvent.addChild(treeId: $treeId, relationId: $relationId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddChildImpl &&
+            (identical(other.treeId, treeId) || other.treeId == treeId) &&
+            (identical(other.relationId, relationId) ||
+                other.relationId == relationId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, treeId, relationId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddChildImplCopyWith<_$AddChildImpl> get copyWith =>
+      __$$AddChildImplCopyWithImpl<_$AddChildImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
+    required TResult Function(String name) changeName,
+    required TResult Function(DateTime? date) changeBirthDate,
+    required TResult Function(DateTime? date) changeDeathDate,
+    required TResult Function(bool isAlive) changeIsAlive,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function() saved,
+  }) {
+    return addChild(treeId, relationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
+    TResult? Function(String name)? changeName,
+    TResult? Function(DateTime? date)? changeBirthDate,
+    TResult? Function(DateTime? date)? changeDeathDate,
+    TResult? Function(bool isAlive)? changeIsAlive,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function()? saved,
+  }) {
+    return addChild?.call(treeId, relationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
+    TResult Function(String name)? changeName,
+    TResult Function(DateTime? date)? changeBirthDate,
+    TResult Function(DateTime? date)? changeDeathDate,
+    TResult Function(bool isAlive)? changeIsAlive,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (addChild != null) {
+      return addChild(treeId, relationId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_ChangedName value) changeName,
+    required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
+    required TResult Function(_ChangeDeathDate value) changeDeathDate,
+    required TResult Function(_ChangeIsAlive value) changeIsAlive,
+    required TResult Function(_ChangeGender value) changeGender,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return addChild(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_ChangedName value)? changeName,
+    TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
+    TResult? Function(_ChangeDeathDate value)? changeDeathDate,
+    TResult? Function(_ChangeIsAlive value)? changeIsAlive,
+    TResult? Function(_ChangeGender value)? changeGender,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return addChild?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_ChangedName value)? changeName,
+    TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
+    TResult Function(_ChangeDeathDate value)? changeDeathDate,
+    TResult Function(_ChangeIsAlive value)? changeIsAlive,
+    TResult Function(_ChangeGender value)? changeGender,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (addChild != null) {
+      return addChild(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddChild implements ChildFormEvent {
+  const factory _AddChild(
+      {required final UniqueId treeId,
+      required final UniqueId relationId}) = _$AddChildImpl;
+
+  UniqueId get treeId;
+  UniqueId get relationId;
+  @JsonKey(ignore: true)
+  _$$AddChildImplCopyWith<_$AddChildImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$AddParentImplCopyWith<$Res> {
   factory _$$AddParentImplCopyWith(
           _$AddParentImpl value, $Res Function(_$AddParentImpl) then) =
       __$$AddParentImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UniqueId treeId, UniqueId upperFamily});
+  $Res call({UniqueId upperFamily});
 }
 
 /// @nodoc
@@ -130,15 +335,10 @@ class __$$AddParentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? treeId = null,
     Object? upperFamily = null,
   }) {
     return _then(_$AddParentImpl(
-      treeId: null == treeId
-          ? _value.treeId
-          : treeId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      upperFamily: null == upperFamily
+      null == upperFamily
           ? _value.upperFamily
           : upperFamily // ignore: cast_nullable_to_non_nullable
               as UniqueId,
@@ -149,16 +349,14 @@ class __$$AddParentImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddParentImpl implements _AddParent {
-  const _$AddParentImpl({required this.treeId, required this.upperFamily});
+  const _$AddParentImpl(this.upperFamily);
 
-  @override
-  final UniqueId treeId;
   @override
   final UniqueId upperFamily;
 
   @override
   String toString() {
-    return 'ChildFormEvent.addParent(treeId: $treeId, upperFamily: $upperFamily)';
+    return 'ChildFormEvent.addParent(upperFamily: $upperFamily)';
   }
 
   @override
@@ -166,13 +364,12 @@ class _$AddParentImpl implements _AddParent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddParentImpl &&
-            (identical(other.treeId, treeId) || other.treeId == treeId) &&
             (identical(other.upperFamily, upperFamily) ||
                 other.upperFamily == upperFamily));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, treeId, upperFamily);
+  int get hashCode => Object.hash(runtimeType, upperFamily);
 
   @JsonKey(ignore: true)
   @override
@@ -183,8 +380,10 @@ class _$AddParentImpl implements _AddParent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -192,14 +391,16 @@ class _$AddParentImpl implements _AddParent {
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
-    return addParent(treeId, upperFamily);
+    return addParent(upperFamily);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -207,14 +408,16 @@ class _$AddParentImpl implements _AddParent {
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
-    return addParent?.call(treeId, upperFamily);
+    return addParent?.call(upperFamily);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -224,7 +427,7 @@ class _$AddParentImpl implements _AddParent {
     required TResult orElse(),
   }) {
     if (addParent != null) {
-      return addParent(treeId, upperFamily);
+      return addParent(upperFamily);
     }
     return orElse();
   }
@@ -232,7 +435,9 @@ class _$AddParentImpl implements _AddParent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -247,7 +452,9 @@ class _$AddParentImpl implements _AddParent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -262,7 +469,9 @@ class _$AddParentImpl implements _AddParent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -280,15 +489,162 @@ class _$AddParentImpl implements _AddParent {
 }
 
 abstract class _AddParent implements ChildFormEvent {
-  const factory _AddParent(
-      {required final UniqueId treeId,
-      required final UniqueId upperFamily}) = _$AddParentImpl;
+  const factory _AddParent(final UniqueId upperFamily) = _$AddParentImpl;
 
-  UniqueId get treeId;
   UniqueId get upperFamily;
   @JsonKey(ignore: true)
   _$$AddParentImplCopyWith<_$AddParentImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddChildToListImplCopyWith<$Res> {
+  factory _$$AddChildToListImplCopyWith(_$AddChildToListImpl value,
+          $Res Function(_$AddChildToListImpl) then) =
+      __$$AddChildToListImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddChildToListImplCopyWithImpl<$Res>
+    extends _$ChildFormEventCopyWithImpl<$Res, _$AddChildToListImpl>
+    implements _$$AddChildToListImplCopyWith<$Res> {
+  __$$AddChildToListImplCopyWithImpl(
+      _$AddChildToListImpl _value, $Res Function(_$AddChildToListImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddChildToListImpl implements _AddChildToList {
+  const _$AddChildToListImpl();
+
+  @override
+  String toString() {
+    return 'ChildFormEvent.addChildToList()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AddChildToListImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
+    required TResult Function(String name) changeName,
+    required TResult Function(DateTime? date) changeBirthDate,
+    required TResult Function(DateTime? date) changeDeathDate,
+    required TResult Function(bool isAlive) changeIsAlive,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function() saved,
+  }) {
+    return addChildToList();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
+    TResult? Function(String name)? changeName,
+    TResult? Function(DateTime? date)? changeBirthDate,
+    TResult? Function(DateTime? date)? changeDeathDate,
+    TResult? Function(bool isAlive)? changeIsAlive,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function()? saved,
+  }) {
+    return addChildToList?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
+    TResult Function(String name)? changeName,
+    TResult Function(DateTime? date)? changeBirthDate,
+    TResult Function(DateTime? date)? changeDeathDate,
+    TResult Function(bool isAlive)? changeIsAlive,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (addChildToList != null) {
+      return addChildToList();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_ChangedName value) changeName,
+    required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
+    required TResult Function(_ChangeDeathDate value) changeDeathDate,
+    required TResult Function(_ChangeIsAlive value) changeIsAlive,
+    required TResult Function(_ChangeGender value) changeGender,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return addChildToList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_ChangedName value)? changeName,
+    TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
+    TResult? Function(_ChangeDeathDate value)? changeDeathDate,
+    TResult? Function(_ChangeIsAlive value)? changeIsAlive,
+    TResult? Function(_ChangeGender value)? changeGender,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return addChildToList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_ChangedName value)? changeName,
+    TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
+    TResult Function(_ChangeDeathDate value)? changeDeathDate,
+    TResult Function(_ChangeIsAlive value)? changeIsAlive,
+    TResult Function(_ChangeGender value)? changeGender,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (addChildToList != null) {
+      return addChildToList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddChildToList implements ChildFormEvent {
+  const factory _AddChildToList() = _$AddChildToListImpl;
 }
 
 /// @nodoc
@@ -297,9 +653,7 @@ abstract class _$$EditedImplCopyWith<$Res> {
           _$EditedImpl value, $Res Function(_$EditedImpl) then) =
       __$$EditedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TNode child});
-
-  $TNodeCopyWith<$Res> get child;
+  $Res call({Map<String, List<TNode>> children});
 }
 
 /// @nodoc
@@ -313,36 +667,34 @@ class __$$EditedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? child = null,
+    Object? children = null,
   }) {
     return _then(_$EditedImpl(
-      null == child
-          ? _value.child
-          : child // ignore: cast_nullable_to_non_nullable
-              as TNode,
+      null == children
+          ? _value._children
+          : children // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<TNode>>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TNodeCopyWith<$Res> get child {
-    return $TNodeCopyWith<$Res>(_value.child, (value) {
-      return _then(_value.copyWith(child: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$EditedImpl implements _Edited {
-  const _$EditedImpl(this.child);
+  const _$EditedImpl(final Map<String, List<TNode>> children)
+      : _children = children;
 
+  final Map<String, List<TNode>> _children;
   @override
-  final TNode child;
+  Map<String, List<TNode>> get children {
+    if (_children is EqualUnmodifiableMapView) return _children;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_children);
+  }
 
   @override
   String toString() {
-    return 'ChildFormEvent.edited(child: $child)';
+    return 'ChildFormEvent.edited(children: $children)';
   }
 
   @override
@@ -350,11 +702,12 @@ class _$EditedImpl implements _Edited {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditedImpl &&
-            (identical(other.child, child) || other.child == child));
+            const DeepCollectionEquality().equals(other._children, _children));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, child);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_children));
 
   @JsonKey(ignore: true)
   @override
@@ -365,8 +718,10 @@ class _$EditedImpl implements _Edited {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -374,14 +729,16 @@ class _$EditedImpl implements _Edited {
     required TResult Function(Gender gender) changeGender,
     required TResult Function() saved,
   }) {
-    return edited(child);
+    return edited(children);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -389,14 +746,16 @@ class _$EditedImpl implements _Edited {
     TResult? Function(Gender gender)? changeGender,
     TResult? Function()? saved,
   }) {
-    return edited?.call(child);
+    return edited?.call(children);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -406,7 +765,7 @@ class _$EditedImpl implements _Edited {
     required TResult orElse(),
   }) {
     if (edited != null) {
-      return edited(child);
+      return edited(children);
     }
     return orElse();
   }
@@ -414,7 +773,9 @@ class _$EditedImpl implements _Edited {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -429,7 +790,9 @@ class _$EditedImpl implements _Edited {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -444,7 +807,9 @@ class _$EditedImpl implements _Edited {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -462,9 +827,9 @@ class _$EditedImpl implements _Edited {
 }
 
 abstract class _Edited implements ChildFormEvent {
-  const factory _Edited(final TNode child) = _$EditedImpl;
+  const factory _Edited(final Map<String, List<TNode>> children) = _$EditedImpl;
 
-  TNode get child;
+  Map<String, List<TNode>> get children;
   @JsonKey(ignore: true)
   _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -534,8 +899,10 @@ class _$ChangedNameImpl implements _ChangedName {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -549,8 +916,10 @@ class _$ChangedNameImpl implements _ChangedName {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -564,8 +933,10 @@ class _$ChangedNameImpl implements _ChangedName {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -583,7 +954,9 @@ class _$ChangedNameImpl implements _ChangedName {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -598,7 +971,9 @@ class _$ChangedNameImpl implements _ChangedName {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -613,7 +988,9 @@ class _$ChangedNameImpl implements _ChangedName {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -704,8 +1081,10 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -719,8 +1098,10 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -734,8 +1115,10 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -753,7 +1136,9 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -768,7 +1153,9 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -783,7 +1170,9 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -875,8 +1264,10 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -890,8 +1281,10 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -905,8 +1298,10 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -924,7 +1319,9 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -939,7 +1336,9 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -954,7 +1353,9 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -1044,8 +1445,10 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -1059,8 +1462,10 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -1074,8 +1479,10 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -1093,7 +1500,9 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -1108,7 +1517,9 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -1123,7 +1534,9 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -1213,8 +1626,10 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -1228,8 +1643,10 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -1243,8 +1660,10 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -1262,7 +1681,9 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -1277,7 +1698,9 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -1292,7 +1715,9 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -1356,8 +1781,10 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(UniqueId treeId, UniqueId upperFamily) addParent,
-    required TResult Function(TNode child) edited,
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
     required TResult Function(String name) changeName,
     required TResult Function(DateTime? date) changeBirthDate,
     required TResult Function(DateTime? date) changeDeathDate,
@@ -1371,8 +1798,10 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult? Function(TNode child)? edited,
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(DateTime? date)? changeBirthDate,
     TResult? Function(DateTime? date)? changeDeathDate,
@@ -1386,8 +1815,10 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UniqueId treeId, UniqueId upperFamily)? addParent,
-    TResult Function(TNode child)? edited,
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
     TResult Function(String name)? changeName,
     TResult Function(DateTime? date)? changeBirthDate,
     TResult Function(DateTime? date)? changeDeathDate,
@@ -1405,7 +1836,9 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
     required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
@@ -1420,7 +1853,9 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
     TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -1435,7 +1870,9 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
     TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
@@ -1458,7 +1895,8 @@ abstract class _Saved implements ChildFormEvent {
 
 /// @nodoc
 mixin _$ChildFormState {
-  TNode get child => throw _privateConstructorUsedError;
+  Map<String, List<TNode>> get children => throw _privateConstructorUsedError;
+  TNode get tempChild => throw _privateConstructorUsedError;
   UniqueId get relationId => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
@@ -1481,7 +1919,8 @@ abstract class $ChildFormStateCopyWith<$Res> {
       _$ChildFormStateCopyWithImpl<$Res, ChildFormState>;
   @useResult
   $Res call(
-      {TNode child,
+      {Map<String, List<TNode>> children,
+      TNode tempChild,
       UniqueId relationId,
       AutovalidateMode showErrorMessages,
       bool isSaving,
@@ -1491,7 +1930,7 @@ abstract class $ChildFormStateCopyWith<$Res> {
       bool isCreated,
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
-  $TNodeCopyWith<$Res> get child;
+  $TNodeCopyWith<$Res> get tempChild;
 }
 
 /// @nodoc
@@ -1507,7 +1946,8 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? child = null,
+    Object? children = null,
+    Object? tempChild = null,
     Object? relationId = null,
     Object? showErrorMessages = null,
     Object? isSaving = null,
@@ -1518,9 +1958,13 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
     Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
-      child: null == child
-          ? _value.child
-          : child // ignore: cast_nullable_to_non_nullable
+      children: null == children
+          ? _value.children
+          : children // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<TNode>>,
+      tempChild: null == tempChild
+          ? _value.tempChild
+          : tempChild // ignore: cast_nullable_to_non_nullable
               as TNode,
       relationId: null == relationId
           ? _value.relationId
@@ -1559,9 +2003,9 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
 
   @override
   @pragma('vm:prefer-inline')
-  $TNodeCopyWith<$Res> get child {
-    return $TNodeCopyWith<$Res>(_value.child, (value) {
-      return _then(_value.copyWith(child: value) as $Val);
+  $TNodeCopyWith<$Res> get tempChild {
+    return $TNodeCopyWith<$Res>(_value.tempChild, (value) {
+      return _then(_value.copyWith(tempChild: value) as $Val);
     });
   }
 }
@@ -1575,7 +2019,8 @@ abstract class _$$ChildFormStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TNode child,
+      {Map<String, List<TNode>> children,
+      TNode tempChild,
       UniqueId relationId,
       AutovalidateMode showErrorMessages,
       bool isSaving,
@@ -1586,7 +2031,7 @@ abstract class _$$ChildFormStateImplCopyWith<$Res>
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
   @override
-  $TNodeCopyWith<$Res> get child;
+  $TNodeCopyWith<$Res> get tempChild;
 }
 
 /// @nodoc
@@ -1600,7 +2045,8 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? child = null,
+    Object? children = null,
+    Object? tempChild = null,
     Object? relationId = null,
     Object? showErrorMessages = null,
     Object? isSaving = null,
@@ -1611,9 +2057,13 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
     Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_$ChildFormStateImpl(
-      child: null == child
-          ? _value.child
-          : child // ignore: cast_nullable_to_non_nullable
+      children: null == children
+          ? _value._children
+          : children // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<TNode>>,
+      tempChild: null == tempChild
+          ? _value.tempChild
+          : tempChild // ignore: cast_nullable_to_non_nullable
               as TNode,
       relationId: null == relationId
           ? _value.relationId
@@ -1655,7 +2105,8 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
 
 class _$ChildFormStateImpl implements _ChildFormState {
   const _$ChildFormStateImpl(
-      {required this.child,
+      {required final Map<String, List<TNode>> children,
+      required this.tempChild,
       required this.relationId,
       required this.showErrorMessages,
       required this.isSaving,
@@ -1663,10 +2114,19 @@ class _$ChildFormStateImpl implements _ChildFormState {
       required this.isEditing,
       required this.isAdding,
       required this.isCreated,
-      required this.saveFailureOrSuccessOption});
+      required this.saveFailureOrSuccessOption})
+      : _children = children;
+
+  final Map<String, List<TNode>> _children;
+  @override
+  Map<String, List<TNode>> get children {
+    if (_children is EqualUnmodifiableMapView) return _children;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_children);
+  }
 
   @override
-  final TNode child;
+  final TNode tempChild;
   @override
   final UniqueId relationId;
   @override
@@ -1686,7 +2146,7 @@ class _$ChildFormStateImpl implements _ChildFormState {
 
   @override
   String toString() {
-    return 'ChildFormState(child: $child, relationId: $relationId, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isViewing: $isViewing, isEditing: $isEditing, isAdding: $isAdding, isCreated: $isCreated, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'ChildFormState(children: $children, tempChild: $tempChild, relationId: $relationId, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isViewing: $isViewing, isEditing: $isEditing, isAdding: $isAdding, isCreated: $isCreated, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -1694,7 +2154,9 @@ class _$ChildFormStateImpl implements _ChildFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChildFormStateImpl &&
-            (identical(other.child, child) || other.child == child) &&
+            const DeepCollectionEquality().equals(other._children, _children) &&
+            (identical(other.tempChild, tempChild) ||
+                other.tempChild == tempChild) &&
             (identical(other.relationId, relationId) ||
                 other.relationId == relationId) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
@@ -1718,7 +2180,8 @@ class _$ChildFormStateImpl implements _ChildFormState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      child,
+      const DeepCollectionEquality().hash(_children),
+      tempChild,
       relationId,
       showErrorMessages,
       isSaving,
@@ -1738,7 +2201,8 @@ class _$ChildFormStateImpl implements _ChildFormState {
 
 abstract class _ChildFormState implements ChildFormState {
   const factory _ChildFormState(
-      {required final TNode child,
+      {required final Map<String, List<TNode>> children,
+      required final TNode tempChild,
       required final UniqueId relationId,
       required final AutovalidateMode showErrorMessages,
       required final bool isSaving,
@@ -1750,7 +2214,9 @@ abstract class _ChildFormState implements ChildFormState {
           saveFailureOrSuccessOption}) = _$ChildFormStateImpl;
 
   @override
-  TNode get child;
+  Map<String, List<TNode>> get children;
+  @override
+  TNode get tempChild;
   @override
   UniqueId get relationId;
   @override

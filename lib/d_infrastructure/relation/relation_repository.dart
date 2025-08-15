@@ -252,28 +252,31 @@ class RelationRepository implements IRelationRepository {
   }
 
   @override
-  Future<Either<TNodeFailure, Unit>> addChild(
-      {required UniqueId treeId, required TNode child}) async {
+  Future<Either<TNodeFailure, Unit>> addChildren(
+      {required UniqueId treeId, required List<TNode> children}) async {
     try {
       // Add Child Node
-      final childDto = NodeDto.fromDomain(child.copyWith(nodeId: child.nodeId));
+      for (TNode child in children) {
+        final childDto =
+            NodeDto.fromDomain(child.copyWith(nodeId: child.nodeId));
 
-      await _firestore
-          .treesCollection()
-          .doc(treeId.getOrCrash())
-          .collection(NODES_COLLECTION)
-          .doc(childDto.nodeId)
-          .set(childDto.toJson());
+        await _firestore
+            .treesCollection()
+            .doc(treeId.getOrCrash())
+            .collection(NODES_COLLECTION)
+            .doc(childDto.nodeId)
+            .set(childDto.toJson());
 
-      // Add child to existing relation
-      await _firestore
-          .treesCollection()
-          .doc(treeId.getOrCrash())
-          .collection(RELATIONS_COLLECTION)
-          .doc(child.upperFamily.getOrCrash())
-          .update({
-        'children': FieldValue.arrayUnion([child.nodeId.getOrCrash()])
-      });
+        // Add child to existing relation
+        await _firestore
+            .treesCollection()
+            .doc(treeId.getOrCrash())
+            .collection(RELATIONS_COLLECTION)
+            .doc(child.upperFamily.getOrCrash())
+            .update({
+          'children': FieldValue.arrayUnion([child.nodeId.getOrCrash()])
+        });
+      }
 
       return right(unit);
     } on PlatformException catch (e) {

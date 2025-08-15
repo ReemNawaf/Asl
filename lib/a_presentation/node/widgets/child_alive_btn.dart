@@ -36,7 +36,7 @@ class ChildAliveBtn extends StatelessWidget {
                   isEditing ? aliveOrDead(isAliveSelected: true) : null,
               color: color,
               text: 'عائش',
-              selected: state.child.isAlive,
+              selected: state.tempChild.isAlive,
             ),
             const SizedBox(width: 16.0),
             AliveButton(
@@ -44,7 +44,7 @@ class ChildAliveBtn extends StatelessWidget {
                   isEditing ? aliveOrDead(isAliveSelected: false) : null,
               color: color,
               text: 'متوفي',
-              selected: !state.child.isAlive,
+              selected: !state.tempChild.isAlive,
             ),
           ],
         );
