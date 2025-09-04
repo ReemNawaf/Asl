@@ -46,6 +46,10 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.spacedFirstName({
     required T failedValue,
   }) = SpacedFirstName<T>;
+
+  const factory ValueFailure.shortFirstName({
+    required T failedValue,
+  }) = ShortFirstName<T>;
 }
 
 /* It could be done this way, making a union for each failure

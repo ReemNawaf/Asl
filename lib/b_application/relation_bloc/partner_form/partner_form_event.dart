@@ -2,7 +2,7 @@ part of 'partner_form_bloc.dart';
 
 @freezed
 abstract class PartnerFormEvent with _$PartnerFormEvent {
-  const factory PartnerFormEvent.initialized(TNode node) = _Initialized;
+  const factory PartnerFormEvent.addPartner(TNode node) = _AddPartner;
 
   const factory PartnerFormEvent.edited(TNode partner) = _Edited;
   const factory PartnerFormEvent.changeName(String name) = _ChangedName;
@@ -15,5 +15,6 @@ abstract class PartnerFormEvent with _$PartnerFormEvent {
   const factory PartnerFormEvent.changeMarriageStatus(MarriageStatus status) =
       _ChangeMarriageStatus;
 
+  const factory PartnerFormEvent.addPartnertoList() = _AddPartnertoList;
   const factory PartnerFormEvent.saved() = _Saved;
 }

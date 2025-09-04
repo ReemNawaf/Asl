@@ -8,7 +8,7 @@ abstract class RelationWatcherState with _$RelationWatcherState {
   const factory RelationWatcherState.getRelationInProgress() = _InProgress;
 
   const factory RelationWatcherState.gettingAllRelationsSuccess(
-      List<Relation?> relation) = _LoadSuccess;
+      List<Relation> relation) = _LoadSuccess;
   const factory RelationWatcherState.gettingAllRelationsFailure(
       RelationFailure treeFailure) = _LoadFailure;
 

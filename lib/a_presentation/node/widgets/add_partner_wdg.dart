@@ -45,28 +45,28 @@ class AddPartnerWidget extends StatelessWidget {
                               .read<PartnerFormBloc>()
                               .add(PartnerFormEvent.changeName(value!.trim()));
                         },
-                        isValid: context
-                                    .read<PartnerFormBloc>()
-                                    .state
-                                    .showErrorMessages !=
-                                AutovalidateMode.always ||
-                            context
-                                .read<PartnerFormBloc>()
-                                .state
-                                .partner
-                                .firstName
-                                .isValid(),
+                        isValid: false,
                         validator: (_) {
-                          return state.partner.firstName.value.fold(
-                            (f) => f.maybeMap(
-                              empty: (_) =>
-                                  ARABIC_STRINGS['first_name_cannot_be_empty'],
-                              spacedFirstName: (_) => ARABIC_STRINGS[
-                                  'first_name_cannot_contain_spaces'],
-                              orElse: () => null,
-                            ),
-                            (_) => null,
-                          );
+                          // if the name isn't valid, then show me the validation
+                          return context
+                                  .read<PartnerFormBloc>()
+                                  .state
+                                  .partner
+                                  .firstName
+                                  .isValid()
+                              ? null
+                              : state.partner.firstName.value.fold(
+                                  (f) => f.maybeMap(
+                                    empty: (_) => ARABIC_STRINGS[
+                                        'first_name_cannot_be_empty'],
+                                    shortFirstName: (_) =>
+                                        ARABIC_STRINGS['first_name_short'],
+                                    spacedFirstName: (_) => ARABIC_STRINGS[
+                                        'first_name_cannot_contain_spaces'],
+                                    orElse: () => null,
+                                  ),
+                                  (_) => null,
+                                );
                         },
                       ),
                     ),
@@ -74,7 +74,6 @@ class AddPartnerWidget extends StatelessWidget {
                     MarriageStatusBtn(color: color, ctx: context),
                   ],
                 ),
-                kVSpacer20,
                 Row(
                   children: [
                     SizedBox(

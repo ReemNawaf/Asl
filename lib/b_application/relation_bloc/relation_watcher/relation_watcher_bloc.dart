@@ -37,7 +37,7 @@ class RelationWatcherBloc
         emit(possibleFailure.fold(
           (f) => RelationWatcherState.gettingAllRelationsFailure(f),
           (relations) =>
-              RelationWatcherState.gettingAllRelationsSuccess(relations),
+              RelationWatcherState.gettingAllRelationsSuccess(relations ?? []),
         ));
       },
       getRelation: (e) async {

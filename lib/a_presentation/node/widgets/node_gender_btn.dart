@@ -18,7 +18,7 @@ class NodeGenderBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void maleOrFemale(BuildContext ctx, {required bool isMaleSelected}) {
+    void maleOrFemale({required bool isMaleSelected}) {
       if (isMaleSelected == true) {
         ctx
             .read<NodeFormBloc>()
@@ -37,9 +37,8 @@ class NodeGenderBtn extends StatelessWidget {
           child: Row(
             children: [
               GenderButton(
-                onTap: () => isEditing
-                    ? maleOrFemale(context, isMaleSelected: true)
-                    : null,
+                onTap: () =>
+                    isEditing ? maleOrFemale(isMaleSelected: true) : null,
                 color: color,
                 text: 'ذكر',
                 gender: Gender.male,
@@ -47,9 +46,8 @@ class NodeGenderBtn extends StatelessWidget {
               ),
               const SizedBox(width: 16.0),
               GenderButton(
-                onTap: () => isEditing
-                    ? maleOrFemale(context, isMaleSelected: false)
-                    : null,
+                onTap: () =>
+                    isEditing ? maleOrFemale(isMaleSelected: false) : null,
                 color: color,
                 text: 'أنثى',
                 gender: Gender.female,

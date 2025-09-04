@@ -47,6 +47,7 @@ class AppFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('isValid $isValid');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

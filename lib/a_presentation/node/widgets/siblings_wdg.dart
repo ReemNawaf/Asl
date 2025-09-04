@@ -29,7 +29,7 @@ class SiblingsWidget extends StatelessWidget {
             if (hasSiblings) ...[
               kVSpacer10,
               SizedBox(
-                width: PAN_WIDTH - 10,
+                width: 310,
                 height: 135,
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

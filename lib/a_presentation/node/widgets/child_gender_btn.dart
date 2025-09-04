@@ -4,8 +4,8 @@ import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RootGenderBtn extends StatelessWidget {
-  const RootGenderBtn({
+class ChildGenderBtn extends StatelessWidget {
+  const ChildGenderBtn({
     super.key,
     required this.color,
     required this.ctx,
@@ -16,7 +16,7 @@ class RootGenderBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void maleOrFemale(BuildContext ctx, {required bool isMaleSelected}) {
+    void maleOrFemale({required bool isMaleSelected}) {
       if (isMaleSelected == true) {
         ctx
             .read<ChildFormBloc>()
@@ -35,7 +35,7 @@ class RootGenderBtn extends StatelessWidget {
           child: Row(
             children: [
               GenderButton(
-                onTap: () => maleOrFemale(context, isMaleSelected: true),
+                onTap: () => maleOrFemale(isMaleSelected: true),
                 color: color,
                 text: 'ذكر',
                 gender: Gender.male,
@@ -43,7 +43,7 @@ class RootGenderBtn extends StatelessWidget {
               ),
               const SizedBox(width: 16.0),
               GenderButton(
-                onTap: () => maleOrFemale(context, isMaleSelected: false),
+                onTap: () => maleOrFemale(isMaleSelected: false),
                 color: color,
                 text: 'أنثى',
                 gender: Gender.female,

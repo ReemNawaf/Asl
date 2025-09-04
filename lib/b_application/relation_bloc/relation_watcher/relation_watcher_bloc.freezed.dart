@@ -397,7 +397,7 @@ mixin _$RelationWatcherState {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -411,7 +411,7 @@ mixin _$RelationWatcherState {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -422,7 +422,7 @@ mixin _$RelationWatcherState {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -527,7 +527,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -544,7 +544,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -558,7 +558,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -664,7 +664,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -681,7 +681,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -695,7 +695,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -801,7 +801,7 @@ class _$InProgressImpl implements _InProgress {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -818,7 +818,7 @@ class _$InProgressImpl implements _InProgress {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -832,7 +832,7 @@ class _$InProgressImpl implements _InProgress {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -903,7 +903,7 @@ abstract class _$$LoadSuccessImplCopyWith<$Res> {
           _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
       __$$LoadSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Relation?> relation});
+  $Res call({List<Relation> relation});
 }
 
 /// @nodoc
@@ -923,7 +923,7 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
       null == relation
           ? _value._relation
           : relation // ignore: cast_nullable_to_non_nullable
-              as List<Relation?>,
+              as List<Relation>,
     ));
   }
 }
@@ -931,12 +931,11 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadSuccessImpl implements _LoadSuccess {
-  const _$LoadSuccessImpl(final List<Relation?> relation)
-      : _relation = relation;
+  const _$LoadSuccessImpl(final List<Relation> relation) : _relation = relation;
 
-  final List<Relation?> _relation;
+  final List<Relation> _relation;
   @override
-  List<Relation?> get relation {
+  List<Relation> get relation {
     if (_relation is EqualUnmodifiableListView) return _relation;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_relation);
@@ -971,7 +970,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -988,7 +987,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -1002,7 +1001,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -1064,10 +1063,9 @@ class _$LoadSuccessImpl implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements RelationWatcherState {
-  const factory _LoadSuccess(final List<Relation?> relation) =
-      _$LoadSuccessImpl;
+  const factory _LoadSuccess(final List<Relation> relation) = _$LoadSuccessImpl;
 
-  List<Relation?> get relation;
+  List<Relation> get relation;
   @JsonKey(ignore: true)
   _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1151,7 +1149,7 @@ class _$LoadFailureImpl implements _LoadFailure {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -1168,7 +1166,7 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -1182,7 +1180,7 @@ class _$LoadFailureImpl implements _LoadFailure {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -1335,7 +1333,7 @@ class _$gettingRelationSuccessImpl implements _gettingRelationSuccess {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -1352,7 +1350,7 @@ class _$gettingRelationSuccessImpl implements _gettingRelationSuccess {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -1366,7 +1364,7 @@ class _$gettingRelationSuccessImpl implements _gettingRelationSuccess {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -1519,7 +1517,7 @@ class _$GettingRelationFailureImpl implements _GettingRelationFailure {
     required TResult Function() initial,
     required TResult Function() getAllRelationsInProgress,
     required TResult Function() getRelationInProgress,
-    required TResult Function(List<Relation?> relation)
+    required TResult Function(List<Relation> relation)
         gettingAllRelationsSuccess,
     required TResult Function(RelationFailure treeFailure)
         gettingAllRelationsFailure,
@@ -1536,7 +1534,7 @@ class _$GettingRelationFailureImpl implements _GettingRelationFailure {
     TResult? Function()? initial,
     TResult? Function()? getAllRelationsInProgress,
     TResult? Function()? getRelationInProgress,
-    TResult? Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult? Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult? Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult? Function(Relation relation)? gettingRelationSuccess,
     TResult? Function(RelationFailure relationFailure)? gettingRelationFailure,
@@ -1550,7 +1548,7 @@ class _$GettingRelationFailureImpl implements _GettingRelationFailure {
     TResult Function()? initial,
     TResult Function()? getAllRelationsInProgress,
     TResult Function()? getRelationInProgress,
-    TResult Function(List<Relation?> relation)? gettingAllRelationsSuccess,
+    TResult Function(List<Relation> relation)? gettingAllRelationsSuccess,
     TResult Function(RelationFailure treeFailure)? gettingAllRelationsFailure,
     TResult Function(Relation relation)? gettingRelationSuccess,
     TResult Function(RelationFailure relationFailure)? gettingRelationFailure,

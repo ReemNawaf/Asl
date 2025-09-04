@@ -34,7 +34,7 @@ Future<dynamic> showDeleteTreePanel(BuildContext contextPage,
               alignment: Alignment.topRight,
               padding: const EdgeInsets.all(8.0),
               width: PAN_SM_WIDTH / 2,
-              height: PAN_HEIGHT / 3,
+              height: PAN_HEIGHT / 6,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6.0),
               ),

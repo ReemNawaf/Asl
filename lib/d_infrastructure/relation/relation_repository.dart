@@ -22,7 +22,7 @@ class RelationRepository implements IRelationRepository {
 
   RelationRepository(this._firestore);
   @override
-  Future<Either<RelationFailure, List<Relation?>>> getAll(
+  Future<Either<RelationFailure, List<Relation>?>> getAll(
       UniqueId treeId, UniqueId nodeId) async {
     try {
       final nodeRepo = NodeRepository(_firestore);
@@ -87,45 +87,68 @@ class RelationRepository implements IRelationRepository {
   }
 
   @override
-  Future<Either<RelationFailure, Unit>> addRelationNewNode({
-    required Relation relation,
+  Future<Either<RelationFailure, Unit>> addRelationsListWithNewNodes({
+    required List<Relation> relationsList,
+    required List<TNode> partnersList,
     required TNode node,
-    required TNode partner,
   }) async {
     try {
-      final relationDto = RelationDto.fromDomain(
-          relation.copyWith(relationId: relation.relationId));
+      print('addRelationsListWithNewNodes start');
+      if (relationsList.length != partnersList.length) {
+        print('Nodes length != Relation Length');
+        return left(const RelationFailure.unexpected());
+      }
+      for (int i = 0; i < relationsList.length; i++) {
+        print('Lets Go');
 
-      await _firestore
-          .treesCollection()
-          .doc(node.treeId.getOrCrash())
-          .collection(RELATIONS_COLLECTION)
-          .doc(relationDto.relationId)
-          .set(relationDto.toJson());
+        final relation = relationsList[i];
+        print('relationID ${relation.relationId}');
+        print('father ${relation.father}');
+        print('mother ${relation.mother}');
 
-      // Add Partner Node
-      partner.relations.add(relation.relationId);
-      final partnerDto =
-          NodeDto.fromDomain(partner.copyWith(nodeId: partner.nodeId));
+        final partner = partnersList[i];
+        print('partner is mother ${partner.nodeId}');
+        print('node is father ${node.nodeId}');
 
-      await _firestore
-          .treesCollection()
-          .doc(node.treeId.getOrCrash())
-          .collection(NODES_COLLECTION)
-          .doc(partnerDto.nodeId)
-          .set(partnerDto.toJson());
+        final relationDto = RelationDto.fromDomain(
+            relation.copyWith(relationId: relation.relationId));
 
-      // Update Node
-      node.relations.add(relation.relationId);
+        // Add the relation
+        await _firestore
+            .treesCollection()
+            .doc(node.treeId.getOrCrash())
+            .collection(RELATIONS_COLLECTION)
+            .doc(relationDto.relationId)
+            .set(relationDto.toJson());
+
+        // Add Partner Node
+        partner.relations.add(relation.relationId);
+        final partnerDto =
+            NodeDto.fromDomain(partner.copyWith(nodeId: partner.nodeId));
+
+        await _firestore
+            .treesCollection()
+            .doc(node.treeId.getOrCrash())
+            .collection(NODES_COLLECTION)
+            .doc(partnerDto.nodeId)
+            .set(partnerDto.toJson());
+
+        // Update Node
+        node.relations.add(relation.relationId);
+
+        print('added relation');
+      }
+
+      print('Node Relations are ${node.relations.length}');
       final nodeDto = NodeDto.fromDomain(node);
-
       await _firestore
           .treesCollection()
           .doc(node.treeId.getOrCrash())
           .collection(NODES_COLLECTION)
           .doc(nodeDto.nodeId)
           .update(nodeDto.toJson());
-      print('added relation');
+
+      print('addRelationsListWithNewNodes end');
       return right(unit);
     } on PlatformException catch (e) {
       if (e is FirebaseException &&

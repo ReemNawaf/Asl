@@ -181,7 +181,7 @@ class NodeRepository implements INodeRepository {
         final relation = RelationDto.fromFirestore(relationDoc).toDomain();
         rootRelations.add(relation);
       }
-      print('Get the root relations');
+      print('Get the root relations ${rootRelations.length}');
 
       // 4. Get the partners nodes
       for (int i = 0; i < rootRelations.length; i++) {

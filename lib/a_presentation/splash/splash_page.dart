@@ -14,11 +14,13 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    print('splash H: ${size.height}, W: ${size.width}');
     if (size.height < MIM_HEIGHT || size.width < MIM_WIDTH) {
       return const Scaffold(
         body: Center(
           child: Text(
-            'النظام مصمم للعمل على شاشات عرض \n بحجم  920x810  وأكبر',
+            'النظام مصمم للعمل على شاشات\n'
+            'بعرض $MIM_WIDTH وطول $MIM_HEIGHT وأكبر',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: kBlacksColor,

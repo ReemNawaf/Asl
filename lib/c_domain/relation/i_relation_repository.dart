@@ -6,13 +6,13 @@ import 'package:asl/c_domain/relation/relation_failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class IRelationRepository {
-  Future<Either<RelationFailure, List<Relation?>>> getAll(
+  Future<Either<RelationFailure, List<Relation>?>> getAll(
       UniqueId treeId, UniqueId nodeId);
 
-  Future<Either<RelationFailure, Unit>> addRelationNewNode({
-    required Relation relation,
+  Future<Either<RelationFailure, Unit>> addRelationsListWithNewNodes({
+    required List<Relation> relationsList,
+    required List<TNode> partnersList,
     required TNode node,
-    required TNode partner,
   });
 
   Future<Either<RelationFailure, Unit>> update({

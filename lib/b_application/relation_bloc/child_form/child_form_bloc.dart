@@ -49,7 +49,6 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
         ));
       },
       addChildToList: (e) {
-        print('15 | This is the new child ${state.tempChild}');
         var newChildren = {...state.children};
         final relationKey = state.tempChild.upperFamily.getOrCrash();
 
@@ -57,12 +56,12 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           ...?newChildren[relationKey],
           state.tempChild
         ];
-        print('15 | This is the new childrenlist $newChildren');
+        print('New children list ${newChildren.length}');
         emit(state.copyWith(
           children: newChildren,
           isViewing: true,
           isAdding: true,
-          showErrorMessages: AutovalidateMode.disabled,
+          showErrorMessages: AutovalidateMode.always,
         ));
       },
       edited: (e) async {
@@ -118,33 +117,45 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           isEditing: false,
           saveFailureOrSuccessOption: none(),
         ));
+
         // convert children dict to list
         final List<TNode> allchildren =
             state.children.values.expand((list) => list).toList();
 
-        // check the tree validation
-        if (allchildren.every((child) => child.failureOption.isNone())) {
-          failureOrSuccess =
-              // state.isEditing
-              //     ? await _relationRepository.update(
-              //         child: state.child,
-              //         treeId: state.child.treeId,
-              //       ):
-              await _relationRepository.addChildren(
-            children: allchildren,
-            treeId: allchildren.first.treeId,
-          );
-          isCreated = state.isEditing ? false : true;
+        if (allchildren.isNotEmpty) {
+          print('All children length ${allchildren.length}');
+          // check the tree validation
+          if (allchildren.every((child) => child.failureOption.isNone())) {
+            failureOrSuccess =
+                // state.isEditing
+                //     ? await _relationRepository.update(
+                //         child: state.child,
+                //         treeId: state.child.treeId,
+                //       ):
+                await _relationRepository.addChildren(
+              children: allchildren,
+              treeId: allchildren.first.treeId,
+            );
+            print('31 | the child is added');
+            isCreated = state.isEditing ? false : true;
+          }
         }
+
+        print('31 | emitting ${optionOf(failureOrSuccess)}');
+        print('31 | emitting ${optionOf(failureOrSuccess).isSome()}');
 
         emit(state.copyWith(
           isViewing: true,
           isSaving: false,
           isAdding: false,
           isCreated: isCreated,
+          children: {},
+          tempChild: TNode.empty(),
           showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
+        print(
+            '31 | when did this thing happen!!! ${optionOf(failureOrSuccess).isSome()}');
       },
     );
   }

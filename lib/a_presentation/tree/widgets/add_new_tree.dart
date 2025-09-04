@@ -50,7 +50,7 @@ Future<dynamic> showNewTreePanel(
           alignment: Alignment.topRight,
           padding: const EdgeInsets.all(8.0),
           width: PAN_SM_WIDTH,
-          height: PAN_HEIGHT,
+          height: 400.0,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.0),
           ),

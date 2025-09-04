@@ -31,12 +31,20 @@ Either<ValueFailure<double>, double> validateMaxDoubleLength(
   }
 }
 
-// 2. For tree name to not be empty
+// name to not be empty
 Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
   if (input.isNotEmpty) {
     return right(input);
   } else {
     return left(ValueFailure.empty(failedValue: input));
+  }
+}
+
+Either<ValueFailure<String>, String> validateFirstNameLength(String input) {
+  if (input.length > 2) {
+    return right(input);
+  } else {
+    return left(ValueFailure.shortFirstName(failedValue: input));
   }
 }
 

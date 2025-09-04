@@ -32,16 +32,14 @@ class ChildAliveBtn extends StatelessWidget {
         return Row(
           children: [
             AliveButton(
-              onTap: () =>
-                  isEditing ? aliveOrDead(isAliveSelected: true) : null,
+              onTap: () => aliveOrDead(isAliveSelected: true),
               color: color,
               text: 'عائش',
               selected: state.tempChild.isAlive,
             ),
             const SizedBox(width: 16.0),
             AliveButton(
-              onTap: () =>
-                  isEditing ? aliveOrDead(isAliveSelected: false) : null,
+              onTap: () => aliveOrDead(isAliveSelected: false),
               color: color,
               text: 'متوفي',
               selected: !state.tempChild.isAlive,

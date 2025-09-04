@@ -2,7 +2,7 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
-const int MIM_HEIGHT = 640;
+const int MIM_HEIGHT = 620;
 const int MIM_WIDTH = 920;
 const double PAN_HEIGHT = 800;
 const double PAN_SM_HEIGHT = 580;
