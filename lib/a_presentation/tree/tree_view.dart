@@ -19,40 +19,33 @@ class TreeView extends StatelessWidget {
     super.key,
   });
 
+  void refreshTree(BuildContext context) {
+    // After a child is added the RelationWatcherBloc & NodeWatcherBloc
+    // should reload the all the trees relation and nodes and rebuilt the tree UI
+
+    print('LOG | refresh tree after adding');
+    final currentTree = context.read<CurrentTreeBloc>().state.currentTree!;
+
+    // rebuild tree (on home page) after child is added
+    // TODO: add the father id from state
+    context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
+        treeId: currentTree.treeId, rootId: currentTree.rootId));
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<ChildFormBloc, ChildFormState>(
       listener: (context, state) {
-        print('LOG | refresh after adding child ${state.isAdding}');
-
-        if (state.isAdding) {
-          // After a child is added the RelationWatcherBloc & NodeWatcherBloc
-          // should reload the all the trees relation and nodes and rebuilt the tree UI
-
-          final currentTree =
-              context.read<CurrentTreeBloc>().state.currentTree!;
-
-          // rebuild tree (on home page) after child is added
-          context
-              .read<NodeWatcherBloc>()
-              .add(NodeWatcherEvent.getTree(currentTree));
+        print('06 | adding child ${state.isAdding}');
+        if (state.saveFailureOrSuccessOption.isSome()) {
+          refreshTree(context);
         }
       },
       child: BlocListener<PartnerFormBloc, PartnerFormState>(
         listener: (context, state) {
-          print('LOG | refresh after adding partner ${state.isAdding}');
-
-          if (state.isAdding) {
-            // After a child is added the RelationWatcherBloc & NodeWatcherBloc
-            // should reload the all the trees relation and nodes and rebuilt the tree UI
-
-            final currentTree =
-                context.read<CurrentTreeBloc>().state.currentTree!;
-
-            // rebuild tree (on home page) after child is added
-            context
-                .read<NodeWatcherBloc>()
-                .add(NodeWatcherEvent.getTree(currentTree));
+          print('06 | adding partner ${state.isAdding}');
+          if (state.saveFailureOrSuccessOption.isSome()) {
+            refreshTree(context);
           }
         },
         child: BlocBuilder<DrawTreeBloc, DrawTreeState>(

@@ -71,7 +71,9 @@ class HomePage extends StatelessWidget {
 
                             //  2. Update the current nodes
                             context.read<NodeWatcherBloc>().add(
-                                NodeWatcherEvent.getTree(state.trees.first));
+                                NodeWatcherEvent.getTree(
+                                    treeId: state.trees.first.treeId,
+                                    rootId: state.trees.first.rootId));
 
                             //  3. Update the share settings
                             context.read<ShareOptionBloc>().add(

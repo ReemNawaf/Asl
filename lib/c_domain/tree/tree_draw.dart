@@ -60,7 +60,8 @@ class TreeDraw {
   }
 
   Graph drawTree({required TNode root}) {
-    print('drawing ${root.relations.length} relatons');
+    print('LOG | paint tree with root ${root.firstName.getOrCrash()}');
+    print('LOG | drawing ${root.relations.length} relatons');
     //  Level Roots: Add Root
     //  create first node
     graph = Graph()..isTree = true;

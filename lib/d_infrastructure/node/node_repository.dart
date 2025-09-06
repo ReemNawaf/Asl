@@ -152,8 +152,8 @@ class NodeRepository implements INodeRepository {
   }
 
   @override
-  Future<Either<TNodeFailure, TNode>> getTree(UniqueId treeId,
-      {UniqueId? rootId}) async {
+  Future<Either<TNodeFailure, TNode>> getTree(
+      {required UniqueId treeId, required UniqueId rootId}) async {
     try {
       final nodeRepo = NodeRepository(_firestore);
       final treeCol = _firestore.treesCollection();
@@ -165,8 +165,7 @@ class NodeRepository implements INodeRepository {
       print('LOG | get the tree');
 
       // 2. Get the root node
-      TNode root = (await nodeRepo.getNode(
-              treeId: treeId, nodeId: rootId ?? tree.rootId))
+      TNode root = (await nodeRepo.getNode(treeId: treeId, nodeId: rootId))
           .fold((l) => left(RelationFailure), (r) => r) as TNode;
 
       // 3. Get the root relations

@@ -16,21 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NodeWatcherEvent {
+  UniqueId get treeId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree) getTree,
+    required TResult Function(UniqueId treeId, UniqueId rootId) getTree,
     required TResult Function(UniqueId treeId, UniqueId nodeId) getNode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree)? getTree,
+    TResult? Function(UniqueId treeId, UniqueId rootId)? getTree,
     TResult? Function(UniqueId treeId, UniqueId nodeId)? getNode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree)? getTree,
+    TResult Function(UniqueId treeId, UniqueId rootId)? getTree,
     TResult Function(UniqueId treeId, UniqueId nodeId)? getNode,
     required TResult orElse(),
   }) =>
@@ -54,6 +55,10 @@ mixin _$NodeWatcherEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $NodeWatcherEventCopyWith<NodeWatcherEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -61,6 +66,8 @@ abstract class $NodeWatcherEventCopyWith<$Res> {
   factory $NodeWatcherEventCopyWith(
           NodeWatcherEvent value, $Res Function(NodeWatcherEvent) then) =
       _$NodeWatcherEventCopyWithImpl<$Res, NodeWatcherEvent>;
+  @useResult
+  $Res call({UniqueId treeId});
 }
 
 /// @nodoc
@@ -72,17 +79,30 @@ class _$NodeWatcherEventCopyWithImpl<$Res, $Val extends NodeWatcherEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? treeId = null,
+  }) {
+    return _then(_value.copyWith(
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$WatchAllStartedImplCopyWith<$Res> {
+abstract class _$$WatchAllStartedImplCopyWith<$Res>
+    implements $NodeWatcherEventCopyWith<$Res> {
   factory _$$WatchAllStartedImplCopyWith(_$WatchAllStartedImpl value,
           $Res Function(_$WatchAllStartedImpl) then) =
       __$$WatchAllStartedImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({Tree tree});
-
-  $TreeCopyWith<$Res> get tree;
+  $Res call({UniqueId treeId, UniqueId rootId});
 }
 
 /// @nodoc
@@ -96,36 +116,35 @@ class __$$WatchAllStartedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tree = null,
+    Object? treeId = null,
+    Object? rootId = null,
   }) {
     return _then(_$WatchAllStartedImpl(
-      null == tree
-          ? _value.tree
-          : tree // ignore: cast_nullable_to_non_nullable
-              as Tree,
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      rootId: null == rootId
+          ? _value.rootId
+          : rootId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TreeCopyWith<$Res> get tree {
-    return $TreeCopyWith<$Res>(_value.tree, (value) {
-      return _then(_value.copyWith(tree: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$WatchAllStartedImpl implements _WatchAllStarted {
-  const _$WatchAllStartedImpl(this.tree);
+  const _$WatchAllStartedImpl({required this.treeId, required this.rootId});
 
   @override
-  final Tree tree;
+  final UniqueId treeId;
+  @override
+  final UniqueId rootId;
 
   @override
   String toString() {
-    return 'NodeWatcherEvent.getTree(tree: $tree)';
+    return 'NodeWatcherEvent.getTree(treeId: $treeId, rootId: $rootId)';
   }
 
   @override
@@ -133,11 +152,12 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WatchAllStartedImpl &&
-            (identical(other.tree, tree) || other.tree == tree));
+            (identical(other.treeId, treeId) || other.treeId == treeId) &&
+            (identical(other.rootId, rootId) || other.rootId == rootId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tree);
+  int get hashCode => Object.hash(runtimeType, treeId, rootId);
 
   @JsonKey(ignore: true)
   @override
@@ -149,30 +169,30 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree) getTree,
+    required TResult Function(UniqueId treeId, UniqueId rootId) getTree,
     required TResult Function(UniqueId treeId, UniqueId nodeId) getNode,
   }) {
-    return getTree(tree);
+    return getTree(treeId, rootId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree)? getTree,
+    TResult? Function(UniqueId treeId, UniqueId rootId)? getTree,
     TResult? Function(UniqueId treeId, UniqueId nodeId)? getNode,
   }) {
-    return getTree?.call(tree);
+    return getTree?.call(treeId, rootId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree)? getTree,
+    TResult Function(UniqueId treeId, UniqueId rootId)? getTree,
     TResult Function(UniqueId treeId, UniqueId nodeId)? getNode,
     required TResult orElse(),
   }) {
     if (getTree != null) {
-      return getTree(tree);
+      return getTree(treeId, rootId);
     }
     return orElse();
   }
@@ -210,19 +230,26 @@ class _$WatchAllStartedImpl implements _WatchAllStarted {
 }
 
 abstract class _WatchAllStarted implements NodeWatcherEvent {
-  const factory _WatchAllStarted(final Tree tree) = _$WatchAllStartedImpl;
+  const factory _WatchAllStarted(
+      {required final UniqueId treeId,
+      required final UniqueId rootId}) = _$WatchAllStartedImpl;
 
-  Tree get tree;
+  @override
+  UniqueId get treeId;
+  UniqueId get rootId;
+  @override
   @JsonKey(ignore: true)
   _$$WatchAllStartedImplCopyWith<_$WatchAllStartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetNodeImplCopyWith<$Res> {
+abstract class _$$GetNodeImplCopyWith<$Res>
+    implements $NodeWatcherEventCopyWith<$Res> {
   factory _$$GetNodeImplCopyWith(
           _$GetNodeImpl value, $Res Function(_$GetNodeImpl) then) =
       __$$GetNodeImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({UniqueId treeId, UniqueId nodeId});
 }
@@ -290,7 +317,7 @@ class _$GetNodeImpl implements _GetNode {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree) getTree,
+    required TResult Function(UniqueId treeId, UniqueId rootId) getTree,
     required TResult Function(UniqueId treeId, UniqueId nodeId) getNode,
   }) {
     return getNode(treeId, nodeId);
@@ -299,7 +326,7 @@ class _$GetNodeImpl implements _GetNode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree)? getTree,
+    TResult? Function(UniqueId treeId, UniqueId rootId)? getTree,
     TResult? Function(UniqueId treeId, UniqueId nodeId)? getNode,
   }) {
     return getNode?.call(treeId, nodeId);
@@ -308,7 +335,7 @@ class _$GetNodeImpl implements _GetNode {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree)? getTree,
+    TResult Function(UniqueId treeId, UniqueId rootId)? getTree,
     TResult Function(UniqueId treeId, UniqueId nodeId)? getNode,
     required TResult orElse(),
   }) {
@@ -355,8 +382,10 @@ abstract class _GetNode implements NodeWatcherEvent {
       {required final UniqueId treeId,
       required final UniqueId nodeId}) = _$GetNodeImpl;
 
+  @override
   UniqueId get treeId;
   UniqueId get nodeId;
+  @override
   @JsonKey(ignore: true)
   _$$GetNodeImplCopyWith<_$GetNodeImpl> get copyWith =>
       throw _privateConstructorUsedError;

@@ -3,7 +3,6 @@ import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
-import 'package:asl/c_domain/tree/tree.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -31,7 +30,8 @@ class NodeWatcherBloc extends Bloc<NodeWatcherEvent, NodeWatcherState> {
       getTree: (e) async {
         emit(const NodeWatcherState.loadInProgress());
 
-        emit((await _nodeRepository.getTree(e.tree.treeId)).fold(
+        emit((await _nodeRepository.getTree(treeId: e.treeId, rootId: e.rootId))
+            .fold(
           (f) => NodeWatcherState.loadFailure(f),
           (root) {
             return NodeWatcherState.loadSuccess(root: root);

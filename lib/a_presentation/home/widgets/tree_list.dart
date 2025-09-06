@@ -71,7 +71,10 @@ class TreeList extends StatelessWidget {
                           //  2. Update the current nodes
                           context
                               .read<NodeWatcherBloc>()
-                              .add(NodeWatcherEvent.getTree(t));
+                              .add(NodeWatcherEvent.getTree(
+                                treeId: t.rootId,
+                                rootId: t.rootId,
+                              ));
 
                           //  3. Update the share settings
                           context.read<ShareOptionBloc>().add(
