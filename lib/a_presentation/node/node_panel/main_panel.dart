@@ -7,11 +7,8 @@ import 'package:asl/a_presentation/node/node_panel/node_info_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/parents_brothers_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
-import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,224 +32,175 @@ class MainPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return BlocListener<PartnerFormBloc, PartnerFormState>(
-      listener: (context, state) {
-        print('02 | this is clicked Partner');
-        if (state.saveFailureOrSuccessOption.isSome()) {
-          // After a partner is added the RelationWatcherBloc & NodeWatcherBloc
-          // should reload the all the trees relation and nodes and rebuilt the tree UI
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        AlertDialog(
+          backgroundColor: color[700] ?? color,
+          shape: kRoundedRectangleBorder,
+          content: Container(
+            alignment: Alignment.topRight,
+            padding: const EdgeInsets.all(8.0),
+            width: PAN_WIDTH,
+            height: PAN_HEIGHT,
 
-          context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
-              context.read<CurrentTreeBloc>().state.currentTree!));
-        }
-      },
-      child: BlocListener<ChildFormBloc, ChildFormState>(
-        listenWhen: (previous, current) {
-          // Only trigger when saving is finished
-          print('02 | this is clicked Child');
-          return previous.isSaving == true && current.isSaving == false;
-        },
-        listener: (context, state) {
-          print('02 | ddd');
-          print('02 | without ${state.saveFailureOrSuccessOption}');
-          print('02 | isSome ${state.saveFailureOrSuccessOption.isSome()}');
-          if (state.saveFailureOrSuccessOption.isSome()) {
-            print('02 | Its ChildFormBloc listening');
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6.0),
+            ),
 
-            // After a child is added the RelationWatcherBloc & NodeWatcherBloc
-            // should reload the all the trees relation and nodes and rebuilt the tree UI
-
-            final currentTree =
-                context.read<CurrentTreeBloc>().state.currentTree!;
-
-            // rebuild tree (on home page) after child is added
-            print('31 | repaint the tree');
-            context
-                .read<NodeWatcherBloc>()
-                .add(NodeWatcherEvent.getTree(currentTree));
-
-            context.read<RelationWatcherBloc>().add(
-                RelationWatcherEvent.getRelation(
-                    currentTree.treeId, state.tempChild.upperFamily));
-
-            print('31 | now the tree should be rebuilt');
-          }
-        },
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            AlertDialog(
-              backgroundColor: color[700] ?? color,
-              shape: kRoundedRectangleBorder,
-              scrollable: true,
-              content: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    alignment: Alignment.topRight,
-                    padding: const EdgeInsets.all(8.0),
-                    width: PAN_WIDTH,
-                    height: PAN_HEIGHT,
-
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.0),
-                    ),
-
-                    //  Make Tabs
-                    child: DefaultTabController(
-                      length: type != NodeType.partner ? 4 : 3,
-                      child: SizedBox(
-                        width: PAN_WIDTH,
-                        height: PAN_HEIGHT,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(width: 35),
-                                SizedBox(
-                                  width: PAN_WIDTH - 97,
-                                  height: 50,
-                                  child: TabBar(
-                                    unselectedLabelColor: kBlacksColor[600],
-                                    indicatorColor: kBlacksColor,
-                                    indicatorWeight: 2.5,
-                                    labelPadding: const EdgeInsets.symmetric(
-                                        horizontal: 24.0),
-                                    padding: EdgeInsets.zero,
-                                    indicatorPadding:
-                                        const EdgeInsets.symmetric(
-                                            horizontal: 5.0),
-                                    labelColor: kBlacksColor,
-                                    labelStyle: kBodyMedium.copyWith(
-                                        fontWeight: FontWeight.w900),
-                                    unselectedLabelStyle: kBodyMedium,
-                                    dividerColor: Colors.transparent,
-                                    indicatorSize: TabBarIndicatorSize.label,
-                                    dividerHeight: 0.0,
-                                    isScrollable: true,
-                                    tabs: [
-                                      const Tab(text: 'معلومات شخصية'),
-                                      const Tab(text: 'الوالدين والأخوة'),
-                                      if (type != NodeType.partner)
-                                        const Tab(text: 'الزوجة والأبناء'),
-                                      const Tab(text: 'نبذة وملاحظات'),
-                                    ],
-                                    onTap: (index) {
-                                      context.read<NodeFormBloc>().add(
-                                          NodeFormEvent.updateCurrentPanel(
-                                              index));
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(width: 18),
-                                BlocBuilder<NodeFormBloc, NodeFormState>(
-                                  builder: (context, state) {
-                                    return (state.isEditing == -1 &&
-                                            state.currentPanel != 1)
-                                        ? IconOnlyButton(
-                                            onPressed: () => context
-                                                .read<NodeFormBloc>()
-                                                .add(NodeFormEvent.edited(
-                                                    state.currentPanel)),
-                                            icon: const Icon(Icons.edit,
-                                                size: 24.0),
-                                          )
-                                        : const SizedBox();
-                                  },
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  height: 450,
-                                  width: PAN_WIDTH - 53,
-                                  margin: const EdgeInsets.only(right: 80),
-                                  child: TabBarView(
-                                    children: [
-                                      InfoPanel(color: color, ctx: context),
-                                      ParentsSiblingsPanel(color: color),
-                                      if (type != NodeType.partner)
-                                        RelationsPanel(
-                                            color: color, node: node),
-                                      const Icon(Icons.directions_bike),
-                                    ],
-                                  ),
-                                ),
-                                // Saving Button
-                                BlocBuilder<NodeFormBloc, NodeFormState>(
-                                  builder: (context, state) {
-                                    return Container(
-                                      alignment: Alignment.bottomLeft,
-                                      width: PAN_WIDTH,
-                                      height: 40,
-                                      child: AppButton(
-                                        onPressed: () {
-                                          if (state.isEditing == -1 ||
-                                              state.isEditing == 1) {
-                                            Navigator.pop(context);
-
-                                            // Save all the added partner and children
-                                            print('28 Saving everything');
-                                            context.read<ChildFormBloc>().add(
-                                                const ChildFormEvent.saved());
-
-                                            context.read<PartnerFormBloc>().add(
-                                                const PartnerFormEvent.saved());
-                                          } else {
-                                            context.read<NodeFormBloc>().add(
-                                                const NodeFormEvent.saved());
-
-                                            context.read<NodeFormBloc>().add(
-                                                const NodeFormEvent.ended());
-                                          }
-                                        },
-                                        label: (state.isEditing == -1 ||
-                                                state.isEditing == 1)
-                                            ? 'تم'
-                                            : 'حفظ',
-                                        fillColor: color,
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
+            //  Make Tabs
+            child: DefaultTabController(
+              length: type != NodeType.partner ? 4 : 3,
+              child: SizedBox(
+                width: PAN_WIDTH,
+                height: PAN_HEIGHT,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(width: 35),
+                        SizedBox(
+                          width: PAN_WIDTH - 97,
+                          height: 50,
+                          child: TabBar(
+                            unselectedLabelColor: kBlacksColor[600],
+                            indicatorColor: kBlacksColor,
+                            indicatorWeight: 2.5,
+                            labelPadding:
+                                const EdgeInsets.symmetric(horizontal: 24.0),
+                            padding: EdgeInsets.zero,
+                            indicatorPadding:
+                                const EdgeInsets.symmetric(horizontal: 5.0),
+                            labelColor: kBlacksColor,
+                            labelStyle: kBodyMedium.copyWith(
+                                fontWeight: FontWeight.w900),
+                            unselectedLabelStyle: kBodyMedium,
+                            dividerColor: Colors.transparent,
+                            indicatorSize: TabBarIndicatorSize.label,
+                            dividerHeight: 0.0,
+                            isScrollable: true,
+                            tabs: [
+                              const Tab(text: 'معلومات شخصية'),
+                              const Tab(text: 'الوالدين والأخوة'),
+                              if (type != NodeType.partner)
+                                const Tab(text: 'الزوجة والأبناء'),
+                              const Tab(text: 'نبذة وملاحظات'),
+                            ],
+                            onTap: (index) {
+                              context
+                                  .read<NodeFormBloc>()
+                                  .add(NodeFormEvent.updateCurrentPanel(index));
+                            },
+                          ),
                         ),
-                      ),
+                        const SizedBox(width: 18),
+                        BlocBuilder<NodeFormBloc, NodeFormState>(
+                          builder: (context, state) {
+                            return (state.isEditing == -1 &&
+                                    state.currentPanel != 1)
+                                ? IconOnlyButton(
+                                    onPressed: () => context
+                                        .read<NodeFormBloc>()
+                                        .add(NodeFormEvent.edited(
+                                            state.currentPanel)),
+                                    icon: const Icon(Icons.edit, size: 24.0),
+                                  )
+                                : const SizedBox();
+                          },
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ),
-            // Avatar Image
-            Container(
-              width: 150,
-              height: 150,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(6),
-              margin: EdgeInsets.only(
-                bottom: size.height * 0.8,
-                left: size.width * 0.65,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: kBlacksColor,
-                  width: 1.5,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 450,
+                          width: PAN_WIDTH - 53,
+                          margin: const EdgeInsets.only(right: 80),
+                          child: TabBarView(
+                            children: [
+                              InfoPanel(color: color, ctx: context),
+                              ParentsSiblingsPanel(color: color),
+                              if (type != NodeType.partner)
+                                RelationsPanel(color: color, node: node),
+                              const Icon(Icons.directions_bike),
+                            ],
+                          ),
+                        ),
+                        // Saving Button
+                        BlocBuilder<NodeFormBloc, NodeFormState>(
+                          builder: (context, state) {
+                            return Container(
+                              alignment: Alignment.bottomLeft,
+                              width: PAN_WIDTH,
+                              height: 40,
+                              child: AppButton(
+                                onPressed: () {
+                                  if (state.isEditing == -1 ||
+                                      state.isEditing == 1) {
+                                    Navigator.pop(context);
+
+                                    // Save all the added partner and children
+                                    print('LOG | Saving everything');
+
+                                    context
+                                        .read<PartnerFormBloc>()
+                                        .add(const PartnerFormEvent.saved());
+
+                                    context
+                                        .read<ChildFormBloc>()
+                                        .add(const ChildFormEvent.saved());
+                                  } else {
+                                    context
+                                        .read<NodeFormBloc>()
+                                        .add(const NodeFormEvent.saved());
+
+                                    context
+                                        .read<NodeFormBloc>()
+                                        .add(const NodeFormEvent.ended());
+                                  }
+                                },
+                                label: (state.isEditing == -1 ||
+                                        state.isEditing == 1)
+                                    ? 'تم'
+                                    : 'حفظ',
+                                fillColor: color,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                borderRadius: BorderRadius.circular(14.0),
-                color: color[600] ?? color,
               ),
-              child: imageWidget,
             ),
-          ],
+          ),
         ),
-      ),
+        // Avatar Image
+        Container(
+          width: 150,
+          height: 150,
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(6),
+          margin: EdgeInsets.only(
+            bottom: size.height * 0.8,
+            left: size.width * 0.65,
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: kBlacksColor,
+              width: 1.5,
+            ),
+            borderRadius: BorderRadius.circular(14.0),
+            color: color[600] ?? color,
+          ),
+          child: imageWidget,
+        ),
+      ],
     );
   }
 }

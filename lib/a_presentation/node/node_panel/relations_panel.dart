@@ -112,7 +112,7 @@ class RelationsPanel extends StatelessWidget {
                                     AddMemberButton(
                                       onPressed: () {
                                         print(
-                                            'state.addChild ${state.addChild}');
+                                            '04 | state.addChild ${state.addChild}');
                                         if (state.addChild) {
                                           // Add the child to the temp children list
                                           context.read<ChildFormBloc>().add(
@@ -133,9 +133,12 @@ class RelationsPanel extends StatelessWidget {
                                         } else {
                                           // Add empty child to be ready to add to it
                                           print(
-                                              'treeId ${relState.relation[0].treeId}');
+                                              '04 | treeId ${relState.relation[0].treeId}');
                                           print(
-                                              'relationId ${relState.relation[0].relationId}');
+                                              '04 | relationId ${relState.relation[0].relationId}');
+
+                                          print(
+                                              '04 | add relation to tempChild ${relState.relation[0].relationId}');
                                           context.read<ChildFormBloc>().add(
                                               ChildFormEvent.addChild(
                                                   treeId: relState

@@ -24,7 +24,7 @@ mixin _$TNode {
   DateTime? get deathDate => throw _privateConstructorUsedError;
   bool get isAlive => throw _privateConstructorUsedError;
   Gender get gender => throw _privateConstructorUsedError;
-  UniqueId get upperFamily => throw _privateConstructorUsedError;
+  UniqueId? get upperFamily => throw _privateConstructorUsedError;
   List<UniqueId> get relations => throw _privateConstructorUsedError;
   List<UniqueId> get fosterChildren => throw _privateConstructorUsedError;
   @unfreezed
@@ -48,7 +48,7 @@ abstract class $TNodeCopyWith<$Res> {
       DateTime? deathDate,
       bool isAlive,
       Gender gender,
-      UniqueId upperFamily,
+      UniqueId? upperFamily,
       List<UniqueId> relations,
       List<UniqueId> fosterChildren,
       @unfreezed List<Relation> relationsObject});
@@ -75,7 +75,7 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? upperFamily = null,
+    Object? upperFamily = freezed,
     Object? relations = null,
     Object? fosterChildren = null,
     Object? relationsObject = null,
@@ -113,10 +113,10 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender,
-      upperFamily: null == upperFamily
+      upperFamily: freezed == upperFamily
           ? _value.upperFamily
           : upperFamily // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as UniqueId?,
       relations: null == relations
           ? _value.relations
           : relations // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
       DateTime? deathDate,
       bool isAlive,
       Gender gender,
-      UniqueId upperFamily,
+      UniqueId? upperFamily,
       List<UniqueId> relations,
       List<UniqueId> fosterChildren,
       @unfreezed List<Relation> relationsObject});
@@ -174,7 +174,7 @@ class __$$TNodeImplCopyWithImpl<$Res>
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? upperFamily = null,
+    Object? upperFamily = freezed,
     Object? relations = null,
     Object? fosterChildren = null,
     Object? relationsObject = null,
@@ -212,10 +212,10 @@ class __$$TNodeImplCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender,
-      upperFamily: null == upperFamily
+      upperFamily: freezed == upperFamily
           ? _value.upperFamily
           : upperFamily // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as UniqueId?,
       relations: null == relations
           ? _value.relations
           : relations // ignore: cast_nullable_to_non_nullable
@@ -244,7 +244,7 @@ class _$TNodeImpl extends _TNode {
       this.deathDate,
       required this.isAlive,
       required this.gender,
-      required this.upperFamily,
+      this.upperFamily,
       required this.relations,
       required this.fosterChildren,
       @unfreezed required this.relationsObject})
@@ -267,7 +267,7 @@ class _$TNodeImpl extends _TNode {
   @override
   final Gender gender;
   @override
-  final UniqueId upperFamily;
+  final UniqueId? upperFamily;
   @override
   final List<UniqueId> relations;
   @override
@@ -340,7 +340,7 @@ abstract class _TNode extends TNode {
       final DateTime? deathDate,
       required final bool isAlive,
       required final Gender gender,
-      required final UniqueId upperFamily,
+      final UniqueId? upperFamily,
       required final List<UniqueId> relations,
       required final List<UniqueId> fosterChildren,
       @unfreezed required final List<Relation> relationsObject}) = _$TNodeImpl;
@@ -363,7 +363,7 @@ abstract class _TNode extends TNode {
   @override
   Gender get gender;
   @override
-  UniqueId get upperFamily;
+  UniqueId? get upperFamily;
   @override
   List<UniqueId> get relations;
   @override

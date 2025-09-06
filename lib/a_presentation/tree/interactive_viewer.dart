@@ -21,7 +21,7 @@ class InteractiveView extends StatelessWidget {
           loadInProgress: (_) {},
           inProgress: (_) {},
           loadSuccess: (state) {
-            print('Listen root with ${state.root.relations.length} relations');
+            print('LOG | root with ${state.root.relations.length} relations');
             context.read<DrawTreeBloc>().add(
                   DrawTreeEvent.drawNewTree(
                     tree: context.read<CurrentTreeBloc>().state.currentTree!,
@@ -36,27 +36,30 @@ class InteractiveView extends StatelessWidget {
       },
       child: BlocBuilder<NodeWatcherBloc, NodeWatcherState>(
         builder: (context, nState) {
-          // print('InteractiveView: rebuild after NodeWatcherBloc state changes');
+          _controller.value = Matrix4.identity()..scale(0.6);
+          print(
+              'LOG | InteractiveView: rebuild after NodeWatcherBloc state changes');
           return nState.map(
             initial: (_) => const SizedBox(),
             loadInProgress: (_) => const LoadingWidget(),
             inProgress: (_) => const LoadingWidget(),
             loadSuccess: (nState) {
-              // print(
-              //     '=========== InteractiveView: rebuild with new tree nodes ${nState.nodes}');
+              print('LOG | InteractiveView: rebuild with new tree nodes');
 
               return BlocListener<ZoomTreeBloc, ZoomTreeState>(
                 listener: (context, state) {
                   _controller.value = Matrix4.identity()..scale(state.scale);
                 },
-                child: InteractiveViewer(
-                  constrained: false,
-                  transformationController: _controller,
-                  alignment: Alignment.center,
-                  boundaryMargin: const EdgeInsets.all(1000),
-                  minScale: MIN_ZOOM,
-                  maxScale: MAX_ZOOM,
-                  child: const TreeView(),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InteractiveViewer(
+                      constrained: false,
+                      transformationController: _controller,
+                      alignment: Alignment.center,
+                      boundaryMargin: const EdgeInsets.all(1000),
+                      minScale: MIN_ZOOM,
+                      maxScale: MAX_ZOOM,
+                      child: const TreeView()),
                 ),
               );
             },

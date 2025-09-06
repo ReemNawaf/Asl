@@ -3,6 +3,7 @@ import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
@@ -66,6 +67,8 @@ class _MyAppState extends State<MyApp> {
             create: (context) => getIt<PartnerFormBloc>()),
         BlocProvider<ChildFormBloc>(
             create: (context) => getIt<ChildFormBloc>()),
+        BlocProvider<RelationWatcherBloc>(
+            create: (context) => getIt<RelationWatcherBloc>()),
       ],
       child: MaterialApp.router(
         routerConfig: appRouter.config(),

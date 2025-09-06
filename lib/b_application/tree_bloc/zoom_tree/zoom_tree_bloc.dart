@@ -5,7 +5,7 @@ part 'zoom_tree_event.dart';
 part 'zoom_tree_state.dart';
 
 class ZoomTreeBloc extends Bloc<ZoomTreeEvent, ZoomTreeState> {
-  ZoomTreeBloc() : super(const ZoomTreeState(scale: 0.6)) {
+  ZoomTreeBloc() : super(const ZoomTreeState(scale: ZOOM_DEF)) {
     on<ZoomTreeChanged>(_onZoomTreeChanged);
   }
 

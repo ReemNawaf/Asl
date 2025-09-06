@@ -45,9 +45,9 @@ class ChildrenWidget extends StatelessWidget {
                         final tempRelationChildren =
                             state.children[sinRelation.relationId.getOrCrash()];
                         print(
-                            '15 | This is the tempRelationChildren $tempRelationChildren');
+                            '06 | This is the tempRelationChildren $tempRelationChildren');
 
-                        print('28 | relations.length: ${relations.length}');
+                        print('06 | relations.length: ${relations.length}');
 
                         final allChildren = [
                           ...sinRelation.childrenNodes,

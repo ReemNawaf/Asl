@@ -32,7 +32,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
   ) async {
     await event.map(
       addPartner: (e) async {
-        print('addPartner start');
+        print('LOG | addPartner start');
         final isFather = e.node.gender == Gender.male;
 
         final partner = TNode(
@@ -66,15 +66,16 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           node: e.node,
           // isViewing: true,
           isEditing: false,
-          isAdding: true,
+          isAdding: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
-        print('addPartner end');
+        print('LOG | addPartner end');
       },
       edited: (e) async {
         emit(state.copyWith(
           node: e.partner,
           isEditing: true,
+          isAdding: false,
           isViewing: false,
         ));
       },
@@ -84,24 +85,28 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
             firstName: FirstName(e.name),
           ),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeMarriageDate: (e) async {
         emit(state.copyWith(
           relation: state.relation!.copyWith(marriageDate: e.date),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeRelationEndDate: (e) async {
         emit(state.copyWith(
           relation: state.relation!.copyWith(endDate: e.date),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeMarriageStatus: (e) async {
         emit(state.copyWith(
           relation: state.relation!.copyWith(marriageStatus: e.status),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       addPartnertoList: (e) {
@@ -117,23 +122,23 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
             partnersList: newPartners,
             relationsList: newRelations,
             isViewing: true,
-            isAdding: true,
+            isAdding: false,
+            showErrorMessages: AutovalidateMode.always,
+          ));
+        } else {
+          emit(state.copyWith(
+            isViewing: true,
+            isAdding: false,
             showErrorMessages: AutovalidateMode.always,
           ));
         }
       },
       saved: (e) async {
-        print('04 | saved start');
+        print('LOG | add partners saved start');
         Either<RelationFailure, Unit>? failureOrSuccess;
         bool isCreated = false;
 
-        emit(state.copyWith(
-          isSaving: true,
-          isEditing: false,
-          saveFailureOrSuccessOption: none(),
-        ));
-
-        print('04 | add relation');
+        print('LOG | add relation');
 
         if (state.partnersList.isNotEmpty) {
           // check the tree validation
@@ -152,16 +157,14 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
             isCreated = state.isEditing ? false : true;
           }
         }
-
+        print('06 | failureOrSuccess ${optionOf(failureOrSuccess)}');
         emit(state.copyWith(
-          isViewing: true,
-          isSaving: false,
-          isAdding: false,
+          isAdding: true,
           isCreated: isCreated,
           showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
-        print('04 | saved end');
+        print('LOG | add partners saved end');
       },
     );
   }

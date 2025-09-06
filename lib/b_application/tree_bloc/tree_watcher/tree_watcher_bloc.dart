@@ -29,7 +29,7 @@ class TreeWatcherBloc extends Bloc<TreeWatcherEvent, TreeWatcherState> {
     await event.map(
       getAllTrees: (e) async {
         emit(const TreeWatcherState.getAllTreesInProgress());
-        print('---------- Trees | watchAllStarted');
+        print('LOG | trees watchAllStarted');
 
         final possibleFailure = await _treeRepository.watchAll();
         emit(possibleFailure.fold(

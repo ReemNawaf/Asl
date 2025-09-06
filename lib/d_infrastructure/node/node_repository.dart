@@ -162,7 +162,7 @@ class NodeRepository implements INodeRepository {
       final treeDoc = await treeCol.doc(treeId.getOrCrash()).get()
           as DocumentSnapshot<Map<String, dynamic>>;
       final tree = TreeDto.fromFirestore(treeDoc).toDomain();
-      print('Get the tree');
+      print('LOG | get the tree');
 
       // 2. Get the root node
       TNode root = (await nodeRepo.getNode(
@@ -245,7 +245,7 @@ class NodeRepository implements INodeRepository {
               childRelations[i] =
                   childRelations[i].copyWith(childrenNodes: grandchildren);
             }
-            print('=====| childRelations $childRelations');
+            print('LOG | childRelations $childRelations');
             children.add(child.copyWith(relationsObject: childRelations));
           });
         }
@@ -254,7 +254,6 @@ class NodeRepository implements INodeRepository {
       print('Get the children nodes');
 
       // Update the root relationsObject
-      print('NN: rootRelations $rootRelations');
       root = root.copyWith(relationsObject: rootRelations);
       print('Update the root relationsObject');
       print('Root ${root.firstName}');

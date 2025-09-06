@@ -44,30 +44,39 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
         emit(state.copyWith(
           tempChild: child,
           isViewing: true,
-          isAdding: true,
+          isAdding: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },
       addChildToList: (e) {
-        var newChildren = {...state.children};
-        final relationKey = state.tempChild.upperFamily.getOrCrash();
+        if (state.tempChild.firstName.isValid()) {
+          var newChildren = {...state.children};
+          final relationKey = state.tempChild.upperFamily!.getOrCrash();
 
-        newChildren[relationKey] = [
-          ...?newChildren[relationKey],
-          state.tempChild
-        ];
-        print('New children list ${newChildren.length}');
-        emit(state.copyWith(
-          children: newChildren,
-          isViewing: true,
-          isAdding: true,
-          showErrorMessages: AutovalidateMode.always,
-        ));
+          newChildren[relationKey] = [
+            ...?newChildren[relationKey],
+            state.tempChild
+          ];
+          print('LOG | new children list ${newChildren.length}');
+          emit(state.copyWith(
+            children: newChildren,
+            isViewing: true,
+            isAdding: false,
+            showErrorMessages: AutovalidateMode.always,
+          ));
+        } else {
+          emit(state.copyWith(
+            isViewing: true,
+            isAdding: false,
+            showErrorMessages: AutovalidateMode.always,
+          ));
+        }
       },
       edited: (e) async {
         emit(state.copyWith(
           children: e.children,
           isEditing: true,
+          isAdding: false,
           isViewing: false,
         ));
       },
@@ -75,6 +84,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(upperFamily: e.upperFamily),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeName: (e) {
@@ -82,48 +92,48 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           tempChild:
               state.tempChild.copyWith(firstName: FirstName.fromString(e.name)),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeBirthDate: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(birthDate: e.date),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeDeathDate: (e) async {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(deathDate: e.date),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeIsAlive: (e) async {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(isAlive: e.isAlive),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       changeGender: (e) async {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(gender: e.gender),
           saveFailureOrSuccessOption: none(),
+          isAdding: false,
         ));
       },
       saved: (e) async {
+        print('LOG | save child start');
         Either<TNodeFailure, Unit>? failureOrSuccess;
         bool isCreated = false;
-
-        emit(state.copyWith(
-          isSaving: true,
-          isEditing: false,
-          saveFailureOrSuccessOption: none(),
-        ));
 
         // convert children dict to list
         final List<TNode> allchildren =
             state.children.values.expand((list) => list).toList();
 
         if (allchildren.isNotEmpty) {
-          print('All children length ${allchildren.length}');
+          print('LOG | all children length ${allchildren.length}');
           // check the tree validation
           if (allchildren.every((child) => child.failureOption.isNone())) {
             failureOrSuccess =
@@ -136,26 +146,23 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
               children: allchildren,
               treeId: allchildren.first.treeId,
             );
-            print('31 | the child is added');
+            print('LOG | the child is added');
             isCreated = state.isEditing ? false : true;
           }
         }
 
-        print('31 | emitting ${optionOf(failureOrSuccess)}');
-        print('31 | emitting ${optionOf(failureOrSuccess).isSome()}');
-
         emit(state.copyWith(
           isViewing: true,
           isSaving: false,
-          isAdding: false,
+          isAdding: true,
           isCreated: isCreated,
           children: {},
           tempChild: TNode.empty(),
           showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
-        print(
-            '31 | when did this thing happen!!! ${optionOf(failureOrSuccess).isSome()}');
+
+        print('LOG | save child end');
       },
     );
   }

@@ -93,22 +93,14 @@ class RelationRepository implements IRelationRepository {
     required TNode node,
   }) async {
     try {
-      print('addRelationsListWithNewNodes start');
+      print('LOG | addRelationsListWithNewNodes start');
       if (relationsList.length != partnersList.length) {
-        print('Nodes length != Relation Length');
+        print('LOG | nodes length != relation Length');
         return left(const RelationFailure.unexpected());
       }
       for (int i = 0; i < relationsList.length; i++) {
-        print('Lets Go');
-
         final relation = relationsList[i];
-        print('relationID ${relation.relationId}');
-        print('father ${relation.father}');
-        print('mother ${relation.mother}');
-
         final partner = partnersList[i];
-        print('partner is mother ${partner.nodeId}');
-        print('node is father ${node.nodeId}');
 
         final relationDto = RelationDto.fromDomain(
             relation.copyWith(relationId: relation.relationId));
@@ -136,10 +128,9 @@ class RelationRepository implements IRelationRepository {
         // Update Node
         node.relations.add(relation.relationId);
 
-        print('added relation');
+        print('LOG | added relation');
       }
 
-      print('Node Relations are ${node.relations.length}');
       final nodeDto = NodeDto.fromDomain(node);
       await _firestore
           .treesCollection()
@@ -147,8 +138,7 @@ class RelationRepository implements IRelationRepository {
           .collection(NODES_COLLECTION)
           .doc(nodeDto.nodeId)
           .update(nodeDto.toJson());
-
-      print('addRelationsListWithNewNodes end');
+      print('LOG | added node');
       return right(unit);
     } on PlatformException catch (e) {
       if (e is FirebaseException &&
@@ -295,7 +285,7 @@ class RelationRepository implements IRelationRepository {
             .treesCollection()
             .doc(treeId.getOrCrash())
             .collection(RELATIONS_COLLECTION)
-            .doc(child.upperFamily.getOrCrash())
+            .doc(child.upperFamily!.getOrCrash())
             .update({
           'children': FieldValue.arrayUnion([child.nodeId.getOrCrash()])
         });

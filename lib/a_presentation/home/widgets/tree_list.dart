@@ -29,12 +29,9 @@ class TreeList extends StatelessWidget {
                 ..add(CurrentTreeEvent.updateAllTree(trees: state.trees)),
               child: BlocBuilder<CurrentTreeBloc, CurrentTreeState>(
                 builder: (context, state) {
-                  // print(
-                  //     'TreeList: rebuild after CurrentTreeBloc state changes');
                   var currentTree = state.currentTree;
                   final trees = state.trees;
-                  // print('TreeList: currentTree: $currentTree');
-                  // print('TreeList: trees.length: ${trees.length} |----------');
+
                   if (currentTree != null && trees.isNotEmpty) {
                     final menuItems = trees
                         .map((Tree tree) => DropdownMenuItem<String>(

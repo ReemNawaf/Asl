@@ -30,6 +30,9 @@ class AddParentDropListWidget extends StatelessWidget {
               ))
           .toList();
 
+      print(
+          '05 | default value: ${context.read<ChildFormBloc>().state.tempChild.upperFamily}');
+
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

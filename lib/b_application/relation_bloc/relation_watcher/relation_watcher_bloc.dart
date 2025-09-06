@@ -30,7 +30,7 @@ class RelationWatcherBloc
     await event.map(
       getAllRelations: (e) async {
         emit(const RelationWatcherState.getAllRelationsInProgress());
-        print('---------- Relations | watchAllStarted');
+        print('LOG | relations watchAllStarted');
 
         final possibleFailure =
             await _relationRepository.getAll(e.treeId, e.nodeId);

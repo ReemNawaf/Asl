@@ -11,3 +11,4 @@ class ZoomTreeState extends Equatable {
 
 const MIN_ZOOM = 0.15;
 const MAX_ZOOM = 2.25;
+const ZOOM_DEF = 0.6;
