@@ -29,7 +29,6 @@ class AddChildWidget extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
     return BlocBuilder<ChildFormBloc, ChildFormState>(
       builder: (context, state) {
-        print('22 | state.child.deathDate ${state.tempChild.deathDate}');
         return Form(
           autovalidateMode: state.showErrorMessages,
           key: formKey,

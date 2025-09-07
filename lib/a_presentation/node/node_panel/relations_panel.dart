@@ -29,7 +29,7 @@ class RelationsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<RelationWatcherBloc>(
       create: (context) => getIt<RelationWatcherBloc>()
         ..add(RelationWatcherEvent.getAllRelations(node.treeId, node.nodeId)),
       child: BlocBuilder<RelationWatcherBloc, RelationWatcherState>(
@@ -92,9 +92,9 @@ class RelationsPanel extends StatelessWidget {
                           ),
                           Divider(thickness: 0.5, color: kBlacksColor[600]),
                           ChildrenWidget(
-                            node: node,
-                            color: color,
-                          ),
+                              node: node,
+                              color: color,
+                              relations: relState.relation),
                           kVSpacer10,
                           BlocBuilder<NodeFormBloc, NodeFormState>(
                             builder: (context, state) {

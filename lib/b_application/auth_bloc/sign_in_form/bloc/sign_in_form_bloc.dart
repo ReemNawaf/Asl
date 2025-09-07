@@ -126,10 +126,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         // 2.  then directe it to the logic in the domain layer (IAuthFacade)
         Either<AuthFailure, Unit> failureOrSuccess;
         if (e.mode == AuthMode.signin) {
-          print('016 | ${e.mode}');
           failureOrSuccess = await _authFacade.signInWithGoogle();
         } else {
-          print('016 | ${e.mode}');
           failureOrSuccess = await _authFacade.registerWithGoogle();
         }
         // 3. yield the state of done submitting with response

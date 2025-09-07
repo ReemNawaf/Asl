@@ -102,8 +102,6 @@ class FirebaseAuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> registerWithGoogle() async {
     try {
-      print('016 | registerWithGoogle');
-
       final googleUser = await googleSignIn!.signIn();
       if (googleUser == null) {
         googleSignIn!.disconnect();
@@ -137,7 +135,6 @@ class FirebaseAuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {
-      print('016 | signInWithGoogle');
       final googleUser = await googleSignIn!.signIn();
       if (googleUser == null) {
         googleSignIn!.disconnect();
@@ -166,7 +163,6 @@ class FirebaseAuthFacade implements IAuthFacade {
       prefs.setString('id', authUserCredential.user!.uid);
       prefs.setBool('auth', true);
 
-      print('016 | Sign-in successful');
       googleSignIn!.disconnect();
       return right(unit);
     } on FirebaseAuthException catch (_) {

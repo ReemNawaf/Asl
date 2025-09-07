@@ -36,14 +36,12 @@ class TreeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<ChildFormBloc, ChildFormState>(
       listener: (context, state) {
-        print('06 | adding child ${state.isAdding}');
         if (state.saveFailureOrSuccessOption.isSome()) {
           refreshTree(context);
         }
       },
       child: BlocListener<PartnerFormBloc, PartnerFormState>(
         listener: (context, state) {
-          print('06 | adding partner ${state.isAdding}');
           if (state.saveFailureOrSuccessOption.isSome()) {
             refreshTree(context);
           }

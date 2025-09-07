@@ -27,10 +27,12 @@ class RelationRepository implements IRelationRepository {
     try {
       final nodeRepo = NodeRepository(_firestore);
       final treeCol = _firestore.treesCollection();
+
       final relationQuery = await treeCol
           .doc(treeId.getOrCrash())
           .collection(RELATIONS_COLLECTION)
           .get();
+
       final relations = <Relation>[];
       relationQuery.docs.map((doc) {
         final relation = RelationDto.fromFirestore(doc).toDomain();
@@ -48,6 +50,23 @@ class RelationRepository implements IRelationRepository {
 
         relations[i] = re.copyWith(
             partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
+
+        print('LOG | has the partners nodes');
+
+        // Get the children nodes
+        final childrenIds = re.children;
+        final children = <TNode>[];
+
+        for (int i = 0; i < childrenIds.length; i++) {
+          final childId = childrenIds[i];
+          final eitherChildNode =
+              await nodeRepo.getNode(treeId: treeId, nodeId: childId);
+
+          eitherChildNode.fold((l) {}, (r) => children.add(r));
+        }
+        relations[i] = relations[i].copyWith(childrenNodes: children);
+
+        print('LOG | has the children nodes');
       }
       return right(relations);
     } catch (e) {

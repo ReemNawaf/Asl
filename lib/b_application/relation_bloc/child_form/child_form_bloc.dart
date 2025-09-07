@@ -45,6 +45,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           tempChild: child,
           isViewing: true,
           isAdding: false,
+          children: {},
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },

@@ -6,25 +6,28 @@ import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/relation/relation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChildrenWidget extends StatelessWidget {
   final TNode node;
   final MaterialColor color;
+  final List<Relation> relations;
   const ChildrenWidget({
     super.key,
     required this.node,
     required this.color,
+    required this.relations,
   });
 
   @override
   Widget build(BuildContext context) {
+    print('Relations $relations');
     return BlocBuilder<NodeWatcherBloc, NodeWatcherState>(
       builder: (context, state) {
         return state.map(
           loadSuccess: (state) {
-            final relations = state.root.relationsObject;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,10 +47,6 @@ class ChildrenWidget extends StatelessWidget {
                         final partner = sinRelation.partnerNode!;
                         final tempRelationChildren =
                             state.children[sinRelation.relationId.getOrCrash()];
-                        print(
-                            '06 | This is the tempRelationChildren $tempRelationChildren');
-
-                        print('06 | relations.length: ${relations.length}');
 
                         final allChildren = [
                           ...sinRelation.childrenNodes,

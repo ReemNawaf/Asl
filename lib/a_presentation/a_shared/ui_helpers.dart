@@ -116,6 +116,10 @@ String getNodePartnerTitleSingle(gender) {
   return gender == Gender.female ? 'زوجها' : 'زوجته';
 }
 
+String getNodeRelationPanelTitle(gender) {
+  return gender == Gender.female ? 'الزوج' : 'الزوجة';
+}
+
 String getNodeChildrenTitle(gender) {
   return gender == Gender.female ? 'أبناءها' : 'أبناءه';
 }

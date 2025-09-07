@@ -64,9 +64,11 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           relation: relation,
           partner: partner,
           node: e.node,
-          // isViewing: true,
           isEditing: false,
           isAdding: false,
+          // Empty the state lists
+          partnersList: [],
+          relationsList: [],
           showErrorMessages: AutovalidateMode.disabled,
         ));
         print('LOG | addPartner end');
@@ -160,7 +162,9 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
           node: TNode.empty(),
           partner: TNode.empty(),
+          // Empty the state lists
           partnersList: [],
+          relationsList: [],
         ));
         print('LOG | add partners saved end');
       },
