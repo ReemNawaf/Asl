@@ -16,6 +16,7 @@ class TreeButton extends StatelessWidget {
         print('clicked');
 
         final cNode = context.read<NodeFormBloc>().state.node;
+
         //  Update the current nodes
         context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
             treeId: cNode.treeId, rootId: cNode.nodeId));

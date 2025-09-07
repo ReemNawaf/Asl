@@ -50,17 +50,14 @@ class InteractiveView extends StatelessWidget {
                 listener: (context, state) {
                   _controller.value = Matrix4.identity()..scale(state.scale);
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InteractiveViewer(
-                      constrained: false,
-                      transformationController: _controller,
-                      alignment: Alignment.center,
-                      boundaryMargin: const EdgeInsets.all(1000),
-                      minScale: MIN_ZOOM,
-                      maxScale: MAX_ZOOM,
-                      child: const TreeView()),
-                ),
+                child: InteractiveViewer(
+                    constrained: false,
+                    transformationController: _controller,
+                    alignment: Alignment.center,
+                    boundaryMargin: const EdgeInsets.all(1000),
+                    minScale: MIN_ZOOM,
+                    maxScale: MAX_ZOOM,
+                    child: const TreeView()),
               );
             },
             loadFailure: (_) => const SizedBox(),

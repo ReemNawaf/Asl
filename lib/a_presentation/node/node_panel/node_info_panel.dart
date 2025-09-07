@@ -35,15 +35,16 @@ class InfoPanel extends StatelessWidget {
                 children: [
                   kVSpacer30,
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.only(right: 28.0),
+                      SizedBox(
                         width: 250,
                         height: 90,
                         child: AppFormField(
                           label: 'الاسم الأول',
                           hint: 'مثل: محمد',
+                          // withPadding: false,
                           onSaved: (_) {},
                           initialValue: state.node.firstName.getOrCrash(),
                           onChanged: (value) => context
@@ -68,15 +69,19 @@ class InfoPanel extends StatelessWidget {
                           isEditing: state.isEditing == 0,
                         ),
                       ),
-                      kHSpacer10,
-                      NodeGenderBtn(
-                          color: color,
-                          ctx: ctx,
-                          isEditing: state.isEditing == 0),
+                      kHSpacer20,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 1.0),
+                        child: NodeGenderBtn(
+                            color: color,
+                            ctx: ctx,
+                            isEditing: state.isEditing == 0),
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
                         width: 250,
@@ -85,6 +90,7 @@ class InfoPanel extends StatelessWidget {
                           formKey: formKey,
                           label: 'تاريخ الميلاد',
                           hint: '',
+                          withPadding: false,
                           validate: (validate) => "",
                           save: (_) {},
                           endDate: state.node.deathDate
@@ -105,10 +111,13 @@ class InfoPanel extends StatelessWidget {
                       ),
                       if (state.node.isAlive) ...[
                         kHSpacer20,
-                        NodeAliveBtn(
-                            color: color,
-                            ctx: ctx,
-                            isEditing: state.isEditing == 0),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 14.0),
+                          child: NodeAliveBtn(
+                              color: color,
+                              ctx: ctx,
+                              isEditing: state.isEditing == 0),
+                        ),
                       ] else
                         SizedBox(
                           width: 250,
@@ -116,6 +125,7 @@ class InfoPanel extends StatelessWidget {
                           child: AppDateField(
                             formKey: formKey,
                             label: 'تاريخ الوفاة',
+                            withPadding: false,
                             hint: '',
                             validate: (validate) => "",
                             save: (_) {},

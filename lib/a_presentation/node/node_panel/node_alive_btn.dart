@@ -78,7 +78,7 @@ class AliveButton extends StatelessWidget {
           color: selected ? color[300] : color[600],
           borderRadius: BorderRadius.circular(8.0),
         ),
-        height: 36,
+        height: 33,
         width: 94,
         child: Text(text),
       ),

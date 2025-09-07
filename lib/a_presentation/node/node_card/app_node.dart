@@ -3,8 +3,6 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/node/node_panel/main_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-// import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
-// import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -182,11 +180,4 @@ void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
           contextPage: contextPage,
         );
       },
-    ).then((_) {
-      // Save all the added partner and children
-      if (contextPage.mounted) {
-        // TODO: Make these lines actionable when the save button isn't clicked
-        // contextPage.read<ChildFormBloc>().add(const ChildFormEvent.saved());
-        // contextPage.read<PartnerFormBloc>().add(const PartnerFormEvent.saved());
-      }
-    });
+    );

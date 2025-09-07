@@ -145,10 +145,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           if (state.partnersList.every((p) => p.failureOption.isNone()) &&
               state.relationsList.every((r) => r.failureOption.isNone())) {
             failureOrSuccess =
-                // state.isEditing
-                //     ? await _relationRepository.update(
-                //      partner: state.partner, relation: state.relation!) :
-
                 await _relationRepository.addRelationsListWithNewNodes(
               relationsList: state.relationsList,
               partnersList: state.partnersList,
@@ -157,12 +153,14 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
             isCreated = state.isEditing ? false : true;
           }
         }
-        print('06 | failureOrSuccess ${optionOf(failureOrSuccess)}');
         emit(state.copyWith(
           isAdding: true,
           isCreated: isCreated,
           showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
+          node: TNode.empty(),
+          partner: TNode.empty(),
+          partnersList: [],
         ));
         print('LOG | add partners saved end');
       },

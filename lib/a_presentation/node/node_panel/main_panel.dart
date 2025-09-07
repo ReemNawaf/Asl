@@ -117,7 +117,7 @@ class MainPanel extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: 450,
+                          height: PAN_HEIGHT - 106,
                           width: PAN_WIDTH - 53,
                           margin: const EdgeInsets.only(right: 80),
                           child: TabBarView(
@@ -188,7 +188,7 @@ class MainPanel extends StatelessWidget {
           padding: const EdgeInsets.all(6),
           margin: EdgeInsets.only(
             bottom: size.height * 0.8,
-            left: size.width * 0.65,
+            left: PAN_WIDTH,
           ),
           decoration: BoxDecoration(
             border: Border.all(
