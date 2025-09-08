@@ -26,7 +26,7 @@ class RootNode extends StatelessWidget {
       yearOfDeath: node.deathDate,
       isAlive: node.isAlive,
       color: kRootColors,
-      hasImage: true,
+      hasImage: false,
       gender: node.gender,
       node: node,
       pageContext: pageContext,

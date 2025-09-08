@@ -75,22 +75,21 @@ class AppNode extends StatelessWidget {
               color: color[600],
             ),
           ),
-          if (hasImage)
-            Container(
-              width: 110,
-              height: 110,
-              margin: const EdgeInsets.only(bottom: 70),
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: kBlacksColor[100]!,
-                  width: 2,
-                ),
-                borderRadius: BorderRadius.circular(6.0),
-                color: color[500]!,
+          Container(
+            width: 110,
+            height: 110,
+            margin: const EdgeInsets.only(bottom: 70),
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: kBlacksColor[100]!,
+                width: 2,
               ),
-              child: imageWidget,
+              borderRadius: BorderRadius.circular(6.0),
+              color: color[500]!,
             ),
+            child: imageWidget,
+          ),
           Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
@@ -178,6 +177,7 @@ void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
           imageWidget: imageWidget,
           node: node,
           contextPage: contextPage,
+          hasImage: hasImage,
         );
       },
     );

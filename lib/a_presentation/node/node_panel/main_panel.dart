@@ -23,6 +23,7 @@ class MainPanel extends StatelessWidget {
     required this.imageWidget,
     required this.node,
     required this.contextPage,
+    required this.hasImage,
   });
 
   final MaterialColor color;
@@ -30,11 +31,11 @@ class MainPanel extends StatelessWidget {
   final Widget imageWidget;
   final TNode node;
   final BuildContext contextPage;
+  final bool hasImage;
 
   @override
   Widget build(BuildContext context) {
     print('LOG | Node ${node.firstName.getOrCrash()} is opened');
-    final size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) =>
           getIt<NodeFormBloc>()..add(NodeFormEvent.initialized(node)),
@@ -107,6 +108,10 @@ class MainPanel extends StatelessWidget {
                           BlocBuilder<NodeFormBloc, NodeFormState>(
                             builder: (context, state) {
                               // TODO: comment what this means
+                              print(
+                                  'is Editing ${state.isEditing} is it == -1 ${state.isEditing == -1}');
+                              print(
+                                  'is Editing ${state.currentPanel} is it != 1 ${state.currentPanel != 1}');
                               return (state.isEditing == -1 &&
                                       state.currentPanel != 1)
                                   ? IconOnlyButton(
@@ -196,10 +201,7 @@ class MainPanel extends StatelessWidget {
             height: 150,
             alignment: Alignment.center,
             padding: const EdgeInsets.all(6),
-            margin: EdgeInsets.only(
-              bottom: size.height * 0.8,
-              left: PAN_WIDTH,
-            ),
+            margin: const EdgeInsets.only(bottom: PAN_HEIGHT, left: PAN_WIDTH),
             decoration: BoxDecoration(
               border: Border.all(
                 color: kBlacksColor,
@@ -208,7 +210,22 @@ class MainPanel extends StatelessWidget {
               borderRadius: BorderRadius.circular(14.0),
               color: color[600] ?? color,
             ),
-            child: imageWidget,
+            child: hasImage
+                ? imageWidget
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 85,
+                        width: 85,
+                        child: imageWidget,
+                      ),
+                      Text(
+                        node.firstName.getOrCrash(),
+                        style: kHeadlineMedium,
+                      ),
+                    ],
+                  ),
           ),
         ],
       ),

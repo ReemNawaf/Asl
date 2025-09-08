@@ -25,7 +25,7 @@ class PartnerNode extends StatelessWidget {
       yearOfBirth: node.birthDate,
       yearOfDeath: node.deathDate,
       isAlive: node.isAlive,
-      hasImage: true,
+      hasImage: false,
       gender: node.gender,
       node: node,
       pageContext: pageContext,
