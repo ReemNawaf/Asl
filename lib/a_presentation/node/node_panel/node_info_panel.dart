@@ -44,9 +44,10 @@ class InfoPanel extends StatelessWidget {
                         child: AppFormField(
                           label: 'الاسم الأول',
                           hint: 'مثل: محمد',
-                          // withPadding: false,
                           onSaved: (_) {},
-                          initialValue: state.node.firstName.getOrCrash(),
+                          initialValue: state.node.firstName.isValid()
+                              ? state.node.firstName.getOrCrash()
+                              : '',
                           onChanged: (value) => context
                               .read<NodeFormBloc>()
                               .add(NodeFormEvent.firstNameChanged(
@@ -114,9 +115,10 @@ class InfoPanel extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 14.0),
                           child: NodeAliveBtn(
-                              color: color,
-                              ctx: ctx,
-                              isEditing: state.isEditing == 0),
+                            color: color,
+                            ctx: ctx,
+                            isEditing: state.isEditing == 0,
+                          ),
                         ),
                       ] else
                         SizedBox(

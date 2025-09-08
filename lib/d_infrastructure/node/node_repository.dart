@@ -2,11 +2,14 @@ import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
+import 'package:asl/c_domain/relation/half_siblings.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/c_domain/relation/relation_failure.dart';
+import 'package:asl/c_domain/relation/ufamily.dart';
 import 'package:asl/d_infrastructure/core/firestore_helpers.dart';
 import 'package:asl/d_infrastructure/node/node_dto.dart';
 import 'package:asl/d_infrastructure/relation/relation_dto.dart';
+import 'package:asl/d_infrastructure/relation/relation_repository.dart';
 import 'package:asl/d_infrastructure/trees/tree_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:dartz/dartz.dart';
@@ -155,7 +158,6 @@ class NodeRepository implements INodeRepository {
   Future<Either<TNodeFailure, TNode>> getTree(
       {required UniqueId treeId, required UniqueId rootId}) async {
     try {
-      final nodeRepo = NodeRepository(_firestore);
       final treeCol = _firestore.treesCollection();
 
       // 1. Get the tree
@@ -165,7 +167,7 @@ class NodeRepository implements INodeRepository {
       print('LOG | get the tree');
 
       // 2. Get the root node
-      TNode root = (await nodeRepo.getNode(treeId: treeId, nodeId: rootId))
+      TNode root = (await getNode(treeId: treeId, nodeId: rootId))
           .fold((l) => left(RelationFailure), (r) => r) as TNode;
 
       // 3. Get the root relations
@@ -187,7 +189,7 @@ class NodeRepository implements INodeRepository {
         final re = rootRelations[i];
         final partner = re.father == root.nodeId ? re.mother : re.father;
         final eitherpartnerNode =
-            await nodeRepo.getNode(treeId: re.partnerTreeId, nodeId: partner);
+            await getNode(treeId: re.partnerTreeId, nodeId: partner);
 
         rootRelations[i] = re.copyWith(
             partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
@@ -202,7 +204,7 @@ class NodeRepository implements INodeRepository {
         for (int i = 0; i < childrenIds.length; i++) {
           final childId = childrenIds[i];
           final eitherChildNode =
-              await nodeRepo.getNode(treeId: tree.treeId, nodeId: childId);
+              await getNode(treeId: tree.treeId, nodeId: childId);
 
           await eitherChildNode.fold((l) => null, (child) async {
             // 3. Get the child relations
@@ -222,8 +224,8 @@ class NodeRepository implements INodeRepository {
             for (int i = 0; i < childRelations.length; i++) {
               final re = childRelations[i];
               final partner = re.father == child.nodeId ? re.mother : re.father;
-              final eitherpartnerNode = await nodeRepo.getNode(
-                  treeId: re.partnerTreeId, nodeId: partner);
+              final eitherpartnerNode =
+                  await getNode(treeId: re.partnerTreeId, nodeId: partner);
               childRelations[i] = re.copyWith(
                   partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
             }
@@ -235,8 +237,8 @@ class NodeRepository implements INodeRepository {
 
               for (int i = 0; i < grandchildrenIds.length; i++) {
                 final grandchildId = grandchildrenIds[i];
-                final eitherGrandChildNode = await nodeRepo.getNode(
-                    treeId: tree.treeId, nodeId: grandchildId);
+                final eitherGrandChildNode =
+                    await getNode(treeId: tree.treeId, nodeId: grandchildId);
                 eitherGrandChildNode.fold((l) => null, (r) {
                   grandchildren.add(r);
                 });
@@ -244,7 +246,7 @@ class NodeRepository implements INodeRepository {
               childRelations[i] =
                   childRelations[i].copyWith(childrenNodes: grandchildren);
             }
-            print('LOG | childRelations $childRelations');
+            print('LOG | childRelations');
             children.add(child.copyWith(relationsObject: childRelations));
           });
         }
@@ -258,6 +260,156 @@ class NodeRepository implements INodeRepository {
       print('Root ${root.firstName}');
       //
       return right(root);
+    } catch (e) {
+      if (e is FirebaseException &&
+          (e.message!.contains('PERMISSION_DENIED') ||
+              e.message!.contains('permission-denied'))) {
+        return left(const TNodeFailure.insufficientPermission());
+      } else {
+        return left(const TNodeFailure.unexpected());
+      }
+    }
+  }
+
+  @override
+  Future<Either<TNodeFailure, Ufamily>> getNodeUpperFamily(
+      {required TNode node}) async {
+    try {
+      final relationRepository = RelationRepository(_firestore);
+      final treeId = node.treeId;
+
+      // 1. Get the upperfamily relation
+
+      final upperFamilyEither = await relationRepository.getRelation(
+          treeId: treeId, relationId: node.upperFamily!);
+      Relation? upperFamily;
+      upperFamilyEither.fold((l) {}, (r) async => upperFamily = r);
+      // if for some reason upperfamily isn't fetched correctly return error
+      if (node.upperFamily == null) {
+        return left(const TNodeFailure.unexpected());
+      }
+
+      // 2. get father & mother node from the relation
+
+      final fatherEither =
+          await getNode(treeId: treeId, nodeId: upperFamily!.father);
+      TNode? father;
+      fatherEither.fold((l) {}, (r) => father = r);
+      if (father == null) {
+        return left(const TNodeFailure.unexpected());
+      }
+
+      final motherEither =
+          await getNode(treeId: treeId, nodeId: upperFamily!.mother);
+      TNode? mother;
+      motherEither.fold((l) {}, (r) => mother = r);
+      if (mother == null) {
+        return left(const TNodeFailure.unexpected());
+      }
+
+      // 3. get children nodes from the relation (Siblings)
+      final List<TNode> siblings = [];
+
+      for (UniqueId id in upperFamily!.children) {
+        (await getNode(treeId: treeId, nodeId: id)).fold((l) {}, (r) {
+          if (node.nodeId != r.nodeId) {
+            // to not and the main node as siblings
+            siblings.add(r);
+          }
+        });
+      }
+
+      // 4. get children from father other relations (Father side Brother & Sisters)
+      List<HalfSiblings> fatherHalfSiblings = [];
+      for (UniqueId id in father!.relations) {
+        // first get the relation
+        Relation? relation;
+        (await relationRepository.getRelation(treeId: treeId, relationId: id))
+            .fold((l) {}, (r) => relation = r);
+
+        // if the relation is the same as relation with mother and father then pass
+        if (relation == null ||
+            relation!.relationId == upperFamily!.relationId) {
+          continue;
+        }
+
+        // get the partner node
+        TNode? stepMother;
+        (await getNode(treeId: treeId, nodeId: relation!.mother))
+            .fold((l) {}, (r) => stepMother = r);
+
+        if (stepMother == null) {
+          return left(const TNodeFailure.unexpected());
+        }
+
+        List<TNode> children = [];
+        // then get the children nodes
+        for (UniqueId id in relation!.children) {
+          (await getNode(treeId: treeId, nodeId: id))
+              .fold((l) {}, (r) => children.add(r));
+        }
+
+        fatherHalfSiblings.add(
+          HalfSiblings(
+            treeId: treeId,
+            person: node.nodeId,
+            partner: stepMother!,
+            halfSiblings: children,
+          ),
+        );
+      }
+
+      // 5. get children from mother other relations (Mother side Brother & Sisters)
+      List<HalfSiblings> motherHalfSiblings = [];
+      for (UniqueId id in mother!.relations) {
+        // first get the relation
+        Relation? relation;
+        (await relationRepository.getRelation(treeId: treeId, relationId: id))
+            .fold((l) {}, (r) => relation = r);
+
+        // if the relation is the same as relation with mother and father then pass
+        if (relation == null ||
+            relation!.relationId == upperFamily!.relationId) {
+          continue;
+        }
+
+        // get the partner node
+        TNode? stepFather;
+        (await getNode(treeId: treeId, nodeId: relation!.father))
+            .fold((l) {}, (r) => stepFather = r);
+
+        if (stepFather == null) {
+          return left(const TNodeFailure.unexpected());
+        }
+
+        List<TNode> children = [];
+        // then get the children nodes
+        for (UniqueId id in relation!.children) {
+          (await getNode(treeId: treeId, nodeId: id))
+              .fold((l) {}, (r) => children.add(r));
+        }
+
+        motherHalfSiblings.add(
+          HalfSiblings(
+            treeId: treeId,
+            person: node.nodeId,
+            partner: stepFather!,
+            halfSiblings: children,
+          ),
+        );
+      }
+
+      final upperFaimly = Ufamily(
+        treeId: treeId,
+        father: father!,
+        mother: mother!,
+        person: node,
+        siblings: siblings,
+        fatherHalfSiblings: fatherHalfSiblings,
+        motherHalfSiblings: motherHalfSiblings,
+      );
+
+      return right(upperFaimly);
     } catch (e) {
       if (e is FirebaseException &&
           (e.message!.contains('PERMISSION_DENIED') ||

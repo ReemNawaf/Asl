@@ -6,7 +6,6 @@ abstract class NodeFormState with _$NodeFormState {
     required TNode node,
     required AutovalidateMode showErrorMessages,
     required int isEditing, // only for update existing ones
-
     required bool isSaving,
     required bool isViewing,
     required bool isAdding,
@@ -20,14 +19,25 @@ abstract class NodeFormState with _$NodeFormState {
   factory NodeFormState.initial() => NodeFormState(
         node: TNode.empty(),
         showErrorMessages: AutovalidateMode.disabled,
+
+        // isEdtting = -1 means it's adding not editing
         isEditing: -1,
+
+        // isSaving when saving the changes after editing
         isSaving: false,
+
+        // TODO: isViewing
         isViewing: true,
+
+        // TODO: isAdding
         isAdding: false,
+
+        // TODO: hasNode
         hasNode: false,
-        currentPanel: 0,
+
         addPartner: false,
         addChild: false,
+        currentPanel: 0,
         saveFailureOrSuccessOption: none(),
       );
 }

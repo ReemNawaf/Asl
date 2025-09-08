@@ -103,8 +103,10 @@ class MainPanel extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 18),
+                          // edit Button
                           BlocBuilder<NodeFormBloc, NodeFormState>(
                             builder: (context, state) {
+                              // TODO: comment what this means
                               return (state.isEditing == -1 &&
                                       state.currentPanel != 1)
                                   ? IconOnlyButton(
@@ -146,6 +148,7 @@ class MainPanel extends StatelessWidget {
                                 height: 40,
                                 child: AppButton(
                                   onPressed: () {
+                                    // when it's not editing or in the
                                     if (state.isEditing == -1 ||
                                         state.isEditing == 1) {
                                       Navigator.pop(context);
@@ -165,9 +168,9 @@ class MainPanel extends StatelessWidget {
                                           .read<NodeFormBloc>()
                                           .add(const NodeFormEvent.saved());
 
-                                      context
-                                          .read<NodeFormBloc>()
-                                          .add(const NodeFormEvent.ended());
+                                      // context
+                                      //     .read<NodeFormBloc>()
+                                      //     .add(const NodeFormEvent.ended());
                                     }
                                   },
                                   label: (state.isEditing == -1 ||

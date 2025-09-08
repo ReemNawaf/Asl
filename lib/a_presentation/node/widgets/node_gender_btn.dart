@@ -30,6 +30,8 @@ class NodeGenderBtn extends StatelessWidget {
       }
     }
 
+    print('isEditing $isEditing');
+
     return BlocBuilder<NodeFormBloc, NodeFormState>(
       builder: (context, state) {
         return Padding(

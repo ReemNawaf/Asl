@@ -23,7 +23,6 @@ class ChildrenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Relations $relations');
     return BlocBuilder<NodeWatcherBloc, NodeWatcherState>(
       builder: (context, state) {
         return state.map(

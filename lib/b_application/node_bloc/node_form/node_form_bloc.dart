@@ -32,6 +32,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         emit(state.copyWith(
           node: e.node,
           isViewing: true,
+          isSaving: false,
           hasNode: true,
           showErrorMessages: AutovalidateMode.disabled,
         ));
@@ -43,6 +44,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
             node: initialNode,
             isAdding: true,
             isViewing: false,
+            isSaving: false,
             isEditing: -1,
             showErrorMessages: AutovalidateMode.disabled,
           ),
@@ -53,18 +55,24 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           isEditing: e.isEditing,
           isViewing: false,
           isAdding: false,
+          isSaving: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },
       updateCurrentPanel: (e) async {
+        print('07 | current panel ${e.panelIndex}}');
+        // Panel index is [0-3]
         emit(state.copyWith(
           currentPanel: e.panelIndex,
+          isSaving: false,
         ));
       },
       firstNameChanged: (e) async {
         emit(state.copyWith(
           node: state.node.copyWith(firstName: FirstName(e.title)),
+          isSaving: false,
           // to get rid of any previous failure
+          showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: none(),
         ));
       },
@@ -72,25 +80,31 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         // print('birthDateChanged changed to ${e.date} ');
         emit(state.copyWith(
             node: state.node.copyWith(birthDate: e.date),
+            isSaving: false,
             // to get rid of any previous failure
             saveFailureOrSuccessOption: none()));
       },
       deathDateChanged: (e) async {
         emit(state.copyWith(
             node: state.node.copyWith(deathDate: e.date),
+            isSaving: false,
             // to get rid of any previous failure
             saveFailureOrSuccessOption: none()));
       },
       changeIsAvlive: (e) async {
+        print('07 | isAlive is selected');
         emit(state.copyWith(
           node: state.node.copyWith(isAlive: e.isAlive),
+          isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
+        print('07 | isAlive emit is done ${e.isAlive}');
       },
       changeGender: (e) async {
         emit(state.copyWith(
           node: state.node.copyWith(gender: e.gender),
+          isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
@@ -98,6 +112,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       addPartner: (e) async {
         emit(state.copyWith(
           addPartner: e.isAdding,
+          isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
@@ -105,6 +120,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       addChild: (e) async {
         emit(state.copyWith(
           addChild: e.isAdding,
+          isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
@@ -112,18 +128,20 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       makeItRoot: (e) async {
         emit(state.copyWith(
           node: state.node.copyWith(isTreeRoot: true),
+          isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
       saved: (e) async {
+        print('07 | saved NodeFrom (first listen)');
         Either<TNodeFailure, Unit>? failureOrSuccess;
         emit(state.copyWith(
           isSaving: true,
-
           isAdding: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
+          showErrorMessages: AutovalidateMode.always,
         ));
 
         // check the category validation
@@ -143,6 +161,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         }
 
         // after the trying of update or create
+        print('07 | saved NodeFrom ??? (second listen)');
         emit(state.copyWith(
           // isViewing: true,
           isSaving: false,
@@ -151,11 +170,13 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           // to get rid of any previous failure
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
+        print('07 | node is saved');
       },
       ended: (e) async {
         emit(state.copyWith(
           showErrorMessages: AutovalidateMode.disabled,
           isViewing: true,
+          isSaving: false,
           isEditing: -1,
         ));
       },
