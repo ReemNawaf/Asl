@@ -182,7 +182,7 @@ class NodeRepository implements INodeRepository {
         final relation = RelationDto.fromFirestore(relationDoc).toDomain();
         rootRelations.add(relation);
       }
-      print('Get the root relations ${rootRelations.length}');
+      print('LOG | get the root relations ${rootRelations.length}');
 
       // 4. Get the partners nodes
       for (int i = 0; i < rootRelations.length; i++) {
@@ -194,7 +194,7 @@ class NodeRepository implements INodeRepository {
         rootRelations[i] = re.copyWith(
             partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
       }
-      print('Get the partners nodes');
+      print('LOG | get the partners nodes');
 
       // 5. Get the children nodes
       for (int i = 0; i < rootRelations.length; i++) {
@@ -252,12 +252,12 @@ class NodeRepository implements INodeRepository {
         }
         rootRelations[i] = rootRelations[i].copyWith(childrenNodes: children);
       }
-      print('Get the children nodes');
+      print('LOG | get the children nodes');
 
       // Update the root relationsObject
       root = root.copyWith(relationsObject: rootRelations);
-      print('Update the root relationsObject');
-      print('Root ${root.firstName}');
+      print('LOG | update the root relationsObject');
+      print('LOG | root ${root.firstName}');
       //
       return right(root);
     } catch (e) {

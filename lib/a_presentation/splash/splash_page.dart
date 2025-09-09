@@ -14,7 +14,6 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    print('splash H: ${size.height}, W: ${size.width}');
     if (size.height < MIM_HEIGHT || size.width < MIM_WIDTH) {
       return const Scaffold(
         body: Center(

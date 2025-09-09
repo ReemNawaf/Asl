@@ -32,6 +32,7 @@ const marriageSt = {
 
 const kVSpacer5 = SizedBox(height: 5.0);
 const kVSpacer10 = SizedBox(height: 10.0);
+const kVSpacer15 = SizedBox(height: 15.0);
 const kVSpacer20 = SizedBox(height: 20.0);
 const kVSpacer30 = SizedBox(height: 30.0);
 const kVSpacer40 = SizedBox(height: 40.0);

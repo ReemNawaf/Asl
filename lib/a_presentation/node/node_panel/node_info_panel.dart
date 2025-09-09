@@ -14,75 +14,86 @@ class InfoPanel extends StatelessWidget {
   const InfoPanel({
     super.key,
     required this.color,
-    required this.ctx,
-    this.showErrorMessages,
   });
 
   final MaterialColor color;
-  final BuildContext ctx;
-  final AutovalidateMode? showErrorMessages;
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
 
     return BlocBuilder<NodeFormBloc, NodeFormState>(
-      builder: (_, state) {
-        return state.hasNode
-            ? Column(
+      builder: (context, state) {
+        final node = state.node;
+
+        if (node == null) return const SizedBox();
+
+        return Form(
+          autovalidateMode: state.showErrorMessages,
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              kVSpacer30,
+              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  kVSpacer30,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 250,
-                        height: 90,
-                        child: AppFormField(
-                          label: 'الاسم الأول',
-                          hint: 'مثل: محمد',
-                          onSaved: (_) {},
-                          initialValue: state.node.firstName.isValid()
-                              ? state.node.firstName.getOrCrash()
-                              : '',
-                          onChanged: (value) => context
-                              .read<NodeFormBloc>()
-                              .add(NodeFormEvent.firstNameChanged(
-                                  value!.trim())),
-                          validator: (_) {
-                            return state.node.firstName.value.fold(
+                  SizedBox(
+                    width: 250,
+                    height: 90,
+                    child: AppFormField(
+                      label: 'الاسم الأول',
+                      hint: 'مثل: محمد',
+                      initialValue: state.node!.firstName.isValid()
+                          ? state.node!.firstName.getOrCrash()
+                          : '',
+                      onChanged: (value) => context
+                          .read<NodeFormBloc>()
+                          .add(NodeFormEvent.firstNameChanged(value!.trim())),
+                      validator: (_) {
+                        print(
+                            '09 | validation ${context.read<NodeFormBloc>().state.node!.firstName.value}');
+                        return context
+                            .read<NodeFormBloc>()
+                            .state
+                            .node!
+                            .firstName
+                            .value
+                            .fold(
                               (f) => f.maybeMap(
                                 empty: (_) => ARABIC_STRINGS[
                                     'first_name_cannot_be_empty'],
                                 spacedFirstName: (_) => ARABIC_STRINGS[
                                     'first_name_cannot_contain_spaces'],
+                                shortFirstName: (_) =>
+                                    ARABIC_STRINGS['first_name_short'],
                                 orElse: () => null,
                               ),
                               (_) => null,
                             );
-                          },
-                          isValid:
-                              AutovalidateMode.always != showErrorMessages ||
-                                  state.node.firstName.isValid(),
-                          isEditing: state.isEditing == 0,
-                        ),
-                      ),
-                      kHSpacer20,
-                      Padding(
-                        padding: const EdgeInsets.only(top: 1.0),
-                        child: NodeGenderBtn(
-                            color: color,
-                            ctx: ctx,
-                            isEditing: state.isEditing == 0),
-                      ),
-                    ],
+                      },
+                      isValid: state.node!.firstName.isValid(),
+                      isEditing: state.isEditing == 0,
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  kHSpacer20,
+                  if (state.node!.relations.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 1.0),
+                      child: NodeGenderBtn(
+                          color: color,
+                          ctx: context,
+                          isEditing: state.isEditing == 0),
+                    ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
                     children: [
                       SizedBox(
                         width: 250,
@@ -94,33 +105,23 @@ class InfoPanel extends StatelessWidget {
                           withPadding: false,
                           validate: (validate) => "",
                           save: (_) {},
-                          endDate: state.node.deathDate
+                          endDate: state.node!.deathDate
                                   ?.subtract(const Duration(days: 1)) ??
                               DateTime.now(),
                           startDate: DateTime(1000),
-                          changeDate: (pickedDate) => ctx
+                          changeDate: (pickedDate) => context
                               .read<NodeFormBloc>()
                               .add(NodeFormEvent.birthDateChanged(pickedDate)),
                           dateController: TextEditingController(
-                            text: state.node.birthDate == null
+                            text: state.node!.birthDate == null
                                 ? 'لا يوجد تاريخ ميلاد'
                                 : DateFormat.yMMMd()
-                                    .format(state.node.birthDate!),
+                                    .format(state.node!.birthDate!),
                           ),
                           isEditing: state.isEditing == 0,
                         ),
                       ),
-                      if (state.node.isAlive) ...[
-                        kHSpacer20,
-                        Padding(
-                          padding: const EdgeInsets.only(top: 14.0),
-                          child: NodeAliveBtn(
-                            color: color,
-                            ctx: ctx,
-                            isEditing: state.isEditing == 0,
-                          ),
-                        ),
-                      ] else
+                      if (!state.node!.isAlive)
                         SizedBox(
                           width: 250,
                           height: 80,
@@ -131,18 +132,18 @@ class InfoPanel extends StatelessWidget {
                             hint: '',
                             validate: (validate) => "",
                             save: (_) {},
-                            changeDate: (pickedDate) => ctx
+                            changeDate: (pickedDate) => context
                                 .read<NodeFormBloc>()
                                 .add(
                                     NodeFormEvent.deathDateChanged(pickedDate)),
                             dateController: TextEditingController(
-                              text: state.node.deathDate == null
+                              text: state.node!.deathDate == null
                                   ? 'لا يوجد تاريخ وفاة'
                                   : DateFormat.yMMMd()
-                                      .format(state.node.deathDate!),
+                                      .format(state.node!.deathDate!),
                             ),
                             isEditing: state.isEditing == 0,
-                            startDate: state.node.birthDate
+                            startDate: state.node!.birthDate
                                     ?.add(const Duration(days: 1)) ??
                                 DateTime(1000),
                             endDate: DateTime.now(),
@@ -150,11 +151,22 @@ class InfoPanel extends StatelessWidget {
                         ),
                     ],
                   ),
-                  kVSpacer20,
-                  TreeButton(color: color)
+                  kHSpacer20,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 14.0),
+                    child: NodeAliveBtn(
+                      color: color,
+                      ctx: context,
+                      isEditing: state.isEditing == 0,
+                    ),
+                  ),
                 ],
-              )
-            : const SizedBox();
+              ),
+              kVSpacer20,
+              TreeButton(color: color)
+            ],
+          ),
+        );
       },
     );
   }

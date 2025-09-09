@@ -65,7 +65,6 @@ class MarriageStatusBtn extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 26.0),
           ],
         );
       },

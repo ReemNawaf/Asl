@@ -23,114 +23,108 @@ class ParentsSiblingsPanel extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return BlocBuilder<NodeFormBloc, NodeFormState>(
       builder: (_, state) {
-        return state.hasNode
-            ? BlocProvider(
-                create: (context) => getIt<FamilyWatcherBloc>()
-                  ..add(FamilyWatcherEvent.getNodeUpperFamily(state.node)),
-                child: BlocBuilder<FamilyWatcherBloc, FamilyWatcherState>(
-                  builder: (context, state) {
-                    return state.map(
-                      initial: (_) => const SizedBox(),
-                      loadInProgress: (_) => const LoadingWidget(),
-                      loadSuccess: (fState) {
-                        final uFamily = fState.uFamily;
-                        return Container(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          height: PAN_HEIGHT,
-                          width: PAN_WIDTH - 106,
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
+        return BlocProvider(
+          create: (context) => getIt<FamilyWatcherBloc>()
+            ..add(FamilyWatcherEvent.getNodeUpperFamily(state.node!)),
+          child: BlocBuilder<FamilyWatcherBloc, FamilyWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) => const SizedBox(),
+                loadInProgress: (_) => LoadingWidget(color: color),
+                loadSuccess: (fState) {
+                  final uFamily = fState.uFamily;
+                  return Container(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    height: PAN_HEIGHT,
+                    width: PAN_WIDTH - 106,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          kVSpacer20,
+                          SizedBox(
+                            width: PAN_WIDTH - 106,
+                            height: 70,
+                            child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                kVSpacer20,
                                 SizedBox(
-                                  width: PAN_WIDTH - 106,
+                                  width: (PAN_WIDTH - 116) / 2,
                                   height: 70,
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: (PAN_WIDTH - 116) / 2,
-                                        height: 70,
-                                        child: AppFormField(
-                                          label: 'الأب',
-                                          hint: '',
-                                          onSaved: (_) {},
-                                          initialValue: uFamily.father.firstName
-                                              .getOrCrash(),
-                                          validator: (_) => '',
-                                          isEditing: false,
-                                        ),
-                                      ),
-                                      kHSpacer10,
-                                      SizedBox(
-                                        width: (PAN_WIDTH - 116) / 2,
-                                        height: 70,
-                                        child: AppFormField(
-                                          label: 'الأم',
-                                          hint: '',
-                                          onSaved: (_) {},
-                                          initialValue: uFamily.mother.firstName
-                                              .getOrCrash(),
-                                          validator: (_) => '',
-                                          isEditing: false,
-                                        ),
-                                      ),
-                                    ],
+                                  child: AppFormField(
+                                    label: 'الأب',
+                                    hint: '',
+                                    onSaved: (_) {},
+                                    initialValue:
+                                        uFamily.father.firstName.getOrCrash(),
+                                    validator: (_) => '',
+                                    isEditing: false,
                                   ),
                                 ),
                                 kHSpacer10,
-                                BrotherSisterssWidget(
-                                  title: 'الأشقاء',
-                                  size: size,
-                                  brotherSisters: uFamily.siblings,
+                                SizedBox(
+                                  width: (PAN_WIDTH - 116) / 2,
+                                  height: 70,
+                                  child: AppFormField(
+                                    label: 'الأم',
+                                    hint: '',
+                                    onSaved: (_) {},
+                                    initialValue:
+                                        uFamily.mother.firstName.getOrCrash(),
+                                    validator: (_) => '',
+                                    isEditing: false,
+                                  ),
                                 ),
-                                ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount:
-                                        uFamily.fatherHalfSiblings.length,
-                                    itemBuilder: (context, index) {
-                                      final stepMother = uFamily
-                                          .fatherHalfSiblings[index].partner;
-                                      return BrotherSisterssWidget(
-                                        title:
-                                            'الأخوان والأخوات من زوجة الأب ${stepMother.firstName.getOrCrash()}',
-                                        size: size,
-                                        brotherSisters: uFamily
-                                            .fatherHalfSiblings[index]
-                                            .halfSiblings,
-                                      );
-                                    }),
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: uFamily.motherHalfSiblings.length,
-                                  itemBuilder: (context, index) {
-                                    final stepfather = uFamily
-                                        .motherHalfSiblings[index].partner;
-                                    return BrotherSisterssWidget(
-                                      title:
-                                          'الأخوان والأخوات من زوج الأم ${stepfather.firstName.getOrCrash()}',
-                                      size: size,
-                                      brotherSisters: uFamily
-                                          .motherHalfSiblings[index]
-                                          .halfSiblings,
-                                    );
-                                  },
-                                ),
-                                kVSpacer10,
                               ],
                             ),
                           ),
-                        );
-                      },
-                      loadFailure: (_) => const SizedBox(),
-                    );
-                  },
-                ),
-              )
-            : const SizedBox();
+                          kHSpacer10,
+                          BrotherSisterssWidget(
+                            title: 'الأشقاء',
+                            size: size,
+                            brotherSisters: uFamily.siblings,
+                          ),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: uFamily.fatherHalfSiblings.length,
+                              itemBuilder: (context, index) {
+                                final stepMother =
+                                    uFamily.fatherHalfSiblings[index].partner;
+                                return BrotherSisterssWidget(
+                                  title:
+                                      'الأخوان والأخوات من زوجة الأب ${stepMother.firstName.getOrCrash()}',
+                                  size: size,
+                                  brotherSisters: uFamily
+                                      .fatherHalfSiblings[index].halfSiblings,
+                                );
+                              }),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: uFamily.motherHalfSiblings.length,
+                            itemBuilder: (context, index) {
+                              final stepfather =
+                                  uFamily.motherHalfSiblings[index].partner;
+                              return BrotherSisterssWidget(
+                                title:
+                                    'الأخوان والأخوات من زوج الأم ${stepfather.firstName.getOrCrash()}',
+                                size: size,
+                                brotherSisters: uFamily
+                                    .motherHalfSiblings[index].halfSiblings,
+                              );
+                            },
+                          ),
+                          kVSpacer10,
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                loadFailure: (_) => const SizedBox(),
+              );
+            },
+          ),
+        );
       },
     );
   }

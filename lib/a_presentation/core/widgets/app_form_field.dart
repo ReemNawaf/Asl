@@ -22,6 +22,7 @@ class AppFormField extends StatelessWidget {
     this.withLabel = true,
     this.controller,
     this.focusNode,
+    this.autovalidateMode,
     this.isEditing = true,
   });
 
@@ -34,6 +35,7 @@ class AppFormField extends StatelessWidget {
   final Color? color;
   final FieldType fieldType;
   final bool withLabel;
+  final AutovalidateMode? autovalidateMode;
 
   final String? Function(String? value) validator;
 
@@ -80,6 +82,7 @@ class AppFormField extends StatelessWidget {
             onChanged: onChanged,
             onFieldSubmitted: onFieldSubmitted,
             focusNode: focusNode,
+            autovalidateMode: autovalidateMode,
             controller: controller,
           ),
         ),

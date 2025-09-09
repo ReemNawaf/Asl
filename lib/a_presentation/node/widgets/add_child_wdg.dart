@@ -58,24 +58,23 @@ class AddChildWidget extends StatelessWidget {
                       validator: (_) {
                         // if the name isn't valid, then show me the validation
                         return context
-                                .read<ChildFormBloc>()
-                                .state
-                                .tempChild
-                                .firstName
-                                .isValid()
-                            ? null
-                            : state.tempChild.firstName.value.fold(
-                                (f) => f.maybeMap(
-                                  empty: (_) => ARABIC_STRINGS[
-                                      'first_name_cannot_be_empty'],
-                                  shortFirstName: (_) =>
-                                      ARABIC_STRINGS['first_name_short'],
-                                  spacedFirstName: (_) => ARABIC_STRINGS[
-                                      'first_name_cannot_contain_spaces'],
-                                  orElse: () => null,
-                                ),
-                                (_) => null,
-                              );
+                            .read<ChildFormBloc>()
+                            .state
+                            .tempChild
+                            .firstName
+                            .value
+                            .fold(
+                              (f) => f.maybeMap(
+                                empty: (_) => ARABIC_STRINGS[
+                                    'first_name_cannot_be_empty'],
+                                shortFirstName: (_) =>
+                                    ARABIC_STRINGS['first_name_short'],
+                                spacedFirstName: (_) => ARABIC_STRINGS[
+                                    'first_name_cannot_contain_spaces'],
+                                orElse: () => null,
+                              ),
+                              (_) => null,
+                            );
                       },
                     ),
                   ),

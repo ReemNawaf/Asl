@@ -21,7 +21,7 @@ class GrandchildNode extends StatelessWidget {
     return AppNode(
       type: NodeType.grandchild,
       name: node.firstName.getOrCrash(),
-      relation: node.gender == Gender.female ? 'الحفيد' : 'الحفيدة',
+      relation: node.gender == Gender.female ? 'الحفيدة' : 'الحفيد',
       color: kLeafColors,
       yearOfBirth: node.birthDate,
       yearOfDeath: node.deathDate,

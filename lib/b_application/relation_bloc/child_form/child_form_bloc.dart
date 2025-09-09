@@ -4,8 +4,8 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
-import 'package:asl/c_domain/node/value_objects.dart';
 import 'package:asl/c_domain/relation/i_relation_repository.dart';
+import 'package:asl/c_domain/tree/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,7 +33,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
         final child = TNode(
           treeId: e.treeId,
           nodeId: UniqueId(),
-          firstName: FirstName(''),
+          firstName: FullName(''),
           isAlive: true,
           gender: Gender.male,
           upperFamily: e.relationId,
@@ -73,7 +73,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           ));
         }
       },
-      edited: (e) async {
+      edited: (e) {
         emit(state.copyWith(
           children: e.children,
           isEditing: true,
@@ -90,8 +90,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
       },
       changeName: (e) {
         emit(state.copyWith(
-          tempChild:
-              state.tempChild.copyWith(firstName: FirstName.fromString(e.name)),
+          tempChild: state.tempChild.copyWith(firstName: FullName(e.name)),
           saveFailureOrSuccessOption: none(),
           isAdding: false,
         ));
@@ -103,21 +102,21 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           isAdding: false,
         ));
       },
-      changeDeathDate: (e) async {
+      changeDeathDate: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(deathDate: e.date),
           saveFailureOrSuccessOption: none(),
           isAdding: false,
         ));
       },
-      changeIsAlive: (e) async {
+      changeIsAlive: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(isAlive: e.isAlive),
           saveFailureOrSuccessOption: none(),
           isAdding: false,
         ));
       },
-      changeGender: (e) async {
+      changeGender: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(gender: e.gender),
           saveFailureOrSuccessOption: none(),

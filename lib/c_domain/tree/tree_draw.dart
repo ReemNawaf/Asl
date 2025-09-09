@@ -34,7 +34,7 @@ class TreeDraw {
         Node.Id({'type': nodeType, 'id': tnode.nodeId, 'tnode': tnode});
 
     //  Save position
-    print('draw node in position $position');
+    // print('draw node in position $position');
     graph.addNode(node);
     positions[tnode.nodeId.getOrCrash()] = position++;
 
@@ -54,14 +54,14 @@ class TreeDraw {
 
       graph.addEdge(linkedToNode, node, label: graphTitle);
 
-      print(
-          '---- | draw ${nodeType.name}: ${tnode.firstName.getOrCrash()} with $linkedToId ($linkedToPosition)');
+      // print(
+      //     '---- | draw ${nodeType.name}: ${tnode.firstName.getOrCrash()} with $linkedToId ($linkedToPosition)');
     }
   }
 
   Graph drawTree({required TNode root}) {
-    print('LOG | paint tree with root ${root.firstName.getOrCrash()}');
-    print('LOG | drawing ${root.relations.length} relatons');
+    // print('LOG | paint tree with root ${root.firstName.getOrCrash()}');
+    // print('LOG | drawing ${root.relations.length} relatons');
     //  Level Roots: Add Root
     //  create first node
     graph = Graph()..isTree = true;
@@ -72,17 +72,17 @@ class TreeDraw {
       tnode: root,
       nodeType: NodeType.root,
     );
-    print('draw root: ${root.firstName.getOrCrash()}');
+    // print('draw root: ${root.firstName.getOrCrash()}');
 
     //  Level Relation: Get Root Children
     //  get the node relations
     if (root.relationsObject.isEmpty) {
-      print('root.relationsObject == null)');
+      // print('root.relationsObject == null)');
       return graph;
     }
 
     //  on each partner (loop 1)
-    print('ROOT: root has ${root.relationsObject.length} partners');
+    // print('ROOT: root has ${root.relationsObject.length} partners');
     for (Relation relation in root.relationsObject) {
       final partner = relation.partnerNode!;
 
@@ -98,7 +98,7 @@ class TreeDraw {
 
       //  go to their children (loop 2)
 
-      print('STEM: root partner has ${relation.childrenNodes.length} children');
+      // print('STEM: root partner has ${relation.childrenNodes.length} children');
 
       for (TNode child in relation.childrenNodes) {
         //  on each child create node + edge with the partner
@@ -112,7 +112,7 @@ class TreeDraw {
         //
         final childRelation = child.relationsObject;
 
-        print('STEM: son has ${childRelation.length} partners');
+        // print('STEM: son has ${childRelation.length} partners');
 
         for (Relation relation in childRelation) {
           // Sons partners
@@ -130,8 +130,8 @@ class TreeDraw {
           //  Level Leaf: Get Grandchildren
           //  go to the children children (loop 2)
 
-          print(
-              'LEAF: son partner has ${relation.childrenNodes.length} children');
+          // print(
+          //     'LEAF: son partner has ${relation.childrenNodes.length} children');
           for (TNode grandchild in relation.childrenNodes) {
             //  on each grandchild create node + edge with the partner child
             addLinkedNode(
@@ -145,33 +145,7 @@ class TreeDraw {
         }
       }
     }
-
-    //  Level Stem: Get Root Children
-    //  from tree, root id in nodes, the root node children ids
-    // for (UniqueId stemId in root.re) {
-    //   final stem = nodes.firstWhere((node) => node.nodeId == stemId);
-
-    //   //  on each child create node + edge with the root
-    //   addLinkedNode(
-    //       tnode: stem, nodeType: NodeType.child, linkedToId: root.nodeId);
-
-    //   //  Level Leaf: Get Grandchildren
-    //   //  on each parent (loop 1)
-    //   //  go to their children (loop 2)
-    //   for (UniqueId grandchildId in stem.children) {
-    //     final leaf = nodes.firstWhere((node) => node.nodeId == grandchildId);
-
-    //     //  on each grandchild create node + edge with the parent
-    //     addLinkedNode(
-    //         tnode: leaf,
-    //         nodeType: NodeType.grandchild,
-    //         linkedToId: stem.nodeId);
-    //   }
-    // }
-
-    // print('==========| drawTree(): graph ${graph.nodes}');
-
-    print('positions $positions');
+    // print('positions $positions');
 
     return graph;
   }

@@ -41,7 +41,7 @@ class AddMemberButton extends StatelessWidget {
         focusElevation: 0,
         highlightElevation: 0,
         shape: RoundedRectangleBorder(borderRadius: kAppBorderRadius),
-        child: isLoading ? const LoadingWidget() : text,
+        child: isLoading ? LoadingWidget(color: color) : text,
       ),
     );
   }

@@ -17,18 +17,15 @@ class NodeAliveBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void aliveOrDead({required bool isAliveSelected}) {
-      print('07 | node.isAlive $isAliveSelected');
       if (isAliveSelected == true) {
         ctx.read<NodeFormBloc>().add(const NodeFormEvent.changeIsAvlive(true));
       } else {
-        print('07 | choose to be dead');
         ctx.read<NodeFormBloc>().add(const NodeFormEvent.changeIsAvlive(false));
       }
     }
 
     return BlocBuilder<NodeFormBloc, NodeFormState>(
       builder: (context, state) {
-        print('07 | node.isAlive ${state.node.isAlive}');
         return Padding(
           padding: const EdgeInsets.only(top: 16.0),
           child: Row(
@@ -38,7 +35,7 @@ class NodeAliveBtn extends StatelessWidget {
                     isEditing ? aliveOrDead(isAliveSelected: true) : null,
                 color: color,
                 text: 'عائش',
-                selected: state.node.isAlive,
+                selected: state.node!.isAlive,
               ),
               const SizedBox(width: 16.0),
               AliveButton(
@@ -46,7 +43,7 @@ class NodeAliveBtn extends StatelessWidget {
                     isEditing ? aliveOrDead(isAliveSelected: false) : null,
                 color: color,
                 text: 'متوفي',
-                selected: !state.node.isAlive,
+                selected: !state.node!.isAlive,
               ),
             ],
           ),

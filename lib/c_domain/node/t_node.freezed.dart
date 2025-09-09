@@ -19,7 +19,7 @@ mixin _$TNode {
   UniqueId get treeId => throw _privateConstructorUsedError;
   UniqueId get nodeId => throw _privateConstructorUsedError;
   bool? get isTreeRoot => throw _privateConstructorUsedError;
-  FirstName get firstName => throw _privateConstructorUsedError;
+  FullName get firstName => throw _privateConstructorUsedError;
   DateTime? get birthDate => throw _privateConstructorUsedError;
   DateTime? get deathDate => throw _privateConstructorUsedError;
   bool get isAlive => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $TNodeCopyWith<$Res> {
       {UniqueId treeId,
       UniqueId nodeId,
       bool? isTreeRoot,
-      FirstName firstName,
+      FullName firstName,
       DateTime? birthDate,
       DateTime? deathDate,
       bool isAlive,
@@ -96,7 +96,7 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as FirstName,
+              as FullName,
       birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
       {UniqueId treeId,
       UniqueId nodeId,
       bool? isTreeRoot,
-      FirstName firstName,
+      FullName firstName,
       DateTime? birthDate,
       DateTime? deathDate,
       bool isAlive,
@@ -195,7 +195,7 @@ class __$$TNodeImplCopyWithImpl<$Res>
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as FirstName,
+              as FullName,
       birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
@@ -257,7 +257,7 @@ class _$TNodeImpl extends _TNode {
   @override
   final bool? isTreeRoot;
   @override
-  final FirstName firstName;
+  final FullName firstName;
   @override
   final DateTime? birthDate;
   @override
@@ -335,7 +335,7 @@ abstract class _TNode extends TNode {
       {required final UniqueId treeId,
       required final UniqueId nodeId,
       final bool? isTreeRoot,
-      required final FirstName firstName,
+      required final FullName firstName,
       final DateTime? birthDate,
       final DateTime? deathDate,
       required final bool isAlive,
@@ -353,7 +353,7 @@ abstract class _TNode extends TNode {
   @override
   bool? get isTreeRoot;
   @override
-  FirstName get firstName;
+  FullName get firstName;
   @override
   DateTime? get birthDate;
   @override

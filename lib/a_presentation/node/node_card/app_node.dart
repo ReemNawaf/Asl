@@ -4,6 +4,7 @@ import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/node/node_panel/main_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -170,14 +171,17 @@ void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
     showDialog(
       context: contextPage,
       builder: (BuildContext context) {
-        contextPage.read<NodeFormBloc>().add(NodeFormEvent.initialized(node));
-        return MainPanel(
-          color: color,
-          type: type,
-          imageWidget: imageWidget,
-          node: node,
-          contextPage: contextPage,
-          hasImage: hasImage,
+        return BlocProvider(
+          create: (context) =>
+              getIt<NodeFormBloc>()..add(NodeFormEvent.initialized(node)),
+          child: MainPanel(
+            color: color,
+            type: type,
+            imageWidget: imageWidget,
+            node: node,
+            contextPage: contextPage,
+            hasImage: hasImage,
+          ),
         );
       },
     );

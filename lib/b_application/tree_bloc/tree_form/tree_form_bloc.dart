@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
-import 'package:asl/c_domain/node/value_objects.dart';
 import 'package:asl/c_domain/tree/i_tree_repository.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:asl/c_domain/tree/tree_failure.dart';
@@ -59,8 +58,7 @@ class TreeFormBloc extends Bloc<TreeFormEvent, TreeFormState> {
       changeRootName: (e) async {
         emit(state.copyWith(
           tree: state.tree.copyWith(fullName: FullName(e.rootName)),
-          root:
-              state.root.copyWith(firstName: FirstName.fromString(e.rootName)),
+          root: state.root.copyWith(firstName: FullName(e.rootName)),
           saveFailureOrSuccessOption: none(),
         ));
       },

@@ -13,13 +13,11 @@ class TreeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('clicked');
-
         final cNode = context.read<NodeFormBloc>().state.node;
 
         //  Update the current nodes
         context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
-            treeId: cNode.treeId, rootId: cNode.nodeId));
+            treeId: cNode!.treeId, rootId: cNode.nodeId));
         Navigator.pop(context);
       },
       child: Container(

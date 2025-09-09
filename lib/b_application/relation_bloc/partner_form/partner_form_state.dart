@@ -14,6 +14,7 @@ abstract class PartnerFormState with _$PartnerFormState {
     required bool isEditing, // only for update existing ones
     required bool isViewing,
     required bool isCreated,
+    required bool isPartnerById,
     required Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption,
   }) = _PartnerFormState;
 
@@ -28,6 +29,7 @@ abstract class PartnerFormState with _$PartnerFormState {
         isAdding: false,
         saveFailureOrSuccessOption: none(),
         isEditing: false,
+        isPartnerById: false,
         isViewing: false,
         isCreated: false,
       );

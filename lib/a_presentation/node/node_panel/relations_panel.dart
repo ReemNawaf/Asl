@@ -111,8 +111,6 @@ class RelationsPanel extends StatelessWidget {
                                   if (relState.relation.isNotEmpty)
                                     AddMemberButton(
                                       onPressed: () {
-                                        print(
-                                            '04 | state.addChild ${state.addChild}');
                                         if (state.addChild) {
                                           // Add the child to the temp children list
                                           context.read<ChildFormBloc>().add(
@@ -132,13 +130,7 @@ class RelationsPanel extends StatelessWidget {
                                               NodeFormEvent.addChild(!val));
                                         } else {
                                           // Add empty child to be ready to add to it
-                                          print(
-                                              '04 | treeId ${relState.relation[0].treeId}');
-                                          print(
-                                              '04 | relationId ${relState.relation[0].relationId}');
 
-                                          print(
-                                              '04 | add relation to tempChild ${relState.relation[0].relationId}');
                                           context.read<ChildFormBloc>().add(
                                               ChildFormEvent.addChild(
                                                   treeId: relState
@@ -170,8 +162,8 @@ class RelationsPanel extends StatelessWidget {
               ),
             ),
             initial: (_) => const SizedBox(),
-            getRelationInProgress: (_) => const LoadingWidget(),
-            getAllRelationsInProgress: (_) => const LoadingWidget(),
+            getRelationInProgress: (_) => LoadingWidget(color: color),
+            getAllRelationsInProgress: (_) => LoadingWidget(color: color),
             gettingAllRelationsFailure: (_) => const SizedBox(),
             gettingRelationFailure: (_) => const SizedBox(),
             gettingRelationSuccess: (_) => const SizedBox(),

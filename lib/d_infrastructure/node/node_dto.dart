@@ -1,7 +1,7 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
-import 'package:asl/c_domain/node/value_objects.dart';
+import 'package:asl/c_domain/tree/value_objects.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -52,7 +52,7 @@ abstract class NodeDto implements _$NodeDto {
     return TNode(
       nodeId: UniqueId.fromUniqueString(nodeId!),
       treeId: UniqueId.fromUniqueString(treeId),
-      firstName: FirstName(firstName),
+      firstName: FullName(firstName),
       birthDate: birthDate == null ? null : DateTime.parse(birthDate!),
       deathDate: deathDate == null ? null : DateTime.parse(deathDate!),
       isAlive: isAlive,

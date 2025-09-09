@@ -21,7 +21,11 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.changeIsAvlive(bool isAlive) = _ChangedIsAvlive;
   const factory NodeFormEvent.makeItRoot() = _MakeItRoot;
   const factory NodeFormEvent.changeGender(Gender gender) = _ChangedGender;
+
+  // toggle to show the widgets for adding new partner in relation panel
   const factory NodeFormEvent.addPartner(bool isAdding) = _AddPartner;
+
+  // toggle to show the widgets for adding new child in relation panel
   const factory NodeFormEvent.addChild(bool isAdding) = _AddChild;
 
   const factory NodeFormEvent.saved() = _Saved;

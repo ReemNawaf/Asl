@@ -9,7 +9,10 @@
 # packages, and plugins designed to encourage good coding practices.
 analyzer:
   errors:
+    avoid_print: ignore
     constant_identifier_names: ignore
+    deprecated_member_use: ignore
+    unused_element_parameter: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

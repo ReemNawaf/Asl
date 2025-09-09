@@ -1,7 +1,7 @@
+import 'package:asl/c_domain/tree/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
-import 'package:asl/c_domain/node/value_objects.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/c_domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
@@ -16,7 +16,7 @@ abstract class TNode implements _$TNode {
     required UniqueId treeId,
     required UniqueId nodeId,
     bool? isTreeRoot,
-    required FirstName firstName,
+    required FullName firstName,
     DateTime? birthDate,
     DateTime? deathDate,
     required bool isAlive,
@@ -31,7 +31,7 @@ abstract class TNode implements _$TNode {
         treeId: UniqueId(),
         nodeId: UniqueId(),
         isTreeRoot: false,
-        firstName: FirstName(''),
+        firstName: FullName(''),
         isAlive: true,
         gender: Gender.female,
         relations: [],

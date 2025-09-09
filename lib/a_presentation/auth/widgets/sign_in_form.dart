@@ -119,8 +119,8 @@ class _SignInFormState extends State<SignInForm> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: _authMode == AuthMode.signin
-                          ? 'ما عندك حساب؟  '
-                          : 'عندك حساب؟  ',
+                          ? 'ليس لديك حساب؟  '
+                          : 'لديك حساب؟  ',
                       style: kBodyMedium,
                       children: [
                         TextSpan(

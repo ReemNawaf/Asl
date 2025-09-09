@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
-import 'package:asl/c_domain/node/value_objects.dart';
 import 'package:asl/c_domain/relation/i_relation_repository.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/c_domain/relation/relation_failure.dart';
+import 'package:asl/c_domain/tree/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,7 +38,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         final partner = TNode(
           treeId: e.node.treeId,
           nodeId: UniqueId(),
-          firstName: FirstName(''),
+          firstName: FullName(''),
           isAlive: true,
           gender: isFather ? Gender.female : Gender.male,
           upperFamily: UniqueId(),
@@ -73,7 +73,29 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         ));
         print('LOG | addPartner end');
       },
-      edited: (e) async {
+      showPartnerByNodeId: (e) {
+        emit(state.copyWith(isPartnerById: e.isAdding));
+      },
+      addPartnerByNodeId: (e) {
+        // get the partner node
+        // only add the relation
+
+        final newPartners = [...state.partnersList, state.partner];
+
+        final newRelations = [
+          ...state.relationsList,
+          state.relation!.copyWith(partnerNode: state.partner)
+        ];
+
+        emit(state.copyWith(
+          partnersList: newPartners,
+          relationsList: newRelations,
+          isViewing: true,
+          isAdding: false,
+          showErrorMessages: AutovalidateMode.always,
+        ));
+      },
+      edited: (e) {
         emit(state.copyWith(
           node: e.partner,
           isEditing: true,
@@ -81,30 +103,30 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           isViewing: false,
         ));
       },
-      changeName: (e) async {
+      changeName: (e) {
         emit(state.copyWith(
           partner: state.partner.copyWith(
-            firstName: FirstName(e.name),
+            firstName: FullName(e.name),
           ),
           saveFailureOrSuccessOption: none(),
           isAdding: false,
         ));
       },
-      changeMarriageDate: (e) async {
+      changeMarriageDate: (e) {
         emit(state.copyWith(
           relation: state.relation!.copyWith(marriageDate: e.date),
           saveFailureOrSuccessOption: none(),
           isAdding: false,
         ));
       },
-      changeRelationEndDate: (e) async {
+      changeRelationEndDate: (e) {
         emit(state.copyWith(
           relation: state.relation!.copyWith(endDate: e.date),
           saveFailureOrSuccessOption: none(),
           isAdding: false,
         ));
       },
-      changeMarriageStatus: (e) async {
+      changeMarriageStatus: (e) {
         emit(state.copyWith(
           relation: state.relation!.copyWith(marriageStatus: e.status),
           saveFailureOrSuccessOption: none(),

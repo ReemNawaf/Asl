@@ -4,7 +4,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
-import 'package:asl/c_domain/node/value_objects.dart';
+import 'package:asl/c_domain/tree/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,88 +28,76 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
     Emitter<NodeFormState> emit,
   ) async {
     await event.map(
-      initialized: (e) async {
+      initialized: (e) {
         emit(state.copyWith(
           node: e.node,
-          isViewing: true,
           isSaving: false,
-          hasNode: true,
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },
-      added: (e) async {
+      added: (e) {
         emit(e.initialNodeOption.fold(
           () => state,
           (initialNode) => state.copyWith(
             node: initialNode,
-            isAdding: true,
-            isViewing: false,
             isSaving: false,
             isEditing: -1,
             showErrorMessages: AutovalidateMode.disabled,
           ),
         ));
       },
-      edited: (e) async {
+      edited: (e) {
         emit(state.copyWith(
           isEditing: e.isEditing,
-          isViewing: false,
-          isAdding: false,
           isSaving: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },
-      updateCurrentPanel: (e) async {
-        print('07 | current panel ${e.panelIndex}}');
+      updateCurrentPanel: (e) {
         // Panel index is [0-3]
         emit(state.copyWith(
           currentPanel: e.panelIndex,
           isSaving: false,
         ));
       },
-      firstNameChanged: (e) async {
+      firstNameChanged: (e) {
         emit(state.copyWith(
-          node: state.node.copyWith(firstName: FirstName(e.title)),
+          node: state.node!.copyWith(firstName: FullName(e.title)),
           isSaving: false,
-          // to get rid of any previous failure
-          showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: none(),
         ));
       },
-      birthDateChanged: (e) async {
-        // print('birthDateChanged changed to ${e.date} ');
+      birthDateChanged: (e) {
         emit(state.copyWith(
-            node: state.node.copyWith(birthDate: e.date),
+            node: state.node!.copyWith(birthDate: e.date),
             isSaving: false,
             // to get rid of any previous failure
             saveFailureOrSuccessOption: none()));
       },
-      deathDateChanged: (e) async {
+      deathDateChanged: (e) {
         emit(state.copyWith(
-            node: state.node.copyWith(deathDate: e.date),
+            node: state.node!.copyWith(deathDate: e.date),
             isSaving: false,
             // to get rid of any previous failure
             saveFailureOrSuccessOption: none()));
       },
-      changeIsAvlive: (e) async {
-        print('07 | isAlive is selected');
+      changeIsAvlive: (e) {
         emit(state.copyWith(
-          node: state.node.copyWith(isAlive: e.isAlive),
-          isSaving: false,
-          // to get rid of any previous failure
-          saveFailureOrSuccessOption: none(),
-        ));
-        print('07 | isAlive emit is done ${e.isAlive}');
-      },
-      changeGender: (e) async {
-        emit(state.copyWith(
-          node: state.node.copyWith(gender: e.gender),
+          node: state.node!.copyWith(isAlive: e.isAlive),
           isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
-      addPartner: (e) async {
+      changeGender: (e) {
+        emit(state.copyWith(
+          node: state.node!.copyWith(gender: e.gender),
+          isSaving: false,
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: none(),
+        ));
+      },
+      addPartner: (e) {
         emit(state.copyWith(
           addPartner: e.isAdding,
           isSaving: false,
@@ -117,7 +105,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: none(),
         ));
       },
-      addChild: (e) async {
+      addChild: (e) {
         emit(state.copyWith(
           addChild: e.isAdding,
           isSaving: false,
@@ -125,57 +113,54 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: none(),
         ));
       },
-      makeItRoot: (e) async {
+      makeItRoot: (e) {
         emit(state.copyWith(
-          node: state.node.copyWith(isTreeRoot: true),
+          node: state.node!.copyWith(isTreeRoot: true),
           isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
         ));
       },
       saved: (e) async {
-        print('07 | saved NodeFrom (first listen)');
         Either<TNodeFailure, Unit>? failureOrSuccess;
         emit(state.copyWith(
           isSaving: true,
-          isAdding: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: none(),
           showErrorMessages: AutovalidateMode.always,
         ));
 
-        // check the category validation
-        if (state.node.failureOption.isNone()) {
-          // save the purchase, need instance
+        // check the node validation
+        if (state.node!.failureOption.isNone()) {
           if (state.isEditing != -1) {
             failureOrSuccess = await _nodeRepository.update(
-              treeId: state.node.treeId,
-              node: state.node,
+              treeId: state.node!.treeId,
+              node: state.node!,
             );
           } else {
             failureOrSuccess = await _nodeRepository.create(
-              treeId: state.node.treeId,
-              node: state.node,
+              treeId: state.node!.treeId,
+              node: state.node!,
             );
           }
+          // after the trying of update or create
+          emit(state.copyWith(
+            isSaving: false,
+            isEditing: -1,
+            showErrorMessages: AutovalidateMode.always,
+            saveFailureOrSuccessOption: optionOf(failureOrSuccess),
+          ));
         }
 
         // after the trying of update or create
-        print('07 | saved NodeFrom ??? (second listen)');
         emit(state.copyWith(
-          // isViewing: true,
           isSaving: false,
-          isEditing: -1,
           showErrorMessages: AutovalidateMode.always,
-          // to get rid of any previous failure
-          saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
-        print('07 | node is saved');
       },
-      ended: (e) async {
+      ended: (e) {
         emit(state.copyWith(
           showErrorMessages: AutovalidateMode.disabled,
-          isViewing: true,
           isSaving: false,
           isEditing: -1,
         ));

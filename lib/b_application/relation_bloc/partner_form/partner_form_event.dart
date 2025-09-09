@@ -6,6 +6,10 @@ abstract class PartnerFormEvent with _$PartnerFormEvent {
 
   const factory PartnerFormEvent.edited(TNode partner) = _Edited;
   const factory PartnerFormEvent.changeName(String name) = _ChangedName;
+  const factory PartnerFormEvent.addPartnerByNodeId(UniqueId id) =
+      _AddPartnerByNodeId;
+  const factory PartnerFormEvent.showPartnerByNodeId(bool isAdding) =
+      _ShowPartnerByNodeId;
 
   const factory PartnerFormEvent.changeMarriageDate(DateTime? date) =
       _ChangeMarriageDate;

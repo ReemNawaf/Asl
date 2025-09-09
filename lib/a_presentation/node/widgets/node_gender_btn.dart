@@ -30,8 +30,6 @@ class NodeGenderBtn extends StatelessWidget {
       }
     }
 
-    print('isEditing $isEditing');
-
     return BlocBuilder<NodeFormBloc, NodeFormState>(
       builder: (context, state) {
         return Padding(
@@ -44,7 +42,7 @@ class NodeGenderBtn extends StatelessWidget {
                 color: color,
                 text: 'ذكر',
                 gender: Gender.male,
-                selected: Gender.male == state.node.gender,
+                selected: Gender.male == state.node!.gender,
               ),
               const SizedBox(width: 16.0),
               GenderButton(
@@ -53,7 +51,7 @@ class NodeGenderBtn extends StatelessWidget {
                 color: color,
                 text: 'أنثى',
                 gender: Gender.female,
-                selected: Gender.female == state.node.gender,
+                selected: Gender.female == state.node!.gender,
               ),
             ],
           ),

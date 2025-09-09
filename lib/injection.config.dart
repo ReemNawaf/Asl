@@ -12,13 +12,13 @@ import 'package:asl/b_application/auth_bloc/auth_bloc.dart' as _i29;
 import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart'
     as _i30;
 import 'package:asl/b_application/node_bloc/family_watcher/family_watcher_bloc.dart'
-    as _i28;
+    as _i27;
 import 'package:asl/b_application/node_bloc/node_actor/node_actor_bloc.dart'
     as _i25;
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart'
     as _i26;
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart'
-    as _i27;
+    as _i28;
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart'
     as _i17;
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart'
@@ -107,10 +107,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i25.NodeActorBloc(gh<_i13.INodeRepository>()));
     gh.factory<_i26.NodeFormBloc>(
         () => _i26.NodeFormBloc(gh<_i13.INodeRepository>()));
-    gh.factory<_i27.NodeWatcherBloc>(
-        () => _i27.NodeWatcherBloc(gh<_i13.INodeRepository>()));
-    gh.factory<_i28.FamilyWatcherBloc>(
-        () => _i28.FamilyWatcherBloc(gh<_i13.INodeRepository>()));
+    gh.factory<_i27.FamilyWatcherBloc>(
+        () => _i27.FamilyWatcherBloc(gh<_i13.INodeRepository>()));
+    gh.factory<_i28.NodeWatcherBloc>(
+        () => _i28.NodeWatcherBloc(gh<_i13.INodeRepository>()));
     gh.factory<_i29.AuthBloc>(() => _i29.AuthBloc(gh<_i11.IAuthFacade>()));
     gh.factory<_i30.SignInFormBloc>(
         () => _i30.SignInFormBloc(gh<_i11.IAuthFacade>()));

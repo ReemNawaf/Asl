@@ -48,12 +48,17 @@ class FullName extends ValueObject<String> {
 
   factory FullName(String input) {
     return FullName._(
-      //  join 3 validators:
-      //  1. the full name doesn't exceed the maximmum length
+      //  join 4 validators:
+      //  1. the first name doesn't exceed the maximmum length
       validateMaxStringLength(input, maxLength)
-          //  2. the full name is not empty
+
+          //  2. the first name is not empty
           .flatMap(validateStringNotEmpty)
-          // 3. the full name one single line
+
+          // 3. the first name is larger than 3 char
+          .flatMap(validateFirstNameLength)
+
+          // 4. the first name one single line
           .flatMap(validateSingleLine),
     );
   }

@@ -50,7 +50,7 @@ class TreeList extends StatelessWidget {
                     ));
 
                     print(
-                        'TreeList: menuItems.length: ${menuItems.length} |----------');
+                        'LOG | TreeList: menuItems.length: ${menuItems.length}');
                     return DropdownButton(
                       items: menuItems,
                       isExpanded: true,

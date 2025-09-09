@@ -2948,14 +2948,11 @@ abstract class _Saved implements NodeFormEvent {
 
 /// @nodoc
 mixin _$NodeFormState {
-  TNode get node => throw _privateConstructorUsedError;
+  TNode? get node => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   int get isEditing =>
       throw _privateConstructorUsedError; // only for update existing ones
   bool get isSaving => throw _privateConstructorUsedError;
-  bool get isViewing => throw _privateConstructorUsedError;
-  bool get isAdding => throw _privateConstructorUsedError;
-  bool get hasNode => throw _privateConstructorUsedError;
   bool get addPartner => throw _privateConstructorUsedError;
   bool get addChild => throw _privateConstructorUsedError;
   int get currentPanel => throw _privateConstructorUsedError;
@@ -2974,19 +2971,16 @@ abstract class $NodeFormStateCopyWith<$Res> {
       _$NodeFormStateCopyWithImpl<$Res, NodeFormState>;
   @useResult
   $Res call(
-      {TNode node,
+      {TNode? node,
       AutovalidateMode showErrorMessages,
       int isEditing,
       bool isSaving,
-      bool isViewing,
-      bool isAdding,
-      bool hasNode,
       bool addPartner,
       bool addChild,
       int currentPanel,
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
-  $TNodeCopyWith<$Res> get node;
+  $TNodeCopyWith<$Res>? get node;
 }
 
 /// @nodoc
@@ -3002,23 +2996,20 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? node = null,
+    Object? node = freezed,
     Object? showErrorMessages = null,
     Object? isEditing = null,
     Object? isSaving = null,
-    Object? isViewing = null,
-    Object? isAdding = null,
-    Object? hasNode = null,
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
     Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
-      node: null == node
+      node: freezed == node
           ? _value.node
           : node // ignore: cast_nullable_to_non_nullable
-              as TNode,
+              as TNode?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -3030,18 +3021,6 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isViewing: null == isViewing
-          ? _value.isViewing
-          : isViewing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isAdding: null == isAdding
-          ? _value.isAdding
-          : isAdding // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasNode: null == hasNode
-          ? _value.hasNode
-          : hasNode // ignore: cast_nullable_to_non_nullable
               as bool,
       addPartner: null == addPartner
           ? _value.addPartner
@@ -3064,8 +3043,12 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
 
   @override
   @pragma('vm:prefer-inline')
-  $TNodeCopyWith<$Res> get node {
-    return $TNodeCopyWith<$Res>(_value.node, (value) {
+  $TNodeCopyWith<$Res>? get node {
+    if (_value.node == null) {
+      return null;
+    }
+
+    return $TNodeCopyWith<$Res>(_value.node!, (value) {
       return _then(_value.copyWith(node: value) as $Val);
     });
   }
@@ -3080,20 +3063,17 @@ abstract class _$$NodeFormStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TNode node,
+      {TNode? node,
       AutovalidateMode showErrorMessages,
       int isEditing,
       bool isSaving,
-      bool isViewing,
-      bool isAdding,
-      bool hasNode,
       bool addPartner,
       bool addChild,
       int currentPanel,
       Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
 
   @override
-  $TNodeCopyWith<$Res> get node;
+  $TNodeCopyWith<$Res>? get node;
 }
 
 /// @nodoc
@@ -3107,23 +3087,20 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? node = null,
+    Object? node = freezed,
     Object? showErrorMessages = null,
     Object? isEditing = null,
     Object? isSaving = null,
-    Object? isViewing = null,
-    Object? isAdding = null,
-    Object? hasNode = null,
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
     Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_$NodeFormStateImpl(
-      node: null == node
+      node: freezed == node
           ? _value.node
           : node // ignore: cast_nullable_to_non_nullable
-              as TNode,
+              as TNode?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -3135,18 +3112,6 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isViewing: null == isViewing
-          ? _value.isViewing
-          : isViewing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isAdding: null == isAdding
-          ? _value.isAdding
-          : isAdding // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasNode: null == hasNode
-          ? _value.hasNode
-          : hasNode // ignore: cast_nullable_to_non_nullable
               as bool,
       addPartner: null == addPartner
           ? _value.addPartner
@@ -3172,20 +3137,17 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
 
 class _$NodeFormStateImpl implements _NodeFormState {
   const _$NodeFormStateImpl(
-      {required this.node,
+      {this.node,
       required this.showErrorMessages,
       required this.isEditing,
       required this.isSaving,
-      required this.isViewing,
-      required this.isAdding,
-      required this.hasNode,
       required this.addPartner,
       required this.addChild,
       required this.currentPanel,
       required this.saveFailureOrSuccessOption});
 
   @override
-  final TNode node;
+  final TNode? node;
   @override
   final AutovalidateMode showErrorMessages;
   @override
@@ -3193,12 +3155,6 @@ class _$NodeFormStateImpl implements _NodeFormState {
 // only for update existing ones
   @override
   final bool isSaving;
-  @override
-  final bool isViewing;
-  @override
-  final bool isAdding;
-  @override
-  final bool hasNode;
   @override
   final bool addPartner;
   @override
@@ -3210,7 +3166,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
 
   @override
   String toString() {
-    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, isViewing: $isViewing, isAdding: $isAdding, hasNode: $hasNode, addPartner: $addPartner, addChild: $addChild, currentPanel: $currentPanel, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, addPartner: $addPartner, addChild: $addChild, currentPanel: $currentPanel, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -3225,11 +3181,6 @@ class _$NodeFormStateImpl implements _NodeFormState {
                 other.isEditing == isEditing) &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
-            (identical(other.isViewing, isViewing) ||
-                other.isViewing == isViewing) &&
-            (identical(other.isAdding, isAdding) ||
-                other.isAdding == isAdding) &&
-            (identical(other.hasNode, hasNode) || other.hasNode == hasNode) &&
             (identical(other.addPartner, addPartner) ||
                 other.addPartner == addPartner) &&
             (identical(other.addChild, addChild) ||
@@ -3249,9 +3200,6 @@ class _$NodeFormStateImpl implements _NodeFormState {
       showErrorMessages,
       isEditing,
       isSaving,
-      isViewing,
-      isAdding,
-      hasNode,
       addPartner,
       addChild,
       currentPanel,
@@ -3266,13 +3214,10 @@ class _$NodeFormStateImpl implements _NodeFormState {
 
 abstract class _NodeFormState implements NodeFormState {
   const factory _NodeFormState(
-      {required final TNode node,
+      {final TNode? node,
       required final AutovalidateMode showErrorMessages,
       required final int isEditing,
       required final bool isSaving,
-      required final bool isViewing,
-      required final bool isAdding,
-      required final bool hasNode,
       required final bool addPartner,
       required final bool addChild,
       required final int currentPanel,
@@ -3280,19 +3225,13 @@ abstract class _NodeFormState implements NodeFormState {
           saveFailureOrSuccessOption}) = _$NodeFormStateImpl;
 
   @override
-  TNode get node;
+  TNode? get node;
   @override
   AutovalidateMode get showErrorMessages;
   @override
   int get isEditing;
   @override // only for update existing ones
   bool get isSaving;
-  @override
-  bool get isViewing;
-  @override
-  bool get isAdding;
-  @override
-  bool get hasNode;
   @override
   bool get addPartner;
   @override
