@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class TreeViewPage extends StatefulWidget {
+  const TreeViewPage({Key? key}) : super(key: key);
+
   @override
-  _TreeViewPageState createState() => _TreeViewPageState();
+  TreeViewPageState createState() => TreeViewPageState();
 }
 
-class _TreeViewPageState extends State<TreeViewPage> {
+class TreeViewPageState extends State<TreeViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,54 +20,57 @@ class _TreeViewPageState extends State<TreeViewPage> {
           children: [
             Wrap(
               children: [
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.siblingSeparation.toString(),
-                    decoration: InputDecoration(labelText: 'Sibling Separation'),
+                    decoration:
+                        InputDecoration(labelText: 'Sibling Separation'),
                     onChanged: (text) {
                       builder.siblingSeparation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.levelSeparation.toString(),
                     decoration: InputDecoration(labelText: 'Level Separation'),
                     onChanged: (text) {
                       builder.levelSeparation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.subtreeSeparation.toString(),
-                    decoration: InputDecoration(labelText: 'Subtree separation'),
+                    decoration:
+                        InputDecoration(labelText: 'Subtree separation'),
                     onChanged: (text) {
                       builder.subtreeSeparation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.orientation.toString(),
                     decoration: InputDecoration(labelText: 'Orientation'),
                     onChanged: (text) {
                       builder.orientation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     final node12 = Node.Id(r.nextInt(100));
-                    var edge = graph.getNodeAtPosition(r.nextInt(graph.nodeCount()));
+                    var edge =
+                        graph.getNodeAtPosition(r.nextInt(graph.nodeCount()));
                     print(edge);
                     graph.addEdge(edge, node12);
                     setState(() {});
@@ -82,7 +87,8 @@ class _TreeViewPageState extends State<TreeViewPage> {
                   maxScale: 5.6,
                   child: GraphView(
                     graph: graph,
-                    algorithm: BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder)),
+                    algorithm: BuchheimWalkerAlgorithm(
+                        builder, TreeEdgeRenderer(builder)),
                     paint: Paint()
                       ..color = Colors.green
                       ..strokeWidth = 1
@@ -113,7 +119,7 @@ class _TreeViewPageState extends State<TreeViewPage> {
               BoxShadow(color: Colors.blue[100]!, spreadRadius: 1),
             ],
           ),
-          child: Text('Node ${a}')),
+          child: Text('Node $a')),
     );
   }
 
@@ -122,6 +128,7 @@ class _TreeViewPageState extends State<TreeViewPage> {
 
   @override
   void initState() {
+    super.initState();
     final node1 = Node.Id(1);
     final node2 = Node.Id(2);
     final node3 = Node.Id(3);

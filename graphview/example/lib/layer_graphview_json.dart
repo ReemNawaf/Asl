@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class LayerGraphPageFromJson extends StatefulWidget {
+  const LayerGraphPageFromJson({Key? key}) : super(key: key);
+
   @override
-  _LayerGraphPageFromJsonState createState() => _LayerGraphPageFromJsonState();
+  LayerGraphPageFromJsonState createState() => LayerGraphPageFromJsonState();
 }
 
-class _LayerGraphPageFromJsonState extends State<LayerGraphPageFromJson> {
+class LayerGraphPageFromJsonState extends State<LayerGraphPageFromJson> {
   // var  json =   {
   //   'edges': [
   //     {'from': '651372822', 'to': '780273411'},
@@ -141,40 +143,40 @@ class _LayerGraphPageFromJsonState extends State<LayerGraphPageFromJson> {
           children: [
             Wrap(
               children: [
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.nodeSeparation.toString(),
                     decoration: InputDecoration(labelText: 'Node Separation'),
                     onChanged: (text) {
                       builder.nodeSeparation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.levelSeparation.toString(),
                     decoration: InputDecoration(labelText: 'Level Separation'),
                     onChanged: (text) {
                       builder.levelSeparation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.orientation.toString(),
                     decoration: InputDecoration(labelText: 'Orientation'),
                     onChanged: (text) {
                       builder.orientation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: Column(
                     children: [
@@ -185,7 +187,7 @@ class _LayerGraphPageFromJsonState extends State<LayerGraphPageFromJson> {
                             .map((coordinateAssignment) {
                           return DropdownMenuItem<CoordinateAssignment>(
                             value: coordinateAssignment,
-                            child: Text(coordinateAssignment.name),
+                            child: Text(coordinateAssignment.index.toString()),
                           );
                         }).toList(),
                         onChanged: (value) {
@@ -238,7 +240,7 @@ class _LayerGraphPageFromJsonState extends State<LayerGraphPageFromJson> {
                 BoxShadow(color: Colors.blue[100]!, spreadRadius: 1),
               ],
             ),
-            child: Text('${a}')),
+            child: Text('$a')),
       ),
     );
   }
@@ -246,6 +248,7 @@ class _LayerGraphPageFromJsonState extends State<LayerGraphPageFromJson> {
   final Graph graph = Graph()..isTree = true;
   @override
   void initState() {
+    super.initState();
     var edges = json['edges']!;
     edges.forEach((element) {
       var fromNodeId = element['from'];

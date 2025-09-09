@@ -47,5 +47,7 @@ linter:
     - valid_regexps
 
 analyzer:
+  errors:
+    deprecated_member_use_from_same_package: ignore
   strong-mode:
     implicit-casts: false

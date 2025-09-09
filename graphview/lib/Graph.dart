@@ -222,7 +222,7 @@ class Edge {
   Edge(this.source, this.destination, {this.label, this.key, this.paint});
 
   @override
-  bool operator ==(Object? other) =>
+  bool operator ==(Object other) =>
       identical(this, other) || other is Edge && hashCode == other.hashCode;
 
   @override

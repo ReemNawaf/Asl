@@ -76,7 +76,7 @@ class _TreeViewPageState extends State<TreeViewPage> {
                 decoration: InputDecoration(labelText: "Sibling Separation"),
                 onChanged: (text) {
                   builder.siblingSeparation = int.tryParse(text) ?? 100;
-                  this.setState(() {});
+                  setState(() {});
                 },
               ),
             ),
@@ -87,7 +87,7 @@ class _TreeViewPageState extends State<TreeViewPage> {
                 decoration: InputDecoration(labelText: "Level Separation"),
                 onChanged: (text) {
                   builder.levelSeparation = int.tryParse(text) ?? 100;
-                  this.setState(() {});
+                  setState(() {});
                 },
               ),
             ),
@@ -98,7 +98,7 @@ class _TreeViewPageState extends State<TreeViewPage> {
                 decoration: InputDecoration(labelText: "Subtree separation"),
                 onChanged: (text) {
                   builder.subtreeSeparation = int.tryParse(text) ?? 100;
-                  this.setState(() {});
+                  setState(() {});
                 },
               ),
             ),
@@ -109,7 +109,7 @@ class _TreeViewPageState extends State<TreeViewPage> {
                 decoration: InputDecoration(labelText: "Orientation"),
                 onChanged: (text) {
                   builder.orientation = int.tryParse(text) ?? 100;
-                  this.setState(() {});
+                  setState(() {});
                 },
               ),
             ),

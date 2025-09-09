@@ -159,8 +159,7 @@ class SugiyamaAlgorithm extends Algorithm {
           dummyNodeData.layer = indexNextLayer;
           nextLayer.add(dummy);
           nodeData[dummy] = dummyNodeData;
-          dummy.size =
-              Size(edge.source.width, 0); // calc TODO avg layer height;
+          dummy.size = Size(edge.source.width, 0);
           final dummyEdge1 = graph.addEdge(edge.source, dummy);
           final dummyEdge2 = graph.addEdge(dummy, edge.destination);
           edgeData[dummyEdge1] = SugiyamaEdgeData();
@@ -354,9 +353,9 @@ class SugiyamaAlgorithm extends Algorithm {
     var crossing = 0;
     final parentNodesN1 = nodeData[n1]!.predecessorNodes;
     final parentNodesN2 = nodeData[n2]!.predecessorNodes;
-    parentNodesN2.forEach((pn2) {
-      final indexOfPn2 = indexOf(pn2);
-      parentNodesN1.where((it) => indexOfPn2 < indexOf(it)).forEach((element) {
+    parentNodesN2.forEach((ppn2) {
+      final indexOfPpn2 = indexOf(ppn2);
+      parentNodesN1.where((it) => indexOfPpn2 < indexOf(it)).forEach((element) {
         crossing++;
       });
     });

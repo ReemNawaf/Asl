@@ -5,17 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class GraphScreen extends StatefulWidget {
-  Graph graph;
-  Algorithm algorithm;
+  final Graph graph;
+  final Algorithm algorithm;
   final Paint? paint;
 
-  GraphScreen(this.graph, this.algorithm, this.paint);
+  const GraphScreen(this.graph, this.algorithm, this.paint, {Key? key})
+      : super(key: key);
 
   @override
-  _GraphScreenState createState() => _GraphScreenState();
+  GraphScreenState createState() => GraphScreenState();
 }
 
-class _GraphScreenState extends State<GraphScreen> {
+class GraphScreenState extends State<GraphScreen> {
   bool animated = true;
   Random r = Random();
 
@@ -30,7 +31,8 @@ class _GraphScreenState extends State<GraphScreen> {
             onPressed: () async {
               setState(() {
                 final node12 = Node.Id(r.nextInt(100).toString());
-                var edge = widget.graph.getNodeAtPosition(r.nextInt(widget.graph.nodeCount()));
+                var edge = widget.graph
+                    .getNodeAtPosition(r.nextInt(widget.graph.nodeCount()));
                 print(edge);
                 widget.graph.addEdge(edge, node12);
                 setState(() {});

@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class LayeredGraphViewPage extends StatefulWidget {
+  const LayeredGraphViewPage({Key? key}) : super(key: key);
+
   @override
-  _LayeredGraphViewPageState createState() => _LayeredGraphViewPageState();
+  LayeredGraphViewPageState createState() => LayeredGraphViewPageState();
 }
 
-class _LayeredGraphViewPageState extends State<LayeredGraphViewPage> {
+class LayeredGraphViewPageState extends State<LayeredGraphViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,50 +20,51 @@ class _LayeredGraphViewPageState extends State<LayeredGraphViewPage> {
           children: [
             Wrap(
               children: [
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.nodeSeparation.toString(),
                     decoration: InputDecoration(labelText: 'Node Separation'),
                     onChanged: (text) {
                       builder.nodeSeparation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.levelSeparation.toString(),
                     decoration: InputDecoration(labelText: 'Level Separation'),
                     onChanged: (text) {
                       builder.levelSeparation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.orientation.toString(),
                     decoration: InputDecoration(labelText: 'Orientation'),
                     onChanged: (text) {
                       builder.orientation = int.tryParse(text) ?? 100;
-                      this.setState(() {});
+                      setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: Column(
                     children: [
                       Text('Alignment'),
                       DropdownButton<CoordinateAssignment>(
                         value: builder.coordinateAssignment,
-                        items: CoordinateAssignment.values.map((coordinateAssignment) {
+                        items: CoordinateAssignment.values
+                            .map((coordinateAssignment) {
                           return DropdownMenuItem<CoordinateAssignment>(
                             value: coordinateAssignment,
-                            child: Text(coordinateAssignment.name),
+                            child: Text(coordinateAssignment.index.toString()),
                           );
                         }).toList(),
                         onChanged: (value) {
@@ -76,7 +79,8 @@ class _LayeredGraphViewPageState extends State<LayeredGraphViewPage> {
                 ElevatedButton(
                   onPressed: () {
                     final node12 = Node.Id(r.nextInt(100));
-                    var edge = graph.getNodeAtPosition(r.nextInt(graph.nodeCount()));
+                    var edge =
+                        graph.getNodeAtPosition(r.nextInt(graph.nodeCount()));
                     print(edge);
                     graph.addEdge(edge, node12);
                     setState(() {});
@@ -120,7 +124,7 @@ class _LayeredGraphViewPageState extends State<LayeredGraphViewPage> {
             BoxShadow(color: Colors.blue[100]!, spreadRadius: 1),
           ],
         ),
-        child: Text('Node ${a}'));
+        child: Text('Node $a'));
   }
 
   final Graph graph = Graph();

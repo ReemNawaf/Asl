@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class GraphClusterViewPage extends StatefulWidget {
+  const GraphClusterViewPage({Key? key}) : super(key: key);
+
   @override
-  _GraphClusterViewPageState createState() => _GraphClusterViewPageState();
+  GraphClusterViewPageState createState() => GraphClusterViewPageState();
 }
 
-class _GraphClusterViewPageState extends State<GraphClusterViewPage> {
+class GraphClusterViewPageState extends State<GraphClusterViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +63,7 @@ class _GraphClusterViewPageState extends State<GraphClusterViewPage> {
 
   @override
   void initState() {
+    super.initState();
     final a = Node.Id(1);
     final b = Node.Id(2);
     final c = Node.Id(3);

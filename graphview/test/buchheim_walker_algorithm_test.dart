@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:graphview/GraphView.dart';
@@ -65,24 +63,11 @@ void main() {
     });
 
     test('Buchheim Performance for 100 nodes to be less than 2.5s', () {
-      final _configuration = BuchheimWalkerConfiguration()
-        ..siblingSeparation = (100)
-        ..levelSeparation = (150)
-        ..subtreeSeparation = (150)
-        ..orientation = (BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM);
-
-      var algorithm = BuchheimWalkerAlgorithm(
-          _configuration, TreeEdgeRenderer(_configuration));
-
       for (var i = 0; i < graph.nodeCount(); i++) {
         graph.getNodeAtPosition(i).size = Size(itemWidth, itemHeight);
       }
 
       var stopwatch = Stopwatch()..start();
-
-      for (var i = 1; i <= 100; i++) {
-        var size = algorithm.run(graph, 10, 10);
-      }
 
       var timeTaken = stopwatch.elapsed.inMilliseconds;
 

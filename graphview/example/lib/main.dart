@@ -14,6 +14,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(home: Home());
@@ -82,7 +84,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                 child: Text(
-                  "Layered View (Sugiyama)",
+                  'Layered View (Sugiyama)',
                   style: TextStyle(fontSize: 30),
                 )),
             SizedBox(
@@ -126,7 +128,7 @@ class Home extends StatelessWidget {
             ),
             MaterialButton(
               onPressed: () {
-                var graph = new Graph();
+                var graph = Graph();
 
                 Node node1 = Node.Id('One');
                 Node node2 = Node.Id('Two');
@@ -171,7 +173,7 @@ class Home extends StatelessWidget {
             ),
             MaterialButton(
               onPressed: () {
-                var graph = new Graph();
+                var graph = Graph();
 
                 Node node1 = Node.Id('One');
                 Node node2 = Node.Id('Two');

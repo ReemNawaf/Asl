@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class TreeViewPageFromJson extends StatefulWidget {
+  const TreeViewPageFromJson({Key? key}) : super(key: key);
+
   @override
-  _TreeViewPageFromJsonState createState() => _TreeViewPageFromJsonState();
+  TreeViewPageFromJsonState createState() => TreeViewPageFromJsonState();
 }
 
-class _TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
+class TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
   var json = {
     'nodes': [
       {'id': 1, 'label': 'circle'},
@@ -38,18 +40,19 @@ class _TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
           children: [
             Wrap(
               children: [
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.siblingSeparation.toString(),
-                    decoration: InputDecoration(labelText: 'Sibling Separation'),
+                    decoration:
+                        InputDecoration(labelText: 'Sibling Separation'),
                     onChanged: (text) {
                       builder.siblingSeparation = int.tryParse(text) ?? 100;
                       setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.levelSeparation.toString(),
@@ -60,18 +63,19 @@ class _TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.subtreeSeparation.toString(),
-                    decoration: InputDecoration(labelText: 'Subtree separation'),
+                    decoration:
+                        InputDecoration(labelText: 'Subtree separation'),
                     onChanged: (text) {
                       builder.subtreeSeparation = int.tryParse(text) ?? 100;
                       setState(() {});
                     },
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 100,
                   child: TextFormField(
                     initialValue: builder.orientation.toString(),
@@ -92,7 +96,8 @@ class _TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
                   maxScale: 5.6,
                   child: GraphView(
                     graph: graph,
-                    algorithm: BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder)),
+                    algorithm: BuchheimWalkerAlgorithm(
+                        builder, TreeEdgeRenderer(builder)),
                     paint: Paint()
                       ..color = Colors.green
                       ..strokeWidth = 1
@@ -101,7 +106,8 @@ class _TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
                       // I can decide what widget should be shown here based on the id
                       var a = node.key!.value as int?;
                       var nodes = json['nodes']!;
-                      var nodeValue = nodes.firstWhere((element) => element['id'] == a);
+                      var nodeValue =
+                          nodes.firstWhere((element) => element['id'] == a);
                       return rectangleWidget(nodeValue['label'] as String?);
                     },
                   )),
@@ -123,7 +129,7 @@ class _TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
               BoxShadow(color: Colors.blue[100]!, spreadRadius: 1),
             ],
           ),
-          child: Text('${a}')),
+          child: Text('$a')),
     );
   }
 
@@ -132,6 +138,7 @@ class _TreeViewPageFromJsonState extends State<TreeViewPageFromJson> {
 
   @override
   void initState() {
+    super.initState();
     var edges = json['edges']!;
     edges.forEach((element) {
       var fromNodeId = element['from'];
