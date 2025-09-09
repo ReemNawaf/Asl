@@ -74,26 +74,30 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         print('LOG | addPartner end');
       },
       showPartnerByNodeId: (e) {
+        print('09 | state.isPartnerById ${state.isPartnerById}');
         emit(state.copyWith(isPartnerById: e.isAdding));
+        print('09 | state.isPartnerById ${state.isPartnerById}');
       },
       addPartnerByNodeId: (e) {
         // get the partner node
         // only add the relation
 
-        final newPartners = [...state.partnersList, state.partner];
+        print('09 | Node ID ${e.id}');
 
-        final newRelations = [
-          ...state.relationsList,
-          state.relation!.copyWith(partnerNode: state.partner)
-        ];
+        // final newPartners = [...state.partnersList, state.partner];
 
-        emit(state.copyWith(
-          partnersList: newPartners,
-          relationsList: newRelations,
-          isViewing: true,
-          isAdding: false,
-          showErrorMessages: AutovalidateMode.always,
-        ));
+        // final newRelations = [
+        //   ...state.relationsList,
+        //   state.relation!.copyWith(partnerNode: state.partner)
+        // ];
+
+        // emit(state.copyWith(
+        //   partnersList: newPartners,
+        //   relationsList: newRelations,
+        //   isViewing: true,
+        //   isAdding: false,
+        //   showErrorMessages: AutovalidateMode.always,
+        // ));
       },
       edited: (e) {
         emit(state.copyWith(

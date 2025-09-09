@@ -6,7 +6,7 @@ abstract class PartnerFormEvent with _$PartnerFormEvent {
 
   const factory PartnerFormEvent.edited(TNode partner) = _Edited;
   const factory PartnerFormEvent.changeName(String name) = _ChangedName;
-  const factory PartnerFormEvent.addPartnerByNodeId(UniqueId id) =
+  const factory PartnerFormEvent.addPartnerByNodeId(String id) =
       _AddPartnerByNodeId;
   const factory PartnerFormEvent.showPartnerByNodeId(bool isAdding) =
       _ShowPartnerByNodeId;
