@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
@@ -34,6 +35,7 @@ class AddPartnerWidget extends StatelessWidget {
       builder: (context, state) {
         final isAddingPartner = state.isPartnerById;
         print('09 | isAddingPartner $isAddingPartner');
+
         return Form(
           autovalidateMode: state.showErrorMessages,
           key: formKey,
@@ -88,19 +90,34 @@ class AddPartnerWidget extends StatelessWidget {
                   SizedBox(
                     width: 250,
                     child: isAddingPartner
-                        ? AppFormField(
-                            label:
-                                'إضافة معرف الزوج${node.gender == Gender.male ? 'ة' : ''}',
-                            hint: 'أدخل معرف العضو',
-                            onChanged: (value) {
-                              context.read<PartnerFormBloc>().add(
-                                  PartnerFormEvent.addPartnerByNodeId(
-                                      value!.trim()));
-                            },
-                            isValid: true,
-                            validator: (_) {
-                              return null;
-                            },
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppFormField(
+                                label:
+                                    'إضافة معرف الزوج${node.gender == Gender.male ? 'ة' : ''}',
+                                hint: 'أدخل معرف العضو',
+                                onChanged: (value) {
+                                  if (value != null &&
+                                      value.trim().length == 36) {
+                                    context.read<PartnerFormBloc>().add(
+                                        PartnerFormEvent.addPartnerByNodeId(
+                                            node: node,
+                                            partnerId: value.trim()));
+                                  }
+                                },
+                                isValid: true,
+                                validator: (_) {
+                                  return null;
+                                },
+                              ),
+                              if (state.partnerNotExist)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Text(ARABIC_STRINGS['node_not_exist']!,
+                                      style: kValidationTextStyle),
+                                ),
+                            ],
                           )
                         : AppFormField(
                             label:

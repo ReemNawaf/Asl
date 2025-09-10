@@ -21,7 +21,6 @@ class MainPanel extends StatelessWidget {
     required this.type,
     required this.imageWidget,
     required this.node,
-    required this.contextPage,
     required this.hasImage,
   });
 
@@ -29,7 +28,6 @@ class MainPanel extends StatelessWidget {
   final NodeType type;
   final Widget imageWidget;
   final TNode node;
-  final BuildContext contextPage;
   final bool hasImage;
 
   bool showEditingIcon(NodeFormState state) {
@@ -132,7 +130,7 @@ class MainPanel extends StatelessWidget {
                           margin: const EdgeInsets.only(right: 80),
                           child: TabBarView(
                             children: [
-                              InfoPanel(color: color),
+                              InfoPanel(color: color, contextDialog: context),
                               ParentsSiblingsPanel(color: color),
                               if (type != NodeType.partner)
                                 RelationsPanel(color: color, node: node),

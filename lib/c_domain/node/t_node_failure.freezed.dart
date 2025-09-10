@@ -21,6 +21,7 @@ mixin _$TNodeFailure {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() nodeNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$TNodeFailure {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? nodeNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$TNodeFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? nodeNotExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$TNodeFailure {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NodeNotExist value) nodeNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$TNodeFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_NodeNotExist value)? nodeNotExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$TNodeFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NodeNotExist value)? nodeNotExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +128,7 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() nodeNotExist,
   }) {
     return unexpected();
   }
@@ -132,6 +139,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? nodeNotExist,
   }) {
     return unexpected?.call();
   }
@@ -142,6 +150,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? nodeNotExist,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -157,6 +166,7 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NodeNotExist value) nodeNotExist,
   }) {
     return unexpected(this);
   }
@@ -167,6 +177,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_NodeNotExist value)? nodeNotExist,
   }) {
     return unexpected?.call(this);
   }
@@ -177,6 +188,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NodeNotExist value)? nodeNotExist,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -234,6 +246,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() nodeNotExist,
   }) {
     return insufficientPermission();
   }
@@ -244,6 +257,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? nodeNotExist,
   }) {
     return insufficientPermission?.call();
   }
@@ -254,6 +268,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? nodeNotExist,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -269,6 +284,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NodeNotExist value) nodeNotExist,
   }) {
     return insufficientPermission(this);
   }
@@ -279,6 +295,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_NodeNotExist value)? nodeNotExist,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -289,6 +306,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NodeNotExist value)? nodeNotExist,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -343,6 +361,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() nodeNotExist,
   }) {
     return unableToUpdate();
   }
@@ -353,6 +372,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? nodeNotExist,
   }) {
     return unableToUpdate?.call();
   }
@@ -363,6 +383,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? nodeNotExist,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -378,6 +399,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NodeNotExist value) nodeNotExist,
   }) {
     return unableToUpdate(this);
   }
@@ -388,6 +410,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_NodeNotExist value)? nodeNotExist,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -398,6 +421,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NodeNotExist value)? nodeNotExist,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -409,4 +433,119 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
 
 abstract class _UnableToUpdate implements TNodeFailure {
   const factory _UnableToUpdate() = _$UnableToUpdateImpl;
+}
+
+/// @nodoc
+abstract class _$$NodeNotExistImplCopyWith<$Res> {
+  factory _$$NodeNotExistImplCopyWith(
+          _$NodeNotExistImpl value, $Res Function(_$NodeNotExistImpl) then) =
+      __$$NodeNotExistImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NodeNotExistImplCopyWithImpl<$Res>
+    extends _$TNodeFailureCopyWithImpl<$Res, _$NodeNotExistImpl>
+    implements _$$NodeNotExistImplCopyWith<$Res> {
+  __$$NodeNotExistImplCopyWithImpl(
+      _$NodeNotExistImpl _value, $Res Function(_$NodeNotExistImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NodeNotExistImpl implements _NodeNotExist {
+  const _$NodeNotExistImpl();
+
+  @override
+  String toString() {
+    return 'TNodeFailure.nodeNotExist()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NodeNotExistImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() nodeNotExist,
+  }) {
+    return nodeNotExist();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? nodeNotExist,
+  }) {
+    return nodeNotExist?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? nodeNotExist,
+    required TResult orElse(),
+  }) {
+    if (nodeNotExist != null) {
+      return nodeNotExist();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_NodeNotExist value) nodeNotExist,
+  }) {
+    return nodeNotExist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_NodeNotExist value)? nodeNotExist,
+  }) {
+    return nodeNotExist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_NodeNotExist value)? nodeNotExist,
+    required TResult orElse(),
+  }) {
+    if (nodeNotExist != null) {
+      return nodeNotExist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NodeNotExist implements TNodeFailure {
+  const factory _NodeNotExist() = _$NodeNotExistImpl;
 }

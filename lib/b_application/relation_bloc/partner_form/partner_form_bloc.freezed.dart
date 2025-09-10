@@ -21,7 +21,7 @@ mixin _$PartnerFormEvent {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -35,7 +35,7 @@ mixin _$PartnerFormEvent {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -49,7 +49,7 @@ mixin _$PartnerFormEvent {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -200,7 +200,7 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -217,7 +217,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -234,7 +234,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -392,7 +392,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -409,7 +409,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -426,7 +426,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -574,7 +574,7 @@ class _$ChangedNameImpl implements _ChangedName {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -591,7 +591,7 @@ class _$ChangedNameImpl implements _ChangedName {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -608,7 +608,7 @@ class _$ChangedNameImpl implements _ChangedName {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -695,7 +695,9 @@ abstract class _$$AddPartnerByNodeIdImplCopyWith<$Res> {
           $Res Function(_$AddPartnerByNodeIdImpl) then) =
       __$$AddPartnerByNodeIdImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String partnerId, TNode node});
+
+  $TNodeCopyWith<$Res> get node;
 }
 
 /// @nodoc
@@ -709,28 +711,43 @@ class __$$AddPartnerByNodeIdImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? partnerId = null,
+    Object? node = null,
   }) {
     return _then(_$AddPartnerByNodeIdImpl(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      partnerId: null == partnerId
+          ? _value.partnerId
+          : partnerId // ignore: cast_nullable_to_non_nullable
               as String,
+      node: null == node
+          ? _value.node
+          : node // ignore: cast_nullable_to_non_nullable
+              as TNode,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res> get node {
+    return $TNodeCopyWith<$Res>(_value.node, (value) {
+      return _then(_value.copyWith(node: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
-  const _$AddPartnerByNodeIdImpl(this.id);
+  const _$AddPartnerByNodeIdImpl({required this.partnerId, required this.node});
 
   @override
-  final String id;
+  final String partnerId;
+  @override
+  final TNode node;
 
   @override
   String toString() {
-    return 'PartnerFormEvent.addPartnerByNodeId(id: $id)';
+    return 'PartnerFormEvent.addPartnerByNodeId(partnerId: $partnerId, node: $node)';
   }
 
   @override
@@ -738,11 +755,13 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddPartnerByNodeIdImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.partnerId, partnerId) ||
+                other.partnerId == partnerId) &&
+            (identical(other.node, node) || other.node == node));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, partnerId, node);
 
   @JsonKey(ignore: true)
   @override
@@ -757,7 +776,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -765,7 +784,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     required TResult Function() addPartnertoList,
     required TResult Function() saved,
   }) {
-    return addPartnerByNodeId(id);
+    return addPartnerByNodeId(partnerId, node);
   }
 
   @override
@@ -774,7 +793,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -782,7 +801,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     TResult? Function()? addPartnertoList,
     TResult? Function()? saved,
   }) {
-    return addPartnerByNodeId?.call(id);
+    return addPartnerByNodeId?.call(partnerId, node);
   }
 
   @override
@@ -791,7 +810,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -801,7 +820,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     required TResult orElse(),
   }) {
     if (addPartnerByNodeId != null) {
-      return addPartnerByNodeId(id);
+      return addPartnerByNodeId(partnerId, node);
     }
     return orElse();
   }
@@ -864,9 +883,12 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
 }
 
 abstract class _AddPartnerByNodeId implements PartnerFormEvent {
-  const factory _AddPartnerByNodeId(final String id) = _$AddPartnerByNodeIdImpl;
+  const factory _AddPartnerByNodeId(
+      {required final String partnerId,
+      required final TNode node}) = _$AddPartnerByNodeIdImpl;
 
-  String get id;
+  String get partnerId;
+  TNode get node;
   @JsonKey(ignore: true)
   _$$AddPartnerByNodeIdImplCopyWith<_$AddPartnerByNodeIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -941,7 +963,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -958,7 +980,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -975,7 +997,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1125,7 +1147,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1142,7 +1164,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1159,7 +1181,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1310,7 +1332,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1327,7 +1349,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1344,7 +1366,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1495,7 +1517,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1512,7 +1534,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1529,7 +1551,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1652,7 +1674,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1669,7 +1691,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1686,7 +1708,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1803,7 +1825,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(TNode node) addPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
-    required TResult Function(String id) addPartnerByNodeId,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
     required TResult Function(bool isAdding) showPartnerByNodeId,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1820,7 +1842,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(TNode node)? addPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
-    TResult? Function(String id)? addPartnerByNodeId,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1837,7 +1859,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(TNode node)? addPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
-    TResult Function(String id)? addPartnerByNodeId,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
     TResult Function(bool isAdding)? showPartnerByNodeId,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1928,8 +1950,11 @@ mixin _$PartnerFormState {
   bool get isViewing => throw _privateConstructorUsedError;
   bool get isCreated => throw _privateConstructorUsedError;
   bool get isPartnerById => throw _privateConstructorUsedError;
+  bool get gettingPartnerNodeByIdInProgress =>
+      throw _privateConstructorUsedError;
   Option<Either<RelationFailure, Unit>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
+  bool get partnerNotExist => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PartnerFormStateCopyWith<PartnerFormState> get copyWith =>
@@ -1955,7 +1980,9 @@ abstract class $PartnerFormStateCopyWith<$Res> {
       bool isViewing,
       bool isCreated,
       bool isPartnerById,
-      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption});
+      bool gettingPartnerNodeByIdInProgress,
+      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption,
+      bool partnerNotExist});
 
   $TNodeCopyWith<$Res>? get node;
   $TNodeCopyWith<$Res> get partner;
@@ -1987,7 +2014,9 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
     Object? isViewing = null,
     Object? isCreated = null,
     Object? isPartnerById = null,
+    Object? gettingPartnerNodeByIdInProgress = null,
     Object? saveFailureOrSuccessOption = null,
+    Object? partnerNotExist = null,
   }) {
     return _then(_value.copyWith(
       node: freezed == node
@@ -2038,10 +2067,18 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
           ? _value.isPartnerById
           : isPartnerById // ignore: cast_nullable_to_non_nullable
               as bool,
+      gettingPartnerNodeByIdInProgress: null == gettingPartnerNodeByIdInProgress
+          ? _value.gettingPartnerNodeByIdInProgress
+          : gettingPartnerNodeByIdInProgress // ignore: cast_nullable_to_non_nullable
+              as bool,
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<RelationFailure, Unit>>,
+      partnerNotExist: null == partnerNotExist
+          ? _value.partnerNotExist
+          : partnerNotExist // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -2099,7 +2136,9 @@ abstract class _$$PartnerFormStateImplCopyWith<$Res>
       bool isViewing,
       bool isCreated,
       bool isPartnerById,
-      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption});
+      bool gettingPartnerNodeByIdInProgress,
+      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption,
+      bool partnerNotExist});
 
   @override
   $TNodeCopyWith<$Res>? get node;
@@ -2132,7 +2171,9 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
     Object? isViewing = null,
     Object? isCreated = null,
     Object? isPartnerById = null,
+    Object? gettingPartnerNodeByIdInProgress = null,
     Object? saveFailureOrSuccessOption = null,
+    Object? partnerNotExist = null,
   }) {
     return _then(_$PartnerFormStateImpl(
       node: freezed == node
@@ -2183,10 +2224,18 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
           ? _value.isPartnerById
           : isPartnerById // ignore: cast_nullable_to_non_nullable
               as bool,
+      gettingPartnerNodeByIdInProgress: null == gettingPartnerNodeByIdInProgress
+          ? _value.gettingPartnerNodeByIdInProgress
+          : gettingPartnerNodeByIdInProgress // ignore: cast_nullable_to_non_nullable
+              as bool,
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<RelationFailure, Unit>>,
+      partnerNotExist: null == partnerNotExist
+          ? _value.partnerNotExist
+          : partnerNotExist // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -2207,7 +2256,9 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       required this.isViewing,
       required this.isCreated,
       required this.isPartnerById,
-      required this.saveFailureOrSuccessOption})
+      required this.gettingPartnerNodeByIdInProgress,
+      required this.saveFailureOrSuccessOption,
+      required this.partnerNotExist})
       : _partnersList = partnersList,
         _relationsList = relationsList;
 
@@ -2249,11 +2300,15 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
   @override
   final bool isPartnerById;
   @override
+  final bool gettingPartnerNodeByIdInProgress;
+  @override
   final Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption;
+  @override
+  final bool partnerNotExist;
 
   @override
   String toString() {
-    return 'PartnerFormState(node: $node, partner: $partner, partnersList: $partnersList, relation: $relation, relationsList: $relationsList, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isAdding: $isAdding, isEditing: $isEditing, isViewing: $isViewing, isCreated: $isCreated, isPartnerById: $isPartnerById, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'PartnerFormState(node: $node, partner: $partner, partnersList: $partnersList, relation: $relation, relationsList: $relationsList, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isAdding: $isAdding, isEditing: $isEditing, isViewing: $isViewing, isCreated: $isCreated, isPartnerById: $isPartnerById, gettingPartnerNodeByIdInProgress: $gettingPartnerNodeByIdInProgress, saveFailureOrSuccessOption: $saveFailureOrSuccessOption, partnerNotExist: $partnerNotExist)';
   }
 
   @override
@@ -2283,10 +2338,16 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
                 other.isCreated == isCreated) &&
             (identical(other.isPartnerById, isPartnerById) ||
                 other.isPartnerById == isPartnerById) &&
+            (identical(other.gettingPartnerNodeByIdInProgress,
+                    gettingPartnerNodeByIdInProgress) ||
+                other.gettingPartnerNodeByIdInProgress ==
+                    gettingPartnerNodeByIdInProgress) &&
             (identical(other.saveFailureOrSuccessOption,
                     saveFailureOrSuccessOption) ||
                 other.saveFailureOrSuccessOption ==
-                    saveFailureOrSuccessOption));
+                    saveFailureOrSuccessOption) &&
+            (identical(other.partnerNotExist, partnerNotExist) ||
+                other.partnerNotExist == partnerNotExist));
   }
 
   @override
@@ -2304,7 +2365,9 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       isViewing,
       isCreated,
       isPartnerById,
-      saveFailureOrSuccessOption);
+      gettingPartnerNodeByIdInProgress,
+      saveFailureOrSuccessOption,
+      partnerNotExist);
 
   @JsonKey(ignore: true)
   @override
@@ -2328,8 +2391,10 @@ abstract class _PartnerFormState implements PartnerFormState {
       required final bool isViewing,
       required final bool isCreated,
       required final bool isPartnerById,
+      required final bool gettingPartnerNodeByIdInProgress,
       required final Option<Either<RelationFailure, Unit>>
-          saveFailureOrSuccessOption}) = _$PartnerFormStateImpl;
+          saveFailureOrSuccessOption,
+      required final bool partnerNotExist}) = _$PartnerFormStateImpl;
 
   @override
   TNode? get node;
@@ -2356,7 +2421,11 @@ abstract class _PartnerFormState implements PartnerFormState {
   @override
   bool get isPartnerById;
   @override
+  bool get gettingPartnerNodeByIdInProgress;
+  @override
   Option<Either<RelationFailure, Unit>> get saveFailureOrSuccessOption;
+  @override
+  bool get partnerNotExist;
   @override
   @JsonKey(ignore: true)
   _$$PartnerFormStateImplCopyWith<_$PartnerFormStateImpl> get copyWith =>

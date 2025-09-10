@@ -50,7 +50,7 @@ void appSnackBar(
       ],
     ),
 //
-    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 6.0),
     duration: const Duration(seconds: 2),
     width: 400.0,
     behavior: SnackBarBehavior.floating,

@@ -10,7 +10,8 @@ const kAppFoucusborderWidth = 2.0;
 const searchBarRadius = 12.0;
 const kSearchBarBorderWidth = 0.5;
 const kAppRadius = Radius.circular(10.0);
-
+final kValidationTextStyle =
+    kCaption1Style.copyWith(color: kErrorUIColor, height: 1.0);
 BoxDecoration kSearchResultBoxDec =
     BoxDecoration(color: kBlacksColor[600], borderRadius: kSearchBorderRadius);
 
@@ -96,7 +97,7 @@ InputDecoration kAppFormsInputDecor({
     InputDecoration(
       hintText: hint,
       hintStyle: kFootnoteStyle.copyWith(color: kBlacksColor),
-      errorStyle: kCaption1Style.copyWith(color: kErrorUIColor, height: 1.0),
+      errorStyle: kValidationTextStyle,
       icon: icon,
       filled: true,
       fillColor: color ?? Colors.transparent,

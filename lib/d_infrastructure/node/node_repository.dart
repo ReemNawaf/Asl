@@ -59,6 +59,10 @@ class NodeRepository implements INodeRepository {
           .collection(NODES_COLLECTION)
           .doc(nodeId.getOrCrash())
           .get();
+
+      if (node.data() == null) {
+        return left(const TNodeFailure.nodeNotExist());
+      }
       return right(NodeDto.fromFirestore(node).toDomain());
     } on PlatformException catch (e) {
       if (e is FirebaseException &&

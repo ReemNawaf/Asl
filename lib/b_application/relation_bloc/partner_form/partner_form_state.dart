@@ -15,7 +15,9 @@ abstract class PartnerFormState with _$PartnerFormState {
     required bool isViewing,
     required bool isCreated,
     required bool isPartnerById,
+    required bool gettingPartnerNodeByIdInProgress,
     required Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption,
+    required bool partnerNotExist,
   }) = _PartnerFormState;
 
   factory PartnerFormState.initial() => PartnerFormState(
@@ -27,10 +29,12 @@ abstract class PartnerFormState with _$PartnerFormState {
         showErrorMessages: AutovalidateMode.disabled,
         isSaving: false,
         isAdding: false,
-        saveFailureOrSuccessOption: none(),
         isEditing: false,
         isPartnerById: false,
         isViewing: false,
         isCreated: false,
+        gettingPartnerNodeByIdInProgress: false,
+        partnerNotExist: false,
+        saveFailureOrSuccessOption: none(),
       );
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/i_relation_repository.dart';
 import 'package:asl/c_domain/relation/relation.dart';
@@ -20,9 +21,12 @@ part 'partner_form_bloc.freezed.dart';
 @injectable
 class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
   final IRelationRepository _relationRepository;
+  final INodeRepository _nodeRepository;
 
-  PartnerFormBloc(this._relationRepository)
-      : super(PartnerFormState.initial()) {
+  PartnerFormBloc(
+    this._relationRepository,
+    this._nodeRepository,
+  ) : super(PartnerFormState.initial()) {
     on<PartnerFormEvent>(mapEventToState);
   }
 
@@ -78,26 +82,56 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         emit(state.copyWith(isPartnerById: e.isAdding));
         print('09 | state.isPartnerById ${state.isPartnerById}');
       },
-      addPartnerByNodeId: (e) {
-        // get the partner node
-        // only add the relation
+      addPartnerByNodeId: (e) async {
+        // get the partner node, to make sure it exist
+        print('09 | Node ID ${e.partnerId}');
+        emit(state.copyWith(gettingPartnerNodeByIdInProgress: true));
+        final failureOrSuccess = await _nodeRepository.getNode(
+            treeId: e.node.treeId,
+            nodeId: UniqueId.fromUniqueString(e.partnerId));
 
-        print('09 | Node ID ${e.id}');
+        failureOrSuccess.fold((l) {
+          // when the node id is not a valid id, show validation error
+          print('09 | l $l');
+          emit(state.copyWith(
+            gettingPartnerNodeByIdInProgress: false,
+            showErrorMessages: AutovalidateMode.always,
+            partnerNotExist: true,
+          ));
+        }, (r) {
+          // if the id is valid, then create a relation and add the relation and the partner node to the list
+          print('09 | r ${r.firstName}');
+          final partner = r;
+          final isFather = e.node.gender == Gender.male;
 
-        // final newPartners = [...state.partnersList, state.partner];
+          final father = isFather ? e.node.nodeId : partner.nodeId;
+          final mother = isFather ? partner.nodeId : e.node.nodeId;
 
-        // final newRelations = [
-        //   ...state.relationsList,
-        //   state.relation!.copyWith(partnerNode: state.partner)
-        // ];
-
-        // emit(state.copyWith(
-        //   partnersList: newPartners,
-        //   relationsList: newRelations,
-        //   isViewing: true,
-        //   isAdding: false,
-        //   showErrorMessages: AutovalidateMode.always,
-        // ));
+          // Add Relation
+          final relation = Relation(
+            treeId: e.node.treeId,
+            partnerTreeId: partner.treeId,
+            relationId: UniqueId(),
+            marriageStatus: MarriageStatus.married,
+            father: father,
+            mother: mother,
+            children: [],
+            childrenNodes: [],
+          );
+          emit(state.copyWith(
+            relation: relation,
+            partner: partner,
+            node: e.node,
+            isEditing: false,
+            isAdding: false,
+            gettingPartnerNodeByIdInProgress: true,
+            // Empty the state lists
+            partnersList: [],
+            relationsList: [],
+            showErrorMessages: AutovalidateMode.disabled,
+          ));
+          print('LOG | addPartnerById end');
+        });
       },
       edited: (e) {
         emit(state.copyWith(

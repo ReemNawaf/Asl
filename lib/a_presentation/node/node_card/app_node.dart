@@ -170,17 +170,19 @@ void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
         MaterialColor color, bool hasImage, TNode node, NodeType type) =>
     showDialog(
       context: contextPage,
-      builder: (BuildContext context) {
-        return BlocProvider(
-          create: (context) =>
-              getIt<NodeFormBloc>()..add(NodeFormEvent.initialized(node)),
-          child: MainPanel(
-            color: color,
-            type: type,
-            imageWidget: imageWidget,
-            node: node,
-            contextPage: contextPage,
-            hasImage: hasImage,
+      builder: (context) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: BlocProvider(
+            create: (context) =>
+                getIt<NodeFormBloc>()..add(NodeFormEvent.initialized(node)),
+            child: MainPanel(
+              color: color,
+              type: type,
+              imageWidget: imageWidget,
+              node: node,
+              hasImage: hasImage,
+            ),
           ),
         );
       },

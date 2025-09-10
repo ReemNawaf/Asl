@@ -1,5 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
@@ -97,7 +98,7 @@ Future<dynamic> showNewTreePanel(
 
                     appSnackBar(
                       contextPage,
-                      text: 'تم إنشاء الشجرة بنجاح',
+                      text: ARABIC_STRINGS['tree_created']!,
                       type: SnackBarType.success,
                     );
                   },
