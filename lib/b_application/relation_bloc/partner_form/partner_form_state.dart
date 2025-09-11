@@ -8,6 +8,8 @@ abstract class PartnerFormState with _$PartnerFormState {
     required List<TNode> partnersList,
     Relation? relation,
     required List<Relation> relationsList,
+    required List<UniqueId> deletedPartners,
+    required List<UniqueId> deletedRelations,
     required AutovalidateMode showErrorMessages,
     required bool isSaving,
     required bool isAdding,
@@ -16,8 +18,8 @@ abstract class PartnerFormState with _$PartnerFormState {
     required bool isCreated,
     required bool isPartnerById,
     required bool gettingPartnerNodeByIdInProgress,
+    bool? partnerNotExist,
     required Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption,
-    required bool partnerNotExist,
   }) = _PartnerFormState;
 
   factory PartnerFormState.initial() => PartnerFormState(
@@ -26,6 +28,8 @@ abstract class PartnerFormState with _$PartnerFormState {
         partnersList: [],
         relation: null,
         relationsList: [],
+        deletedPartners: [],
+        deletedRelations: [],
         showErrorMessages: AutovalidateMode.disabled,
         isSaving: false,
         isAdding: false,
@@ -34,7 +38,6 @@ abstract class PartnerFormState with _$PartnerFormState {
         isViewing: false,
         isCreated: false,
         gettingPartnerNodeByIdInProgress: false,
-        partnerNotExist: false,
         saveFailureOrSuccessOption: none(),
       );
 }

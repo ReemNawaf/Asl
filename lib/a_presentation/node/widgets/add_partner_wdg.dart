@@ -4,6 +4,7 @@ import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
+import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/marriage_status_btn.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -34,7 +35,7 @@ class AddPartnerWidget extends StatelessWidget {
     return BlocBuilder<PartnerFormBloc, PartnerFormState>(
       builder: (context, state) {
         final isAddingPartner = state.isPartnerById;
-        print('09 | isAddingPartner $isAddingPartner');
+        print('11 | isAddingPartner $isAddingPartner');
 
         return Form(
           autovalidateMode: state.showErrorMessages,
@@ -87,80 +88,11 @@ class AddPartnerWidget extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 250,
-                    child: isAddingPartner
-                        ? Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AppFormField(
-                                label:
-                                    'إضافة معرف الزوج${node.gender == Gender.male ? 'ة' : ''}',
-                                hint: 'أدخل معرف العضو',
-                                onChanged: (value) {
-                                  if (value != null &&
-                                      value.trim().length == 36) {
-                                    context.read<PartnerFormBloc>().add(
-                                        PartnerFormEvent.addPartnerByNodeId(
-                                            node: node,
-                                            partnerId: value.trim()));
-                                  }
-                                },
-                                isValid: true,
-                                validator: (_) {
-                                  return null;
-                                },
-                              ),
-                              if (state.partnerNotExist)
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 4.0),
-                                  child: Text(ARABIC_STRINGS['node_not_exist']!,
-                                      style: kValidationTextStyle),
-                                ),
-                            ],
-                          )
-                        : AppFormField(
-                            label:
-                                'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
-                            hint: 'الاسم الكامل',
-                            onChanged: (value) {
-                              context.read<PartnerFormBloc>().add(
-                                  PartnerFormEvent.changeName(value!.trim()));
-                            },
-                            isValid: context
-                                    .read<PartnerFormBloc>()
-                                    .state
-                                    .partner
-                                    .firstName
-                                    .isValid() ||
-                                context
-                                        .read<PartnerFormBloc>()
-                                        .state
-                                        .showErrorMessages !=
-                                    AutovalidateMode.always,
-                            validator: (_) {
-                              // if the name isn't valid, then show me the validation
-                              return context
-                                      .read<PartnerFormBloc>()
-                                      .state
-                                      .partner
-                                      .firstName
-                                      .isValid()
-                                  ? null
-                                  : state.partner.firstName.value.fold(
-                                      (f) => f.maybeMap(
-                                        empty: (_) => ARABIC_STRINGS[
-                                            'first_name_cannot_be_empty'],
-                                        shortFirstName: (_) =>
-                                            ARABIC_STRINGS['first_name_short'],
-                                        spacedFirstName: (_) => ARABIC_STRINGS[
-                                            'first_name_cannot_contain_spaces'],
-                                        orElse: () => null,
-                                      ),
-                                      (_) => null,
-                                    );
-                            },
-                          ),
+                  PartnerName(
+                    isAddingPartner: isAddingPartner,
+                    node: node,
+                    state: state,
+                    color: color,
                   ),
                   kHSpacer20,
                   MarriageStatusBtn(color: color, ctx: context),
@@ -236,5 +168,107 @@ class AddPartnerWidget extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class PartnerName extends StatelessWidget {
+  const PartnerName({
+    super.key,
+    required this.isAddingPartner,
+    required this.node,
+    required this.state,
+    required this.color,
+  });
+
+  final bool isAddingPartner;
+  final TNode node;
+  final PartnerFormState state;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    var addPartnerById = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppFormField(
+          label: 'إضافة معرف الزوج${node.gender == Gender.male ? 'ة' : ''}',
+          hint: 'أدخل معرف العضو',
+          onChanged: (value) {
+            if (value != null && value.trim().length == 36) {
+              context.read<PartnerFormBloc>().add(
+                  PartnerFormEvent.addPartnerByNodeId(
+                      node: node, partnerId: value.trim()));
+            }
+          },
+          isValid: true,
+          validator: (_) {
+            return null;
+          },
+        ),
+        if (state.partnerNotExist != null && state.partnerNotExist!)
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Text(ARABIC_STRINGS['node_not_exist']!,
+                style: kValidationTextStyle),
+          ),
+      ],
+    );
+
+    var appFormField = AppFormField(
+      label: 'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
+      hint: 'الاسم الكامل',
+      onChanged: (value) {
+        context
+            .read<PartnerFormBloc>()
+            .add(PartnerFormEvent.changeName(value!.trim()));
+      },
+      isValid:
+          context.read<PartnerFormBloc>().state.partner.firstName.isValid() ||
+              context.read<PartnerFormBloc>().state.showErrorMessages !=
+                  AutovalidateMode.always,
+      validator: (_) {
+        // if the name isn't valid, then show me the validation
+        return context.read<PartnerFormBloc>().state.partner.firstName.isValid()
+            ? null
+            : state.partner.firstName.value.fold(
+                (f) => f.maybeMap(
+                  empty: (_) => ARABIC_STRINGS['first_name_cannot_be_empty'],
+                  shortFirstName: (_) => ARABIC_STRINGS['first_name_short'],
+                  spacedFirstName: (_) =>
+                      ARABIC_STRINGS['first_name_cannot_contain_spaces'],
+                  orElse: () => null,
+                ),
+                (_) => null,
+              );
+      },
+    );
+
+    var displayPartnerNameWidget = AppFormField(
+      label: 'اسم زوج${node.gender == Gender.male ? 'ة' : ''}',
+      hint: '',
+      validator: (_) => null,
+      isEditing: false,
+      initialValue: state.partner.firstName.isValid()
+          ? state.partner.firstName.getOrCrash()
+          : '',
+    );
+
+    print('11 | isAddingPartner $isAddingPartner');
+    print(
+        '11 | state.gettingPartnerNodeByIdInProgress ${state.gettingPartnerNodeByIdInProgress}');
+    print(
+        '11 | state.partnerNotExist ${state.gettingPartnerNodeByIdInProgress}');
+    return SizedBox(
+        width: 250,
+        child: state.gettingPartnerNodeByIdInProgress
+            ? Padding(
+                padding: const EdgeInsets.only(top: 12.0),
+                child: LoadingWidget(color: color),
+              )
+            : state.partnerNotExist == null || state.partnerNotExist == true
+                ? (isAddingPartner ? addPartnerById : appFormField)
+                : state.partnerNotExist == false
+                    ? displayPartnerNameWidget
+                    : null);
   }
 }

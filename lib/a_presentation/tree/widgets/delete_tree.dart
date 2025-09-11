@@ -31,44 +31,45 @@ Future<dynamic> showDeleteTreePanel(BuildContext contextPage,
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
           scrollable: true,
           content: Container(
-              alignment: Alignment.topRight,
-              padding: const EdgeInsets.all(8.0),
-              width: PAN_SM_WIDTH / 2,
-              height: PAN_HEIGHT / 6,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6.0),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('هل تريد حذف الشجرة؟'),
-                  kVSpacer20,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      BlocBuilder<TreeActorBloc, TreeActorState>(
-                        builder: (context, state) {
-                          return AppButton(
-                              onPressed: () {
-                                contextPage
-                                    .read<TreeActorBloc>()
-                                    .add(TreeActorEvent.deleted(treeId: id));
-                              },
-                              label: 'نعم، أحذف',
-                              fillColor: kRedColors);
-                        },
-                      ),
-                      AppButton(
-                        onPressed: () => contextPage
-                            .read<TreeActorBloc>()
-                            .add(TreeActorEvent.deleted(treeId: id)),
-                        label: 'لا، إلغاء',
-                        fillColor: kRootColors,
-                      )
-                    ],
-                  )
-                ],
-              )),
+            alignment: Alignment.topRight,
+            padding: const EdgeInsets.all(8.0),
+            width: 100.0,
+            height: 110.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6.0),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('هل تريد حذف الشجرة؟'),
+                kVSpacer20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    BlocBuilder<TreeActorBloc, TreeActorState>(
+                      builder: (context, state) {
+                        return AppButton(
+                            onPressed: () {
+                              contextPage
+                                  .read<TreeActorBloc>()
+                                  .add(TreeActorEvent.deleted(treeId: id));
+                            },
+                            label: 'نعم، أحذف',
+                            fillColor: kRedColors);
+                      },
+                    ),
+                    AppButton(
+                      onPressed: () => contextPage
+                          .read<TreeActorBloc>()
+                          .add(TreeActorEvent.deleted(treeId: id)),
+                      label: 'لا، إلغاء',
+                      fillColor: kRootColors,
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
         ),
       );
     },

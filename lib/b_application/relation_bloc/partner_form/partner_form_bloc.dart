@@ -45,7 +45,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           firstName: FullName(''),
           isAlive: true,
           gender: isFather ? Gender.female : Gender.male,
-          upperFamily: UniqueId(),
           relations: [],
           fosterChildren: [],
           relationsObject: [],
@@ -78,13 +77,13 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         print('LOG | addPartner end');
       },
       showPartnerByNodeId: (e) {
-        print('09 | state.isPartnerById ${state.isPartnerById}');
+        print('11 | state.isPartnerById ${state.isPartnerById}');
         emit(state.copyWith(isPartnerById: e.isAdding));
-        print('09 | state.isPartnerById ${state.isPartnerById}');
+        print('11 | state.isPartnerById ${state.isPartnerById}');
       },
       addPartnerByNodeId: (e) async {
         // get the partner node, to make sure it exist
-        print('09 | Node ID ${e.partnerId}');
+        print('11 | Node ID ${e.partnerId}');
         emit(state.copyWith(gettingPartnerNodeByIdInProgress: true));
         final failureOrSuccess = await _nodeRepository.getNode(
             treeId: e.node.treeId,
@@ -92,7 +91,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
 
         failureOrSuccess.fold((l) {
           // when the node id is not a valid id, show validation error
-          print('09 | l $l');
+          print('11 | l $l');
           emit(state.copyWith(
             gettingPartnerNodeByIdInProgress: false,
             showErrorMessages: AutovalidateMode.always,
@@ -100,7 +99,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           ));
         }, (r) {
           // if the id is valid, then create a relation and add the relation and the partner node to the list
-          print('09 | r ${r.firstName}');
+          print('11 | r ${r.firstName}');
           final partner = r;
           final isFather = e.node.gender == Gender.male;
 
@@ -124,10 +123,11 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
             node: e.node,
             isEditing: false,
             isAdding: false,
-            gettingPartnerNodeByIdInProgress: true,
+            gettingPartnerNodeByIdInProgress: false,
             // Empty the state lists
             partnersList: [],
             relationsList: [],
+            partnerNotExist: false,
             showErrorMessages: AutovalidateMode.disabled,
           ));
           print('LOG | addPartnerById end');

@@ -32,7 +32,7 @@ class MainPanel extends StatelessWidget {
 
   bool showEditingIcon(NodeFormState state) {
     // if the panel is not eddditng, and not in the second tab, then show the icon
-    return state.isEditing == -1 || state.isEditing == 1;
+    return state.isEditing == -1 && state.currentPanel != 1;
   }
 
   @override
@@ -104,10 +104,10 @@ class MainPanel extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 18),
-                        // edit Button
+                        // Edit Button
                         BlocBuilder<NodeFormBloc, NodeFormState>(
                           builder: (context, state) {
-                            return (showEditingIcon(state))
+                            return showEditingIcon(state)
                                 ? IconOnlyButton(
                                     onPressed: () => context
                                         .read<NodeFormBloc>()

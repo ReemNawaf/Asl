@@ -1942,6 +1942,8 @@ mixin _$PartnerFormState {
   List<TNode> get partnersList => throw _privateConstructorUsedError;
   Relation? get relation => throw _privateConstructorUsedError;
   List<Relation> get relationsList => throw _privateConstructorUsedError;
+  List<UniqueId> get deletedPartners => throw _privateConstructorUsedError;
+  List<UniqueId> get deletedRelations => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isAdding => throw _privateConstructorUsedError;
@@ -1952,9 +1954,9 @@ mixin _$PartnerFormState {
   bool get isPartnerById => throw _privateConstructorUsedError;
   bool get gettingPartnerNodeByIdInProgress =>
       throw _privateConstructorUsedError;
+  bool? get partnerNotExist => throw _privateConstructorUsedError;
   Option<Either<RelationFailure, Unit>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
-  bool get partnerNotExist => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PartnerFormStateCopyWith<PartnerFormState> get copyWith =>
@@ -1973,6 +1975,8 @@ abstract class $PartnerFormStateCopyWith<$Res> {
       List<TNode> partnersList,
       Relation? relation,
       List<Relation> relationsList,
+      List<UniqueId> deletedPartners,
+      List<UniqueId> deletedRelations,
       AutovalidateMode showErrorMessages,
       bool isSaving,
       bool isAdding,
@@ -1981,8 +1985,8 @@ abstract class $PartnerFormStateCopyWith<$Res> {
       bool isCreated,
       bool isPartnerById,
       bool gettingPartnerNodeByIdInProgress,
-      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption,
-      bool partnerNotExist});
+      bool? partnerNotExist,
+      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption});
 
   $TNodeCopyWith<$Res>? get node;
   $TNodeCopyWith<$Res> get partner;
@@ -2007,6 +2011,8 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
     Object? partnersList = null,
     Object? relation = freezed,
     Object? relationsList = null,
+    Object? deletedPartners = null,
+    Object? deletedRelations = null,
     Object? showErrorMessages = null,
     Object? isSaving = null,
     Object? isAdding = null,
@@ -2015,8 +2021,8 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
     Object? isCreated = null,
     Object? isPartnerById = null,
     Object? gettingPartnerNodeByIdInProgress = null,
+    Object? partnerNotExist = freezed,
     Object? saveFailureOrSuccessOption = null,
-    Object? partnerNotExist = null,
   }) {
     return _then(_value.copyWith(
       node: freezed == node
@@ -2039,6 +2045,14 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
           ? _value.relationsList
           : relationsList // ignore: cast_nullable_to_non_nullable
               as List<Relation>,
+      deletedPartners: null == deletedPartners
+          ? _value.deletedPartners
+          : deletedPartners // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
+      deletedRelations: null == deletedRelations
+          ? _value.deletedRelations
+          : deletedRelations // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -2071,14 +2085,14 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
           ? _value.gettingPartnerNodeByIdInProgress
           : gettingPartnerNodeByIdInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
+      partnerNotExist: freezed == partnerNotExist
+          ? _value.partnerNotExist
+          : partnerNotExist // ignore: cast_nullable_to_non_nullable
+              as bool?,
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<RelationFailure, Unit>>,
-      partnerNotExist: null == partnerNotExist
-          ? _value.partnerNotExist
-          : partnerNotExist // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 
@@ -2129,6 +2143,8 @@ abstract class _$$PartnerFormStateImplCopyWith<$Res>
       List<TNode> partnersList,
       Relation? relation,
       List<Relation> relationsList,
+      List<UniqueId> deletedPartners,
+      List<UniqueId> deletedRelations,
       AutovalidateMode showErrorMessages,
       bool isSaving,
       bool isAdding,
@@ -2137,8 +2153,8 @@ abstract class _$$PartnerFormStateImplCopyWith<$Res>
       bool isCreated,
       bool isPartnerById,
       bool gettingPartnerNodeByIdInProgress,
-      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption,
-      bool partnerNotExist});
+      bool? partnerNotExist,
+      Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption});
 
   @override
   $TNodeCopyWith<$Res>? get node;
@@ -2164,6 +2180,8 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
     Object? partnersList = null,
     Object? relation = freezed,
     Object? relationsList = null,
+    Object? deletedPartners = null,
+    Object? deletedRelations = null,
     Object? showErrorMessages = null,
     Object? isSaving = null,
     Object? isAdding = null,
@@ -2172,8 +2190,8 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
     Object? isCreated = null,
     Object? isPartnerById = null,
     Object? gettingPartnerNodeByIdInProgress = null,
+    Object? partnerNotExist = freezed,
     Object? saveFailureOrSuccessOption = null,
-    Object? partnerNotExist = null,
   }) {
     return _then(_$PartnerFormStateImpl(
       node: freezed == node
@@ -2196,6 +2214,14 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
           ? _value._relationsList
           : relationsList // ignore: cast_nullable_to_non_nullable
               as List<Relation>,
+      deletedPartners: null == deletedPartners
+          ? _value._deletedPartners
+          : deletedPartners // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
+      deletedRelations: null == deletedRelations
+          ? _value._deletedRelations
+          : deletedRelations // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -2228,14 +2254,14 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
           ? _value.gettingPartnerNodeByIdInProgress
           : gettingPartnerNodeByIdInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
+      partnerNotExist: freezed == partnerNotExist
+          ? _value.partnerNotExist
+          : partnerNotExist // ignore: cast_nullable_to_non_nullable
+              as bool?,
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<RelationFailure, Unit>>,
-      partnerNotExist: null == partnerNotExist
-          ? _value.partnerNotExist
-          : partnerNotExist // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -2249,6 +2275,8 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       required final List<TNode> partnersList,
       this.relation,
       required final List<Relation> relationsList,
+      required final List<UniqueId> deletedPartners,
+      required final List<UniqueId> deletedRelations,
       required this.showErrorMessages,
       required this.isSaving,
       required this.isAdding,
@@ -2257,10 +2285,12 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       required this.isCreated,
       required this.isPartnerById,
       required this.gettingPartnerNodeByIdInProgress,
-      required this.saveFailureOrSuccessOption,
-      required this.partnerNotExist})
+      this.partnerNotExist,
+      required this.saveFailureOrSuccessOption})
       : _partnersList = partnersList,
-        _relationsList = relationsList;
+        _relationsList = relationsList,
+        _deletedPartners = deletedPartners,
+        _deletedRelations = deletedRelations;
 
   @override
   final TNode? node;
@@ -2284,6 +2314,23 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
     return EqualUnmodifiableListView(_relationsList);
   }
 
+  final List<UniqueId> _deletedPartners;
+  @override
+  List<UniqueId> get deletedPartners {
+    if (_deletedPartners is EqualUnmodifiableListView) return _deletedPartners;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deletedPartners);
+  }
+
+  final List<UniqueId> _deletedRelations;
+  @override
+  List<UniqueId> get deletedRelations {
+    if (_deletedRelations is EqualUnmodifiableListView)
+      return _deletedRelations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deletedRelations);
+  }
+
   @override
   final AutovalidateMode showErrorMessages;
   @override
@@ -2302,13 +2349,13 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
   @override
   final bool gettingPartnerNodeByIdInProgress;
   @override
-  final Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption;
+  final bool? partnerNotExist;
   @override
-  final bool partnerNotExist;
+  final Option<Either<RelationFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'PartnerFormState(node: $node, partner: $partner, partnersList: $partnersList, relation: $relation, relationsList: $relationsList, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isAdding: $isAdding, isEditing: $isEditing, isViewing: $isViewing, isCreated: $isCreated, isPartnerById: $isPartnerById, gettingPartnerNodeByIdInProgress: $gettingPartnerNodeByIdInProgress, saveFailureOrSuccessOption: $saveFailureOrSuccessOption, partnerNotExist: $partnerNotExist)';
+    return 'PartnerFormState(node: $node, partner: $partner, partnersList: $partnersList, relation: $relation, relationsList: $relationsList, deletedPartners: $deletedPartners, deletedRelations: $deletedRelations, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isAdding: $isAdding, isEditing: $isEditing, isViewing: $isViewing, isCreated: $isCreated, isPartnerById: $isPartnerById, gettingPartnerNodeByIdInProgress: $gettingPartnerNodeByIdInProgress, partnerNotExist: $partnerNotExist, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2324,6 +2371,10 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
                 other.relation == relation) &&
             const DeepCollectionEquality()
                 .equals(other._relationsList, _relationsList) &&
+            const DeepCollectionEquality()
+                .equals(other._deletedPartners, _deletedPartners) &&
+            const DeepCollectionEquality()
+                .equals(other._deletedRelations, _deletedRelations) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSaving, isSaving) ||
@@ -2342,12 +2393,12 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
                     gettingPartnerNodeByIdInProgress) ||
                 other.gettingPartnerNodeByIdInProgress ==
                     gettingPartnerNodeByIdInProgress) &&
+            (identical(other.partnerNotExist, partnerNotExist) ||
+                other.partnerNotExist == partnerNotExist) &&
             (identical(other.saveFailureOrSuccessOption,
                     saveFailureOrSuccessOption) ||
                 other.saveFailureOrSuccessOption ==
-                    saveFailureOrSuccessOption) &&
-            (identical(other.partnerNotExist, partnerNotExist) ||
-                other.partnerNotExist == partnerNotExist));
+                    saveFailureOrSuccessOption));
   }
 
   @override
@@ -2358,6 +2409,8 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       const DeepCollectionEquality().hash(_partnersList),
       relation,
       const DeepCollectionEquality().hash(_relationsList),
+      const DeepCollectionEquality().hash(_deletedPartners),
+      const DeepCollectionEquality().hash(_deletedRelations),
       showErrorMessages,
       isSaving,
       isAdding,
@@ -2366,8 +2419,8 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       isCreated,
       isPartnerById,
       gettingPartnerNodeByIdInProgress,
-      saveFailureOrSuccessOption,
-      partnerNotExist);
+      partnerNotExist,
+      saveFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -2384,6 +2437,8 @@ abstract class _PartnerFormState implements PartnerFormState {
       required final List<TNode> partnersList,
       final Relation? relation,
       required final List<Relation> relationsList,
+      required final List<UniqueId> deletedPartners,
+      required final List<UniqueId> deletedRelations,
       required final AutovalidateMode showErrorMessages,
       required final bool isSaving,
       required final bool isAdding,
@@ -2392,9 +2447,9 @@ abstract class _PartnerFormState implements PartnerFormState {
       required final bool isCreated,
       required final bool isPartnerById,
       required final bool gettingPartnerNodeByIdInProgress,
+      final bool? partnerNotExist,
       required final Option<Either<RelationFailure, Unit>>
-          saveFailureOrSuccessOption,
-      required final bool partnerNotExist}) = _$PartnerFormStateImpl;
+          saveFailureOrSuccessOption}) = _$PartnerFormStateImpl;
 
   @override
   TNode? get node;
@@ -2406,6 +2461,10 @@ abstract class _PartnerFormState implements PartnerFormState {
   Relation? get relation;
   @override
   List<Relation> get relationsList;
+  @override
+  List<UniqueId> get deletedPartners;
+  @override
+  List<UniqueId> get deletedRelations;
   @override
   AutovalidateMode get showErrorMessages;
   @override
@@ -2423,9 +2482,9 @@ abstract class _PartnerFormState implements PartnerFormState {
   @override
   bool get gettingPartnerNodeByIdInProgress;
   @override
-  Option<Either<RelationFailure, Unit>> get saveFailureOrSuccessOption;
+  bool? get partnerNotExist;
   @override
-  bool get partnerNotExist;
+  Option<Either<RelationFailure, Unit>> get saveFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$PartnerFormStateImplCopyWith<_$PartnerFormStateImpl> get copyWith =>

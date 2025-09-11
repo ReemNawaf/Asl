@@ -26,7 +26,7 @@ class InfoPanel extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
 
     return BlocBuilder<NodeFormBloc, NodeFormState>(
-      builder: (ctx, state) {
+      builder: (context, state) {
         final node = state.node;
 
         if (node == null) return const SizedBox();
@@ -58,7 +58,7 @@ class InfoPanel extends StatelessWidget {
                             .add(NodeFormEvent.firstNameChanged(value!.trim())),
                         validator: (_) {
                           print(
-                              '09 | validation ${context.read<NodeFormBloc>().state.node!.firstName.value}');
+                              '11 | validation ${context.read<NodeFormBloc>().state.node!.firstName.value}');
                           return context
                               .read<NodeFormBloc>()
                               .state
@@ -174,7 +174,8 @@ class InfoPanel extends StatelessWidget {
                   id: state.node!.nodeId.getOrCrash(),
                   color: color,
                   // TODO: get the node full name
-                  name: state.node!.firstName.getOrCrash(),
+                  name: '',
+                  // state.node!.firstName.getOrCrash(),
                 ),
               ],
             ),

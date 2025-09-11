@@ -3,6 +3,8 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
+import 'package:asl/a_presentation/core/widgets/icon_only_btn.dart';
+import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -22,6 +24,8 @@ class PartnerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isEditing = context.read<NodeFormBloc>().state.isEditing == 2;
+
     return BlocBuilder<RelationWatcherBloc, RelationWatcherState>(
       builder: (context, state) {
         return state.map(
@@ -60,18 +64,32 @@ class PartnerWidget extends StatelessWidget {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: 63,
-                              width: 278,
-                              child: AppFormField(
-                                label:
-                                    'الزوج${node.gender == Gender.male ? 'ة' : ''}',
-                                hint: '',
-                                onSaved: (_) {},
-                                initialValue: partner.firstName.getOrCrash(),
-                                validator: (_) => '',
-                                isEditing: false,
-                              ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  height: 63,
+                                  width: isEditing ? 245 : 273,
+                                  child: AppFormField(
+                                    label:
+                                        'الزوج${node.gender == Gender.male ? 'ة' : ''}',
+                                    hint: '',
+                                    onSaved: (_) {},
+                                    initialValue:
+                                        partner.firstName.getOrCrash(),
+                                    validator: (_) => '',
+                                    isEditing: false,
+                                  ),
+                                ),
+                                if (isEditing)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: IconOnlyButton(
+                                        onPressed: () {
+                                          print('clicked');
+                                        },
+                                        icon: const Icon(Icons.close)),
+                                  )
+                              ],
                             ),
                             Row(
                               children: [

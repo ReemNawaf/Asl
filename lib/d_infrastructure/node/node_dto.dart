@@ -41,7 +41,8 @@ abstract class NodeDto implements _$NodeDto {
           : DateFormat("yyyy-MM-dd").format(node.deathDate!),
       isAlive: node.isAlive,
       gender: node.gender.name,
-      upperFamily: node.upperFamily!.getOrCrash(),
+      upperFamily:
+          node.upperFamily == null ? '' : node.upperFamily!.getOrCrash(),
       relations: node.relations.map((r) => r.getOrCrash()).toList(),
       fosterChildren: node.fosterChildren.map((e) => e.getOrCrash()).toList(),
     );

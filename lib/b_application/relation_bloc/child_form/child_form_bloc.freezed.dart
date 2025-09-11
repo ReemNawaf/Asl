@@ -1896,6 +1896,7 @@ abstract class _Saved implements ChildFormEvent {
 /// @nodoc
 mixin _$ChildFormState {
   Map<String, List<TNode>> get children => throw _privateConstructorUsedError;
+  List<UniqueId> get deletedChildren => throw _privateConstructorUsedError;
   TNode get tempChild => throw _privateConstructorUsedError;
   UniqueId get relationId => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
@@ -1920,6 +1921,7 @@ abstract class $ChildFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Map<String, List<TNode>> children,
+      List<UniqueId> deletedChildren,
       TNode tempChild,
       UniqueId relationId,
       AutovalidateMode showErrorMessages,
@@ -1947,6 +1949,7 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
   @override
   $Res call({
     Object? children = null,
+    Object? deletedChildren = null,
     Object? tempChild = null,
     Object? relationId = null,
     Object? showErrorMessages = null,
@@ -1962,6 +1965,10 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
           ? _value.children
           : children // ignore: cast_nullable_to_non_nullable
               as Map<String, List<TNode>>,
+      deletedChildren: null == deletedChildren
+          ? _value.deletedChildren
+          : deletedChildren // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
       tempChild: null == tempChild
           ? _value.tempChild
           : tempChild // ignore: cast_nullable_to_non_nullable
@@ -2020,6 +2027,7 @@ abstract class _$$ChildFormStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Map<String, List<TNode>> children,
+      List<UniqueId> deletedChildren,
       TNode tempChild,
       UniqueId relationId,
       AutovalidateMode showErrorMessages,
@@ -2046,6 +2054,7 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? children = null,
+    Object? deletedChildren = null,
     Object? tempChild = null,
     Object? relationId = null,
     Object? showErrorMessages = null,
@@ -2061,6 +2070,10 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
           ? _value._children
           : children // ignore: cast_nullable_to_non_nullable
               as Map<String, List<TNode>>,
+      deletedChildren: null == deletedChildren
+          ? _value._deletedChildren
+          : deletedChildren // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
       tempChild: null == tempChild
           ? _value.tempChild
           : tempChild // ignore: cast_nullable_to_non_nullable
@@ -2106,6 +2119,7 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
 class _$ChildFormStateImpl implements _ChildFormState {
   const _$ChildFormStateImpl(
       {required final Map<String, List<TNode>> children,
+      required final List<UniqueId> deletedChildren,
       required this.tempChild,
       required this.relationId,
       required this.showErrorMessages,
@@ -2115,7 +2129,8 @@ class _$ChildFormStateImpl implements _ChildFormState {
       required this.isAdding,
       required this.isCreated,
       required this.saveFailureOrSuccessOption})
-      : _children = children;
+      : _children = children,
+        _deletedChildren = deletedChildren;
 
   final Map<String, List<TNode>> _children;
   @override
@@ -2123,6 +2138,14 @@ class _$ChildFormStateImpl implements _ChildFormState {
     if (_children is EqualUnmodifiableMapView) return _children;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_children);
+  }
+
+  final List<UniqueId> _deletedChildren;
+  @override
+  List<UniqueId> get deletedChildren {
+    if (_deletedChildren is EqualUnmodifiableListView) return _deletedChildren;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deletedChildren);
   }
 
   @override
@@ -2146,7 +2169,7 @@ class _$ChildFormStateImpl implements _ChildFormState {
 
   @override
   String toString() {
-    return 'ChildFormState(children: $children, tempChild: $tempChild, relationId: $relationId, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isViewing: $isViewing, isEditing: $isEditing, isAdding: $isAdding, isCreated: $isCreated, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'ChildFormState(children: $children, deletedChildren: $deletedChildren, tempChild: $tempChild, relationId: $relationId, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isViewing: $isViewing, isEditing: $isEditing, isAdding: $isAdding, isCreated: $isCreated, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2155,6 +2178,8 @@ class _$ChildFormStateImpl implements _ChildFormState {
         (other.runtimeType == runtimeType &&
             other is _$ChildFormStateImpl &&
             const DeepCollectionEquality().equals(other._children, _children) &&
+            const DeepCollectionEquality()
+                .equals(other._deletedChildren, _deletedChildren) &&
             (identical(other.tempChild, tempChild) ||
                 other.tempChild == tempChild) &&
             (identical(other.relationId, relationId) ||
@@ -2181,6 +2206,7 @@ class _$ChildFormStateImpl implements _ChildFormState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_children),
+      const DeepCollectionEquality().hash(_deletedChildren),
       tempChild,
       relationId,
       showErrorMessages,
@@ -2202,6 +2228,7 @@ class _$ChildFormStateImpl implements _ChildFormState {
 abstract class _ChildFormState implements ChildFormState {
   const factory _ChildFormState(
       {required final Map<String, List<TNode>> children,
+      required final List<UniqueId> deletedChildren,
       required final TNode tempChild,
       required final UniqueId relationId,
       required final AutovalidateMode showErrorMessages,
@@ -2215,6 +2242,8 @@ abstract class _ChildFormState implements ChildFormState {
 
   @override
   Map<String, List<TNode>> get children;
+  @override
+  List<UniqueId> get deletedChildren;
   @override
   TNode get tempChild;
   @override
