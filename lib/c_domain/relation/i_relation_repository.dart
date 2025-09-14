@@ -23,8 +23,11 @@ abstract class IRelationRepository {
   // Future<Either<RelationFailure, Unit>> addRelation(
   //     {required UniqueId treeId, required UniqueId node});
 
-  Future<Either<RelationFailure, Unit>> deleteRelationAndChildren(
-      {required UniqueId treeId, required UniqueId relationId});
+  Future<Either<RelationFailure, Unit>> deleteRelationAndChildren({
+    required UniqueId treeId,
+    required Relation relationId,
+    required TNode partner,
+  });
 
   Future<Either<TNodeFailure, Unit>> addChildren({
     required UniqueId treeId,

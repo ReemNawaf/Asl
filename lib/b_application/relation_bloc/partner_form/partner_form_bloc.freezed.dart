@@ -19,6 +19,7 @@ mixin _$PartnerFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -33,6 +34,7 @@ mixin _$PartnerFormEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -47,6 +49,7 @@ mixin _$PartnerFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -62,6 +65,7 @@ mixin _$PartnerFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -77,6 +81,7 @@ mixin _$PartnerFormEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -91,6 +96,7 @@ mixin _$PartnerFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -198,6 +204,7 @@ class _$AddPartnerImpl implements _AddPartner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -215,6 +222,7 @@ class _$AddPartnerImpl implements _AddPartner {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -232,6 +240,7 @@ class _$AddPartnerImpl implements _AddPartner {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -253,6 +262,7 @@ class _$AddPartnerImpl implements _AddPartner {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -271,6 +281,7 @@ class _$AddPartnerImpl implements _AddPartner {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -288,6 +299,7 @@ class _$AddPartnerImpl implements _AddPartner {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -312,6 +324,225 @@ abstract class _AddPartner implements PartnerFormEvent {
   TNode get node;
   @JsonKey(ignore: true)
   _$$AddPartnerImplCopyWith<_$AddPartnerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleltPartnerImplCopyWith<$Res> {
+  factory _$$DeleltPartnerImplCopyWith(
+          _$DeleltPartnerImpl value, $Res Function(_$DeleltPartnerImpl) then) =
+      __$$DeleltPartnerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TNode partner, Relation relation});
+
+  $TNodeCopyWith<$Res> get partner;
+  $RelationCopyWith<$Res> get relation;
+}
+
+/// @nodoc
+class __$$DeleltPartnerImplCopyWithImpl<$Res>
+    extends _$PartnerFormEventCopyWithImpl<$Res, _$DeleltPartnerImpl>
+    implements _$$DeleltPartnerImplCopyWith<$Res> {
+  __$$DeleltPartnerImplCopyWithImpl(
+      _$DeleltPartnerImpl _value, $Res Function(_$DeleltPartnerImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? partner = null,
+    Object? relation = null,
+  }) {
+    return _then(_$DeleltPartnerImpl(
+      partner: null == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as TNode,
+      relation: null == relation
+          ? _value.relation
+          : relation // ignore: cast_nullable_to_non_nullable
+              as Relation,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res> get partner {
+    return $TNodeCopyWith<$Res>(_value.partner, (value) {
+      return _then(_value.copyWith(partner: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RelationCopyWith<$Res> get relation {
+    return $RelationCopyWith<$Res>(_value.relation, (value) {
+      return _then(_value.copyWith(relation: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleltPartnerImpl implements _DeleltPartner {
+  const _$DeleltPartnerImpl({required this.partner, required this.relation});
+
+  @override
+  final TNode partner;
+  @override
+  final Relation relation;
+
+  @override
+  String toString() {
+    return 'PartnerFormEvent.deleltPartner(partner: $partner, relation: $relation)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleltPartnerImpl &&
+            (identical(other.partner, partner) || other.partner == partner) &&
+            (identical(other.relation, relation) ||
+                other.relation == relation));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, partner, relation);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleltPartnerImplCopyWith<_$DeleltPartnerImpl> get copyWith =>
+      __$$DeleltPartnerImplCopyWithImpl<_$DeleltPartnerImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
+    required TResult Function(TNode partner) edited,
+    required TResult Function(String name) changeName,
+    required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
+    required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(DateTime? date) changeMarriageDate,
+    required TResult Function(DateTime? date) changeRelationEndDate,
+    required TResult Function(MarriageStatus status) changeMarriageStatus,
+    required TResult Function() addPartnertoList,
+    required TResult Function() saved,
+  }) {
+    return deleltPartner(partner, relation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
+    TResult? Function(TNode partner)? edited,
+    TResult? Function(String name)? changeName,
+    TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
+    TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(DateTime? date)? changeMarriageDate,
+    TResult? Function(DateTime? date)? changeRelationEndDate,
+    TResult? Function(MarriageStatus status)? changeMarriageStatus,
+    TResult? Function()? addPartnertoList,
+    TResult? Function()? saved,
+  }) {
+    return deleltPartner?.call(partner, relation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
+    TResult Function(TNode partner)? edited,
+    TResult Function(String name)? changeName,
+    TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
+    TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(DateTime? date)? changeMarriageDate,
+    TResult Function(DateTime? date)? changeRelationEndDate,
+    TResult Function(MarriageStatus status)? changeMarriageStatus,
+    TResult Function()? addPartnertoList,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (deleltPartner != null) {
+      return deleltPartner(partner, relation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_ChangedName value) changeName,
+    required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
+    required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
+    required TResult Function(_ChangeRelationEndDate value)
+        changeRelationEndDate,
+    required TResult Function(_ChangeMarriageStatus value) changeMarriageStatus,
+    required TResult Function(_AddPartnertoList value) addPartnertoList,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return deleltPartner(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_ChangedName value)? changeName,
+    TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
+    TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
+    TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
+    TResult? Function(_ChangeMarriageStatus value)? changeMarriageStatus,
+    TResult? Function(_AddPartnertoList value)? addPartnertoList,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return deleltPartner?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_ChangedName value)? changeName,
+    TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
+    TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
+    TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
+    TResult Function(_ChangeMarriageStatus value)? changeMarriageStatus,
+    TResult Function(_AddPartnertoList value)? addPartnertoList,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (deleltPartner != null) {
+      return deleltPartner(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleltPartner implements PartnerFormEvent {
+  const factory _DeleltPartner(
+      {required final TNode partner,
+      required final Relation relation}) = _$DeleltPartnerImpl;
+
+  TNode get partner;
+  Relation get relation;
+  @JsonKey(ignore: true)
+  _$$DeleltPartnerImplCopyWith<_$DeleltPartnerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -390,6 +621,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -407,6 +639,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -424,6 +657,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -445,6 +679,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -463,6 +698,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -480,6 +716,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -572,6 +809,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -589,6 +827,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -606,6 +845,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -627,6 +867,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -645,6 +886,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -662,6 +904,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -774,6 +1017,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -791,6 +1035,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -808,6 +1053,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -829,6 +1075,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -847,6 +1094,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -864,6 +1112,7 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -961,6 +1210,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -978,6 +1228,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -995,6 +1246,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1016,6 +1268,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -1034,6 +1287,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1051,6 +1305,7 @@ class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1145,6 +1400,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -1162,6 +1418,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1179,6 +1436,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1200,6 +1458,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -1218,6 +1477,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1235,6 +1495,7 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1330,6 +1591,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -1347,6 +1609,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1364,6 +1627,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1385,6 +1649,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -1403,6 +1668,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1420,6 +1686,7 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1515,6 +1782,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -1532,6 +1800,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1549,6 +1818,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1570,6 +1840,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -1588,6 +1859,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1605,6 +1877,7 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1672,6 +1945,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -1689,6 +1963,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1706,6 +1981,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1727,6 +2003,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -1745,6 +2022,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1762,6 +2040,7 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1823,6 +2102,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(String partnerId, TNode node) addPartnerByNodeId,
@@ -1840,6 +2120,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1857,6 +2138,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(String partnerId, TNode node)? addPartnerByNodeId,
@@ -1878,6 +2160,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
@@ -1896,6 +2179,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1913,6 +2197,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
@@ -1942,8 +2227,8 @@ mixin _$PartnerFormState {
   List<TNode> get partnersList => throw _privateConstructorUsedError;
   Relation? get relation => throw _privateConstructorUsedError;
   List<Relation> get relationsList => throw _privateConstructorUsedError;
-  List<UniqueId> get deletedPartners => throw _privateConstructorUsedError;
-  List<UniqueId> get deletedRelations => throw _privateConstructorUsedError;
+  Map<String, Map<String, dynamic>> get deletedPartners =>
+      throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isAdding => throw _privateConstructorUsedError;
@@ -1975,8 +2260,7 @@ abstract class $PartnerFormStateCopyWith<$Res> {
       List<TNode> partnersList,
       Relation? relation,
       List<Relation> relationsList,
-      List<UniqueId> deletedPartners,
-      List<UniqueId> deletedRelations,
+      Map<String, Map<String, dynamic>> deletedPartners,
       AutovalidateMode showErrorMessages,
       bool isSaving,
       bool isAdding,
@@ -2012,7 +2296,6 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
     Object? relation = freezed,
     Object? relationsList = null,
     Object? deletedPartners = null,
-    Object? deletedRelations = null,
     Object? showErrorMessages = null,
     Object? isSaving = null,
     Object? isAdding = null,
@@ -2048,11 +2331,7 @@ class _$PartnerFormStateCopyWithImpl<$Res, $Val extends PartnerFormState>
       deletedPartners: null == deletedPartners
           ? _value.deletedPartners
           : deletedPartners // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
-      deletedRelations: null == deletedRelations
-          ? _value.deletedRelations
-          : deletedRelations // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as Map<String, Map<String, dynamic>>,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -2143,8 +2422,7 @@ abstract class _$$PartnerFormStateImplCopyWith<$Res>
       List<TNode> partnersList,
       Relation? relation,
       List<Relation> relationsList,
-      List<UniqueId> deletedPartners,
-      List<UniqueId> deletedRelations,
+      Map<String, Map<String, dynamic>> deletedPartners,
       AutovalidateMode showErrorMessages,
       bool isSaving,
       bool isAdding,
@@ -2181,7 +2459,6 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
     Object? relation = freezed,
     Object? relationsList = null,
     Object? deletedPartners = null,
-    Object? deletedRelations = null,
     Object? showErrorMessages = null,
     Object? isSaving = null,
     Object? isAdding = null,
@@ -2217,11 +2494,7 @@ class __$$PartnerFormStateImplCopyWithImpl<$Res>
       deletedPartners: null == deletedPartners
           ? _value._deletedPartners
           : deletedPartners // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
-      deletedRelations: null == deletedRelations
-          ? _value._deletedRelations
-          : deletedRelations // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as Map<String, Map<String, dynamic>>,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -2275,8 +2548,7 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       required final List<TNode> partnersList,
       this.relation,
       required final List<Relation> relationsList,
-      required final List<UniqueId> deletedPartners,
-      required final List<UniqueId> deletedRelations,
+      required final Map<String, Map<String, dynamic>> deletedPartners,
       required this.showErrorMessages,
       required this.isSaving,
       required this.isAdding,
@@ -2289,8 +2561,7 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       required this.saveFailureOrSuccessOption})
       : _partnersList = partnersList,
         _relationsList = relationsList,
-        _deletedPartners = deletedPartners,
-        _deletedRelations = deletedRelations;
+        _deletedPartners = deletedPartners;
 
   @override
   final TNode? node;
@@ -2314,21 +2585,12 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
     return EqualUnmodifiableListView(_relationsList);
   }
 
-  final List<UniqueId> _deletedPartners;
+  final Map<String, Map<String, dynamic>> _deletedPartners;
   @override
-  List<UniqueId> get deletedPartners {
-    if (_deletedPartners is EqualUnmodifiableListView) return _deletedPartners;
+  Map<String, Map<String, dynamic>> get deletedPartners {
+    if (_deletedPartners is EqualUnmodifiableMapView) return _deletedPartners;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_deletedPartners);
-  }
-
-  final List<UniqueId> _deletedRelations;
-  @override
-  List<UniqueId> get deletedRelations {
-    if (_deletedRelations is EqualUnmodifiableListView)
-      return _deletedRelations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_deletedRelations);
+    return EqualUnmodifiableMapView(_deletedPartners);
   }
 
   @override
@@ -2355,7 +2617,7 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
 
   @override
   String toString() {
-    return 'PartnerFormState(node: $node, partner: $partner, partnersList: $partnersList, relation: $relation, relationsList: $relationsList, deletedPartners: $deletedPartners, deletedRelations: $deletedRelations, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isAdding: $isAdding, isEditing: $isEditing, isViewing: $isViewing, isCreated: $isCreated, isPartnerById: $isPartnerById, gettingPartnerNodeByIdInProgress: $gettingPartnerNodeByIdInProgress, partnerNotExist: $partnerNotExist, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'PartnerFormState(node: $node, partner: $partner, partnersList: $partnersList, relation: $relation, relationsList: $relationsList, deletedPartners: $deletedPartners, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isAdding: $isAdding, isEditing: $isEditing, isViewing: $isViewing, isCreated: $isCreated, isPartnerById: $isPartnerById, gettingPartnerNodeByIdInProgress: $gettingPartnerNodeByIdInProgress, partnerNotExist: $partnerNotExist, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -2373,8 +2635,6 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
                 .equals(other._relationsList, _relationsList) &&
             const DeepCollectionEquality()
                 .equals(other._deletedPartners, _deletedPartners) &&
-            const DeepCollectionEquality()
-                .equals(other._deletedRelations, _deletedRelations) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSaving, isSaving) ||
@@ -2410,7 +2670,6 @@ class _$PartnerFormStateImpl implements _PartnerFormState {
       relation,
       const DeepCollectionEquality().hash(_relationsList),
       const DeepCollectionEquality().hash(_deletedPartners),
-      const DeepCollectionEquality().hash(_deletedRelations),
       showErrorMessages,
       isSaving,
       isAdding,
@@ -2437,8 +2696,7 @@ abstract class _PartnerFormState implements PartnerFormState {
       required final List<TNode> partnersList,
       final Relation? relation,
       required final List<Relation> relationsList,
-      required final List<UniqueId> deletedPartners,
-      required final List<UniqueId> deletedRelations,
+      required final Map<String, Map<String, dynamic>> deletedPartners,
       required final AutovalidateMode showErrorMessages,
       required final bool isSaving,
       required final bool isAdding,
@@ -2462,9 +2720,7 @@ abstract class _PartnerFormState implements PartnerFormState {
   @override
   List<Relation> get relationsList;
   @override
-  List<UniqueId> get deletedPartners;
-  @override
-  List<UniqueId> get deletedRelations;
+  Map<String, Map<String, dynamic>> get deletedPartners;
   @override
   AutovalidateMode get showErrorMessages;
   @override

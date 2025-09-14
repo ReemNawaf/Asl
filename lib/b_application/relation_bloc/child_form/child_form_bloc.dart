@@ -136,13 +136,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           print('LOG | all children length ${allchildren.length}');
           // check the tree validation
           if (allchildren.every((child) => child.failureOption.isNone())) {
-            failureOrSuccess =
-                // state.isEditing
-                //     ? await _relationRepository.update(
-                //         child: state.child,
-                //         treeId: state.child.treeId,
-                //       ):
-                await _relationRepository.addChildren(
+            failureOrSuccess = await _relationRepository.addChildren(
               children: allchildren,
               treeId: allchildren.first.treeId,
             );

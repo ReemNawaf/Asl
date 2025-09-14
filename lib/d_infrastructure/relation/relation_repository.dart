@@ -221,18 +221,28 @@ class RelationRepository implements IRelationRepository {
   }
 
   @override
-  Future<Either<RelationFailure, Unit>> deleteRelationAndChildren(
-      {required UniqueId treeId, required UniqueId relationId}) async {
+  Future<Either<RelationFailure, Unit>> deleteRelationAndChildren({
+    required UniqueId treeId,
+    required Relation relationId,
+    required TNode partner,
+  }) async {
     try {
-      final relationIdVal = relationId.getOrCrash();
-      final treeIdVal = treeId.getOrCrash();
+      print('14 | treeId $treeId');
+      print('14 | relationId $relationId');
+      print('14 | partner $partner');
+      // delete relation from main node
+      // delete relation from partner or delete partner
+      // delete relation
+      // delete relation children (recursive)
+      // final relationIdVal = relationId.relationId.getOrCrash();
+      // final treeIdVal = treeId.getOrCrash();
 
-      await _firestore
-          .treesCollection()
-          .doc(treeIdVal)
-          .collection(RELATIONS_COLLECTION)
-          .doc(relationIdVal)
-          .delete();
+      // await _firestore
+      //     .treesCollection()
+      //     .doc(treeIdVal)
+      //     .collection(RELATIONS_COLLECTION)
+      //     .doc(relationIdVal)
+      //     .delete();
 
       return right(unit);
     } on PlatformException catch (e) {

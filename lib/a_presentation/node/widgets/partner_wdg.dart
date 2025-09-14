@@ -48,6 +48,15 @@ class PartnerWidget extends StatelessWidget {
                       ...state.relationsList
                     ];
 
+                    final deleted = state.deletedPartners;
+                    final visiblePartners = allPartners
+                        .where((p) => !deleted
+                            .containsKey(p.partnerNode!.nodeId.getOrCrash()))
+                        .toList();
+
+                    // final d = allPartners.where((p) => deleted
+                    // .containsKey(p.partnerNode!.nodeId.getOrCrash()));
+
                     return GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -57,9 +66,9 @@ class PartnerWidget extends StatelessWidget {
                       ),
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: allPartners.length,
+                      itemCount: visiblePartners.length,
                       itemBuilder: (context, index) {
-                        final sinRelation = allPartners[index];
+                        final sinRelation = visiblePartners[index];
                         final partner = sinRelation.partnerNode!;
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,10 +91,15 @@ class PartnerWidget extends StatelessWidget {
                                 ),
                                 if (isEditing)
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
+                                    padding: const EdgeInsets.only(top: 22.0),
                                     child: IconOnlyButton(
                                         onPressed: () {
-                                          print('clicked');
+                                          context.read<PartnerFormBloc>().add(
+                                                PartnerFormEvent.deleltPartner(
+                                                  partner: partner,
+                                                  relation: sinRelation,
+                                                ),
+                                              );
                                         },
                                         icon: const Icon(Icons.close)),
                                   )
