@@ -75,12 +75,9 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
       ));
       print('LOG | addPartner end');
     }, showPartnerByNodeId: (e) {
-      print('11 | state.isPartnerById ${state.isPartnerById}');
       emit(state.copyWith(isPartnerById: e.isAdding));
-      print('11 | state.isPartnerById ${state.isPartnerById}');
     }, addPartnerByNodeId: (e) async {
       // get the partner node, to make sure it exist
-      print('11 | Node ID ${e.partnerId}');
       emit(state.copyWith(gettingPartnerNodeByIdInProgress: true));
       final failureOrSuccess = await _nodeRepository.getNode(
           treeId: e.node.treeId,
@@ -88,7 +85,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
 
       failureOrSuccess.fold((l) {
         // when the node id is not a valid id, show validation error
-        print('11 | l $l');
         emit(state.copyWith(
           gettingPartnerNodeByIdInProgress: false,
           showErrorMessages: AutovalidateMode.always,
@@ -96,7 +92,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         ));
       }, (r) {
         // if the id is valid, then create a relation and add the relation and the partner node to the list
-        print('11 | r ${r.firstName}');
         final partner = r;
         final isFather = e.node.gender == Gender.male;
 
@@ -211,10 +206,10 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           final TNode partner = p.value['node'];
           final Relation relation = p.value['relation'];
           _relationRepository.deleteRelationAndChildren(
-            partner: partner,
-            treeId: relation.treeId,
-            relationId: relation,
-          );
+              partner: partner,
+              treeId: relation.treeId,
+              relation: relation,
+              node: relation.mainNode!);
         }
       }
       emit(state.copyWith(
@@ -239,7 +234,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
 
       emit(state.copyWith(deletedPartners: deleteList));
 
-      print('14 | ${state.deletedPartners}');
+      print('15 | ${state.deletedPartners}');
     });
   }
 }

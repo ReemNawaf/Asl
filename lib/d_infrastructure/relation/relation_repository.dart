@@ -223,26 +223,51 @@ class RelationRepository implements IRelationRepository {
   @override
   Future<Either<RelationFailure, Unit>> deleteRelationAndChildren({
     required UniqueId treeId,
-    required Relation relationId,
+    required Relation relation,
     required TNode partner,
+    required TNode node,
   }) async {
     try {
-      print('14 | treeId $treeId');
-      print('14 | relationId $relationId');
-      print('14 | partner $partner');
-      // delete relation from main node
-      // delete relation from partner or delete partner
-      // delete relation
-      // delete relation children (recursive)
-      // final relationIdVal = relationId.relationId.getOrCrash();
-      // final treeIdVal = treeId.getOrCrash();
+      final nodeRepository = NodeRepository(_firestore);
 
-      // await _firestore
-      //     .treesCollection()
-      //     .doc(treeIdVal)
-      //     .collection(RELATIONS_COLLECTION)
-      //     .doc(relationIdVal)
-      //     .delete();
+      // 1. delete relation
+
+      // 1.1. delete relation from main node
+      final nodeDoc = _firestore
+          .treesCollection()
+          .doc(treeId.getOrCrash())
+          .collection(NODES_COLLECTION)
+          .doc(node.nodeId.getOrCrash());
+
+      await nodeDoc.update({
+        'relations': FieldValue.arrayRemove([relation.relationId.getOrCrash()])
+      });
+
+      // 1.2. delete relation from partner or delete partner
+      // if partner have upperfamily (only delete the relation)
+      print('15 | partner.upperFamily != null ${partner.upperFamily != null}');
+      if (partner.upperFamily != null) {
+        final partnerDoc = _firestore
+            .treesCollection()
+            .doc(treeId.getOrCrash())
+            .collection(NODES_COLLECTION)
+            .doc(partner.nodeId.getOrCrash());
+
+        await partnerDoc.update({
+          'relations':
+              FieldValue.arrayRemove([relation.relationId.getOrCrash()])
+        });
+      } else {
+        await nodeRepository.delete(nodeId: partner.nodeId, treeId: treeId);
+      }
+
+      // 1.3. delete relation
+      await _firestore
+          .treesCollection()
+          .doc(treeId.getOrCrash())
+          .collection(RELATIONS_COLLECTION)
+          .doc(relation.relationId.getOrCrash())
+          .delete();
 
       return right(unit);
     } on PlatformException catch (e) {

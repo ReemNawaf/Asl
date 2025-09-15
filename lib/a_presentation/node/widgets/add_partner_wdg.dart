@@ -35,7 +35,6 @@ class AddPartnerWidget extends StatelessWidget {
     return BlocBuilder<PartnerFormBloc, PartnerFormState>(
       builder: (context, state) {
         final isAddingPartner = state.isPartnerById;
-        print('11 | isAddingPartner $isAddingPartner');
 
         return Form(
           autovalidateMode: state.showErrorMessages,
@@ -253,11 +252,6 @@ class PartnerName extends StatelessWidget {
           : '',
     );
 
-    print('11 | isAddingPartner $isAddingPartner');
-    print(
-        '11 | state.gettingPartnerNodeByIdInProgress ${state.gettingPartnerNodeByIdInProgress}');
-    print(
-        '11 | state.partnerNotExist ${state.gettingPartnerNodeByIdInProgress}');
     return SizedBox(
         width: 250,
         child: state.gettingPartnerNodeByIdInProgress

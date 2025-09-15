@@ -7,4 +7,6 @@ const ARABIC_STRINGS = {
   'node_id_copied': 'تم نسخ معرف العضو بنجاح',
   'copy_node_id': 'نسخ معرف العضو',
   'node_name_copied': 'تم نسخ اسم العضو بنجاح',
+  'cannot_delete_partner_with_children':
+      'لا يمكن حذف شريك لديه أبناء أحذف الأبناء أولًا'
 };

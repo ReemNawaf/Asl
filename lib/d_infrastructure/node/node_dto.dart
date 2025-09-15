@@ -22,7 +22,7 @@ abstract class NodeDto implements _$NodeDto {
     String? deathDate,
     required bool isAlive,
     required String gender,
-    required String upperFamily,
+    String? upperFamily,
     required List<String> relations,
     required List<String> fosterChildren,
   }) = _NodeDto;
@@ -41,8 +41,7 @@ abstract class NodeDto implements _$NodeDto {
           : DateFormat("yyyy-MM-dd").format(node.deathDate!),
       isAlive: node.isAlive,
       gender: node.gender.name,
-      upperFamily:
-          node.upperFamily == null ? '' : node.upperFamily!.getOrCrash(),
+      upperFamily: node.upperFamily?.getOrCrash(),
       relations: node.relations.map((r) => r.getOrCrash()).toList(),
       fosterChildren: node.fosterChildren.map((e) => e.getOrCrash()).toList(),
     );
@@ -58,7 +57,8 @@ abstract class NodeDto implements _$NodeDto {
       deathDate: deathDate == null ? null : DateTime.parse(deathDate!),
       isAlive: isAlive,
       gender: Gender.values.byName(gender),
-      upperFamily: UniqueId.fromUniqueString(upperFamily),
+      upperFamily:
+          upperFamily != null ? UniqueId.fromUniqueString(upperFamily!) : null,
       relations: relations.map((r) => UniqueId.fromUniqueString(r)).toList(),
       fosterChildren:
           fosterChildren.map((e) => UniqueId.fromUniqueString(e)).toList(),

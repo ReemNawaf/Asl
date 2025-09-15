@@ -27,7 +27,7 @@ mixin _$NodeDto {
   String? get deathDate => throw _privateConstructorUsedError;
   bool get isAlive => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
-  String get upperFamily => throw _privateConstructorUsedError;
+  String? get upperFamily => throw _privateConstructorUsedError;
   List<String> get relations => throw _privateConstructorUsedError;
   List<String> get fosterChildren => throw _privateConstructorUsedError;
 
@@ -49,7 +49,7 @@ abstract class $NodeDtoCopyWith<$Res> {
       String? deathDate,
       bool isAlive,
       String gender,
-      String upperFamily,
+      String? upperFamily,
       List<String> relations,
       List<String> fosterChildren});
 }
@@ -74,7 +74,7 @@ class _$NodeDtoCopyWithImpl<$Res, $Val extends NodeDto>
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? upperFamily = null,
+    Object? upperFamily = freezed,
     Object? relations = null,
     Object? fosterChildren = null,
   }) {
@@ -107,10 +107,10 @@ class _$NodeDtoCopyWithImpl<$Res, $Val extends NodeDto>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      upperFamily: null == upperFamily
+      upperFamily: freezed == upperFamily
           ? _value.upperFamily
           : upperFamily // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       relations: null == relations
           ? _value.relations
           : relations // ignore: cast_nullable_to_non_nullable
@@ -138,7 +138,7 @@ abstract class _$$NodeDtoImplCopyWith<$Res> implements $NodeDtoCopyWith<$Res> {
       String? deathDate,
       bool isAlive,
       String gender,
-      String upperFamily,
+      String? upperFamily,
       List<String> relations,
       List<String> fosterChildren});
 }
@@ -161,7 +161,7 @@ class __$$NodeDtoImplCopyWithImpl<$Res>
     Object? deathDate = freezed,
     Object? isAlive = null,
     Object? gender = null,
-    Object? upperFamily = null,
+    Object? upperFamily = freezed,
     Object? relations = null,
     Object? fosterChildren = null,
   }) {
@@ -194,10 +194,10 @@ class __$$NodeDtoImplCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
-      upperFamily: null == upperFamily
+      upperFamily: freezed == upperFamily
           ? _value.upperFamily
           : upperFamily // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       relations: null == relations
           ? _value._relations
           : relations // ignore: cast_nullable_to_non_nullable
@@ -221,7 +221,7 @@ class _$NodeDtoImpl extends _NodeDto {
       this.deathDate,
       required this.isAlive,
       required this.gender,
-      required this.upperFamily,
+      this.upperFamily,
       required final List<String> relations,
       required final List<String> fosterChildren})
       : _relations = relations,
@@ -246,7 +246,7 @@ class _$NodeDtoImpl extends _NodeDto {
   @override
   final String gender;
   @override
-  final String upperFamily;
+  final String? upperFamily;
   final List<String> _relations;
   @override
   List<String> get relations {
@@ -329,7 +329,7 @@ abstract class _NodeDto extends NodeDto {
       final String? deathDate,
       required final bool isAlive,
       required final String gender,
-      required final String upperFamily,
+      final String? upperFamily,
       required final List<String> relations,
       required final List<String> fosterChildren}) = _$NodeDtoImpl;
   const _NodeDto._() : super._();
@@ -351,7 +351,7 @@ abstract class _NodeDto extends NodeDto {
   @override
   String get gender;
   @override
-  String get upperFamily;
+  String? get upperFamily;
   @override
   List<String> get relations;
   @override

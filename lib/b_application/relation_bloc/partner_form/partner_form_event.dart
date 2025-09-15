@@ -4,8 +4,10 @@ part of 'partner_form_bloc.dart';
 abstract class PartnerFormEvent with _$PartnerFormEvent {
   const factory PartnerFormEvent.addPartner(TNode node) = _AddPartner;
 
-  const factory PartnerFormEvent.deleltPartner(
-      {required TNode partner, required Relation relation}) = _DeleltPartner;
+  const factory PartnerFormEvent.deleltPartner({
+    required TNode partner,
+    required Relation relation,
+  }) = _DeleltPartner;
 
   const factory PartnerFormEvent.edited(TNode partner) = _Edited;
   const factory PartnerFormEvent.changeName(String name) = _ChangedName;

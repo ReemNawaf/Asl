@@ -15,7 +15,7 @@ _$NodeDtoImpl _$$NodeDtoImplFromJson(Map<String, dynamic> json) =>
       deathDate: json['deathDate'] as String?,
       isAlive: json['isAlive'] as bool,
       gender: json['gender'] as String,
-      upperFamily: json['upperFamily'] as String,
+      upperFamily: json['upperFamily'] as String?,
       relations:
           (json['relations'] as List<dynamic>).map((e) => e as String).toList(),
       fosterChildren: (json['fosterChildren'] as List<dynamic>)

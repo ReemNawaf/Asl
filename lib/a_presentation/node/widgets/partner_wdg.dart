@@ -1,5 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
@@ -24,7 +25,7 @@ class PartnerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isEditing = context.read<NodeFormBloc>().state.isEditing == 2;
+    final isEditing = context.read<NodeFormBloc>().state.isEditing != -1;
 
     return BlocBuilder<RelationWatcherBloc, RelationWatcherState>(
       builder: (context, state) {
@@ -53,9 +54,6 @@ class PartnerWidget extends StatelessWidget {
                         .where((p) => !deleted
                             .containsKey(p.partnerNode!.nodeId.getOrCrash()))
                         .toList();
-
-                    // final d = allPartners.where((p) => deleted
-                    // .containsKey(p.partnerNode!.nodeId.getOrCrash()));
 
                     return GridView.builder(
                       gridDelegate:
@@ -94,12 +92,24 @@ class PartnerWidget extends StatelessWidget {
                                     padding: const EdgeInsets.only(top: 22.0),
                                     child: IconOnlyButton(
                                         onPressed: () {
-                                          context.read<PartnerFormBloc>().add(
-                                                PartnerFormEvent.deleltPartner(
-                                                  partner: partner,
-                                                  relation: sinRelation,
-                                                ),
-                                              );
+                                          if (sinRelation.children.isEmpty) {
+                                            final relation = sinRelation
+                                                .copyWith(mainNode: node);
+                                            context.read<PartnerFormBloc>().add(
+                                                  PartnerFormEvent
+                                                      .deleltPartner(
+                                                    partner: partner,
+                                                    relation: relation,
+                                                  ),
+                                                );
+                                          } else {
+                                            appSnackBar(
+                                              context,
+                                              text: ARABIC_STRINGS[
+                                                  'cannot_delete_partner_with_children']!,
+                                              type: SnackBarType.error,
+                                            );
+                                          }
                                         },
                                         icon: const Icon(Icons.close)),
                                   )
