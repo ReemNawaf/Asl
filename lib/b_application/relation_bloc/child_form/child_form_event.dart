@@ -4,7 +4,9 @@ part of 'child_form_bloc.dart';
 abstract class ChildFormEvent with _$ChildFormEvent {
   const factory ChildFormEvent.addChild(
       {required UniqueId treeId, required UniqueId relationId}) = _AddChild;
-
+  const factory ChildFormEvent.deleltChild({
+    required TNode node,
+  }) = _DeleltChild;
   const factory ChildFormEvent.addParent(UniqueId upperFamily) = _AddParent;
 
   const factory ChildFormEvent.addChildToList() = _AddChildToList;

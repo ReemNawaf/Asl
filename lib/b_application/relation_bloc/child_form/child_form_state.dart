@@ -4,7 +4,7 @@ part of 'child_form_bloc.dart';
 abstract class ChildFormState with _$ChildFormState {
   const factory ChildFormState({
     required Map<String, List<TNode>> children,
-    required List<UniqueId> deletedChildren,
+    required List<TNode> deletedChildren,
     required TNode tempChild,
     required UniqueId relationId,
     required AutovalidateMode showErrorMessages,

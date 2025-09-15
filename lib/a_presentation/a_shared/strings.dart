@@ -8,5 +8,9 @@ const ARABIC_STRINGS = {
   'copy_node_id': 'نسخ معرف العضو',
   'node_name_copied': 'تم نسخ اسم العضو بنجاح',
   'cannot_delete_partner_with_children':
-      'لا يمكن حذف شريك لديه أبناء أحذف الأبناء أولًا'
+      'لا يمكن حذف شريك لديه أبناء أحذف الأبناء أولًا',
+  'cannot_delete_child_with_relation_male':
+      'لا يمكن حذف ابن لديه زوجة أحذف الوزجة أولًا',
+  'cannot_delete_child_with_relation_female':
+      'لا يمكن حذف ابنة لديها زوج أحذف الزوج أولًا',
 };

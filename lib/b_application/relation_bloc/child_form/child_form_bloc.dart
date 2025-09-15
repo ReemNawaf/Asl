@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/relation/i_relation_repository.dart';
@@ -19,8 +20,10 @@ part 'child_form_bloc.freezed.dart';
 @injectable
 class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
   final IRelationRepository _relationRepository;
+  final INodeRepository _nodeRepository;
 
-  ChildFormBloc(this._relationRepository) : super(ChildFormState.initial()) {
+  ChildFormBloc(this._relationRepository, this._nodeRepository)
+      : super(ChildFormState.initial()) {
     on<ChildFormEvent>(mapEventToState);
   }
 
@@ -46,6 +49,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           isViewing: true,
           isAdding: false,
           children: {},
+          deletedChildren: [],
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },
@@ -145,18 +149,38 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           }
         }
 
+        if (state.deletedChildren.isNotEmpty) {
+          for (TNode child in state.deletedChildren) {
+            print('15 | Delete Name ${child.firstName.getOrCrash()}');
+            failureOrSuccess = await _nodeRepository.delete(
+              nodeId: child.nodeId,
+              treeId: child.treeId,
+            );
+          }
+        }
+
         emit(state.copyWith(
           isViewing: true,
           isSaving: false,
           isAdding: true,
           isCreated: isCreated,
           children: {},
+          deletedChildren: [],
           tempChild: TNode.empty(),
           showErrorMessages: AutovalidateMode.always,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         ));
 
         print('LOG | save child end');
+      },
+      deleltChild: (e) {
+        print('LOG | delete child');
+        List<TNode> deleteList = [...state.deletedChildren];
+        deleteList.add(e.node);
+
+        emit(state.copyWith(deletedChildren: deleteList));
+
+        print('15 | ${state.deletedChildren}');
       },
     );
   }

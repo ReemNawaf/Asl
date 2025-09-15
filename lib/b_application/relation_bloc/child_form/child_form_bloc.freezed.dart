@@ -19,6 +19,7 @@ mixin _$ChildFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -33,6 +34,7 @@ mixin _$ChildFormEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -47,6 +49,7 @@ mixin _$ChildFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -62,6 +65,7 @@ mixin _$ChildFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -76,6 +80,7 @@ mixin _$ChildFormEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -90,6 +95,7 @@ mixin _$ChildFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -196,6 +202,7 @@ class _$AddChildImpl implements _AddChild {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -213,6 +220,7 @@ class _$AddChildImpl implements _AddChild {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -230,6 +238,7 @@ class _$AddChildImpl implements _AddChild {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -251,6 +260,7 @@ class _$AddChildImpl implements _AddChild {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -268,6 +278,7 @@ class _$AddChildImpl implements _AddChild {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -285,6 +296,7 @@ class _$AddChildImpl implements _AddChild {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -312,6 +324,203 @@ abstract class _AddChild implements ChildFormEvent {
   UniqueId get relationId;
   @JsonKey(ignore: true)
   _$$AddChildImplCopyWith<_$AddChildImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleltChildImplCopyWith<$Res> {
+  factory _$$DeleltChildImplCopyWith(
+          _$DeleltChildImpl value, $Res Function(_$DeleltChildImpl) then) =
+      __$$DeleltChildImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TNode node});
+
+  $TNodeCopyWith<$Res> get node;
+}
+
+/// @nodoc
+class __$$DeleltChildImplCopyWithImpl<$Res>
+    extends _$ChildFormEventCopyWithImpl<$Res, _$DeleltChildImpl>
+    implements _$$DeleltChildImplCopyWith<$Res> {
+  __$$DeleltChildImplCopyWithImpl(
+      _$DeleltChildImpl _value, $Res Function(_$DeleltChildImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? node = null,
+  }) {
+    return _then(_$DeleltChildImpl(
+      node: null == node
+          ? _value.node
+          : node // ignore: cast_nullable_to_non_nullable
+              as TNode,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res> get node {
+    return $TNodeCopyWith<$Res>(_value.node, (value) {
+      return _then(_value.copyWith(node: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleltChildImpl implements _DeleltChild {
+  const _$DeleltChildImpl({required this.node});
+
+  @override
+  final TNode node;
+
+  @override
+  String toString() {
+    return 'ChildFormEvent.deleltChild(node: $node)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleltChildImpl &&
+            (identical(other.node, node) || other.node == node));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, node);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleltChildImplCopyWith<_$DeleltChildImpl> get copyWith =>
+      __$$DeleltChildImplCopyWithImpl<_$DeleltChildImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
+    required TResult Function(UniqueId upperFamily) addParent,
+    required TResult Function() addChildToList,
+    required TResult Function(Map<String, List<TNode>> children) edited,
+    required TResult Function(String name) changeName,
+    required TResult Function(DateTime? date) changeBirthDate,
+    required TResult Function(DateTime? date) changeDeathDate,
+    required TResult Function(bool isAlive) changeIsAlive,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function() saved,
+  }) {
+    return deleltChild(node);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
+    TResult? Function(UniqueId upperFamily)? addParent,
+    TResult? Function()? addChildToList,
+    TResult? Function(Map<String, List<TNode>> children)? edited,
+    TResult? Function(String name)? changeName,
+    TResult? Function(DateTime? date)? changeBirthDate,
+    TResult? Function(DateTime? date)? changeDeathDate,
+    TResult? Function(bool isAlive)? changeIsAlive,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function()? saved,
+  }) {
+    return deleltChild?.call(node);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
+    TResult Function(UniqueId upperFamily)? addParent,
+    TResult Function()? addChildToList,
+    TResult Function(Map<String, List<TNode>> children)? edited,
+    TResult Function(String name)? changeName,
+    TResult Function(DateTime? date)? changeBirthDate,
+    TResult Function(DateTime? date)? changeDeathDate,
+    TResult Function(bool isAlive)? changeIsAlive,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (deleltChild != null) {
+      return deleltChild(node);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
+    required TResult Function(_AddParent value) addParent,
+    required TResult Function(_AddChildToList value) addChildToList,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_ChangedName value) changeName,
+    required TResult Function(_ChangeBirthgeDate value) changeBirthDate,
+    required TResult Function(_ChangeDeathDate value) changeDeathDate,
+    required TResult Function(_ChangeIsAlive value) changeIsAlive,
+    required TResult Function(_ChangeGender value) changeGender,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return deleltChild(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
+    TResult? Function(_AddParent value)? addParent,
+    TResult? Function(_AddChildToList value)? addChildToList,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_ChangedName value)? changeName,
+    TResult? Function(_ChangeBirthgeDate value)? changeBirthDate,
+    TResult? Function(_ChangeDeathDate value)? changeDeathDate,
+    TResult? Function(_ChangeIsAlive value)? changeIsAlive,
+    TResult? Function(_ChangeGender value)? changeGender,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return deleltChild?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
+    TResult Function(_AddParent value)? addParent,
+    TResult Function(_AddChildToList value)? addChildToList,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_ChangedName value)? changeName,
+    TResult Function(_ChangeBirthgeDate value)? changeBirthDate,
+    TResult Function(_ChangeDeathDate value)? changeDeathDate,
+    TResult Function(_ChangeIsAlive value)? changeIsAlive,
+    TResult Function(_ChangeGender value)? changeGender,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (deleltChild != null) {
+      return deleltChild(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleltChild implements ChildFormEvent {
+  const factory _DeleltChild({required final TNode node}) = _$DeleltChildImpl;
+
+  TNode get node;
+  @JsonKey(ignore: true)
+  _$$DeleltChildImplCopyWith<_$DeleltChildImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -381,6 +590,7 @@ class _$AddParentImpl implements _AddParent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -398,6 +608,7 @@ class _$AddParentImpl implements _AddParent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -415,6 +626,7 @@ class _$AddParentImpl implements _AddParent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -436,6 +648,7 @@ class _$AddParentImpl implements _AddParent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -453,6 +666,7 @@ class _$AddParentImpl implements _AddParent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -470,6 +684,7 @@ class _$AddParentImpl implements _AddParent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -536,6 +751,7 @@ class _$AddChildToListImpl implements _AddChildToList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -553,6 +769,7 @@ class _$AddChildToListImpl implements _AddChildToList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -570,6 +787,7 @@ class _$AddChildToListImpl implements _AddChildToList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -591,6 +809,7 @@ class _$AddChildToListImpl implements _AddChildToList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -608,6 +827,7 @@ class _$AddChildToListImpl implements _AddChildToList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -625,6 +845,7 @@ class _$AddChildToListImpl implements _AddChildToList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -719,6 +940,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -736,6 +958,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -753,6 +976,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -774,6 +998,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -791,6 +1016,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -808,6 +1034,7 @@ class _$EditedImpl implements _Edited {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -900,6 +1127,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -917,6 +1145,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -934,6 +1163,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -955,6 +1185,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -972,6 +1203,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -989,6 +1221,7 @@ class _$ChangedNameImpl implements _ChangedName {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -1082,6 +1315,7 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -1099,6 +1333,7 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -1116,6 +1351,7 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -1137,6 +1373,7 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -1154,6 +1391,7 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -1171,6 +1409,7 @@ class _$ChangeBirthgeDateImpl implements _ChangeBirthgeDate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -1265,6 +1504,7 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -1282,6 +1522,7 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -1299,6 +1540,7 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -1320,6 +1562,7 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -1337,6 +1580,7 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -1354,6 +1598,7 @@ class _$ChangeDeathDateImpl implements _ChangeDeathDate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -1446,6 +1691,7 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -1463,6 +1709,7 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -1480,6 +1727,7 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -1501,6 +1749,7 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -1518,6 +1767,7 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -1535,6 +1785,7 @@ class _$ChangeIsAliveImpl implements _ChangeIsAlive {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -1627,6 +1878,7 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -1644,6 +1896,7 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -1661,6 +1914,7 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -1682,6 +1936,7 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -1699,6 +1954,7 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -1716,6 +1972,7 @@ class _$ChangeGenderImpl implements _ChangeGender {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -1782,6 +2039,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId, UniqueId relationId) addChild,
+    required TResult Function(TNode node) deleltChild,
     required TResult Function(UniqueId upperFamily) addParent,
     required TResult Function() addChildToList,
     required TResult Function(Map<String, List<TNode>> children) edited,
@@ -1799,6 +2057,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult? Function(TNode node)? deleltChild,
     TResult? Function(UniqueId upperFamily)? addParent,
     TResult? Function()? addChildToList,
     TResult? Function(Map<String, List<TNode>> children)? edited,
@@ -1816,6 +2075,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId, UniqueId relationId)? addChild,
+    TResult Function(TNode node)? deleltChild,
     TResult Function(UniqueId upperFamily)? addParent,
     TResult Function()? addChildToList,
     TResult Function(Map<String, List<TNode>> children)? edited,
@@ -1837,6 +2097,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddChild value) addChild,
+    required TResult Function(_DeleltChild value) deleltChild,
     required TResult Function(_AddParent value) addParent,
     required TResult Function(_AddChildToList value) addChildToList,
     required TResult Function(_Edited value) edited,
@@ -1854,6 +2115,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_DeleltChild value)? deleltChild,
     TResult? Function(_AddParent value)? addParent,
     TResult? Function(_AddChildToList value)? addChildToList,
     TResult? Function(_Edited value)? edited,
@@ -1871,6 +2133,7 @@ class _$SavedImpl implements _Saved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddChild value)? addChild,
+    TResult Function(_DeleltChild value)? deleltChild,
     TResult Function(_AddParent value)? addParent,
     TResult Function(_AddChildToList value)? addChildToList,
     TResult Function(_Edited value)? edited,
@@ -1896,7 +2159,7 @@ abstract class _Saved implements ChildFormEvent {
 /// @nodoc
 mixin _$ChildFormState {
   Map<String, List<TNode>> get children => throw _privateConstructorUsedError;
-  List<UniqueId> get deletedChildren => throw _privateConstructorUsedError;
+  List<TNode> get deletedChildren => throw _privateConstructorUsedError;
   TNode get tempChild => throw _privateConstructorUsedError;
   UniqueId get relationId => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
@@ -1921,7 +2184,7 @@ abstract class $ChildFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Map<String, List<TNode>> children,
-      List<UniqueId> deletedChildren,
+      List<TNode> deletedChildren,
       TNode tempChild,
       UniqueId relationId,
       AutovalidateMode showErrorMessages,
@@ -1968,7 +2231,7 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
       deletedChildren: null == deletedChildren
           ? _value.deletedChildren
           : deletedChildren // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<TNode>,
       tempChild: null == tempChild
           ? _value.tempChild
           : tempChild // ignore: cast_nullable_to_non_nullable
@@ -2027,7 +2290,7 @@ abstract class _$$ChildFormStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Map<String, List<TNode>> children,
-      List<UniqueId> deletedChildren,
+      List<TNode> deletedChildren,
       TNode tempChild,
       UniqueId relationId,
       AutovalidateMode showErrorMessages,
@@ -2073,7 +2336,7 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
       deletedChildren: null == deletedChildren
           ? _value._deletedChildren
           : deletedChildren // ignore: cast_nullable_to_non_nullable
-              as List<UniqueId>,
+              as List<TNode>,
       tempChild: null == tempChild
           ? _value.tempChild
           : tempChild // ignore: cast_nullable_to_non_nullable
@@ -2119,7 +2382,7 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
 class _$ChildFormStateImpl implements _ChildFormState {
   const _$ChildFormStateImpl(
       {required final Map<String, List<TNode>> children,
-      required final List<UniqueId> deletedChildren,
+      required final List<TNode> deletedChildren,
       required this.tempChild,
       required this.relationId,
       required this.showErrorMessages,
@@ -2140,9 +2403,9 @@ class _$ChildFormStateImpl implements _ChildFormState {
     return EqualUnmodifiableMapView(_children);
   }
 
-  final List<UniqueId> _deletedChildren;
+  final List<TNode> _deletedChildren;
   @override
-  List<UniqueId> get deletedChildren {
+  List<TNode> get deletedChildren {
     if (_deletedChildren is EqualUnmodifiableListView) return _deletedChildren;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_deletedChildren);
@@ -2228,7 +2491,7 @@ class _$ChildFormStateImpl implements _ChildFormState {
 abstract class _ChildFormState implements ChildFormState {
   const factory _ChildFormState(
       {required final Map<String, List<TNode>> children,
-      required final List<UniqueId> deletedChildren,
+      required final List<TNode> deletedChildren,
       required final TNode tempChild,
       required final UniqueId relationId,
       required final AutovalidateMode showErrorMessages,
@@ -2243,7 +2506,7 @@ abstract class _ChildFormState implements ChildFormState {
   @override
   Map<String, List<TNode>> get children;
   @override
-  List<UniqueId> get deletedChildren;
+  List<TNode> get deletedChildren;
   @override
   TNode get tempChild;
   @override

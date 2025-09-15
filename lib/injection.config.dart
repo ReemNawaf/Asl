@@ -8,23 +8,23 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:asl/b_application/auth_bloc/auth_bloc.dart' as _i28;
+import 'package:asl/b_application/auth_bloc/auth_bloc.dart' as _i27;
 import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart'
-    as _i29;
+    as _i28;
 import 'package:asl/b_application/node_bloc/family_watcher/family_watcher_bloc.dart'
-    as _i26;
-import 'package:asl/b_application/node_bloc/node_actor/node_actor_bloc.dart'
-    as _i24;
-import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart'
     as _i25;
+import 'package:asl/b_application/node_bloc/node_actor/node_actor_bloc.dart'
+    as _i23;
+import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart'
+    as _i24;
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart'
-    as _i27;
+    as _i26;
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart'
-    as _i17;
+    as _i29;
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart'
     as _i30;
 import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart'
-    as _i18;
+    as _i17;
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart'
     as _i3;
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart'
@@ -32,15 +32,15 @@ import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart'
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart'
     as _i5;
 import 'package:asl/b_application/tree_bloc/tree_actor/tree_actor_bloc.dart'
-    as _i22;
-import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart'
     as _i21;
+import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart'
+    as _i20;
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart'
-    as _i23;
+    as _i22;
 import 'package:asl/b_application/user_bloc/user_form/user_form_bloc.dart'
     as _i31;
 import 'package:asl/b_application/user_bloc/user_watcher_bloc.dart' as _i32;
-import 'package:asl/c_domain/app_user/i_user_repo.dart' as _i19;
+import 'package:asl/c_domain/app_user/i_user_repo.dart' as _i18;
 import 'package:asl/c_domain/auth/i_auth_facade.dart' as _i11;
 import 'package:asl/c_domain/node/i_node_repository.dart' as _i13;
 import 'package:asl/c_domain/relation/i_relation_repository.dart' as _i15;
@@ -51,7 +51,7 @@ import 'package:asl/d_infrastructure/core/firebase_injectable_module.dart'
 import 'package:asl/d_infrastructure/node/node_repository.dart' as _i14;
 import 'package:asl/d_infrastructure/relation/relation_repository.dart' as _i16;
 import 'package:asl/d_infrastructure/trees/tree_repository.dart' as _i10;
-import 'package:asl/d_infrastructure/user/user_repository.dart' as _i20;
+import 'package:asl/d_infrastructure/user/user_repository.dart' as _i19;
 import 'package:cloud_firestore/cloud_firestore.dart' as _i8;
 import 'package:firebase_auth/firebase_auth.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
@@ -89,37 +89,39 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i14.NodeRepository(gh<_i8.FirebaseFirestore>()));
     gh.lazySingleton<_i15.IRelationRepository>(
         () => _i16.RelationRepository(gh<_i8.FirebaseFirestore>()));
-    gh.factory<_i17.ChildFormBloc>(
-        () => _i17.ChildFormBloc(gh<_i15.IRelationRepository>()));
-    gh.factory<_i18.RelationWatcherBloc>(
-        () => _i18.RelationWatcherBloc(gh<_i15.IRelationRepository>()));
-    gh.lazySingleton<_i19.IUserRepository>(
-        () => _i20.UserRepository(gh<_i8.FirebaseFirestore>()));
-    gh.factory<_i21.TreeFormBloc>(
-        () => _i21.TreeFormBloc(gh<_i9.ITreeRepository>()));
-    gh.factory<_i22.TreeActorBloc>(
-        () => _i22.TreeActorBloc(gh<_i9.ITreeRepository>()));
-    gh.factory<_i23.TreeWatcherBloc>(
-        () => _i23.TreeWatcherBloc(gh<_i9.ITreeRepository>()));
-    gh.factory<_i24.NodeActorBloc>(
-        () => _i24.NodeActorBloc(gh<_i13.INodeRepository>()));
-    gh.factory<_i25.NodeFormBloc>(
-        () => _i25.NodeFormBloc(gh<_i13.INodeRepository>()));
-    gh.factory<_i26.FamilyWatcherBloc>(
-        () => _i26.FamilyWatcherBloc(gh<_i13.INodeRepository>()));
-    gh.factory<_i27.NodeWatcherBloc>(
-        () => _i27.NodeWatcherBloc(gh<_i13.INodeRepository>()));
-    gh.factory<_i28.AuthBloc>(() => _i28.AuthBloc(gh<_i11.IAuthFacade>()));
-    gh.factory<_i29.SignInFormBloc>(
-        () => _i29.SignInFormBloc(gh<_i11.IAuthFacade>()));
+    gh.factory<_i17.RelationWatcherBloc>(
+        () => _i17.RelationWatcherBloc(gh<_i15.IRelationRepository>()));
+    gh.lazySingleton<_i18.IUserRepository>(
+        () => _i19.UserRepository(gh<_i8.FirebaseFirestore>()));
+    gh.factory<_i20.TreeFormBloc>(
+        () => _i20.TreeFormBloc(gh<_i9.ITreeRepository>()));
+    gh.factory<_i21.TreeActorBloc>(
+        () => _i21.TreeActorBloc(gh<_i9.ITreeRepository>()));
+    gh.factory<_i22.TreeWatcherBloc>(
+        () => _i22.TreeWatcherBloc(gh<_i9.ITreeRepository>()));
+    gh.factory<_i23.NodeActorBloc>(
+        () => _i23.NodeActorBloc(gh<_i13.INodeRepository>()));
+    gh.factory<_i24.NodeFormBloc>(
+        () => _i24.NodeFormBloc(gh<_i13.INodeRepository>()));
+    gh.factory<_i25.FamilyWatcherBloc>(
+        () => _i25.FamilyWatcherBloc(gh<_i13.INodeRepository>()));
+    gh.factory<_i26.NodeWatcherBloc>(
+        () => _i26.NodeWatcherBloc(gh<_i13.INodeRepository>()));
+    gh.factory<_i27.AuthBloc>(() => _i27.AuthBloc(gh<_i11.IAuthFacade>()));
+    gh.factory<_i28.SignInFormBloc>(
+        () => _i28.SignInFormBloc(gh<_i11.IAuthFacade>()));
+    gh.factory<_i29.ChildFormBloc>(() => _i29.ChildFormBloc(
+          gh<_i15.IRelationRepository>(),
+          gh<_i13.INodeRepository>(),
+        ));
     gh.factory<_i30.PartnerFormBloc>(() => _i30.PartnerFormBloc(
           gh<_i15.IRelationRepository>(),
           gh<_i13.INodeRepository>(),
         ));
     gh.factory<_i31.UserFormBloc>(
-        () => _i31.UserFormBloc(gh<_i19.IUserRepository>()));
+        () => _i31.UserFormBloc(gh<_i18.IUserRepository>()));
     gh.factory<_i32.UserWatcherBloc>(
-        () => _i32.UserWatcherBloc(gh<_i19.IUserRepository>()));
+        () => _i32.UserWatcherBloc(gh<_i18.IUserRepository>()));
     return this;
   }
 }

@@ -1,8 +1,11 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
+import 'package:asl/a_presentation/core/widgets/icon_only_btn.dart';
+import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -23,6 +26,8 @@ class ChildrenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isEditing = context.read<NodeFormBloc>().state.isEditing != -1;
+
     return BlocBuilder<NodeWatcherBloc, NodeWatcherState>(
       builder: (context, state) {
         return state.map(
@@ -51,7 +56,17 @@ class ChildrenWidget extends StatelessWidget {
                           ...sinRelation.childrenNodes,
                           ...?tempRelationChildren
                         ];
-                        return allChildren.isNotEmpty
+
+                        final deleted = state.deletedChildren
+                            .map((i) => i.nodeId.getOrCrash())
+                            .toList();
+
+                        final visibleChildren = allChildren
+                            .where(
+                                (p) => !deleted.contains(p.nodeId.getOrCrash()))
+                            .toList();
+
+                        return visibleChildren.isNotEmpty
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -80,43 +95,75 @@ class ChildrenWidget extends StatelessWidget {
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: allChildren.length,
+                                    itemCount: visibleChildren.length,
                                     itemBuilder: (context, index) {
-                                      final child = allChildren[index];
-                                      return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                      final child = visibleChildren[index];
+                                      return Row(
                                         children: [
-                                          SizedBox(
-                                            height: 63,
-                                            width: 278,
-                                            child: AppFormField(
-                                              label:
-                                                  'الابن${child.gender == Gender.female ? 'ة' : ''}',
-                                              hint: '',
-                                              onSaved: (_) {},
-                                              initialValue:
-                                                  child.firstName.getOrCrash(),
-                                              validator: (_) => '',
-                                              isEditing: false,
-                                            ),
-                                          ),
-                                          Row(
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
-                                              if (sinRelation.marriageDate !=
-                                                  null) ...[
-                                                Text(
-                                                  'تاريخ الميلاد: ${child.birthDate!.year}',
-                                                  style:
-                                                      kCaption1Style.copyWith(
-                                                    color: kBlacksColor[600],
-                                                  ),
+                                              SizedBox(
+                                                height: 63,
+                                                width: isEditing ? 245 : 273,
+                                                child: AppFormField(
+                                                  label:
+                                                      'الابن${child.gender == Gender.female ? 'ة' : ''}',
+                                                  hint: '',
+                                                  onSaved: (_) {},
+                                                  initialValue: child.firstName
+                                                      .getOrCrash(),
+                                                  validator: (_) => '',
+                                                  isEditing: false,
                                                 ),
-                                                kHSpacer20,
-                                              ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  if (sinRelation
+                                                          .marriageDate !=
+                                                      null) ...[
+                                                    Text(
+                                                      'تاريخ الميلاد: ${child.birthDate!.year}',
+                                                      style: kCaption1Style
+                                                          .copyWith(
+                                                        color:
+                                                            kBlacksColor[600],
+                                                      ),
+                                                    ),
+                                                    kHSpacer20,
+                                                  ],
+                                                ],
+                                              ),
+                                              kVSpacer10,
                                             ],
                                           ),
-                                          kVSpacer10,
+                                          if (isEditing)
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 0.0),
+                                              child: IconOnlyButton(
+                                                  onPressed: () {
+                                                    if (child
+                                                        .relations.isEmpty) {
+                                                      context
+                                                          .read<ChildFormBloc>()
+                                                          .add(ChildFormEvent
+                                                              .deleltChild(
+                                                                  node: child));
+                                                    } else {
+                                                      appSnackBar(
+                                                        context,
+                                                        text: ARABIC_STRINGS[
+                                                            'cannot_delete_child_with_relation_${child.gender.name}']!,
+                                                        type:
+                                                            SnackBarType.error,
+                                                      );
+                                                    }
+                                                  },
+                                                  icon:
+                                                      const Icon(Icons.close)),
+                                            )
                                         ],
                                       );
                                     },

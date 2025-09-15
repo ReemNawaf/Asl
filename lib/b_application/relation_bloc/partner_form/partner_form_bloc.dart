@@ -71,6 +71,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         // Empty the state lists
         partnersList: [],
         relationsList: [],
+        deletedPartners: {},
         showErrorMessages: AutovalidateMode.disabled,
       ));
       print('LOG | addPartner end');
@@ -119,6 +120,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           // Empty the state lists
           partnersList: [],
           relationsList: [],
+          deletedPartners: {},
           partnerNotExist: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
@@ -222,6 +224,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         // Empty the state lists
         partnersList: [],
         relationsList: [],
+        deletedPartners: {},
       ));
       print('LOG | add partners saved end');
     }, deleltPartner: (e) {
@@ -233,8 +236,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
       };
 
       emit(state.copyWith(deletedPartners: deleteList));
-
-      print('15 | ${state.deletedPartners}');
     });
   }
 }
