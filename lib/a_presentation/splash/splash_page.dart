@@ -20,6 +20,7 @@ class SplashPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     if (size.height < MIM_HEIGHT || size.width < MIM_WIDTH) {
       return Scaffold(
+        backgroundColor: kWhitesColor[600],
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
@@ -35,7 +36,6 @@ class SplashPage extends StatelessWidget {
                 ),
               ),
               kVSpacer20,
-
               Text(
                 '${ARABIC_STRINGS['required_bigger_screen_title']!} 🌴✨',
                 style: kHeadlineSmall.copyWith(fontSize: 24),
@@ -50,12 +50,11 @@ class SplashPage extends StatelessWidget {
                 ),
               ),
               kVSpacer20,
-
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
-                    color: kRootColors[810], borderRadius: kAppBorderRadius),
+                    color: kRootColors[600], borderRadius: kAppBorderRadius),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -68,19 +67,6 @@ class SplashPage extends StatelessWidget {
                   ],
                 ),
               ),
-
-              // Container(
-              //   margin: const EdgeInsets.symmetric(horizontal: 20.0),
-              //   decoration: BoxDecoration(
-              //     color: kRootColors[600],
-              //     borderRadius: kAppBorderRadius,
-              //   ),
-              //   child: Icon(
-              //     Icons.desktop_windows_rounded,
-              //     size: 80,
-              //     color: kRootColors,
-              //   ),
-              // ),
             ],
           ),
         ),
