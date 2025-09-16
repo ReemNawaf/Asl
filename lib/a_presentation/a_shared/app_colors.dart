@@ -28,7 +28,7 @@ const MaterialColor kWhitesColor = MaterialColor(
     300: Color(0xFFDEDEDE), //  layer 3
     400: Color(0xFFEEEEEE), //  3
     500: Color(0xFFFFF0EE), //  red
-    600: Color(0xFFFFFAF5), //  red
+    600: Color(0xFFFFF4EB), //  red
   },
 );
 

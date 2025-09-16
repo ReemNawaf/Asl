@@ -3,6 +3,7 @@ import 'package:asl/a_presentation/auth/widgets/action_btn.dart';
 import 'package:asl/a_presentation/auth/widgets/email_field.dart';
 import 'package:asl/a_presentation/auth/widgets/helper.dart';
 import 'package:asl/a_presentation/auth/widgets/password_field.dart';
+import 'package:asl/a_presentation/core/widgets/logo_slogan_wdg.dart';
 import 'package:asl/a_presentation/routes/app_router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +91,7 @@ class _SignInFormState extends State<SignInForm> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/images/logo.png', height: 160),
+                const LogoSloganWidget(),
                 EmailField(
                   emailFocusNode: _emailFocusNode,
                   passwordFocusNode: _passwordFocusNode,

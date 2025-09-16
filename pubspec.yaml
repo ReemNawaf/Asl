@@ -76,6 +76,19 @@ flutter:
         - asset: assets/fonts/ghaithsans/ghaithsans_thin.otf
           weight: 100
 
+    - family: the_year_of_handicrafts
+      fonts:
+        - asset: assets/fonts/the_year_of_handicrafts/the_year_of_handicrafts_regular.otf
+          weight: 400
+        - asset: assets/fonts/the_year_of_handicrafts/the_year_of_handicrafts_medium.otf
+          weight: 500
+        - asset: assets/fonts/the_year_of_handicrafts/the_year_of_handicrafts_semibold.otf
+          weight: 600
+        - asset: assets/fonts/the_year_of_handicrafts/the_year_of_handicrafts_bold.otf
+          weight: 700
+        - asset: assets/fonts/the_year_of_handicrafts/the_year_of_handicrafts_black.otf
+          weight: 900
+
   assets:
     - assets/images/
     - assets/avatars/
