@@ -22,8 +22,8 @@ class SplashPage extends StatelessWidget {
             'بعرض $MIM_WIDTH وطول $MIM_HEIGHT وأكبر',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: kBlacksColor,
-              fontSize: 24,
+              color: kRootColors,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
