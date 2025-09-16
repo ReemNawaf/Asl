@@ -27,11 +27,20 @@ class SplashPage extends StatelessWidget {
             children: [
               const LogoSloganWidget(),
               kVSpacer10,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 150.0),
+                child: Divider(
+                  color: kBlacksColor[800],
+                  thickness: 2,
+                ),
+              ),
+              kVSpacer20,
+
               Text(
                 '${ARABIC_STRINGS['required_bigger_screen_title']!} 🌴✨',
                 style: kHeadlineSmall.copyWith(fontSize: 24),
               ),
-              kVSpacer20,
+              kVSpacer30,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 70.0),
                 child: Text(

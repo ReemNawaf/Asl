@@ -1,5 +1,3 @@
-import 'package:asl/a_presentation/a_shared/constants.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,7 +10,7 @@ class LogoSloganWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: 180,
           width: 220,
           child: Stack(
@@ -40,7 +38,6 @@ class LogoSloganWidget extends StatelessWidget {
           height: 100,
           'assets/images/slogan.svg',
         ),
-        kVSpacer10,
       ],
     );
   }
