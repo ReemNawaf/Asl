@@ -1,5 +1,5 @@
-name: asl
-description: "A new Flutter project."
+name: Asl
+description: "Asl, store and view your family tree in the best way."
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
