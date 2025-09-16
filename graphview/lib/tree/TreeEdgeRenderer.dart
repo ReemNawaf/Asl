@@ -86,7 +86,7 @@ class TreeEdgeRenderer extends EdgeRenderer {
               color: Colors.black,
               fontSize: 16,
               fontWeight: FontWeight.w700,
-              fontFamily: 'ghaithsans',
+              fontFamily: 'the_year_of_handicrafts',
             ),
           );
 
