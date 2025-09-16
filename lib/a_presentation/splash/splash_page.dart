@@ -29,7 +29,7 @@ class SplashPage extends StatelessWidget {
               const LogoSloganWidget(),
               kVSpacer10,
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 150.0),
+                padding: const EdgeInsets.symmetric(horizontal: 100.0),
                 child: Divider(
                   color: kRootColors[600],
                   thickness: 2,
