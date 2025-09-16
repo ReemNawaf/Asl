@@ -31,10 +31,10 @@ class AddMemberButton extends StatelessWidget {
       child: RawMaterialButton(
         onPressed: onPressed,
         fillColor: color,
-        hoverColor: color.withValues(alpha: 0.5),
+        hoverColor: color.withOpacity(0.5),
         focusColor: color,
         highlightColor: color,
-        splashColor: color.withValues(alpha: 0.5),
+        splashColor: color.withOpacity(0.5),
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         elevation: 0,
         hoverElevation: 0,
