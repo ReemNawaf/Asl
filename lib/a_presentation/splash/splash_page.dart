@@ -31,7 +31,7 @@ class SplashPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 150.0),
                 child: Divider(
-                  color: kBlacksColor[800],
+                  color: kRootColors[600],
                   thickness: 2,
                 ),
               ),
