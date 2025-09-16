@@ -49,7 +49,10 @@
           serviceWorkerVersion: serviceWorkerVersion,
         },
         onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+          engineInitializer.initializeEngine(
+          {useColorEmoji:true} 
+          ).then(function(appRunner) {
+            useColorEmoji: true,
             appRunner.runApp();
           });
         }
