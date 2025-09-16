@@ -1,4 +1,7 @@
+import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/strings.dart';
+import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/routes/app_router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -15,17 +18,60 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     if (size.height < MIM_HEIGHT || size.width < MIM_WIDTH) {
-      return const Scaffold(
-        body: Center(
-          child: Text(
-            'النظام مصمم للعمل على شاشات\n'
-            'بعرض $MIM_WIDTH وطول $MIM_HEIGHT وأكبر',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: kRootColors,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+      return Scaffold(
+        body: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/logo.png', height: 160),
+              Text(
+                '${ARABIC_STRINGS['required_bigger_screen_title']!} 🌴✨',
+                style: kHeadlineSmall.copyWith(fontSize: 20),
+              ),
+              kVSpacer20,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 70.0),
+                child: Text(
+                  '${ARABIC_STRINGS['required_bigger_screen_des_1']!} ${ARABIC_STRINGS['required_bigger_screen_des_2']!}',
+                  style: kBodyMedium.copyWith(wordSpacing: 2.0, height: 1.8),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              kVSpacer20,
+
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                decoration: BoxDecoration(
+                    color: kBlacksColor[800]!.withOpacity(0.5),
+                    borderRadius: kAppBorderRadius),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.info_outline, color: kBlacksColor[600]),
+                    kHSpacer15,
+                    Text(
+                      'ننصح باستخدام شاشة بعرض $MIM_WIDTH وطول $MIM_HEIGHT أو أكبر',
+                      style: kBodyMedium.copyWith(wordSpacing: 2.0),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Container(
+              //   margin: const EdgeInsets.symmetric(horizontal: 20.0),
+              //   decoration: BoxDecoration(
+              //     color: kRootColors[600],
+              //     borderRadius: kAppBorderRadius,
+              //   ),
+              //   child: Icon(
+              //     Icons.desktop_windows_rounded,
+              //     size: 80,
+              //     color: kRootColors,
+              //   ),
+              // ),
+            ],
           ),
         ),
       );
@@ -40,7 +86,7 @@ class SplashPage extends StatelessWidget {
                 // context.router.push(const HomeRoute());
               },
               unauthenticated: (_) {
-                context.router.push(const AuthRoute());
+                context.router.replace(const AuthRoute());
               },
             );
           },

@@ -13,4 +13,9 @@ const ARABIC_STRINGS = {
       'لا يمكن حذف ابن لديه زوجة أحذف الوزجة أولًا',
   'cannot_delete_child_with_relation_female':
       'لا يمكن حذف ابنة لديها زوج أحذف الزوج أولًا',
+  'required_bigger_screen_title': 'التجربة أفضل على شاشة أكبر',
+  'required_bigger_screen_des_1':
+      'هذا التطبيق مصمم ليستمتع به على الشاشات الكبيرة',
+  'required_bigger_screen_des_2':
+      'جرّب الدخول من جهاز لوحي أو كمبيوتر لعرض أفضل.'
 };
