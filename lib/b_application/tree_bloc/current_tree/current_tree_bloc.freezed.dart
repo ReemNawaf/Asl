@@ -19,21 +19,24 @@ mixin _$CurrentTreeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Tree currentTree, List<Tree> trees) initialized,
-    required TResult Function(Tree currentTree) updated,
+    required TResult Function(Tree tree) updateCurrentTree,
+    required TResult Function(TNode node) updateCurrentRoot,
     required TResult Function(List<Tree> trees) updateAllTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult? Function(Tree currentTree)? updated,
+    TResult? Function(Tree tree)? updateCurrentTree,
+    TResult? Function(TNode node)? updateCurrentRoot,
     TResult? Function(List<Tree> trees)? updateAllTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult Function(Tree currentTree)? updated,
+    TResult Function(Tree tree)? updateCurrentTree,
+    TResult Function(TNode node)? updateCurrentRoot,
     TResult Function(List<Tree> trees)? updateAllTree,
     required TResult orElse(),
   }) =>
@@ -41,21 +44,24 @@ mixin _$CurrentTreeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Updated value) updated,
+    required TResult Function(_UpdateCurrentTree value) updateCurrentTree,
+    required TResult Function(_UpdateCurrentRoot value) updateCurrentRoot,
     required TResult Function(_UpdateAllTree value) updateAllTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Updated value)? updated,
+    TResult? Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult? Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult? Function(_UpdateAllTree value)? updateAllTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_Updated value)? updated,
+    TResult Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult Function(_UpdateAllTree value)? updateAllTree,
     required TResult orElse(),
   }) =>
@@ -172,7 +178,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Tree currentTree, List<Tree> trees) initialized,
-    required TResult Function(Tree currentTree) updated,
+    required TResult Function(Tree tree) updateCurrentTree,
+    required TResult Function(TNode node) updateCurrentRoot,
     required TResult Function(List<Tree> trees) updateAllTree,
   }) {
     return initialized(currentTree, trees);
@@ -182,7 +189,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult? Function(Tree currentTree)? updated,
+    TResult? Function(Tree tree)? updateCurrentTree,
+    TResult? Function(TNode node)? updateCurrentRoot,
     TResult? Function(List<Tree> trees)? updateAllTree,
   }) {
     return initialized?.call(currentTree, trees);
@@ -192,7 +200,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult Function(Tree currentTree)? updated,
+    TResult Function(Tree tree)? updateCurrentTree,
+    TResult Function(TNode node)? updateCurrentRoot,
     TResult Function(List<Tree> trees)? updateAllTree,
     required TResult orElse(),
   }) {
@@ -206,7 +215,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Updated value) updated,
+    required TResult Function(_UpdateCurrentTree value) updateCurrentTree,
+    required TResult Function(_UpdateCurrentRoot value) updateCurrentRoot,
     required TResult Function(_UpdateAllTree value) updateAllTree,
   }) {
     return initialized(this);
@@ -216,7 +226,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Updated value)? updated,
+    TResult? Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult? Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult? Function(_UpdateAllTree value)? updateAllTree,
   }) {
     return initialized?.call(this);
@@ -226,7 +237,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_Updated value)? updated,
+    TResult Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult Function(_UpdateAllTree value)? updateAllTree,
     required TResult orElse(),
   }) {
@@ -250,107 +262,110 @@ abstract class _Initialized implements CurrentTreeEvent {
 }
 
 /// @nodoc
-abstract class _$$UpdatedImplCopyWith<$Res> {
-  factory _$$UpdatedImplCopyWith(
-          _$UpdatedImpl value, $Res Function(_$UpdatedImpl) then) =
-      __$$UpdatedImplCopyWithImpl<$Res>;
+abstract class _$$UpdateCurrentTreeImplCopyWith<$Res> {
+  factory _$$UpdateCurrentTreeImplCopyWith(_$UpdateCurrentTreeImpl value,
+          $Res Function(_$UpdateCurrentTreeImpl) then) =
+      __$$UpdateCurrentTreeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Tree currentTree});
+  $Res call({Tree tree});
 
-  $TreeCopyWith<$Res> get currentTree;
+  $TreeCopyWith<$Res> get tree;
 }
 
 /// @nodoc
-class __$$UpdatedImplCopyWithImpl<$Res>
-    extends _$CurrentTreeEventCopyWithImpl<$Res, _$UpdatedImpl>
-    implements _$$UpdatedImplCopyWith<$Res> {
-  __$$UpdatedImplCopyWithImpl(
-      _$UpdatedImpl _value, $Res Function(_$UpdatedImpl) _then)
+class __$$UpdateCurrentTreeImplCopyWithImpl<$Res>
+    extends _$CurrentTreeEventCopyWithImpl<$Res, _$UpdateCurrentTreeImpl>
+    implements _$$UpdateCurrentTreeImplCopyWith<$Res> {
+  __$$UpdateCurrentTreeImplCopyWithImpl(_$UpdateCurrentTreeImpl _value,
+      $Res Function(_$UpdateCurrentTreeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentTree = null,
+    Object? tree = null,
   }) {
-    return _then(_$UpdatedImpl(
-      currentTree: null == currentTree
-          ? _value.currentTree
-          : currentTree // ignore: cast_nullable_to_non_nullable
+    return _then(_$UpdateCurrentTreeImpl(
+      tree: null == tree
+          ? _value.tree
+          : tree // ignore: cast_nullable_to_non_nullable
               as Tree,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TreeCopyWith<$Res> get currentTree {
-    return $TreeCopyWith<$Res>(_value.currentTree, (value) {
-      return _then(_value.copyWith(currentTree: value));
+  $TreeCopyWith<$Res> get tree {
+    return $TreeCopyWith<$Res>(_value.tree, (value) {
+      return _then(_value.copyWith(tree: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$UpdatedImpl implements _Updated {
-  const _$UpdatedImpl({required this.currentTree});
+class _$UpdateCurrentTreeImpl implements _UpdateCurrentTree {
+  const _$UpdateCurrentTreeImpl({required this.tree});
 
   @override
-  final Tree currentTree;
+  final Tree tree;
 
   @override
   String toString() {
-    return 'CurrentTreeEvent.updated(currentTree: $currentTree)';
+    return 'CurrentTreeEvent.updateCurrentTree(tree: $tree)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdatedImpl &&
-            (identical(other.currentTree, currentTree) ||
-                other.currentTree == currentTree));
+            other is _$UpdateCurrentTreeImpl &&
+            (identical(other.tree, tree) || other.tree == tree));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentTree);
+  int get hashCode => Object.hash(runtimeType, tree);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdatedImplCopyWith<_$UpdatedImpl> get copyWith =>
-      __$$UpdatedImplCopyWithImpl<_$UpdatedImpl>(this, _$identity);
+  _$$UpdateCurrentTreeImplCopyWith<_$UpdateCurrentTreeImpl> get copyWith =>
+      __$$UpdateCurrentTreeImplCopyWithImpl<_$UpdateCurrentTreeImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Tree currentTree, List<Tree> trees) initialized,
-    required TResult Function(Tree currentTree) updated,
+    required TResult Function(Tree tree) updateCurrentTree,
+    required TResult Function(TNode node) updateCurrentRoot,
     required TResult Function(List<Tree> trees) updateAllTree,
   }) {
-    return updated(currentTree);
+    return updateCurrentTree(tree);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult? Function(Tree currentTree)? updated,
+    TResult? Function(Tree tree)? updateCurrentTree,
+    TResult? Function(TNode node)? updateCurrentRoot,
     TResult? Function(List<Tree> trees)? updateAllTree,
   }) {
-    return updated?.call(currentTree);
+    return updateCurrentTree?.call(tree);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult Function(Tree currentTree)? updated,
+    TResult Function(Tree tree)? updateCurrentTree,
+    TResult Function(TNode node)? updateCurrentRoot,
     TResult Function(List<Tree> trees)? updateAllTree,
     required TResult orElse(),
   }) {
-    if (updated != null) {
-      return updated(currentTree);
+    if (updateCurrentTree != null) {
+      return updateCurrentTree(tree);
     }
     return orElse();
   }
@@ -359,43 +374,204 @@ class _$UpdatedImpl implements _Updated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Updated value) updated,
+    required TResult Function(_UpdateCurrentTree value) updateCurrentTree,
+    required TResult Function(_UpdateCurrentRoot value) updateCurrentRoot,
     required TResult Function(_UpdateAllTree value) updateAllTree,
   }) {
-    return updated(this);
+    return updateCurrentTree(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Updated value)? updated,
+    TResult? Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult? Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult? Function(_UpdateAllTree value)? updateAllTree,
   }) {
-    return updated?.call(this);
+    return updateCurrentTree?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_Updated value)? updated,
+    TResult Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult Function(_UpdateAllTree value)? updateAllTree,
     required TResult orElse(),
   }) {
-    if (updated != null) {
-      return updated(this);
+    if (updateCurrentTree != null) {
+      return updateCurrentTree(this);
     }
     return orElse();
   }
 }
 
-abstract class _Updated implements CurrentTreeEvent {
-  const factory _Updated({required final Tree currentTree}) = _$UpdatedImpl;
+abstract class _UpdateCurrentTree implements CurrentTreeEvent {
+  const factory _UpdateCurrentTree({required final Tree tree}) =
+      _$UpdateCurrentTreeImpl;
 
-  Tree get currentTree;
+  Tree get tree;
   @JsonKey(ignore: true)
-  _$$UpdatedImplCopyWith<_$UpdatedImpl> get copyWith =>
+  _$$UpdateCurrentTreeImplCopyWith<_$UpdateCurrentTreeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateCurrentRootImplCopyWith<$Res> {
+  factory _$$UpdateCurrentRootImplCopyWith(_$UpdateCurrentRootImpl value,
+          $Res Function(_$UpdateCurrentRootImpl) then) =
+      __$$UpdateCurrentRootImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TNode node});
+
+  $TNodeCopyWith<$Res> get node;
+}
+
+/// @nodoc
+class __$$UpdateCurrentRootImplCopyWithImpl<$Res>
+    extends _$CurrentTreeEventCopyWithImpl<$Res, _$UpdateCurrentRootImpl>
+    implements _$$UpdateCurrentRootImplCopyWith<$Res> {
+  __$$UpdateCurrentRootImplCopyWithImpl(_$UpdateCurrentRootImpl _value,
+      $Res Function(_$UpdateCurrentRootImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? node = null,
+  }) {
+    return _then(_$UpdateCurrentRootImpl(
+      node: null == node
+          ? _value.node
+          : node // ignore: cast_nullable_to_non_nullable
+              as TNode,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res> get node {
+    return $TNodeCopyWith<$Res>(_value.node, (value) {
+      return _then(_value.copyWith(node: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCurrentRootImpl implements _UpdateCurrentRoot {
+  const _$UpdateCurrentRootImpl({required this.node});
+
+  @override
+  final TNode node;
+
+  @override
+  String toString() {
+    return 'CurrentTreeEvent.updateCurrentRoot(node: $node)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCurrentRootImpl &&
+            (identical(other.node, node) || other.node == node));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, node);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCurrentRootImplCopyWith<_$UpdateCurrentRootImpl> get copyWith =>
+      __$$UpdateCurrentRootImplCopyWithImpl<_$UpdateCurrentRootImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Tree currentTree, List<Tree> trees) initialized,
+    required TResult Function(Tree tree) updateCurrentTree,
+    required TResult Function(TNode node) updateCurrentRoot,
+    required TResult Function(List<Tree> trees) updateAllTree,
+  }) {
+    return updateCurrentRoot(node);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Tree currentTree, List<Tree> trees)? initialized,
+    TResult? Function(Tree tree)? updateCurrentTree,
+    TResult? Function(TNode node)? updateCurrentRoot,
+    TResult? Function(List<Tree> trees)? updateAllTree,
+  }) {
+    return updateCurrentRoot?.call(node);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Tree currentTree, List<Tree> trees)? initialized,
+    TResult Function(Tree tree)? updateCurrentTree,
+    TResult Function(TNode node)? updateCurrentRoot,
+    TResult Function(List<Tree> trees)? updateAllTree,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentRoot != null) {
+      return updateCurrentRoot(node);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_UpdateCurrentTree value) updateCurrentTree,
+    required TResult Function(_UpdateCurrentRoot value) updateCurrentRoot,
+    required TResult Function(_UpdateAllTree value) updateAllTree,
+  }) {
+    return updateCurrentRoot(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult? Function(_UpdateCurrentRoot value)? updateCurrentRoot,
+    TResult? Function(_UpdateAllTree value)? updateAllTree,
+  }) {
+    return updateCurrentRoot?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult Function(_UpdateCurrentRoot value)? updateCurrentRoot,
+    TResult Function(_UpdateAllTree value)? updateAllTree,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentRoot != null) {
+      return updateCurrentRoot(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCurrentRoot implements CurrentTreeEvent {
+  const factory _UpdateCurrentRoot({required final TNode node}) =
+      _$UpdateCurrentRootImpl;
+
+  TNode get node;
+  @JsonKey(ignore: true)
+  _$$UpdateCurrentRootImplCopyWith<_$UpdateCurrentRootImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -470,7 +646,8 @@ class _$UpdateAllTreeImpl implements _UpdateAllTree {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Tree currentTree, List<Tree> trees) initialized,
-    required TResult Function(Tree currentTree) updated,
+    required TResult Function(Tree tree) updateCurrentTree,
+    required TResult Function(TNode node) updateCurrentRoot,
     required TResult Function(List<Tree> trees) updateAllTree,
   }) {
     return updateAllTree(trees);
@@ -480,7 +657,8 @@ class _$UpdateAllTreeImpl implements _UpdateAllTree {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult? Function(Tree currentTree)? updated,
+    TResult? Function(Tree tree)? updateCurrentTree,
+    TResult? Function(TNode node)? updateCurrentRoot,
     TResult? Function(List<Tree> trees)? updateAllTree,
   }) {
     return updateAllTree?.call(trees);
@@ -490,7 +668,8 @@ class _$UpdateAllTreeImpl implements _UpdateAllTree {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Tree currentTree, List<Tree> trees)? initialized,
-    TResult Function(Tree currentTree)? updated,
+    TResult Function(Tree tree)? updateCurrentTree,
+    TResult Function(TNode node)? updateCurrentRoot,
     TResult Function(List<Tree> trees)? updateAllTree,
     required TResult orElse(),
   }) {
@@ -504,7 +683,8 @@ class _$UpdateAllTreeImpl implements _UpdateAllTree {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Updated value) updated,
+    required TResult Function(_UpdateCurrentTree value) updateCurrentTree,
+    required TResult Function(_UpdateCurrentRoot value) updateCurrentRoot,
     required TResult Function(_UpdateAllTree value) updateAllTree,
   }) {
     return updateAllTree(this);
@@ -514,7 +694,8 @@ class _$UpdateAllTreeImpl implements _UpdateAllTree {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Updated value)? updated,
+    TResult? Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult? Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult? Function(_UpdateAllTree value)? updateAllTree,
   }) {
     return updateAllTree?.call(this);
@@ -524,7 +705,8 @@ class _$UpdateAllTreeImpl implements _UpdateAllTree {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_Updated value)? updated,
+    TResult Function(_UpdateCurrentTree value)? updateCurrentTree,
+    TResult Function(_UpdateCurrentRoot value)? updateCurrentRoot,
     TResult Function(_UpdateAllTree value)? updateAllTree,
     required TResult orElse(),
   }) {
@@ -547,6 +729,7 @@ abstract class _UpdateAllTree implements CurrentTreeEvent {
 
 /// @nodoc
 mixin _$CurrentTreeState {
+  TNode? get currentRoot => throw _privateConstructorUsedError;
   Tree? get currentTree => throw _privateConstructorUsedError;
   List<Tree> get trees => throw _privateConstructorUsedError;
 
@@ -561,8 +744,9 @@ abstract class $CurrentTreeStateCopyWith<$Res> {
           CurrentTreeState value, $Res Function(CurrentTreeState) then) =
       _$CurrentTreeStateCopyWithImpl<$Res, CurrentTreeState>;
   @useResult
-  $Res call({Tree? currentTree, List<Tree> trees});
+  $Res call({TNode? currentRoot, Tree? currentTree, List<Tree> trees});
 
+  $TNodeCopyWith<$Res>? get currentRoot;
   $TreeCopyWith<$Res>? get currentTree;
 }
 
@@ -579,10 +763,15 @@ class _$CurrentTreeStateCopyWithImpl<$Res, $Val extends CurrentTreeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentRoot = freezed,
     Object? currentTree = freezed,
     Object? trees = null,
   }) {
     return _then(_value.copyWith(
+      currentRoot: freezed == currentRoot
+          ? _value.currentRoot
+          : currentRoot // ignore: cast_nullable_to_non_nullable
+              as TNode?,
       currentTree: freezed == currentTree
           ? _value.currentTree
           : currentTree // ignore: cast_nullable_to_non_nullable
@@ -592,6 +781,18 @@ class _$CurrentTreeStateCopyWithImpl<$Res, $Val extends CurrentTreeState>
           : trees // ignore: cast_nullable_to_non_nullable
               as List<Tree>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res>? get currentRoot {
+    if (_value.currentRoot == null) {
+      return null;
+    }
+
+    return $TNodeCopyWith<$Res>(_value.currentRoot!, (value) {
+      return _then(_value.copyWith(currentRoot: value) as $Val);
+    });
   }
 
   @override
@@ -615,8 +816,10 @@ abstract class _$$CurrentTreeStateImplCopyWith<$Res>
       __$$CurrentTreeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Tree? currentTree, List<Tree> trees});
+  $Res call({TNode? currentRoot, Tree? currentTree, List<Tree> trees});
 
+  @override
+  $TNodeCopyWith<$Res>? get currentRoot;
   @override
   $TreeCopyWith<$Res>? get currentTree;
 }
@@ -632,10 +835,15 @@ class __$$CurrentTreeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentRoot = freezed,
     Object? currentTree = freezed,
     Object? trees = null,
   }) {
     return _then(_$CurrentTreeStateImpl(
+      currentRoot: freezed == currentRoot
+          ? _value.currentRoot
+          : currentRoot // ignore: cast_nullable_to_non_nullable
+              as TNode?,
       currentTree: freezed == currentTree
           ? _value.currentTree
           : currentTree // ignore: cast_nullable_to_non_nullable
@@ -652,9 +860,11 @@ class __$$CurrentTreeStateImplCopyWithImpl<$Res>
 
 class _$CurrentTreeStateImpl implements _CurrentTreeState {
   const _$CurrentTreeStateImpl(
-      {this.currentTree, required final List<Tree> trees})
+      {this.currentRoot, this.currentTree, required final List<Tree> trees})
       : _trees = trees;
 
+  @override
+  final TNode? currentRoot;
   @override
   final Tree? currentTree;
   final List<Tree> _trees;
@@ -667,7 +877,7 @@ class _$CurrentTreeStateImpl implements _CurrentTreeState {
 
   @override
   String toString() {
-    return 'CurrentTreeState(currentTree: $currentTree, trees: $trees)';
+    return 'CurrentTreeState(currentRoot: $currentRoot, currentTree: $currentTree, trees: $trees)';
   }
 
   @override
@@ -675,14 +885,16 @@ class _$CurrentTreeStateImpl implements _CurrentTreeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CurrentTreeStateImpl &&
+            (identical(other.currentRoot, currentRoot) ||
+                other.currentRoot == currentRoot) &&
             (identical(other.currentTree, currentTree) ||
                 other.currentTree == currentTree) &&
             const DeepCollectionEquality().equals(other._trees, _trees));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, currentTree, const DeepCollectionEquality().hash(_trees));
+  int get hashCode => Object.hash(runtimeType, currentRoot, currentTree,
+      const DeepCollectionEquality().hash(_trees));
 
   @JsonKey(ignore: true)
   @override
@@ -694,9 +906,12 @@ class _$CurrentTreeStateImpl implements _CurrentTreeState {
 
 abstract class _CurrentTreeState implements CurrentTreeState {
   const factory _CurrentTreeState(
-      {final Tree? currentTree,
+      {final TNode? currentRoot,
+      final Tree? currentTree,
       required final List<Tree> trees}) = _$CurrentTreeStateImpl;
 
+  @override
+  TNode? get currentRoot;
   @override
   Tree? get currentTree;
   @override

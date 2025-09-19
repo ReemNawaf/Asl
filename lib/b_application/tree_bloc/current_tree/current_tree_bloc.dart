@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -21,8 +22,13 @@ class CurrentTreeBloc extends Bloc<CurrentTreeEvent, CurrentTreeState> {
       initialized: (e) {
         emit(CurrentTreeState(currentTree: e.currentTree, trees: e.trees));
       },
-      updated: (e) {
-        emit(CurrentTreeState(currentTree: e.currentTree, trees: state.trees));
+      updateCurrentTree: (e) {
+        emit(state.copyWith(
+          currentTree: e.tree,
+        ));
+      },
+      updateCurrentRoot: (e) {
+        emit(state.copyWith(currentRoot: e.node));
       },
       updateAllTree: (e) {
         emit(CurrentTreeState(

@@ -79,9 +79,8 @@ Future<dynamic> showNewTreePanel(
 
                     //  (1) Update the Tree
                     //  1. Update the current tree
-                    contextPage
-                        .read<CurrentTreeBloc>()
-                        .add(CurrentTreeEvent.updated(currentTree: state.tree));
+                    contextPage.read<CurrentTreeBloc>().add(
+                        CurrentTreeEvent.updateCurrentTree(tree: state.tree));
 
                     //  2. Update the current nodes
                     contextPage.read<NodeWatcherBloc>().add(

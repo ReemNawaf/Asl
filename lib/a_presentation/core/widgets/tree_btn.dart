@@ -1,6 +1,7 @@
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
+import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,6 +19,10 @@ class TreeButton extends StatelessWidget {
         //  Update the current nodes
         context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
             treeId: cNode!.treeId, rootId: cNode.nodeId));
+
+        context
+            .read<CurrentTreeBloc>()
+            .add(CurrentTreeEvent.updateCurrentRoot(node: cNode));
         Navigator.pop(context);
       },
       child: Container(

@@ -26,11 +26,12 @@ class TreeView extends StatelessWidget {
 
     print('LOG | refresh tree after adding');
     final currentTree = context.read<CurrentTreeBloc>().state.currentTree!;
+    final currentNode = context.read<CurrentTreeBloc>().state.currentRoot;
 
     // rebuild tree (on home page) after child is added
-    // TODO: add the father id from state
     context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
-        treeId: currentTree.treeId, rootId: currentTree.rootId));
+        treeId: currentTree.treeId,
+        rootId: currentNode != null ? currentNode.nodeId : currentTree.rootId));
   }
 
   @override
