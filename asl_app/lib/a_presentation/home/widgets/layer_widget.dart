@@ -24,6 +24,7 @@ class LayersWidget extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
+              // TODO: add localization here
               'الأجيـــــــال',
               style: kBodyLarge.copyWith(
                   color: kBlacksColor[200], fontWeight: FontWeight.w800),
@@ -33,6 +34,7 @@ class LayersWidget extends StatelessWidget {
         const SizedBox(height: 16.0),
         AppButton(
           onPressed: () {},
+          // TODO: add localization here
           label: 'الأحفـــــــاد',
           textColor: kLeafColors[200]!,
           fillColor: kLeafColors[700]!,
@@ -42,6 +44,7 @@ class LayersWidget extends StatelessWidget {
         const SizedBox(height: 16.0),
         AppButton(
           onPressed: () {},
+          // TODO: add localization here
           label: 'الأبــــــاء',
           textColor: kStemColors[200]!,
           fillColor: kStemColors[600]!,
@@ -51,6 +54,7 @@ class LayersWidget extends StatelessWidget {
         const SizedBox(height: 16.0),
         AppButton(
           onPressed: () {},
+          // TODO: add localization here
           label: 'الأجـــــــداد',
           textColor: kRootColors[200]!,
           fillColor: kRootColors[600]!,

@@ -1,9 +1,10 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
+
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/icon_only_btn.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -26,6 +27,7 @@ class NodeIdWidget extends StatelessWidget {
       children: [
         kVSpacer30,
         TitleAndCopyableValue(
+          // TODO: add localization here
           title: 'الاسم الكامل إلى جذر العائلة',
           id: name,
           color: color,
@@ -34,13 +36,14 @@ class NodeIdWidget extends StatelessWidget {
             if (context.mounted) {
               appSnackBar(
                 context,
-                text: ARABIC_STRINGS['node_name_copied']!,
+                text: getTr(context, 'node_name_copied')!,
                 type: SnackBarType.success,
               );
             }
           },
         ),
         TitleAndCopyableValue(
+          // TODO: add localization here
           title: 'معرف العضو',
           id: id,
           color: color,
@@ -49,7 +52,7 @@ class NodeIdWidget extends StatelessWidget {
             if (context.mounted) {
               appSnackBar(
                 context,
-                text: ARABIC_STRINGS['node_id_copied']!,
+                text: getTr(context, 'node_id_copied')!,
                 type: SnackBarType.success,
               );
             }

@@ -37,6 +37,7 @@ class RootGenderBtn extends StatelessWidget {
               GenderButton(
                 onTap: () => maleOrFemale(context, isMaleSelected: true),
                 color: color,
+                // TODO: add localization here
                 text: 'ذكر',
                 gender: Gender.male,
                 selected: Gender.male == state.root.gender,
@@ -45,6 +46,7 @@ class RootGenderBtn extends StatelessWidget {
               GenderButton(
                 onTap: () => maleOrFemale(context, isMaleSelected: false),
                 color: color,
+                // TODO: add localization here
                 text: 'أنثى',
                 gender: Gender.female,
                 selected: Gender.female == state.root.gender,

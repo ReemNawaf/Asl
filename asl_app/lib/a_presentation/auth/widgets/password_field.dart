@@ -1,5 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
@@ -23,7 +24,7 @@ class PasswordField extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AppFormField(
-          label: 'الرقم السري',
+          label: getTr(context, 'password')!,
           hint: '**************',
           isArabic: false,
           color: kRootColors[700],
@@ -33,8 +34,8 @@ class PasswordField extends StatelessWidget {
           validator: (_) =>
               context.read<SignInFormBloc>().state.password.value.fold(
                     (f) => f.maybeMap(
-                      shortPassword: (_) => 'الرقم السري قصير جدًا',
-                      empty: (_) => 'الرقم السري لا يمكن أن يكون فارغًا',
+                      shortPassword: (_) => getTr(context, 'shortPassword')!,
+                      empty: (_) => getTr(context, 'password_empty')!,
                       orElse: () => null,
                     ),
                     (_) => null,
@@ -50,14 +51,14 @@ class PasswordField extends StatelessWidget {
         if (authMode == AuthMode.signup) ...[
           kVSpacer10,
           AppFormField(
-            label: 'الرقم السري',
+            label: getTr(context, 'password')!,
             hint: '**************',
             isArabic: false,
             color: kRootColors[700],
             onSaved: (_) => {},
             validator: (value) {
               if (value != passwordController.text) {
-                return 'الرقم السري غير متطابق';
+                return getTr(context, 'not_identical_password')!;
               }
               return null;
             },

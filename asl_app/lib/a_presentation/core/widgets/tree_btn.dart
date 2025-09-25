@@ -48,10 +48,12 @@ class TreeButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
+                  // TODO: add localization here
                   'استعراض شجرة العائلة',
                   style: kCalloutStyle,
                 ),
                 Text(
+                  // TODO: add localization here
                   'استعراضه كجذر لشجرة العائلة',
                   style: kFootnoteStyle.copyWith(fontSize: 12.0),
                 ),

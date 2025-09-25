@@ -41,6 +41,7 @@ Future<dynamic> showDeleteTreePanel(BuildContext contextPage,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // TODO: add localization here
                 const Text('هل تريد حذف الشجرة؟'),
                 kVSpacer20,
                 Row(

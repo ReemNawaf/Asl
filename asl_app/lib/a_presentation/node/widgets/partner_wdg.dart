@@ -1,6 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
+
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
@@ -10,6 +10,7 @@ import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.d
 import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -105,8 +106,8 @@ class PartnerWidget extends StatelessWidget {
                                           } else {
                                             appSnackBar(
                                               context,
-                                              text: ARABIC_STRINGS[
-                                                  'cannot_delete_partner_with_children']!,
+                                              text: getTr(context,
+                                                  'cannot_delete_partner_with_children')!,
                                               type: SnackBarType.error,
                                             );
                                           }
@@ -119,6 +120,7 @@ class PartnerWidget extends StatelessWidget {
                               children: [
                                 if (sinRelation.marriageDate != null) ...[
                                   Text(
+                                    // TODO: add localization here
                                     'تاريخ الزواج: ${sinRelation.marriageDate!.year}',
                                     style: kCaption1Style.copyWith(
                                       color: kBlacksColor[600],
@@ -127,6 +129,7 @@ class PartnerWidget extends StatelessWidget {
                                   kHSpacer20,
                                 ],
                                 Text(
+                                  // TODO: add localization here
                                   'الحالة: ${marriageSt[sinRelation.marriageStatus]}${node.gender == Gender.male ? 'ة' : ''}',
                                   style: kCaption1Style.copyWith(
                                     color: kBlacksColor[600],

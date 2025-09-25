@@ -24,6 +24,7 @@ Widget signInWithGoogleBtn(BuildContext context, Function() forward) {
               colorFilter: const ColorFilter.mode(kRootColors, BlendMode.srcIn),
             ),
             kHSpacer10,
+            // TODO: add localization here
             const Text('تسجيل الدخول مع Google', style: kBodyMedium),
           ],
         ),

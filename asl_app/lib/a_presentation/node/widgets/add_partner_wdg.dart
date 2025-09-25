@@ -1,6 +1,6 @@
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
+
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
@@ -8,6 +8,7 @@ import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/marriage_status_btn.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -51,11 +52,13 @@ class AddPartnerWidget extends StatelessWidget {
                   text: isAddingPartner
                       ? TextSpan(
                           text:
+                              // TODO: add localization here
                               ' الزوج${node.gender == Gender.male ? 'ة' : ''} ليس في الشجرة ',
                           style: kFootnoteStyle.copyWith(
                               fontWeight: FontWeight.bold, wordSpacing: 2.0),
                           children: [
                             TextSpan(
+                              // TODO: add localization here
                               text: 'أضف عضو جديد',
                               style: kFootnoteStyle.copyWith(
                                 color: color,
@@ -66,12 +69,14 @@ class AddPartnerWidget extends StatelessWidget {
                           ],
                         )
                       : TextSpan(
+                          // TODO: add localization here
                           text:
                               ' الزوج${node.gender == Gender.male ? 'ة' : ''} في الشجرة ',
                           style: kFootnoteStyle.copyWith(
                               fontWeight: FontWeight.bold, wordSpacing: 2.0),
                           children: [
                             TextSpan(
+                              // TODO: add localization here
                               text: 'أضف بالمعرف (ID)',
                               style: kFootnoteStyle.copyWith(
                                 color: color,
@@ -105,6 +110,7 @@ class AddPartnerWidget extends StatelessWidget {
                     height: 80,
                     child: AppDateField(
                       formKey: formKey,
+                      // TODO: add localization here
                       label: 'تاريخ الزواج',
                       hint: '',
                       endDate: state.relation!.endDate ?? DateTime(3000),
@@ -133,6 +139,7 @@ class AddPartnerWidget extends StatelessWidget {
                       height: 80,
                       child: AppDateField(
                         formKey: formKey,
+                        // TODO: add localization here
                         label: 'تاريخ النهاية',
                         hint: '',
                         validate: (validate) => "",
@@ -190,7 +197,10 @@ class PartnerName extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppFormField(
+          // TODO: add localization here
           label: 'إضافة معرف الزوج${node.gender == Gender.male ? 'ة' : ''}',
+
+          // TODO: add localization here
           hint: 'أدخل معرف العضو',
           onChanged: (value) {
             if (value != null && value.trim().length == 36) {
@@ -207,14 +217,16 @@ class PartnerName extends StatelessWidget {
         if (state.partnerNotExist != null && state.partnerNotExist!)
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
-            child: Text(ARABIC_STRINGS['node_not_exist']!,
+            child: Text(getTr(context, 'node_not_exist')!,
                 style: kValidationTextStyle),
           ),
       ],
     );
 
     var appFormField = AppFormField(
+      // TODO: add localization here
       label: 'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
+      // TODO: add localization here
       hint: 'الاسم الكامل',
       onChanged: (value) {
         context
@@ -231,10 +243,10 @@ class PartnerName extends StatelessWidget {
             ? null
             : state.partner.firstName.value.fold(
                 (f) => f.maybeMap(
-                  empty: (_) => ARABIC_STRINGS['first_name_cannot_be_empty'],
-                  shortFirstName: (_) => ARABIC_STRINGS['first_name_short'],
+                  empty: (_) => getTr(context, 'first_name_cannot_be_empty'),
+                  shortFirstName: (_) => getTr(context, 'first_name_short'),
                   spacedFirstName: (_) =>
-                      ARABIC_STRINGS['first_name_cannot_contain_spaces'],
+                      getTr(context, 'first_name_cannot_contain_spaces'),
                   orElse: () => null,
                 ),
                 (_) => null,

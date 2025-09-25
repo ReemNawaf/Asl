@@ -40,6 +40,7 @@ class NodeGenderBtn extends StatelessWidget {
                 onTap: () =>
                     isEditing ? maleOrFemale(isMaleSelected: true) : null,
                 color: color,
+                // TODO: add localization here
                 text: 'ذكر',
                 gender: Gender.male,
                 selected: Gender.male == state.node!.gender,
@@ -49,6 +50,7 @@ class NodeGenderBtn extends StatelessWidget {
                 onTap: () =>
                     isEditing ? maleOrFemale(isMaleSelected: false) : null,
                 color: color,
+                // TODO: add localization here
                 text: 'أنثى',
                 gender: Gender.female,
                 selected: Gender.female == state.node!.gender,

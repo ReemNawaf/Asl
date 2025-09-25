@@ -85,6 +85,7 @@ class RelationsPanel extends StatelessWidget {
                                   }
                                 },
                                 label:
+                                    // TODO: add localization here
                                     'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
                                 color: color,
                               )
@@ -143,10 +144,12 @@ class RelationsPanel extends StatelessWidget {
                                                   true));
                                         }
                                       },
+                                      // TODO: add localization here
                                       label: 'إضافة ابن/ة',
                                       color: color,
                                     )
                                   else
+                                    // TODO: add localization here
                                     Text(
                                       'أضف زوج${node.gender == Gender.male ? 'ة' : ''} أولًا',
                                     )

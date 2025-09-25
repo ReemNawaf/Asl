@@ -1,6 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
+
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
@@ -10,6 +10,7 @@ import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart'
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -73,6 +74,7 @@ class ChildrenWidget extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
+                                        // TODO: add localization here
                                         'من ${getNodePartnerTitleSingle(node.gender)}',
                                         style: kBodyLarge.copyWith(
                                             fontWeight: FontWeight.w500),
@@ -123,6 +125,7 @@ class ChildrenWidget extends StatelessWidget {
                                                   if (sinRelation
                                                           .marriageDate !=
                                                       null) ...[
+                                                    // TODO: add localization here
                                                     Text(
                                                       'تاريخ الميلاد: ${child.birthDate!.year}',
                                                       style: kCaption1Style
@@ -154,8 +157,8 @@ class ChildrenWidget extends StatelessWidget {
                                                     } else {
                                                       appSnackBar(
                                                         context,
-                                                        text: ARABIC_STRINGS[
-                                                            'cannot_delete_child_with_relation_${child.gender.name}']!,
+                                                        text: getTr(context,
+                                                            'cannot_delete_child_with_relation_${child.gender.name}')!,
                                                         type:
                                                             SnackBarType.error,
                                                       );

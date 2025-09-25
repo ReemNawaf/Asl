@@ -53,6 +53,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                                   width: (PAN_WIDTH - 116) / 2,
                                   height: 70,
                                   child: AppFormField(
+                                    // TODO: add localization here
                                     label: 'الأب',
                                     hint: '',
                                     onSaved: (_) {},
@@ -67,6 +68,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                                   width: (PAN_WIDTH - 116) / 2,
                                   height: 70,
                                   child: AppFormField(
+                                    // TODO: add localization here
                                     label: 'الأم',
                                     hint: '',
                                     onSaved: (_) {},

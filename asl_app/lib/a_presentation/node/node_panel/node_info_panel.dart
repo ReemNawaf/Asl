@@ -1,5 +1,4 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/node/node_panel/node_alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
@@ -7,6 +6,7 @@ import 'package:asl/a_presentation/node/widgets/node_gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
 import 'package:asl/a_presentation/node/widgets/node_id_wdg.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -48,6 +48,7 @@ class InfoPanel extends StatelessWidget {
                       width: 250,
                       height: 90,
                       child: AppFormField(
+                        // TODO: add localization here
                         label: 'الاسم الأول',
                         hint: 'مثل: محمد',
                         initialValue: state.node!.firstName.isValid()
@@ -67,12 +68,12 @@ class InfoPanel extends StatelessWidget {
                               .value
                               .fold(
                                 (f) => f.maybeMap(
-                                  empty: (_) => ARABIC_STRINGS[
-                                      'first_name_cannot_be_empty'],
-                                  spacedFirstName: (_) => ARABIC_STRINGS[
-                                      'first_name_cannot_contain_spaces'],
+                                  empty: (_) => getTr(
+                                      context, 'first_name_cannot_be_empty'),
+                                  spacedFirstName: (_) => getTr(context,
+                                      'first_name_cannot_contain_spaces'),
                                   shortFirstName: (_) =>
-                                      ARABIC_STRINGS['first_name_short'],
+                                      getTr(context, 'first_name_short'),
                                   orElse: () => null,
                                 ),
                                 (_) => null,
@@ -104,6 +105,7 @@ class InfoPanel extends StatelessWidget {
                           height: 80,
                           child: AppDateField(
                             formKey: formKey,
+                            // TODO: add localization here
                             label: 'تاريخ الميلاد',
                             hint: '',
                             withPadding: false,
@@ -132,6 +134,7 @@ class InfoPanel extends StatelessWidget {
                             height: 80,
                             child: AppDateField(
                               formKey: formKey,
+                              // TODO: add localization here
                               label: 'تاريخ الوفاة',
                               withPadding: false,
                               hint: '',
@@ -143,6 +146,7 @@ class InfoPanel extends StatelessWidget {
                                       pickedDate)),
                               dateController: TextEditingController(
                                 text: state.node!.deathDate == null
+                                    // TODO: add localization here
                                     ? 'لا يوجد تاريخ وفاة'
                                     : DateFormat.yMMMd()
                                         .format(state.node!.deathDate!),
