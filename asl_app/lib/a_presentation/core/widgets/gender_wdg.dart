@@ -80,7 +80,7 @@ class GendeMinButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset('icons/${gender.name}.svg', height: 22),
+            SvgPicture.asset('assets/icons/${gender.name}.svg', height: 22),
             Text(text),
           ],
         ),

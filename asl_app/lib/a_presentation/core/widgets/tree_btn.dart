@@ -40,7 +40,7 @@ class TreeButton extends StatelessWidget {
               height: 60,
               width: 60,
               child: SvgPicture.asset(
-                'icons/tree.svg',
+                'assets/icons/tree.svg',
                 alignment: Alignment.centerLeft,
               ),
             ),
