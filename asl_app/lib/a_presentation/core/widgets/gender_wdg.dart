@@ -18,34 +18,31 @@ class GenderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 0.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(getTr(context, 'gender')!, style: kFootnoteStyle),
-          kVSpacer5,
-          Row(
-            children: [
-              GendeMinButton(
-                onTap: () => femaleOrMale(isFemaleSelected: false),
-                color: color,
-                text: getTr(context, 'female')!,
-                gender: Gender.female,
-                selected: Gender.female == gender,
-              ),
-              const SizedBox(width: 16.0),
-              GendeMinButton(
-                onTap: () => femaleOrMale(isFemaleSelected: true),
-                color: color,
-                text: getTr(context, 'male')!,
-                gender: Gender.male,
-                selected: Gender.male == gender,
-              ),
-            ],
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(getTr(context, 'gender')!, style: kFootnoteStyle),
+        kVSpacer5,
+        Row(
+          children: [
+            GendeMinButton(
+              onTap: () => femaleOrMale(isFemaleSelected: false),
+              color: color,
+              text: getTr(context, 'female')!,
+              gender: Gender.female,
+              selected: Gender.female == gender,
+            ),
+            const SizedBox(width: 16.0),
+            GendeMinButton(
+              onTap: () => femaleOrMale(isFemaleSelected: true),
+              color: color,
+              text: getTr(context, 'male')!,
+              gender: Gender.male,
+              selected: Gender.male == gender,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

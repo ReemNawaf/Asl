@@ -1,5 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/core/widgets/gender_btn.dart';
+import 'package:asl/a_presentation/core/widgets/gender_wdg.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
