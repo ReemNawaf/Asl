@@ -164,8 +164,7 @@ Future<dynamic> showNewTreePanel(
                     Padding(
                       padding: const EdgeInsets.only(right: 28.0),
                       child: Text(
-                        // TODO: add localization here
-                        'معلومات جذر العائلة',
+                        getTr(context, 'root_data_info')!,
                         style: kBodyLarge.copyWith(
                           color: kRootColors[200]!,
                         ),
