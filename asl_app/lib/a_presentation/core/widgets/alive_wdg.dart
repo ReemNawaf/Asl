@@ -18,8 +18,9 @@ class AliveWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(getTr(context, 'gender')!, style: kFootnoteStyle),
+        Text(getTr(context, 'status')!, style: kFootnoteStyle),
         kVSpacer5,
         Row(
           children: [
