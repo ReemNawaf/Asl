@@ -16,24 +16,38 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DrawTreeEvent {
+  int? get maxGenerations => throw _privateConstructorUsedError;
+  bool? get isShowUnknown => throw _privateConstructorUsedError;
   Tree get tree => throw _privateConstructorUsedError;
   TNode get root => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree, TNode root) initialized,
-    required TResult Function(Tree tree, TNode root) drawNewTree,
+    required TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)
+        initialized,
+    required TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)
+        drawNewTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree, TNode root)? initialized,
-    TResult? Function(Tree tree, TNode root)? drawNewTree,
+    TResult? Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        initialized,
+    TResult? Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        drawNewTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree, TNode root)? initialized,
-    TResult Function(Tree tree, TNode root)? drawNewTree,
+    TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        initialized,
+    TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        drawNewTree,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,7 +82,7 @@ abstract class $DrawTreeEventCopyWith<$Res> {
           DrawTreeEvent value, $Res Function(DrawTreeEvent) then) =
       _$DrawTreeEventCopyWithImpl<$Res, DrawTreeEvent>;
   @useResult
-  $Res call({Tree tree, TNode root});
+  $Res call({int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root});
 
   $TreeCopyWith<$Res> get tree;
   $TNodeCopyWith<$Res> get root;
@@ -87,10 +101,20 @@ class _$DrawTreeEventCopyWithImpl<$Res, $Val extends DrawTreeEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? maxGenerations = freezed,
+    Object? isShowUnknown = freezed,
     Object? tree = null,
     Object? root = null,
   }) {
     return _then(_value.copyWith(
+      maxGenerations: freezed == maxGenerations
+          ? _value.maxGenerations
+          : maxGenerations // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isShowUnknown: freezed == isShowUnknown
+          ? _value.isShowUnknown
+          : isShowUnknown // ignore: cast_nullable_to_non_nullable
+              as bool?,
       tree: null == tree
           ? _value.tree
           : tree // ignore: cast_nullable_to_non_nullable
@@ -127,7 +151,7 @@ abstract class _$$InitializedImplCopyWith<$Res>
       __$$InitializedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Tree tree, TNode root});
+  $Res call({int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root});
 
   @override
   $TreeCopyWith<$Res> get tree;
@@ -146,10 +170,20 @@ class __$$InitializedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? maxGenerations = freezed,
+    Object? isShowUnknown = freezed,
     Object? tree = null,
     Object? root = null,
   }) {
     return _then(_$InitializedImpl(
+      maxGenerations: freezed == maxGenerations
+          ? _value.maxGenerations
+          : maxGenerations // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isShowUnknown: freezed == isShowUnknown
+          ? _value.isShowUnknown
+          : isShowUnknown // ignore: cast_nullable_to_non_nullable
+              as bool?,
       tree: null == tree
           ? _value.tree
           : tree // ignore: cast_nullable_to_non_nullable
@@ -165,8 +199,16 @@ class __$$InitializedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitializedImpl implements _Initialized {
-  const _$InitializedImpl({required this.tree, required this.root});
+  const _$InitializedImpl(
+      {this.maxGenerations,
+      this.isShowUnknown,
+      required this.tree,
+      required this.root});
 
+  @override
+  final int? maxGenerations;
+  @override
+  final bool? isShowUnknown;
   @override
   final Tree tree;
   @override
@@ -174,7 +216,7 @@ class _$InitializedImpl implements _Initialized {
 
   @override
   String toString() {
-    return 'DrawTreeEvent.initialized(tree: $tree, root: $root)';
+    return 'DrawTreeEvent.initialized(maxGenerations: $maxGenerations, isShowUnknown: $isShowUnknown, tree: $tree, root: $root)';
   }
 
   @override
@@ -182,12 +224,17 @@ class _$InitializedImpl implements _Initialized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitializedImpl &&
+            (identical(other.maxGenerations, maxGenerations) ||
+                other.maxGenerations == maxGenerations) &&
+            (identical(other.isShowUnknown, isShowUnknown) ||
+                other.isShowUnknown == isShowUnknown) &&
             (identical(other.tree, tree) || other.tree == tree) &&
             (identical(other.root, root) || other.root == root));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tree, root);
+  int get hashCode =>
+      Object.hash(runtimeType, maxGenerations, isShowUnknown, tree, root);
 
   @JsonKey(ignore: true)
   @override
@@ -198,30 +245,42 @@ class _$InitializedImpl implements _Initialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree, TNode root) initialized,
-    required TResult Function(Tree tree, TNode root) drawNewTree,
+    required TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)
+        initialized,
+    required TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)
+        drawNewTree,
   }) {
-    return initialized(tree, root);
+    return initialized(maxGenerations, isShowUnknown, tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree, TNode root)? initialized,
-    TResult? Function(Tree tree, TNode root)? drawNewTree,
+    TResult? Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        initialized,
+    TResult? Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        drawNewTree,
   }) {
-    return initialized?.call(tree, root);
+    return initialized?.call(maxGenerations, isShowUnknown, tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree, TNode root)? initialized,
-    TResult Function(Tree tree, TNode root)? drawNewTree,
+    TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        initialized,
+    TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        drawNewTree,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(tree, root);
+      return initialized(maxGenerations, isShowUnknown, tree, root);
     }
     return orElse();
   }
@@ -260,9 +319,15 @@ class _$InitializedImpl implements _Initialized {
 
 abstract class _Initialized implements DrawTreeEvent {
   const factory _Initialized(
-      {required final Tree tree,
+      {final int? maxGenerations,
+      final bool? isShowUnknown,
+      required final Tree tree,
       required final TNode root}) = _$InitializedImpl;
 
+  @override
+  int? get maxGenerations;
+  @override
+  bool? get isShowUnknown;
   @override
   Tree get tree;
   @override
@@ -281,7 +346,7 @@ abstract class _$$DrawNewTreeImplCopyWith<$Res>
       __$$DrawNewTreeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Tree tree, TNode root});
+  $Res call({int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root});
 
   @override
   $TreeCopyWith<$Res> get tree;
@@ -300,10 +365,20 @@ class __$$DrawNewTreeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? maxGenerations = freezed,
+    Object? isShowUnknown = freezed,
     Object? tree = null,
     Object? root = null,
   }) {
     return _then(_$DrawNewTreeImpl(
+      maxGenerations: freezed == maxGenerations
+          ? _value.maxGenerations
+          : maxGenerations // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isShowUnknown: freezed == isShowUnknown
+          ? _value.isShowUnknown
+          : isShowUnknown // ignore: cast_nullable_to_non_nullable
+              as bool?,
       tree: null == tree
           ? _value.tree
           : tree // ignore: cast_nullable_to_non_nullable
@@ -319,8 +394,16 @@ class __$$DrawNewTreeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DrawNewTreeImpl implements _DrawNewTree {
-  const _$DrawNewTreeImpl({required this.tree, required this.root});
+  const _$DrawNewTreeImpl(
+      {this.maxGenerations,
+      this.isShowUnknown,
+      required this.tree,
+      required this.root});
 
+  @override
+  final int? maxGenerations;
+  @override
+  final bool? isShowUnknown;
   @override
   final Tree tree;
   @override
@@ -328,7 +411,7 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
 
   @override
   String toString() {
-    return 'DrawTreeEvent.drawNewTree(tree: $tree, root: $root)';
+    return 'DrawTreeEvent.drawNewTree(maxGenerations: $maxGenerations, isShowUnknown: $isShowUnknown, tree: $tree, root: $root)';
   }
 
   @override
@@ -336,12 +419,17 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DrawNewTreeImpl &&
+            (identical(other.maxGenerations, maxGenerations) ||
+                other.maxGenerations == maxGenerations) &&
+            (identical(other.isShowUnknown, isShowUnknown) ||
+                other.isShowUnknown == isShowUnknown) &&
             (identical(other.tree, tree) || other.tree == tree) &&
             (identical(other.root, root) || other.root == root));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tree, root);
+  int get hashCode =>
+      Object.hash(runtimeType, maxGenerations, isShowUnknown, tree, root);
 
   @JsonKey(ignore: true)
   @override
@@ -352,30 +440,42 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tree tree, TNode root) initialized,
-    required TResult Function(Tree tree, TNode root) drawNewTree,
+    required TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)
+        initialized,
+    required TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)
+        drawNewTree,
   }) {
-    return drawNewTree(tree, root);
+    return drawNewTree(maxGenerations, isShowUnknown, tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tree tree, TNode root)? initialized,
-    TResult? Function(Tree tree, TNode root)? drawNewTree,
+    TResult? Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        initialized,
+    TResult? Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        drawNewTree,
   }) {
-    return drawNewTree?.call(tree, root);
+    return drawNewTree?.call(maxGenerations, isShowUnknown, tree, root);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tree tree, TNode root)? initialized,
-    TResult Function(Tree tree, TNode root)? drawNewTree,
+    TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        initialized,
+    TResult Function(
+            int? maxGenerations, bool? isShowUnknown, Tree tree, TNode root)?
+        drawNewTree,
     required TResult orElse(),
   }) {
     if (drawNewTree != null) {
-      return drawNewTree(tree, root);
+      return drawNewTree(maxGenerations, isShowUnknown, tree, root);
     }
     return orElse();
   }
@@ -414,9 +514,15 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
 
 abstract class _DrawNewTree implements DrawTreeEvent {
   const factory _DrawNewTree(
-      {required final Tree tree,
+      {final int? maxGenerations,
+      final bool? isShowUnknown,
+      required final Tree tree,
       required final TNode root}) = _$DrawNewTreeImpl;
 
+  @override
+  int? get maxGenerations;
+  @override
+  bool? get isShowUnknown;
   @override
   Tree get tree;
   @override

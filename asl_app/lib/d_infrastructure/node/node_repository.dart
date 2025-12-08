@@ -4,13 +4,11 @@ import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/relation/half_siblings.dart';
 import 'package:asl/c_domain/relation/relation.dart';
-import 'package:asl/c_domain/relation/relation_failure.dart';
 import 'package:asl/c_domain/relation/ufamily.dart';
 import 'package:asl/d_infrastructure/core/firestore_helpers.dart';
 import 'package:asl/d_infrastructure/node/node_dto.dart';
 import 'package:asl/d_infrastructure/relation/relation_dto.dart';
 import 'package:asl/d_infrastructure/relation/relation_repository.dart';
-import 'package:asl/d_infrastructure/trees/tree_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
@@ -152,123 +150,6 @@ class NodeRepository implements INodeRepository {
           (e.message!.contains('NOT_FOUND') ||
               e.message!.contains('not-found'))) {
         return left(const TNodeFailure.unableToUpdate());
-      } else {
-        return left(const TNodeFailure.unexpected());
-      }
-    }
-  }
-
-  @override
-  Future<Either<TNodeFailure, TNode>> getTree(
-      {required UniqueId treeId, required UniqueId rootId}) async {
-    try {
-      final treeCol = _firestore.treesCollection();
-
-      // 1. Get the tree
-      final treeDoc = await treeCol.doc(treeId.getOrCrash()).get()
-          as DocumentSnapshot<Map<String, dynamic>>;
-      final tree = TreeDto.fromFirestore(treeDoc).toDomain();
-      print('LOG | get the tree');
-
-      // 2. Get the root node
-      TNode root = (await getNode(treeId: treeId, nodeId: rootId))
-          .fold((l) => left(RelationFailure), (r) => r) as TNode;
-
-      // 3. Get the root relations
-      final rootRelations = <Relation>[];
-      for (UniqueId relationId in root.relations) {
-        final relationDoc = await treeCol
-            .doc(treeId.getOrCrash())
-            .collection(RELATIONS_COLLECTION)
-            .doc(relationId.getOrCrash())
-            .get();
-
-        final relation = RelationDto.fromFirestore(relationDoc).toDomain();
-        rootRelations.add(relation);
-      }
-      print('LOG | get the root relations ${rootRelations.length}');
-
-      // 4. Get the partners nodes
-      for (int i = 0; i < rootRelations.length; i++) {
-        final re = rootRelations[i];
-        final partner = re.father == root.nodeId ? re.mother : re.father;
-        final eitherpartnerNode =
-            await getNode(treeId: re.partnerTreeId, nodeId: partner);
-
-        rootRelations[i] = re.copyWith(
-            partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
-      }
-      print('LOG | get the partners nodes');
-
-      // 5. Get the children nodes
-      for (int i = 0; i < rootRelations.length; i++) {
-        final childrenIds = rootRelations[i].children;
-        final children = <TNode>[];
-
-        for (int i = 0; i < childrenIds.length; i++) {
-          final childId = childrenIds[i];
-          final eitherChildNode =
-              await getNode(treeId: tree.treeId, nodeId: childId);
-
-          await eitherChildNode.fold((l) => null, (child) async {
-            // 3. Get the child relations
-            final childRelations = <Relation>[];
-            for (UniqueId relationId in child.relations) {
-              final relationDoc = await treeCol
-                  .doc(treeId.getOrCrash())
-                  .collection(RELATIONS_COLLECTION)
-                  .doc(relationId.getOrCrash())
-                  .get();
-              final relation =
-                  RelationDto.fromFirestore(relationDoc).toDomain();
-              childRelations.add(relation);
-            }
-
-            // 4. Get the partners nodes
-            for (int i = 0; i < childRelations.length; i++) {
-              final re = childRelations[i];
-              final partner = re.father == child.nodeId ? re.mother : re.father;
-              final eitherpartnerNode =
-                  await getNode(treeId: re.partnerTreeId, nodeId: partner);
-              childRelations[i] = re.copyWith(
-                  partnerNode: eitherpartnerNode.fold((l) => null, (r) => r));
-            }
-
-            // 5. Get the grandchildren nodes
-            for (int i = 0; i < childRelations.length; i++) {
-              final grandchildrenIds = childRelations[i].children;
-              final grandchildren = <TNode>[];
-
-              for (int i = 0; i < grandchildrenIds.length; i++) {
-                final grandchildId = grandchildrenIds[i];
-                final eitherGrandChildNode =
-                    await getNode(treeId: tree.treeId, nodeId: grandchildId);
-                eitherGrandChildNode.fold((l) => null, (r) {
-                  grandchildren.add(r);
-                });
-              }
-              childRelations[i] =
-                  childRelations[i].copyWith(childrenNodes: grandchildren);
-            }
-            print('LOG | childRelations');
-            children.add(child.copyWith(relationsObject: childRelations));
-          });
-        }
-        rootRelations[i] = rootRelations[i].copyWith(childrenNodes: children);
-      }
-      print('LOG | get the children nodes');
-
-      // Update the root relationsObject
-      root = root.copyWith(relationsObject: rootRelations);
-      print('LOG | update the root relationsObject');
-      print('LOG | root ${root.firstName}');
-      //
-      return right(root);
-    } catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains('PERMISSION_DENIED') ||
-              e.message!.contains('permission-denied'))) {
-        return left(const TNodeFailure.insufficientPermission());
       } else {
         return left(const TNodeFailure.unexpected());
       }
@@ -423,5 +304,126 @@ class NodeRepository implements INodeRepository {
         return left(const TNodeFailure.unexpected());
       }
     }
+  }
+
+  @override
+  Future<Either<TNodeFailure, TNode>> getTree({
+    required UniqueId treeId,
+    required UniqueId rootId,
+    int? maxGenerations, // null = full tree
+  }) async {
+    try {
+      final visited = <String>{};
+
+      final result = await _loadNodeRecursively(
+        treeId: treeId,
+        nodeId: rootId,
+        visited: visited,
+        remainingGenerations: maxGenerations,
+      );
+
+      return right(result);
+    } catch (e) {
+      if (e is FirebaseException &&
+          (e.message?.contains('PERMISSION_DENIED') ?? false)) {
+        return left(const TNodeFailure.insufficientPermission());
+      }
+      return left(const TNodeFailure.unexpected());
+    }
+  }
+
+  /// ----------------------------------------------
+  ///        RECURSIVE LOADER FUNCTION
+  /// ----------------------------------------------
+  Future<TNode> _loadNodeRecursively({
+    required UniqueId treeId,
+    required UniqueId nodeId,
+    required Set<String> visited,
+    required int? remainingGenerations, // null = unlimited depth
+  }) async {
+    final nodeKey = nodeId.getOrCrash();
+
+    // Prevent infinite loops
+    if (visited.contains(nodeKey)) {
+      return (await getNode(treeId: treeId, nodeId: nodeId))
+          .getOrElse(() => throw Exception("Node not found"));
+    }
+
+    visited.add(nodeKey);
+
+    // Load this node
+    final eitherNode = await getNode(treeId: treeId, nodeId: nodeId);
+    final node = eitherNode.getOrElse(() => throw Exception("Node not found"));
+
+    // Load relations
+    final relations = await _loadRelations(treeId, node.relations);
+
+    // If no more generations requested → stop here
+    if (remainingGenerations == 0) {
+      return node.copyWith(relationsObject: relations);
+    }
+
+    final nextRemaining =
+        remainingGenerations == null ? null : remainingGenerations - 1;
+
+    final updatedRelations = <Relation>[];
+
+    for (final relation in relations) {
+      // Partner
+      final partnerId =
+          relation.father == node.nodeId ? relation.mother : relation.father;
+
+      final partner = await _loadPartnerSafely(
+        treeId,
+        relation.partnerTreeId,
+        partnerId,
+      );
+
+      // Children
+      final children = <TNode>[];
+
+      for (final childId in relation.children) {
+        final childNode = await _loadNodeRecursively(
+          treeId: treeId,
+          nodeId: childId,
+          visited: visited,
+          remainingGenerations: nextRemaining,
+        );
+        children.add(childNode);
+      }
+
+      updatedRelations.add(
+        relation.copyWith(
+          partnerNode: partner,
+          childrenNodes: children,
+        ),
+      );
+    }
+
+    return node.copyWith(relationsObject: updatedRelations);
+  }
+
+  /// ----------------------------------------------
+  ///      HELPERS
+  /// ----------------------------------------------
+  Future<List<Relation>> _loadRelations(
+      UniqueId treeId, List<UniqueId> relationIds) async {
+    final col = _firestore.treesCollection();
+    final list = <Relation>[];
+    for (final id in relationIds) {
+      final doc = await col
+          .doc(treeId.getOrCrash())
+          .collection(RELATIONS_COLLECTION)
+          .doc(id.getOrCrash())
+          .get();
+      list.add(RelationDto.fromFirestore(doc).toDomain());
+    }
+    return list;
+  }
+
+  Future<TNode?> _loadPartnerSafely(
+      UniqueId rootTreeId, UniqueId partnerTreeId, UniqueId partnerId) async {
+    final either = await getNode(treeId: partnerTreeId, nodeId: partnerId);
+    return either.fold((_) => null, (r) => r);
   }
 }

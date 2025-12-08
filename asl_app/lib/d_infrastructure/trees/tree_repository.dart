@@ -5,6 +5,7 @@ import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/tree/i_tree_repository.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:asl/c_domain/tree/tree_failure.dart';
+import 'package:asl/c_domain/tree/tree_settings.dart';
 import 'package:asl/d_infrastructure/core/firestore_helpers.dart';
 import 'package:asl/d_infrastructure/node/node_dto.dart';
 import 'package:asl/d_infrastructure/trees/tree_dtos.dart';
@@ -166,5 +167,36 @@ class TreeRepository implements ITreeRepository {
         return left(const TreeFailure.unexpected());
       }
     }
+  }
+
+  @override
+  Future<void> saveSettings({
+    required String treeId,
+    required int? numberOfGenerations,
+    required bool isShowUnknown,
+  }) async {
+    await _firestore
+        .collection("trees")
+        .doc(treeId)
+        .collection("settings")
+        .doc("tree_settings")
+        .set({
+      "numberOfGenerations": numberOfGenerations,
+      "isShowUnknown": isShowUnknown,
+    }, SetOptions(merge: true));
+  }
+
+  @override
+  Future<TreeSettings> loadSettings(UniqueId treeId) async {
+    final doc = await _firestore
+        .collection("trees")
+        .doc(treeId.getOrCrash())
+        .collection("settings")
+        .doc("tree_settings")
+        .get();
+
+    final treeSettings = TreeSettings.empty();
+
+    return treeSettings;
   }
 }

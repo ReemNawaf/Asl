@@ -6,38 +6,11 @@ import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:asl/a_presentation/core/widgets/sm_app_btn.dart';
 import 'package:asl/a_presentation/home/widgets/share_options.dart';
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
-import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ShareButton extends StatelessWidget {
-  const ShareButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<CurrentTreeBloc, CurrentTreeState>(
-      builder: (_, state) {
-        if (state.currentTree != null) {
-          return AppButton(
-            onPressed: () => showSharePanel(context),
-            label: 'مشاركة',
-            fillColor: const Color(0xFFFFEFE2),
-            textColor: const Color(0xFF303030),
-            icon: const Icon(Icons.ios_share),
-            hasIcon: true,
-          );
-        } else {
-          return const SizedBox();
-        }
-      },
-    );
-  }
-}
-
-Future<dynamic> showSharePanel(BuildContext contextPage) {
+Future<dynamic> showSettingsPanel(BuildContext contextPage) {
   return showDialog(
     context: contextPage,
     useRootNavigator: false,

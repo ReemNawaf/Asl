@@ -14,6 +14,7 @@ class TreeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // # TODO: remove for READ ONCE
         final cNode = context.read<NodeFormBloc>().state.node;
 
         //  Update the current nodes

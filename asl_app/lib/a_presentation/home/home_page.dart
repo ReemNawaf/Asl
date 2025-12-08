@@ -1,8 +1,9 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/home/widgets/layer_widget.dart';
-import 'package:asl/a_presentation/home/widgets/share_btn.dart';
+import 'package:asl/a_presentation/home/widgets/settings_btn.dart';
 import 'package:asl/a_presentation/home/widgets/tree_list.dart';
 import 'package:asl/a_presentation/routes/app_router.dart';
 import 'package:asl/a_presentation/tree/interactive_viewer.dart';
@@ -11,8 +12,8 @@ import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
-import 'package:asl/b_application/tree_bloc/zoom_tree/zoom_tree_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +42,7 @@ class HomePage extends StatelessWidget {
                 Spacer(),
                 LayersWidget(),
                 Spacer(),
-                ShareButton(),
+                SettingsButton(),
               ],
             ),
           ),
@@ -129,20 +130,38 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                 ),
+                GestureDetector(
+                    onTap: () {
+                      context.read<TreeSettingsBloc>().add(
+                          const TreeSettingsEvent.numberOfGenerationsChanged(
+                              4));
+                    },
+                    child: Container(
+                        height: 500, width: 100, color: Colors.green)),
+                GestureDetector(
+                    onTap: () {
+                      context.read<TreeSettingsBloc>().add(
+                          TreeSettingsEvent.showUnknownChanged(!context
+                              .read<TreeSettingsBloc>()
+                              .state
+                              .showUnknown));
+                    },
+                    child: Container(
+                        height: 100, width: 100, color: Colors.yellow)),
                 Container(
                   width: 150,
                   padding: EdgeInsets.only(right: 20, top: size.height - 85),
-                  child: BlocBuilder<ZoomTreeBloc, ZoomTreeState>(
+                  child: BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
                     builder: (context, state) {
                       return Slider(
                         min: MIN_ZOOM,
                         max: MAX_ZOOM,
-                        value: state.scale,
-                        label: "${state.scale.toStringAsFixed(2)}x",
+                        value: state.zoomScale,
+                        label: "${state.zoomScale.toStringAsFixed(2)}x",
                         onChanged: (newScale) {
                           context
-                              .read<ZoomTreeBloc>()
-                              .add(ZoomTreeChanged(newScale));
+                              .read<TreeSettingsBloc>()
+                              .add(TreeSettingsEvent.zoomChanged(newScale));
                         },
                       );
                     },

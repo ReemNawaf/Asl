@@ -1,9 +1,11 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/tree/tree_view.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
-import 'package:asl/b_application/tree_bloc/zoom_tree/zoom_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,6 +16,7 @@ class InteractiveView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TNode? root;
     return BlocListener<NodeWatcherBloc, NodeWatcherState>(
       listener: (_, state) {
         state.map(
@@ -22,10 +25,17 @@ class InteractiveView extends StatelessWidget {
           inProgress: (_) {},
           loadSuccess: (state) {
             print('LOG | root with ${state.root.relations.length} relations');
+            root = state.root;
             context.read<DrawTreeBloc>().add(
                   DrawTreeEvent.drawNewTree(
                     tree: context.read<CurrentTreeBloc>().state.currentTree!,
                     root: state.root,
+                    maxGenerations: context
+                        .read<TreeSettingsBloc>()
+                        .state
+                        .numberOfGenerations,
+                    isShowUnknown:
+                        context.read<TreeSettingsBloc>().state.showUnknown,
                   ),
                 );
           },
@@ -46,18 +56,37 @@ class InteractiveView extends StatelessWidget {
             loadSuccess: (nState) {
               print('LOG | InteractiveView: rebuild with new tree nodes');
 
-              return BlocListener<ZoomTreeBloc, ZoomTreeState>(
+              return BlocListener<TreeSettingsBloc, TreeSettingsState>(
                 listener: (context, state) {
-                  _controller.value = Matrix4.identity()..scale(state.scale);
+                  _controller.value = Matrix4.identity()
+                    ..scale(state.zoomScale);
                 },
-                child: InteractiveViewer(
-                    constrained: false,
-                    transformationController: _controller,
-                    alignment: Alignment.center,
-                    boundaryMargin: const EdgeInsets.all(1000),
-                    minScale: MIN_ZOOM,
-                    maxScale: MAX_ZOOM,
-                    child: const TreeView()),
+                child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+                  listenWhen: (prev, curr) =>
+                      prev.numberOfGenerations != curr.numberOfGenerations,
+                  listener: (context, state) {
+                    if (root != null) {
+                      context.read<DrawTreeBloc>().add(
+                            DrawTreeEvent.drawNewTree(
+                              tree: context
+                                  .read<CurrentTreeBloc>()
+                                  .state
+                                  .currentTree!,
+                              root: root!,
+                              maxGenerations: state.numberOfGenerations,
+                            ),
+                          );
+                    }
+                  },
+                  child: InteractiveViewer(
+                      constrained: false,
+                      transformationController: _controller,
+                      alignment: Alignment.center,
+                      boundaryMargin: const EdgeInsets.all(1000),
+                      minScale: MIN_ZOOM,
+                      maxScale: MAX_ZOOM,
+                      child: const TreeView()),
+                ),
               );
             },
             loadFailure: (_) => const SizedBox(),

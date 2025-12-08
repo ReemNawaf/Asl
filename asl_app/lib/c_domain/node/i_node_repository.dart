@@ -7,7 +7,9 @@ import 'package:dartz/dartz.dart';
 abstract class INodeRepository {
   Stream<Either<TNodeFailure, List<TNode>>> watchAll(UniqueId treeId);
   Future<Either<TNodeFailure, TNode>> getTree(
-      {required UniqueId treeId, required UniqueId rootId});
+      {required UniqueId treeId,
+      required UniqueId rootId,
+      int? maxGenerations});
   Future<Either<TNodeFailure, Unit>> create(
       {required UniqueId treeId, required TNode node});
   Future<Either<TNodeFailure, Unit>> update(

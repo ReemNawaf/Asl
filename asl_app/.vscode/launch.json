@@ -10,12 +10,11 @@
             "type": "dart",
             "program": "lib/main.dart",
             "args": [
-            "-d",
-            "chrome",
-            "--web-experimental-hot-reload",
+                "-d",
+                "chrome",
+                // "--web-experimental-hot-reload",
             ]
         },
-        
         {
             "name": "Asl (profile mode)",
             "request": "launch",

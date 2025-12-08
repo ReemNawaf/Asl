@@ -9,6 +9,10 @@ const double PAN_SM_HEIGHT = 580;
 const double PAN_WIDTH = 680;
 const double PAN_SM_WIDTH = 500;
 
+const MIN_ZOOM = 0.15;
+const MAX_ZOOM = 2.25;
+const ZOOM_DEF = 0.6;
+
 const double transactionCardHeight = 75.0;
 
 // Adding Forms
