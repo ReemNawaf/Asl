@@ -1,6 +1,5 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
@@ -12,6 +11,7 @@ import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,7 +51,7 @@ Future<dynamic> showNewTreePanel(
           alignment: Alignment.topRight,
           padding: const EdgeInsets.all(8.0),
           width: PAN_SM_WIDTH,
-          height: 400.0,
+          height: 487,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.0),
           ),
@@ -64,8 +64,11 @@ Future<dynamic> showNewTreePanel(
                     appSnackBar(
                       contextPage,
                       text: failure.map(
+                        // TODO: add localization here
                         unexpected: (_) => 'حدث خطأ غير متوقع',
+                        // TODO: add localization here
                         insufficientPermission: (_) => 'لا تملك الصلاحية',
+                        // TODO: add localization here
                         unableToUpdate: (_) => 'لا يمكن التحديث',
                       ),
                       type: SnackBarType.error,
@@ -97,7 +100,7 @@ Future<dynamic> showNewTreePanel(
 
                     appSnackBar(
                       contextPage,
-                      text: ARABIC_STRINGS['tree_created']!,
+                      text: getTr(contextPage, 'tree_created')!,
                       type: SnackBarType.success,
                     );
                   },
@@ -117,7 +120,9 @@ Future<dynamic> showNewTreePanel(
                       padding: const EdgeInsets.only(right: 28.0),
                       width: 300,
                       child: AppFormField(
+                        // TODO: add localization here
                         label: 'اسم الشجرة*',
+                        // TODO: add localization here
                         hint: 'شجرة عائلة ...',
                         onSaved: (_) {},
                         initialValue: '',
@@ -134,6 +139,7 @@ Future<dynamic> showNewTreePanel(
                               .fold(
                                 (f) => f.maybeMap(
                                   empty: (_) =>
+                                      // TODO: add localization here
                                       'اسم الشجرة لا يمكن أن يكون فارغًا',
                                   orElse: () => null,
                                 ),
@@ -158,7 +164,7 @@ Future<dynamic> showNewTreePanel(
                     Padding(
                       padding: const EdgeInsets.only(right: 28.0),
                       child: Text(
-                        'معلومات جذر العائلة',
+                        getTr(context, 'root_data_info')!,
                         style: kBodyLarge.copyWith(
                           color: kRootColors[200]!,
                         ),

@@ -89,12 +89,16 @@ class MainPanel extends StatelessWidget {
                             dividerHeight: 0.0,
                             isScrollable: true,
                             tabs: [
+                              // TODO: add localization here
                               const Tab(text: 'معلومات شخصية'),
+                              // TODO: add localization here
                               const Tab(text: 'الوالدين والأخوة'),
                               if (type != NodeType.partner)
                                 Tab(
                                     text:
+                                        // TODO: add localization here
                                         '${getNodeRelationPanelTitle(node.gender)} والأبناء'),
+                              // TODO: add localization here
                               const Tab(text: 'نبذة وملاحظات'),
                             ],
                             onTap: (index) {

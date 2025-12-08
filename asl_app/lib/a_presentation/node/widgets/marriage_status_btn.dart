@@ -22,6 +22,7 @@ class MarriageStatusBtn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // TODO: add localization here
             Text(
               'حالة الزواج',
               style: kFootnoteStyle.copyWith(
@@ -37,6 +38,7 @@ class MarriageStatusBtn extends StatelessWidget {
                       const PartnerFormEvent.changeMarriageStatus(
                           MarriageStatus.married)),
                   color: color,
+                  // TODO: add localization here
                   text: 'متزوج',
                   selected:
                       state.relation!.marriageStatus == MarriageStatus.married,
@@ -47,6 +49,7 @@ class MarriageStatusBtn extends StatelessWidget {
                       const PartnerFormEvent.changeMarriageStatus(
                           MarriageStatus.divorced)),
                   color: color,
+                  // TODO: add localization here
                   text: 'مطلق',
                   selected:
                       state.relation!.marriageStatus == MarriageStatus.divorced,
@@ -59,6 +62,7 @@ class MarriageStatusBtn extends StatelessWidget {
                         MarriageStatus.widowhood,
                       )),
                   color: color,
+                  // TODO: add localization here
                   text: 'متوفي',
                   selected: state.relation!.marriageStatus ==
                       MarriageStatus.widowhood,

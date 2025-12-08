@@ -18,6 +18,7 @@ class EmailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppFormField(
+      // TODO: add localization here
       label: 'البريد الإلكتروني',
       hint: 'example@example.com',
       isArabic: false,
@@ -30,7 +31,9 @@ class EmailField extends StatelessWidget {
         // context.read<SignInFormBloc>().state.emailAddress.value
         return context.read<SignInFormBloc>().state.emailAddress.value.fold(
               (f) => f.maybeMap(
+                // TODO: add localization here
                 empty: (_) => 'البريد الإلكتروني لا يمكن أن يكون فارغًا',
+                // TODO: add localization here
                 invalidEmail: (_) => 'البريد الإلكتروني غير صحيح',
                 orElse: () => null,
               ),

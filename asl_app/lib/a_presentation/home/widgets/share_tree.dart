@@ -22,6 +22,7 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
             if (state.isLinkCopied) {
               appSnackBar(
                 dialogContext,
+                // TODO: add localization here
                 text: 'تم نسخ الرابط',
                 type: SnackBarType.success,
               );
@@ -42,15 +43,18 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // TODO: add localization here
                       const Text('مشاركة شجرة العائلة', style: kBodyLarge),
                       kVSpacer10,
                       Text(
+                        // TODO: add localization here
                         'شارك شجرة العائلة مع أفراد عائلتك!',
                         style:
                             kFootnoteStyle.copyWith(color: kBlacksColor[400]),
                       ),
                       kVSpacer30,
                       Text(
+                        // TODO: add localization here
                         'مشاركة عامة',
                         style: kFootnoteStyle.copyWith(color: kBlacksColor),
                       ),
@@ -116,6 +120,7 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                                     .read<ShareOptionBloc>()
                                     .add(const ShareOptionEvent
                                         .sharedLinkCopied()),
+                                // TODO: add localization here
                                 label: 'نسخ رابط المشاركة',
                                 fillColor: kLeafColors[820]!,
                                 icon: Icon(
@@ -139,6 +144,7 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                             child: AppButton(
                               onPressed: () =>
                                   Navigator.of(dialogContext).pop(),
+                              // TODO: add localization here
                               label: 'تم',
                               fillColor: kRootColors[600]!,
                               textColor: kBlacksColor,
@@ -147,6 +153,7 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                         ],
                       ),
                       // Text(
+                      // TODO: add localization here
                       //   'مشاركة مع أشخاص',
                       //   style: kFootnoteStyle.copyWith(color: kBlacksColor[200]),
                       // ),

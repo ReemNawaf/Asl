@@ -106,12 +106,14 @@ Widget horizontalSpace(double width) {
   return Container(width: width);
 }
 
+// TODO: add localization here
 String getNodePartnerTitle(gender, number) {
   return gender == Gender.female
       ? (number > 1 ? 'أزواجها' : 'زوجها')
       : (number > 1 ? 'زوجاته' : 'زوجته');
 }
 
+// TODO: add localization here
 String getNodePartnerTitleSingle(gender) {
   return gender == Gender.female ? 'زوجها' : 'زوجته';
 }

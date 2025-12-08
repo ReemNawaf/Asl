@@ -41,7 +41,7 @@ class TreeButton extends StatelessWidget {
               height: 60,
               width: 60,
               child: SvgPicture.asset(
-                'icons/tree.svg',
+                'assets/icons/tree.svg',
                 alignment: Alignment.centerLeft,
               ),
             ),
@@ -49,10 +49,12 @@ class TreeButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
+                  // TODO: add localization here
                   'استعراض شجرة العائلة',
                   style: kCalloutStyle,
                 ),
                 Text(
+                  // TODO: add localization here
                   'استعراضه كجذر لشجرة العائلة',
                   style: kFootnoteStyle.copyWith(fontSize: 12.0),
                 ),

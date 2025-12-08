@@ -1,5 +1,4 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/add_parent_list_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/child_alive_btn.dart';
@@ -7,6 +6,7 @@ import 'package:asl/a_presentation/node/widgets/child_gender_btn.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,6 +35,7 @@ class AddChildWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // TODO: add localization here
               const Text('إضافة ابن/ة'),
               kVSpacer20,
               Row(
@@ -44,7 +45,9 @@ class AddChildWidget extends StatelessWidget {
                     width: 250,
                     height: 90,
                     child: AppFormField(
+                      // TODO: add localization here
                       label: 'الاسم',
+                      // TODO: add localization here
                       hint: 'الاسم الأول',
                       onChanged: (value) => context
                           .read<ChildFormBloc>()
@@ -65,12 +68,12 @@ class AddChildWidget extends StatelessWidget {
                             .value
                             .fold(
                               (f) => f.maybeMap(
-                                empty: (_) => ARABIC_STRINGS[
-                                    'first_name_cannot_be_empty'],
+                                empty: (_) => getTr(
+                                    context, 'first_name_cannot_be_empty'),
                                 shortFirstName: (_) =>
-                                    ARABIC_STRINGS['first_name_short'],
-                                spacedFirstName: (_) => ARABIC_STRINGS[
-                                    'first_name_cannot_contain_spaces'],
+                                    getTr(context, 'first_name_short'),
+                                spacedFirstName: (_) => getTr(context,
+                                    'first_name_cannot_contain_spaces'),
                                 orElse: () => null,
                               ),
                               (_) => null,
@@ -93,6 +96,7 @@ class AddChildWidget extends StatelessWidget {
                         height: 80,
                         child: AppDateField(
                           formKey: formKey,
+                          // TODO: add localization here
                           label: 'تاريخ الميلاد',
                           hint: '',
                           endDate: state.tempChild.deathDate
@@ -124,6 +128,7 @@ class AddChildWidget extends StatelessWidget {
                             ? const SizedBox()
                             : AppDateField(
                                 formKey: formKey,
+                                // TODO: add localization here
                                 label: 'تاريخ الوفاة',
                                 hint: '',
                                 validate: (validate) => "",

@@ -46,6 +46,7 @@ class TreeList extends StatelessWidget {
                         .toList();
                     menuItems.add(const DropdownMenuItem<String>(
                       value: 'add_new',
+                      // TODO: add localization here
                       child: Text('إضافة شجرة عائلة'),
                     ));
 

@@ -140,6 +140,8 @@ InputDecoration kAppFormsInputDecor({
     );
 
 InputDecoration kSearchBarInputDecor() => InputDecoration(
+      // TODO: search label:
+      // TODO: add localization here
       hintText: 'ابحث عن فرد',
       hintStyle: kBodyMedium.copyWith(color: const Color(0xFF696969)),
       errorStyle: kCaption2Style.copyWith(color: kErrorUIColor),

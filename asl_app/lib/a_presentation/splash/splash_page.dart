@@ -1,9 +1,9 @@
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/logo_slogan_wdg.dart';
 import 'package:asl/a_presentation/routes/app_router.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,14 +37,14 @@ class SplashPage extends StatelessWidget {
               ),
               kVSpacer20,
               Text(
-                '${ARABIC_STRINGS['required_bigger_screen_title']!} 🌴✨',
+                '${getTr(context, 'required_bigger_screen_title')!} 🌴✨',
                 style: kHeadlineSmall.copyWith(fontSize: 24),
               ),
               kVSpacer30,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 70.0),
                 child: Text(
-                  '${ARABIC_STRINGS['required_bigger_screen_des_1']!} ${ARABIC_STRINGS['required_bigger_screen_des_2']!}',
+                  '${getTr(context, 'required_bigger_screen_des_1')!} ${getTr(context, 'required_bigger_screen_des_2')!}',
                   style: kBodyLarge.copyWith(wordSpacing: 2.0, height: 1.8),
                   textAlign: TextAlign.center,
                 ),
@@ -61,6 +61,7 @@ class SplashPage extends StatelessWidget {
                     Icon(Icons.info_outline, color: kRootColors[300]),
                     kHSpacer5,
                     Text(
+                      // TODO: add localization here
                       'ننصح باستخدام شاشة بعرض $MIM_WIDTH وطول $MIM_HEIGHT أو أكبر',
                       style: kBodyMedium.copyWith(wordSpacing: 2.0),
                     ),

@@ -74,62 +74,76 @@ class RootInfoPanel extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 230,
-                  height: 80,
-                  child: AppDateField(
-                    formKey: formKey,
-                    label: 'تاريخ الميلاد',
-                    hint: '',
-                    endDate: state.root.deathDate
-                            ?.subtract(const Duration(days: 1)) ??
-                        DateTime.now(),
-                    startDate: DateTime(1000),
-                    validate: (validate) => "",
-                    save: (_) {},
-                    isEditing: true,
-                    changeDate: (pickedDate) {
-                      context
-                          .read<TreeFormBloc>()
-                          .add(TreeFormEvent.changeRootBirthDate(pickedDate));
-                    },
-                    dateController: TextEditingController(
-                      text: state.root.birthDate == null
-                          ? ''
-                          : DateFormat.yMMMd().format(state.root.birthDate!),
-                    ),
-                  ),
-                ),
-                if (state.root.isAlive) ...[
-                  kHSpacer20,
-                  RootAliveBtn(color: color, ctx: ctx)
-                ] else
-                  SizedBox(
-                    width: 230,
-                    height: 80,
-                    child: AppDateField(
-                      formKey: formKey,
-                      label: 'تاريخ الوفاة',
-                      hint: '',
-                      validate: (validate) => "",
-                      isEditing: true,
-                      save: (_) {},
-                      changeDate: (pickedDate) {
-                        context
-                            .read<TreeFormBloc>()
-                            .add(TreeFormEvent.changeRootDeathDate(pickedDate));
-                      },
-                      startDate:
-                          state.root.birthDate?.add(const Duration(days: 1)) ??
-                              DateTime(1000),
-                      endDate: DateTime.now(),
-                      dateController: TextEditingController(
-                        text: state.root.deathDate == null
-                            ? ''
-                            : DateFormat.yMMMd().format(state.root.deathDate!),
+                Column(
+                  children: [
+                    SizedBox(
+                      width: 230,
+                      height: 80,
+                      child: AppDateField(
+                        formKey: formKey,
+                        // TODO: add localization here
+                        label: 'تاريخ الميلاد',
+                        hint: '',
+                        endDate: state.root.deathDate
+                                ?.subtract(const Duration(days: 1)) ??
+                            DateTime.now(),
+                        startDate: DateTime(1000),
+                        validate: (validate) => "",
+                        save: (_) {},
+                        isEditing: true,
+                        changeDate: (pickedDate) {
+                          context.read<TreeFormBloc>().add(
+                              TreeFormEvent.changeRootBirthDate(pickedDate));
+                        },
+                        dateController: TextEditingController(
+                          text: state.root.birthDate == null
+                              ? ''
+                              : DateFormat.yMMMd()
+                                  .format(state.root.birthDate!),
+                        ),
                       ),
                     ),
-                  ),
+                    kHSpacer20,
+                    SizedBox(
+                      height: 74,
+                      child: !state.root.isAlive
+                          ? SizedBox(
+                              width: 230,
+                              height: 80,
+                              child: AppDateField(
+                                formKey: formKey,
+                                // TODO: add localization here
+                                label: 'تاريخ الوفاة',
+                                hint: '',
+                                validate: (validate) => "",
+                                isEditing: true,
+                                save: (_) {},
+                                changeDate: (pickedDate) {
+                                  context.read<TreeFormBloc>().add(
+                                      TreeFormEvent.changeRootDeathDate(
+                                          pickedDate));
+                                },
+                                startDate: state.root.birthDate
+                                        ?.add(const Duration(days: 1)) ??
+                                    DateTime(1000),
+                                endDate: DateTime.now(),
+                                dateController: TextEditingController(
+                                  text: state.root.deathDate == null
+                                      ? ''
+                                      : DateFormat.yMMMd()
+                                          .format(state.root.deathDate!),
+                                ),
+                              ),
+                            )
+                          : const SizedBox(),
+                    ),
+                  ],
+                ),
+                kHSpacer20,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 78.0),
+                  child: RootAliveBtn(color: color, ctx: ctx),
+                ),
               ],
             );
           },

@@ -55,13 +55,19 @@ class _SignInFormState extends State<SignInForm> {
               appSnackBar(
                 context,
                 text: failure.map(
+                  // TODO: add localization here
                   cancelledByUser: (_) => 'إلغاء',
+                  // TODO: add localization here
                   emailAlreadyInUse: (_) => 'البريد الإلكتروني مستخدم بالفعل',
+                  // TODO: add localization here
                   invalidEmailAndPasswordCombination: (_) =>
                       'البريد الإلكتروني أو الرقم السري غير صحيح',
+                  // TODO: add localization here
                   serverError: (_) => 'حدث خطأ ما',
+                  // TODO: add localization here
                   accountDoesExist: (_) =>
                       'الحساب مسجل من قبل، يرجى تسجيل الدخول',
+                  // TODO: add localization here
                   accountDoesNotExist: (_) =>
                       'الحساب غير مسجل من قبل، يرجى التسجيل',
                 ),
@@ -120,12 +126,14 @@ class _SignInFormState extends State<SignInForm> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: _authMode == AuthMode.signin
+                          // TODO: add localization here
                           ? 'ليس لديك حساب؟  '
                           : 'لديك حساب؟  ',
                       style: kBodyMedium,
                       children: [
                         TextSpan(
                           text: _authMode == AuthMode.signin
+                              // TODO: add localization here
                               ? ' إنشاء حساب'
                               : ' سجل دخولك',
                           style: kBodyMedium.copyWith(
