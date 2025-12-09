@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/tree/i_tree_repository.dart';
 import 'package:asl/c_domain/tree/tree_settings.dart';
@@ -29,7 +30,7 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
 
     final loaded = TreeSettings(
       treeId: event.treeId,
-      numberOfGeneration: 3,
+      numberOfGeneration: 0,
       isShowUnknown: false,
     ); // await _treeRepository.loadSettings(event.treeId);
 
@@ -54,7 +55,9 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
     _NumberOfGenerationsChanged event,
     Emitter<TreeSettingsState> emit,
   ) async {
-    emit(state.copyWith(numberOfGenerations: event.number));
+    emit(state.copyWith(
+      numberOfGenerations: event.option,
+    ));
     print('08 | state changed ${state.numberOfGenerations}');
   }
 

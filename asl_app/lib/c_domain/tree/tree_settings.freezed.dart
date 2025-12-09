@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TreeSettings {
   UniqueId? get treeId => throw _privateConstructorUsedError;
-  int? get numberOfGeneration => throw _privateConstructorUsedError;
+  int get numberOfGeneration => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $TreeSettingsCopyWith<$Res> {
           TreeSettings value, $Res Function(TreeSettings) then) =
       _$TreeSettingsCopyWithImpl<$Res, TreeSettings>;
   @useResult
-  $Res call({UniqueId? treeId, int? numberOfGeneration, bool isShowUnknown});
+  $Res call({UniqueId? treeId, int numberOfGeneration, bool isShowUnknown});
 }
 
 /// @nodoc
@@ -48,7 +48,7 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
   @override
   $Res call({
     Object? treeId = freezed,
-    Object? numberOfGeneration = freezed,
+    Object? numberOfGeneration = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_value.copyWith(
@@ -56,10 +56,10 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as UniqueId?,
-      numberOfGeneration: freezed == numberOfGeneration
+      numberOfGeneration: null == numberOfGeneration
           ? _value.numberOfGeneration
           : numberOfGeneration // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
@@ -76,7 +76,7 @@ abstract class _$$TreeSettingsImplCopyWith<$Res>
       __$$TreeSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId? treeId, int? numberOfGeneration, bool isShowUnknown});
+  $Res call({UniqueId? treeId, int numberOfGeneration, bool isShowUnknown});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? treeId = freezed,
-    Object? numberOfGeneration = freezed,
+    Object? numberOfGeneration = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_$TreeSettingsImpl(
@@ -99,10 +99,10 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as UniqueId?,
-      numberOfGeneration: freezed == numberOfGeneration
+      numberOfGeneration: null == numberOfGeneration
           ? _value.numberOfGeneration
           : numberOfGeneration // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
@@ -115,13 +115,15 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
 
 class _$TreeSettingsImpl extends _TreeSettings {
   const _$TreeSettingsImpl(
-      {this.treeId, this.numberOfGeneration, required this.isShowUnknown})
+      {this.treeId,
+      required this.numberOfGeneration,
+      required this.isShowUnknown})
       : super._();
 
   @override
   final UniqueId? treeId;
   @override
-  final int? numberOfGeneration;
+  final int numberOfGeneration;
   @override
   final bool isShowUnknown;
 
@@ -156,14 +158,14 @@ class _$TreeSettingsImpl extends _TreeSettings {
 abstract class _TreeSettings extends TreeSettings {
   const factory _TreeSettings(
       {final UniqueId? treeId,
-      final int? numberOfGeneration,
+      required final int numberOfGeneration,
       required final bool isShowUnknown}) = _$TreeSettingsImpl;
   const _TreeSettings._() : super._();
 
   @override
   UniqueId? get treeId;
   @override
-  int? get numberOfGeneration;
+  int get numberOfGeneration;
   @override
   bool get isShowUnknown;
   @override

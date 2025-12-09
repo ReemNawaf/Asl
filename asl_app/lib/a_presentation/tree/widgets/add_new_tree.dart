@@ -64,12 +64,12 @@ Future<dynamic> showNewTreePanel(
                     appSnackBar(
                       contextPage,
                       text: failure.map(
-                        // TODO: add localization here
-                        unexpected: (_) => 'حدث خطأ غير متوقع',
-                        // TODO: add localization here
-                        insufficientPermission: (_) => 'لا تملك الصلاحية',
-                        // TODO: add localization here
-                        unableToUpdate: (_) => 'لا يمكن التحديث',
+                        unexpected: (_) =>
+                            getTr(ctx, 'unexpected_error_occurred')!,
+                        insufficientPermission: (_) =>
+                            getTr(ctx, 'no_authority')!,
+                        unableToUpdate: (_) =>
+                            getTr(ctx, 'update_is_not_possible')!,
                       ),
                       type: SnackBarType.error,
                     );
@@ -120,10 +120,8 @@ Future<dynamic> showNewTreePanel(
                       padding: const EdgeInsets.only(right: 28.0),
                       width: 300,
                       child: AppFormField(
-                        // TODO: add localization here
-                        label: 'اسم الشجرة*',
-                        // TODO: add localization here
-                        hint: 'شجرة عائلة ...',
+                        label: getTr(context, 'required_tree_name')!,
+                        hint: getTr(context, 'family_tree_name_hint')!,
                         onSaved: (_) {},
                         initialValue: '',
                         onChanged: (value) => context
@@ -138,9 +136,8 @@ Future<dynamic> showNewTreePanel(
                               .value
                               .fold(
                                 (f) => f.maybeMap(
-                                  empty: (_) =>
-                                      // TODO: add localization here
-                                      'اسم الشجرة لا يمكن أن يكون فارغًا',
+                                  empty: (_) => getTr(context,
+                                      'family_tree_name_cannot_be_empty'),
                                   orElse: () => null,
                                 ),
                                 (_) => null,

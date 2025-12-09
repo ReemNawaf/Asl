@@ -8,6 +8,7 @@ import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart'
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/tree/tree.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,10 +45,9 @@ class TreeList extends StatelessWidget {
                                       .substring(0, 1)),
                             ))
                         .toList();
-                    menuItems.add(const DropdownMenuItem<String>(
+                    menuItems.add(DropdownMenuItem<String>(
                       value: 'add_new',
-                      // TODO: add localization here
-                      child: Text('إضافة شجرة عائلة'),
+                      child: Text(getTr(context, 'add_family_tree')!),
                     ));
 
                     print(

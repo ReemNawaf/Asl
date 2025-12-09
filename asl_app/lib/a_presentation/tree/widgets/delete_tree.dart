@@ -4,6 +4,7 @@ import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:asl/b_application/tree_bloc/tree_actor/tree_actor_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,8 +42,7 @@ Future<dynamic> showDeleteTreePanel(BuildContext contextPage,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // TODO: add localization here
-                const Text('هل تريد حذف الشجرة؟'),
+                Text(getTr(contextPage, 'do_you_want_to_delete_the_tree')!),
                 kVSpacer20,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -28,11 +28,18 @@ enum AuthMode { signin, signup }
 
 enum MarriageStatus { married, divorced, widowhood }
 
-const marriageSt = {
-  MarriageStatus.divorced: 'مطلق',
-  MarriageStatus.married: 'متزوج',
-  MarriageStatus.widowhood: 'أرمل',
-};
+String getMarriageSt(MarriageStatus status, Gender gender) {
+  String key = 'male_married';
+
+  if (status == MarriageStatus.divorced) {
+    key = gender == Gender.female ? 'female_divorced' : 'male_divorced';
+  } else if (status == MarriageStatus.married) {
+    key = gender == Gender.female ? 'female_married' : 'male_married';
+  } else if (status == MarriageStatus.widowhood) {
+    key = gender == Gender.female ? 'female_widowhood' : 'male_widowhood';
+  }
+  return key;
+}
 
 const kVSpacer5 = SizedBox(height: 5.0);
 const kVSpacer10 = SizedBox(height: 10.0);

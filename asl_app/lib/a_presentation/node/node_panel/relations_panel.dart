@@ -14,6 +14,7 @@ import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watche
 
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/injection.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -84,9 +85,9 @@ class RelationsPanel extends StatelessWidget {
                                         const NodeFormEvent.addPartner(true));
                                   }
                                 },
-                                label:
-                                    // TODO: add localization here
-                                    'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
+                                label: node.gender == Gender.male
+                                    ? getTr(context, 'add_wife')!
+                                    : getTr(context, 'add_husband')!,
                                 color: color,
                               )
                             ],
@@ -131,7 +132,6 @@ class RelationsPanel extends StatelessWidget {
                                               NodeFormEvent.addChild(!val));
                                         } else {
                                           // Add empty child to be ready to add to it
-
                                           context.read<ChildFormBloc>().add(
                                               ChildFormEvent.addChild(
                                                   treeId: relState
@@ -144,15 +144,13 @@ class RelationsPanel extends StatelessWidget {
                                                   true));
                                         }
                                       },
-                                      // TODO: add localization here
-                                      label: 'إضافة ابن/ة',
+                                      label: getTr(context, 'add_child')!,
                                       color: color,
                                     )
                                   else
-                                    // TODO: add localization here
-                                    Text(
-                                      'أضف زوج${node.gender == Gender.male ? 'ة' : ''} أولًا',
-                                    )
+                                    Text(node.gender == Gender.male
+                                        ? getTr(context, 'add_wife_first')!
+                                        : getTr(context, 'add_husband_first')!)
                                 ],
                               );
                             },

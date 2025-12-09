@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 
@@ -139,10 +140,8 @@ InputDecoration kAppFormsInputDecor({
       ),
     );
 
-InputDecoration kSearchBarInputDecor() => InputDecoration(
-      // TODO: search label:
-      // TODO: add localization here
-      hintText: 'ابحث عن فرد',
+InputDecoration kSearchBarInputDecor(BuildContext context) => InputDecoration(
+      hintText: getTr(context, 'search_for_member')!,
       hintStyle: kBodyMedium.copyWith(color: const Color(0xFF696969)),
       errorStyle: kCaption2Style.copyWith(color: kErrorUIColor),
       filled: true,

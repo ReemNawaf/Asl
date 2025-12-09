@@ -4,6 +4,7 @@ import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/app_view_field.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,8 +48,7 @@ class BrotherSisterssWidget extends StatelessWidget {
                 },
               )
             ] else
-              // TODO: add localization here
-              Text('لا يوجد',
+              Text(getTr(context, 'no_siblings')!,
                   style: kCaption1Style.copyWith(color: kBlacksColor[600])),
           ],
         );

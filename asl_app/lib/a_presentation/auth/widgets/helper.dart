@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
@@ -24,8 +25,8 @@ Widget signInWithGoogleBtn(BuildContext context, Function() forward) {
               colorFilter: const ColorFilter.mode(kRootColors, BlendMode.srcIn),
             ),
             kHSpacer10,
-            // TODO: add localization here
-            const Text('تسجيل الدخول مع Google', style: kBodyMedium),
+            Text('${getTr(context, 'sign_in_with')} Google',
+                style: kBodyMedium),
           ],
         ),
       ),

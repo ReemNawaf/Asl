@@ -33,7 +33,7 @@ class AddParentDropListWidget extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(getParentTitle(gender)),
+          Text(getParentTitle(context, gender)),
           kVSpacer5,
           Container(
             decoration: kAppFormsDecor,

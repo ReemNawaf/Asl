@@ -3,6 +3,8 @@ import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:asl/c_domain/tree/tree_draw.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:graphview/GraphView.dart';
 import 'package:injectable/injectable.dart';
@@ -27,14 +29,16 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
         final graph = treeDraw.drawTree(
             root: e.root,
             maxGenerations: e.maxGenerations,
-            isShowUnknown: e.isShowUnknown);
+            isShowUnknown: e.isShowUnknown,
+            context: e.context);
         emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
       },
       drawNewTree: (e) async {
         final graph = treeDraw.drawTree(
             root: e.root,
             maxGenerations: e.maxGenerations,
-            isShowUnknown: e.isShowUnknown);
+            isShowUnknown: e.isShowUnknown,
+            context: e.context);
         emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
       },
     );

@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/tree/tree_view.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
+import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
@@ -30,12 +31,13 @@ class InteractiveView extends StatelessWidget {
                   DrawTreeEvent.drawNewTree(
                     tree: context.read<CurrentTreeBloc>().state.currentTree!,
                     root: state.root,
-                    maxGenerations: context
+                    maxGenerations: NUM_GEN_OPTIONS[context
                         .read<TreeSettingsBloc>()
                         .state
-                        .numberOfGenerations,
+                        .numberOfGenerations]['value'],
                     isShowUnknown:
                         context.read<TreeSettingsBloc>().state.showUnknown,
+                    context: context,
                   ),
                 );
           },
@@ -73,7 +75,10 @@ class InteractiveView extends StatelessWidget {
                                   .state
                                   .currentTree!,
                               root: root!,
-                              maxGenerations: state.numberOfGenerations,
+                              maxGenerations:
+                                  NUM_GEN_OPTIONS[state.numberOfGenerations]
+                                      ['value'],
+                              context: context,
                             ),
                           );
                     }

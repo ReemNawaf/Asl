@@ -51,15 +51,14 @@ class AddPartnerWidget extends StatelessWidget {
                   textAlign: TextAlign.center,
                   text: isAddingPartner
                       ? TextSpan(
-                          text:
-                              // TODO: add localization here
-                              ' الزوج${node.gender == Gender.male ? 'ة' : ''} ليس في الشجرة ',
+                          text: node.gender == Gender.male
+                              ? getTr(context, 'wife_is_not_in_the_tree')
+                              : getTr(context, 'husband_is_not_in_the_tree'),
                           style: kFootnoteStyle.copyWith(
                               fontWeight: FontWeight.bold, wordSpacing: 2.0),
                           children: [
                             TextSpan(
-                              // TODO: add localization here
-                              text: 'أضف عضو جديد',
+                              text: getTr(context, 'add_new_member')!,
                               style: kFootnoteStyle.copyWith(
                                 color: color,
                                 fontWeight: FontWeight.bold,
@@ -69,15 +68,14 @@ class AddPartnerWidget extends StatelessWidget {
                           ],
                         )
                       : TextSpan(
-                          // TODO: add localization here
-                          text:
-                              ' الزوج${node.gender == Gender.male ? 'ة' : ''} في الشجرة ',
+                          text: node.gender == Gender.male
+                              ? getTr(context, 'wife_is_in_the_tree')!
+                              : getTr(context, 'husband_is_in_the_tree')!,
                           style: kFootnoteStyle.copyWith(
                               fontWeight: FontWeight.bold, wordSpacing: 2.0),
                           children: [
                             TextSpan(
-                              // TODO: add localization here
-                              text: 'أضف بالمعرف (ID)',
+                              text: getTr(context, 'add_with_id')!,
                               style: kFootnoteStyle.copyWith(
                                 color: color,
                                 fontWeight: FontWeight.bold,
@@ -110,8 +108,7 @@ class AddPartnerWidget extends StatelessWidget {
                     height: 80,
                     child: AppDateField(
                       formKey: formKey,
-                      // TODO: add localization here
-                      label: 'تاريخ الزواج',
+                      label: getTr(context, 'marriage_date')!,
                       hint: '',
                       endDate: state.relation!.endDate ?? DateTime(3000),
                       startDate: DateTime(1000),
@@ -139,8 +136,7 @@ class AddPartnerWidget extends StatelessWidget {
                       height: 80,
                       child: AppDateField(
                         formKey: formKey,
-                        // TODO: add localization here
-                        label: 'تاريخ النهاية',
+                        label: getTr(context, 'end_date')!,
                         hint: '',
                         validate: (validate) => "",
                         isEditing: true,
@@ -197,11 +193,10 @@ class PartnerName extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppFormField(
-          // TODO: add localization here
-          label: 'إضافة معرف الزوج${node.gender == Gender.male ? 'ة' : ''}',
-
-          // TODO: add localization here
-          hint: 'أدخل معرف العضو',
+          label: node.gender == Gender.male
+              ? getTr(context, 'add_with_wife_id')!
+              : getTr(context, 'add_with_husband_id')!,
+          hint: getTr(context, 'input_member_id')!,
           onChanged: (value) {
             if (value != null && value.trim().length == 36) {
               context.read<PartnerFormBloc>().add(
@@ -224,10 +219,10 @@ class PartnerName extends StatelessWidget {
     );
 
     var appFormField = AppFormField(
-      // TODO: add localization here
-      label: 'إضافة زوج${node.gender == Gender.male ? 'ة' : ''}',
-      // TODO: add localization here
-      hint: 'الاسم الكامل',
+      label: node.gender == Gender.male
+          ? getTr(context, 'add_wife')!
+          : getTr(context, 'add_husband')!,
+      hint: getTr(context, 'full_name')!,
       onChanged: (value) {
         context
             .read<PartnerFormBloc>()

@@ -31,14 +31,15 @@ class ShareOptionBloc extends Bloc<ShareOptionEvent, ShareOptionState> {
 enum ShareOption { everyone, restricted }
 
 const List<Map<String, String>> SHARE_OPTIONS = [
-  {
-    'value': 'restricted',
-    'text': 'خاص',
-    'des': 'فقط المضافين يستطيعون رؤية الشجرة'
-  },
-  {
-    'value': 'everyone',
-    'text': 'عام',
-    'des': 'أي شخص مع هذا الرابط يستطيع رؤية الشجرة'
-  },
+  {'value': 'restricted', 'text': 'private', 'des': 'private_description'},
+  {'value': 'everyone', 'text': 'public', 'des': 'public_description'},
+];
+const List<Map<String, dynamic>> NUM_GEN_OPTIONS = [
+  {'value': 'all_generations', 'number': null},
+  {'value': 'three_generations', 'number': 3},
+  {'value': 'four_generations', 'number': 4},
+  {'value': 'five_generations', 'number': 5},
+  {'value': 'six_generations', 'number': 6},
+  {'value': 'seven_generations', 'number': 7},
+  {'value': 'eight_generations', 'number': 8},
 ];

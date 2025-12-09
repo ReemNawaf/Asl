@@ -1,8 +1,14 @@
+import 'package:asl/a_presentation/a_shared/app_colors.dart';
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
-import 'package:asl/a_presentation/home/widgets/share_tree.dart';
+import 'package:asl/a_presentation/home/widgets/share_settings_section.dart';
+import 'package:asl/a_presentation/home/widgets/tree_settings_section.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SettingsButton extends StatelessWidget {
   const SettingsButton({
@@ -16,10 +22,10 @@ class SettingsButton extends StatelessWidget {
         if (state.currentTree != null) {
           return AppButton(
             onPressed: () => showSettingsPanel(context),
-            label: 'إعدادات',
+            label: getTr(context, 'settings')!,
             fillColor: const Color(0xFFFFEFE2),
             textColor: const Color(0xFF303030),
-            icon: const Icon(Icons.settings),
+            icon: SvgPicture.asset('assets/icons/settings.svg'),
             hasIcon: true,
           );
         } else {
@@ -28,4 +34,59 @@ class SettingsButton extends StatelessWidget {
       },
     );
   }
+}
+
+Future<dynamic> showSettingsPanel(BuildContext contextPage) {
+  return showDialog(
+    context: contextPage,
+    useRootNavigator: false,
+    builder: (BuildContext dialogContext) {
+      return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: AlertDialog(
+          backgroundColor: kWhitesColor[600],
+          shape: kRoundedRectangleBorder,
+          scrollable: true,
+          content: Container(
+            alignment: Alignment.topRight,
+            padding: const EdgeInsets.all(16.0),
+            width: PAN_SM_WIDTH,
+            height: PAN_SM_HEIGHT,
+            child: Column(
+              children: [
+                TreeSettingsSection(
+                  dialogContext: dialogContext,
+                  contextPage: contextPage,
+                ),
+                kVSpacer10,
+                Divider(
+                  color: kRootColors[600],
+                  thickness: 1,
+                ),
+                kVSpacer10,
+                ShareSettingsSection(
+                    dialogContext: dialogContext, contextPage: contextPage),
+                kVSpacer30,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: AppButton(
+                        onPressed: () => Navigator.of(dialogContext).pop(),
+                        label: getTr(contextPage, 'done')!,
+                        fillColor: kRootColors[600]!,
+                        textColor: kBlacksColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
 }

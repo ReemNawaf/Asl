@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
                       const EdgeInsets.only(left: 14.0, right: 14.0, top: 14.0),
                   child: TextField(
                     textAlign: TextAlign.right,
-                    decoration: kSearchBarInputDecor(),
+                    decoration: kSearchBarInputDecor(context),
                   ),
                 ),
                 Container(
@@ -130,24 +130,6 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                 ),
-                GestureDetector(
-                    onTap: () {
-                      context.read<TreeSettingsBloc>().add(
-                          const TreeSettingsEvent.numberOfGenerationsChanged(
-                              4));
-                    },
-                    child: Container(
-                        height: 500, width: 100, color: Colors.green)),
-                GestureDetector(
-                    onTap: () {
-                      context.read<TreeSettingsBloc>().add(
-                          TreeSettingsEvent.showUnknownChanged(!context
-                              .read<TreeSettingsBloc>()
-                              .state
-                              .showUnknown));
-                    },
-                    child: Container(
-                        height: 100, width: 100, color: Colors.yellow)),
                 Container(
                   width: 150,
                   padding: EdgeInsets.only(right: 20, top: size.height - 85),

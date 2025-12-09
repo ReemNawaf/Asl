@@ -1,6 +1,7 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,8 +25,7 @@ class LayersWidget extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              // TODO: add localization here
-              'الأجيـــــــال',
+              getTr(context, 'generations')!,
               style: kBodyLarge.copyWith(
                   color: kBlacksColor[200], fontWeight: FontWeight.w800),
             ),
@@ -34,8 +34,7 @@ class LayersWidget extends StatelessWidget {
         const SizedBox(height: 16.0),
         AppButton(
           onPressed: () {},
-          // TODO: add localization here
-          label: 'الأحفـــــــاد',
+          label: getTr(context, 'grandchildren')!,
           textColor: kLeafColors[200]!,
           fillColor: kLeafColors[700]!,
           icon: SvgPicture.asset('assets/icons/leaf.svg'),
@@ -44,8 +43,7 @@ class LayersWidget extends StatelessWidget {
         const SizedBox(height: 16.0),
         AppButton(
           onPressed: () {},
-          // TODO: add localization here
-          label: 'الأبــــــاء',
+          label: getTr(context, 'parents')!,
           textColor: kStemColors[200]!,
           fillColor: kStemColors[600]!,
           icon: SvgPicture.asset('assets/icons/stem.svg'),
@@ -54,8 +52,7 @@ class LayersWidget extends StatelessWidget {
         const SizedBox(height: 16.0),
         AppButton(
           onPressed: () {},
-          // TODO: add localization here
-          label: 'الأجـــــــداد',
+          label: getTr(context, 'grandparents')!,
           textColor: kRootColors[200]!,
           fillColor: kRootColors[600]!,
           icon: SvgPicture.asset('assets/icons/root.svg'),

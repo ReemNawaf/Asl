@@ -61,8 +61,7 @@ class SplashPage extends StatelessWidget {
                     Icon(Icons.info_outline, color: kRootColors[300]),
                     kHSpacer5,
                     Text(
-                      // TODO: add localization here
-                      'ننصح باستخدام شاشة بعرض $MIM_WIDTH وطول $MIM_HEIGHT أو أكبر',
+                      '${getTr(context, 'we_recommend_using_screen_with_width')} $MIM_WIDTH ${getTr(context, 'and_height')} $MIM_HEIGHT ${getTr(context, 'or_larger')}',
                       style: kBodyMedium.copyWith(wordSpacing: 2.0),
                     ),
                   ],

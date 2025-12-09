@@ -5,6 +5,7 @@ import 'package:asl/a_presentation/auth/widgets/helper.dart';
 import 'package:asl/a_presentation/auth/widgets/password_field.dart';
 import 'package:asl/a_presentation/core/widgets/logo_slogan_wdg.dart';
 import 'package:asl/a_presentation/routes/app_router.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,21 +56,16 @@ class _SignInFormState extends State<SignInForm> {
               appSnackBar(
                 context,
                 text: failure.map(
-                  // TODO: add localization here
-                  cancelledByUser: (_) => 'إلغاء',
-                  // TODO: add localization here
-                  emailAlreadyInUse: (_) => 'البريد الإلكتروني مستخدم بالفعل',
-                  // TODO: add localization here
+                  cancelledByUser: (_) => getTr(context, 'cancel')!,
+                  emailAlreadyInUse: (_) =>
+                      getTr(context, 'email_already_in_use')!,
                   invalidEmailAndPasswordCombination: (_) =>
-                      'البريد الإلكتروني أو الرقم السري غير صحيح',
-                  // TODO: add localization here
-                  serverError: (_) => 'حدث خطأ ما',
-                  // TODO: add localization here
-                  accountDoesExist: (_) =>
-                      'الحساب مسجل من قبل، يرجى تسجيل الدخول',
-                  // TODO: add localization here
-                  accountDoesNotExist: (_) =>
-                      'الحساب غير مسجل من قبل، يرجى التسجيل',
+                      getTr(context, 'email_or_password_is_not_correct')!,
+                  serverError: (_) => getTr(context, 'something_went_wrong')!,
+                  accountDoesExist: (_) => getTr(context,
+                      'this_account_is_already_registered_please_log_in')!,
+                  accountDoesNotExist: (_) => getTr(
+                      context, 'account_is_not_registered_please_sign_up')!,
                 ),
                 type: SnackBarType.error,
               );
@@ -126,16 +122,14 @@ class _SignInFormState extends State<SignInForm> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: _authMode == AuthMode.signin
-                          // TODO: add localization here
-                          ? 'ليس لديك حساب؟  '
-                          : 'لديك حساب؟  ',
+                          ? '${getTr(context, 'you_dont_have_an_account')}  '
+                          : '${getTr(context, 'you_have_an_account')}  ',
                       style: kBodyMedium,
                       children: [
                         TextSpan(
                           text: _authMode == AuthMode.signin
-                              // TODO: add localization here
-                              ? ' إنشاء حساب'
-                              : ' سجل دخولك',
+                              ? getTr(context, 'create_new_account')
+                              : getTr(context, 'sign_in'),
                           style: kBodyMedium.copyWith(
                             color: kRootColors,
                             fontWeight: FontWeight.w600,

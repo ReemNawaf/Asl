@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class TreeDraw {
@@ -26,6 +27,7 @@ class TreeDraw {
     required TNode root,
     int? maxGenerations, // null means draw entire tree
     bool? isShowUnknown,
+    required BuildContext context,
   }) {
     graph = Graph()..isTree = true;
     positions.clear();
@@ -39,7 +41,8 @@ class TreeDraw {
         parentRelationsCount: root.relations.length,
         currentGen: 0,
         maxGen: maxGenerations,
-        isShowUnknown: isShowUnknown);
+        isShowUnknown: isShowUnknown,
+        context: context);
 
     return graph;
   }
@@ -50,6 +53,7 @@ class TreeDraw {
     Gender? sourceNodeGender,
     int sourceNodeNumRelation = 0,
     UniqueId? linkedToId,
+    required BuildContext context,
   }) {
     final node =
         Node.Id({'type': nodeType, 'id': tnode.nodeId, 'tnode': tnode});
@@ -63,9 +67,10 @@ class TreeDraw {
 
       String title;
       if (nodeType == NodeType.partner) {
-        title = getNodePartnerTitle(sourceNodeGender, sourceNodeNumRelation);
+        title = getNodePartnerTitle(
+            context, sourceNodeGender, sourceNodeNumRelation);
       } else {
-        title = getNodeChildrenTitle(sourceNodeGender);
+        title = getNodeChildrenTitle(context, sourceNodeGender);
       }
 
       graph.addEdge(linkedToNode, node, label: title);
@@ -79,6 +84,7 @@ class TreeDraw {
     Gender? parentGender,
     required int parentRelationsCount,
     bool? isShowUnknown,
+    required BuildContext context,
 
     /// Generation control
     required int currentGen,
@@ -91,6 +97,7 @@ class TreeDraw {
       sourceNodeGender: parentGender,
       sourceNodeNumRelation: parentRelationsCount,
       linkedToId: parentId,
+      context: context,
     );
 
     // Stop if reached max depth
@@ -115,19 +122,20 @@ class TreeDraw {
           parentRelationsCount: node.relations.length,
           currentGen: currentGen + 1,
           maxGen: maxGen,
+          context: context,
         );
 
         // Draw children of this relation
         for (final child in relation.childrenNodes) {
           _drawNodeRecursive(
-            node: child,
-            nodeType: NodeType.child,
-            parentId: partner.nodeId,
-            parentGender: partner.gender,
-            parentRelationsCount: partner.relations.length,
-            currentGen: currentGen + 1,
-            maxGen: maxGen,
-          );
+              node: child,
+              nodeType: NodeType.child,
+              parentId: partner.nodeId,
+              parentGender: partner.gender,
+              parentRelationsCount: partner.relations.length,
+              currentGen: currentGen + 1,
+              maxGen: maxGen,
+              context: context);
         }
       }
     }

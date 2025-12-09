@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -48,14 +49,12 @@ class TreeButton extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  // TODO: add localization here
-                  'استعراض شجرة العائلة',
+                Text(
+                  getTr(context, 'display_family_tree')!,
                   style: kCalloutStyle,
                 ),
                 Text(
-                  // TODO: add localization here
-                  'استعراضه كجذر لشجرة العائلة',
+                  getTr(context, 'display_as_family_root')!,
                   style: kFootnoteStyle.copyWith(fontSize: 12.0),
                 ),
               ],

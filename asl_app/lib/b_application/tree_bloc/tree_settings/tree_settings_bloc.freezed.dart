@@ -20,7 +20,7 @@ mixin _$TreeSettingsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId) initialized,
     required TResult Function(double zoomScale) zoomChanged,
-    required TResult Function(int? number) numberOfGenerationsChanged,
+    required TResult Function(int option) numberOfGenerationsChanged,
     required TResult Function(bool isShow) showUnknownChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$TreeSettingsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId)? initialized,
     TResult? Function(double zoomScale)? zoomChanged,
-    TResult? Function(int? number)? numberOfGenerationsChanged,
+    TResult? Function(int option)? numberOfGenerationsChanged,
     TResult? Function(bool isShow)? showUnknownChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$TreeSettingsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId)? initialized,
     TResult Function(double zoomScale)? zoomChanged,
-    TResult Function(int? number)? numberOfGenerationsChanged,
+    TResult Function(int option)? numberOfGenerationsChanged,
     TResult Function(bool isShow)? showUnknownChanged,
     required TResult orElse(),
   }) =>
@@ -155,7 +155,7 @@ class _$InitializedImpl implements _Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId) initialized,
     required TResult Function(double zoomScale) zoomChanged,
-    required TResult Function(int? number) numberOfGenerationsChanged,
+    required TResult Function(int option) numberOfGenerationsChanged,
     required TResult Function(bool isShow) showUnknownChanged,
   }) {
     return initialized(treeId);
@@ -166,7 +166,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId)? initialized,
     TResult? Function(double zoomScale)? zoomChanged,
-    TResult? Function(int? number)? numberOfGenerationsChanged,
+    TResult? Function(int option)? numberOfGenerationsChanged,
     TResult? Function(bool isShow)? showUnknownChanged,
   }) {
     return initialized?.call(treeId);
@@ -177,7 +177,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId)? initialized,
     TResult Function(double zoomScale)? zoomChanged,
-    TResult Function(int? number)? numberOfGenerationsChanged,
+    TResult Function(int option)? numberOfGenerationsChanged,
     TResult Function(bool isShow)? showUnknownChanged,
     required TResult orElse(),
   }) {
@@ -304,7 +304,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId) initialized,
     required TResult Function(double zoomScale) zoomChanged,
-    required TResult Function(int? number) numberOfGenerationsChanged,
+    required TResult Function(int option) numberOfGenerationsChanged,
     required TResult Function(bool isShow) showUnknownChanged,
   }) {
     return zoomChanged(zoomScale);
@@ -315,7 +315,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId)? initialized,
     TResult? Function(double zoomScale)? zoomChanged,
-    TResult? Function(int? number)? numberOfGenerationsChanged,
+    TResult? Function(int option)? numberOfGenerationsChanged,
     TResult? Function(bool isShow)? showUnknownChanged,
   }) {
     return zoomChanged?.call(zoomScale);
@@ -326,7 +326,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId)? initialized,
     TResult Function(double zoomScale)? zoomChanged,
-    TResult Function(int? number)? numberOfGenerationsChanged,
+    TResult Function(int option)? numberOfGenerationsChanged,
     TResult Function(bool isShow)? showUnknownChanged,
     required TResult orElse(),
   }) {
@@ -393,7 +393,7 @@ abstract class _$$NumberOfGenerationsChangedImplCopyWith<$Res> {
           $Res Function(_$NumberOfGenerationsChangedImpl) then) =
       __$$NumberOfGenerationsChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int? number});
+  $Res call({int option});
 }
 
 /// @nodoc
@@ -409,13 +409,13 @@ class __$$NumberOfGenerationsChangedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? number = freezed,
+    Object? option = null,
   }) {
     return _then(_$NumberOfGenerationsChangedImpl(
-      freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int?,
+      null == option
+          ? _value.option
+          : option // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -423,14 +423,14 @@ class __$$NumberOfGenerationsChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
-  const _$NumberOfGenerationsChangedImpl(this.number);
+  const _$NumberOfGenerationsChangedImpl(this.option);
 
   @override
-  final int? number;
+  final int option;
 
   @override
   String toString() {
-    return 'TreeSettingsEvent.numberOfGenerationsChanged(number: $number)';
+    return 'TreeSettingsEvent.numberOfGenerationsChanged(option: $option)';
   }
 
   @override
@@ -438,11 +438,11 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NumberOfGenerationsChangedImpl &&
-            (identical(other.number, number) || other.number == number));
+            (identical(other.option, option) || other.option == option));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number);
+  int get hashCode => Object.hash(runtimeType, option);
 
   @JsonKey(ignore: true)
   @override
@@ -456,10 +456,10 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId) initialized,
     required TResult Function(double zoomScale) zoomChanged,
-    required TResult Function(int? number) numberOfGenerationsChanged,
+    required TResult Function(int option) numberOfGenerationsChanged,
     required TResult Function(bool isShow) showUnknownChanged,
   }) {
-    return numberOfGenerationsChanged(number);
+    return numberOfGenerationsChanged(option);
   }
 
   @override
@@ -467,10 +467,10 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId)? initialized,
     TResult? Function(double zoomScale)? zoomChanged,
-    TResult? Function(int? number)? numberOfGenerationsChanged,
+    TResult? Function(int option)? numberOfGenerationsChanged,
     TResult? Function(bool isShow)? showUnknownChanged,
   }) {
-    return numberOfGenerationsChanged?.call(number);
+    return numberOfGenerationsChanged?.call(option);
   }
 
   @override
@@ -478,12 +478,12 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId)? initialized,
     TResult Function(double zoomScale)? zoomChanged,
-    TResult Function(int? number)? numberOfGenerationsChanged,
+    TResult Function(int option)? numberOfGenerationsChanged,
     TResult Function(bool isShow)? showUnknownChanged,
     required TResult orElse(),
   }) {
     if (numberOfGenerationsChanged != null) {
-      return numberOfGenerationsChanged(number);
+      return numberOfGenerationsChanged(option);
     }
     return orElse();
   }
@@ -530,10 +530,10 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
 }
 
 abstract class _NumberOfGenerationsChanged implements TreeSettingsEvent {
-  const factory _NumberOfGenerationsChanged(final int? number) =
+  const factory _NumberOfGenerationsChanged(final int option) =
       _$NumberOfGenerationsChangedImpl;
 
-  int? get number;
+  int get option;
   @JsonKey(ignore: true)
   _$$NumberOfGenerationsChangedImplCopyWith<_$NumberOfGenerationsChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -606,7 +606,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(UniqueId treeId) initialized,
     required TResult Function(double zoomScale) zoomChanged,
-    required TResult Function(int? number) numberOfGenerationsChanged,
+    required TResult Function(int option) numberOfGenerationsChanged,
     required TResult Function(bool isShow) showUnknownChanged,
   }) {
     return showUnknownChanged(isShow);
@@ -617,7 +617,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UniqueId treeId)? initialized,
     TResult? Function(double zoomScale)? zoomChanged,
-    TResult? Function(int? number)? numberOfGenerationsChanged,
+    TResult? Function(int option)? numberOfGenerationsChanged,
     TResult? Function(bool isShow)? showUnknownChanged,
   }) {
     return showUnknownChanged?.call(isShow);
@@ -628,7 +628,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UniqueId treeId)? initialized,
     TResult Function(double zoomScale)? zoomChanged,
-    TResult Function(int? number)? numberOfGenerationsChanged,
+    TResult Function(int option)? numberOfGenerationsChanged,
     TResult Function(bool isShow)? showUnknownChanged,
     required TResult orElse(),
   }) {
@@ -693,7 +693,7 @@ abstract class _ShowUnknownChanged implements TreeSettingsEvent {
 mixin _$TreeSettingsState {
   double get zoomScale => throw _privateConstructorUsedError;
   bool get showUnknown => throw _privateConstructorUsedError;
-  int? get numberOfGenerations => throw _privateConstructorUsedError;
+  int get numberOfGenerations => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -710,7 +710,7 @@ abstract class $TreeSettingsStateCopyWith<$Res> {
   $Res call(
       {double zoomScale,
       bool showUnknown,
-      int? numberOfGenerations,
+      int numberOfGenerations,
       bool isLoading});
 }
 
@@ -729,7 +729,7 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
   $Res call({
     Object? zoomScale = null,
     Object? showUnknown = null,
-    Object? numberOfGenerations = freezed,
+    Object? numberOfGenerations = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
@@ -741,10 +741,10 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
           ? _value.showUnknown
           : showUnknown // ignore: cast_nullable_to_non_nullable
               as bool,
-      numberOfGenerations: freezed == numberOfGenerations
+      numberOfGenerations: null == numberOfGenerations
           ? _value.numberOfGenerations
           : numberOfGenerations // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -764,7 +764,7 @@ abstract class _$$TreeSettingsStateImplCopyWith<$Res>
   $Res call(
       {double zoomScale,
       bool showUnknown,
-      int? numberOfGenerations,
+      int numberOfGenerations,
       bool isLoading});
 }
 
@@ -781,7 +781,7 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? zoomScale = null,
     Object? showUnknown = null,
-    Object? numberOfGenerations = freezed,
+    Object? numberOfGenerations = null,
     Object? isLoading = null,
   }) {
     return _then(_$TreeSettingsStateImpl(
@@ -793,10 +793,10 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
           ? _value.showUnknown
           : showUnknown // ignore: cast_nullable_to_non_nullable
               as bool,
-      numberOfGenerations: freezed == numberOfGenerations
+      numberOfGenerations: null == numberOfGenerations
           ? _value.numberOfGenerations
           : numberOfGenerations // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -811,7 +811,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
   const _$TreeSettingsStateImpl(
       {required this.zoomScale,
       required this.showUnknown,
-      this.numberOfGenerations,
+      required this.numberOfGenerations,
       this.isLoading = false});
 
   @override
@@ -819,7 +819,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
   @override
   final bool showUnknown;
   @override
-  final int? numberOfGenerations;
+  final int numberOfGenerations;
   @override
   @JsonKey()
   final bool isLoading;
@@ -860,7 +860,7 @@ abstract class _TreeSettingsState implements TreeSettingsState {
   const factory _TreeSettingsState(
       {required final double zoomScale,
       required final bool showUnknown,
-      final int? numberOfGenerations,
+      required final int numberOfGenerations,
       final bool isLoading}) = _$TreeSettingsStateImpl;
 
   @override
@@ -868,7 +868,7 @@ abstract class _TreeSettingsState implements TreeSettingsState {
   @override
   bool get showUnknown;
   @override
-  int? get numberOfGenerations;
+  int get numberOfGenerations;
   @override
   bool get isLoading;
   @override

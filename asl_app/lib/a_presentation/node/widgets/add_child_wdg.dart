@@ -35,8 +35,7 @@ class AddChildWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // TODO: add localization here
-              const Text('إضافة ابن/ة'),
+              Text(getTr(context, 'add_child')!),
               kVSpacer20,
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,10 +44,8 @@ class AddChildWidget extends StatelessWidget {
                     width: 250,
                     height: 90,
                     child: AppFormField(
-                      // TODO: add localization here
-                      label: 'الاسم',
-                      // TODO: add localization here
-                      hint: 'الاسم الأول',
+                      label: getTr(context, 'name')!,
+                      hint: getTr(context, 'first_name')!,
                       onChanged: (value) => context
                           .read<ChildFormBloc>()
                           .add(ChildFormEvent.changeName(value!.trim())),
@@ -96,8 +93,7 @@ class AddChildWidget extends StatelessWidget {
                         height: 80,
                         child: AppDateField(
                           formKey: formKey,
-                          // TODO: add localization here
-                          label: 'تاريخ الميلاد',
+                          label: getTr(context, 'birth_date')!,
                           hint: '',
                           endDate: state.tempChild.deathDate
                                   ?.subtract(const Duration(days: 1)) ??
@@ -128,8 +124,7 @@ class AddChildWidget extends StatelessWidget {
                             ? const SizedBox()
                             : AppDateField(
                                 formKey: formKey,
-                                // TODO: add localization here
-                                label: 'تاريخ الوفاة',
+                                label: getTr(context, 'death_date')!,
                                 hint: '',
                                 validate: (validate) => "",
                                 isEditing: true,

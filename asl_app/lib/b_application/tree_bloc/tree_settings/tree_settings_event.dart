@@ -9,7 +9,7 @@ class TreeSettingsEvent with _$TreeSettingsEvent {
   const factory TreeSettingsEvent.zoomChanged(double zoomScale) = _ZoomChanged;
 
   /// User changes number of generations to draw
-  const factory TreeSettingsEvent.numberOfGenerationsChanged(int? number) =
+  const factory TreeSettingsEvent.numberOfGenerationsChanged(int option) =
       _NumberOfGenerationsChanged;
 
   /// User toggles showing unknown nodes

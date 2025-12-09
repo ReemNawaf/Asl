@@ -38,7 +38,7 @@ class ChildrenWidget extends StatelessWidget {
               children: [
                 kVSpacer20,
                 Text(
-                  getNodeChildrenTitle(node.gender),
+                  getNodeChildrenTitle(context, node.gender),
                   style: kHeadlineMedium,
                 ),
                 kVSpacer10,
@@ -74,8 +74,7 @@ class ChildrenWidget extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        // TODO: add localization here
-                                        'من ${getNodePartnerTitleSingle(node.gender)}',
+                                        '${getTr(context, 'from')!} ${getNodePartnerTitleSingle(context, node.gender)}',
                                         style: kBodyLarge.copyWith(
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -110,8 +109,11 @@ class ChildrenWidget extends StatelessWidget {
                                                 height: 63,
                                                 width: isEditing ? 245 : 273,
                                                 child: AppFormField(
-                                                  label:
-                                                      'الابن${child.gender == Gender.female ? 'ة' : ''}',
+                                                  label: child.gender ==
+                                                          Gender.female
+                                                      ? getTr(
+                                                          context, 'daughter')!
+                                                      : getTr(context, 'son')!,
                                                   hint: '',
                                                   onSaved: (_) {},
                                                   initialValue: child.firstName
@@ -125,9 +127,8 @@ class ChildrenWidget extends StatelessWidget {
                                                   if (sinRelation
                                                           .marriageDate !=
                                                       null) ...[
-                                                    // TODO: add localization here
                                                     Text(
-                                                      'تاريخ الميلاد: ${child.birthDate!.year}',
+                                                      '${getTr(context, 'birth_date')}: ${child.birthDate!.year}',
                                                       style: kCaption1Style
                                                           .copyWith(
                                                         color:

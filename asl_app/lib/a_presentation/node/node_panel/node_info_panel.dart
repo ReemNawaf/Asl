@@ -48,9 +48,8 @@ class InfoPanel extends StatelessWidget {
                       width: 250,
                       height: 90,
                       child: AppFormField(
-                        // TODO: add localization here
-                        label: 'الاسم الأول',
-                        hint: 'مثل: محمد',
+                        label: getTr(context, 'first_name')!,
+                        hint: getTr(context, 'first_name_example')!,
                         initialValue: state.node!.firstName.isValid()
                             ? state.node!.firstName.getOrCrash()
                             : '',
@@ -58,8 +57,6 @@ class InfoPanel extends StatelessWidget {
                             .read<NodeFormBloc>()
                             .add(NodeFormEvent.firstNameChanged(value!.trim())),
                         validator: (_) {
-                          print(
-                              '11 | validation ${context.read<NodeFormBloc>().state.node!.firstName.value}');
                           return context
                               .read<NodeFormBloc>()
                               .state
@@ -105,8 +102,7 @@ class InfoPanel extends StatelessWidget {
                           height: 80,
                           child: AppDateField(
                             formKey: formKey,
-                            // TODO: add localization here
-                            label: 'تاريخ الميلاد',
+                            label: getTr(context, 'birth_date')!,
                             hint: '',
                             withPadding: false,
                             validate: (validate) => "",
@@ -134,8 +130,7 @@ class InfoPanel extends StatelessWidget {
                             height: 80,
                             child: AppDateField(
                               formKey: formKey,
-                              // TODO: add localization here
-                              label: 'تاريخ الوفاة',
+                              label: getTr(context, 'death_date')!,
                               withPadding: false,
                               hint: '',
                               validate: (validate) => "",
@@ -146,8 +141,7 @@ class InfoPanel extends StatelessWidget {
                                       pickedDate)),
                               dateController: TextEditingController(
                                 text: state.node!.deathDate == null
-                                    // TODO: add localization here
-                                    ? 'لا يوجد تاريخ وفاة'
+                                    ? getTr(context, 'there_is_no_death_date')
                                     : DateFormat.yMMMd()
                                         .format(state.node!.deathDate!),
                               ),

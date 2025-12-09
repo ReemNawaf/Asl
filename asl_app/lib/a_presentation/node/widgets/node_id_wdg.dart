@@ -27,8 +27,7 @@ class NodeIdWidget extends StatelessWidget {
       children: [
         kVSpacer30,
         TitleAndCopyableValue(
-          // TODO: add localization here
-          title: 'الاسم الكامل إلى جذر العائلة',
+          title: getTr(context, 'the_full_name_to_family_root')!,
           id: name,
           color: color,
           callback: () async {
@@ -43,8 +42,7 @@ class NodeIdWidget extends StatelessWidget {
           },
         ),
         TitleAndCopyableValue(
-          // TODO: add localization here
-          title: 'معرف العضو',
+          title: getTr(context, 'member_id')!,
           id: id,
           color: color,
           callback: () async {

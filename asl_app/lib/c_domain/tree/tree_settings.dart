@@ -9,13 +9,13 @@ abstract class TreeSettings implements _$TreeSettings {
 
   const factory TreeSettings({
     UniqueId? treeId,
-    int? numberOfGeneration,
+    required int numberOfGeneration,
     required bool isShowUnknown,
   }) = _TreeSettings;
 
   factory TreeSettings.empty() => const TreeSettings(
         treeId: null,
-        numberOfGeneration: null,
+        numberOfGeneration: 0,
         isShowUnknown: false,
       );
 }

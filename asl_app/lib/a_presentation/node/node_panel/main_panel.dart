@@ -12,6 +12,8 @@ import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/injection.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -89,17 +91,13 @@ class MainPanel extends StatelessWidget {
                             dividerHeight: 0.0,
                             isScrollable: true,
                             tabs: [
-                              // TODO: add localization here
-                              const Tab(text: 'معلومات شخصية'),
-                              // TODO: add localization here
-                              const Tab(text: 'الوالدين والأخوة'),
+                              Tab(text: getTr(context, 'personal_info')),
+                              Tab(text: getTr(context, 'parents_and_siblings')),
                               if (type != NodeType.partner)
                                 Tab(
                                     text:
-                                        // TODO: add localization here
-                                        '${getNodeRelationPanelTitle(node.gender)} والأبناء'),
-                              // TODO: add localization here
-                              const Tab(text: 'نبذة وملاحظات'),
+                                        '${getNodeRelationPanelTitle(context, node.gender)} ${getTr(context, 'and_children')!}'),
+                              Tab(text: getTr(context, 'brief_and_notes')!),
                             ],
                             onTap: (index) {
                               context

@@ -7,6 +7,7 @@ import 'package:asl/b_application/node_bloc/family_watcher/family_watcher_bloc.d
 
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/injection.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,8 +54,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                                   width: (PAN_WIDTH - 116) / 2,
                                   height: 70,
                                   child: AppFormField(
-                                    // TODO: add localization here
-                                    label: 'الأب',
+                                    label: getTr(context, 'father')!,
                                     hint: '',
                                     onSaved: (_) {},
                                     initialValue:
@@ -68,8 +68,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                                   width: (PAN_WIDTH - 116) / 2,
                                   height: 70,
                                   child: AppFormField(
-                                    // TODO: add localization here
-                                    label: 'الأم',
+                                    label: getTr(context, 'mother')!,
                                     hint: '',
                                     onSaved: (_) {},
                                     initialValue:

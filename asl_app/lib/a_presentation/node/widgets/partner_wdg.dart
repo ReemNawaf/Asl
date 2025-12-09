@@ -39,7 +39,8 @@ class PartnerWidget extends StatelessWidget {
               children: [
                 kVSpacer10,
                 Text(
-                  getNodePartnerTitle(node.gender, state.relation.length),
+                  getNodePartnerTitle(
+                      context, node.gender, state.relation.length),
                   style: kHeadLineStyle,
                 ),
                 kVSpacer10,
@@ -120,8 +121,7 @@ class PartnerWidget extends StatelessWidget {
                               children: [
                                 if (sinRelation.marriageDate != null) ...[
                                   Text(
-                                    // TODO: add localization here
-                                    'تاريخ الزواج: ${sinRelation.marriageDate!.year}',
+                                    '${getTr(context, 'marriage_date')}: ${sinRelation.marriageDate!.year}',
                                     style: kCaption1Style.copyWith(
                                       color: kBlacksColor[600],
                                     ),
@@ -129,8 +129,7 @@ class PartnerWidget extends StatelessWidget {
                                   kHSpacer20,
                                 ],
                                 Text(
-                                  // TODO: add localization here
-                                  'الحالة: ${marriageSt[sinRelation.marriageStatus]}${node.gender == Gender.male ? 'ة' : ''}',
+                                  '${getTr(context, 'status')}: ${getMarriageSt(sinRelation.marriageStatus, node.gender)}',
                                   style: kCaption1Style.copyWith(
                                     color: kBlacksColor[600],
                                   ),

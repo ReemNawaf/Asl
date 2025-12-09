@@ -8,11 +8,13 @@ abstract class DrawTreeEvent with _$DrawTreeEvent {
     bool? isShowUnknown,
     required Tree tree,
     required TNode root,
+    required BuildContext context,
   }) = _Initialized;
   const factory DrawTreeEvent.drawNewTree({
     int? maxGenerations,
     bool? isShowUnknown,
     required Tree tree,
     required TNode root,
+    required BuildContext context,
   }) = _DrawNewTree;
 }

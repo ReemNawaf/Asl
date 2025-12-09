@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 
 /// Contains useful functions to reduce boilerplate code
@@ -106,26 +107,36 @@ Widget horizontalSpace(double width) {
   return Container(width: width);
 }
 
-// TODO: add localization here
-String getNodePartnerTitle(gender, number) {
+String getNodePartnerTitle(context, gender, number) {
   return gender == Gender.female
-      ? (number > 1 ? 'أزواجها' : 'زوجها')
-      : (number > 1 ? 'زوجاته' : 'زوجته');
+      ? (number > 1
+          ? getTr(context, 'her_husbands')!
+          : getTr(context, 'her_husband')!)
+      : (number > 1
+          ? getTr(context, 'his_wifes')!
+          : getTr(context, 'his_wife')!);
 }
 
-// TODO: add localization here
-String getNodePartnerTitleSingle(gender) {
-  return gender == Gender.female ? 'زوجها' : 'زوجته';
+String getNodePartnerTitleSingle(context, gender) {
+  return gender == Gender.female
+      ? getTr(context, 'her_husband')!
+      : getTr(context, 'his_wife')!;
 }
 
-String getNodeRelationPanelTitle(gender) {
-  return gender == Gender.female ? 'الزوج' : 'الزوجة';
+String getNodeRelationPanelTitle(context, gender) {
+  return gender == Gender.female
+      ? getTr(context, 'husband')!
+      : getTr(context, 'wife')!;
 }
 
-String getNodeChildrenTitle(gender) {
-  return gender == Gender.female ? 'أبناءها' : 'أبناءه';
+String getNodeChildrenTitle(context, gender) {
+  return gender == Gender.female
+      ? getTr(context, 'her_children')!
+      : getTr(context, 'his_children')!;
 }
 
-String getParentTitle(gender) {
-  return gender == Gender.male ? 'الأم' : 'الأب';
+String getParentTitle(context, gender) {
+  return gender == Gender.male
+      ? getTr(context, 'mother')!
+      : getTr(context, 'mother')!;
 }

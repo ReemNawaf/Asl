@@ -1,6 +1,7 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +16,7 @@ class ShareOptions extends StatelessWidget {
         items: SHARE_OPTIONS
             .map((Map<String, String> item) => DropdownMenuItem<String>(
                   value: item['value'],
-                  child: Text(item['text'] ?? ''),
+                  child: Text(getTr(context, item['text']!)!),
                 ))
             .toList(),
         isExpanded: true,

@@ -1,6 +1,7 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,9 +23,8 @@ class MarriageStatusBtn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // TODO: add localization here
             Text(
-              'حالة الزواج',
+              getTr(context, 'marriage_status')!,
               style: kFootnoteStyle.copyWith(
                   fontWeight: FontWeight.bold, height: 1.5),
             ),
@@ -38,8 +38,7 @@ class MarriageStatusBtn extends StatelessWidget {
                       const PartnerFormEvent.changeMarriageStatus(
                           MarriageStatus.married)),
                   color: color,
-                  // TODO: add localization here
-                  text: 'متزوج',
+                  text: getTr(context, 'male_married')!,
                   selected:
                       state.relation!.marriageStatus == MarriageStatus.married,
                 ),
@@ -49,8 +48,7 @@ class MarriageStatusBtn extends StatelessWidget {
                       const PartnerFormEvent.changeMarriageStatus(
                           MarriageStatus.divorced)),
                   color: color,
-                  // TODO: add localization here
-                  text: 'مطلق',
+                  text: getTr(context, 'male_divorced')!,
                   selected:
                       state.relation!.marriageStatus == MarriageStatus.divorced,
                 ),
@@ -62,8 +60,7 @@ class MarriageStatusBtn extends StatelessWidget {
                         MarriageStatus.widowhood,
                       )),
                   color: color,
-                  // TODO: add localization here
-                  text: 'متوفي',
+                  text: getTr(context, 'passed_away')!,
                   selected: state.relation!.marriageStatus ==
                       MarriageStatus.widowhood,
                 ),

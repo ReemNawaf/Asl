@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
@@ -18,8 +19,7 @@ class EmailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppFormField(
-      // TODO: add localization here
-      label: 'البريد الإلكتروني',
+      label: getTr(context, 'email')!,
       hint: 'example@example.com',
       isArabic: false,
       initialValue: '',
@@ -31,10 +31,8 @@ class EmailField extends StatelessWidget {
         // context.read<SignInFormBloc>().state.emailAddress.value
         return context.read<SignInFormBloc>().state.emailAddress.value.fold(
               (f) => f.maybeMap(
-                // TODO: add localization here
-                empty: (_) => 'البريد الإلكتروني لا يمكن أن يكون فارغًا',
-                // TODO: add localization here
-                invalidEmail: (_) => 'البريد الإلكتروني غير صحيح',
+                empty: (_) => getTr(context, 'email_cannot_be_empty'),
+                invalidEmail: (_) => getTr(context, 'invalid_email'),
                 orElse: () => null,
               ),
               (_) => null,

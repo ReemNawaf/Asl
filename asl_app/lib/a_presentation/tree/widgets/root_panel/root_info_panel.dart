@@ -4,6 +4,7 @@ import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/tree/widgets/root_panel/root_alive_btn.dart';
 import 'package:asl/a_presentation/tree/widgets/root_panel/root_gender_btn.dart';
 import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -81,8 +82,7 @@ class RootInfoPanel extends StatelessWidget {
                       height: 80,
                       child: AppDateField(
                         formKey: formKey,
-                        // TODO: add localization here
-                        label: 'تاريخ الميلاد',
+                        label: getTr(context, 'birth_date')!,
                         hint: '',
                         endDate: state.root.deathDate
                                 ?.subtract(const Duration(days: 1)) ??
@@ -112,8 +112,7 @@ class RootInfoPanel extends StatelessWidget {
                               height: 80,
                               child: AppDateField(
                                 formKey: formKey,
-                                // TODO: add localization here
-                                label: 'تاريخ الوفاة',
+                                label: getTr(context, 'death_date')!,
                                 hint: '',
                                 validate: (validate) => "",
                                 isEditing: true,
