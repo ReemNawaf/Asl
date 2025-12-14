@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
@@ -26,8 +27,8 @@ class UserRepository implements IUserRepository {
           AppUserDto.fromFirestore(userDoc).toDomain());
     } catch (e) {
       if (e is FirebaseException &&
-          (e.message!.contains('PERMISSION_DENIED') ||
-              e.message!.contains('permission-denied'))) {
+          (e.message!.contains(PERMISSION_DENIED_CP) ||
+              e.message!.contains(PERMISSION_DENIED_SM))) {
         return left(const UserFailure.insufficientPermission());
       } else {
         return left(const UserFailure.unexpected());
@@ -47,8 +48,8 @@ class UserRepository implements IUserRepository {
       return right(unit);
     } on PlatformException catch (e) {
       if (e is FirebaseException &&
-          (e.message!.contains('PERMISSION_DENIED') ||
-              e.message!.contains('permission-denied'))) {
+          (e.message!.contains(PERMISSION_DENIED_CP) ||
+              e.message!.contains(PERMISSION_DENIED_SM))) {
         return left(const UserFailure.insufficientPermission());
       } else {
         return left(const UserFailure.unexpected());
@@ -67,11 +68,11 @@ class UserRepository implements IUserRepository {
       return right(unit);
     } on PlatformException catch (e) {
       if (e is FirebaseException &&
-          (e.message!.contains('PERMISSION_DENIED') ||
-              e.message!.contains('permission-denied'))) {
+          (e.message!.contains(PERMISSION_DENIED_CP) ||
+              e.message!.contains(PERMISSION_DENIED_SM))) {
         return left(const UserFailure.insufficientPermission());
       } else if (e is FirebaseException &&
-          (e.message!.contains('NOT_FOUND') ||
+          (e.message!.contains(NOT_FOUND_CP) ||
               e.message!.contains('not-found'))) {
         return left(const UserFailure.unableToUpdate());
       } else {
@@ -90,11 +91,11 @@ class UserRepository implements IUserRepository {
       return right(unit);
     } on PlatformException catch (e) {
       if (e is FirebaseException &&
-          (e.message!.contains('PERMISSION_DENIED') ||
-              e.message!.contains('permission-denied'))) {
+          (e.message!.contains(PERMISSION_DENIED_CP) ||
+              e.message!.contains(PERMISSION_DENIED_SM))) {
         return left(const UserFailure.insufficientPermission());
       } else if (e is FirebaseException &&
-          (e.message!.contains('NOT_FOUND') ||
+          (e.message!.contains(NOT_FOUND_CP) ||
               e.message!.contains('not-found'))) {
         return left(const UserFailure.unableToUpdate());
       } else {

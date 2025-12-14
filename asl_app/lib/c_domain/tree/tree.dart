@@ -16,6 +16,8 @@ abstract class Tree implements _$Tree {
     required UniqueId rootId,
     required TreeName treeName,
     required FullName fullName,
+    required bool isShowUnknown,
+    required int numberOfGenerationOption,
     int? shareOption,
   }) = _Tree;
 
@@ -26,6 +28,8 @@ abstract class Tree implements _$Tree {
         fullName: FullName(''),
         creatorId: UniqueId(),
         shareOption: 0,
+        numberOfGenerationOption: 0,
+        isShowUnknown: false,
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

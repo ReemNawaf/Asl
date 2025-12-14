@@ -19,6 +19,8 @@ abstract class TreeDto implements _$TreeDto {
     required String rootId,
     required String treeName,
     required String fullName,
+    required bool isShowUnknown,
+    required int numberOfGenerationOption,
   }) = _TreeDto;
 
   //  converting Entity => DTO
@@ -29,18 +31,21 @@ abstract class TreeDto implements _$TreeDto {
       rootId: tree.rootId.getOrCrash(),
       treeName: tree.treeName.getOrCrash(),
       fullName: tree.fullName.getOrCrash(),
+      isShowUnknown: tree.isShowUnknown,
+      numberOfGenerationOption: tree.numberOfGenerationOption,
     );
   }
 
   //  converting DTO => Entity
   Tree toDomain() {
     return Tree(
-      treeId: UniqueId.fromUniqueString(treeId),
-      creatorId: UniqueId.fromUniqueString(creatorId),
-      treeName: TreeName(treeName),
-      fullName: FullName(fullName),
-      rootId: UniqueId.fromUniqueString(rootId),
-    );
+        treeId: UniqueId.fromUniqueString(treeId),
+        creatorId: UniqueId.fromUniqueString(creatorId),
+        treeName: TreeName(treeName),
+        fullName: FullName(fullName),
+        rootId: UniqueId.fromUniqueString(rootId),
+        isShowUnknown: isShowUnknown,
+        numberOfGenerationOption: numberOfGenerationOption);
   }
 
   //  converting JSON => DTO

@@ -1,28 +1,24 @@
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/c_domain/auth/i_auth_facade.dart';
 import 'package:asl/c_domain/core/errors.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/node/t_node_failure.dart';
+import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/c_domain/tree/i_tree_repository.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:asl/c_domain/tree/tree_failure.dart';
 import 'package:asl/c_domain/tree/tree_settings.dart';
 import 'package:asl/d_infrastructure/core/firestore_helpers.dart';
 import 'package:asl/d_infrastructure/node/node_dto.dart';
+import 'package:asl/d_infrastructure/node/node_repository.dart';
+import 'package:asl/d_infrastructure/relation/relation_dto.dart';
 import 'package:asl/d_infrastructure/trees/tree_dtos.dart';
 import 'package:asl/d_infrastructure/user/user_repository.dart';
 import 'package:asl/injection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-
-const String cTrees = 'trees';
-const String cNodes = 'nodes';
-const String cPermissionDeniedCp = 'PERMISSION_DENIED';
-const String cPermissionDeniedSm = 'permission-denied';
-
-const String cNotFoundSm = 'not-found';
-const String cNotFoundCp = 'NOT_FOUND';
 
 @LazySingleton(as: ITreeRepository)
 class TreeRepository implements ITreeRepository {
@@ -31,95 +27,293 @@ class TreeRepository implements ITreeRepository {
   TreeRepository(this._firestore);
 
   @override
-  Future<Either<TreeFailure, List<Tree>>> watchAll() async {
+  Future<Either<TreeFailure, List<Tree>>> getAll() async {
     try {
-      UserRepository userRepository = UserRepository(_firestore);
-      final eitherAppUser = await userRepository.get();
-      final appUser = eitherAppUser.fold((l) => null, (r) => r);
+      final userRepository = UserRepository(_firestore);
 
-      final treeCol = _firestore.treesCollection();
-      final trees = <Tree>[];
+      final appUserEither = await userRepository.get();
 
-      for (UniqueId treeId in appUser!.trees) {
-        final treeDoc = await treeCol.doc(treeId.getOrCrash()).get()
-            as DocumentSnapshot<Map<String, dynamic>>;
-        final tree = TreeDto.fromFirestore(treeDoc).toDomain();
+      return await appUserEither.fold(
+        (failure) async => left(const TreeFailure.unexpected()),
+        (appUser) async {
+          final treeCol = _firestore.treesCollection();
 
-        trees.add(tree);
-      }
+          // Fetch all trees in parallel
+          final treeDocs = await Future.wait(
+            appUser.trees.map(
+              (treeId) => treeCol.doc(treeId.getOrCrash()).get(),
+            ),
+          );
 
-      return right(trees);
-    } catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(cPermissionDeniedCp) ||
-              e.message!.contains(cPermissionDeniedSm))) {
+          final trees = treeDocs
+              .where((doc) => doc.exists)
+              .map((doc) => TreeDto.fromFirestore(
+                    doc as DocumentSnapshot<Map<String, dynamic>>,
+                  ).toDomain())
+              .toList();
+
+          return right(trees);
+        },
+      );
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
-      } else {
-        // log.error(e.toString());
-
-        return left(const TreeFailure.unexpected());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
       }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<TreeFailure, Unit>> create(
-      {required Tree tree, required TNode root}) async {
+  Future<Either<TNodeFailure, TNode>> getNode({
+    required UniqueId treeId,
+    required UniqueId nodeId,
+  }) async {
     try {
-      final userOption = await getIt<IAuthFacade>().getSignedInUser();
-      final user = userOption.getOrElse(() => throw NotAuthenticatedError());
+      final doc = await _firestore
+          .treesCollection()
+          .doc(treeId.getOrCrash())
+          .collection(NODES_COLLECTION)
+          .doc(nodeId.getOrCrash())
+          .get();
+
+      if (!doc.exists || doc.data() == null) {
+        return left(const TNodeFailure.nodeNotExist());
+      }
+
+      return right(NodeDto.fromFirestore(doc).toDomain());
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TNodeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TNodeFailure.unableToUpdate());
+      }
+      return left(const TNodeFailure.unexpected());
+    } catch (_) {
+      return left(const TNodeFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<TNodeFailure, TNode>> getTreeNodes({
+    required UniqueId treeId,
+    required UniqueId rootId,
+  }) async {
+    try {
+      final visited = <String>{};
+
+      final result = await _loadNodeRecursively(
+        treeId: treeId,
+        nodeId: rootId,
+        visited: visited,
+      );
+
+      return right(result);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TNodeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TNodeFailure.unableToUpdate());
+      }
+      return left(const TNodeFailure.unexpected());
+    } catch (_) {
+      return left(const TNodeFailure.unexpected());
+    }
+  }
+
+  //  RECURSIVE LOADER FUNCTION
+  Future<TNode> _loadNodeRecursively({
+    required UniqueId treeId,
+    required UniqueId nodeId,
+    required Set<String> visited,
+  }) async {
+    final nodeKey = nodeId.getOrCrash();
+
+    // Prevent infinite loops
+    if (visited.contains(nodeKey)) {
+      return (await getNode(treeId: treeId, nodeId: nodeId))
+          .getOrElse(() => throw Exception("Node not found"));
+    }
+
+    visited.add(nodeKey);
+
+    // Load this node
+    final eitherNode = await getNode(treeId: treeId, nodeId: nodeId);
+    final node = eitherNode.getOrElse(() => throw Exception("Node not found"));
+
+    // Load relations
+    final relations = await _loadRelations(treeId, node.relations);
+
+    final updatedRelations = <Relation>[];
+
+    for (final relation in relations) {
+      // Partner
+      final partnerId =
+          relation.father == node.nodeId ? relation.mother : relation.father;
+
+      final partner = await _loadPartnerSafely(
+        treeId,
+        relation.partnerTreeId,
+        partnerId,
+      );
+
+      // Children
+      final children = <TNode>[];
+
+      for (final childId in relation.children) {
+        final childNode = await _loadNodeRecursively(
+          treeId: treeId,
+          nodeId: childId,
+          visited: visited,
+        );
+        children.add(childNode);
+      }
+
+      updatedRelations.add(
+        relation.copyWith(
+          partnerNode: partner,
+          childrenNodes: children,
+        ),
+      );
+    }
+
+    return node.copyWith(relationsObject: updatedRelations);
+  }
+
+  //  HELPERS
+  Future<List<Relation>> _loadRelations(
+      UniqueId treeId, List<UniqueId> relationIds) async {
+    final col = _firestore.treesCollection();
+    final list = <Relation>[];
+    for (final id in relationIds) {
+      final doc = await col
+          .doc(treeId.getOrCrash())
+          .collection(RELATIONS_COLLECTION)
+          .doc(id.getOrCrash())
+          .get();
+      list.add(RelationDto.fromFirestore(doc).toDomain());
+    }
+    return list;
+  }
+
+  Future<TNode?> _loadPartnerSafely(
+      UniqueId rootTreeId, UniqueId partnerTreeId, UniqueId partnerId) async {
+    final either = await getNode(treeId: partnerTreeId, nodeId: partnerId);
+    return either.fold((_) => null, (r) => r);
+  }
+
+  @override
+  Future<Either<TreeFailure, Unit>> create({
+    required Tree tree,
+    required TNode root,
+  }) async {
+    try {
+      final authFacade = getIt<IAuthFacade>();
+      final userOption = await authFacade.getSignedInUser();
+
+      final user = userOption.getOrElse(
+        () => throw NotAuthenticatedError(),
+      );
+
       final userDoc = await _firestore.userDocument();
       final treesCol = _firestore.treesCollection();
-      final treeDto = TreeDto.fromDomain(tree.copyWith(creatorId: user.id));
+
+      final treeDto = TreeDto.fromDomain(
+        tree.copyWith(creatorId: user.id),
+      );
+
       final rootDto = NodeDto.fromDomain(root);
-      //  Create Tree Doc
+
+      // Create Tree document
       await treesCol.doc(treeDto.treeId).set(treeDto.toJson());
-      //  Create Root node doc
+
+      // Create Root Node document
       await treesCol
           .doc(treeDto.treeId)
-          .collection(cNodes)
+          .collection(NODES)
           .doc(rootDto.nodeId)
           .set(rootDto.toJson());
-      // Update user Doc with the new tree id
+
+      // Update User document with treeId
       await userDoc.update({
-        cTrees: FieldValue.arrayUnion([tree.treeId.getOrCrash()])
+        TREES: FieldValue.arrayUnion([treeDto.treeId]),
       });
 
       return right(unit);
-    } catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(cPermissionDeniedCp) ||
-              e.message!.contains(cPermissionDeniedSm))) {
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
-      } else {
-        return left(const TreeFailure.unexpected());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
       }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<TreeFailure, Tree>> get(UniqueId treeId) async {
+    try {
+      final doc =
+          await _firestore.treesCollection().doc(treeId.getOrCrash()).get();
+
+      if (!doc.exists || doc.data() == null) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+
+      final tree = TreeDto.fromFirestore(
+        doc as DocumentSnapshot<Map<String, dynamic>>,
+      ).toDomain();
+
+      return right(tree);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TreeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
     }
   }
 
   @override
   Future<Either<TreeFailure, Unit>> update(Tree tree) async {
     try {
-      // final userDoc = await _firestore.userDocument();
       final treeDto = TreeDto.fromDomain(tree);
+
       await _firestore
           .treesCollection()
           .doc(treeDto.treeId)
           .update(treeDto.toJson());
 
       return right(unit);
-    } on PlatformException catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(cPermissionDeniedCp) ||
-              e.message!.contains(cPermissionDeniedSm))) {
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
-      } else if (e is FirebaseException &&
-          (e.message!.contains(cNotFoundCp) ||
-              e.message!.contains(cNotFoundSm))) {
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
         return left(const TreeFailure.unableToUpdate());
-      } else {
-        return left(const TreeFailure.unexpected());
       }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
     }
   }
 
@@ -133,70 +327,100 @@ class TreeRepository implements ITreeRepository {
       });
 
       return right(unit);
-    } on PlatformException catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(cPermissionDeniedCp) ||
-              e.message!.contains(cPermissionDeniedSm))) {
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
-      } else if (e is FirebaseException &&
-          (e.message!.contains(cNotFoundCp) ||
-              e.message!.contains(cNotFoundSm))) {
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
         return left(const TreeFailure.unableToUpdate());
-      } else {
-        return left(const TreeFailure.unexpected());
       }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<TreeFailure, Tree>> getTree(UniqueId treeId) async {
+  Future<Either<TreeFailure, Unit>> updateNumberOfGeneration({
+    required UniqueId treeId,
+    required int option,
+  }) async {
     try {
-      final tree = await _firestore
-          .treesCollection()
-          .doc(treeId.getOrCrash())
-          .get() as DocumentSnapshot<Map<String, dynamic>>;
-      return right(TreeDto.fromFirestore(tree).toDomain());
-    } catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(cPermissionDeniedCp) ||
-              e.message!.contains(cPermissionDeniedSm))) {
+      await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
+        'number_of_generations': option,
+      });
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
-      } else {
-        // log.error(e.toString());
-
-        return left(const TreeFailure.unexpected());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
       }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
     }
   }
 
   @override
-  Future<void> saveSettings({
-    required String treeId,
-    required int? numberOfGenerations,
+  Future<Either<TreeFailure, Unit>> updateIsShowUnknown({
+    required UniqueId treeId,
     required bool isShowUnknown,
   }) async {
-    await _firestore
-        .collection("trees")
-        .doc(treeId)
-        .collection("settings")
-        .doc("tree_settings")
-        .set({
-      "numberOfGenerations": numberOfGenerations,
-      "isShowUnknown": isShowUnknown,
-    }, SetOptions(merge: true));
+    try {
+      await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
+        'is_show_unknown': isShowUnknown,
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TreeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
+    }
   }
 
   @override
-  Future<TreeSettings> loadSettings(UniqueId treeId) async {
-    final doc = await _firestore
-        .collection("trees")
-        .doc(treeId.getOrCrash())
-        .collection("settings")
-        .doc("tree_settings")
-        .get();
+  Future<Either<TreeFailure, TreeSettings>> loadSettings(
+    UniqueId treeId,
+  ) async {
+    try {
+      final doc =
+          await _firestore.treesCollection().doc(treeId.getOrCrash()).get();
 
-    final treeSettings = TreeSettings.empty();
+      final data = doc.data() as Map?;
 
-    return treeSettings;
+      if (data == null) {
+        return right(TreeSettings.empty());
+      }
+
+      final settings = TreeSettings(
+        numberOfGeneration: data['number_of_generations'] as int,
+        isShowUnknown: data['is_show_unknown'] as bool? ?? true,
+      );
+
+      return right(settings);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TreeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
+    }
   }
 }

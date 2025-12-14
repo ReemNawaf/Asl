@@ -1,24 +1,40 @@
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:asl/c_domain/tree/tree_failure.dart';
 import 'package:asl/c_domain/tree/tree_settings.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ITreeRepository {
-  Future<Either<TreeFailure, List<Tree>>> watchAll();
+  // get AllTrees & TreeNodes
+  Future<Either<TreeFailure, List<Tree>>> getAll();
+
+  Future<Either<TNodeFailure, TNode>> getNode(
+      {required UniqueId treeId, required UniqueId nodeId});
+
+  Future<Either<TNodeFailure, TNode>> getTreeNodes({
+    required UniqueId treeId,
+    required UniqueId rootId,
+  });
+
+  // create & get
   Future<Either<TreeFailure, Unit>> create(
       {required Tree tree, required TNode root});
+  Future<Either<TreeFailure, Tree>> get(UniqueId treeId);
+
+  // update & delete
   Future<Either<TreeFailure, Unit>> update(Tree tree);
   Future<Either<TreeFailure, Unit>> delete({required UniqueId treeId});
 
-  Future<Either<TreeFailure, Tree>> getTree(UniqueId treeId);
-
-  Future<void> saveSettings({
-    required String treeId,
-    required int? numberOfGenerations,
+  // Settings functions
+  Future<void> updateNumberOfGeneration({
+    required UniqueId treeId,
+    required int option,
+  });
+  Future<void> updateIsShowUnknown({
+    required UniqueId treeId,
     required bool isShowUnknown,
   });
-
-  Future<TreeSettings> loadSettings(UniqueId treeId);
+  Future<Either<TreeFailure, TreeSettings>> loadSettings(UniqueId treeId);
 }

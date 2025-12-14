@@ -26,6 +26,8 @@ mixin _$TreeDto {
   String get rootId => throw _privateConstructorUsedError;
   String get treeName => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
+  bool get isShowUnknown => throw _privateConstructorUsedError;
+  int get numberOfGenerationOption => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,9 @@ abstract class $TreeDtoCopyWith<$Res> {
       String creatorId,
       String rootId,
       String treeName,
-      String fullName});
+      String fullName,
+      bool isShowUnknown,
+      int numberOfGenerationOption});
 }
 
 /// @nodoc
@@ -63,6 +67,8 @@ class _$TreeDtoCopyWithImpl<$Res, $Val extends TreeDto>
     Object? rootId = null,
     Object? treeName = null,
     Object? fullName = null,
+    Object? isShowUnknown = null,
+    Object? numberOfGenerationOption = null,
   }) {
     return _then(_value.copyWith(
       treeId: null == treeId
@@ -85,6 +91,14 @@ class _$TreeDtoCopyWithImpl<$Res, $Val extends TreeDto>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      isShowUnknown: null == isShowUnknown
+          ? _value.isShowUnknown
+          : isShowUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
+      numberOfGenerationOption: null == numberOfGenerationOption
+          ? _value.numberOfGenerationOption
+          : numberOfGenerationOption // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -101,7 +115,9 @@ abstract class _$$TreeDtoImplCopyWith<$Res> implements $TreeDtoCopyWith<$Res> {
       String creatorId,
       String rootId,
       String treeName,
-      String fullName});
+      String fullName,
+      bool isShowUnknown,
+      int numberOfGenerationOption});
 }
 
 /// @nodoc
@@ -120,6 +136,8 @@ class __$$TreeDtoImplCopyWithImpl<$Res>
     Object? rootId = null,
     Object? treeName = null,
     Object? fullName = null,
+    Object? isShowUnknown = null,
+    Object? numberOfGenerationOption = null,
   }) {
     return _then(_$TreeDtoImpl(
       treeId: null == treeId
@@ -142,6 +160,14 @@ class __$$TreeDtoImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      isShowUnknown: null == isShowUnknown
+          ? _value.isShowUnknown
+          : isShowUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
+      numberOfGenerationOption: null == numberOfGenerationOption
+          ? _value.numberOfGenerationOption
+          : numberOfGenerationOption // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -154,7 +180,9 @@ class _$TreeDtoImpl extends _TreeDto {
       required this.creatorId,
       required this.rootId,
       required this.treeName,
-      required this.fullName})
+      required this.fullName,
+      required this.isShowUnknown,
+      required this.numberOfGenerationOption})
       : super._();
 
   factory _$TreeDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -171,10 +199,14 @@ class _$TreeDtoImpl extends _TreeDto {
   final String treeName;
   @override
   final String fullName;
+  @override
+  final bool isShowUnknown;
+  @override
+  final int numberOfGenerationOption;
 
   @override
   String toString() {
-    return 'TreeDto(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName)';
+    return 'TreeDto(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName, isShowUnknown: $isShowUnknown, numberOfGenerationOption: $numberOfGenerationOption)';
   }
 
   @override
@@ -189,13 +221,18 @@ class _$TreeDtoImpl extends _TreeDto {
             (identical(other.treeName, treeName) ||
                 other.treeName == treeName) &&
             (identical(other.fullName, fullName) ||
-                other.fullName == fullName));
+                other.fullName == fullName) &&
+            (identical(other.isShowUnknown, isShowUnknown) ||
+                other.isShowUnknown == isShowUnknown) &&
+            (identical(
+                    other.numberOfGenerationOption, numberOfGenerationOption) ||
+                other.numberOfGenerationOption == numberOfGenerationOption));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, treeId, creatorId, rootId, treeName, fullName);
+  int get hashCode => Object.hash(runtimeType, treeId, creatorId, rootId,
+      treeName, fullName, isShowUnknown, numberOfGenerationOption);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +254,9 @@ abstract class _TreeDto extends TreeDto {
       required final String creatorId,
       required final String rootId,
       required final String treeName,
-      required final String fullName}) = _$TreeDtoImpl;
+      required final String fullName,
+      required final bool isShowUnknown,
+      required final int numberOfGenerationOption}) = _$TreeDtoImpl;
   const _TreeDto._() : super._();
 
   factory _TreeDto.fromJson(Map<String, dynamic> json) = _$TreeDtoImpl.fromJson;
@@ -232,6 +271,10 @@ abstract class _TreeDto extends TreeDto {
   String get treeName;
   @override
   String get fullName;
+  @override
+  bool get isShowUnknown;
+  @override
+  int get numberOfGenerationOption;
   @override
   @JsonKey(ignore: true)
   _$$TreeDtoImplCopyWith<_$TreeDtoImpl> get copyWith =>

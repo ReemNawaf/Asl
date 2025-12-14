@@ -21,6 +21,8 @@ mixin _$Tree {
   UniqueId get rootId => throw _privateConstructorUsedError;
   TreeName get treeName => throw _privateConstructorUsedError;
   FullName get fullName => throw _privateConstructorUsedError;
+  bool get isShowUnknown => throw _privateConstructorUsedError;
+  int get numberOfGenerationOption => throw _privateConstructorUsedError;
   int? get shareOption => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,6 +40,8 @@ abstract class $TreeCopyWith<$Res> {
       UniqueId rootId,
       TreeName treeName,
       FullName fullName,
+      bool isShowUnknown,
+      int numberOfGenerationOption,
       int? shareOption});
 }
 
@@ -59,6 +63,8 @@ class _$TreeCopyWithImpl<$Res, $Val extends Tree>
     Object? rootId = null,
     Object? treeName = null,
     Object? fullName = null,
+    Object? isShowUnknown = null,
+    Object? numberOfGenerationOption = null,
     Object? shareOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -82,6 +88,14 @@ class _$TreeCopyWithImpl<$Res, $Val extends Tree>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as FullName,
+      isShowUnknown: null == isShowUnknown
+          ? _value.isShowUnknown
+          : isShowUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
+      numberOfGenerationOption: null == numberOfGenerationOption
+          ? _value.numberOfGenerationOption
+          : numberOfGenerationOption // ignore: cast_nullable_to_non_nullable
+              as int,
       shareOption: freezed == shareOption
           ? _value.shareOption
           : shareOption // ignore: cast_nullable_to_non_nullable
@@ -103,6 +117,8 @@ abstract class _$$TreeImplCopyWith<$Res> implements $TreeCopyWith<$Res> {
       UniqueId rootId,
       TreeName treeName,
       FullName fullName,
+      bool isShowUnknown,
+      int numberOfGenerationOption,
       int? shareOption});
 }
 
@@ -121,6 +137,8 @@ class __$$TreeImplCopyWithImpl<$Res>
     Object? rootId = null,
     Object? treeName = null,
     Object? fullName = null,
+    Object? isShowUnknown = null,
+    Object? numberOfGenerationOption = null,
     Object? shareOption = freezed,
   }) {
     return _then(_$TreeImpl(
@@ -144,6 +162,14 @@ class __$$TreeImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as FullName,
+      isShowUnknown: null == isShowUnknown
+          ? _value.isShowUnknown
+          : isShowUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
+      numberOfGenerationOption: null == numberOfGenerationOption
+          ? _value.numberOfGenerationOption
+          : numberOfGenerationOption // ignore: cast_nullable_to_non_nullable
+              as int,
       shareOption: freezed == shareOption
           ? _value.shareOption
           : shareOption // ignore: cast_nullable_to_non_nullable
@@ -161,6 +187,8 @@ class _$TreeImpl extends _Tree {
       required this.rootId,
       required this.treeName,
       required this.fullName,
+      required this.isShowUnknown,
+      required this.numberOfGenerationOption,
       this.shareOption})
       : super._();
 
@@ -175,11 +203,15 @@ class _$TreeImpl extends _Tree {
   @override
   final FullName fullName;
   @override
+  final bool isShowUnknown;
+  @override
+  final int numberOfGenerationOption;
+  @override
   final int? shareOption;
 
   @override
   String toString() {
-    return 'Tree(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName, shareOption: $shareOption)';
+    return 'Tree(treeId: $treeId, creatorId: $creatorId, rootId: $rootId, treeName: $treeName, fullName: $fullName, isShowUnknown: $isShowUnknown, numberOfGenerationOption: $numberOfGenerationOption, shareOption: $shareOption)';
   }
 
   @override
@@ -195,13 +227,18 @@ class _$TreeImpl extends _Tree {
                 other.treeName == treeName) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
+            (identical(other.isShowUnknown, isShowUnknown) ||
+                other.isShowUnknown == isShowUnknown) &&
+            (identical(
+                    other.numberOfGenerationOption, numberOfGenerationOption) ||
+                other.numberOfGenerationOption == numberOfGenerationOption) &&
             (identical(other.shareOption, shareOption) ||
                 other.shareOption == shareOption));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, treeId, creatorId, rootId, treeName, fullName, shareOption);
+  int get hashCode => Object.hash(runtimeType, treeId, creatorId, rootId,
+      treeName, fullName, isShowUnknown, numberOfGenerationOption, shareOption);
 
   @JsonKey(ignore: true)
   @override
@@ -217,6 +254,8 @@ abstract class _Tree extends Tree {
       required final UniqueId rootId,
       required final TreeName treeName,
       required final FullName fullName,
+      required final bool isShowUnknown,
+      required final int numberOfGenerationOption,
       final int? shareOption}) = _$TreeImpl;
   const _Tree._() : super._();
 
@@ -230,6 +269,10 @@ abstract class _Tree extends Tree {
   TreeName get treeName;
   @override
   FullName get fullName;
+  @override
+  bool get isShowUnknown;
+  @override
+  int get numberOfGenerationOption;
   @override
   int? get shareOption;
   @override

@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,8 +22,8 @@ Future<Either<UserFailure, Unit>> createNewUserInFirstore(
     return right(unit);
   } on PlatformException catch (e) {
     if (e is FirebaseException &&
-        (e.message!.contains('PERMISSION_DENIED') ||
-            e.message!.contains('permission-denied'))) {
+        (e.message!.contains(PERMISSION_DENIED_CP) ||
+            e.message!.contains(PERMISSION_DENIED_SM))) {
       return left(const UserFailure.insufficientPermission());
     } else {
       return left(const UserFailure.unexpected());

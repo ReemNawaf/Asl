@@ -111,7 +111,7 @@ class TreeDraw {
 
       if (partner != null) {
         // Draw partner
-        print('--- ${node.firstName.getOrCrash()}');
+        debugPrint('--- ${node.firstName.getOrCrash()}');
         if (node.firstName.getOrCrash() != "غير معروفة" &&
             (isShowUnknown ?? false)) {}
         _drawNodeRecursive(
