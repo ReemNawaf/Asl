@@ -16,6 +16,12 @@ abstract class IRelationRepository {
     required List<TNode> partnersList,
     required TNode node,
   });
+  Future<Either<RelationFailure, Unit>> createWithExistingPartner({
+    required Relation relation,
+    required TNode node, // the “main” node that owns this relation
+    required UniqueId partnerId,
+  });
+
   Future<Either<RelationFailure, Relation>> get({
     required UniqueId treeId,
     required UniqueId relationId,
@@ -25,21 +31,14 @@ abstract class IRelationRepository {
     required TNode partner,
     required Relation relation,
   });
-  Future<Either<RelationFailure, Unit>> deleteRelationAndChildren({
-    required UniqueId treeId,
-    required Relation relation,
-    required TNode partner,
-    required TNode node,
-  });
+  Future<Either<RelationFailure, Unit>> deleteRelation(
+      {required List<Relation> relations});
 
   // Create & Delete Child
   Future<Either<TNodeFailure, Unit>> addChildren({
-    required UniqueId treeId,
     required List<TNode> children,
   });
-  Future<Either<RelationFailure, Unit>> deleteChild({
-    required UniqueId treeId,
-    required UniqueId relationId,
-    required TNode child,
+  Future<Either<RelationFailure, Unit>> deleteChildren({
+    required List<TNode> children,
   });
 }

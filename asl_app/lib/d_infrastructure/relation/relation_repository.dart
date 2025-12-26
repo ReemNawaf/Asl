@@ -125,7 +125,7 @@ class RelationRepository implements IRelationRepository {
           relations: [...partner.relations, relation.relationId],
         );
 
-        final partnerDto = NodeDto.fromDomain(updatedPartner);
+        final partnerDto = TNodeDto.fromDomain(updatedPartner);
         final partnerRef =
             treeRef.collection(NODES_COLLECTION).doc(partnerDto.nodeId);
 
@@ -137,7 +137,7 @@ class RelationRepository implements IRelationRepository {
 
       // Update main node once
       final updatedNode = node.copyWith(relations: updatedNodeRelations);
-      final nodeDto = NodeDto.fromDomain(updatedNode);
+      final nodeDto = TNodeDto.fromDomain(updatedNode);
       final nodeRef = treeRef.collection(NODES_COLLECTION).doc(nodeDto.nodeId);
 
       batch.update(nodeRef, nodeDto.toJson());
@@ -145,6 +145,84 @@ class RelationRepository implements IRelationRepository {
       // Commit
       await batch.commit();
 
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const RelationFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const RelationFailure.unableToUpdate());
+      }
+      return left(const RelationFailure.unexpected());
+    } catch (_) {
+      return left(const RelationFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<RelationFailure, Unit>> createWithExistingPartner({
+    required Relation relation,
+    required TNode node,
+    required UniqueId partnerId,
+  }) async {
+    try {
+      final treeIdVal = relation.treeId.getOrCrash();
+      final partnerTreeIdVal = relation.partnerTreeId.getOrCrash();
+
+      // Basic sanity checks (optional but useful)
+      if (partnerId == node.nodeId) {
+        return left(const RelationFailure.unexpected());
+      }
+
+      // Ensure the passed partnerId actually matches relation data (optional)
+      final isPartnerInRelation =
+          relation.father == partnerId || relation.mother == partnerId;
+      if (!isPartnerInRelation) {
+        return left(const RelationFailure.unexpected());
+      }
+
+      final batch = _firestore.batch();
+
+      // 1) Create relation doc (in relation.treeId)
+      final relationDto = RelationDto.fromDomain(relation);
+      final relationRef = _firestore
+          .treesCollection()
+          .doc(treeIdVal)
+          .collection(RELATIONS_COLLECTION)
+          .doc(relationDto.relationId);
+
+      batch.set(relationRef, relationDto.toJson());
+
+      // 2) Update main node: add relationId to relations array
+      final nodeRef = _firestore
+          .treesCollection()
+          .doc(node.treeId.getOrCrash())
+          .collection(NODES_COLLECTION)
+          .doc(node.nodeId.getOrCrash());
+
+      batch.update(nodeRef, {
+        'relations': FieldValue.arrayUnion([relation.relationId.getOrCrash()]),
+      });
+
+      // 3) Update existing partner node: add relationId to relations array
+      final partnerRef = _firestore
+          .treesCollection()
+          .doc(partnerTreeIdVal)
+          .collection(NODES_COLLECTION)
+          .doc(partnerId.getOrCrash());
+
+      // verify partner exists (so you don't silently create a broken relation)
+      final partnerSnap = await partnerRef.get();
+      if (!partnerSnap.exists) {
+        return left(const RelationFailure.unableToUpdate()); // or unexpected()
+      }
+
+      batch.update(partnerRef, {
+        'relations': FieldValue.arrayUnion([relation.relationId.getOrCrash()]),
+      });
+
+      await batch.commit();
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.message!.contains(PERMISSION_DENIED_CP) ||
@@ -226,7 +304,7 @@ class RelationRepository implements IRelationRepository {
       batch.update(relationRef, relationDto.toJson());
 
       // Update Partner node
-      final partnerDto = NodeDto.fromDomain(partner);
+      final partnerDto = TNodeDto.fromDomain(partner);
       batch.update(partnerRef, partnerDto.toJson());
 
       await batch.commit();
@@ -247,75 +325,110 @@ class RelationRepository implements IRelationRepository {
   }
 
   @override
-  Future<Either<RelationFailure, Unit>> deleteRelationAndChildren({
-    required UniqueId treeId,
-    required Relation relation,
-    required TNode partner,
-    required TNode node,
+  Future<Either<RelationFailure, Unit>> deleteRelation({
+    required List<Relation> relations,
   }) async {
     try {
-      final treeIdVal = treeId.getOrCrash();
-      final relationIdVal = relation.relationId.getOrCrash();
+      if (relations.isEmpty) return right(unit);
 
       final batch = _firestore.batch();
 
-      final nodeRef = _firestore
-          .treesCollection()
-          .doc(treeIdVal)
-          .collection(NODES_COLLECTION)
-          .doc(node.nodeId.getOrCrash());
+      // Dedupe sets
+      final updatedNodeRefs = <String>{}; // "$treeId/$nodeId/$relationId"
+      final handledPartnerRefs = <String>{}; // "$treeId/$partnerId/$relationId"
+      final deletedRelationRefs = <String>{}; // "$treeId/$relationId"
 
-      final relationRef = _firestore
-          .treesCollection()
-          .doc(treeIdVal)
-          .collection(RELATIONS_COLLECTION)
-          .doc(relationIdVal);
+      for (final relation in relations) {
+        // Only delete relations that have NO children
+        if (relation.children.isNotEmpty) {
+          return left(const RelationFailure.deleteRelationHasChildren());
+        }
 
-      // Remove relation from main node
-      batch.update(nodeRef, {
-        'relations': FieldValue.arrayRemove([relationIdVal]),
-      });
+        final treeIdVal = relation.treeId.getOrCrash();
+        final relationIdVal = relation.relationId.getOrCrash();
 
-      // Handle partner
-      final partnerTreeId = partner.treeId.getOrCrash();
-      final partnerRef = _firestore
-          .treesCollection()
-          .doc(partnerTreeId)
-          .collection(NODES_COLLECTION)
-          .doc(partner.nodeId.getOrCrash());
+        final node = relation.mainNode;
+        final partner = relation.partnerNode;
 
-      if (partner.upperFamily != null) {
-        // Partner has another family → just unlink relation
-        batch.update(partnerRef, {
-          'relations': FieldValue.arrayRemove([relationIdVal]),
-        });
-      } else {
-        // Partner is orphan → delete node
-        batch.delete(partnerRef);
-      }
+        if (node == null || partner == null) {
+          return left(const RelationFailure.unableToUpdate());
+        }
 
-      // Delete children nodes (explicit & safe)
-      for (final childId in relation.children) {
-        final childRef = _firestore
+        // -----------------------------
+        // 1) Remove relation from main node
+        // -----------------------------
+        final nodeIdVal = node.nodeId.getOrCrash();
+        final nodeRef = _firestore
             .treesCollection()
             .doc(treeIdVal)
             .collection(NODES_COLLECTION)
-            .doc(childId.getOrCrash());
+            .doc(nodeIdVal);
 
-        batch.delete(childRef);
+        final nodeUpdateKey = "$treeIdVal/$nodeIdVal/$relationIdVal";
+        if (!updatedNodeRefs.contains(nodeUpdateKey)) {
+          batch.update(nodeRef, {
+            'relations': FieldValue.arrayRemove([relationIdVal]),
+          });
+          updatedNodeRefs.add(nodeUpdateKey);
+        }
+
+        // -----------------------------
+        // 2) Handle partner (unlink or delete)
+        // -----------------------------
+        final partnerTreeIdVal = partner.treeId.getOrCrash();
+        final partnerIdVal = partner.nodeId.getOrCrash();
+
+        final partnerRef = _firestore
+            .treesCollection()
+            .doc(partnerTreeIdVal)
+            .collection(NODES_COLLECTION)
+            .doc(partnerIdVal);
+
+        final partnerKey = "$partnerTreeIdVal/$partnerIdVal/$relationIdVal";
+        if (!handledPartnerRefs.contains(partnerKey)) {
+          if (partner.upperFamily != null) {
+            // Partner has another family → just unlink relation
+            batch.update(partnerRef, {
+              'relations': FieldValue.arrayRemove([relationIdVal]),
+            });
+          } else {
+            // Partner is orphan → delete node
+            batch.delete(partnerRef);
+          }
+          handledPartnerRefs.add(partnerKey);
+        }
+
+        // -----------------------------
+        // 3) Delete relation doc
+        // -----------------------------
+        final relationRef = _firestore
+            .treesCollection()
+            .doc(treeIdVal)
+            .collection(RELATIONS_COLLECTION)
+            .doc(relationIdVal);
+
+        final relKey = "$treeIdVal/$relationIdVal";
+        if (!deletedRelationRefs.contains(relKey)) {
+          batch.delete(relationRef);
+          deletedRelationRefs.add(relKey);
+        }
       }
 
-      // Delete relation itself
-      batch.delete(relationRef);
+      // If everything was skipped (all had children / invalid), do nothing but succeed
+      if (updatedNodeRefs.isEmpty &&
+          handledPartnerRefs.isEmpty &&
+          deletedRelationRefs.isEmpty) {
+        return right(unit);
+      }
 
       await batch.commit();
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
-          e.message!.contains(PERMISSION_DENIED_SM)) {
+      final msg = e.message ?? '';
+      if (msg.contains(PERMISSION_DENIED_CP) ||
+          msg.contains(PERMISSION_DENIED_SM)) {
         return left(const RelationFailure.insufficientPermission());
-      } else if (e.message!.contains(NOT_FOUND_CP) ||
-          e.message!.contains(NOT_FOUND_SM)) {
+      } else if (msg.contains(NOT_FOUND_CP) || msg.contains(NOT_FOUND_SM)) {
         return left(const RelationFailure.unableToUpdate());
       }
       return left(const RelationFailure.unexpected());
@@ -325,46 +438,51 @@ class RelationRepository implements IRelationRepository {
   }
 
   @override
-  Future<Either<RelationFailure, Unit>> deleteChild({
-    required UniqueId treeId,
-    required UniqueId relationId,
-    required TNode child,
+  Future<Either<RelationFailure, Unit>> deleteChildren({
+    required List<TNode> children,
   }) async {
     try {
-      final treeIdVal = treeId.getOrCrash();
-      final relationIdVal = relationId.getOrCrash();
-      final childIdVal = child.nodeId.getOrCrash();
+      if (children.isEmpty) return right(unit);
 
       final batch = _firestore.batch();
 
-      final relationRef = _firestore
-          .treesCollection()
-          .doc(treeIdVal)
-          .collection(RELATIONS_COLLECTION)
-          .doc(relationIdVal);
+      for (final child in children) {
+        final treeIdVal = child.treeId.getOrCrash();
+        final childIdVal = child.nodeId.getOrCrash();
 
-      final childRef = _firestore
-          .treesCollection()
-          .doc(treeIdVal)
-          .collection(NODES_COLLECTION)
-          .doc(childIdVal);
+        final upper = child.upperFamily;
+        if (upper == null) continue; // or return left(unexpected)
 
-      // Remove child from relation
-      batch.update(relationRef, {
-        'children': FieldValue.arrayRemove([childIdVal]),
-      });
+        final relationIdVal = upper.getOrCrash();
 
-      // Delete child node
-      batch.delete(childRef);
+        final relationRef = _firestore
+            .treesCollection()
+            .doc(treeIdVal)
+            .collection(RELATIONS_COLLECTION)
+            .doc(relationIdVal);
+
+        final childRef = _firestore
+            .treesCollection()
+            .doc(treeIdVal)
+            .collection(NODES_COLLECTION)
+            .doc(childIdVal);
+
+        batch.update(relationRef, {
+          'children': FieldValue.arrayRemove([childIdVal]),
+        });
+        batch.delete(childRef);
+      }
 
       await batch.commit();
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
-          e.message!.contains(PERMISSION_DENIED_SM)) {
+      if (e.message != null &&
+          (e.message!.contains(PERMISSION_DENIED_CP) ||
+              e.message!.contains(PERMISSION_DENIED_SM))) {
         return left(const RelationFailure.insufficientPermission());
-      } else if (e.message!.contains(NOT_FOUND_CP) ||
-          e.message!.contains(NOT_FOUND_SM)) {
+      } else if (e.message != null &&
+          (e.message!.contains(NOT_FOUND_CP) ||
+              e.message!.contains(NOT_FOUND_SM))) {
         return left(const RelationFailure.unableToUpdate());
       }
       return left(const RelationFailure.unexpected());
@@ -375,11 +493,11 @@ class RelationRepository implements IRelationRepository {
 
   @override
   Future<Either<TNodeFailure, Unit>> addChildren({
-    required UniqueId treeId,
     required List<TNode> children,
   }) async {
     try {
-      final treeIdVal = treeId.getOrCrash();
+      if (children.isEmpty) return left(const TNodeFailure.unableToUpdate());
+      final treeIdVal = children[0].treeId.getOrCrash();
       final batch = _firestore.batch();
 
       for (final child in children) {
@@ -403,7 +521,7 @@ class RelationRepository implements IRelationRepository {
             .doc(relationId);
 
         // Create child node
-        final childDto = NodeDto.fromDomain(child);
+        final childDto = TNodeDto.fromDomain(child);
         batch.set(childRef, childDto.toJson());
 
         // Attach child to relation

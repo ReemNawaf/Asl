@@ -8,4 +8,6 @@ abstract class RelationFailure with _$RelationFailure {
   const factory RelationFailure.insufficientPermission() =
       _InsufficientPermission;
   const factory RelationFailure.unableToUpdate() = _UnableToUpdate;
+  const factory RelationFailure.deleteRelationHasChildren() =
+      _DeleteRelationHasChildren;
 }

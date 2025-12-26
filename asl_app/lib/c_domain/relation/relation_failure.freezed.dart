@@ -21,6 +21,7 @@ mixin _$RelationFailure {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() deleteRelationHasChildren,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$RelationFailure {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? deleteRelationHasChildren,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$RelationFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? deleteRelationHasChildren,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,8 @@ mixin _$RelationFailure {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_DeleteRelationHasChildren value)
+        deleteRelationHasChildren,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +56,8 @@ mixin _$RelationFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +65,8 @@ mixin _$RelationFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +131,7 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() deleteRelationHasChildren,
   }) {
     return unexpected();
   }
@@ -132,6 +142,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? deleteRelationHasChildren,
   }) {
     return unexpected?.call();
   }
@@ -142,6 +153,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? deleteRelationHasChildren,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -157,6 +169,8 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_DeleteRelationHasChildren value)
+        deleteRelationHasChildren,
   }) {
     return unexpected(this);
   }
@@ -167,6 +181,8 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
   }) {
     return unexpected?.call(this);
   }
@@ -177,6 +193,8 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -234,6 +252,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() deleteRelationHasChildren,
   }) {
     return insufficientPermission();
   }
@@ -244,6 +263,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? deleteRelationHasChildren,
   }) {
     return insufficientPermission?.call();
   }
@@ -254,6 +274,7 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? deleteRelationHasChildren,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -269,6 +290,8 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_DeleteRelationHasChildren value)
+        deleteRelationHasChildren,
   }) {
     return insufficientPermission(this);
   }
@@ -279,6 +302,8 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -289,6 +314,8 @@ class _$InsufficientPermissionImpl implements _InsufficientPermission {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -343,6 +370,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() deleteRelationHasChildren,
   }) {
     return unableToUpdate();
   }
@@ -353,6 +381,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? deleteRelationHasChildren,
   }) {
     return unableToUpdate?.call();
   }
@@ -363,6 +392,7 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? deleteRelationHasChildren,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -378,6 +408,8 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_DeleteRelationHasChildren value)
+        deleteRelationHasChildren,
   }) {
     return unableToUpdate(this);
   }
@@ -388,6 +420,8 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -398,6 +432,8 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -409,4 +445,125 @@ class _$UnableToUpdateImpl implements _UnableToUpdate {
 
 abstract class _UnableToUpdate implements RelationFailure {
   const factory _UnableToUpdate() = _$UnableToUpdateImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteRelationHasChildrenImplCopyWith<$Res> {
+  factory _$$DeleteRelationHasChildrenImplCopyWith(
+          _$DeleteRelationHasChildrenImpl value,
+          $Res Function(_$DeleteRelationHasChildrenImpl) then) =
+      __$$DeleteRelationHasChildrenImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteRelationHasChildrenImplCopyWithImpl<$Res>
+    extends _$RelationFailureCopyWithImpl<$Res, _$DeleteRelationHasChildrenImpl>
+    implements _$$DeleteRelationHasChildrenImplCopyWith<$Res> {
+  __$$DeleteRelationHasChildrenImplCopyWithImpl(
+      _$DeleteRelationHasChildrenImpl _value,
+      $Res Function(_$DeleteRelationHasChildrenImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteRelationHasChildrenImpl implements _DeleteRelationHasChildren {
+  const _$DeleteRelationHasChildrenImpl();
+
+  @override
+  String toString() {
+    return 'RelationFailure.deleteRelationHasChildren()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteRelationHasChildrenImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() deleteRelationHasChildren,
+  }) {
+    return deleteRelationHasChildren();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? deleteRelationHasChildren,
+  }) {
+    return deleteRelationHasChildren?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? deleteRelationHasChildren,
+    required TResult orElse(),
+  }) {
+    if (deleteRelationHasChildren != null) {
+      return deleteRelationHasChildren();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_DeleteRelationHasChildren value)
+        deleteRelationHasChildren,
+  }) {
+    return deleteRelationHasChildren(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
+  }) {
+    return deleteRelationHasChildren?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_DeleteRelationHasChildren value)?
+        deleteRelationHasChildren,
+    required TResult orElse(),
+  }) {
+    if (deleteRelationHasChildren != null) {
+      return deleteRelationHasChildren(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteRelationHasChildren implements RelationFailure {
+  const factory _DeleteRelationHasChildren() = _$DeleteRelationHasChildrenImpl;
 }
