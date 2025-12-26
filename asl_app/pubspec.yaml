@@ -22,6 +22,7 @@ dependencies:
   dartz: ^0.10.1
   injectable: ^2.4.2
   freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
   uuid: ^4.4.0
   google_sign_in: ^6.2.1
   firebase_auth: ^5.0.0
@@ -34,6 +35,7 @@ dependencies:
   shared_preferences: ^2.2.3
   intl: ^0.20.2
   equatable: ^2.0.5
+  collection: ^1.18.0
 
 dependency_overrides:
   intl: ^0.20.2
@@ -43,6 +45,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  analyzer: ^6.11.0
   flutter_lints: ^3.0.2
   injectable_generator: ^2.6.1
   auto_route_generator: ^8.0.0
