@@ -1,15 +1,22 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/relation/relation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class TreeDraw {
   Graph graph = Graph()..isTree = true;
   BuchheimWalkerConfiguration builder = BuchheimWalkerConfiguration();
-  final Map<String, int> positions = {};
-  static int position = 0;
+
+  /// Keep Node instances by nodeId key for safe/faster edge creation
+  final Map<String, Node> _graphNodesById = {};
+
+  /// Prevent infinite loops / duplicate edges in graphs
+  final Set<String> _visitedNodes = {};
+  final Set<String> _createdEdges = {};
 
   TreeDraw() {
     builder
@@ -22,122 +29,238 @@ class TreeDraw {
   Graph getGraph() => graph;
   BuchheimWalkerConfiguration getBuilder() => builder;
 
-  /// Draw full tree with optional generation limit.
-  Graph drawTree({
-    required TNode root,
-    int? maxGenerations, // null means draw entire tree
-    bool? isShowUnknown,
+  /// Draw tree directly from canonical normalized store.
+  ///
+  /// Generations rule:
+  /// - `maxGenerations == null` => unlimited children depth
+  /// - Partners are on the SAME generation as the node
+  /// - Children are on the NEXT generation
+  Graph drawTreeFromStore({
+    required TreeGraphStore store,
+    required UniqueId rootId,
+    required int? maxGenerations, // null = unlimited
+    bool isShowUnknown = true,
     required BuildContext context,
   }) {
     graph = Graph()..isTree = true;
-    positions.clear();
-    position = 0;
+    _graphNodesById.clear();
+    _visitedNodes.clear();
+    _createdEdges.clear();
 
-    _drawNodeRecursive(
-        node: root,
-        nodeType: NodeType.root,
-        parentId: null,
-        parentGender: null,
-        parentRelationsCount: root.relations.length,
-        currentGen: 0,
-        maxGen: maxGenerations,
-        isShowUnknown: isShowUnknown,
-        context: context);
+    final startId = rootId.asKey();
+    final startNode = store.nodesById[startId];
+    if (startNode == null) return graph;
+
+    // Drawing the root
+    _drawFromNode(
+      store: store,
+      nodeKey: startId,
+      nodeType: NodeType.root,
+      parentKey: null,
+      parentGender: null,
+      parentRelationsCount: startNode.relations.length,
+      // generation distance from start root (children increase it, partners do not)
+      currentGen: 0,
+      maxGen: maxGenerations,
+      isShowUnknown: isShowUnknown,
+      context: context,
+    );
 
     return graph;
   }
 
-  void addLinkedNode({
-    required TNode tnode,
+  // ============================================================
+  // Core traversal + drawing
+  // ============================================================
+
+  void _drawFromNode({
+    required TreeGraphStore store,
+    required String nodeKey,
     required NodeType nodeType,
-    Gender? sourceNodeGender,
-    int sourceNodeNumRelation = 0,
-    UniqueId? linkedToId,
+    required String? parentKey,
+    required Gender? parentGender,
+    required int parentRelationsCount,
+    required int currentGen,
+    required int? maxGen,
+    required bool isShowUnknown,
     required BuildContext context,
   }) {
-    final node =
-        Node.Id({'type': nodeType, 'id': tnode.nodeId, 'tnode': tnode});
-
-    graph.addNode(node);
-    positions[tnode.nodeId.getOrCrash()] = position++;
-
-    if (nodeType != NodeType.root && linkedToId != null) {
-      final linkedToPosition = positions[linkedToId.getOrCrash()]!;
-      final linkedToNode = graph.getNodeAtPosition(linkedToPosition);
-
-      String title;
-      if (nodeType == NodeType.partner) {
-        title = getNodePartnerTitle(
-            context, sourceNodeGender, sourceNodeNumRelation);
-      } else {
-        title = getNodeChildrenTitle(context, sourceNodeGender);
+    // Cycle guard (node-level)
+    if (_visitedNodes.contains(nodeKey)) {
+      // Still ensure edge exists if a parentKey is provided
+      if (parentKey != null) {
+        _ensureEdge(
+          fromKey: parentKey,
+          toKey: nodeKey,
+          toNodeType: nodeType,
+          parentGender: parentGender,
+          parentRelationsCount: parentRelationsCount,
+          context: context,
+        );
       }
+      return;
+    }
+    _visitedNodes.add(nodeKey);
 
-      graph.addEdge(linkedToNode, node, label: title);
+    final node = store.nodesById[nodeKey];
+    if (node == null) return;
+
+    // Draw this node
+    _ensureGraphNode(node: node, nodeType: nodeType);
+
+    // Link from parent -> this node (if any)
+    if (parentKey != null) {
+      _ensureEdge(
+        fromKey: parentKey,
+        toKey: nodeKey,
+        toNodeType: nodeType,
+        parentGender: parentGender,
+        parentRelationsCount: parentRelationsCount,
+        context: context,
+      );
+    }
+
+    // Expand relations from this node
+    final relationIds = store.relationIdsOfNodeKey(nodeKey);
+    for (final relKey in relationIds) {
+      final relation = store.relationsById[relKey];
+      if (relation == null) continue;
+
+      _expandRelation(
+        store: store,
+        currentNode: node,
+        currentNodeKey: nodeKey,
+        relation: relation,
+        relationKey: relKey,
+        currentGen: currentGen,
+        maxGen: maxGen,
+        isShowUnknown: isShowUnknown,
+        context: context,
+      );
     }
   }
 
-  void _drawNodeRecursive({
-    required TNode node,
-    required NodeType nodeType,
-    UniqueId? parentId,
-    Gender? parentGender,
-    required int parentRelationsCount,
-    bool? isShowUnknown,
-    required BuildContext context,
-
-    /// Generation control
+  void _expandRelation({
+    required TreeGraphStore store,
+    required TNode currentNode,
+    required String currentNodeKey,
+    required Relation relation,
+    required String relationKey,
     required int currentGen,
-    int? maxGen,
+    required int? maxGen,
+    required bool isShowUnknown,
+    required BuildContext context,
   }) {
-    // Draw the node itself
-    addLinkedNode(
-      tnode: node,
-      nodeType: nodeType,
-      sourceNodeGender: parentGender,
-      sourceNodeNumRelation: parentRelationsCount,
-      linkedToId: parentId,
-      context: context,
-    );
+    // Assumes Relation has father/mother/children fields (UniqueIds).
+    // If your model differs, adapt here.
+    final fatherKey = relation.father.asKey();
+    final motherKey = relation.mother.asKey();
 
-    // Stop if reached max depth
-    if (maxGen != null && currentGen >= maxGen) {
-      return;
+    // Determine partner relative to the current node
+    String? partnerKey;
+    if (currentNodeKey == fatherKey) {
+      partnerKey = motherKey;
+    } else if (currentNodeKey == motherKey) {
+      partnerKey = fatherKey;
+    } else {
+      // The relation doesn't include this node (shouldn't happen if indexes are correct)
+      partnerKey = null;
     }
 
-    // Recurse into relations
-    for (final relation in node.relationsObject) {
-      final partner = relation.partnerNode;
+    // 1) Draw partner
+    if (partnerKey != null) {
+      final partnerNode = store.nodesById[partnerKey];
+      if (partnerNode != null) {
+        _ensureGraphNode(node: partnerNode, nodeType: NodeType.partner);
 
-      if (partner != null) {
-        // Draw partner
-        debugPrint('--- ${node.firstName.getOrCrash()}');
-        if (node.firstName.getOrCrash() != "غير معروفة" &&
-            (isShowUnknown ?? false)) {}
-        _drawNodeRecursive(
-          node: partner,
-          nodeType: NodeType.partner,
-          parentId: node.nodeId,
-          parentGender: node.gender,
-          parentRelationsCount: node.relations.length,
-          currentGen: currentGen + 1,
-          maxGen: maxGen,
+        // Edge current -> partner (partner label)
+        _ensureEdge(
+          fromKey: currentNodeKey,
+          toKey: partnerKey,
+          toNodeType: NodeType.partner,
+          parentGender: currentNode.gender,
+          parentRelationsCount: currentNode.relations.length,
           context: context,
         );
-
-        // Draw children of this relation
-        for (final child in relation.childrenNodes) {
-          _drawNodeRecursive(
-              node: child,
-              nodeType: NodeType.child,
-              parentId: partner.nodeId,
-              parentGender: partner.gender,
-              parentRelationsCount: partner.relations.length,
-              currentGen: currentGen + 1,
-              maxGen: maxGen,
-              context: context);
-        }
       }
     }
+
+    // 2) Draw children (next generation)
+    // If maxGen is reached, we still show partner but we stop descending into children.
+    if (maxGen != null && currentGen >= maxGen) return;
+
+    final childKeys = store.childrenIdsOfRelationKey(relationKey);
+
+    // Link children under partner if exists, else under current node (fallback)
+    final childrenParentKey =
+        (partnerKey != null && store.nodesById[partnerKey] != null)
+            ? partnerKey
+            : currentNodeKey;
+
+    final childrenParentNode = store.nodesById[childrenParentKey];
+    final parentGender = childrenParentNode?.gender;
+    final parentRelationsCount = childrenParentNode?.relations.length ?? 0;
+
+    for (final childKey in childKeys) {
+      final childNode = store.nodesById[childKey];
+      if (childNode == null) continue;
+
+      _drawFromNode(
+        store: store,
+        nodeKey: childKey,
+        nodeType: NodeType.child,
+        parentKey: childrenParentKey, // edge parent->child
+        parentGender: parentGender,
+        parentRelationsCount: parentRelationsCount,
+        currentGen: currentGen + 1, // child is next generation
+        maxGen: maxGen,
+        isShowUnknown: isShowUnknown,
+        context: context,
+      );
+    }
+  }
+
+  // ============================================================
+  // Graph primitives
+  // ============================================================
+
+  void _ensureGraphNode({
+    required TNode node,
+    required NodeType nodeType,
+  }) {
+    final key = node.nodeId.asKey();
+    if (_graphNodesById.containsKey(key)) return;
+
+    final gNode = Node.Id({
+      'type': nodeType,
+      'id': node.nodeId,
+      'tnode': node,
+    });
+
+    _graphNodesById[key] = gNode;
+    graph.addNode(gNode);
+  }
+
+  void _ensureEdge({
+    required String fromKey,
+    required String toKey,
+    required NodeType toNodeType,
+    required Gender? parentGender,
+    required int parentRelationsCount,
+    required BuildContext context,
+  }) {
+    final fromNode = _graphNodesById[fromKey];
+    final toNode = _graphNodesById[toKey];
+    if (fromNode == null || toNode == null) return;
+
+    final label = (toNodeType == NodeType.partner)
+        ? getNodePartnerTitle(context, parentGender, parentRelationsCount)
+        : getNodeChildrenTitle(context, parentGender);
+
+    final edgeKey = '$fromKey->$toKey|$label';
+    if (_createdEdges.contains(edgeKey)) return;
+    _createdEdges.add(edgeKey);
+
+    graph.addEdge(fromNode, toNode, label: label);
   }
 }
