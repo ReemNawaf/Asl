@@ -1,6 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/gender_wdg.dart';
-import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +34,7 @@ class ChildGenderBtn extends StatelessWidget {
           color: color,
           gender: state.tempChild.gender,
           femaleOrMale: femaleOrMale,
-          isEditing: context.read<NodeFormBloc>().state.isEditing,
+          isEditing: true,
         );
       },
     );

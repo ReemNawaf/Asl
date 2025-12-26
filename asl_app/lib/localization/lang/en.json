@@ -135,5 +135,6 @@
     "show_unknown_description": "Show unknown members in the tree",
     "choose_display_language": "Choose display language",
     "create_family_tree": "create new family tree",
-    "root_has_no_parents_siblings": "This is a root node. There is no information about the the parents and the siblings"
+    "root_has_no_parents_siblings": "This is a root node. There is no information about the the parents and the siblings",
+    "children_under_father_tree": "children under\nfather tree"
 }

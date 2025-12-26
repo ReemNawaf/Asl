@@ -14,6 +14,7 @@ class TreeDraw {
   final Map<String, Node> _graphNodesById = {};
   final Set<String> _visitedNodes = {};
   final Set<String> _createdEdges = {};
+  final Set<String> _childrenDrawnForRelation = {};
 
   TreeDraw() {
     builder
@@ -37,6 +38,7 @@ class TreeDraw {
     _graphNodesById.clear();
     _visitedNodes.clear();
     _createdEdges.clear();
+    _childrenDrawnForRelation.clear();
 
     final startKey = rootId.asKey();
     final startNode = store.nodesById[startKey];
@@ -208,16 +210,28 @@ class TreeDraw {
       partnerKey = fatherKey;
     }
 
-    // 1) partner (same gen)
+    // 1) partner (same gen) + MIRROR if partner already exists in tree
+    String? partnerDisplayKey; // could be real nodeKey OR mirrorKey
+
     if (partnerKey != null) {
       final partnerNode = store.nodesById[partnerKey];
       if (partnerNode != null) {
-        _ensureGraphNode(node: partnerNode, nodeType: NodeType.partner);
+        final shouldMirror = partnerNode.upperFamily != null;
+        // your rule: only mirror if partner is an existing node in the tree
+
+        if (shouldMirror) {
+          partnerDisplayKey = _mirrorKey(relationKey, partnerKey);
+          _ensureMirrorNode(
+              mirrorKey: partnerDisplayKey, realNode: partnerNode);
+        } else {
+          partnerDisplayKey = partnerKey;
+          _ensureGraphNode(node: partnerNode, nodeType: NodeType.partner);
+        }
 
         _ensureEdge(
           fromKey: currentNodeKey,
-          toKey: partnerKey,
-          toNodeType: NodeType.partner,
+          toKey: partnerDisplayKey,
+          toNodeType: shouldMirror ? NodeType.partnerMirror : NodeType.partner,
           parentGender: currentNode.gender,
           parentRelationsCount: currentNode.relations.length,
           context: context,
@@ -228,16 +242,50 @@ class TreeDraw {
     // 2) children (next gen)
     if (maxGen != null && currentGen >= maxGen) return;
 
+// Mother info
+    final motherNode = store.nodesById[motherKey];
+    final motherHasMirror =
+        motherNode != null && motherNode.upperFamily != null;
+
+    // RULE:
+    // If motherHasMirror, we want children under the MIRROR mother.
+    // But the mirror mother is only created when we traverse from the OTHER side (usually father side).
+    // So: if we are currently at the REAL mother node, skip drawing children here,
+    // and let the father-side traversal draw them under the mirror mother.
+    if (motherHasMirror && currentNodeKey == motherKey) {
+      return;
+    }
+
+    // Now apply the "draw once" guard (only after we confirm this is the correct place to draw)
+    if (_childrenDrawnForRelation.contains(relationKey)) return;
+    _childrenDrawnForRelation.add(relationKey);
+
     final childKeys = store.childrenIdsOfRelationKey(relationKey);
 
-    final childrenParentKey =
-        (partnerKey != null && store.nodesById[partnerKey] != null)
-            ? partnerKey
-            : currentNodeKey;
+    // Children parent must ALWAYS be the mother (real or mirror)
+    String childrenParentKey;
 
-    final childrenParentNode = store.nodesById[childrenParentKey];
-    final parentGender = childrenParentNode?.gender;
-    final parentRelationsCount = childrenParentNode?.relations.length ?? 0;
+    // If mother has mirror → parent must be the mirror mother (it should be partnerDisplayKey here)
+    if (motherHasMirror &&
+        partnerDisplayKey != null &&
+        partnerKey == motherKey) {
+      childrenParentKey = partnerDisplayKey; // mirror mother
+    } else {
+      // mother has no mirror → parent is the real mother (if present), else fallback
+      childrenParentKey = motherKey;
+
+      // ensure real mother node exists in graph if we will attach children to it
+      final realMother = store.nodesById[motherKey];
+      if (realMother != null) {
+        _ensureGraphNode(node: realMother, nodeType: NodeType.partner);
+      } else {
+        childrenParentKey = currentNodeKey; // fallback if mother missing
+      }
+    }
+
+// Labels should reflect "mother"
+    final parentGender = motherNode?.gender;
+    final parentRelationsCount = motherNode?.relations.length ?? 0;
 
     for (final childKey in childKeys) {
       final childNode = store.nodesById[childKey];
@@ -300,15 +348,37 @@ class TreeDraw {
     final toNode = _graphNodesById[toKey];
     if (fromNode == null || toNode == null) return;
 
-    final label = (toNodeType == NodeType.partner)
-        ? getNodePartnerTitle(context, parentGender, parentRelationsCount)
-        : getNodeChildrenTitle(
-            context, parentGender); // child + grandchild share label for now
+    final label =
+        (toNodeType == NodeType.partner || toNodeType == NodeType.partnerMirror)
+            ? getNodePartnerTitle(context, parentGender, parentRelationsCount)
+            : getNodeChildrenTitle(context, parentGender);
 
     final edgeKey = '$fromKey->$toKey|$label';
     if (_createdEdges.contains(edgeKey)) return;
     _createdEdges.add(edgeKey);
 
     graph.addEdge(fromNode, toNode, label: label);
+  }
+
+  String _mirrorKey(String relationKey, String realPartnerKey) =>
+      'pm:$relationKey:$realPartnerKey';
+
+  Node _ensureMirrorNode({
+    required String mirrorKey,
+    required TNode realNode,
+  }) {
+    final existing = _graphNodesById[mirrorKey];
+    if (existing != null) return existing;
+
+    final gNode = Node.Id({
+      'type': NodeType.partnerMirror,
+      'id': mirrorKey, // unique for layout
+      'realId': realNode.nodeId, // IMPORTANT: use this on tap
+      'tnode': realNode, // render same card
+    });
+
+    _graphNodesById[mirrorKey] = gNode;
+    graph.addNode(gNode);
+    return gNode;
   }
 }

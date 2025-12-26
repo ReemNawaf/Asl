@@ -5,6 +5,7 @@ import 'package:asl/a_presentation/node/node_panel/main_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/injection.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,6 +25,7 @@ class AppNode extends StatelessWidget {
     required this.node,
     this.image,
     required this.pageContext,
+    this.mirrorNodeNoChildren = false,
   });
 
   final NodeType type;
@@ -38,6 +40,7 @@ class AppNode extends StatelessWidget {
   final Gender gender;
   final TNode node;
   final BuildContext pageContext;
+  final bool mirrorNodeNoChildren;
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +151,16 @@ class AppNode extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
+          if (mirrorNodeNoChildren)
+            Positioned(
+              right: 0,
+              top: 2,
+              child: Text(
+                getTr(context, 'children_under_father_tree')!,
+                textAlign: TextAlign.center,
+              ),
+            ),
         ],
       ),
     );

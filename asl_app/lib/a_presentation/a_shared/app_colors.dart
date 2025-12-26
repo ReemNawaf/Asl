@@ -96,7 +96,20 @@ const MaterialColor kOutColors = MaterialColor(
   },
 );
 
-// Color(0xFFABABAB),
+// Mirror
+const int kMirrorColor = 0xFF74C7F4;
+const MaterialColor kMirrorColors = MaterialColor(
+  kMirrorColor,
+  <int, Color>{
+    200: Color(0xFF74C7F4), // L5 buttons
+    300: Color(0xFF74C7F4), // L4 (under name)
+    400: Color(0xFF8ED0F4), // L3 (three rectangles)
+    500: Color(0xFFA5D8F4), // L2 (behind avatar)
+    600: Color(0xFFC9E2F4), // L1 (node base)
+    700: Color(0xFFDEECF4), // L0 (panel base)
+  },
+);
+
 // Color(0xFFC7C7C7),
 // Color(0xFFE0E0E0),
 // Color(0xFFDFDFDF),
