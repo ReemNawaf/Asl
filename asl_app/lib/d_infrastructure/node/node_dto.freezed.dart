@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-NodeDto _$NodeDtoFromJson(Map<String, dynamic> json) {
-  return _NodeDto.fromJson(json);
+TNodeDto _$TNodeDtoFromJson(Map<String, dynamic> json) {
+  return _TNodeDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NodeDto {
+mixin _$TNodeDto {
   String? get nodeId => throw _privateConstructorUsedError;
   String get treeId => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
@@ -33,13 +33,14 @@ mixin _$NodeDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NodeDtoCopyWith<NodeDto> get copyWith => throw _privateConstructorUsedError;
+  $TNodeDtoCopyWith<TNodeDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NodeDtoCopyWith<$Res> {
-  factory $NodeDtoCopyWith(NodeDto value, $Res Function(NodeDto) then) =
-      _$NodeDtoCopyWithImpl<$Res, NodeDto>;
+abstract class $TNodeDtoCopyWith<$Res> {
+  factory $TNodeDtoCopyWith(TNodeDto value, $Res Function(TNodeDto) then) =
+      _$TNodeDtoCopyWithImpl<$Res, TNodeDto>;
   @useResult
   $Res call(
       {String? nodeId,
@@ -55,9 +56,9 @@ abstract class $NodeDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NodeDtoCopyWithImpl<$Res, $Val extends NodeDto>
-    implements $NodeDtoCopyWith<$Res> {
-  _$NodeDtoCopyWithImpl(this._value, this._then);
+class _$TNodeDtoCopyWithImpl<$Res, $Val extends TNodeDto>
+    implements $TNodeDtoCopyWith<$Res> {
+  _$TNodeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -124,10 +125,11 @@ class _$NodeDtoCopyWithImpl<$Res, $Val extends NodeDto>
 }
 
 /// @nodoc
-abstract class _$$NodeDtoImplCopyWith<$Res> implements $NodeDtoCopyWith<$Res> {
-  factory _$$NodeDtoImplCopyWith(
-          _$NodeDtoImpl value, $Res Function(_$NodeDtoImpl) then) =
-      __$$NodeDtoImplCopyWithImpl<$Res>;
+abstract class _$$TNodeDtoImplCopyWith<$Res>
+    implements $TNodeDtoCopyWith<$Res> {
+  factory _$$TNodeDtoImplCopyWith(
+          _$TNodeDtoImpl value, $Res Function(_$TNodeDtoImpl) then) =
+      __$$TNodeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -144,11 +146,11 @@ abstract class _$$NodeDtoImplCopyWith<$Res> implements $NodeDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$NodeDtoImplCopyWithImpl<$Res>
-    extends _$NodeDtoCopyWithImpl<$Res, _$NodeDtoImpl>
-    implements _$$NodeDtoImplCopyWith<$Res> {
-  __$$NodeDtoImplCopyWithImpl(
-      _$NodeDtoImpl _value, $Res Function(_$NodeDtoImpl) _then)
+class __$$TNodeDtoImplCopyWithImpl<$Res>
+    extends _$TNodeDtoCopyWithImpl<$Res, _$TNodeDtoImpl>
+    implements _$$TNodeDtoImplCopyWith<$Res> {
+  __$$TNodeDtoImplCopyWithImpl(
+      _$TNodeDtoImpl _value, $Res Function(_$TNodeDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -165,7 +167,7 @@ class __$$NodeDtoImplCopyWithImpl<$Res>
     Object? relations = null,
     Object? fosterChildren = null,
   }) {
-    return _then(_$NodeDtoImpl(
+    return _then(_$TNodeDtoImpl(
       nodeId: freezed == nodeId
           ? _value.nodeId
           : nodeId // ignore: cast_nullable_to_non_nullable
@@ -212,8 +214,8 @@ class __$$NodeDtoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$NodeDtoImpl extends _NodeDto {
-  const _$NodeDtoImpl(
+class _$TNodeDtoImpl extends _TNodeDto {
+  const _$TNodeDtoImpl(
       {this.nodeId,
       required this.treeId,
       required this.firstName,
@@ -228,8 +230,8 @@ class _$NodeDtoImpl extends _NodeDto {
         _fosterChildren = fosterChildren,
         super._();
 
-  factory _$NodeDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NodeDtoImplFromJson(json);
+  factory _$TNodeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TNodeDtoImplFromJson(json);
 
   @override
   final String? nodeId;
@@ -265,14 +267,14 @@ class _$NodeDtoImpl extends _NodeDto {
 
   @override
   String toString() {
-    return 'NodeDto(nodeId: $nodeId, treeId: $treeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren)';
+    return 'TNodeDto(nodeId: $nodeId, treeId: $treeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NodeDtoImpl &&
+            other is _$TNodeDtoImpl &&
             (identical(other.nodeId, nodeId) || other.nodeId == nodeId) &&
             (identical(other.treeId, treeId) || other.treeId == treeId) &&
             (identical(other.firstName, firstName) ||
@@ -309,19 +311,19 @@ class _$NodeDtoImpl extends _NodeDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NodeDtoImplCopyWith<_$NodeDtoImpl> get copyWith =>
-      __$$NodeDtoImplCopyWithImpl<_$NodeDtoImpl>(this, _$identity);
+  _$$TNodeDtoImplCopyWith<_$TNodeDtoImpl> get copyWith =>
+      __$$TNodeDtoImplCopyWithImpl<_$TNodeDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NodeDtoImplToJson(
+    return _$$TNodeDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _NodeDto extends NodeDto {
-  const factory _NodeDto(
+abstract class _TNodeDto extends TNodeDto {
+  const factory _TNodeDto(
       {final String? nodeId,
       required final String treeId,
       required final String firstName,
@@ -331,10 +333,11 @@ abstract class _NodeDto extends NodeDto {
       required final String gender,
       final String? upperFamily,
       required final List<String> relations,
-      required final List<String> fosterChildren}) = _$NodeDtoImpl;
-  const _NodeDto._() : super._();
+      required final List<String> fosterChildren}) = _$TNodeDtoImpl;
+  const _TNodeDto._() : super._();
 
-  factory _NodeDto.fromJson(Map<String, dynamic> json) = _$NodeDtoImpl.fromJson;
+  factory _TNodeDto.fromJson(Map<String, dynamic> json) =
+      _$TNodeDtoImpl.fromJson;
 
   @override
   String? get nodeId;
@@ -358,6 +361,6 @@ abstract class _NodeDto extends NodeDto {
   List<String> get fosterChildren;
   @override
   @JsonKey(ignore: true)
-  _$$NodeDtoImplCopyWith<_$NodeDtoImpl> get copyWith =>
+  _$$TNodeDtoImplCopyWith<_$TNodeDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

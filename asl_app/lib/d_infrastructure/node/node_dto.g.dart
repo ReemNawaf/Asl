@@ -6,8 +6,8 @@ part of 'node_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NodeDtoImpl _$$NodeDtoImplFromJson(Map<String, dynamic> json) =>
-    _$NodeDtoImpl(
+_$TNodeDtoImpl _$$TNodeDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TNodeDtoImpl(
       nodeId: json['nodeId'] as String?,
       treeId: json['treeId'] as String,
       firstName: json['firstName'] as String,
@@ -23,7 +23,7 @@ _$NodeDtoImpl _$$NodeDtoImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$NodeDtoImplToJson(_$NodeDtoImpl instance) =>
+Map<String, dynamic> _$$TNodeDtoImplToJson(_$TNodeDtoImpl instance) =>
     <String, dynamic>{
       'nodeId': instance.nodeId,
       'treeId': instance.treeId,

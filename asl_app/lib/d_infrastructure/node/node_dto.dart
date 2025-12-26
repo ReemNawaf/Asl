@@ -10,11 +10,11 @@ part 'node_dto.freezed.dart';
 part 'node_dto.g.dart';
 
 @freezed
-abstract class NodeDto implements _$NodeDto {
-  const NodeDto._();
+abstract class TNodeDto implements _$TNodeDto {
+  const TNodeDto._();
 
   //  Create Data Transfer Object
-  const factory NodeDto({
+  const factory TNodeDto({
     String? nodeId,
     required String treeId,
     required String firstName,
@@ -25,11 +25,11 @@ abstract class NodeDto implements _$NodeDto {
     String? upperFamily,
     required List<String> relations,
     required List<String> fosterChildren,
-  }) = _NodeDto;
+  }) = _TNodeDto;
 
   //  converting Entity => DTO
-  factory NodeDto.fromDomain(TNode node) {
-    return NodeDto(
+  factory TNodeDto.fromDomain(TNode node) {
+    return TNodeDto(
       nodeId: node.nodeId.getOrCrash(),
       treeId: node.treeId.getOrCrash(),
       firstName: node.firstName.getOrCrash(),
@@ -67,11 +67,11 @@ abstract class NodeDto implements _$NodeDto {
   }
 
   //  converting JSON => DTO
-  factory NodeDto.fromJson(Map<String, dynamic> json) =>
-      _$NodeDtoFromJson(json);
+  factory TNodeDto.fromJson(Map<String, dynamic> json) =>
+      _$TNodeDtoFromJson(json);
 
   //  converting Firestore => DTO, similar to JSON => DTO, with considering the id in the identifier
-  factory NodeDto.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
-    return NodeDto.fromJson(doc.data()!).copyWith(nodeId: doc.id);
+  factory TNodeDto.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
+    return TNodeDto.fromJson(doc.data()!).copyWith(nodeId: doc.id);
   }
 }

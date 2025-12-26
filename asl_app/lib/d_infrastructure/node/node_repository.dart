@@ -38,7 +38,7 @@ class NodeRepository implements INodeRepository {
         return left(const TNodeFailure.unableToUpdate());
       }
 
-      final nodeDto = NodeDto.fromDomain(node);
+      final nodeDto = TNodeDto.fromDomain(node);
 
       await docRef.set(nodeDto.toJson());
 
@@ -77,7 +77,7 @@ class NodeRepository implements INodeRepository {
         return left(const TNodeFailure.unableToUpdate());
       }
 
-      final nodeDto = NodeDto.fromDomain(node);
+      final nodeDto = TNodeDto.fromDomain(node);
 
       await docRef.update(nodeDto.toJson());
 

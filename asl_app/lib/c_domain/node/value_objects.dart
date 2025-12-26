@@ -35,11 +35,10 @@ class FirstName extends ValueObject<String> {
           .flatMap(validateStringNotEmpty)
 
           // 3. the first name is larger than 3 char
-          .flatMap(validateFirstNameLength)
+          .flatMap(validateNameLength)
 
           // 4. the first name one single line
-          .flatMap(validateSingleLine)
-          .flatMap(validateFirstName),
+          .flatMap(validateSingleLine),
     );
   }
 
