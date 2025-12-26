@@ -11,24 +11,6 @@ class InteractiveView extends StatelessWidget {
 
   final TransformationController _controller = TransformationController();
 
-  void drawTree(
-    LocalTreeState state,
-  ) {
-    // debugPrint('LOG | root with ${state.root.relations.length} relations');
-    // root = state.root;
-    // context.read<DrawTreeBloc>().add(
-    //       DrawTreeEvent.drawNewTree(
-    //         tree: context.read<CurrentTreeBloc>().state.currentTree!,
-    //         root: state.root,
-    //         maxGenerations: NUM_GEN_OPTIONS[context
-    //             .read<TreeSettingsBloc>()
-    //             .state
-    //             .numberOfGenerations]['number'],
-    //         isShowUnknown: context.read<TreeSettingsBloc>().state.showUnknown,
-    //         context: context,
-    //       ),
-    //     );
-  }
   @override
   Widget build(BuildContext context) {
     debugPrint('LOG | InteractiveView: rebuild with new tree nodes');
@@ -41,7 +23,6 @@ class InteractiveView extends StatelessWidget {
                   store: treeState.store,
                   rootId: treeState.focusRootId!,
                   maxGenerations:
-                      //TODO: check settings null
                       NUM_GEN_OPTIONS[treeState.settings!.numberOfGenerationOpt]
                           ['number'],
                   context: context,
@@ -49,13 +30,8 @@ class InteractiveView extends StatelessWidget {
               );
         }
         return BlocListener<TreeSettingsBloc, TreeSettingsState>(
-          listener: (context, state) {
-            _controller.value = Matrix4.identity()..scale(state.zoomScale);
-
-            // _controller.value = Matrix4.identity()..scale(0.6);
-            // debugPrint(
-            //     'LOG | InteractiveView: rebuild after NodeWatcherBloc state changes');
-          },
+          listener: (context, state) =>
+              _controller.value = Matrix4.identity()..scale(state.zoomScale),
           child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
             listenWhen: (prev, curr) =>
                 prev.numberOfGenerations != curr.numberOfGenerations,

@@ -54,6 +54,9 @@ class HomePage extends StatelessWidget {
                   width: size.width * 0.82,
                   child: BlocBuilder<LocalTreeBloc, LocalTreeState>(
                     builder: (context, state) {
+                      context
+                          .read<TreeSettingsBloc>()
+                          .add(TreeSettingsEvent.initialized(state.settings));
                       debugPrint('--- Trees in HomePage ${state.trees.length}');
                       debugPrint(
                           '--- Selected Tree in HomePage ${state.selectedTreeId}');

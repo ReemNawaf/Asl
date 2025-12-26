@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/tree/i_tree_repository.dart';
+import 'package:asl/c_domain/tree/tree_settings.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -28,21 +29,13 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
     _Initialized event,
     Emitter<TreeSettingsState> emit,
   ) async {
-    emit(state.copyWith(isLoading: true, shareOption: event.shareOption));
-
-    final loaded = await _treeRepository.loadSettings(event.treeId);
-    print('LOG | loaded $loaded');
-
+    final treeSettings = event.treeSettings ?? TreeSettings.empty();
     emit(state.copyWith(
       zoomScale: ZOOM_DEF,
-      showUnknown: loaded.fold((l) => false, (r) => r.isShowUnknown),
-      numberOfGenerations:
-          loaded.fold((l) => 0, (r) => r.numberOfGenerationOpt),
-      shareOption: loaded.fold((l) => 0, (r) => r.shareOpt),
-      isLoading: false,
+      showUnknown: treeSettings.isShowUnknown,
+      numberOfGenerations: treeSettings.numberOfGenerationOpt,
+      shareOption: treeSettings.shareOpt,
     ));
-
-    emit(state.copyWith(isLoading: false));
   }
 
   Future<void> _onZoomChanged(
@@ -97,12 +90,12 @@ const List<Map<String, String>> SHARE_OPTIONS = [
 ];
 const List<Map<String, dynamic>> NUM_GEN_OPTIONS = [
   {'value': 'all_generations', 'number': null},
-  {'value': 'three_generations', 'number': 3},
-  {'value': 'four_generations', 'number': 4},
-  {'value': 'five_generations', 'number': 5},
-  {'value': 'six_generations', 'number': 6},
-  {'value': 'seven_generations', 'number': 7},
-  {'value': 'eight_generations', 'number': 8},
+  {'value': 'three_generations', 'number': 2},
+  {'value': 'four_generations', 'number': 3},
+  {'value': 'five_generations', 'number': 4},
+  {'value': 'six_generations', 'number': 5},
+  {'value': 'seven_generations', 'number': 6},
+  {'value': 'eight_generations', 'number': 7},
 ];
 
 const List<Map<String, String>> LANGUAGE_OPTIONS = [

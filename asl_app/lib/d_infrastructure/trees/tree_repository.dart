@@ -292,7 +292,6 @@ class TreeRepository implements ITreeRepository {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      print('e $e');
       if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
@@ -391,7 +390,7 @@ class TreeRepository implements ITreeRepository {
   }) async {
     try {
       await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
-        'number_of_generations': option,
+        'treeSettings.numberOfGenerationOpt': option,
       });
       return right(unit);
     } on FirebaseException catch (e) {
@@ -415,7 +414,7 @@ class TreeRepository implements ITreeRepository {
   }) async {
     try {
       await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
-        'share_option': option,
+        'treeSettings.shareOpt': option,
       });
       return right(unit);
     } on FirebaseException catch (e) {
@@ -439,7 +438,7 @@ class TreeRepository implements ITreeRepository {
   }) async {
     try {
       await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
-        'is_show_unknown': isShowUnknown,
+        'treeSettings.isShowUnknown': isShowUnknown,
       });
 
       return right(unit);
@@ -472,9 +471,10 @@ class TreeRepository implements ITreeRepository {
       }
 
       final settings = TreeSettings(
-        numberOfGenerationOpt: data['number_of_generations'] as int,
-        isShowUnknown: data['is_show_unknown'] as bool? ?? true,
-        shareOpt: data['share_option'] as int,
+        numberOfGenerationOpt:
+            data['treeSettings']['numberOfGenerationOpt'] as int,
+        isShowUnknown: data['treeSettings']['isShowUnknown'] as bool? ?? true,
+        shareOpt: data['treeSettings']['shareOpt'] as int,
         langOpt: 0,
       );
 

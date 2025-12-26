@@ -9,7 +9,6 @@ class TreeSettingsState with _$TreeSettingsState {
     required bool isLinkCopied,
     required int shareOption,
     required int langOpt,
-    @Default(false) bool isLoading,
   }) = _TreeSettingsState;
 
   factory TreeSettingsState.initial() => const TreeSettingsState(

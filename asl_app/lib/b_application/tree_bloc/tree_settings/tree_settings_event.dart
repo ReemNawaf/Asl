@@ -3,8 +3,8 @@ part of 'tree_settings_bloc.dart';
 @freezed
 class TreeSettingsEvent with _$TreeSettingsEvent {
   /// Load settings from Firebase
-  const factory TreeSettingsEvent.initialized(
-      UniqueId treeId, int shareOption) = _Initialized;
+  const factory TreeSettingsEvent.initialized(TreeSettings? treeSettings) =
+      _Initialized;
 
   /// User changes the zoom
   const factory TreeSettingsEvent.zoomChanged(double zoomScale) = _ZoomChanged;
