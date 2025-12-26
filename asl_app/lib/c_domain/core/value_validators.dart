@@ -40,11 +40,11 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
   }
 }
 
-Either<ValueFailure<String>, String> validateFirstNameLength(String input) {
+Either<ValueFailure<String>, String> validateNameLength(String input) {
   if (input.length > 2) {
     return right(input);
   } else {
-    return left(ValueFailure.shortFirstName(failedValue: input));
+    return left(ValueFailure.shortName(failedValue: input));
   }
 }
 
@@ -74,9 +74,9 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
   }
 }
 
-Either<ValueFailure<String>, String> validateFirstName(String input) {
+Either<ValueFailure<String>, String> validateContainingSpace(String input) {
   if (input.contains(' ')) {
-    return left(ValueFailure.spacedFirstName(failedValue: input));
+    return left(ValueFailure.spacedName(failedValue: input));
   } else {
     return right(input);
   }

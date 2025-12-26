@@ -43,11 +43,11 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     required T failedValue,
   }) = ShortPassword<T>;
 
-  const factory ValueFailure.spacedFirstName({
+  const factory ValueFailure.spacedName({
     required T failedValue,
   }) = SpacedFirstName<T>;
 
-  const factory ValueFailure.shortFirstName({
+  const factory ValueFailure.shortName({
     required T failedValue,
   }) = ShortFirstName<T>;
 }

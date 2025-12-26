@@ -24,8 +24,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,8 +35,8 @@ mixin _$ValueFailure<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,8 +46,8 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,8 +58,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,8 +69,8 @@ mixin _$ValueFailure<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,8 +80,8 @@ mixin _$ValueFailure<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -206,8 +206,8 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) {
     return exceedingLength(failedValue, max);
   }
@@ -220,8 +220,8 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) {
     return exceedingLength?.call(failedValue, max);
   }
@@ -234,8 +234,8 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -252,8 +252,8 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) {
     return exceedingLength(this);
   }
@@ -266,8 +266,8 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) {
     return exceedingLength?.call(this);
   }
@@ -280,8 +280,8 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -378,8 +378,8 @@ class _$EmptyImpl<T> implements Empty<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) {
     return empty(failedValue);
   }
@@ -392,8 +392,8 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) {
     return empty?.call(failedValue);
   }
@@ -406,8 +406,8 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -424,8 +424,8 @@ class _$EmptyImpl<T> implements Empty<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) {
     return empty(this);
   }
@@ -438,8 +438,8 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) {
     return empty?.call(this);
   }
@@ -452,8 +452,8 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -547,8 +547,8 @@ class _$MultilineImpl<T> implements Multiline<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) {
     return multiline(failedValue);
   }
@@ -561,8 +561,8 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) {
     return multiline?.call(failedValue);
   }
@@ -575,8 +575,8 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) {
     if (multiline != null) {
@@ -593,8 +593,8 @@ class _$MultilineImpl<T> implements Multiline<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) {
     return multiline(this);
   }
@@ -607,8 +607,8 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) {
     return multiline?.call(this);
   }
@@ -621,8 +621,8 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) {
     if (multiline != null) {
@@ -717,8 +717,8 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) {
     return invalidEmail(failedValue);
   }
@@ -731,8 +731,8 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -745,8 +745,8 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -763,8 +763,8 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) {
     return invalidEmail(this);
   }
@@ -777,8 +777,8 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) {
     return invalidEmail?.call(this);
   }
@@ -791,8 +791,8 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -888,8 +888,8 @@ class _$ShortPasswordImpl<T> implements ShortPassword<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) {
     return shortPassword(failedValue);
   }
@@ -902,8 +902,8 @@ class _$ShortPasswordImpl<T> implements ShortPassword<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) {
     return shortPassword?.call(failedValue);
   }
@@ -916,8 +916,8 @@ class _$ShortPasswordImpl<T> implements ShortPassword<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -934,8 +934,8 @@ class _$ShortPasswordImpl<T> implements ShortPassword<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) {
     return shortPassword(this);
   }
@@ -948,8 +948,8 @@ class _$ShortPasswordImpl<T> implements ShortPassword<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) {
     return shortPassword?.call(this);
   }
@@ -962,8 +962,8 @@ class _$ShortPasswordImpl<T> implements ShortPassword<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -1028,7 +1028,7 @@ class _$SpacedFirstNameImpl<T> implements SpacedFirstName<T> {
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.spacedFirstName(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.spacedName(failedValue: $failedValue)';
   }
 
   @override
@@ -1059,10 +1059,10 @@ class _$SpacedFirstNameImpl<T> implements SpacedFirstName<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) {
-    return spacedFirstName(failedValue);
+    return spacedName(failedValue);
   }
 
   @override
@@ -1073,10 +1073,10 @@ class _$SpacedFirstNameImpl<T> implements SpacedFirstName<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) {
-    return spacedFirstName?.call(failedValue);
+    return spacedName?.call(failedValue);
   }
 
   @override
@@ -1087,12 +1087,12 @@ class _$SpacedFirstNameImpl<T> implements SpacedFirstName<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) {
-    if (spacedFirstName != null) {
-      return spacedFirstName(failedValue);
+    if (spacedName != null) {
+      return spacedName(failedValue);
     }
     return orElse();
   }
@@ -1105,10 +1105,10 @@ class _$SpacedFirstNameImpl<T> implements SpacedFirstName<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) {
-    return spacedFirstName(this);
+    return spacedName(this);
   }
 
   @override
@@ -1119,10 +1119,10 @@ class _$SpacedFirstNameImpl<T> implements SpacedFirstName<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) {
-    return spacedFirstName?.call(this);
+    return spacedName?.call(this);
   }
 
   @override
@@ -1133,12 +1133,12 @@ class _$SpacedFirstNameImpl<T> implements SpacedFirstName<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) {
-    if (spacedFirstName != null) {
-      return spacedFirstName(this);
+    if (spacedName != null) {
+      return spacedName(this);
     }
     return orElse();
   }
@@ -1199,7 +1199,7 @@ class _$ShortFirstNameImpl<T> implements ShortFirstName<T> {
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.shortFirstName(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.shortName(failedValue: $failedValue)';
   }
 
   @override
@@ -1230,10 +1230,10 @@ class _$ShortFirstNameImpl<T> implements ShortFirstName<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
-    required TResult Function(T failedValue) spacedFirstName,
-    required TResult Function(T failedValue) shortFirstName,
+    required TResult Function(T failedValue) spacedName,
+    required TResult Function(T failedValue) shortName,
   }) {
-    return shortFirstName(failedValue);
+    return shortName(failedValue);
   }
 
   @override
@@ -1244,10 +1244,10 @@ class _$ShortFirstNameImpl<T> implements ShortFirstName<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? shortPassword,
-    TResult? Function(T failedValue)? spacedFirstName,
-    TResult? Function(T failedValue)? shortFirstName,
+    TResult? Function(T failedValue)? spacedName,
+    TResult? Function(T failedValue)? shortName,
   }) {
-    return shortFirstName?.call(failedValue);
+    return shortName?.call(failedValue);
   }
 
   @override
@@ -1258,12 +1258,12 @@ class _$ShortFirstNameImpl<T> implements ShortFirstName<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
-    TResult Function(T failedValue)? spacedFirstName,
-    TResult Function(T failedValue)? shortFirstName,
+    TResult Function(T failedValue)? spacedName,
+    TResult Function(T failedValue)? shortName,
     required TResult orElse(),
   }) {
-    if (shortFirstName != null) {
-      return shortFirstName(failedValue);
+    if (shortName != null) {
+      return shortName(failedValue);
     }
     return orElse();
   }
@@ -1276,10 +1276,10 @@ class _$ShortFirstNameImpl<T> implements ShortFirstName<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
-    required TResult Function(SpacedFirstName<T> value) spacedFirstName,
-    required TResult Function(ShortFirstName<T> value) shortFirstName,
+    required TResult Function(SpacedFirstName<T> value) spacedName,
+    required TResult Function(ShortFirstName<T> value) shortName,
   }) {
-    return shortFirstName(this);
+    return shortName(this);
   }
 
   @override
@@ -1290,10 +1290,10 @@ class _$ShortFirstNameImpl<T> implements ShortFirstName<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(ShortPassword<T> value)? shortPassword,
-    TResult? Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult? Function(ShortFirstName<T> value)? shortFirstName,
+    TResult? Function(SpacedFirstName<T> value)? spacedName,
+    TResult? Function(ShortFirstName<T> value)? shortName,
   }) {
-    return shortFirstName?.call(this);
+    return shortName?.call(this);
   }
 
   @override
@@ -1304,12 +1304,12 @@ class _$ShortFirstNameImpl<T> implements ShortFirstName<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
-    TResult Function(SpacedFirstName<T> value)? spacedFirstName,
-    TResult Function(ShortFirstName<T> value)? shortFirstName,
+    TResult Function(SpacedFirstName<T> value)? spacedName,
+    TResult Function(ShortFirstName<T> value)? shortName,
     required TResult orElse(),
   }) {
-    if (shortFirstName != null) {
-      return shortFirstName(this);
+    if (shortName != null) {
+      return shortName(this);
     }
     return orElse();
   }

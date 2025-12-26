@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:asl/c_domain/core/errors.dart';
 import 'package:asl/c_domain/core/failures.dart';
-import 'package:asl/c_domain/core/value_validators.dart';
 import 'package:uuid/uuid.dart';
 
 @immutable
@@ -45,7 +44,6 @@ abstract class ValueObject<T> {
 class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
-  // First case: For Models except the user e.g. puchases
   factory UniqueId() {
     return UniqueId._(
       right(const Uuid().v1()),
@@ -61,72 +59,16 @@ class UniqueId extends ValueObject<String> {
   const UniqueId._(this.value);
 }
 
-class CategoryId extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  static const maxLength = 30;
-
-  factory CategoryId(String input) {
-    return CategoryId._(
-
-        //  1. category id is not empty
-        validateStringNotEmpty(input));
-  }
-
-  const CategoryId._(this.value);
+// ------------------------------------------------------------
+// Helpers for using UniqueId as Map keys (normalized graph store)
+// ------------------------------------------------------------
+extension UniqueIdKeyX on UniqueId {
+  /// Stable string key to use in Maps/Sets.
+  /// (Uses the already-validated internal value)
+  String asKey() => getOrCrash();
 }
 
-class Amount extends ValueObject<double> {
-  @override
-  final Either<ValueFailure<double>, double> value;
-
-  static const maxLength = 20;
-
-  factory Amount(double input) {
-    return Amount._(
-        //  join 3 validators:
-        //  1. the purchase title doesn't exceed the maximmum length
-        validateMaxDoubleLength(input, maxLength)
-            //  2. the purchase title is not empty
-            .flatMap(validatdoubleNotEmptyAndNotZero));
-  }
-
-  const Amount._(this.value);
-}
-
-class Total extends ValueObject<double> {
-  @override
-  final Either<ValueFailure<double>, double> value;
-
-  static const maxLength = 20;
-
-  factory Total(double input) {
-    return Total._(
-        //  join 3 validators:
-        //  1. the purchase title doesn't exceed the maximmum length
-        validateMaxDoubleLength(input, maxLength)
-            //  2. the purchase title is not empty
-            .flatMap(validatdoubleNotEmpty));
-  }
-
-  const Total._(this.value);
-}
-
-class Vat extends ValueObject<double> {
-  @override
-  final Either<ValueFailure<double>, double> value;
-
-  static const maxLength = 4;
-
-  factory Vat(double input) {
-    return Vat._(
-        //  join 3 validators:
-        //  1. the purchase title doesn't exceed the maximmum length
-        validateMaxDoubleLength(input, maxLength)
-            //  2. the purchase title is not empty
-            .flatMap(validatdoubleNotEmpty));
-  }
-
-  const Vat._(this.value);
+extension NullableUniqueIdKeyX on UniqueId? {
+  /// Convenience for nullable UniqueId (often used in state).
+  String? asKeyOrNull() => this?.getOrCrash();
 }
