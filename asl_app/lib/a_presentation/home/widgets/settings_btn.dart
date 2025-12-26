@@ -1,10 +1,10 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
+import 'package:asl/a_presentation/home/widgets/language_settings_section.dart';
 import 'package:asl/a_presentation/home/widgets/share_settings_section.dart';
 import 'package:asl/a_presentation/home/widgets/tree_settings_section.dart';
-import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
-import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,9 +17,9 @@ class SettingsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CurrentTreeBloc, CurrentTreeState>(
+    return BlocBuilder<LocalTreeBloc, LocalTreeState>(
       builder: (_, state) {
-        if (state.currentTree != null) {
+        if (state.selectedTreeId != null) {
           return AppButton(
             onPressed: () => showSettingsPanel(context),
             label: getTr(context, 'settings')!,
@@ -59,10 +59,14 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                   contextPage: contextPage,
                 ),
                 kVSpacer10,
-                Divider(
-                  color: kRootColors[600],
-                  thickness: 1,
+                kAppDivider,
+                kVSpacer10,
+                LanguageSettingsSection(
+                  dialogContext: dialogContext,
+                  contextPage: contextPage,
                 ),
+                kVSpacer10,
+                kAppDivider,
                 kVSpacer10,
                 ShareSettingsSection(
                     dialogContext: dialogContext, contextPage: contextPage),

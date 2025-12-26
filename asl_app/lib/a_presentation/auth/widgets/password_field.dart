@@ -4,7 +4,7 @@ import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:asl/b_application/auth_bloc/sign_in_form/sign_in_form_bloc.dart';
 
 class PasswordField extends StatelessWidget {
   const PasswordField({
@@ -54,6 +54,7 @@ class PasswordField extends StatelessWidget {
             label: getTr(context, 'password')!,
             hint: '**************',
             isArabic: false,
+            isValid: false,
             color: kRootColors[700],
             onSaved: (_) => {},
             validator: (value) {

@@ -47,21 +47,21 @@ class RootInfoPanel extends StatelessWidget {
                 onChanged: (value) => context
                     .read<TreeFormBloc>()
                     .add(TreeFormEvent.changeRootName(value!.trim())),
-                validator: (_) {
-                  return context
-                      .read<TreeFormBloc>()
-                      .state
-                      .tree
-                      .fullName
-                      .value
-                      .fold(
-                        (f) => f.maybeMap(
-                          empty: (_) => 'اسم جذر العائلة يمكن أن يكون فارغًا',
-                          orElse: () => null,
-                        ),
-                        (_) => null,
-                      );
-                },
+                validator: (_) => context
+                    .read<TreeFormBloc>()
+                    .state
+                    .tree
+                    .fullName
+                    .value
+                    .fold(
+                      (f) => f.maybeMap(
+                        empty: (_) => getTr(context, 'name_cannot_be_empty'),
+                        exceedingLength: (_) => getTr(context, 'name_too_long'),
+                        shortName: (_) => getTr(context, 'name_too_short'),
+                        orElse: () => null,
+                      ),
+                      (_) => null,
+                    ),
                 isValid: AutovalidateMode.always != showErrorMessages ||
                     context.read<TreeFormBloc>().state.tree.fullName.isValid(),
               ),

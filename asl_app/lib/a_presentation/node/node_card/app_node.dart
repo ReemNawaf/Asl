@@ -44,21 +44,10 @@ class AppNode extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     const kTextHeight = 30.0;
 
-    final imageWidget = ClipRRect(
-      borderRadius: BorderRadius.circular(6.0),
-      child: image != null
-          ? Image.asset(
-              image ?? 'assets/images/placeholder.png',
-              fit: BoxFit.cover,
-            )
-          : SvgPicture.asset('assets/avatars/${gender.name}.svg'),
-    );
-
     return GestureDetector(
       onTap: () => showPanel(
         context,
         size,
-        imageWidget,
         color,
         hasImage,
         node,
@@ -89,7 +78,7 @@ class AppNode extends StatelessWidget {
               borderRadius: BorderRadius.circular(6.0),
               color: color[500]!,
             ),
-            child: imageWidget,
+            child: getImageWidget(image, gender),
           ),
           Padding(
             padding: const EdgeInsets.all(12),
@@ -166,8 +155,8 @@ class AppNode extends StatelessWidget {
   }
 }
 
-void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
-        MaterialColor color, bool hasImage, TNode node, NodeType type) =>
+void showPanel(BuildContext contextPage, Size size, MaterialColor color,
+        bool hasImage, TNode node, NodeType type) =>
     showDialog(
       context: contextPage,
       builder: (context) {
@@ -179,7 +168,6 @@ void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
             child: MainPanel(
               color: color,
               type: type,
-              imageWidget: imageWidget,
               node: node,
               hasImage: hasImage,
             ),
@@ -187,3 +175,15 @@ void showPanel(BuildContext contextPage, Size size, ClipRRect imageWidget,
         );
       },
     );
+
+Widget getImageWidget(String? image, Gender gender) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(6.0),
+    child: image != null
+        ? Image.asset(
+            image,
+            fit: BoxFit.cover,
+          )
+        : SvgPicture.asset('assets/avatars/${gender.name}.svg'),
+  );
+}

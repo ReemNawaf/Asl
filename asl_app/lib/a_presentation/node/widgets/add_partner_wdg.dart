@@ -4,8 +4,8 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
-import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/marriage_status_btn.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -75,7 +75,7 @@ class AddPartnerWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold, wordSpacing: 2.0),
                           children: [
                             TextSpan(
-                              text: getTr(context, 'add_with_id')!,
+                              text: ' ${getTr(context, 'add_with_id')!}',
                               style: kFootnoteStyle.copyWith(
                                 color: color,
                                 fontWeight: FontWeight.bold,
@@ -199,9 +199,14 @@ class PartnerName extends StatelessWidget {
           hint: getTr(context, 'input_member_id')!,
           onChanged: (value) {
             if (value != null && value.trim().length == 36) {
+              final partner = context
+                  .read<LocalTreeBloc>()
+                  .state
+                  .store
+                  .getNodeByKey(value.trim());
               context.read<PartnerFormBloc>().add(
                   PartnerFormEvent.addPartnerByNodeId(
-                      node: node, partnerId: value.trim()));
+                      node: node, partner: partner));
             }
           },
           isValid: true,
@@ -239,8 +244,8 @@ class PartnerName extends StatelessWidget {
             : state.partner.firstName.value.fold(
                 (f) => f.maybeMap(
                   empty: (_) => getTr(context, 'first_name_cannot_be_empty'),
-                  shortFirstName: (_) => getTr(context, 'first_name_short'),
-                  spacedFirstName: (_) =>
+                  shortName: (_) => getTr(context, 'first_name_short'),
+                  spacedName: (_) =>
                       getTr(context, 'first_name_cannot_contain_spaces'),
                   orElse: () => null,
                 ),
@@ -261,15 +266,10 @@ class PartnerName extends StatelessWidget {
 
     return SizedBox(
         width: 250,
-        child: state.gettingPartnerNodeByIdInProgress
-            ? Padding(
-                padding: const EdgeInsets.only(top: 12.0),
-                child: LoadingWidget(color: color),
-              )
-            : state.partnerNotExist == null || state.partnerNotExist == true
-                ? (isAddingPartner ? addPartnerById : appFormField)
-                : state.partnerNotExist == false
-                    ? displayPartnerNameWidget
-                    : null);
+        child: state.partnerNotExist == null || state.partnerNotExist == true
+            ? (isAddingPartner ? addPartnerById : appFormField)
+            : state.partnerNotExist == false
+                ? displayPartnerNameWidget
+                : null);
   }
 }

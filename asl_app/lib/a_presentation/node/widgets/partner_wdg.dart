@@ -5,9 +5,10 @@ import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/core/widgets/icon_only_btn.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
+import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -19,139 +20,129 @@ class PartnerWidget extends StatelessWidget {
     super.key,
     required this.node,
     required this.color,
+    required this.relations,
   });
 
   final TNode node;
   final MaterialColor color;
+  final List<Relation> relations;
 
   @override
   Widget build(BuildContext context) {
-    final isEditing = context.read<NodeFormBloc>().state.isEditing != -1;
+    final isEditing = context.read<NodeFormBloc>().state.isEditing;
 
-    return BlocBuilder<RelationWatcherBloc, RelationWatcherState>(
+    return BlocBuilder<LocalTreeBloc, LocalTreeState>(
       builder: (context, state) {
-        return state.map(
-          gettingAllRelationsSuccess: (state) {
-            final relations = state.relation;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            kVSpacer10,
+            Text(
+              getNodePartnerTitle(context, node.gender, relations.length),
+              style: kHeadLineStyle,
+            ),
+            kVSpacer10,
+            BlocBuilder<PartnerFormBloc, PartnerFormState>(
+              builder: (context, state) {
+                final List<Relation> allPartners = [
+                  ...relations,
+                  ...state.relationsList
+                ];
 
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                kVSpacer10,
-                Text(
-                  getNodePartnerTitle(
-                      context, node.gender, state.relation.length),
-                  style: kHeadLineStyle,
-                ),
-                kVSpacer10,
-                BlocBuilder<PartnerFormBloc, PartnerFormState>(
-                  builder: (context, state) {
-                    final List<Relation> allPartners = [
-                      ...relations,
-                      ...state.relationsList
-                    ];
+                final deleted = state.deletedPartners
+                    .map((r) => r.relationId.asKey())
+                    .toSet();
+                final visiblePartners = allPartners
+                    .where((p) => !deleted.contains(p.relationId.asKey()))
+                    .toList();
 
-                    final deleted = state.deletedPartners;
-                    final visiblePartners = allPartners
-                        .where((p) => !deleted
-                            .containsKey(p.partnerNode!.nodeId.getOrCrash()))
-                        .toList();
+                return GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20,
+                    childAspectRatio: 3,
+                  ),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: visiblePartners.length,
+                  itemBuilder: (context, index) {
+                    final sinRelation = visiblePartners[index];
+                    final partner = sinRelation.partnerNode!;
 
-                    return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: 3,
-                      ),
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: visiblePartners.length,
-                      itemBuilder: (context, index) {
-                        final sinRelation = visiblePartners[index];
-                        final partner = sinRelation.partnerNode!;
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    final name = TextEditingController(
+                        text: partner.firstName.getOrCrash());
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
                           children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  height: 63,
-                                  width: isEditing ? 245 : 273,
-                                  child: AppFormField(
-                                    label:
-                                        'الزوج${node.gender == Gender.male ? 'ة' : ''}',
-                                    hint: '',
-                                    onSaved: (_) {},
-                                    initialValue:
-                                        partner.firstName.getOrCrash(),
-                                    validator: (_) => '',
-                                    isEditing: false,
-                                  ),
-                                ),
-                                if (isEditing)
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 22.0),
-                                    child: IconOnlyButton(
-                                        onPressed: () {
-                                          if (sinRelation.children.isEmpty) {
-                                            final relation = sinRelation
-                                                .copyWith(mainNode: node);
-                                            context.read<PartnerFormBloc>().add(
-                                                  PartnerFormEvent
-                                                      .deleltPartner(
-                                                    partner: partner,
-                                                    relation: relation,
-                                                  ),
-                                                );
-                                          } else {
-                                            appSnackBar(
-                                              context,
-                                              text: getTr(context,
-                                                  'cannot_delete_partner_with_children')!,
-                                              type: SnackBarType.error,
+                            SizedBox(
+                              height: 64,
+                              width: isEditing ? 245 : 273,
+                              child: AppFormField(
+                                label:
+                                    'الزوج${node.gender == Gender.male ? 'ة' : ''}',
+                                hint: '',
+                                onSaved: (_) {},
+                                controller: name,
+                                validator: (_) => '',
+                                isEditing: false,
+                              ),
+                            ),
+                            if (isEditing)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 22.0),
+                                child: IconOnlyButton(
+                                    onPressed: () {
+                                      if (sinRelation.children.isEmpty) {
+                                        final relation = sinRelation.copyWith(
+                                            mainNode: node);
+                                        context.read<PartnerFormBloc>().add(
+                                              PartnerFormEvent.deleltPartner(
+                                                partner: partner,
+                                                relation: relation,
+                                              ),
                                             );
-                                          }
-                                        },
-                                        icon: const Icon(Icons.close)),
-                                  )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                if (sinRelation.marriageDate != null) ...[
-                                  Text(
-                                    '${getTr(context, 'marriage_date')}: ${sinRelation.marriageDate!.year}',
-                                    style: kCaption1Style.copyWith(
-                                      color: kBlacksColor[600],
-                                    ),
-                                  ),
-                                  kHSpacer20,
-                                ],
-                                Text(
-                                  '${getTr(context, 'status')}: ${getMarriageSt(sinRelation.marriageStatus, node.gender)}',
-                                  style: kCaption1Style.copyWith(
-                                    color: kBlacksColor[600],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            kVSpacer10,
+                                      } else {
+                                        appSnackBar(
+                                          context,
+                                          text: getTr(context,
+                                              'cannot_delete_partner_with_children')!,
+                                          type: SnackBarType.error,
+                                        );
+                                      }
+                                    },
+                                    icon: const Icon(Icons.close)),
+                              )
                           ],
-                        );
-                      },
+                        ),
+                        Row(
+                          children: [
+                            if (sinRelation.marriageDate != null) ...[
+                              Text(
+                                '${getTr(context, 'marriage_date')}: ${sinRelation.marriageDate!.year}',
+                                style: kCaption1Style.copyWith(
+                                  color: kBlacksColor[600],
+                                ),
+                              ),
+                              kHSpacer20,
+                            ],
+                            Text(
+                              '${getTr(context, 'status')}: ${getMarriageSt(context, sinRelation.marriageStatus, node.gender)}',
+                              style: kCaption1Style.copyWith(
+                                color: kBlacksColor[600],
+                              ),
+                            ),
+                          ],
+                        ),
+                        kVSpacer10,
+                      ],
                     );
                   },
-                ),
-              ],
-            );
-          },
-          initial: (_) => const SizedBox(),
-          getRelationInProgress: (_) => const SizedBox(),
-          getAllRelationsInProgress: (_) => const SizedBox(),
-          gettingAllRelationsFailure: (_) => const SizedBox(),
-          gettingRelationFailure: (_) => const SizedBox(),
-          gettingRelationSuccess: (_) => const SizedBox(),
+                );
+              },
+            ),
+          ],
         );
       },
     );

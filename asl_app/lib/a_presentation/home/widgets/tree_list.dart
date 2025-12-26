@@ -2,10 +2,7 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/tree/widgets/add_new_tree.dart';
 import 'package:asl/a_presentation/tree/widgets/delete_tree.dart';
-import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
-import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
-import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
-import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -18,88 +15,55 @@ class TreeList extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TreeWatcherBloc, TreeWatcherState>(
+    return BlocBuilder<LocalTreeBloc, LocalTreeState>(
       builder: (context, state) {
-        return state.map(
-          initial: (_) => const SizedBox(),
-          getAllTreesInProgress: (_) => const SizedBox(),
-          getTreeInProgress: (_) => const SizedBox(),
-          gettingAllTreesSuccess: (state) {
-            return BlocProvider(
-              create: (context) => CurrentTreeBloc()
-                ..add(CurrentTreeEvent.updateAllTree(trees: state.trees)),
-              child: BlocBuilder<CurrentTreeBloc, CurrentTreeState>(
-                builder: (context, state) {
-                  var currentTree = state.currentTree;
-                  final trees = state.trees;
+        final trees = state.trees;
 
-                  if (currentTree != null && trees.isNotEmpty) {
-                    final menuItems = trees
-                        .map((Tree tree) => DropdownMenuItem<String>(
-                              value: tree.treeId.getOrCrash(),
-                              child: ListTreeItem(
-                                  id: tree.treeId,
-                                  treeName: tree.treeName.getOrCrash(),
-                                  rootLetter: tree.fullName
-                                      .getOrCrash()
-                                      .substring(0, 1)),
-                            ))
-                        .toList();
-                    menuItems.add(DropdownMenuItem<String>(
-                      value: 'add_new',
-                      child: Text(getTr(context, 'add_family_tree')!),
-                    ));
+        if (trees.isNotEmpty) {
+          final menuItems = trees
+              .map(
+                (Tree tree) => DropdownMenuItem<String>(
+                  value: tree.treeId.getOrCrash(),
+                  child: ListTreeItem(
+                    id: tree.treeId,
+                    treeName: tree.treeName.getOrCrash(),
+                    rootLetter: tree.fullName.getOrCrash().substring(0, 1),
+                  ),
+                ),
+              )
+              .toList();
+          menuItems.add(DropdownMenuItem<String>(
+            value: 'add_new',
+            child: Text(getTr(context, 'add_family_tree')!),
+          ));
 
-                    print(
-                        'LOG | TreeList: menuItems.length: ${menuItems.length}');
-                    return DropdownButton(
-                      items: menuItems,
-                      isExpanded: true,
-                      value: currentTree.treeId.getOrCrash(),
-                      onChanged: (String? value) {
-                        if (value == 'add_new') {
-                          showNewTreePanel(context);
-                        } else {
-                          final t = trees.firstWhere(
-                              (tree) => tree.treeId.getOrCrash() == value);
+          debugPrint('LOG | TreeList: menuItems.length: ${menuItems.length}');
+          return DropdownButton(
+            items: menuItems,
+            isExpanded: true,
+            value: state.selectedTreeId!.getOrCrash(),
+            onChanged: (String? value) {
+              if (value == 'add_new') {
+                showNewTreePanel(context);
+              } else {
+                final t = trees
+                    .firstWhere((tree) => tree.treeId.getOrCrash() == value);
 
-                          //  (1) Update the Tree
-                          //  1. Update the current tree
-                          context
-                              .read<CurrentTreeBloc>()
-                              .add(CurrentTreeEvent.updateCurrentTree(tree: t));
-
-                          //  2. Update the current nodes
-                          context
-                              .read<NodeWatcherBloc>()
-                              .add(NodeWatcherEvent.getTree(
-                                treeId: t.rootId,
-                                rootId: t.rootId,
-                              ));
-
-                          //  3. Update the share settings
-                          context.read<ShareOptionBloc>().add(
-                              ShareOptionEvent.initialized(t.shareOption ?? 0));
-                        }
-                      },
-                      underline: const SizedBox(),
-                      icon: const Icon(Icons.expand_more_rounded),
-                      dropdownColor: kWhitesColor[600],
-                      style: kBodyMedium,
-                      elevation: 1,
-                      padding: EdgeInsets.zero,
-                    );
-                  } else {
-                    return const SizedBox();
-                  }
-                },
-              ),
-            );
-          },
-          gettingAllTreesFailure: (_) => const SizedBox(),
-          gettingTreeSuccess: (_) => const SizedBox(),
-          gettingTreeFailure: (_) => const SizedBox(),
-        );
+                // Update the local tree
+                context.read<LocalTreeBloc>().add(LocalTreeEvent.selectTree(
+                    treeId: t.treeId, rootId: t.rootId));
+              }
+            },
+            underline: const SizedBox(),
+            icon: const Icon(Icons.expand_more_rounded),
+            dropdownColor: kWhitesColor[600],
+            style: kBodyMedium,
+            elevation: 1,
+            padding: EdgeInsets.zero,
+          );
+        } else {
+          return const SizedBox();
+        }
       },
     );
   }
@@ -119,9 +83,7 @@ class ListTreeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onLongPress: () {
-        showDeleteTreePanel(context, id: id);
-      },
+      onLongPress: () => showDeleteTreePanel(context, id: id),
       child: Row(
         children: [
           Container(

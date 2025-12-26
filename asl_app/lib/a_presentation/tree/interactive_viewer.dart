@@ -1,12 +1,8 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/tree/tree_view.dart';
-import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
-import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
-import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
-import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,91 +11,80 @@ class InteractiveView extends StatelessWidget {
 
   final TransformationController _controller = TransformationController();
 
+  void drawTree(
+    LocalTreeState state,
+  ) {
+    // debugPrint('LOG | root with ${state.root.relations.length} relations');
+    // root = state.root;
+    // context.read<DrawTreeBloc>().add(
+    //       DrawTreeEvent.drawNewTree(
+    //         tree: context.read<CurrentTreeBloc>().state.currentTree!,
+    //         root: state.root,
+    //         maxGenerations: NUM_GEN_OPTIONS[context
+    //             .read<TreeSettingsBloc>()
+    //             .state
+    //             .numberOfGenerations]['number'],
+    //         isShowUnknown: context.read<TreeSettingsBloc>().state.showUnknown,
+    //         context: context,
+    //       ),
+    //     );
+  }
   @override
   Widget build(BuildContext context) {
-    TNode? root;
-    return BlocListener<NodeWatcherBloc, NodeWatcherState>(
-      listener: (_, state) {
-        state.map(
-          initial: (_) {},
-          loadInProgress: (_) {},
-          inProgress: (_) {},
-          loadSuccess: (state) {
-            print('LOG | root with ${state.root.relations.length} relations');
-            root = state.root;
-            context.read<DrawTreeBloc>().add(
-                  DrawTreeEvent.drawNewTree(
-                    tree: context.read<CurrentTreeBloc>().state.currentTree!,
-                    root: state.root,
-                    maxGenerations: NUM_GEN_OPTIONS[context
-                        .read<TreeSettingsBloc>()
-                        .state
-                        .numberOfGenerations]['value'],
-                    isShowUnknown:
-                        context.read<TreeSettingsBloc>().state.showUnknown,
-                    context: context,
-                  ),
-                );
-          },
-          loadFailure: (_) {},
-          gettingNodeSuccess: (_) {},
-          gettingNodeFailure: (_) {},
-        );
-      },
-      child: BlocBuilder<NodeWatcherBloc, NodeWatcherState>(
-        builder: (context, nState) {
-          _controller.value = Matrix4.identity()..scale(0.6);
-          print(
-              'LOG | InteractiveView: rebuild after NodeWatcherBloc state changes');
-          return nState.map(
-            initial: (_) => const SizedBox(),
-            loadInProgress: (_) => const LoadingWidget(),
-            inProgress: (_) => const LoadingWidget(),
-            loadSuccess: (nState) {
-              print('LOG | InteractiveView: rebuild with new tree nodes');
-
-              return BlocListener<TreeSettingsBloc, TreeSettingsState>(
-                listener: (context, state) {
-                  _controller.value = Matrix4.identity()
-                    ..scale(state.zoomScale);
-                },
-                child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
-                  listenWhen: (prev, curr) =>
-                      prev.numberOfGenerations != curr.numberOfGenerations,
-                  listener: (context, state) {
-                    if (root != null) {
-                      context.read<DrawTreeBloc>().add(
-                            DrawTreeEvent.drawNewTree(
-                              tree: context
-                                  .read<CurrentTreeBloc>()
-                                  .state
-                                  .currentTree!,
-                              root: root!,
-                              maxGenerations:
-                                  NUM_GEN_OPTIONS[state.numberOfGenerations]
-                                      ['value'],
-                              context: context,
-                            ),
-                          );
-                    }
-                  },
-                  child: InteractiveViewer(
-                      constrained: false,
-                      transformationController: _controller,
-                      alignment: Alignment.center,
-                      boundaryMargin: const EdgeInsets.all(1000),
-                      minScale: MIN_ZOOM,
-                      maxScale: MAX_ZOOM,
-                      child: const TreeView()),
+    debugPrint('LOG | InteractiveView: rebuild with new tree nodes');
+    return BlocBuilder<LocalTreeBloc, LocalTreeState>(
+      builder: (context, treeState) {
+        if (treeState.focusRootId != null) {
+          print('--- DRAWing ${treeState.focusRootId}');
+          context.read<DrawTreeBloc>().add(
+                DrawTreeEvent.drawNewTree(
+                  store: treeState.store,
+                  rootId: treeState.focusRootId!,
+                  maxGenerations:
+                      //TODO: check settings null
+                      NUM_GEN_OPTIONS[treeState.settings!.numberOfGenerationOpt]
+                          ['number'],
+                  context: context,
                 ),
               );
+        }
+        return BlocListener<TreeSettingsBloc, TreeSettingsState>(
+          listener: (context, state) {
+            _controller.value = Matrix4.identity()..scale(state.zoomScale);
+
+            // _controller.value = Matrix4.identity()..scale(0.6);
+            // debugPrint(
+            //     'LOG | InteractiveView: rebuild after NodeWatcherBloc state changes');
+          },
+          child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+            listenWhen: (prev, curr) =>
+                prev.numberOfGenerations != curr.numberOfGenerations,
+            listener: (context, state) {
+              if (treeState.focusRootId != null) {
+                print('--- DRAWing ${treeState.focusRootId}');
+                context.read<DrawTreeBloc>().add(
+                      DrawTreeEvent.drawNewTree(
+                        store: treeState.store,
+                        rootId: treeState.focusRootId!,
+                        maxGenerations:
+                            NUM_GEN_OPTIONS[state.numberOfGenerations]
+                                ['number'],
+                        context: context,
+                      ),
+                    );
+              }
             },
-            loadFailure: (_) => const SizedBox(),
-            gettingNodeSuccess: (_) => const SizedBox(),
-            gettingNodeFailure: (_) => const SizedBox(),
-          );
-        },
-      ),
+            child: InteractiveViewer(
+                constrained: false,
+                transformationController: _controller,
+                alignment: Alignment.center,
+                boundaryMargin: const EdgeInsets.all(1000),
+                minScale: MIN_ZOOM,
+                maxScale: MAX_ZOOM,
+                child: const TreeView()),
+          ),
+        );
+      },
     );
   }
 }

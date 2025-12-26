@@ -29,6 +29,7 @@ class NodeAliveBtn extends StatelessWidget {
       builder: (context, state) {
         return AliveWidget(
           color: color,
+          isEditing: isEditing,
           isAlive: state.node!.isAlive,
           aliveOrDead: aliveOrDead,
         );

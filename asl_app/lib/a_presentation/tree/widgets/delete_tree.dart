@@ -1,8 +1,7 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
-import 'package:asl/b_application/tree_bloc/tree_actor/tree_actor_bloc.dart';
-import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
@@ -13,63 +12,45 @@ Future<dynamic> showDeleteTreePanel(BuildContext contextPage,
   return showDialog(
     context: contextPage,
     builder: (BuildContext dialogContext) {
-      return BlocListener<TreeActorBloc, TreeActorState>(
-        listener: (context, state) {
-          state.map(
-              initial: (_) {},
-              actionInProgress: (_) {},
-              deleteFailure: (_) {},
-              deleteSuccess: (_) {
-                contextPage
-                    .read<TreeWatcherBloc>()
-                    .add(const TreeWatcherEvent.getAllTrees());
-                Navigator.pop(contextPage);
-              });
-        },
-        child: AlertDialog(
-          backgroundColor: kRootColors[700],
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
-          scrollable: true,
-          content: Container(
-            alignment: Alignment.topRight,
-            padding: const EdgeInsets.all(8.0),
-            width: 100.0,
-            height: 110.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(getTr(contextPage, 'do_you_want_to_delete_the_tree')!),
-                kVSpacer20,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    BlocBuilder<TreeActorBloc, TreeActorState>(
-                      builder: (context, state) {
-                        return AppButton(
-                            onPressed: () {
-                              contextPage
-                                  .read<TreeActorBloc>()
-                                  .add(TreeActorEvent.deleted(treeId: id));
-                            },
-                            label: 'نعم، أحذف',
-                            fillColor: kRedColors);
+      return AlertDialog(
+        backgroundColor: kRootColors[700],
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
+        scrollable: true,
+        content: Container(
+          alignment: Alignment.topRight,
+          padding: const EdgeInsets.all(8.0),
+          width: 100.0,
+          height: 110.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.0),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(getTr(contextPage, 'do_you_want_to_delete_the_tree')!),
+              kVSpacer20,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  AppButton(
+                      onPressed: () {
+                        contextPage
+                            .read<LocalTreeBloc>()
+                            .add(LocalTreeEvent.deleteTree(treeId: id));
+                        Navigator.pop(contextPage);
+                        Navigator.pop(contextPage);
                       },
-                    ),
-                    AppButton(
-                      onPressed: () => contextPage
-                          .read<TreeActorBloc>()
-                          .add(TreeActorEvent.deleted(treeId: id)),
-                      label: 'لا، إلغاء',
-                      fillColor: kRootColors,
-                    )
-                  ],
-                )
-              ],
-            ),
+                      label: 'نعم، أحذف',
+                      fillColor: kRedColors),
+                  AppButton(
+                    onPressed: () => Navigator.pop(contextPage),
+                    label: 'لا، إلغاء',
+                    fillColor: kRootColors,
+                  )
+                ],
+              )
+            ],
           ),
         ),
       );

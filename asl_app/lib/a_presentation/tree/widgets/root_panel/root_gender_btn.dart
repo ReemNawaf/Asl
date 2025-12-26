@@ -34,6 +34,7 @@ class RootGenderBtn extends StatelessWidget {
           color: color,
           gender: state.root.gender,
           femaleOrMale: femaleOrMale,
+          isEditing: true,
         );
       },
     );

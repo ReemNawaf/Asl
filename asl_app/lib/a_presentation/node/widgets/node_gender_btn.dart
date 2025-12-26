@@ -34,6 +34,7 @@ class NodeGenderBtn extends StatelessWidget {
       builder: (context, state) {
         return GenderWidget(
             color: color,
+            isEditing: isEditing,
             gender: state.node!.gender,
             femaleOrMale: femaleOrMale);
       },

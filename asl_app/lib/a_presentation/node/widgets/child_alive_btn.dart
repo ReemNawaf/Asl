@@ -33,6 +33,7 @@ class ChildAliveBtn extends StatelessWidget {
           color: color,
           isAlive: state.tempChild.isAlive,
           aliveOrDead: aliveOrDead,
+          isEditing: true,
         );
       },
     );

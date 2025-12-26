@@ -12,17 +12,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AddParentDropListWidget extends StatelessWidget {
   const AddParentDropListWidget({
     super.key,
-    required this.relations,
+    required this.allRelations,
     required this.gender,
   });
 
-  final List<Relation?> relations;
+  final List<Relation?> allRelations;
   final Gender gender;
 
   @override
   Widget build(BuildContext context) {
-    if (relations.isNotEmpty) {
-      final menuItems = relations
+    if (allRelations.isNotEmpty) {
+      final menuItems = allRelations
           .map((Relation? re) => DropdownMenuItem<UniqueId>(
                 value: re!.relationId,
                 child: ListParentItem(
@@ -45,7 +45,7 @@ class AddParentDropListWidget extends StatelessWidget {
               value: context.read<ChildFormBloc>().state.tempChild.upperFamily,
               onChanged: (value) {
                 final re =
-                    relations.firstWhere((ree) => ree!.relationId == value)!;
+                    allRelations.firstWhere((ree) => ree!.relationId == value)!;
 
                 context
                     .read<ChildFormBloc>()

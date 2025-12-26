@@ -10,10 +10,12 @@ class GenderWidget extends StatelessWidget {
     required this.color,
     required this.gender,
     required this.femaleOrMale,
+    required this.isEditing,
   });
 
   final MaterialColor color;
   final Gender gender;
+  final bool isEditing;
   final void Function({required bool isFemaleSelected}) femaleOrMale;
 
   @override
@@ -26,7 +28,8 @@ class GenderWidget extends StatelessWidget {
         Row(
           children: [
             GendeMinButton(
-              onTap: () => femaleOrMale(isFemaleSelected: false),
+              onTap: () =>
+                  isEditing ? femaleOrMale(isFemaleSelected: true) : {},
               color: color,
               text: getTr(context, 'female')!,
               gender: Gender.female,
@@ -34,7 +37,8 @@ class GenderWidget extends StatelessWidget {
             ),
             const SizedBox(width: 16.0),
             GendeMinButton(
-              onTap: () => femaleOrMale(isFemaleSelected: true),
+              onTap: () =>
+                  isEditing ? femaleOrMale(isFemaleSelected: false) : {},
               color: color,
               text: getTr(context, 'male')!,
               gender: Gender.male,

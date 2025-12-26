@@ -1,16 +1,11 @@
-import 'package:asl/b_application/auth_bloc/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:asl/b_application/auth_bloc/sign_in_form/sign_in_form_bloc.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/relation_watcher/relation_watcher_bloc.dart';
-import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
-import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
-import 'package:asl/b_application/tree_bloc/tree_actor/tree_actor_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
-import 'package:asl/b_application/tree_bloc/tree_watcher/tree_watcher_bloc.dart';
 import 'package:dartz/dartz.dart' as z;
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
@@ -27,12 +22,34 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
+  static void setLocale(BuildContext context, Locale locale) {
+    final state = context.findAncestorStateOfType<_MyAppState>();
+    state!.setLocale(locale);
+  }
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    getLocale().then((locale) {
+      setState(() {
+        _locale = locale;
+      });
+    });
+  }
+
   final appRouter = AppRouter();
 
   @override
@@ -46,30 +63,21 @@ class _MyAppState extends State<MyApp> {
         BlocProvider<UserFormBloc>(
             create: (context) => getIt<UserFormBloc>()
               ..add(UserFormEvent.initialized(z.optionOf(AppUser.empty())))),
-        BlocProvider<TreeFormBloc>(create: (context) => getIt<TreeFormBloc>()),
-        BlocProvider<TreeWatcherBloc>(
-          create: (context) => getIt<TreeWatcherBloc>()
-            ..add(const TreeWatcherEvent.getAllTrees()),
+        BlocProvider<LocalTreeBloc>(
+          create: (context) =>
+              getIt<LocalTreeBloc>()..add(const LocalTreeEvent.loadAllTrees()),
         ),
-        BlocProvider<CurrentTreeBloc>(create: (context) => CurrentTreeBloc()),
         BlocProvider<TreeSettingsBloc>(
             create: (context) => getIt<TreeSettingsBloc>()),
-        BlocProvider<TreeActorBloc>(create: (cttx) => getIt<TreeActorBloc>()),
-        BlocProvider<NodeWatcherBloc>(
-            create: (context) => getIt<NodeWatcherBloc>()),
-        BlocProvider<ShareOptionBloc>(
-            create: (context) => getIt<ShareOptionBloc>()),
         BlocProvider<SignInFormBloc>(
             create: (context) => getIt<SignInFormBloc>()),
-        BlocProvider<TreeFormBloc>(create: (cttx) => getIt<TreeFormBloc>()),
+        BlocProvider<TreeFormBloc>(create: (cttx) => TreeFormBloc()),
         BlocProvider<NodeFormBloc>(create: (cttx) => getIt<NodeFormBloc>()),
         BlocProvider<DrawTreeBloc>(create: (cttx) => getIt<DrawTreeBloc>()),
         BlocProvider<PartnerFormBloc>(
             create: (context) => getIt<PartnerFormBloc>()),
         BlocProvider<ChildFormBloc>(
             create: (context) => getIt<ChildFormBloc>()),
-        BlocProvider<RelationWatcherBloc>(
-            create: (context) => getIt<RelationWatcherBloc>()),
       ],
       child: MaterialApp.router(
         routerConfig: appRouter.config(),
@@ -103,7 +111,7 @@ class _MyAppState extends State<MyApp> {
           ),
           scaffoldBackgroundColor: kWhitesColor,
         ),
-        locale: const Locale(arabic, 'SA'),
+        locale: _locale,
         localizationsDelegates: const [
           DemoLocalization.delegate,
           GlobalMaterialLocalizations.delegate,

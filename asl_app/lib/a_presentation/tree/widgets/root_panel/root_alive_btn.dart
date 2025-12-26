@@ -33,6 +33,7 @@ class RootAliveBtn extends StatelessWidget {
           color: color,
           aliveOrDead: aliveOrDead,
           isAlive: state.root.isAlive,
+          isEditing: true,
         );
       },
     );

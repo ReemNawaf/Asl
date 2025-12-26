@@ -9,8 +9,10 @@ class AliveWidget extends StatelessWidget {
     required this.color,
     required this.isAlive,
     required this.aliveOrDead,
+    required this.isEditing,
   });
 
+  final bool isEditing;
   final MaterialColor color;
   final bool isAlive;
   final Function({required bool isAliveSelected}) aliveOrDead;
@@ -25,17 +27,17 @@ class AliveWidget extends StatelessWidget {
         Row(
           children: [
             AliveButton(
-              onTap: () => aliveOrDead(isAliveSelected: true),
+              onTap: () => isEditing ? aliveOrDead(isAliveSelected: true) : {},
               color: color,
               text: getTr(context, 'alive')!,
               selected: isAlive,
             ),
             const SizedBox(width: 16.0),
             AliveButton(
-              onTap: () => aliveOrDead(isAliveSelected: false),
+              onTap: () => isEditing ? aliveOrDead(isAliveSelected: false) : {},
               color: color,
               text: getTr(context, 'dead')!,
-              selected: isAlive,
+              selected: !isAlive,
             ),
           ],
         ),

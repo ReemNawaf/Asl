@@ -1,6 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
-import 'package:asl/b_application/share_bloc/share_option/share_option_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +22,9 @@ class ShareOptions extends StatelessWidget {
         isExpanded: true,
         value: SHARE_OPTIONS[shareOption]['value'],
         onChanged: (String? value) {
-          context.read<ShareOptionBloc>().add(ShareOptionEvent.updated(
-              value == ShareOption.restricted.name ? 0 : 1));
+          context.read<TreeSettingsBloc>().add(
+              TreeSettingsEvent.updateShareSettings(
+                  value == ShareOption.restricted.name ? 0 : 1));
         },
         underline: const SizedBox(),
         icon: const Icon(Icons.expand_more_rounded),

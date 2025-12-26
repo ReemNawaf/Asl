@@ -14,15 +14,16 @@ import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:intl/intl.dart';
 
 class AddChildWidget extends StatelessWidget {
-  const AddChildWidget(
-      {super.key,
-      required this.node,
-      required this.color,
-      required this.relations});
+  const AddChildWidget({
+    super.key,
+    required this.node,
+    required this.color,
+    required this.allRelations,
+  });
 
   final TNode node;
   final MaterialColor color;
-  final List<Relation?> relations;
+  final List<Relation?> allRelations;
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +68,9 @@ class AddChildWidget extends StatelessWidget {
                               (f) => f.maybeMap(
                                 empty: (_) => getTr(
                                     context, 'first_name_cannot_be_empty'),
-                                shortFirstName: (_) =>
+                                shortName: (_) =>
                                     getTr(context, 'first_name_short'),
-                                spacedFirstName: (_) => getTr(context,
+                                spacedName: (_) => getTr(context,
                                     'first_name_cannot_contain_spaces'),
                                 orElse: () => null,
                               ),
@@ -80,7 +81,7 @@ class AddChildWidget extends StatelessWidget {
                   ),
                   kHSpacer20,
                   AddParentDropListWidget(
-                      relations: relations, gender: node.gender),
+                      allRelations: allRelations, gender: node.gender),
                 ],
               ),
               Row(
@@ -154,15 +155,10 @@ class AddChildWidget extends StatelessWidget {
                   kHSpacer20,
                   Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30.0),
-                        child: ChildAliveBtn(color: color, ctx: context),
-                      ),
-                      kVSpacer10,
-                      Padding(
-                        padding: const EdgeInsets.only(top: 13.0),
-                        child: ChildGenderBtn(color: color, ctx: context),
-                      ),
+                      kVSpacer5,
+                      ChildAliveBtn(color: color, ctx: context),
+                      kVSpacer15,
+                      ChildGenderBtn(color: color, ctx: context),
                     ],
                   )
                 ],

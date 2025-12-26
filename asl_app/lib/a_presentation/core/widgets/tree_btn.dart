@@ -1,7 +1,6 @@
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-import 'package:asl/b_application/node_bloc/node_watcher/node_watcher_bloc.dart';
-import 'package:asl/b_application/tree_bloc/current_tree/current_tree_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,16 +14,11 @@ class TreeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // # TODO: remove for READ ONCE
         final cNode = context.read<NodeFormBloc>().state.node;
 
-        //  Update the current nodes
-        context.read<NodeWatcherBloc>().add(NodeWatcherEvent.getTree(
-            treeId: cNode!.treeId, rootId: cNode.nodeId));
-
         context
-            .read<CurrentTreeBloc>()
-            .add(CurrentTreeEvent.updateCurrentRoot(node: cNode));
+            .read<LocalTreeBloc>()
+            .add(LocalTreeEvent.changeFocusRoot(nodeId: cNode!.nodeId));
         Navigator.pop(context);
       },
       child: Container(

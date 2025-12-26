@@ -5,7 +5,9 @@ import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/node_gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
 import 'package:asl/a_presentation/node/widgets/node_id_wdg.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
+import 'package:asl/c_domain/local_tree_views/tree_graph_lineage.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +32,12 @@ class InfoPanel extends StatelessWidget {
         final node = state.node;
 
         if (node == null) return const SizedBox();
+
+        final fullName = TreeGraphLineage.fatherBinText(
+            store: context.read<LocalTreeBloc>().state.store,
+            personId: node.nodeId,
+            stopAtNodeId: context.read<LocalTreeBloc>().state.mainRootId,
+            gender: node.gender);
 
         return Form(
           autovalidateMode: state.showErrorMessages,
@@ -65,19 +73,21 @@ class InfoPanel extends StatelessWidget {
                               .value
                               .fold(
                                 (f) => f.maybeMap(
-                                  empty: (_) => getTr(
-                                      context, 'first_name_cannot_be_empty'),
-                                  spacedFirstName: (_) => getTr(context,
+                                  empty: (_) =>
+                                      getTr(context, 'name_cannot_be_empty'),
+                                  spacedName: (_) => getTr(context,
                                       'first_name_cannot_contain_spaces'),
-                                  shortFirstName: (_) =>
-                                      getTr(context, 'first_name_short'),
+                                  shortName: (_) =>
+                                      getTr(context, 'name_too_short'),
+                                  exceedingLength: (_) =>
+                                      getTr(context, 'name_too_long')!,
                                   orElse: () => null,
                                 ),
                                 (_) => null,
                               );
                         },
                         isValid: state.node!.firstName.isValid(),
-                        isEditing: state.isEditing == 0,
+                        isEditing: state.isEditing,
                       ),
                     ),
                     kHSpacer20,
@@ -85,9 +95,10 @@ class InfoPanel extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 1.0),
                         child: NodeGenderBtn(
-                            color: color,
-                            ctx: context,
-                            isEditing: state.isEditing == 0),
+                          color: color,
+                          ctx: context,
+                          isEditing: state.isEditing,
+                        ),
                       ),
                   ],
                 ),
@@ -121,7 +132,7 @@ class InfoPanel extends StatelessWidget {
                                   : DateFormat.yMMMd()
                                       .format(state.node!.birthDate!),
                             ),
-                            isEditing: state.isEditing == 0,
+                            isEditing: state.isEditing,
                           ),
                         ),
                         if (!state.node!.isAlive)
@@ -145,7 +156,7 @@ class InfoPanel extends StatelessWidget {
                                     : DateFormat.yMMMd()
                                         .format(state.node!.deathDate!),
                               ),
-                              isEditing: state.isEditing == 0,
+                              isEditing: state.isEditing,
                               startDate: state.node!.birthDate
                                       ?.add(const Duration(days: 1)) ??
                                   DateTime(1000),
@@ -160,7 +171,7 @@ class InfoPanel extends StatelessWidget {
                       child: NodeAliveBtn(
                         color: color,
                         ctx: context,
-                        isEditing: state.isEditing == 0,
+                        isEditing: state.isEditing,
                       ),
                     ),
                   ],
@@ -171,9 +182,7 @@ class InfoPanel extends StatelessWidget {
                   contextDialog: contextDialog,
                   id: state.node!.nodeId.getOrCrash(),
                   color: color,
-                  // TODO: get the node full name
-                  name: '',
-                  // state.node!.firstName.getOrCrash(),
+                  name: fullName,
                 ),
               ],
             ),

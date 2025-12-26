@@ -1,5 +1,5 @@
-// Transacrion Constants
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 
 const int MIM_HEIGHT = 620;
@@ -28,15 +28,18 @@ enum AuthMode { signin, signup }
 
 enum MarriageStatus { married, divorced, widowhood }
 
-String getMarriageSt(MarriageStatus status, Gender gender) {
+String getMarriageSt(BuildContext ctx, MarriageStatus status, Gender gender) {
   String key = 'male_married';
 
   if (status == MarriageStatus.divorced) {
-    key = gender == Gender.female ? 'female_divorced' : 'male_divorced';
+    key = getTr(
+        ctx, gender == Gender.female ? 'female_divorced' : 'male_divorced')!;
   } else if (status == MarriageStatus.married) {
-    key = gender == Gender.female ? 'female_married' : 'male_married';
+    key = getTr(
+        ctx, gender == Gender.female ? 'female_married' : 'male_married')!;
   } else if (status == MarriageStatus.widowhood) {
-    key = gender == Gender.female ? 'female_widowhood' : 'male_widowhood';
+    key = getTr(
+        ctx, gender == Gender.female ? 'female_widowhood' : 'male_widowhood')!;
   }
   return key;
 }
@@ -65,3 +68,8 @@ final kRoundedRectangleBorder = RoundedRectangleBorder(
       color: kBlacksColor,
       width: 1.5,
     ));
+
+final kAppDivider = Divider(
+  color: kRootColors[600],
+  thickness: 1,
+);
