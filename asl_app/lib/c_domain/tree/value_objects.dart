@@ -7,7 +7,7 @@ class TreeName extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  static const maxLength = 15;
+  static const maxLength = 30;
 
   factory TreeName(String input) {
     return TreeName._(
@@ -16,7 +16,9 @@ class TreeName extends ValueObject<String> {
       validateMaxStringLength(input, maxLength)
           //  2. the tree name is not empty
           .flatMap(validateStringNotEmpty)
-          // 3. the tree name one single line
+          // 3. the first name is larger than 3 char
+          .flatMap(validateNameLength)
+          // 4. the tree name one single line
           .flatMap(validateSingleLine),
     );
   }
@@ -56,7 +58,7 @@ class FullName extends ValueObject<String> {
           .flatMap(validateStringNotEmpty)
 
           // 3. the first name is larger than 3 char
-          .flatMap(validateFirstNameLength)
+          .flatMap(validateNameLength)
 
           // 4. the first name one single line
           .flatMap(validateSingleLine),

@@ -1,5 +1,6 @@
 import 'package:asl/c_domain/core/failures.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/tree/tree_settings.dart';
 import 'package:asl/c_domain/tree/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,9 +17,7 @@ abstract class Tree implements _$Tree {
     required UniqueId rootId,
     required TreeName treeName,
     required FullName fullName,
-    required bool isShowUnknown,
-    required int numberOfGenerationOption,
-    int? shareOption,
+    required TreeSettings treeSettings,
   }) = _Tree;
 
   factory Tree.empty() => Tree(
@@ -27,9 +26,7 @@ abstract class Tree implements _$Tree {
         rootId: UniqueId(),
         fullName: FullName(''),
         creatorId: UniqueId(),
-        shareOption: 0,
-        numberOfGenerationOption: 0,
-        isShowUnknown: false,
+        treeSettings: TreeSettings.empty(),
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

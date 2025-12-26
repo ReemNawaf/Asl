@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TreeSettings {
   UniqueId? get treeId => throw _privateConstructorUsedError;
-  int get numberOfGeneration => throw _privateConstructorUsedError;
+  int get numberOfGenerationOpt => throw _privateConstructorUsedError;
+  int get langOpt => throw _privateConstructorUsedError;
+  int get shareOpt => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +33,12 @@ abstract class $TreeSettingsCopyWith<$Res> {
           TreeSettings value, $Res Function(TreeSettings) then) =
       _$TreeSettingsCopyWithImpl<$Res, TreeSettings>;
   @useResult
-  $Res call({UniqueId? treeId, int numberOfGeneration, bool isShowUnknown});
+  $Res call(
+      {UniqueId? treeId,
+      int numberOfGenerationOpt,
+      int langOpt,
+      int shareOpt,
+      bool isShowUnknown});
 }
 
 /// @nodoc
@@ -48,7 +55,9 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
   @override
   $Res call({
     Object? treeId = freezed,
-    Object? numberOfGeneration = null,
+    Object? numberOfGenerationOpt = null,
+    Object? langOpt = null,
+    Object? shareOpt = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_value.copyWith(
@@ -56,9 +65,17 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as UniqueId?,
-      numberOfGeneration: null == numberOfGeneration
-          ? _value.numberOfGeneration
-          : numberOfGeneration // ignore: cast_nullable_to_non_nullable
+      numberOfGenerationOpt: null == numberOfGenerationOpt
+          ? _value.numberOfGenerationOpt
+          : numberOfGenerationOpt // ignore: cast_nullable_to_non_nullable
+              as int,
+      langOpt: null == langOpt
+          ? _value.langOpt
+          : langOpt // ignore: cast_nullable_to_non_nullable
+              as int,
+      shareOpt: null == shareOpt
+          ? _value.shareOpt
+          : shareOpt // ignore: cast_nullable_to_non_nullable
               as int,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
@@ -76,7 +93,12 @@ abstract class _$$TreeSettingsImplCopyWith<$Res>
       __$$TreeSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId? treeId, int numberOfGeneration, bool isShowUnknown});
+  $Res call(
+      {UniqueId? treeId,
+      int numberOfGenerationOpt,
+      int langOpt,
+      int shareOpt,
+      bool isShowUnknown});
 }
 
 /// @nodoc
@@ -91,7 +113,9 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? treeId = freezed,
-    Object? numberOfGeneration = null,
+    Object? numberOfGenerationOpt = null,
+    Object? langOpt = null,
+    Object? shareOpt = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_$TreeSettingsImpl(
@@ -99,9 +123,17 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
           ? _value.treeId
           : treeId // ignore: cast_nullable_to_non_nullable
               as UniqueId?,
-      numberOfGeneration: null == numberOfGeneration
-          ? _value.numberOfGeneration
-          : numberOfGeneration // ignore: cast_nullable_to_non_nullable
+      numberOfGenerationOpt: null == numberOfGenerationOpt
+          ? _value.numberOfGenerationOpt
+          : numberOfGenerationOpt // ignore: cast_nullable_to_non_nullable
+              as int,
+      langOpt: null == langOpt
+          ? _value.langOpt
+          : langOpt // ignore: cast_nullable_to_non_nullable
+              as int,
+      shareOpt: null == shareOpt
+          ? _value.shareOpt
+          : shareOpt // ignore: cast_nullable_to_non_nullable
               as int,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
@@ -116,20 +148,26 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
 class _$TreeSettingsImpl extends _TreeSettings {
   const _$TreeSettingsImpl(
       {this.treeId,
-      required this.numberOfGeneration,
+      required this.numberOfGenerationOpt,
+      required this.langOpt,
+      required this.shareOpt,
       required this.isShowUnknown})
       : super._();
 
   @override
   final UniqueId? treeId;
   @override
-  final int numberOfGeneration;
+  final int numberOfGenerationOpt;
+  @override
+  final int langOpt;
+  @override
+  final int shareOpt;
   @override
   final bool isShowUnknown;
 
   @override
   String toString() {
-    return 'TreeSettings(treeId: $treeId, numberOfGeneration: $numberOfGeneration, isShowUnknown: $isShowUnknown)';
+    return 'TreeSettings(treeId: $treeId, numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, shareOpt: $shareOpt, isShowUnknown: $isShowUnknown)';
   }
 
   @override
@@ -138,15 +176,18 @@ class _$TreeSettingsImpl extends _TreeSettings {
         (other.runtimeType == runtimeType &&
             other is _$TreeSettingsImpl &&
             (identical(other.treeId, treeId) || other.treeId == treeId) &&
-            (identical(other.numberOfGeneration, numberOfGeneration) ||
-                other.numberOfGeneration == numberOfGeneration) &&
+            (identical(other.numberOfGenerationOpt, numberOfGenerationOpt) ||
+                other.numberOfGenerationOpt == numberOfGenerationOpt) &&
+            (identical(other.langOpt, langOpt) || other.langOpt == langOpt) &&
+            (identical(other.shareOpt, shareOpt) ||
+                other.shareOpt == shareOpt) &&
             (identical(other.isShowUnknown, isShowUnknown) ||
                 other.isShowUnknown == isShowUnknown));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, treeId, numberOfGeneration, isShowUnknown);
+  int get hashCode => Object.hash(runtimeType, treeId, numberOfGenerationOpt,
+      langOpt, shareOpt, isShowUnknown);
 
   @JsonKey(ignore: true)
   @override
@@ -158,14 +199,20 @@ class _$TreeSettingsImpl extends _TreeSettings {
 abstract class _TreeSettings extends TreeSettings {
   const factory _TreeSettings(
       {final UniqueId? treeId,
-      required final int numberOfGeneration,
+      required final int numberOfGenerationOpt,
+      required final int langOpt,
+      required final int shareOpt,
       required final bool isShowUnknown}) = _$TreeSettingsImpl;
   const _TreeSettings._() : super._();
 
   @override
   UniqueId? get treeId;
   @override
-  int get numberOfGeneration;
+  int get numberOfGenerationOpt;
+  @override
+  int get langOpt;
+  @override
+  int get shareOpt;
   @override
   bool get isShowUnknown;
   @override
