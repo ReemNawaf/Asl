@@ -12,7 +12,7 @@ abstract class PartnerFormEvent with _$PartnerFormEvent {
   const factory PartnerFormEvent.edited(TNode partner) = _Edited;
   const factory PartnerFormEvent.changeName(String name) = _ChangedName;
   const factory PartnerFormEvent.addPartnerByNodeId(
-      {required String partnerId, required TNode node}) = _AddPartnerByNodeId;
+      {required TNode? partner, required TNode node}) = _AddPartnerByNodeId;
   const factory PartnerFormEvent.showPartnerByNodeId(bool isAdding) =
       _ShowPartnerByNodeId;
 

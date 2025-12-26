@@ -2168,7 +2168,9 @@ mixin _$ChildFormState {
   bool get isEditing => throw _privateConstructorUsedError;
   bool get isAdding => throw _privateConstructorUsedError;
   bool get isCreated => throw _privateConstructorUsedError;
-  Option<Either<TNodeFailure, Unit>> get saveFailureOrSuccessOption =>
+  Either<TNodeFailure, List<TNode>>? get addedFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
+  Either<TNodeFailure, List<TNode>>? get deletedFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -2193,7 +2195,8 @@ abstract class $ChildFormStateCopyWith<$Res> {
       bool isEditing,
       bool isAdding,
       bool isCreated,
-      Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
+      Either<TNodeFailure, List<TNode>>? addedFailureOrSuccessOption,
+      Either<TNodeFailure, List<TNode>>? deletedFailureOrSuccessOption});
 
   $TNodeCopyWith<$Res> get tempChild;
 }
@@ -2221,7 +2224,8 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
     Object? isEditing = null,
     Object? isAdding = null,
     Object? isCreated = null,
-    Object? saveFailureOrSuccessOption = null,
+    Object? addedFailureOrSuccessOption = freezed,
+    Object? deletedFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       children: null == children
@@ -2264,10 +2268,14 @@ class _$ChildFormStateCopyWithImpl<$Res, $Val extends ChildFormState>
           ? _value.isCreated
           : isCreated // ignore: cast_nullable_to_non_nullable
               as bool,
-      saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
-          ? _value.saveFailureOrSuccessOption
-          : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TNodeFailure, Unit>>,
+      addedFailureOrSuccessOption: freezed == addedFailureOrSuccessOption
+          ? _value.addedFailureOrSuccessOption
+          : addedFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Either<TNodeFailure, List<TNode>>?,
+      deletedFailureOrSuccessOption: freezed == deletedFailureOrSuccessOption
+          ? _value.deletedFailureOrSuccessOption
+          : deletedFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Either<TNodeFailure, List<TNode>>?,
     ) as $Val);
   }
 
@@ -2299,7 +2307,8 @@ abstract class _$$ChildFormStateImplCopyWith<$Res>
       bool isEditing,
       bool isAdding,
       bool isCreated,
-      Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
+      Either<TNodeFailure, List<TNode>>? addedFailureOrSuccessOption,
+      Either<TNodeFailure, List<TNode>>? deletedFailureOrSuccessOption});
 
   @override
   $TNodeCopyWith<$Res> get tempChild;
@@ -2326,7 +2335,8 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
     Object? isEditing = null,
     Object? isAdding = null,
     Object? isCreated = null,
-    Object? saveFailureOrSuccessOption = null,
+    Object? addedFailureOrSuccessOption = freezed,
+    Object? deletedFailureOrSuccessOption = freezed,
   }) {
     return _then(_$ChildFormStateImpl(
       children: null == children
@@ -2369,10 +2379,14 @@ class __$$ChildFormStateImplCopyWithImpl<$Res>
           ? _value.isCreated
           : isCreated // ignore: cast_nullable_to_non_nullable
               as bool,
-      saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
-          ? _value.saveFailureOrSuccessOption
-          : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TNodeFailure, Unit>>,
+      addedFailureOrSuccessOption: freezed == addedFailureOrSuccessOption
+          ? _value.addedFailureOrSuccessOption
+          : addedFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Either<TNodeFailure, List<TNode>>?,
+      deletedFailureOrSuccessOption: freezed == deletedFailureOrSuccessOption
+          ? _value.deletedFailureOrSuccessOption
+          : deletedFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Either<TNodeFailure, List<TNode>>?,
     ));
   }
 }
@@ -2391,7 +2405,8 @@ class _$ChildFormStateImpl implements _ChildFormState {
       required this.isEditing,
       required this.isAdding,
       required this.isCreated,
-      required this.saveFailureOrSuccessOption})
+      required this.addedFailureOrSuccessOption,
+      required this.deletedFailureOrSuccessOption})
       : _children = children,
         _deletedChildren = deletedChildren;
 
@@ -2428,11 +2443,13 @@ class _$ChildFormStateImpl implements _ChildFormState {
   @override
   final bool isCreated;
   @override
-  final Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption;
+  final Either<TNodeFailure, List<TNode>>? addedFailureOrSuccessOption;
+  @override
+  final Either<TNodeFailure, List<TNode>>? deletedFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'ChildFormState(children: $children, deletedChildren: $deletedChildren, tempChild: $tempChild, relationId: $relationId, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isViewing: $isViewing, isEditing: $isEditing, isAdding: $isAdding, isCreated: $isCreated, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'ChildFormState(children: $children, deletedChildren: $deletedChildren, tempChild: $tempChild, relationId: $relationId, showErrorMessages: $showErrorMessages, isSaving: $isSaving, isViewing: $isViewing, isEditing: $isEditing, isAdding: $isAdding, isCreated: $isCreated, addedFailureOrSuccessOption: $addedFailureOrSuccessOption, deletedFailureOrSuccessOption: $deletedFailureOrSuccessOption)';
   }
 
   @override
@@ -2459,10 +2476,14 @@ class _$ChildFormStateImpl implements _ChildFormState {
                 other.isAdding == isAdding) &&
             (identical(other.isCreated, isCreated) ||
                 other.isCreated == isCreated) &&
-            (identical(other.saveFailureOrSuccessOption,
-                    saveFailureOrSuccessOption) ||
-                other.saveFailureOrSuccessOption ==
-                    saveFailureOrSuccessOption));
+            (identical(other.addedFailureOrSuccessOption,
+                    addedFailureOrSuccessOption) ||
+                other.addedFailureOrSuccessOption ==
+                    addedFailureOrSuccessOption) &&
+            (identical(other.deletedFailureOrSuccessOption,
+                    deletedFailureOrSuccessOption) ||
+                other.deletedFailureOrSuccessOption ==
+                    deletedFailureOrSuccessOption));
   }
 
   @override
@@ -2478,7 +2499,8 @@ class _$ChildFormStateImpl implements _ChildFormState {
       isEditing,
       isAdding,
       isCreated,
-      saveFailureOrSuccessOption);
+      addedFailureOrSuccessOption,
+      deletedFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -2500,8 +2522,10 @@ abstract class _ChildFormState implements ChildFormState {
       required final bool isEditing,
       required final bool isAdding,
       required final bool isCreated,
-      required final Option<Either<TNodeFailure, Unit>>
-          saveFailureOrSuccessOption}) = _$ChildFormStateImpl;
+      required final Either<TNodeFailure, List<TNode>>?
+          addedFailureOrSuccessOption,
+      required final Either<TNodeFailure, List<TNode>>?
+          deletedFailureOrSuccessOption}) = _$ChildFormStateImpl;
 
   @override
   Map<String, List<TNode>> get children;
@@ -2524,7 +2548,9 @@ abstract class _ChildFormState implements ChildFormState {
   @override
   bool get isCreated;
   @override
-  Option<Either<TNodeFailure, Unit>> get saveFailureOrSuccessOption;
+  Either<TNodeFailure, List<TNode>>? get addedFailureOrSuccessOption;
+  @override
+  Either<TNodeFailure, List<TNode>>? get deletedFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$ChildFormStateImplCopyWith<_$ChildFormStateImpl> get copyWith =>

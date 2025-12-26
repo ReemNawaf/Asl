@@ -18,36 +18,36 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DrawTreeEvent {
   int? get maxGenerations => throw _privateConstructorUsedError;
   bool? get isShowUnknown => throw _privateConstructorUsedError;
-  Tree get tree => throw _privateConstructorUsedError;
-  TNode get root => throw _privateConstructorUsedError;
+  TreeGraphStore get store => throw _privateConstructorUsedError;
+  UniqueId get rootId => throw _privateConstructorUsedError;
   BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? maxGenerations, bool? isShowUnknown,
-            Tree tree, TNode root, BuildContext context)
+            TreeGraphStore store, UniqueId rootId, BuildContext context)
         initialized,
     required TResult Function(int? maxGenerations, bool? isShowUnknown,
-            Tree tree, TNode root, BuildContext context)
+            TreeGraphStore store, UniqueId rootId, BuildContext context)
         drawNewTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult? Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         initialized,
-    TResult? Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult? Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         drawNewTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         initialized,
-    TResult Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         drawNewTree,
     required TResult orElse(),
   }) =>
@@ -86,12 +86,9 @@ abstract class $DrawTreeEventCopyWith<$Res> {
   $Res call(
       {int? maxGenerations,
       bool? isShowUnknown,
-      Tree tree,
-      TNode root,
+      TreeGraphStore store,
+      UniqueId rootId,
       BuildContext context});
-
-  $TreeCopyWith<$Res> get tree;
-  $TNodeCopyWith<$Res> get root;
 }
 
 /// @nodoc
@@ -109,8 +106,8 @@ class _$DrawTreeEventCopyWithImpl<$Res, $Val extends DrawTreeEvent>
   $Res call({
     Object? maxGenerations = freezed,
     Object? isShowUnknown = freezed,
-    Object? tree = null,
-    Object? root = null,
+    Object? store = null,
+    Object? rootId = null,
     Object? context = null,
   }) {
     return _then(_value.copyWith(
@@ -122,35 +119,19 @@ class _$DrawTreeEventCopyWithImpl<$Res, $Val extends DrawTreeEvent>
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
               as bool?,
-      tree: null == tree
-          ? _value.tree
-          : tree // ignore: cast_nullable_to_non_nullable
-              as Tree,
-      root: null == root
-          ? _value.root
-          : root // ignore: cast_nullable_to_non_nullable
-              as TNode,
+      store: null == store
+          ? _value.store
+          : store // ignore: cast_nullable_to_non_nullable
+              as TreeGraphStore,
+      rootId: null == rootId
+          ? _value.rootId
+          : rootId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TreeCopyWith<$Res> get tree {
-    return $TreeCopyWith<$Res>(_value.tree, (value) {
-      return _then(_value.copyWith(tree: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TNodeCopyWith<$Res> get root {
-    return $TNodeCopyWith<$Res>(_value.root, (value) {
-      return _then(_value.copyWith(root: value) as $Val);
-    });
   }
 }
 
@@ -165,14 +146,9 @@ abstract class _$$InitializedImplCopyWith<$Res>
   $Res call(
       {int? maxGenerations,
       bool? isShowUnknown,
-      Tree tree,
-      TNode root,
+      TreeGraphStore store,
+      UniqueId rootId,
       BuildContext context});
-
-  @override
-  $TreeCopyWith<$Res> get tree;
-  @override
-  $TNodeCopyWith<$Res> get root;
 }
 
 /// @nodoc
@@ -188,8 +164,8 @@ class __$$InitializedImplCopyWithImpl<$Res>
   $Res call({
     Object? maxGenerations = freezed,
     Object? isShowUnknown = freezed,
-    Object? tree = null,
-    Object? root = null,
+    Object? store = null,
+    Object? rootId = null,
     Object? context = null,
   }) {
     return _then(_$InitializedImpl(
@@ -201,14 +177,14 @@ class __$$InitializedImplCopyWithImpl<$Res>
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
               as bool?,
-      tree: null == tree
-          ? _value.tree
-          : tree // ignore: cast_nullable_to_non_nullable
-              as Tree,
-      root: null == root
-          ? _value.root
-          : root // ignore: cast_nullable_to_non_nullable
-              as TNode,
+      store: null == store
+          ? _value.store
+          : store // ignore: cast_nullable_to_non_nullable
+              as TreeGraphStore,
+      rootId: null == rootId
+          ? _value.rootId
+          : rootId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -223,8 +199,8 @@ class _$InitializedImpl implements _Initialized {
   const _$InitializedImpl(
       {this.maxGenerations,
       this.isShowUnknown,
-      required this.tree,
-      required this.root,
+      required this.store,
+      required this.rootId,
       required this.context});
 
   @override
@@ -232,15 +208,15 @@ class _$InitializedImpl implements _Initialized {
   @override
   final bool? isShowUnknown;
   @override
-  final Tree tree;
+  final TreeGraphStore store;
   @override
-  final TNode root;
+  final UniqueId rootId;
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'DrawTreeEvent.initialized(maxGenerations: $maxGenerations, isShowUnknown: $isShowUnknown, tree: $tree, root: $root, context: $context)';
+    return 'DrawTreeEvent.initialized(maxGenerations: $maxGenerations, isShowUnknown: $isShowUnknown, store: $store, rootId: $rootId, context: $context)';
   }
 
   @override
@@ -252,14 +228,14 @@ class _$InitializedImpl implements _Initialized {
                 other.maxGenerations == maxGenerations) &&
             (identical(other.isShowUnknown, isShowUnknown) ||
                 other.isShowUnknown == isShowUnknown) &&
-            (identical(other.tree, tree) || other.tree == tree) &&
-            (identical(other.root, root) || other.root == root) &&
+            (identical(other.store, store) || other.store == store) &&
+            (identical(other.rootId, rootId) || other.rootId == rootId) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, maxGenerations, isShowUnknown, tree, root, context);
+      runtimeType, maxGenerations, isShowUnknown, store, rootId, context);
 
   @JsonKey(ignore: true)
   @override
@@ -271,42 +247,42 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? maxGenerations, bool? isShowUnknown,
-            Tree tree, TNode root, BuildContext context)
+            TreeGraphStore store, UniqueId rootId, BuildContext context)
         initialized,
     required TResult Function(int? maxGenerations, bool? isShowUnknown,
-            Tree tree, TNode root, BuildContext context)
+            TreeGraphStore store, UniqueId rootId, BuildContext context)
         drawNewTree,
   }) {
-    return initialized(maxGenerations, isShowUnknown, tree, root, context);
+    return initialized(maxGenerations, isShowUnknown, store, rootId, context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult? Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         initialized,
-    TResult? Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult? Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         drawNewTree,
   }) {
     return initialized?.call(
-        maxGenerations, isShowUnknown, tree, root, context);
+        maxGenerations, isShowUnknown, store, rootId, context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         initialized,
-    TResult Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         drawNewTree,
     required TResult orElse(),
   }) {
     if (initialized != null) {
-      return initialized(maxGenerations, isShowUnknown, tree, root, context);
+      return initialized(maxGenerations, isShowUnknown, store, rootId, context);
     }
     return orElse();
   }
@@ -347,8 +323,8 @@ abstract class _Initialized implements DrawTreeEvent {
   const factory _Initialized(
       {final int? maxGenerations,
       final bool? isShowUnknown,
-      required final Tree tree,
-      required final TNode root,
+      required final TreeGraphStore store,
+      required final UniqueId rootId,
       required final BuildContext context}) = _$InitializedImpl;
 
   @override
@@ -356,9 +332,9 @@ abstract class _Initialized implements DrawTreeEvent {
   @override
   bool? get isShowUnknown;
   @override
-  Tree get tree;
+  TreeGraphStore get store;
   @override
-  TNode get root;
+  UniqueId get rootId;
   @override
   BuildContext get context;
   @override
@@ -378,14 +354,9 @@ abstract class _$$DrawNewTreeImplCopyWith<$Res>
   $Res call(
       {int? maxGenerations,
       bool? isShowUnknown,
-      Tree tree,
-      TNode root,
+      TreeGraphStore store,
+      UniqueId rootId,
       BuildContext context});
-
-  @override
-  $TreeCopyWith<$Res> get tree;
-  @override
-  $TNodeCopyWith<$Res> get root;
 }
 
 /// @nodoc
@@ -401,8 +372,8 @@ class __$$DrawNewTreeImplCopyWithImpl<$Res>
   $Res call({
     Object? maxGenerations = freezed,
     Object? isShowUnknown = freezed,
-    Object? tree = null,
-    Object? root = null,
+    Object? store = null,
+    Object? rootId = null,
     Object? context = null,
   }) {
     return _then(_$DrawNewTreeImpl(
@@ -414,14 +385,14 @@ class __$$DrawNewTreeImplCopyWithImpl<$Res>
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
               as bool?,
-      tree: null == tree
-          ? _value.tree
-          : tree // ignore: cast_nullable_to_non_nullable
-              as Tree,
-      root: null == root
-          ? _value.root
-          : root // ignore: cast_nullable_to_non_nullable
-              as TNode,
+      store: null == store
+          ? _value.store
+          : store // ignore: cast_nullable_to_non_nullable
+              as TreeGraphStore,
+      rootId: null == rootId
+          ? _value.rootId
+          : rootId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -436,8 +407,8 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
   const _$DrawNewTreeImpl(
       {this.maxGenerations,
       this.isShowUnknown,
-      required this.tree,
-      required this.root,
+      required this.store,
+      required this.rootId,
       required this.context});
 
   @override
@@ -445,15 +416,15 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
   @override
   final bool? isShowUnknown;
   @override
-  final Tree tree;
+  final TreeGraphStore store;
   @override
-  final TNode root;
+  final UniqueId rootId;
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'DrawTreeEvent.drawNewTree(maxGenerations: $maxGenerations, isShowUnknown: $isShowUnknown, tree: $tree, root: $root, context: $context)';
+    return 'DrawTreeEvent.drawNewTree(maxGenerations: $maxGenerations, isShowUnknown: $isShowUnknown, store: $store, rootId: $rootId, context: $context)';
   }
 
   @override
@@ -465,14 +436,14 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
                 other.maxGenerations == maxGenerations) &&
             (identical(other.isShowUnknown, isShowUnknown) ||
                 other.isShowUnknown == isShowUnknown) &&
-            (identical(other.tree, tree) || other.tree == tree) &&
-            (identical(other.root, root) || other.root == root) &&
+            (identical(other.store, store) || other.store == store) &&
+            (identical(other.rootId, rootId) || other.rootId == rootId) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, maxGenerations, isShowUnknown, tree, root, context);
+      runtimeType, maxGenerations, isShowUnknown, store, rootId, context);
 
   @JsonKey(ignore: true)
   @override
@@ -484,42 +455,42 @@ class _$DrawNewTreeImpl implements _DrawNewTree {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? maxGenerations, bool? isShowUnknown,
-            Tree tree, TNode root, BuildContext context)
+            TreeGraphStore store, UniqueId rootId, BuildContext context)
         initialized,
     required TResult Function(int? maxGenerations, bool? isShowUnknown,
-            Tree tree, TNode root, BuildContext context)
+            TreeGraphStore store, UniqueId rootId, BuildContext context)
         drawNewTree,
   }) {
-    return drawNewTree(maxGenerations, isShowUnknown, tree, root, context);
+    return drawNewTree(maxGenerations, isShowUnknown, store, rootId, context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult? Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         initialized,
-    TResult? Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult? Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         drawNewTree,
   }) {
     return drawNewTree?.call(
-        maxGenerations, isShowUnknown, tree, root, context);
+        maxGenerations, isShowUnknown, store, rootId, context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         initialized,
-    TResult Function(int? maxGenerations, bool? isShowUnknown, Tree tree,
-            TNode root, BuildContext context)?
+    TResult Function(int? maxGenerations, bool? isShowUnknown,
+            TreeGraphStore store, UniqueId rootId, BuildContext context)?
         drawNewTree,
     required TResult orElse(),
   }) {
     if (drawNewTree != null) {
-      return drawNewTree(maxGenerations, isShowUnknown, tree, root, context);
+      return drawNewTree(maxGenerations, isShowUnknown, store, rootId, context);
     }
     return orElse();
   }
@@ -560,8 +531,8 @@ abstract class _DrawNewTree implements DrawTreeEvent {
   const factory _DrawNewTree(
       {final int? maxGenerations,
       final bool? isShowUnknown,
-      required final Tree tree,
-      required final TNode root,
+      required final TreeGraphStore store,
+      required final UniqueId rootId,
       required final BuildContext context}) = _$DrawNewTreeImpl;
 
   @override
@@ -569,9 +540,9 @@ abstract class _DrawNewTree implements DrawTreeEvent {
   @override
   bool? get isShowUnknown;
   @override
-  Tree get tree;
+  TreeGraphStore get store;
   @override
-  TNode get root;
+  UniqueId get rootId;
   @override
   BuildContext get context;
   @override

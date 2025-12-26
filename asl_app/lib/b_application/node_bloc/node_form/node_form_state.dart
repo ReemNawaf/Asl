@@ -5,19 +5,19 @@ abstract class NodeFormState with _$NodeFormState {
   const factory NodeFormState({
     TNode? node,
     required AutovalidateMode showErrorMessages,
-    required int isEditing, // only for update existing ones
+    required bool isEditing,
     required bool isSaving,
     required bool addPartner,
     required bool addChild,
     required int currentPanel,
-    required Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption,
+    required Either<TNodeFailure, TNode>? saveFailureOrSuccessOption,
   }) = _NodeFormState;
 
-  factory NodeFormState.initial() => NodeFormState(
+  factory NodeFormState.initial() => const NodeFormState(
         showErrorMessages: AutovalidateMode.disabled,
 
-        // isEdtting = -1 means it's adding not editing
-        isEditing: -1,
+        // is it editing or view
+        isEditing: false,
 
         // isSaving when saving the changes after editing
         isSaving: false,
@@ -27,6 +27,6 @@ abstract class NodeFormState with _$NodeFormState {
 
         // currentPanel to keep track of which panel is opened
         currentPanel: 0,
-        saveFailureOrSuccessOption: none(),
+        saveFailureOrSuccessOption: null,
       );
 }

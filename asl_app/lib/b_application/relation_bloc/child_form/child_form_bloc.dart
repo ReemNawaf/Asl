@@ -2,10 +2,8 @@ import 'dart:async';
 
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
-import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
-import 'package:asl/c_domain/relation/i_relation_repository.dart';
 import 'package:asl/c_domain/tree/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -19,11 +17,7 @@ part 'child_form_bloc.freezed.dart';
 
 @injectable
 class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
-  final IRelationRepository _relationRepository;
-  final INodeRepository _nodeRepository;
-
-  ChildFormBloc(this._relationRepository, this._nodeRepository)
-      : super(ChildFormState.initial()) {
+  ChildFormBloc() : super(ChildFormState.initial()) {
     on<ChildFormEvent>(mapEventToState);
   }
 
@@ -48,13 +42,15 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           tempChild: child,
           isViewing: true,
           isAdding: false,
-          children: {},
-          deletedChildren: [],
           showErrorMessages: AutovalidateMode.disabled,
         ));
       },
       addChildToList: (e) {
+        print('state.tempChild.firstName ${state.tempChild.firstName}');
+
         if (state.tempChild.firstName.isValid()) {
+          // adding the previous added children
+          print('LOG | state.children ${state.children.length}');
           var newChildren = {...state.children};
           final relationKey = state.tempChild.upperFamily!.getOrCrash();
 
@@ -62,7 +58,10 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
             ...?newChildren[relationKey],
             state.tempChild
           ];
-          print('LOG | new children list ${newChildren.length}');
+          print('LOG | newChildren len ${newChildren.length}');
+          print('LOG | newChildren $newChildren');
+
+          debugPrint('LOG | new children list ${newChildren.length}');
           emit(state.copyWith(
             children: newChildren,
             isViewing: true,
@@ -88,48 +87,48 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
       addParent: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(upperFamily: e.upperFamily),
-          saveFailureOrSuccessOption: none(),
+          addedFailureOrSuccessOption: null,
           isAdding: false,
         ));
       },
       changeName: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(firstName: FullName(e.name)),
-          saveFailureOrSuccessOption: none(),
+          addedFailureOrSuccessOption: null,
           isAdding: false,
         ));
       },
       changeBirthDate: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(birthDate: e.date),
-          saveFailureOrSuccessOption: none(),
+          addedFailureOrSuccessOption: null,
           isAdding: false,
         ));
       },
       changeDeathDate: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(deathDate: e.date),
-          saveFailureOrSuccessOption: none(),
+          addedFailureOrSuccessOption: null,
           isAdding: false,
         ));
       },
       changeIsAlive: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(isAlive: e.isAlive),
-          saveFailureOrSuccessOption: none(),
+          addedFailureOrSuccessOption: null,
           isAdding: false,
         ));
       },
       changeGender: (e) {
         emit(state.copyWith(
           tempChild: state.tempChild.copyWith(gender: e.gender),
-          saveFailureOrSuccessOption: none(),
+          addedFailureOrSuccessOption: null,
           isAdding: false,
         ));
       },
       saved: (e) async {
-        print('LOG | save child start');
-        Either<TNodeFailure, Unit>? failureOrSuccess;
+        Either<TNodeFailure, List<TNode>>? addedFailureOrSuccess;
+        Either<TNodeFailure, List<TNode>>? deletedFailureOrSuccess;
         bool isCreated = false;
 
         // convert children dict to list
@@ -137,26 +136,17 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
             state.children.values.expand((list) => list).toList();
 
         if (allchildren.isNotEmpty) {
-          print('LOG | all children length ${allchildren.length}');
+          debugPrint('LOG | all children length ${allchildren.length}');
           // check the tree validation
           if (allchildren.every((child) => child.failureOption.isNone())) {
-            failureOrSuccess = await _relationRepository.addChildren(
-              children: allchildren,
-              treeId: allchildren.first.treeId,
-            );
-            print('LOG | the child is added');
+            addedFailureOrSuccess = right(allchildren);
+            debugPrint('LOG | the child is added');
             isCreated = state.isEditing ? false : true;
           }
         }
 
         if (state.deletedChildren.isNotEmpty) {
-          for (TNode child in state.deletedChildren) {
-            print('15 | Delete Name ${child.firstName.getOrCrash()}');
-            failureOrSuccess = await _nodeRepository.delete(
-              nodeId: child.nodeId,
-              treeId: child.treeId,
-            );
-          }
+          deletedFailureOrSuccess = right(state.deletedChildren);
         }
 
         emit(state.copyWith(
@@ -168,19 +158,13 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           deletedChildren: [],
           tempChild: TNode.empty(),
           showErrorMessages: AutovalidateMode.always,
-          saveFailureOrSuccessOption: optionOf(failureOrSuccess),
+          addedFailureOrSuccessOption: addedFailureOrSuccess,
+          deletedFailureOrSuccessOption: deletedFailureOrSuccess,
         ));
-
-        print('LOG | save child end');
       },
       deleltChild: (e) {
-        print('LOG | delete child');
-        List<TNode> deleteList = [...state.deletedChildren];
-        deleteList.add(e.node);
-
+        List<TNode> deleteList = [...state.deletedChildren, e.node];
         emit(state.copyWith(deletedChildren: deleteList));
-
-        print('15 | ${state.deletedChildren}');
       },
     );
   }

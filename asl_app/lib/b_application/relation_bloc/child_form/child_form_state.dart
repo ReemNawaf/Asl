@@ -13,7 +13,8 @@ abstract class ChildFormState with _$ChildFormState {
     required bool isEditing,
     required bool isAdding,
     required bool isCreated,
-    required Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption,
+    required Either<TNodeFailure, List<TNode>>? addedFailureOrSuccessOption,
+    required Either<TNodeFailure, List<TNode>>? deletedFailureOrSuccessOption,
   }) = _ChildFormState;
 
   factory ChildFormState.initial() => ChildFormState(
@@ -27,6 +28,7 @@ abstract class ChildFormState with _$ChildFormState {
         isEditing: false,
         isAdding: false,
         isCreated: false,
-        saveFailureOrSuccessOption: none(),
+        addedFailureOrSuccessOption: null,
+        deletedFailureOrSuccessOption: null,
       );
 }

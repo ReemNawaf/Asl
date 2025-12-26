@@ -18,8 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TreeFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -31,8 +29,6 @@ mixin _$TreeFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -44,8 +40,6 @@ mixin _$TreeFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -58,8 +52,6 @@ mixin _$TreeFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -71,8 +63,6 @@ mixin _$TreeFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -84,8 +74,6 @@ mixin _$TreeFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -114,359 +102,6 @@ class _$TreeFormEventCopyWithImpl<$Res, $Val extends TreeFormEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitializedImplCopyWith<$Res> {
-  factory _$$InitializedImplCopyWith(
-          _$InitializedImpl value, $Res Function(_$InitializedImpl) then) =
-      __$$InitializedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Option<Tree> initialTreeOption});
-}
-
-/// @nodoc
-class __$$InitializedImplCopyWithImpl<$Res>
-    extends _$TreeFormEventCopyWithImpl<$Res, _$InitializedImpl>
-    implements _$$InitializedImplCopyWith<$Res> {
-  __$$InitializedImplCopyWithImpl(
-      _$InitializedImpl _value, $Res Function(_$InitializedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? initialTreeOption = null,
-  }) {
-    return _then(_$InitializedImpl(
-      null == initialTreeOption
-          ? _value.initialTreeOption
-          : initialTreeOption // ignore: cast_nullable_to_non_nullable
-              as Option<Tree>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$InitializedImpl implements _Initialized {
-  const _$InitializedImpl(this.initialTreeOption);
-
-  @override
-  final Option<Tree> initialTreeOption;
-
-  @override
-  String toString() {
-    return 'TreeFormEvent.initialized(initialTreeOption: $initialTreeOption)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitializedImpl &&
-            (identical(other.initialTreeOption, initialTreeOption) ||
-                other.initialTreeOption == initialTreeOption));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, initialTreeOption);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
-      __$$InitializedImplCopyWithImpl<_$InitializedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
-    required TResult Function(String treeName) changeTreeName,
-    required TResult Function(String rootName) changeRootName,
-    required TResult Function(DateTime? birthdate) changeRootBirthDate,
-    required TResult Function(DateTime? deathdate) changeRootDeathDate,
-    required TResult Function(bool isAlive) changeRootIsAvlive,
-    required TResult Function(Gender gender) changeRootGender,
-    required TResult Function() saved,
-  }) {
-    return initialized(initialTreeOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
-    TResult? Function(String treeName)? changeTreeName,
-    TResult? Function(String rootName)? changeRootName,
-    TResult? Function(DateTime? birthdate)? changeRootBirthDate,
-    TResult? Function(DateTime? deathdate)? changeRootDeathDate,
-    TResult? Function(bool isAlive)? changeRootIsAvlive,
-    TResult? Function(Gender gender)? changeRootGender,
-    TResult? Function()? saved,
-  }) {
-    return initialized?.call(initialTreeOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
-    TResult Function(String treeName)? changeTreeName,
-    TResult Function(String rootName)? changeRootName,
-    TResult Function(DateTime? birthdate)? changeRootBirthDate,
-    TResult Function(DateTime? deathdate)? changeRootDeathDate,
-    TResult Function(bool isAlive)? changeRootIsAvlive,
-    TResult Function(Gender gender)? changeRootGender,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (initialized != null) {
-      return initialized(initialTreeOption);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
-    required TResult Function(_ChangedTreeName value) changeTreeName,
-    required TResult Function(_ChangedRootName value) changeRootName,
-    required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
-    required TResult Function(_ChangedRootDeathDate value) changeRootDeathDate,
-    required TResult Function(_ChangedRootIsAvlive value) changeRootIsAvlive,
-    required TResult Function(_ChangedRootGender value) changeRootGender,
-    required TResult Function(_Saved value) saved,
-  }) {
-    return initialized(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
-    TResult? Function(_ChangedTreeName value)? changeTreeName,
-    TResult? Function(_ChangedRootName value)? changeRootName,
-    TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
-    TResult? Function(_ChangedRootDeathDate value)? changeRootDeathDate,
-    TResult? Function(_ChangedRootIsAvlive value)? changeRootIsAvlive,
-    TResult? Function(_ChangedRootGender value)? changeRootGender,
-    TResult? Function(_Saved value)? saved,
-  }) {
-    return initialized?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
-    TResult Function(_ChangedTreeName value)? changeTreeName,
-    TResult Function(_ChangedRootName value)? changeRootName,
-    TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
-    TResult Function(_ChangedRootDeathDate value)? changeRootDeathDate,
-    TResult Function(_ChangedRootIsAvlive value)? changeRootIsAvlive,
-    TResult Function(_ChangedRootGender value)? changeRootGender,
-    TResult Function(_Saved value)? saved,
-    required TResult orElse(),
-  }) {
-    if (initialized != null) {
-      return initialized(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initialized implements TreeFormEvent {
-  const factory _Initialized(final Option<Tree> initialTreeOption) =
-      _$InitializedImpl;
-
-  Option<Tree> get initialTreeOption;
-  @JsonKey(ignore: true)
-  _$$InitializedImplCopyWith<_$InitializedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$EditedImplCopyWith<$Res> {
-  factory _$$EditedImplCopyWith(
-          _$EditedImpl value, $Res Function(_$EditedImpl) then) =
-      __$$EditedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Option<Tree> existingTreeOption});
-}
-
-/// @nodoc
-class __$$EditedImplCopyWithImpl<$Res>
-    extends _$TreeFormEventCopyWithImpl<$Res, _$EditedImpl>
-    implements _$$EditedImplCopyWith<$Res> {
-  __$$EditedImplCopyWithImpl(
-      _$EditedImpl _value, $Res Function(_$EditedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? existingTreeOption = null,
-  }) {
-    return _then(_$EditedImpl(
-      null == existingTreeOption
-          ? _value.existingTreeOption
-          : existingTreeOption // ignore: cast_nullable_to_non_nullable
-              as Option<Tree>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$EditedImpl implements _Edited {
-  const _$EditedImpl(this.existingTreeOption);
-
-  @override
-  final Option<Tree> existingTreeOption;
-
-  @override
-  String toString() {
-    return 'TreeFormEvent.edited(existingTreeOption: $existingTreeOption)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EditedImpl &&
-            (identical(other.existingTreeOption, existingTreeOption) ||
-                other.existingTreeOption == existingTreeOption));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, existingTreeOption);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
-      __$$EditedImplCopyWithImpl<_$EditedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
-    required TResult Function(String treeName) changeTreeName,
-    required TResult Function(String rootName) changeRootName,
-    required TResult Function(DateTime? birthdate) changeRootBirthDate,
-    required TResult Function(DateTime? deathdate) changeRootDeathDate,
-    required TResult Function(bool isAlive) changeRootIsAvlive,
-    required TResult Function(Gender gender) changeRootGender,
-    required TResult Function() saved,
-  }) {
-    return edited(existingTreeOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
-    TResult? Function(String treeName)? changeTreeName,
-    TResult? Function(String rootName)? changeRootName,
-    TResult? Function(DateTime? birthdate)? changeRootBirthDate,
-    TResult? Function(DateTime? deathdate)? changeRootDeathDate,
-    TResult? Function(bool isAlive)? changeRootIsAvlive,
-    TResult? Function(Gender gender)? changeRootGender,
-    TResult? Function()? saved,
-  }) {
-    return edited?.call(existingTreeOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
-    TResult Function(String treeName)? changeTreeName,
-    TResult Function(String rootName)? changeRootName,
-    TResult Function(DateTime? birthdate)? changeRootBirthDate,
-    TResult Function(DateTime? deathdate)? changeRootDeathDate,
-    TResult Function(bool isAlive)? changeRootIsAvlive,
-    TResult Function(Gender gender)? changeRootGender,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (edited != null) {
-      return edited(existingTreeOption);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
-    required TResult Function(_ChangedTreeName value) changeTreeName,
-    required TResult Function(_ChangedRootName value) changeRootName,
-    required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
-    required TResult Function(_ChangedRootDeathDate value) changeRootDeathDate,
-    required TResult Function(_ChangedRootIsAvlive value) changeRootIsAvlive,
-    required TResult Function(_ChangedRootGender value) changeRootGender,
-    required TResult Function(_Saved value) saved,
-  }) {
-    return edited(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
-    TResult? Function(_ChangedTreeName value)? changeTreeName,
-    TResult? Function(_ChangedRootName value)? changeRootName,
-    TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
-    TResult? Function(_ChangedRootDeathDate value)? changeRootDeathDate,
-    TResult? Function(_ChangedRootIsAvlive value)? changeRootIsAvlive,
-    TResult? Function(_ChangedRootGender value)? changeRootGender,
-    TResult? Function(_Saved value)? saved,
-  }) {
-    return edited?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
-    TResult Function(_ChangedTreeName value)? changeTreeName,
-    TResult Function(_ChangedRootName value)? changeRootName,
-    TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
-    TResult Function(_ChangedRootDeathDate value)? changeRootDeathDate,
-    TResult Function(_ChangedRootIsAvlive value)? changeRootIsAvlive,
-    TResult Function(_ChangedRootGender value)? changeRootGender,
-    TResult Function(_Saved value)? saved,
-    required TResult orElse(),
-  }) {
-    if (edited != null) {
-      return edited(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Edited implements TreeFormEvent {
-  const factory _Edited(final Option<Tree> existingTreeOption) = _$EditedImpl;
-
-  Option<Tree> get existingTreeOption;
-  @JsonKey(ignore: true)
-  _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -535,8 +170,6 @@ class _$ChangedTreeNameImpl implements _ChangedTreeName {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -551,8 +184,6 @@ class _$ChangedTreeNameImpl implements _ChangedTreeName {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -567,8 +198,6 @@ class _$ChangedTreeNameImpl implements _ChangedTreeName {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -587,8 +216,6 @@ class _$ChangedTreeNameImpl implements _ChangedTreeName {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -603,8 +230,6 @@ class _$ChangedTreeNameImpl implements _ChangedTreeName {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -619,8 +244,6 @@ class _$ChangedTreeNameImpl implements _ChangedTreeName {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -712,8 +335,6 @@ class _$ChangedRootNameImpl implements _ChangedRootName {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -728,8 +349,6 @@ class _$ChangedRootNameImpl implements _ChangedRootName {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -744,8 +363,6 @@ class _$ChangedRootNameImpl implements _ChangedRootName {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -764,8 +381,6 @@ class _$ChangedRootNameImpl implements _ChangedRootName {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -780,8 +395,6 @@ class _$ChangedRootNameImpl implements _ChangedRootName {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -796,8 +409,6 @@ class _$ChangedRootNameImpl implements _ChangedRootName {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -890,8 +501,6 @@ class _$ChangedRootBirthDateImpl implements _ChangedRootBirthDate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -906,8 +515,6 @@ class _$ChangedRootBirthDateImpl implements _ChangedRootBirthDate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -922,8 +529,6 @@ class _$ChangedRootBirthDateImpl implements _ChangedRootBirthDate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -942,8 +547,6 @@ class _$ChangedRootBirthDateImpl implements _ChangedRootBirthDate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -958,8 +561,6 @@ class _$ChangedRootBirthDateImpl implements _ChangedRootBirthDate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -974,8 +575,6 @@ class _$ChangedRootBirthDateImpl implements _ChangedRootBirthDate {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1069,8 +668,6 @@ class _$ChangedRootDeathDateImpl implements _ChangedRootDeathDate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -1085,8 +682,6 @@ class _$ChangedRootDeathDateImpl implements _ChangedRootDeathDate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1101,8 +696,6 @@ class _$ChangedRootDeathDateImpl implements _ChangedRootDeathDate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1121,8 +714,6 @@ class _$ChangedRootDeathDateImpl implements _ChangedRootDeathDate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -1137,8 +728,6 @@ class _$ChangedRootDeathDateImpl implements _ChangedRootDeathDate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1153,8 +742,6 @@ class _$ChangedRootDeathDateImpl implements _ChangedRootDeathDate {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1246,8 +833,6 @@ class _$ChangedRootIsAvliveImpl implements _ChangedRootIsAvlive {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -1262,8 +847,6 @@ class _$ChangedRootIsAvliveImpl implements _ChangedRootIsAvlive {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1278,8 +861,6 @@ class _$ChangedRootIsAvliveImpl implements _ChangedRootIsAvlive {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1298,8 +879,6 @@ class _$ChangedRootIsAvliveImpl implements _ChangedRootIsAvlive {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -1314,8 +893,6 @@ class _$ChangedRootIsAvliveImpl implements _ChangedRootIsAvlive {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1330,8 +907,6 @@ class _$ChangedRootIsAvliveImpl implements _ChangedRootIsAvlive {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1423,8 +998,6 @@ class _$ChangedRootGenderImpl implements _ChangedRootGender {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -1439,8 +1012,6 @@ class _$ChangedRootGenderImpl implements _ChangedRootGender {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1455,8 +1026,6 @@ class _$ChangedRootGenderImpl implements _ChangedRootGender {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1475,8 +1044,6 @@ class _$ChangedRootGenderImpl implements _ChangedRootGender {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -1491,8 +1058,6 @@ class _$ChangedRootGenderImpl implements _ChangedRootGender {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1507,8 +1072,6 @@ class _$ChangedRootGenderImpl implements _ChangedRootGender {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1573,8 +1136,6 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Option<Tree> initialTreeOption) initialized,
-    required TResult Function(Option<Tree> existingTreeOption) edited,
     required TResult Function(String treeName) changeTreeName,
     required TResult Function(String rootName) changeRootName,
     required TResult Function(DateTime? birthdate) changeRootBirthDate,
@@ -1589,8 +1150,6 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<Tree> initialTreeOption)? initialized,
-    TResult? Function(Option<Tree> existingTreeOption)? edited,
     TResult? Function(String treeName)? changeTreeName,
     TResult? Function(String rootName)? changeRootName,
     TResult? Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1605,8 +1164,6 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Tree> initialTreeOption)? initialized,
-    TResult Function(Option<Tree> existingTreeOption)? edited,
     TResult Function(String treeName)? changeTreeName,
     TResult Function(String rootName)? changeRootName,
     TResult Function(DateTime? birthdate)? changeRootBirthDate,
@@ -1625,8 +1182,6 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialized value) initialized,
-    required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedTreeName value) changeTreeName,
     required TResult Function(_ChangedRootName value) changeRootName,
     required TResult Function(_ChangedRootBirthDate value) changeRootBirthDate,
@@ -1641,8 +1196,6 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedTreeName value)? changeTreeName,
     TResult? Function(_ChangedRootName value)? changeRootName,
     TResult? Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1657,8 +1210,6 @@ class _$SavedImpl implements _Saved {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_Edited value)? edited,
     TResult Function(_ChangedTreeName value)? changeTreeName,
     TResult Function(_ChangedRootName value)? changeRootName,
     TResult Function(_ChangedRootBirthDate value)? changeRootBirthDate,
@@ -1690,7 +1241,7 @@ mixin _$TreeFormState {
   bool get isViewing => throw _privateConstructorUsedError;
   bool get isCreated => throw _privateConstructorUsedError;
   UniqueId get userId => throw _privateConstructorUsedError;
-  Option<Either<TreeFailure, Unit>> get saveFailureOrSuccessOption =>
+  Option<Either<TreeFailure, TNode>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1713,7 +1264,7 @@ abstract class $TreeFormStateCopyWith<$Res> {
       bool isViewing,
       bool isCreated,
       UniqueId userId,
-      Option<Either<TreeFailure, Unit>> saveFailureOrSuccessOption});
+      Option<Either<TreeFailure, TNode>> saveFailureOrSuccessOption});
 
   $TreeCopyWith<$Res> get tree;
   $TNodeCopyWith<$Res> get root;
@@ -1778,7 +1329,7 @@ class _$TreeFormStateCopyWithImpl<$Res, $Val extends TreeFormState>
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TreeFailure, Unit>>,
+              as Option<Either<TreeFailure, TNode>>,
     ) as $Val);
   }
 
@@ -1816,7 +1367,7 @@ abstract class _$$TreeFormStateImplCopyWith<$Res>
       bool isViewing,
       bool isCreated,
       UniqueId userId,
-      Option<Either<TreeFailure, Unit>> saveFailureOrSuccessOption});
+      Option<Either<TreeFailure, TNode>> saveFailureOrSuccessOption});
 
   @override
   $TreeCopyWith<$Res> get tree;
@@ -1881,7 +1432,7 @@ class __$$TreeFormStateImplCopyWithImpl<$Res>
       saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TreeFailure, Unit>>,
+              as Option<Either<TreeFailure, TNode>>,
     ));
   }
 }
@@ -1918,7 +1469,7 @@ class _$TreeFormStateImpl implements _TreeFormState {
   @override
   final UniqueId userId;
   @override
-  final Option<Either<TreeFailure, Unit>> saveFailureOrSuccessOption;
+  final Option<Either<TreeFailure, TNode>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -1979,7 +1530,7 @@ abstract class _TreeFormState implements TreeFormState {
       required final bool isViewing,
       required final bool isCreated,
       required final UniqueId userId,
-      required final Option<Either<TreeFailure, Unit>>
+      required final Option<Either<TreeFailure, TNode>>
           saveFailureOrSuccessOption}) = _$TreeFormStateImpl;
 
   @override
@@ -1999,7 +1550,7 @@ abstract class _TreeFormState implements TreeFormState {
   @override
   UniqueId get userId;
   @override
-  Option<Either<TreeFailure, Unit>> get saveFailureOrSuccessOption;
+  Option<Either<TreeFailure, TNode>> get saveFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$TreeFormStateImplCopyWith<_$TreeFormStateImpl> get copyWith =>

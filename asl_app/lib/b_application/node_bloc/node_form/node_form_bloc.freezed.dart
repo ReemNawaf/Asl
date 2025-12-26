@@ -21,7 +21,7 @@ mixin _$NodeFormEvent {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -39,7 +39,7 @@ mixin _$NodeFormEvent {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -57,7 +57,7 @@ mixin _$NodeFormEvent {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -223,7 +223,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -244,7 +244,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -265,7 +265,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -402,7 +402,7 @@ class _$EndedImpl implements _Ended {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -423,7 +423,7 @@ class _$EndedImpl implements _Ended {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -444,7 +444,7 @@ class _$EndedImpl implements _Ended {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -603,7 +603,7 @@ class _$AddedImpl implements _Added {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -624,7 +624,7 @@ class _$AddedImpl implements _Added {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -645,7 +645,7 @@ class _$AddedImpl implements _Added {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -747,7 +747,7 @@ abstract class _$$EditedImplCopyWith<$Res> {
           _$EditedImpl value, $Res Function(_$EditedImpl) then) =
       __$$EditedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int isEditing});
+  $Res call({bool isEditing});
 }
 
 /// @nodoc
@@ -767,7 +767,7 @@ class __$$EditedImplCopyWithImpl<$Res>
       null == isEditing
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
-              as int,
+              as bool,
     ));
   }
 }
@@ -778,7 +778,7 @@ class _$EditedImpl implements _Edited {
   const _$EditedImpl(this.isEditing);
 
   @override
-  final int isEditing;
+  final bool isEditing;
 
   @override
   String toString() {
@@ -809,7 +809,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -830,7 +830,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -851,7 +851,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -939,9 +939,9 @@ class _$EditedImpl implements _Edited {
 }
 
 abstract class _Edited implements NodeFormEvent {
-  const factory _Edited(final int isEditing) = _$EditedImpl;
+  const factory _Edited(final bool isEditing) = _$EditedImpl;
 
-  int get isEditing;
+  bool get isEditing;
   @JsonKey(ignore: true)
   _$$EditedImplCopyWith<_$EditedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1016,7 +1016,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -1037,7 +1037,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -1058,7 +1058,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -1223,7 +1223,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -1244,7 +1244,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -1265,7 +1265,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -1429,7 +1429,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -1450,7 +1450,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -1471,7 +1471,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -1636,7 +1636,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -1657,7 +1657,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -1678,7 +1678,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -1843,7 +1843,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -1864,7 +1864,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -1885,7 +1885,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -2022,7 +2022,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -2043,7 +2043,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -2064,7 +2064,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -2222,7 +2222,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -2243,7 +2243,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -2264,7 +2264,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -2428,7 +2428,7 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -2449,7 +2449,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -2470,7 +2470,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -2634,7 +2634,7 @@ class _$AddChildImpl implements _AddChild {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -2655,7 +2655,7 @@ class _$AddChildImpl implements _AddChild {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -2676,7 +2676,7 @@ class _$AddChildImpl implements _AddChild {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -2813,7 +2813,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(TNode node) initialized,
     required TResult Function() ended,
     required TResult Function(Option<TNode> initialNodeOption) added,
-    required TResult Function(int isEditing) edited,
+    required TResult Function(bool isEditing) edited,
     required TResult Function(int panelIndex) updateCurrentPanel,
     required TResult Function(String title) firstNameChanged,
     required TResult Function(DateTime? date) birthDateChanged,
@@ -2834,7 +2834,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(TNode node)? initialized,
     TResult? Function()? ended,
     TResult? Function(Option<TNode> initialNodeOption)? added,
-    TResult? Function(int isEditing)? edited,
+    TResult? Function(bool isEditing)? edited,
     TResult? Function(int panelIndex)? updateCurrentPanel,
     TResult? Function(String title)? firstNameChanged,
     TResult? Function(DateTime? date)? birthDateChanged,
@@ -2855,7 +2855,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(TNode node)? initialized,
     TResult Function()? ended,
     TResult Function(Option<TNode> initialNodeOption)? added,
-    TResult Function(int isEditing)? edited,
+    TResult Function(bool isEditing)? edited,
     TResult Function(int panelIndex)? updateCurrentPanel,
     TResult Function(String title)? firstNameChanged,
     TResult Function(DateTime? date)? birthDateChanged,
@@ -2950,13 +2950,12 @@ abstract class _Saved implements NodeFormEvent {
 mixin _$NodeFormState {
   TNode? get node => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
-  int get isEditing =>
-      throw _privateConstructorUsedError; // only for update existing ones
+  bool get isEditing => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get addPartner => throw _privateConstructorUsedError;
   bool get addChild => throw _privateConstructorUsedError;
   int get currentPanel => throw _privateConstructorUsedError;
-  Option<Either<TNodeFailure, Unit>> get saveFailureOrSuccessOption =>
+  Either<TNodeFailure, TNode>? get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -2973,12 +2972,12 @@ abstract class $NodeFormStateCopyWith<$Res> {
   $Res call(
       {TNode? node,
       AutovalidateMode showErrorMessages,
-      int isEditing,
+      bool isEditing,
       bool isSaving,
       bool addPartner,
       bool addChild,
       int currentPanel,
-      Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
+      Either<TNodeFailure, TNode>? saveFailureOrSuccessOption});
 
   $TNodeCopyWith<$Res>? get node;
 }
@@ -3003,7 +3002,7 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
-    Object? saveFailureOrSuccessOption = null,
+    Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       node: freezed == node
@@ -3017,7 +3016,7 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
       isEditing: null == isEditing
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
-              as int,
+              as bool,
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
@@ -3034,10 +3033,10 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
           ? _value.currentPanel
           : currentPanel // ignore: cast_nullable_to_non_nullable
               as int,
-      saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
+      saveFailureOrSuccessOption: freezed == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TNodeFailure, Unit>>,
+              as Either<TNodeFailure, TNode>?,
     ) as $Val);
   }
 
@@ -3065,12 +3064,12 @@ abstract class _$$NodeFormStateImplCopyWith<$Res>
   $Res call(
       {TNode? node,
       AutovalidateMode showErrorMessages,
-      int isEditing,
+      bool isEditing,
       bool isSaving,
       bool addPartner,
       bool addChild,
       int currentPanel,
-      Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption});
+      Either<TNodeFailure, TNode>? saveFailureOrSuccessOption});
 
   @override
   $TNodeCopyWith<$Res>? get node;
@@ -3094,7 +3093,7 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
-    Object? saveFailureOrSuccessOption = null,
+    Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_$NodeFormStateImpl(
       node: freezed == node
@@ -3108,7 +3107,7 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
       isEditing: null == isEditing
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
-              as int,
+              as bool,
       isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
@@ -3125,10 +3124,10 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
           ? _value.currentPanel
           : currentPanel // ignore: cast_nullable_to_non_nullable
               as int,
-      saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
+      saveFailureOrSuccessOption: freezed == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TNodeFailure, Unit>>,
+              as Either<TNodeFailure, TNode>?,
     ));
   }
 }
@@ -3151,8 +3150,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
   @override
   final AutovalidateMode showErrorMessages;
   @override
-  final int isEditing;
-// only for update existing ones
+  final bool isEditing;
   @override
   final bool isSaving;
   @override
@@ -3162,7 +3160,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
   @override
   final int currentPanel;
   @override
-  final Option<Either<TNodeFailure, Unit>> saveFailureOrSuccessOption;
+  final Either<TNodeFailure, TNode>? saveFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -3216,12 +3214,12 @@ abstract class _NodeFormState implements NodeFormState {
   const factory _NodeFormState(
       {final TNode? node,
       required final AutovalidateMode showErrorMessages,
-      required final int isEditing,
+      required final bool isEditing,
       required final bool isSaving,
       required final bool addPartner,
       required final bool addChild,
       required final int currentPanel,
-      required final Option<Either<TNodeFailure, Unit>>
+      required final Either<TNodeFailure, TNode>?
           saveFailureOrSuccessOption}) = _$NodeFormStateImpl;
 
   @override
@@ -3229,8 +3227,8 @@ abstract class _NodeFormState implements NodeFormState {
   @override
   AutovalidateMode get showErrorMessages;
   @override
-  int get isEditing;
-  @override // only for update existing ones
+  bool get isEditing;
+  @override
   bool get isSaving;
   @override
   bool get addPartner;
@@ -3239,7 +3237,7 @@ abstract class _NodeFormState implements NodeFormState {
   @override
   int get currentPanel;
   @override
-  Option<Either<TNodeFailure, Unit>> get saveFailureOrSuccessOption;
+  Either<TNodeFailure, TNode>? get saveFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$NodeFormStateImplCopyWith<_$NodeFormStateImpl> get copyWith =>

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/c_domain/node/i_node_repository.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/tree/value_objects.dart';
@@ -17,9 +16,7 @@ part 'node_form_bloc.freezed.dart';
 
 @injectable
 class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
-  final INodeRepository _nodeRepository;
-
-  NodeFormBloc(this._nodeRepository) : super(NodeFormState.initial()) {
+  NodeFormBloc() : super(NodeFormState.initial()) {
     on<NodeFormEvent>(mapEventToState);
   }
 
@@ -41,7 +38,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           (initialNode) => state.copyWith(
             node: initialNode,
             isSaving: false,
-            isEditing: -1,
+            isEditing: false,
             showErrorMessages: AutovalidateMode.disabled,
           ),
         ));
@@ -62,31 +59,30 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       },
       firstNameChanged: (e) {
         emit(state.copyWith(
-          node: state.node!.copyWith(firstName: FullName(e.title)),
-          isSaving: false,
-          saveFailureOrSuccessOption: none(),
-        ));
+            node: state.node!.copyWith(firstName: FullName(e.title)),
+            isSaving: false,
+            saveFailureOrSuccessOption: null));
       },
       birthDateChanged: (e) {
         emit(state.copyWith(
             node: state.node!.copyWith(birthDate: e.date),
             isSaving: false,
             // to get rid of any previous failure
-            saveFailureOrSuccessOption: none()));
+            saveFailureOrSuccessOption: null));
       },
       deathDateChanged: (e) {
         emit(state.copyWith(
             node: state.node!.copyWith(deathDate: e.date),
             isSaving: false,
             // to get rid of any previous failure
-            saveFailureOrSuccessOption: none()));
+            saveFailureOrSuccessOption: null));
       },
       changeIsAvlive: (e) {
         emit(state.copyWith(
           node: state.node!.copyWith(isAlive: e.isAlive),
           isSaving: false,
           // to get rid of any previous failure
-          saveFailureOrSuccessOption: none(),
+          saveFailureOrSuccessOption: null,
         ));
       },
       changeGender: (e) {
@@ -94,7 +90,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           node: state.node!.copyWith(gender: e.gender),
           isSaving: false,
           // to get rid of any previous failure
-          saveFailureOrSuccessOption: none(),
+          saveFailureOrSuccessOption: null,
         ));
       },
       addPartner: (e) {
@@ -102,7 +98,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           addPartner: e.isAdding,
           isSaving: false,
           // to get rid of any previous failure
-          saveFailureOrSuccessOption: none(),
+          saveFailureOrSuccessOption: null,
         ));
       },
       addChild: (e) {
@@ -110,7 +106,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           addChild: e.isAdding,
           isSaving: false,
           // to get rid of any previous failure
-          saveFailureOrSuccessOption: none(),
+          saveFailureOrSuccessOption: null,
         ));
       },
       makeItRoot: (e) {
@@ -118,51 +114,41 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           node: state.node!.copyWith(isTreeRoot: true),
           isSaving: false,
           // to get rid of any previous failure
-          saveFailureOrSuccessOption: none(),
+          saveFailureOrSuccessOption: null,
         ));
       },
       saved: (e) async {
-        Either<TNodeFailure, Unit>? failureOrSuccess;
+        Either<TNodeFailure, TNode>? failureOrSuccess;
         emit(state.copyWith(
           isSaving: true,
           // to get rid of any previous failure
-          saveFailureOrSuccessOption: none(),
+          saveFailureOrSuccessOption: null,
           showErrorMessages: AutovalidateMode.always,
         ));
 
         // check the node validation
         if (state.node!.failureOption.isNone()) {
-          if (state.isEditing != -1) {
-            failureOrSuccess = await _nodeRepository.update(
-              treeId: state.node!.treeId,
-              node: state.node!,
-            );
-          } else {
-            failureOrSuccess = await _nodeRepository.create(
-              treeId: state.node!.treeId,
-              node: state.node!,
-            );
-          }
-          // after the trying of update or create
+          failureOrSuccess = right(state.node!);
           emit(state.copyWith(
             isSaving: false,
-            isEditing: -1,
+            isEditing: false,
             showErrorMessages: AutovalidateMode.always,
-            saveFailureOrSuccessOption: optionOf(failureOrSuccess),
+            saveFailureOrSuccessOption: failureOrSuccess,
+          ));
+        } else {
+          emit(state.copyWith(
+            isSaving: false,
+            isEditing: true,
+            showErrorMessages: AutovalidateMode.always,
+            saveFailureOrSuccessOption: failureOrSuccess,
           ));
         }
-
-        // after the trying of update or create
-        emit(state.copyWith(
-          isSaving: false,
-          showErrorMessages: AutovalidateMode.always,
-        ));
       },
       ended: (e) {
         emit(state.copyWith(
           showErrorMessages: AutovalidateMode.disabled,
           isSaving: false,
-          isEditing: -1,
+          isEditing: false,
         ));
       },
     );

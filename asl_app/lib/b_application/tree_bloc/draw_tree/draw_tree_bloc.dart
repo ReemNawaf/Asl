@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:asl/c_domain/node/t_node.dart';
-import 'package:asl/c_domain/tree/tree.dart';
+import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
 import 'package:asl/c_domain/tree/tree_draw.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -26,18 +26,20 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
   ) async {
     await event.map(
       initialized: (e) async {
-        final graph = treeDraw.drawTree(
-            root: e.root,
+        final graph = treeDraw.drawTreeFromStore(
+            rootId: e.rootId,
+            store: e.store,
             maxGenerations: e.maxGenerations,
-            isShowUnknown: e.isShowUnknown,
+            isShowUnknown: e.isShowUnknown ?? true,
             context: e.context);
         emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
       },
       drawNewTree: (e) async {
-        final graph = treeDraw.drawTree(
-            root: e.root,
+        final graph = treeDraw.drawTreeFromStore(
+            rootId: e.rootId,
+            store: e.store,
             maxGenerations: e.maxGenerations,
-            isShowUnknown: e.isShowUnknown,
+            isShowUnknown: e.isShowUnknown ?? true,
             context: e.context);
         emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
       },

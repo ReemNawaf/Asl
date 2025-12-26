@@ -11,7 +11,7 @@ abstract class TreeFormState with _$TreeFormState {
     required bool isViewing,
     required bool isCreated,
     required UniqueId userId,
-    required Option<Either<TreeFailure, Unit>> saveFailureOrSuccessOption,
+    required Option<Either<TreeFailure, TNode>> saveFailureOrSuccessOption,
   }) = _TreeFormState;
 
   factory TreeFormState.initial() {

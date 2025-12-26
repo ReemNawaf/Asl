@@ -6,7 +6,7 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.initialized(TNode node) = _Initialized;
   const factory NodeFormEvent.ended() = _Ended;
   const factory NodeFormEvent.added(Option<TNode> initialNodeOption) = _Added;
-  const factory NodeFormEvent.edited(int isEditing) = _Edited;
+  const factory NodeFormEvent.edited(bool isEditing) = _Edited;
   const factory NodeFormEvent.updateCurrentPanel(int panelIndex) =
       _UpdateCurrentPanel;
 
