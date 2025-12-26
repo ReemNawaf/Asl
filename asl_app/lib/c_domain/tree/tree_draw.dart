@@ -11,10 +11,7 @@ class TreeDraw {
   Graph graph = Graph()..isTree = true;
   BuchheimWalkerConfiguration builder = BuchheimWalkerConfiguration();
 
-  /// Keep Node instances by nodeId key for safe/faster edge creation
   final Map<String, Node> _graphNodesById = {};
-
-  /// Prevent infinite loops / duplicate edges in graphs
   final Set<String> _visitedNodes = {};
   final Set<String> _createdEdges = {};
 
@@ -29,12 +26,6 @@ class TreeDraw {
   Graph getGraph() => graph;
   BuchheimWalkerConfiguration getBuilder() => builder;
 
-  /// Draw tree directly from canonical normalized store.
-  ///
-  /// Generations rule:
-  /// - `maxGenerations == null` => unlimited children depth
-  /// - Partners are on the SAME generation as the node
-  /// - Children are on the NEXT generation
   Graph drawTreeFromStore({
     required TreeGraphStore store,
     required UniqueId rootId,
@@ -47,26 +38,84 @@ class TreeDraw {
     _visitedNodes.clear();
     _createdEdges.clear();
 
-    final startId = rootId.asKey();
-    final startNode = store.nodesById[startId];
+    final startKey = rootId.asKey();
+    final startNode = store.nodesById[startKey];
     if (startNode == null) return graph;
 
-    // Drawing the root
+    // 1) Compute actual depth (children edges only; partners do NOT increase gen)
+    final actualDepth = _computeMaxChildDepth(store: store, rootKey: startKey);
+
+    // If user limits depth, use the effective depth for the 60/40 split
+    final effectiveDepth = maxGenerations == null
+        ? actualDepth
+        : (actualDepth < maxGenerations ? actualDepth : maxGenerations);
+
+    final totalGenerations = effectiveDepth + 1; // root counts as generation 0
+
+    // 2) First 60% gens are "children", last 40% are "grandchildren"
+    // cutoff is a generation index (distance from root)
+    // gen=1..cutoff => child, gen>cutoff => grandchild
+    final childCutoffGen = _childCutoffGen(totalGenerations);
+
     _drawFromNode(
       store: store,
-      nodeKey: startId,
+      nodeKey: startKey,
       nodeType: NodeType.root,
       parentKey: null,
       parentGender: null,
       parentRelationsCount: startNode.relations.length,
-      // generation distance from start root (children increase it, partners do not)
       currentGen: 0,
       maxGen: maxGenerations,
+      childCutoffGen: childCutoffGen, // pass cutoff
       isShowUnknown: isShowUnknown,
       context: context,
     );
 
     return graph;
+  }
+
+  // ============================================================
+  // Depth computation
+  // ============================================================
+
+  int _childCutoffGen(int totalGenerations) {
+    // Example: total=10 => cutoff=6 (60%), so gen 7..10 => grandchild
+    // Keep at least 1 so first descendant generation is always "child"
+    final cutoff = (totalGenerations * 0.6).floor();
+    return cutoff < 1 ? 1 : cutoff;
+  }
+
+  int _computeMaxChildDepth({
+    required TreeGraphStore store,
+    required String rootKey,
+  }) {
+    final memo = <String, int>{};
+    final visiting = <String>{};
+
+    int dfs(String nodeKey) {
+      if (memo.containsKey(nodeKey)) return memo[nodeKey]!;
+      if (visiting.contains(nodeKey)) return 0; // cycle guard
+
+      visiting.add(nodeKey);
+
+      var best = 0; // depth measured in child-edges from this node
+      final relationKeys = store.relationIdsOfNodeKey(nodeKey);
+
+      for (final relKey in relationKeys) {
+        final childKeys = store.childrenIdsOfRelationKey(relKey);
+        for (final cKey in childKeys) {
+          if (!store.nodesById.containsKey(cKey)) continue;
+          final d = 1 + dfs(cKey);
+          if (d > best) best = d;
+        }
+      }
+
+      visiting.remove(nodeKey);
+      memo[nodeKey] = best;
+      return best;
+    }
+
+    return dfs(rootKey);
   }
 
   // ============================================================
@@ -82,12 +131,11 @@ class TreeDraw {
     required int parentRelationsCount,
     required int currentGen,
     required int? maxGen,
+    required int childCutoffGen, // ✅ NEW
     required bool isShowUnknown,
     required BuildContext context,
   }) {
-    // Cycle guard (node-level)
     if (_visitedNodes.contains(nodeKey)) {
-      // Still ensure edge exists if a parentKey is provided
       if (parentKey != null) {
         _ensureEdge(
           fromKey: parentKey,
@@ -105,10 +153,8 @@ class TreeDraw {
     final node = store.nodesById[nodeKey];
     if (node == null) return;
 
-    // Draw this node
     _ensureGraphNode(node: node, nodeType: nodeType);
 
-    // Link from parent -> this node (if any)
     if (parentKey != null) {
       _ensureEdge(
         fromKey: parentKey,
@@ -120,7 +166,6 @@ class TreeDraw {
       );
     }
 
-    // Expand relations from this node
     final relationIds = store.relationIdsOfNodeKey(nodeKey);
     for (final relKey in relationIds) {
       final relation = store.relationsById[relKey];
@@ -134,6 +179,7 @@ class TreeDraw {
         relationKey: relKey,
         currentGen: currentGen,
         maxGen: maxGen,
+        childCutoffGen: childCutoffGen, // pass down
         isShowUnknown: isShowUnknown,
         context: context,
       );
@@ -148,32 +194,26 @@ class TreeDraw {
     required String relationKey,
     required int currentGen,
     required int? maxGen,
+    required int childCutoffGen, // NEW
     required bool isShowUnknown,
     required BuildContext context,
   }) {
-    // Assumes Relation has father/mother/children fields (UniqueIds).
-    // If your model differs, adapt here.
     final fatherKey = relation.father.asKey();
     final motherKey = relation.mother.asKey();
 
-    // Determine partner relative to the current node
     String? partnerKey;
     if (currentNodeKey == fatherKey) {
       partnerKey = motherKey;
     } else if (currentNodeKey == motherKey) {
       partnerKey = fatherKey;
-    } else {
-      // The relation doesn't include this node (shouldn't happen if indexes are correct)
-      partnerKey = null;
     }
 
-    // 1) Draw partner
+    // 1) partner (same gen)
     if (partnerKey != null) {
       final partnerNode = store.nodesById[partnerKey];
       if (partnerNode != null) {
         _ensureGraphNode(node: partnerNode, nodeType: NodeType.partner);
 
-        // Edge current -> partner (partner label)
         _ensureEdge(
           fromKey: currentNodeKey,
           toKey: partnerKey,
@@ -185,13 +225,11 @@ class TreeDraw {
       }
     }
 
-    // 2) Draw children (next generation)
-    // If maxGen is reached, we still show partner but we stop descending into children.
+    // 2) children (next gen)
     if (maxGen != null && currentGen >= maxGen) return;
 
     final childKeys = store.childrenIdsOfRelationKey(relationKey);
 
-    // Link children under partner if exists, else under current node (fallback)
     final childrenParentKey =
         (partnerKey != null && store.nodesById[partnerKey] != null)
             ? partnerKey
@@ -205,15 +243,24 @@ class TreeDraw {
       final childNode = store.nodesById[childKey];
       if (childNode == null) continue;
 
+      final nextGen = currentGen + 1;
+
+      // Here is the split:
+      // gen <= childCutoffGen => child
+      // gen > childCutoffGen  => grandchild
+      final childType =
+          nextGen <= childCutoffGen ? NodeType.child : NodeType.grandchild;
+
       _drawFromNode(
         store: store,
         nodeKey: childKey,
-        nodeType: NodeType.child,
-        parentKey: childrenParentKey, // edge parent->child
+        nodeType: childType,
+        parentKey: childrenParentKey,
         parentGender: parentGender,
         parentRelationsCount: parentRelationsCount,
-        currentGen: currentGen + 1, // child is next generation
+        currentGen: nextGen,
         maxGen: maxGen,
+        childCutoffGen: childCutoffGen,
         isShowUnknown: isShowUnknown,
         context: context,
       );
@@ -255,7 +302,8 @@ class TreeDraw {
 
     final label = (toNodeType == NodeType.partner)
         ? getNodePartnerTitle(context, parentGender, parentRelationsCount)
-        : getNodeChildrenTitle(context, parentGender);
+        : getNodeChildrenTitle(
+            context, parentGender); // child + grandchild share label for now
 
     final edgeKey = '$fromKey->$toKey|$label';
     if (_createdEdges.contains(edgeKey)) return;
