@@ -13,9 +13,8 @@ _$TreeDtoImpl _$$TreeDtoImplFromJson(Map<String, dynamic> json) =>
       rootId: json['rootId'] as String,
       treeName: json['treeName'] as String,
       fullName: json['fullName'] as String,
-      isShowUnknown: json['isShowUnknown'] as bool,
-      numberOfGenerationOption:
-          (json['numberOfGenerationOption'] as num).toInt(),
+      treeSettings: TreeSettingsDto.fromJson(
+          json['treeSettings'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TreeDtoImplToJson(_$TreeDtoImpl instance) =>
@@ -25,6 +24,5 @@ Map<String, dynamic> _$$TreeDtoImplToJson(_$TreeDtoImpl instance) =>
       'rootId': instance.rootId,
       'treeName': instance.treeName,
       'fullName': instance.fullName,
-      'isShowUnknown': instance.isShowUnknown,
-      'numberOfGenerationOption': instance.numberOfGenerationOption,
+      'treeSettings': instance.treeSettings.toJson(),
     };

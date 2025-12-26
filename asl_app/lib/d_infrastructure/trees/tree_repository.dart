@@ -2,6 +2,7 @@ import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/c_domain/auth/i_auth_facade.dart';
 import 'package:asl/c_domain/core/errors.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/local_tree_views/tree_graph_data.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/relation/relation.dart';
@@ -11,7 +12,6 @@ import 'package:asl/c_domain/tree/tree_failure.dart';
 import 'package:asl/c_domain/tree/tree_settings.dart';
 import 'package:asl/d_infrastructure/core/firestore_helpers.dart';
 import 'package:asl/d_infrastructure/node/node_dto.dart';
-import 'package:asl/d_infrastructure/node/node_repository.dart';
 import 'package:asl/d_infrastructure/relation/relation_dto.dart';
 import 'package:asl/d_infrastructure/trees/tree_dtos.dart';
 import 'package:asl/d_infrastructure/user/user_repository.dart';
@@ -19,6 +19,9 @@ import 'package:asl/injection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+
+const String NODES_COLLECTION = 'nodes';
+const String RELATIONS_COLLECTION = 'relations';
 
 @LazySingleton(as: ITreeRepository)
 class TreeRepository implements ITreeRepository {
@@ -52,6 +55,7 @@ class TreeRepository implements ITreeRepository {
                   ).toDomain())
               .toList();
 
+          print('trees $trees');
           return right(trees);
         },
       );
@@ -86,7 +90,7 @@ class TreeRepository implements ITreeRepository {
         return left(const TNodeFailure.nodeNotExist());
       }
 
-      return right(NodeDto.fromFirestore(doc).toDomain());
+      return right(TNodeDto.fromFirestore(doc).toDomain());
     } on FirebaseException catch (e) {
       if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
@@ -98,6 +102,46 @@ class TreeRepository implements ITreeRepository {
       return left(const TNodeFailure.unexpected());
     } catch (_) {
       return left(const TNodeFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<TreeFailure, TreeGraphData>> getTreeGraph({
+    required UniqueId treeId,
+  }) async {
+    try {
+      final treeDoc = _firestore.treesCollection().doc(treeId.asKey());
+
+      // Fetch both subcollections in parallel
+      final results = await Future.wait([
+        treeDoc.collection(NODES_COLLECTION).get(),
+        treeDoc.collection(RELATIONS_COLLECTION).get(),
+      ]);
+
+      final nodesSnap = results[0];
+      final relationsSnap = results[1];
+
+      // Convert Firestore docs -> DTO -> Domain
+      final nodes = nodesSnap.docs
+          .map((d) => TNodeDto.fromFirestore(d).toDomain())
+          .toList();
+
+      final relations = relationsSnap.docs
+          .map((d) => RelationDto.fromFirestore(d).toDomain())
+          .toList();
+
+      return right((nodes: nodes, relations: relations));
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TreeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
     }
   }
 
@@ -219,19 +263,17 @@ class TreeRepository implements ITreeRepository {
     try {
       final authFacade = getIt<IAuthFacade>();
       final userOption = await authFacade.getSignedInUser();
-
       final user = userOption.getOrElse(
         () => throw NotAuthenticatedError(),
       );
 
       final userDoc = await _firestore.userDocument();
-      final treesCol = _firestore.treesCollection();
-
       final treeDto = TreeDto.fromDomain(
         tree.copyWith(creatorId: user.id),
       );
 
-      final rootDto = NodeDto.fromDomain(root);
+      final treesCol = _firestore.treesCollection();
+      final rootDto = TNodeDto.fromDomain(root);
 
       // Create Tree document
       await treesCol.doc(treeDto.treeId).set(treeDto.toJson());
@@ -250,6 +292,7 @@ class TreeRepository implements ITreeRepository {
 
       return right(unit);
     } on FirebaseException catch (e) {
+      print('e $e');
       if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
@@ -366,6 +409,30 @@ class TreeRepository implements ITreeRepository {
   }
 
   @override
+  Future<Either<TreeFailure, Unit>> updateShareSettings({
+    required UniqueId treeId,
+    required int option,
+  }) async {
+    try {
+      await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
+        'share_option': option,
+      });
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TreeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
+    }
+  }
+
+  @override
   Future<Either<TreeFailure, Unit>> updateIsShowUnknown({
     required UniqueId treeId,
     required bool isShowUnknown,
@@ -405,8 +472,10 @@ class TreeRepository implements ITreeRepository {
       }
 
       final settings = TreeSettings(
-        numberOfGeneration: data['number_of_generations'] as int,
+        numberOfGenerationOpt: data['number_of_generations'] as int,
         isShowUnknown: data['is_show_unknown'] as bool? ?? true,
+        shareOpt: data['share_option'] as int,
+        langOpt: 0,
       );
 
       return right(settings);

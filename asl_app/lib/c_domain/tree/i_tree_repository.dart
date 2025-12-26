@@ -1,4 +1,5 @@
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/local_tree_views/tree_graph_data.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/tree/tree.dart';
@@ -18,6 +19,10 @@ abstract class ITreeRepository {
     required UniqueId rootId,
   });
 
+  Future<Either<TreeFailure, TreeGraphData>> getTreeGraph({
+    required UniqueId treeId,
+  });
+
   // create & get
   Future<Either<TreeFailure, Unit>> create(
       {required Tree tree, required TNode root});
@@ -29,6 +34,10 @@ abstract class ITreeRepository {
 
   // Settings functions
   Future<void> updateNumberOfGeneration({
+    required UniqueId treeId,
+    required int option,
+  });
+  Future<void> updateShareSettings({
     required UniqueId treeId,
     required int option,
   });

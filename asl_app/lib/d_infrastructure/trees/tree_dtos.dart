@@ -1,6 +1,7 @@
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/tree/tree.dart';
 import 'package:asl/c_domain/tree/value_objects.dart';
+import 'package:asl/d_infrastructure/trees/tree_settings_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,14 +14,12 @@ abstract class TreeDto implements _$TreeDto {
 
   //  Create Data Transfer Object
   const factory TreeDto({
-    //  document id in firebase used as the identifier of that doc, and isn't stored inside it
     required String treeId,
     required String creatorId,
     required String rootId,
     required String treeName,
     required String fullName,
-    required bool isShowUnknown,
-    required int numberOfGenerationOption,
+    required TreeSettingsDto treeSettings,
   }) = _TreeDto;
 
   //  converting Entity => DTO
@@ -31,21 +30,21 @@ abstract class TreeDto implements _$TreeDto {
       rootId: tree.rootId.getOrCrash(),
       treeName: tree.treeName.getOrCrash(),
       fullName: tree.fullName.getOrCrash(),
-      isShowUnknown: tree.isShowUnknown,
-      numberOfGenerationOption: tree.numberOfGenerationOption,
+      treeSettings: TreeSettingsDto.fromDomain(tree.treeSettings),
     );
   }
 
   //  converting DTO => Entity
   Tree toDomain() {
+    final treeIdVO = UniqueId.fromUniqueString(treeId);
     return Tree(
-        treeId: UniqueId.fromUniqueString(treeId),
-        creatorId: UniqueId.fromUniqueString(creatorId),
-        treeName: TreeName(treeName),
-        fullName: FullName(fullName),
-        rootId: UniqueId.fromUniqueString(rootId),
-        isShowUnknown: isShowUnknown,
-        numberOfGenerationOption: numberOfGenerationOption);
+      treeId: treeIdVO,
+      creatorId: UniqueId.fromUniqueString(creatorId),
+      treeName: TreeName(treeName),
+      fullName: FullName(fullName),
+      rootId: UniqueId.fromUniqueString(rootId),
+      treeSettings: treeSettings.toDomain(treeId: treeIdVO),
+    );
   }
 
   //  converting JSON => DTO
