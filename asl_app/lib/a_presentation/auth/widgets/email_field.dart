@@ -21,7 +21,6 @@ class EmailField extends StatelessWidget {
     return AppFormField(
       label: getTr(context, 'email')!,
       hint: 'example@example.com',
-      isArabic: false,
       initialValue: '',
       color: kRootColors[700],
       onChanged: (value) => context

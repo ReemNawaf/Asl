@@ -18,7 +18,6 @@ class AppFormField extends StatelessWidget {
     this.color,
     this.spacing = 6,
     this.isValid = true,
-    this.isArabic = true,
     this.withLabel = true,
     this.controller,
     this.focusNode,
@@ -31,7 +30,6 @@ class AppFormField extends StatelessWidget {
   final bool isValid;
   final double spacing;
   final String? initialValue;
-  final bool isArabic;
   final Color? color;
   final FieldType fieldType;
   final bool withLabel;
@@ -65,11 +63,10 @@ class AppFormField extends StatelessWidget {
           child: TextFormField(
             obscureText: fieldType == FieldType.password,
             cursorColor: kBlacksColor,
-            cursorHeight: 20.0,
+            cursorHeight: 15.0,
             initialValue: initialValue,
             style: kCalloutStyle,
             readOnly: !isEditing,
-            textAlign: isArabic ? TextAlign.start : TextAlign.end,
             decoration:
                 kAppFormsInputDecor(hint: hint, color: color, isDense: true),
             keyboardType: fieldType == FieldType.email

@@ -26,7 +26,6 @@ class PasswordField extends StatelessWidget {
         AppFormField(
           label: getTr(context, 'password')!,
           hint: '**************',
-          isArabic: false,
           color: kRootColors[700],
           onChanged: (value) => context
               .read<SignInFormBloc>()
@@ -53,7 +52,6 @@ class PasswordField extends StatelessWidget {
           AppFormField(
             label: getTr(context, 'password')!,
             hint: '**************',
-            isArabic: false,
             isValid: false,
             color: kRootColors[700],
             onSaved: (_) => {},
