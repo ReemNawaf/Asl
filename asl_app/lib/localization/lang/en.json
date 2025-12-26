@@ -89,6 +89,7 @@
     "display_family_tree": "View family tree",
     "display_as_family_root": "View as family tree root",
     "done": "Done",
+    "save": "Save",
     "three_generations": "Three generations",
     "four_generations": "Four generations",
     "five_generations": "Five generations",
@@ -127,6 +128,12 @@
     "update_is_not_possible": "Update is not possible",
     "required_tree_name": "Tree name*",
     "family_tree_name_hint": "Family tree of ...",
-    "family_tree_name_cannot_be_empty": "Tree name cannot be empty",
-    "full_name": "Full name"
+    "name_cannot_be_empty": "Tree name cannot be empty",
+    "name_too_long": "Tree name is too long",
+    "name_too_short": "Tree name is too short",
+    "full_name": "Full name",
+    "show_unknown_description": "Show unknown members in the tree",
+    "choose_display_language": "Choose display language",
+    "create_family_tree": "create new family tree",
+    "root_has_no_parents_siblings": "This is a root node. There is no information about the the parents and the siblings"
 }
