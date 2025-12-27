@@ -1,8 +1,9 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 
-enum TreeDisplayLoading { LoadTreeNode, DrawTree }
+enum TreeDisplayLoading { LoadAllTree, LoadTreeNode, DrawTree }
 
 class DescriptiveLoadingWidget extends StatelessWidget {
   final Color color;
@@ -27,21 +28,24 @@ class DescriptiveLoadingWidget extends StatelessWidget {
           ),
         ),
         kVSpacer10,
-        Text(
-            '${treeDisplayLoadingStages[loading]!['number']!} / ${treeDisplayLoadingStages.length}'),
-        Text(treeDisplayLoadingStages[loading]!['message']!)
+        //Text('${treeDisplayLoadingStages[loading]!['number']!} / ${treeDisplayLoadingStages.length}'),
+        Text(getTr(context, treeDisplayLoadingStages[loading]!['message']!)!)
       ],
     );
   }
 }
 
 Map<TreeDisplayLoading, Map<String, String>> treeDisplayLoadingStages = {
-  TreeDisplayLoading.LoadTreeNode: {
+  TreeDisplayLoading.LoadAllTree: {
     'number': '1',
+    'message': 'load_all_trees',
+  },
+  TreeDisplayLoading.LoadTreeNode: {
+    'number': '2',
     'message': 'load_tree_nodes',
   },
   TreeDisplayLoading.DrawTree: {
-    'number': '2',
+    'number': '3',
     'message': 'draw_tree',
   },
 };

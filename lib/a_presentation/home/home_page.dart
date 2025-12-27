@@ -2,7 +2,6 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/des_loading_wdg.dart';
-import 'package:asl/a_presentation/core/widgets/loading_wdg.dart';
 import 'package:asl/a_presentation/home/widgets/layer_widget.dart';
 import 'package:asl/a_presentation/home/widgets/settings_btn.dart';
 import 'package:asl/a_presentation/home/widgets/tree_list.dart';
@@ -57,19 +56,16 @@ class HomePage extends StatelessWidget {
                       context
                           .read<TreeSettingsBloc>()
                           .add(TreeSettingsEvent.initialized(state.settings));
-                      debugPrint('--- Trees in HomePage ${state.trees.length}');
-                      debugPrint(
-                          '--- Selected Tree in HomePage ${state.selectedTreeId}');
-                      debugPrint(
-                          '--- Tree Root in HomePage ${state.mainRootId}');
+
                       if (state.isLoadingTrees) {
-                        return const LoadingWidget();
+                        return const DescriptiveLoadingWidget(
+                            loading: TreeDisplayLoading.LoadAllTree);
                       } else if (state.isLoadingTree) {
                         return const DescriptiveLoadingWidget(
                             loading: TreeDisplayLoading.LoadTreeNode);
                       } else if (state.trees.isNotEmpty) {
                         if (state.selectedTreeId != null) {
-                          return InteractiveView();
+                          return const InteractiveView();
                         } else {
                           return const SizedBox();
                         }
