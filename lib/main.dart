@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
 import 'package:asl/a_presentation/core/app.dart';
 import 'package:asl/injection.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() async {
   // for setting up Firebase
@@ -22,5 +23,6 @@ void main() async {
 
   // for injecting the instance, production environment
   configureinjection(Environment.prod);
+  usePathUrlStrategy();
   runApp(const MyApp());
 }

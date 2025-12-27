@@ -1,7 +1,9 @@
 import 'package:asl/a_presentation/auth/auth_page.dart';
 import 'package:asl/a_presentation/home/home_page.dart';
+import 'package:asl/a_presentation/share_tree/tree_page.dart';
 import 'package:asl/a_presentation/splash/splash_page.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
 
@@ -12,5 +14,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: AuthRoute.page),
         AutoRoute(page: HomeRoute.page),
+        AutoRoute(page: TreeRoute.page, path: '/trees/:treeId'),
       ];
 }
