@@ -38,48 +38,59 @@ class TreeView extends StatelessWidget {
               ..style = PaintingStyle.stroke,
 
             builder: (Node node) {
-              final data = node.key!.value as Map;
               final nodeType = node.key!.value['type'] as NodeType;
 
               // Mirror & real both carry a tnode
               final tnode = node.key!.value['tnode'] as TNode;
 
-              if (nodeType == NodeType.root) {
-                return RootNode(node: tnode, pageContext: context);
-              } else if (nodeType == NodeType.partner) {
-                return PartnerNode(node: tnode, pageContext: context);
-              } else if (nodeType == NodeType.partnerMirror) {
-                // This is a Mirror Partner Node
-                // replace the node with the real node id
-                final realId = data['realId'] as UniqueId;
+              // real id for mirror nodes
+              final realId = node.key!.value['realId'] as String?;
+              final id = node.key!.value['id'] as String;
 
-                if (tnode.gender == Gender.female) {
-                  // the mirror node is female
-                  // the partner node is male
-                  // children drawn under them
-                  return MirrorNode(
-                    node: tnode.copyWith(nodeId: realId),
-                    pageContext: context,
-                    noChildren: false,
-                  );
-                } else {
-                  // the mirror node is male
-                  // the partner node is female
-                  // children won't drawn
-                  // colored in new color to show
-                  return MirrorNode(
-                    node: tnode.copyWith(nodeId: realId),
-                    pageContext: context,
-                    noChildren: true,
-                  );
-                }
-              } else if (nodeType == NodeType.child) {
-                return ChildNode(node: tnode, pageContext: context);
-              } else if (nodeType == NodeType.grandchild) {
-                return GrandchildNode(node: tnode, pageContext: context);
-              } else {
-                return const SizedBox();
-              }
+              final nodeId = realId ?? tnode.nodeId.getOrCrash();
+              final idKey = nodeId; // use REAL id when mirror
+
+              final key = context.read<DrawTreeBloc>().keyForNode(idKey,
+                  mirrorNode: nodeType == NodeType.partnerMirror,
+                  drawingId: id);
+
+              return switch (nodeType) {
+                NodeType.root => KeyedSubtree(
+                    key: context.read<DrawTreeBloc>().state.rootKey,
+                    child: RootNode(node: tnode, pageContext: context)),
+                NodeType.partner => KeyedSubtree(
+                    key: key,
+                    child: PartnerNode(node: tnode, pageContext: context)),
+                NodeType.partnerMirror => tnode.gender == Gender.female
+                    ?
+                    // the mirror node is female
+                    // the partner node is male
+                    // children drawn under them
+                    MirrorNode(
+                        node: tnode.copyWith(
+                            nodeId: UniqueId.fromUniqueString(nodeId)),
+                        pageContext: context,
+                        noChildren: false,
+                      )
+                    // the mirror node is male
+                    // the partner node is female
+                    // children won't drawn
+                    // colored in new color to show
+
+                    : MirrorNode(
+                        node: tnode.copyWith(
+                            nodeId: UniqueId.fromUniqueString(nodeId)),
+                        pageContext: context,
+                        noChildren: true,
+                      ),
+                NodeType.child => KeyedSubtree(
+                    key: key,
+                    child: ChildNode(node: tnode, pageContext: context)),
+                NodeType.grandchild => KeyedSubtree(
+                    key: key,
+                    child: GrandchildNode(node: tnode, pageContext: context)),
+                _ => const SizedBox(),
+              };
             },
           );
         } else {

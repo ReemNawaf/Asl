@@ -7,13 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InteractiveView extends StatelessWidget {
-  InteractiveView({super.key});
-
-  final TransformationController _controller = TransformationController();
+  const InteractiveView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('LOG | InteractiveView: rebuild with new tree nodes');
     return BlocBuilder<LocalTreeBloc, LocalTreeState>(
       builder: (context, treeState) {
         if (treeState.focusRootId != null) {
@@ -30,8 +27,11 @@ class InteractiveView extends StatelessWidget {
               );
         }
         return BlocListener<TreeSettingsBloc, TreeSettingsState>(
-          listener: (context, state) =>
-              _controller.value = Matrix4.identity()..scale(state.zoomScale),
+          listener: (context, state) => context
+              .read<DrawTreeBloc>()
+              .state
+              .controller
+              .value = Matrix4.identity()..scale(state.zoomScale),
           child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
             listenWhen: (prev, curr) =>
                 prev.numberOfGenerations != curr.numberOfGenerations,
@@ -51,8 +51,10 @@ class InteractiveView extends StatelessWidget {
               }
             },
             child: InteractiveViewer(
+                key: context.read<DrawTreeBloc>().state.viewerKey,
                 constrained: false,
-                transformationController: _controller,
+                transformationController:
+                    context.read<DrawTreeBloc>().state.controller,
                 alignment: Alignment.center,
                 boundaryMargin: const EdgeInsets.all(1000),
                 minScale: MIN_ZOOM,

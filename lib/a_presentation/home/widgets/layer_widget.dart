@@ -1,8 +1,12 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
+import 'package:asl/c_domain/tree/drawing/focus_node.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class LayersWidget extends StatelessWidget {
@@ -51,7 +55,23 @@ class LayersWidget extends StatelessWidget {
         ),
         const SizedBox(height: 16.0),
         AppButton(
-          onPressed: () {},
+          onPressed: () {
+            // Draw the tree with main root
+            final localTree = context.read<LocalTreeBloc>().state;
+            context.read<DrawTreeBloc>().add(DrawTreeEvent.drawNewTree(
+                store: localTree.store,
+                rootId: localTree.mainRootId!,
+                context: context));
+            final state = context.read<DrawTreeBloc>().state;
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              focusOnRoot(
+                viewerKey: state.viewerKey,
+                rootKey: state.rootKey,
+                controller: state.controller,
+                targetScale: 1.0,
+              );
+            });
+          },
           label: getTr(context, 'grandparents')!,
           textColor: kRootColors[200]!,
           fillColor: kRootColors[600]!,

@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
-import 'package:asl/c_domain/tree/tree_draw.dart';
+import 'package:asl/c_domain/tree/drawing/tree_draw.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,6 +21,21 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
     on<DrawTreeEvent>(mapEventToState);
   }
 
+  final Map<String, GlobalKey> _nodeKeys = {}; // mutable, NOT in state
+
+  GlobalKey keyForNode(String nodeIdKey,
+      {required bool mirrorNode, required String drawingId}) {
+    final id = mirrorNode ? drawingId : nodeIdKey;
+    return _nodeKeys.putIfAbsent(
+      id,
+      () => GlobalKey(debugLabel: 'node:$nodeIdKey'),
+    );
+  }
+
+  GlobalKey? tryGetKey(String nodeIdKey) => _nodeKeys[nodeIdKey];
+
+  void clearNodeKeys() => _nodeKeys.clear(); // call when tree changes / redraw
+
   Future<void> mapEventToState(
     DrawTreeEvent event,
     Emitter<DrawTreeState> emit,
@@ -32,7 +48,7 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
             maxGenerations: e.maxGenerations,
             isShowUnknown: e.isShowUnknown ?? true,
             context: e.context);
-        emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
+        emit(state.copyWith(graph: graph, builder: treeDraw.builder));
       },
       drawNewTree: (e) async {
         final graph = treeDraw.drawTreeFromStore(
@@ -41,7 +57,7 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
             maxGenerations: e.maxGenerations,
             isShowUnknown: e.isShowUnknown ?? true,
             context: e.context);
-        emit(DrawTreeState(graph: graph, builder: treeDraw.builder));
+        emit(state.copyWith(graph: graph, builder: treeDraw.builder));
       },
     );
   }

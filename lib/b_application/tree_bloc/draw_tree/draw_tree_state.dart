@@ -5,9 +5,16 @@ abstract class DrawTreeState with _$DrawTreeState {
   const factory DrawTreeState({
     Graph? graph,
     BuchheimWalkerConfiguration? builder,
+    required TransformationController controller,
+    required GlobalKey viewerKey,
+    required GlobalKey rootKey,
   }) = _DrawTreeState;
 
   factory DrawTreeState.initial() {
-    return const DrawTreeState();
+    return DrawTreeState(
+      controller: TransformationController(),
+      viewerKey: GlobalKey(),
+      rootKey: GlobalKey(),
+    );
   }
 }

@@ -328,7 +328,7 @@ class TreeDraw {
 
     final gNode = Node.Id({
       'type': nodeType,
-      'id': node.nodeId,
+      'id': key,
       'tnode': node,
     });
 
@@ -373,7 +373,7 @@ class TreeDraw {
     final gNode = Node.Id({
       'type': NodeType.partnerMirror,
       'id': mirrorKey, // unique for layout
-      'realId': realNode.nodeId, // IMPORTANT: use this on tap
+      'realId': realNode.nodeId.asKey(), // IMPORTANT: use this on tap
       'tnode': realNode, // render same card
     });
 
