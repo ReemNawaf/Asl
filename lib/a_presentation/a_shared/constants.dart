@@ -8,10 +8,11 @@ const double PAN_HEIGHT = 500;
 const double PAN_SM_HEIGHT = 580;
 const double PAN_WIDTH = 680;
 const double PAN_SM_WIDTH = 500;
+const int NODE_BRIEF_MAX_LENGTH = 5000;
 
-const MIN_ZOOM = 0.15;
-const MAX_ZOOM = 2.25;
-const ZOOM_DEF = 0.6;
+const MIN_ZOOM = 0.05;
+const MAX_ZOOM = 2.0;
+const ZOOM_DEF = 1.0;
 
 const double transactionCardHeight = 75.0;
 
