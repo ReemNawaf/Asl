@@ -25,6 +25,7 @@ abstract class TNodeDto implements _$TNodeDto {
     String? upperFamily,
     required List<String> relations,
     required List<String> fosterChildren,
+    required String? notes,
   }) = _TNodeDto;
 
   //  converting Entity => DTO
@@ -44,26 +45,28 @@ abstract class TNodeDto implements _$TNodeDto {
       upperFamily: node.upperFamily?.getOrCrash(),
       relations: node.relations.map((r) => r.getOrCrash()).toList(),
       fosterChildren: node.fosterChildren.map((e) => e.getOrCrash()).toList(),
+      notes: node.notes != null ? node.notes!.getOrCrash() : '',
     );
   }
 
   //  converting DTO => Entity
   TNode toDomain() {
     return TNode(
-      nodeId: UniqueId.fromUniqueString(nodeId!),
-      treeId: UniqueId.fromUniqueString(treeId),
-      firstName: FullName(firstName),
-      birthDate: birthDate == null ? null : DateTime.parse(birthDate!),
-      deathDate: deathDate == null ? null : DateTime.parse(deathDate!),
-      isAlive: isAlive,
-      gender: Gender.values.byName(gender),
-      upperFamily:
-          upperFamily != null ? UniqueId.fromUniqueString(upperFamily!) : null,
-      relations: relations.map((r) => UniqueId.fromUniqueString(r)).toList(),
-      fosterChildren:
-          fosterChildren.map((e) => UniqueId.fromUniqueString(e)).toList(),
-      relationsObject: [],
-    );
+        nodeId: UniqueId.fromUniqueString(nodeId!),
+        treeId: UniqueId.fromUniqueString(treeId),
+        firstName: FullName(firstName),
+        birthDate: birthDate == null ? null : DateTime.parse(birthDate!),
+        deathDate: deathDate == null ? null : DateTime.parse(deathDate!),
+        isAlive: isAlive,
+        gender: Gender.values.byName(gender),
+        upperFamily: upperFamily != null
+            ? UniqueId.fromUniqueString(upperFamily!)
+            : null,
+        relations: relations.map((r) => UniqueId.fromUniqueString(r)).toList(),
+        fosterChildren:
+            fosterChildren.map((e) => UniqueId.fromUniqueString(e)).toList(),
+        relationsObject: [],
+        notes: NodeNotes(notes ?? ''));
   }
 
   //  converting JSON => DTO

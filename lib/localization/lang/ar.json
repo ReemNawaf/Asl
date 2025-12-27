@@ -99,7 +99,7 @@
   "all_generations": "كل الأجيال",
   "generations": "الأجيـــــــال",
   "grandchildren": "الأحفـــــــاد",
-  "parents": "الأبــــــاء",
+  "parents": "الأبــــــــــاء",
   "grandparents": "الأجـــــــداد",
   "add_family_tree": "إضافة شجرة عائلة",
   "name": "الاسم",
@@ -136,5 +136,11 @@
   "choose_display_language": "اختر لغة العرض",
   "create_family_tree": "إنشاء شجرة عائلة",
   "root_has_no_parents_siblings": "هذا العضو هو جذر العائلة. لا توجد معلومات عن الوالدين والأخوة",
-  "children_under_father_tree": "الأبناء تحت\nشجرة الأب"
+  "children_under_father_tree": "الأبناء تحت\nشجرة الأب",
+  "brief_about_the_member": "نبذة عن العضو",
+  "brief_too_long": "النبذة طويلة جدًا",
+  "write_about_the_member": "اكتب عن العضو",
+  "load_all_trees": "جاري تحميل كل الأشجار", 
+  "load_tree_nodes": "جاري تحميل معلومات أعضاء الشجرة",
+  "draw_tree": "جاري رسم الشجرة"
 }

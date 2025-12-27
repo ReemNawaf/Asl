@@ -27,7 +27,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
     await event.map(
       initialized: (e) {
         emit(state.copyWith(
-          node: e.node,
+          node: e.node.copyWith(notes: e.node.notes ?? NodeNotes('input')),
           isSaving: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
@@ -88,6 +88,14 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       changeGender: (e) {
         emit(state.copyWith(
           node: state.node!.copyWith(gender: e.gender),
+          isSaving: false,
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: null,
+        ));
+      },
+      notesChanged: (e) {
+        emit(state.copyWith(
+          node: state.node!.copyWith(notes: NodeNotes(e.notes ?? '')),
           isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: null,

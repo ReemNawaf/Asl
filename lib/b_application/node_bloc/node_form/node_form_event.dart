@@ -18,6 +18,8 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.deathDateChanged(DateTime? date) =
       _DeathDateChanged;
 
+  const factory NodeFormEvent.notesChanged(String? notes) = _NotesChanged;
+
   const factory NodeFormEvent.changeIsAvlive(bool isAlive) = _ChangedIsAvlive;
   const factory NodeFormEvent.makeItRoot() = _MakeItRoot;
   const factory NodeFormEvent.changeGender(Gender gender) = _ChangedGender;

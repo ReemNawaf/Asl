@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_validators.dart';
 import 'package:dartz/dartz.dart';
 import 'package:asl/c_domain/core/failures.dart';
@@ -66,4 +67,19 @@ class FullName extends ValueObject<String> {
   }
 
   const FullName._(this.value);
+}
+
+class NodeNotes extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const maxLength = NODE_BRIEF_MAX_LENGTH;
+
+  factory NodeNotes(String input) {
+    return NodeNotes._(
+        //  the node notes doesn't exceed the maximmum length
+        validateMaxStringLength(input, maxLength));
+  }
+
+  const NodeNotes._(this.value);
 }

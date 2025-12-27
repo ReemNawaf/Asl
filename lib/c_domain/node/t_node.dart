@@ -24,6 +24,7 @@ abstract class TNode implements _$TNode {
     UniqueId? upperFamily,
     required List<UniqueId> relations,
     required List<UniqueId> fosterChildren,
+    NodeNotes? notes,
     @unfreezed required List<Relation> relationsObject,
   }) = _TNode;
 
@@ -37,6 +38,7 @@ abstract class TNode implements _$TNode {
         relations: [],
         fosterChildren: [],
         relationsObject: [],
+        notes: NodeNotes(''),
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

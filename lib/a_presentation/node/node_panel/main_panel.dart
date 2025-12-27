@@ -203,7 +203,7 @@ class MainPanel extends StatelessWidget {
                                 ),
                                 if (type != NodeType.partner)
                                   RelationsPanel(color: color, node: node),
-                                const NotesPanel(),
+                                NotesPanel(color: color),
                               ],
                             ),
                           ),
