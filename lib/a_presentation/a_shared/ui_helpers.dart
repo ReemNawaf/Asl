@@ -138,5 +138,5 @@ String getNodeChildrenTitle(context, gender) {
 String getParentTitle(context, gender) {
   return gender == Gender.male
       ? getTr(context, 'mother')!
-      : getTr(context, 'mother')!;
+      : getTr(context, 'father')!;
 }

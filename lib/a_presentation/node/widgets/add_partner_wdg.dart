@@ -58,7 +58,7 @@ class AddPartnerWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold, wordSpacing: 2.0),
                           children: [
                             TextSpan(
-                              text: getTr(context, 'add_new_member')!,
+                              text: ' ${getTr(context, "add_new_member")!}',
                               style: kFootnoteStyle.copyWith(
                                 color: color,
                                 fontWeight: FontWeight.bold,
