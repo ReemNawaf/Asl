@@ -16,6 +16,7 @@ class TreeNotFoundPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: kWhitesColor[600],
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
