@@ -10,17 +10,15 @@ String? getTr(BuildContext context, String key) {
 const String english = 'en';
 const String arabic = 'ar';
 
-const String englishCode = 'languageCode';
-
 Future<void> setLocale(String languageCode) async {
   final prefs = await SharedPreferences.getInstance();
-  await prefs.setString(englishCode, languageCode);
+  await prefs.setString(arabic, languageCode);
 }
 
 Future<Locale> getLocale() async {
   // final Locale appLocale = Localizations.localeOf(context);
   final prefs = await SharedPreferences.getInstance();
 
-  final languageCode = prefs.getString(englishCode) ?? arabic;
+  final languageCode = prefs.getString(arabic) ?? arabic;
   return Locale(languageCode);
 }

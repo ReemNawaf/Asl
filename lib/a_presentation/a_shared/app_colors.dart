@@ -85,6 +85,7 @@ const int kOutColor = 0xFFABABAB;
 const MaterialColor kOutColors = MaterialColor(
   kOutColor,
   <int, Color>{
+    200: Color(0xFF808080),
     300: Color(0xFFABABAB), // 0x
     400: Color(0xFFC7C7C7),
     500: Color(0xFFEEEEEE),
@@ -101,7 +102,7 @@ const int kMirrorColor = 0xFF74C7F4;
 const MaterialColor kMirrorColors = MaterialColor(
   kMirrorColor,
   <int, Color>{
-    200: Color(0xFF74C7F4), // L5 buttons
+    200: Color(0xFF09A1F4), // L5 buttons
     300: Color(0xFF74C7F4), // L4 (under name)
     400: Color(0xFF8ED0F4), // L3 (three rectangles)
     500: Color(0xFFA5D8F4), // L2 (behind avatar)

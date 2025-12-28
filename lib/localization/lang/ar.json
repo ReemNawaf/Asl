@@ -87,6 +87,7 @@
   "create_new_account": "إنشاء حساب",
   "sign_in": "سجل دخولك",
   "display_family_tree": "استعراض شجرة العائلة",
+  "display_member_tree": "استعراض شجرة العضو",
   "display_as_family_root": "استعراضه كجذر لشجرة العائلة",
   "done": "تم",
   "save": "حفظ",
@@ -142,5 +143,9 @@
   "write_about_the_member": "اكتب عن العضو",
   "load_all_trees": "جاري تحميل كل الأشجار", 
   "load_tree_nodes": "جاري تحميل معلومات أعضاء الشجرة",
-  "draw_tree": "جاري رسم الشجرة"
+  "draw_tree": "جاري رسم الشجرة",
+  "sorry_there_is_no_tree_under_this_link": "نعتذر لا توجد شجرة بهذا العنوان",
+  "the_link_is_incorrect_or_tree_is_not_available": "قد يكون الرابط غير صحيح أو أن الشجرة ليست متاحة للمشاركة",
+  "ask_tree_editor_to_send_the_right_link": "اسأل محرر الشجرة لإرسال الرابط الصحيح",
+  "go_to_home_page": "العودة للصفحة الرئيسية" 
 }

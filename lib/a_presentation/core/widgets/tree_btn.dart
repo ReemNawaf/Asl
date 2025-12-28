@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
@@ -8,14 +9,13 @@ import 'package:flutter_svg/svg.dart';
 
 class TreeButton extends StatelessWidget {
   const TreeButton({super.key, required this.color});
-  final Color color;
+  final MaterialColor color;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         final cNode = context.read<NodeFormBloc>().state.node;
-
         context
             .read<LocalTreeBloc>()
             .add(LocalTreeEvent.changeFocusRoot(nodeId: cNode!.nodeId));
@@ -26,25 +26,27 @@ class TreeButton extends StatelessWidget {
           color: color,
           borderRadius: BorderRadius.circular(10.0),
         ),
-        width: 220,
+        width: 250,
         height: 80,
         padding: const EdgeInsets.only(left: 10.0, right: 2.4),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 60,
-              width: 60,
+              height: 50,
+              width: 50,
               child: SvgPicture.asset(
-                'assets/icons/tree.svg',
+                'assets/icons/root.svg',
+                color: color[200],
                 alignment: Alignment.centerLeft,
               ),
             ),
+            kHSpacer10,
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  getTr(context, 'display_family_tree')!,
+                  getTr(context, 'display_member_tree')!,
                   style: kCalloutStyle,
                 ),
                 Text(
