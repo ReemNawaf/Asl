@@ -23,6 +23,7 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
     on<_ShowUnknownChanged>(_onShowUnknownChanged);
     on<_SharedLinkCopied>(_onSharedLinkCopied);
     on<_UpdateShareSettings>(_onUpdateShareSettings);
+    on<_UpdateIsShareLink>(_onUpdateIsShareLink);
   }
 
   Future<void> _onInitialized(
@@ -35,6 +36,7 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
       showUnknown: treeSettings.isShowUnknown,
       numberOfGenerations: treeSettings.numberOfGenerationOpt,
       shareOption: treeSettings.shareOpt,
+      isShareLink: event.isShareLink ?? false,
     ));
   }
 
@@ -79,6 +81,13 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
     Emitter<TreeSettingsState> emit,
   ) async {
     emit(state.copyWith(shareOption: event.shareOption, isLinkCopied: false));
+  }
+
+  Future<void> _onUpdateIsShareLink(
+    _UpdateIsShareLink event,
+    Emitter<TreeSettingsState> emit,
+  ) async {
+    emit(state.copyWith(isShareLink: event.isShareLink));
   }
 }
 

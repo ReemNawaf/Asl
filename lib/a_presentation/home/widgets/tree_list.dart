@@ -37,7 +37,6 @@ class TreeList extends StatelessWidget {
             child: Text(getTr(context, 'add_family_tree')!),
           ));
 
-          debugPrint('LOG | TreeList: menuItems.length: ${menuItems.length}');
           return DropdownButton(
             items: menuItems,
             isExpanded: true,

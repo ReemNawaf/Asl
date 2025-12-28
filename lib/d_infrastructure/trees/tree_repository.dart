@@ -55,7 +55,6 @@ class TreeRepository implements ITreeRepository {
                   ).toDomain())
               .toList();
 
-          print('trees $trees');
           return right(trees);
         },
       );

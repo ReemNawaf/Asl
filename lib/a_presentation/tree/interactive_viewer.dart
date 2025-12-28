@@ -14,7 +14,7 @@ class InteractiveView extends StatelessWidget {
     return BlocBuilder<LocalTreeBloc, LocalTreeState>(
       builder: (context, treeState) {
         if (treeState.focusRootId != null) {
-          print('--- DRAWing ${treeState.focusRootId}');
+          debugPrint('DRAWING | ${treeState.focusRootId}');
           context.read<DrawTreeBloc>().add(
                 DrawTreeEvent.drawNewTree(
                   store: treeState.store,
@@ -37,7 +37,7 @@ class InteractiveView extends StatelessWidget {
                 prev.numberOfGenerations != curr.numberOfGenerations,
             listener: (context, state) {
               if (treeState.focusRootId != null) {
-                print('--- DRAWing ${treeState.focusRootId}');
+                debugPrint('DRAWING | ${treeState.focusRootId}');
                 context.read<DrawTreeBloc>().add(
                       DrawTreeEvent.drawNewTree(
                         store: treeState.store,

@@ -46,11 +46,8 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
         ));
       },
       addChildToList: (e) {
-        print('state.tempChild.firstName ${state.tempChild.firstName}');
-
         if (state.tempChild.firstName.isValid()) {
           // adding the previous added children
-          print('LOG | state.children ${state.children.length}');
           var newChildren = {...state.children};
           final relationKey = state.tempChild.upperFamily!.getOrCrash();
 
@@ -58,10 +55,7 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
             ...?newChildren[relationKey],
             state.tempChild
           ];
-          print('LOG | newChildren len ${newChildren.length}');
-          print('LOG | newChildren $newChildren');
 
-          debugPrint('LOG | new children list ${newChildren.length}');
           emit(state.copyWith(
             children: newChildren,
             isViewing: true,
@@ -136,11 +130,9 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
             state.children.values.expand((list) => list).toList();
 
         if (allchildren.isNotEmpty) {
-          debugPrint('LOG | all children length ${allchildren.length}');
           // check the tree validation
           if (allchildren.every((child) => child.failureOption.isNone())) {
             addedFailureOrSuccess = right(allchildren);
-            debugPrint('LOG | the child is added');
             isCreated = state.isEditing ? false : true;
           }
         }

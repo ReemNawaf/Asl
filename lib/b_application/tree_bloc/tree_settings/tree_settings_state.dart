@@ -9,14 +9,15 @@ class TreeSettingsState with _$TreeSettingsState {
     required bool isLinkCopied,
     required int shareOption,
     required int langOpt,
+    required bool isShareLink,
   }) = _TreeSettingsState;
 
   factory TreeSettingsState.initial() => const TreeSettingsState(
-        zoomScale: ZOOM_DEF,
-        showUnknown: true,
-        numberOfGenerations: 0,
-        shareOption: 0,
-        langOpt: 0,
-        isLinkCopied: false,
-      );
+      zoomScale: ZOOM_DEF,
+      showUnknown: true,
+      numberOfGenerations: 0,
+      shareOption: 0,
+      langOpt: 0,
+      isLinkCopied: false,
+      isShareLink: false);
 }

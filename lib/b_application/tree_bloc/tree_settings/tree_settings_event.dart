@@ -3,8 +3,8 @@ part of 'tree_settings_bloc.dart';
 @freezed
 class TreeSettingsEvent with _$TreeSettingsEvent {
   /// Load settings from Firebase
-  const factory TreeSettingsEvent.initialized(TreeSettings? treeSettings) =
-      _Initialized;
+  const factory TreeSettingsEvent.initialized(TreeSettings? treeSettings,
+      {bool? isShareLink}) = _Initialized;
 
   /// User changes the zoom
   const factory TreeSettingsEvent.zoomChanged(double zoomScale) = _ZoomChanged;
@@ -21,7 +21,11 @@ class TreeSettingsEvent with _$TreeSettingsEvent {
   /// User toggles coping the share link
   const factory TreeSettingsEvent.sharedLinkCopied() = _SharedLinkCopied;
 
-  /// User toggles coping the share link
+  /// Update sharing settings
   const factory TreeSettingsEvent.updateShareSettings(int shareOption) =
       _UpdateShareSettings;
+
+  /// Update as share link
+  const factory TreeSettingsEvent.updateIsShareLink(bool isShareLink) =
+      _UpdateIsShareLink;
 }

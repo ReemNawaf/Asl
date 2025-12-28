@@ -7,6 +7,11 @@ class LocalTreeEvent with _$LocalTreeEvent {
   /// Load all trees metadata (user trees)
   const factory LocalTreeEvent.loadAllTrees() = _LoadAllTrees;
 
+  /// Load full Tree by tree_id
+  const factory LocalTreeEvent.loadTree({
+    required UniqueId treeId,
+  }) = _LoadTree;
+
   /// Select tree (switch context)
   /// and Load nodes for a specific tree
   const factory LocalTreeEvent.selectTree({

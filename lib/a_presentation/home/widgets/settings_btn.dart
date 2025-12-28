@@ -66,11 +66,9 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                   contextPage: contextPage,
                 ),
                 kVSpacer10,
-                kAppDivider,
-                kVSpacer10,
                 ShareSettingsSection(
                     dialogContext: dialogContext, contextPage: contextPage),
-                kVSpacer30,
+                const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

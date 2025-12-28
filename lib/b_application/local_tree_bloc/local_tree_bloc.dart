@@ -73,6 +73,69 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         }
       },
 
+      loadTree: (e) async {
+        emit(state.copyWith(
+          isLoadingTree: true,
+          treeFailureOption: none(),
+          nodeFailureOption: none(),
+        ));
+
+        // 1) Load the tree
+        final eitherTree = await _treeRepo.get(e.treeId);
+        final tree = eitherTree.fold((_) => null, (t) => t);
+
+        if (tree == null) {
+          emit(state.copyWith(
+            isLoadingTree: false,
+            treeFailureOption: some(const TreeFailure.unexpected()),
+          ));
+          return;
+        }
+
+        // Set root ids now that we have the tree
+        emit(state.copyWith(
+          selectedTreeId: tree.treeId,
+          mainRootId: tree.rootId,
+          focusRootId: tree.rootId,
+        ));
+
+        // 2) Load tree graph +
+        final graphFuture = _treeRepo.getTreeGraph(treeId: e.treeId);
+
+        // 3) settings (in parallel)
+        final settingsFuture = _treeRepo
+            .loadSettings(e.treeId)
+            .then(
+              (either) => either.fold((_) => TreeSettings.empty(), (r) => r),
+            )
+            .catchError((_) => TreeSettings.empty());
+
+        final eitherGraph = await graphFuture;
+        final settings = await settingsFuture;
+
+        eitherGraph.fold(
+          (f) => emit(state.copyWith(
+            isLoadingTree: false,
+            treeFailureOption: some(f),
+          )),
+          (data) {
+            final store = TreeGraphBuilder.fromCollections(
+              nodes: data.nodes,
+              relations: data.relations,
+            );
+
+            emit(state.copyWith(
+              isLoadingTree: false,
+              trees: [tree],
+              store: store,
+              settings: settings,
+              treeFailureOption: none(),
+              nodeFailureOption: none(),
+            ));
+          },
+        );
+      },
+
       selectTree: (e) async {
         // when selecting a tree
 
@@ -381,11 +444,11 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
       // --------------------------------------------
       // D) VIEW / PROJECTION
       // --------------------------------------------
-      changeFocusRoot: (e) async {
+      changeFocusRoot: (e) {
         emit(state.copyWith(focusRootId: e.nodeId));
       },
 
-      resetFocusRoot: (e) async {
+      resetFocusRoot: (e) {
         final main = state.mainRootId;
         if (main == null) return;
         emit(state.copyWith(focusRootId: main));

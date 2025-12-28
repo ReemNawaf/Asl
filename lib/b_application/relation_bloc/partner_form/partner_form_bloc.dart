@@ -28,7 +28,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
   ) async {
     await event.map(
       addPartner: (e) async {
-        debugPrint('LOG | addPartner start');
         final isFather = e.node.gender == Gender.male;
 
         final partner = TNode(
@@ -63,7 +62,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           isAdding: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
-        debugPrint('LOG | addPartner end');
       },
       showPartnerByNodeId: (e) {
         emit(state.copyWith(isPartnerById: e.isAdding));
@@ -102,7 +100,6 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
             partnerNotExist: false,
             showErrorMessages: AutovalidateMode.disabled,
           ));
-          debugPrint('LOG | addPartnerById end');
         } else {
           emit(state.copyWith(
             partnerNotExist: true,

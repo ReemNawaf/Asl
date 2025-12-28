@@ -19,6 +19,7 @@ mixin _$LocalTreeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -43,6 +44,7 @@ mixin _$LocalTreeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -67,6 +69,7 @@ mixin _$LocalTreeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -92,6 +95,7 @@ mixin _$LocalTreeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -114,6 +118,7 @@ mixin _$LocalTreeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -135,6 +140,7 @@ mixin _$LocalTreeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -219,6 +225,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -246,6 +253,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -273,6 +281,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -304,6 +313,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -329,6 +339,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -353,6 +364,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -380,6 +392,253 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
 
 abstract class _LoadAllTrees implements LocalTreeEvent {
   const factory _LoadAllTrees() = _$LoadAllTreesImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadTreeImplCopyWith<$Res> {
+  factory _$$LoadTreeImplCopyWith(
+          _$LoadTreeImpl value, $Res Function(_$LoadTreeImpl) then) =
+      __$$LoadTreeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniqueId treeId});
+}
+
+/// @nodoc
+class __$$LoadTreeImplCopyWithImpl<$Res>
+    extends _$LocalTreeEventCopyWithImpl<$Res, _$LoadTreeImpl>
+    implements _$$LoadTreeImplCopyWith<$Res> {
+  __$$LoadTreeImplCopyWithImpl(
+      _$LoadTreeImpl _value, $Res Function(_$LoadTreeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? treeId = null,
+  }) {
+    return _then(_$LoadTreeImpl(
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
+  const _$LoadTreeImpl({required this.treeId});
+
+  @override
+  final UniqueId treeId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LocalTreeEvent.loadTree(treeId: $treeId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LocalTreeEvent.loadTree'))
+      ..add(DiagnosticsProperty('treeId', treeId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadTreeImpl &&
+            (identical(other.treeId, treeId) || other.treeId == treeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, treeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadTreeImplCopyWith<_$LoadTreeImpl> get copyWith =>
+      __$$LoadTreeImplCopyWithImpl<_$LoadTreeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
+    required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
+    required TResult Function(Tree tree, TNode root) createTree,
+    required TResult Function(Tree tree) updateTree,
+    required TResult Function(UniqueId treeId) deleteTree,
+    required TResult Function(TNode node) updateNode,
+    required TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)
+        addPartners,
+    required TResult Function(TNode node, UniqueId partnerId, Relation relation)
+        addExistingPartner,
+    required TResult Function(List<TNode> children) addChildren,
+    required TResult Function(UniqueId nodeId) deleteNode,
+    required TResult Function(List<TNode> children) deleteChildren,
+    required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeId) changeFocusRoot,
+    required TResult Function() resetFocusRoot,
+    required TResult Function(int generations) changeGenerationLimit,
+    required TResult Function(bool show) toggleShowUnknown,
+    required TResult Function(bool success, int pendingSyncCount) syncFinished,
+  }) {
+    return loadTree(treeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
+    TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult? Function(Tree tree, TNode root)? createTree,
+    TResult? Function(Tree tree)? updateTree,
+    TResult? Function(UniqueId treeId)? deleteTree,
+    TResult? Function(TNode node)? updateNode,
+    TResult? Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult? Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult? Function(List<TNode> children)? addChildren,
+    TResult? Function(UniqueId nodeId)? deleteNode,
+    TResult? Function(List<TNode> children)? deleteChildren,
+    TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeId)? changeFocusRoot,
+    TResult? Function()? resetFocusRoot,
+    TResult? Function(int generations)? changeGenerationLimit,
+    TResult? Function(bool show)? toggleShowUnknown,
+    TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+  }) {
+    return loadTree?.call(treeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
+    TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult Function(Tree tree, TNode root)? createTree,
+    TResult Function(Tree tree)? updateTree,
+    TResult Function(UniqueId treeId)? deleteTree,
+    TResult Function(TNode node)? updateNode,
+    TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult Function(List<TNode> children)? addChildren,
+    TResult Function(UniqueId nodeId)? deleteNode,
+    TResult Function(List<TNode> children)? deleteChildren,
+    TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeId)? changeFocusRoot,
+    TResult Function()? resetFocusRoot,
+    TResult Function(int generations)? changeGenerationLimit,
+    TResult Function(bool show)? toggleShowUnknown,
+    TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    required TResult orElse(),
+  }) {
+    if (loadTree != null) {
+      return loadTree(treeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
+    required TResult Function(_SelectTree value) selectTree,
+    required TResult Function(_CreateTree value) createTree,
+    required TResult Function(_UpdateTree value) updateTree,
+    required TResult Function(_DeleteTree value) deleteTree,
+    required TResult Function(_UpdateNode value) updateNode,
+    required TResult Function(_AddPartner value) addPartners,
+    required TResult Function(_AddExistingPartner value) addExistingPartner,
+    required TResult Function(_AddChild value) addChildren,
+    required TResult Function(_DeleteNode value) deleteNode,
+    required TResult Function(_DeleteChildren value) deleteChildren,
+    required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
+    required TResult Function(_ResetFocusRoot value) resetFocusRoot,
+    required TResult Function(_ChangeGenerationLimit value)
+        changeGenerationLimit,
+    required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
+    required TResult Function(_SyncFinished value) syncFinished,
+  }) {
+    return loadTree(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
+    TResult? Function(_SelectTree value)? selectTree,
+    TResult? Function(_CreateTree value)? createTree,
+    TResult? Function(_UpdateTree value)? updateTree,
+    TResult? Function(_DeleteTree value)? deleteTree,
+    TResult? Function(_UpdateNode value)? updateNode,
+    TResult? Function(_AddPartner value)? addPartners,
+    TResult? Function(_AddExistingPartner value)? addExistingPartner,
+    TResult? Function(_AddChild value)? addChildren,
+    TResult? Function(_DeleteNode value)? deleteNode,
+    TResult? Function(_DeleteChildren value)? deleteChildren,
+    TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult? Function(_SyncFinished value)? syncFinished,
+  }) {
+    return loadTree?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
+    TResult Function(_SelectTree value)? selectTree,
+    TResult Function(_CreateTree value)? createTree,
+    TResult Function(_UpdateTree value)? updateTree,
+    TResult Function(_DeleteTree value)? deleteTree,
+    TResult Function(_UpdateNode value)? updateNode,
+    TResult Function(_AddPartner value)? addPartners,
+    TResult Function(_AddExistingPartner value)? addExistingPartner,
+    TResult Function(_AddChild value)? addChildren,
+    TResult Function(_DeleteNode value)? deleteNode,
+    TResult Function(_DeleteChildren value)? deleteChildren,
+    TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult Function(_SyncFinished value)? syncFinished,
+    required TResult orElse(),
+  }) {
+    if (loadTree != null) {
+      return loadTree(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadTree implements LocalTreeEvent {
+  const factory _LoadTree({required final UniqueId treeId}) = _$LoadTreeImpl;
+
+  UniqueId get treeId;
+  @JsonKey(ignore: true)
+  _$$LoadTreeImplCopyWith<_$LoadTreeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -464,6 +723,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -491,6 +751,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -518,6 +779,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -549,6 +811,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -574,6 +837,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -598,6 +862,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -736,6 +1001,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -763,6 +1029,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -790,6 +1057,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -821,6 +1089,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -846,6 +1115,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -870,6 +1140,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -989,6 +1260,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -1016,6 +1288,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -1043,6 +1316,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -1074,6 +1348,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -1099,6 +1374,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -1123,6 +1399,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -1230,6 +1507,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -1257,6 +1535,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -1284,6 +1563,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -1315,6 +1595,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -1340,6 +1621,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -1364,6 +1646,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -1482,6 +1765,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -1509,6 +1793,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -1536,6 +1821,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -1567,6 +1853,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -1592,6 +1879,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -1616,6 +1904,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -1774,6 +2063,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -1801,6 +2091,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -1828,6 +2119,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -1859,6 +2151,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -1884,6 +2177,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -1908,6 +2202,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -2063,6 +2358,7 @@ class _$AddExistingPartnerImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -2090,6 +2386,7 @@ class _$AddExistingPartnerImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -2117,6 +2414,7 @@ class _$AddExistingPartnerImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -2148,6 +2446,7 @@ class _$AddExistingPartnerImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -2173,6 +2472,7 @@ class _$AddExistingPartnerImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -2197,6 +2497,7 @@ class _$AddExistingPartnerImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -2316,6 +2617,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -2343,6 +2645,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -2370,6 +2673,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -2401,6 +2705,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -2426,6 +2731,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -2450,6 +2756,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -2558,6 +2865,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -2585,6 +2893,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -2612,6 +2921,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -2643,6 +2953,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -2668,6 +2979,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -2692,6 +3004,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -2810,6 +3123,7 @@ class _$DeleteChildrenImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -2837,6 +3151,7 @@ class _$DeleteChildrenImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -2864,6 +3179,7 @@ class _$DeleteChildrenImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -2895,6 +3211,7 @@ class _$DeleteChildrenImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -2920,6 +3237,7 @@ class _$DeleteChildrenImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -2944,6 +3262,7 @@ class _$DeleteChildrenImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -3063,6 +3382,7 @@ class _$DeleteRelationsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -3090,6 +3410,7 @@ class _$DeleteRelationsImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -3117,6 +3438,7 @@ class _$DeleteRelationsImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -3148,6 +3470,7 @@ class _$DeleteRelationsImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -3173,6 +3496,7 @@ class _$DeleteRelationsImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -3197,6 +3521,7 @@ class _$DeleteRelationsImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -3308,6 +3633,7 @@ class _$ChangeFocusRootImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -3335,6 +3661,7 @@ class _$ChangeFocusRootImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -3362,6 +3689,7 @@ class _$ChangeFocusRootImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -3393,6 +3721,7 @@ class _$ChangeFocusRootImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -3418,6 +3747,7 @@ class _$ChangeFocusRootImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -3442,6 +3772,7 @@ class _$ChangeFocusRootImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -3525,6 +3856,7 @@ class _$ResetFocusRootImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -3552,6 +3884,7 @@ class _$ResetFocusRootImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -3579,6 +3912,7 @@ class _$ResetFocusRootImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -3610,6 +3944,7 @@ class _$ResetFocusRootImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -3635,6 +3970,7 @@ class _$ResetFocusRootImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -3659,6 +3995,7 @@ class _$ResetFocusRootImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -3766,6 +4103,7 @@ class _$ChangeGenerationLimitImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -3793,6 +4131,7 @@ class _$ChangeGenerationLimitImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -3820,6 +4159,7 @@ class _$ChangeGenerationLimitImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -3851,6 +4191,7 @@ class _$ChangeGenerationLimitImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -3876,6 +4217,7 @@ class _$ChangeGenerationLimitImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -3900,6 +4242,7 @@ class _$ChangeGenerationLimitImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -4011,6 +4354,7 @@ class _$ToggleShowUnknownImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -4038,6 +4382,7 @@ class _$ToggleShowUnknownImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -4065,6 +4410,7 @@ class _$ToggleShowUnknownImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -4096,6 +4442,7 @@ class _$ToggleShowUnknownImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -4121,6 +4468,7 @@ class _$ToggleShowUnknownImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -4145,6 +4493,7 @@ class _$ToggleShowUnknownImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
@@ -4264,6 +4613,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
     required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
     required TResult Function(Tree tree, TNode root) createTree,
     required TResult Function(Tree tree) updateTree,
@@ -4291,6 +4641,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
     TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult? Function(Tree tree, TNode root)? createTree,
     TResult? Function(Tree tree)? updateTree,
@@ -4318,6 +4669,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
     TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
     TResult Function(Tree tree, TNode root)? createTree,
     TResult Function(Tree tree)? updateTree,
@@ -4349,6 +4701,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
     required TResult Function(_SelectTree value) selectTree,
     required TResult Function(_CreateTree value) createTree,
     required TResult Function(_UpdateTree value) updateTree,
@@ -4374,6 +4727,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
     TResult? Function(_SelectTree value)? selectTree,
     TResult? Function(_CreateTree value)? createTree,
     TResult? Function(_UpdateTree value)? updateTree,
@@ -4398,6 +4752,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
     TResult Function(_SelectTree value)? selectTree,
     TResult Function(_CreateTree value)? createTree,
     TResult Function(_UpdateTree value)? updateTree,
