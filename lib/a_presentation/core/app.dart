@@ -119,8 +119,8 @@ class _MyAppState extends State<MyApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale(english, 'US'), // english, United States
           Locale(arabic, 'SA'), // arabic, Saudi Arabia
+          Locale(english, 'US'), // english, United States
         ],
         localeResolutionCallback: (deviceLocale, supportedLocales) {
           for (final locale in supportedLocales) {

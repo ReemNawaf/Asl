@@ -171,6 +171,7 @@ void showPanel(BuildContext contextPage, Size size, MaterialColor color,
         bool hasImage, TNode node, NodeType type) =>
     showDialog(
       context: contextPage,
+      useRootNavigator: false,
       builder: (context) {
         return Scaffold(
           backgroundColor: Colors.transparent,

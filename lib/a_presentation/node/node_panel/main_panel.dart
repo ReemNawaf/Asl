@@ -220,8 +220,6 @@ class MainPanel extends StatelessWidget {
                                       Navigator.pop(context);
 
                                       // Save all the added partner and children
-                                      debugPrint('LOG | Saving everything');
-
                                       context
                                           .read<PartnerFormBloc>()
                                           .add(const PartnerFormEvent.saved());

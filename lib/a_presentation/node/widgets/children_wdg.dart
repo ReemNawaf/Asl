@@ -142,8 +142,6 @@ class ChildrenWidget extends StatelessWidget {
                                       padding: const EdgeInsets.only(top: 0.0),
                                       child: IconOnlyButton(
                                           onPressed: () {
-                                            print(
-                                                'BUG | child.relations ${child.relations}');
                                             if (child.relations.isEmpty) {
                                               context.read<ChildFormBloc>().add(
                                                   ChildFormEvent.deleltChild(
