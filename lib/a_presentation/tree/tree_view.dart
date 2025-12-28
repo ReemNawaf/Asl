@@ -23,7 +23,8 @@ class TreeView extends StatelessWidget {
     return BlocBuilder<DrawTreeBloc, DrawTreeState>(
       builder: (_, state) {
         if (state.graph != null && state.builder != null) {
-          debugPrint('Tree View is rebuilt ${state.graph!.nodes.length} nodes');
+          debugPrint(
+              'LOG | Tree View is rebuilt ${state.graph!.nodes.length} nodes');
           return GraphView(
             graph: state.graph!,
             algorithm: BuchheimWalkerAlgorithm(

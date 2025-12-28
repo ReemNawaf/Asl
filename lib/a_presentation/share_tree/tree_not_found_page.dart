@@ -2,7 +2,7 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/routes/app_router.dart';
-import 'package:asl/a_presentation/core/info_container.dart';
+import 'package:asl/a_presentation/core/widgets/info_container.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
