@@ -33,10 +33,11 @@ class ShareSettingsSection extends StatelessWidget {
       },
       builder: (_, state) {
         final isPublic = state.shareOption == 1;
+        print('state.isShareLink ${state.isShareLink}');
+        final localTree = context.read<LocalTreeBloc>().state;
 
-        if (!state.isShareLink) {
-          final treeId =
-              context.read<LocalTreeBloc>().state.selectedTreeId!.getOrCrash();
+        if (!state.isShareLink && localTree.selectedTreeId != null) {
+          final treeId = localTree.selectedTreeId!.getOrCrash();
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

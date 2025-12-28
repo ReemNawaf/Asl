@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp.router(
         routerConfig: appRouter.config(),
-        title: 'Asl',
+        title: 'Asl أصل',
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light().copyWith(
           textTheme: Theme.of(context)

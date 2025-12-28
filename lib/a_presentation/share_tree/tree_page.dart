@@ -58,87 +58,81 @@ class TreePage extends StatelessWidget {
                   loading: TreeDisplayLoading.LoadTreeNode);
             } else {
               if (state.selectedTreeId != null) {
+                context.read<TreeSettingsBloc>().add(
+                      TreeSettingsEvent.initialized(state.settings,
+                          isShareLink: true),
+                    );
                 debugPrint(
                     'TreePage LocalTreeBloc hash: ${context.read<LocalTreeBloc>().hashCode}');
-                return BlocListener<LocalTreeBloc, LocalTreeState>(
-                  listenWhen: (p, c) => p.settings != c.settings,
-                  listener: (context, state) {
-                    context.read<TreeSettingsBloc>().add(
-                          TreeSettingsEvent.initialized(state.settings,
-                              isShareLink: true),
-                        );
-                  },
-                  child: Row(
-                    children: [
-                      Container(
-                        color: kWhitesColor[600],
-                        width: size.width * 0.18,
-                        height: size.height,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 20, horizontal: 14.0),
-                        child: Column(
-                          children: [
-                            if (state.trees.isNotEmpty)
-                              ListTreeItem(
-                                id: state.trees.first.treeId,
-                                treeName:
-                                    state.trees.first.treeName.getOrCrash(),
-                                rootLetter: state.trees.first.fullName
-                                    .getOrCrash()
-                                    .substring(0, 1),
-                              )
-                            else
-                              const SizedBox(),
-                            const Spacer(),
-                            const LayersWidget(),
-                            const Spacer(),
-                            const SettingsButton(),
-                          ],
-                        ),
+                return Row(
+                  children: [
+                    Container(
+                      color: kWhitesColor[600],
+                      width: size.width * 0.18,
+                      height: size.height,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 14.0),
+                      child: Column(
+                        children: [
+                          if (state.trees.isNotEmpty)
+                            ListTreeItem(
+                              id: state.trees.first.treeId,
+                              treeName: state.trees.first.treeName.getOrCrash(),
+                              rootLetter: state.trees.first.fullName
+                                  .getOrCrash()
+                                  .substring(0, 1),
+                            )
+                          else
+                            const SizedBox(),
+                          const Spacer(),
+                          const LayersWidget(),
+                          const Spacer(),
+                          const SettingsButton(),
+                        ],
                       ),
-                      SizedBox(
-                        width: size.width * 0.82,
-                        child: Stack(
-                          children: [
-                            SizedBox(
-                              width: size.width * 0.82,
-                              child: const InteractiveView(),
+                    ),
+                    SizedBox(
+                      width: size.width * 0.82,
+                      child: Stack(
+                        children: [
+                          SizedBox(
+                            width: size.width * 0.82,
+                            child: const InteractiveView(),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 14.0, right: 14.0, top: 14.0),
+                            child: TextField(
+                              textAlign: TextAlign.right,
+                              decoration: kSearchBarInputDecor(context),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 14.0, right: 14.0, top: 14.0),
-                              child: TextField(
-                                textAlign: TextAlign.right,
-                                decoration: kSearchBarInputDecor(context),
-                              ),
+                          ),
+                          Container(
+                            width: 150,
+                            padding: EdgeInsets.only(
+                                right: 20, top: size.height - 85),
+                            child: BlocBuilder<TreeSettingsBloc,
+                                TreeSettingsState>(
+                              builder: (context, state) {
+                                return Slider(
+                                  min: MIN_ZOOM,
+                                  max: MAX_ZOOM,
+                                  value: state.zoomScale,
+                                  label:
+                                      "${state.zoomScale.toStringAsFixed(2)}x",
+                                  onChanged: (newScale) {
+                                    context.read<TreeSettingsBloc>().add(
+                                        TreeSettingsEvent.zoomChanged(
+                                            newScale));
+                                  },
+                                );
+                              },
                             ),
-                            Container(
-                              width: 150,
-                              padding: EdgeInsets.only(
-                                  right: 20, top: size.height - 85),
-                              child: BlocBuilder<TreeSettingsBloc,
-                                  TreeSettingsState>(
-                                builder: (context, state) {
-                                  return Slider(
-                                    min: MIN_ZOOM,
-                                    max: MAX_ZOOM,
-                                    value: state.zoomScale,
-                                    label:
-                                        "${state.zoomScale.toStringAsFixed(2)}x",
-                                    onChanged: (newScale) {
-                                      context.read<TreeSettingsBloc>().add(
-                                          TreeSettingsEvent.zoomChanged(
-                                              newScale));
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 );
               } else {
                 return const TreeNotFoundPage();
