@@ -35,22 +35,22 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
       zoomScale: ZOOM_DEF,
       showUnknown: treeSettings.isShowUnknown,
       numberOfGenerations: treeSettings.numberOfGenerationOpt,
-      shareOption: treeSettings.shareOpt,
+      isPublic: treeSettings.isPublic,
       isShareLink: event.isShareLink ?? false,
     ));
   }
 
-  Future<void> _onZoomChanged(
+  void _onZoomChanged(
     _ZoomChanged event,
     Emitter<TreeSettingsState> emit,
-  ) async {
+  ) {
     emit(state.copyWith(zoomScale: event.zoomScale));
   }
 
-  Future<void> _onNumberOfGenerationsChanged(
+  void _onNumberOfGenerationsChanged(
     _NumberOfGenerationsChanged event,
     Emitter<TreeSettingsState> emit,
-  ) async {
+  ) {
     emit(state.copyWith(
       numberOfGenerations: event.option,
     ));
@@ -59,28 +59,30 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
         treeId: event.treeId, option: event.option));
   }
 
-  Future<void> _onShowUnknownChanged(
+  void _onShowUnknownChanged(
     _ShowUnknownChanged event,
     Emitter<TreeSettingsState> emit,
-  ) async {
+  ) {
     emit(state.copyWith(showUnknown: event.isShow));
     unawaited(_treeRepository.updateIsShowUnknown(
         treeId: event.treeId, isShowUnknown: event.isShow));
   }
 
-  Future<void> _onSharedLinkCopied(
+  void _onSharedLinkCopied(
     _SharedLinkCopied event,
     Emitter<TreeSettingsState> emit,
-  ) async {
+  ) {
     emit(state.copyWith(
-        shareOption: state.shareOption, isLinkCopied: !state.isLinkCopied));
+        isPublic: state.isPublic, isLinkCopied: !state.isLinkCopied));
   }
 
-  Future<void> _onUpdateShareSettings(
+  void _onUpdateShareSettings(
     _UpdateShareSettings event,
     Emitter<TreeSettingsState> emit,
-  ) async {
-    emit(state.copyWith(shareOption: event.shareOption, isLinkCopied: false));
+  ) {
+    emit(state.copyWith(isPublic: event.isPublic, isLinkCopied: false));
+    unawaited(_treeRepository.updateShareSettings(
+        treeId: event.treeId, isPublic: event.isPublic));
   }
 
   Future<void> _onUpdateIsShareLink(
@@ -91,7 +93,7 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
   }
 }
 
-enum ShareOption { everyone, restricted }
+// enum isPublic { everyone, restricted }
 
 const List<Map<String, String>> SHARE_OPTIONS = [
   {'value': 'restricted', 'text': 'private', 'des': 'private_description'},

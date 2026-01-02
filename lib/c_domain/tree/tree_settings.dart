@@ -11,7 +11,7 @@ abstract class TreeSettings implements _$TreeSettings {
     UniqueId? treeId,
     required int numberOfGenerationOpt,
     required int langOpt,
-    required int shareOpt,
+    required bool isPublic,
     required bool isShowUnknown,
   }) = _TreeSettings;
 
@@ -19,7 +19,7 @@ abstract class TreeSettings implements _$TreeSettings {
         treeId: null,
         numberOfGenerationOpt: 0,
         langOpt: 0,
-        shareOpt: 0,
+        isPublic: false,
         isShowUnknown: false,
       );
 }

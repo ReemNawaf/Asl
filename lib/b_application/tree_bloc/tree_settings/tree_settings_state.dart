@@ -7,7 +7,7 @@ class TreeSettingsState with _$TreeSettingsState {
     required bool showUnknown,
     required int numberOfGenerations,
     required bool isLinkCopied,
-    required int shareOption,
+    required bool isPublic,
     required int langOpt,
     required bool isShareLink,
   }) = _TreeSettingsState;
@@ -16,7 +16,7 @@ class TreeSettingsState with _$TreeSettingsState {
       zoomScale: ZOOM_DEF,
       showUnknown: true,
       numberOfGenerations: 0,
-      shareOption: 0,
+      isPublic: false,
       langOpt: 0,
       isLinkCopied: false,
       isShareLink: false);

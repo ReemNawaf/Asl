@@ -12,7 +12,7 @@ abstract class TreeSettingsDto with _$TreeSettingsDto {
   const factory TreeSettingsDto({
     required int numberOfGenerationOpt,
     required int langOpt,
-    required int shareOpt,
+    required bool isPublic,
     required bool isShowUnknown,
   }) = _TreeSettingsDto;
 
@@ -20,7 +20,7 @@ abstract class TreeSettingsDto with _$TreeSettingsDto {
     return TreeSettingsDto(
       numberOfGenerationOpt: settings.numberOfGenerationOpt,
       langOpt: settings.langOpt,
-      shareOpt: settings.shareOpt,
+      isPublic: settings.isPublic,
       isShowUnknown: settings.isShowUnknown,
     );
   }
@@ -30,7 +30,7 @@ abstract class TreeSettingsDto with _$TreeSettingsDto {
       treeId: treeId,
       numberOfGenerationOpt: numberOfGenerationOpt,
       langOpt: langOpt,
-      shareOpt: shareOpt,
+      isPublic: isPublic,
       isShowUnknown: isShowUnknown,
     );
   }

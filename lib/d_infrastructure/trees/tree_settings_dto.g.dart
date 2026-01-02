@@ -11,7 +11,7 @@ _$TreeSettingsDtoImpl _$$TreeSettingsDtoImplFromJson(
     _$TreeSettingsDtoImpl(
       numberOfGenerationOpt: (json['numberOfGenerationOpt'] as num).toInt(),
       langOpt: (json['langOpt'] as num).toInt(),
-      shareOpt: (json['shareOpt'] as num).toInt(),
+      isPublic: json['isPublic'] as bool,
       isShowUnknown: json['isShowUnknown'] as bool,
     );
 
@@ -20,6 +20,6 @@ Map<String, dynamic> _$$TreeSettingsDtoImplToJson(
     <String, dynamic>{
       'numberOfGenerationOpt': instance.numberOfGenerationOpt,
       'langOpt': instance.langOpt,
-      'shareOpt': instance.shareOpt,
+      'isPublic': instance.isPublic,
       'isShowUnknown': instance.isShowUnknown,
     };
