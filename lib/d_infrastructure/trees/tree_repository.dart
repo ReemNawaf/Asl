@@ -412,6 +412,7 @@ class TreeRepository implements ITreeRepository {
     required bool isPublic,
   }) async {
     try {
+      print('isPublic $isPublic');
       await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
         'treeSettings.isPublic': isPublic,
       });
