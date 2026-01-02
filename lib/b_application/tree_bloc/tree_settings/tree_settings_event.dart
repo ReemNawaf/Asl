@@ -29,4 +29,6 @@ class TreeSettingsEvent with _$TreeSettingsEvent {
   /// Update as share link
   const factory TreeSettingsEvent.updateIsShareLink(bool isShareLink) =
       _UpdateIsShareLink;
+
+  const factory TreeSettingsEvent.updateHideSideBar() = _UpdateHideSideBar;
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 
-class IconButton extends StatelessWidget {
+class AppIconButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Widget icon;
   final Color fillColor;
 
-  const IconButton({
+  const AppIconButton({
     super.key,
     required this.onPressed,
     required this.icon,

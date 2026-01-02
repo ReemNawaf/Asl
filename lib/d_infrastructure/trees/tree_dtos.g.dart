@@ -24,5 +24,5 @@ Map<String, dynamic> _$$TreeDtoImplToJson(_$TreeDtoImpl instance) =>
       'rootId': instance.rootId,
       'treeName': instance.treeName,
       'fullName': instance.fullName,
-      'treeSettings': instance.treeSettings.toJson(),
+      'treeSettings': instance.treeSettings,
     };

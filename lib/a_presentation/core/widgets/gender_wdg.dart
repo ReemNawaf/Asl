@@ -28,6 +28,7 @@ class GenderWidget extends StatelessWidget {
         Row(
           children: [
             GendeMinButton(
+              isEditing: isEditing,
               onTap: () =>
                   isEditing ? femaleOrMale(isFemaleSelected: true) : {},
               color: color,
@@ -37,6 +38,7 @@ class GenderWidget extends StatelessWidget {
             ),
             const SizedBox(width: 16.0),
             GendeMinButton(
+              isEditing: isEditing,
               onTap: () =>
                   isEditing ? femaleOrMale(isFemaleSelected: false) : {},
               color: color,
@@ -59,6 +61,7 @@ class GendeMinButton extends StatelessWidget {
     required this.gender,
     required this.selected,
     required this.onTap,
+    required this.isEditing,
   });
 
   final MaterialColor color;
@@ -66,27 +69,31 @@ class GendeMinButton extends StatelessWidget {
   final Gender gender;
   final bool selected;
   final Function() onTap;
+  final bool isEditing;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: selected ? color[300] : color[600],
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        height: 36,
-        width: 94,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SvgPicture.asset('assets/icons/${gender.name}.svg', height: 22),
-            Text(text),
-          ],
+    return MouseRegion(
+      cursor: isEditing ? SystemMouseCursors.click : SystemMouseCursors.basic,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: selected ? color[300] : color[600],
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          height: 36,
+          width: 94,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/icons/${gender.name}.svg', height: 22),
+              Text(text),
+            ],
+          ),
         ),
       ),
     );
