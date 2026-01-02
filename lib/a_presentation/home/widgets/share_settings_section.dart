@@ -1,7 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/a_presentation/core/widgets/sm_app_btn.dart';
@@ -148,9 +147,6 @@ class ShareSettingsSection extends StatelessWidget {
 }
 
 String buildTreeLink(String treeId) {
-  // On web: use the current domain (works for prod + staging)
-  if (kIsWeb) return '${Uri.base.origin}/trees/$treeId';
-
-  // On mobile/desktop: use your production domain (or swap per env)
+  // production domain (or swap per env)
   return 'https://asl.reemnawaf.me/trees/$treeId';
 }
