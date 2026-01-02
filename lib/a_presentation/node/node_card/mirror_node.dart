@@ -10,11 +10,13 @@ class MirrorNode extends StatelessWidget {
     required this.node,
     required this.pageContext,
     required this.noChildren,
+    required this.fatherName,
     // this.image,
   });
   final TNode node;
   final BuildContext pageContext;
   final bool noChildren;
+  final String? fatherName;
   // final String? image;
 
   @override
@@ -27,6 +29,7 @@ class MirrorNode extends StatelessWidget {
       yearOfBirth: node.birthDate,
       yearOfDeath: node.deathDate,
       isAlive: node.isAlive,
+      fatherName: fatherName,
       hasImage: false,
       gender: node.gender,
       node: node,

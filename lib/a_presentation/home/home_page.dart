@@ -70,6 +70,7 @@ class HomePage extends StatelessWidget {
                           return const SizedBox();
                         }
                       } else {
+                        print('--- state $state');
                         return Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

@@ -15,6 +15,7 @@ class AppNode extends StatelessWidget {
     super.key,
     required this.type,
     required this.name,
+    this.fatherName,
     required this.relation,
     this.yearOfBirth,
     this.yearOfDeath,
@@ -29,6 +30,7 @@ class AppNode extends StatelessWidget {
   });
 
   final NodeType type;
+  final String? fatherName;
   final String name;
   final String relation;
   final DateTime? yearOfBirth;
@@ -47,121 +49,126 @@ class AppNode extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     const kTextHeight = 30.0;
 
-    return GestureDetector(
-      onTap: () => showPanel(
-        context,
-        size,
-        color,
-        hasImage,
-        node,
-        type,
-      ),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            width: 250,
-            height: 95,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.0),
-              color: color[600],
-            ),
-          ),
-          Container(
-            width: 110,
-            height: 110,
-            margin: const EdgeInsets.only(bottom: 70),
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: kBlacksColor[100]!,
-                width: 2,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => showPanel(
+          context,
+          size,
+          color,
+          hasImage,
+          node,
+          type,
+        ),
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              width: 250,
+              height: 95,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6.0),
+                color: color[600],
               ),
-              borderRadius: BorderRadius.circular(6.0),
-              color: color[500]!,
             ),
-            child: getImageWidget(image, gender),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              children: [
-                Container(
-                  width: 220,
-                  height: kTextHeight,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6.0),
-                    color: color[300]!,
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    name,
-                    style: kCalloutStyle,
-                    textAlign: TextAlign.center,
-                  ),
+            Container(
+              width: 110,
+              height: 110,
+              margin: const EdgeInsets.only(bottom: 70),
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: kBlacksColor[100]!,
+                  width: 2,
                 ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Container(
+                borderRadius: BorderRadius.circular(6.0),
+                color: color[500]!,
+              ),
+              child: getImageWidget(image, gender),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  Container(
+                    width: 220,
+                    height: kTextHeight,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6.0),
+                      color: color[300]!,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      fatherName != null ? '$name $fatherName' : name,
+                      style: kCalloutStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Container(
+                          width: 60,
+                          height: kTextHeight,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6.0),
+                            color: isAlive ? color[300]! : color[400]!,
+                          ),
+                          child: Text(
+                            isAlive
+                                ? ''
+                                : yearOfDeath?.year.toString() ?? '---',
+                            style: kCalloutStyle,
+                            textAlign: TextAlign.center,
+                          )),
+                      const SizedBox(width: 8),
+                      Container(
                         width: 60,
                         height: kTextHeight,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6.0),
-                          color: isAlive ? color[300]! : color[400]!,
+                          color: color[400]!,
                         ),
                         child: Text(
-                          isAlive ? '' : yearOfDeath?.year.toString() ?? '---',
+                          yearOfBirth?.year.toString() ?? '---',
                           style: kCalloutStyle,
                           textAlign: TextAlign.center,
-                        )),
-                    const SizedBox(width: 8),
-                    Container(
-                      width: 60,
-                      height: kTextHeight,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6.0),
-                        color: color[400]!,
+                        ),
                       ),
-                      child: Text(
-                        yearOfBirth?.year.toString() ?? '---',
-                        style: kCalloutStyle,
-                        textAlign: TextAlign.center,
+                      const SizedBox(width: 8),
+                      Container(
+                        width: 85,
+                        height: kTextHeight,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6.0),
+                          color: color[400]!,
+                        ),
+                        child: Text(
+                          relation,
+                          style: kCalloutStyle,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      width: 85,
-                      height: kTextHeight,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6.0),
-                        color: color[400]!,
-                      ),
-                      child: Text(
-                        relation,
-                        style: kCalloutStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          if (mirrorNodeNoChildren)
-            Positioned(
-              right: 0,
-              top: 2,
-              child: Text(
-                getTr(context, 'children_under_father_tree')!,
-                textAlign: TextAlign.center,
+                    ],
+                  ),
+                ],
               ),
             ),
-        ],
+            if (mirrorNodeNoChildren)
+              Positioned(
+                right: 0,
+                top: 2,
+                child: Text(
+                  getTr(context, 'children_under_father_tree')!,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
