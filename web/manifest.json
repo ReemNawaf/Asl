@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Asl, store and view your family tree in the best way.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
