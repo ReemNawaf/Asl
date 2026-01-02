@@ -10,6 +10,7 @@ class TreeSettingsState with _$TreeSettingsState {
     required bool isPublic,
     required int langOpt,
     required bool isShareLink,
+    @Default(false) bool hideSidbar,
   }) = _TreeSettingsState;
 
   factory TreeSettingsState.initial() => const TreeSettingsState(
@@ -17,6 +18,7 @@ class TreeSettingsState with _$TreeSettingsState {
       showUnknown: true,
       numberOfGenerations: 0,
       isPublic: false,
+      hideSidbar: false,
       langOpt: 0,
       isLinkCopied: false,
       isShareLink: false);

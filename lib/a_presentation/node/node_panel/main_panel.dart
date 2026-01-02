@@ -157,7 +157,7 @@ class MainPanel extends StatelessWidget {
                                 if (type != NodeType.partner)
                                   Tab(
                                       text:
-                                          '${getNodeRelationPanelTitle(context, node.gender)} ${getTr(context, 'and_children')!}'),
+                                          '${getTr(context, 'add')!} ${getNodeRelationPanelTitle(context, node.gender)} ${getTr(context, 'and_children')!}'),
                                 Tab(text: getTr(context, 'brief_and_notes')!),
                               ],
                               onTap: (index) {

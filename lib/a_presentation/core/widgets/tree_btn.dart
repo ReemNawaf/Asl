@@ -13,49 +13,52 @@ class TreeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        final cNode = context.read<NodeFormBloc>().state.node;
-        context
-            .read<LocalTreeBloc>()
-            .add(LocalTreeEvent.changeFocusRoot(nodeId: cNode!.nodeId));
-        Navigator.pop(context);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        width: 250,
-        height: 80,
-        padding: const EdgeInsets.only(left: 10.0, right: 2.4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 50,
-              width: 50,
-              child: SvgPicture.asset(
-                'assets/icons/root.svg',
-                color: color[200],
-                alignment: Alignment.centerLeft,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {
+          final cNode = context.read<NodeFormBloc>().state.node;
+          context
+              .read<LocalTreeBloc>()
+              .add(LocalTreeEvent.changeFocusRoot(nodeId: cNode!.nodeId));
+          Navigator.pop(context);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          width: 250,
+          height: 80,
+          padding: const EdgeInsets.only(left: 10.0, right: 2.4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 50,
+                width: 50,
+                child: SvgPicture.asset(
+                  'assets/icons/root.svg',
+                  color: color[200],
+                  alignment: Alignment.centerLeft,
+                ),
               ),
-            ),
-            kHSpacer10,
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  getTr(context, 'display_member_tree')!,
-                  style: kCalloutStyle,
-                ),
-                Text(
-                  getTr(context, 'display_as_family_root')!,
-                  style: kFootnoteStyle.copyWith(fontSize: 12.0),
-                ),
-              ],
-            ),
-          ],
+              kHSpacer10,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    getTr(context, 'display_member_tree')!,
+                    style: kCalloutStyle,
+                  ),
+                  Text(
+                    getTr(context, 'display_as_family_root')!,
+                    style: kFootnoteStyle.copyWith(fontSize: 12.0),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

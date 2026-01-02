@@ -135,6 +135,8 @@
   "name_too_short": "الاسم قصير جدًا",
   "show_unknown_description": "إظهار الأعضاء المجهولين على الشجرة",
   "choose_display_language": "اختر لغة العرض",
+  "display": "عرض",
+   "add": "إضافة",
   "create_family_tree": "إنشاء شجرة عائلة",
   "root_has_no_parents_siblings": "هذا العضو هو جذر العائلة. لا توجد معلومات عن الوالدين والأخوة",
   "children_under_father_tree": "الأبناء تحت\nشجرة الأب",

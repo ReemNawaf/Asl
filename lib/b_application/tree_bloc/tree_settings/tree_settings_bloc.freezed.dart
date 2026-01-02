@@ -28,6 +28,7 @@ mixin _$TreeSettingsEvent {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$TreeSettingsEvent {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +54,7 @@ mixin _$TreeSettingsEvent {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +68,7 @@ mixin _$TreeSettingsEvent {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +81,7 @@ mixin _$TreeSettingsEvent {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +94,7 @@ mixin _$TreeSettingsEvent {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -210,6 +216,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) {
     return initialized(treeSettings, isShareLink);
   }
@@ -225,6 +232,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) {
     return initialized?.call(treeSettings, isShareLink);
   }
@@ -240,6 +248,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -259,6 +268,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) {
     return initialized(this);
   }
@@ -274,6 +284,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) {
     return initialized?.call(this);
   }
@@ -289,6 +300,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -384,6 +396,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) {
     return zoomChanged(zoomScale);
   }
@@ -399,6 +412,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) {
     return zoomChanged?.call(zoomScale);
   }
@@ -414,6 +428,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (zoomChanged != null) {
@@ -433,6 +448,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) {
     return zoomChanged(this);
   }
@@ -448,6 +464,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) {
     return zoomChanged?.call(this);
   }
@@ -463,6 +480,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (zoomChanged != null) {
@@ -568,6 +586,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) {
     return numberOfGenerationsChanged(treeId, option);
   }
@@ -583,6 +602,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) {
     return numberOfGenerationsChanged?.call(treeId, option);
   }
@@ -598,6 +618,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (numberOfGenerationsChanged != null) {
@@ -617,6 +638,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) {
     return numberOfGenerationsChanged(this);
   }
@@ -632,6 +654,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) {
     return numberOfGenerationsChanged?.call(this);
   }
@@ -647,6 +670,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (numberOfGenerationsChanged != null) {
@@ -751,6 +775,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) {
     return showUnknownChanged(treeId, isShow);
   }
@@ -766,6 +791,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) {
     return showUnknownChanged?.call(treeId, isShow);
   }
@@ -781,6 +807,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (showUnknownChanged != null) {
@@ -800,6 +827,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) {
     return showUnknownChanged(this);
   }
@@ -815,6 +843,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) {
     return showUnknownChanged?.call(this);
   }
@@ -830,6 +859,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (showUnknownChanged != null) {
@@ -899,6 +929,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) {
     return sharedLinkCopied();
   }
@@ -914,6 +945,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) {
     return sharedLinkCopied?.call();
   }
@@ -929,6 +961,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (sharedLinkCopied != null) {
@@ -948,6 +981,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) {
     return sharedLinkCopied(this);
   }
@@ -963,6 +997,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) {
     return sharedLinkCopied?.call(this);
   }
@@ -978,6 +1013,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (sharedLinkCopied != null) {
@@ -1076,6 +1112,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) {
     return updateShareSettings(treeId, isPublic);
   }
@@ -1091,6 +1128,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) {
     return updateShareSettings?.call(treeId, isPublic);
   }
@@ -1106,6 +1144,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (updateShareSettings != null) {
@@ -1125,6 +1164,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) {
     return updateShareSettings(this);
   }
@@ -1140,6 +1180,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) {
     return updateShareSettings?.call(this);
   }
@@ -1155,6 +1196,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (updateShareSettings != null) {
@@ -1252,6 +1294,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
   }) {
     return updateIsShareLink(isShareLink);
   }
@@ -1267,6 +1310,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
   }) {
     return updateIsShareLink?.call(isShareLink);
   }
@@ -1282,6 +1326,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (updateIsShareLink != null) {
@@ -1301,6 +1346,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
   }) {
     return updateIsShareLink(this);
   }
@@ -1316,6 +1362,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
   }) {
     return updateIsShareLink?.call(this);
   }
@@ -1331,6 +1378,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
     required TResult orElse(),
   }) {
     if (updateIsShareLink != null) {
@@ -1351,6 +1399,152 @@ abstract class _UpdateIsShareLink implements TreeSettingsEvent {
 }
 
 /// @nodoc
+abstract class _$$UpdateHideSideBarImplCopyWith<$Res> {
+  factory _$$UpdateHideSideBarImplCopyWith(_$UpdateHideSideBarImpl value,
+          $Res Function(_$UpdateHideSideBarImpl) then) =
+      __$$UpdateHideSideBarImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateHideSideBarImplCopyWithImpl<$Res>
+    extends _$TreeSettingsEventCopyWithImpl<$Res, _$UpdateHideSideBarImpl>
+    implements _$$UpdateHideSideBarImplCopyWith<$Res> {
+  __$$UpdateHideSideBarImplCopyWithImpl(_$UpdateHideSideBarImpl _value,
+      $Res Function(_$UpdateHideSideBarImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UpdateHideSideBarImpl implements _UpdateHideSideBar {
+  const _$UpdateHideSideBarImpl();
+
+  @override
+  String toString() {
+    return 'TreeSettingsEvent.updateHideSideBar()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateHideSideBarImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TreeSettings? treeSettings, bool? isShareLink)
+        initialized,
+    required TResult Function(double zoomScale) zoomChanged,
+    required TResult Function(UniqueId treeId, int option)
+        numberOfGenerationsChanged,
+    required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
+    required TResult Function() sharedLinkCopied,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
+    required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
+  }) {
+    return updateHideSideBar();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TreeSettings? treeSettings, bool? isShareLink)?
+        initialized,
+    TResult? Function(double zoomScale)? zoomChanged,
+    TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
+    TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
+    TResult? Function()? sharedLinkCopied,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
+    TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
+  }) {
+    return updateHideSideBar?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TreeSettings? treeSettings, bool? isShareLink)?
+        initialized,
+    TResult Function(double zoomScale)? zoomChanged,
+    TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
+    TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
+    TResult Function()? sharedLinkCopied,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
+    TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
+    required TResult orElse(),
+  }) {
+    if (updateHideSideBar != null) {
+      return updateHideSideBar();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_ZoomChanged value) zoomChanged,
+    required TResult Function(_NumberOfGenerationsChanged value)
+        numberOfGenerationsChanged,
+    required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
+    required TResult Function(_UpdateShareSettings value) updateShareSettings,
+    required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
+  }) {
+    return updateHideSideBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_ZoomChanged value)? zoomChanged,
+    TResult? Function(_NumberOfGenerationsChanged value)?
+        numberOfGenerationsChanged,
+    TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
+    TResult? Function(_UpdateShareSettings value)? updateShareSettings,
+    TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
+  }) {
+    return updateHideSideBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_ZoomChanged value)? zoomChanged,
+    TResult Function(_NumberOfGenerationsChanged value)?
+        numberOfGenerationsChanged,
+    TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
+    TResult Function(_UpdateShareSettings value)? updateShareSettings,
+    TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
+    required TResult orElse(),
+  }) {
+    if (updateHideSideBar != null) {
+      return updateHideSideBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateHideSideBar implements TreeSettingsEvent {
+  const factory _UpdateHideSideBar() = _$UpdateHideSideBarImpl;
+}
+
+/// @nodoc
 mixin _$TreeSettingsState {
   double get zoomScale => throw _privateConstructorUsedError;
   bool get showUnknown => throw _privateConstructorUsedError;
@@ -1359,6 +1553,7 @@ mixin _$TreeSettingsState {
   bool get isPublic => throw _privateConstructorUsedError;
   int get langOpt => throw _privateConstructorUsedError;
   bool get isShareLink => throw _privateConstructorUsedError;
+  bool get hideSidbar => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TreeSettingsStateCopyWith<TreeSettingsState> get copyWith =>
@@ -1378,7 +1573,8 @@ abstract class $TreeSettingsStateCopyWith<$Res> {
       bool isLinkCopied,
       bool isPublic,
       int langOpt,
-      bool isShareLink});
+      bool isShareLink,
+      bool hideSidbar});
 }
 
 /// @nodoc
@@ -1401,6 +1597,7 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
     Object? isPublic = null,
     Object? langOpt = null,
     Object? isShareLink = null,
+    Object? hideSidbar = null,
   }) {
     return _then(_value.copyWith(
       zoomScale: null == zoomScale
@@ -1431,6 +1628,10 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
           ? _value.isShareLink
           : isShareLink // ignore: cast_nullable_to_non_nullable
               as bool,
+      hideSidbar: null == hideSidbar
+          ? _value.hideSidbar
+          : hideSidbar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -1450,7 +1651,8 @@ abstract class _$$TreeSettingsStateImplCopyWith<$Res>
       bool isLinkCopied,
       bool isPublic,
       int langOpt,
-      bool isShareLink});
+      bool isShareLink,
+      bool hideSidbar});
 }
 
 /// @nodoc
@@ -1471,6 +1673,7 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
     Object? isPublic = null,
     Object? langOpt = null,
     Object? isShareLink = null,
+    Object? hideSidbar = null,
   }) {
     return _then(_$TreeSettingsStateImpl(
       zoomScale: null == zoomScale
@@ -1501,6 +1704,10 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
           ? _value.isShareLink
           : isShareLink // ignore: cast_nullable_to_non_nullable
               as bool,
+      hideSidbar: null == hideSidbar
+          ? _value.hideSidbar
+          : hideSidbar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1515,7 +1722,8 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
       required this.isLinkCopied,
       required this.isPublic,
       required this.langOpt,
-      required this.isShareLink});
+      required this.isShareLink,
+      this.hideSidbar = false});
 
   @override
   final double zoomScale;
@@ -1531,10 +1739,13 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
   final int langOpt;
   @override
   final bool isShareLink;
+  @override
+  @JsonKey()
+  final bool hideSidbar;
 
   @override
   String toString() {
-    return 'TreeSettingsState(zoomScale: $zoomScale, showUnknown: $showUnknown, numberOfGenerations: $numberOfGenerations, isLinkCopied: $isLinkCopied, isPublic: $isPublic, langOpt: $langOpt, isShareLink: $isShareLink)';
+    return 'TreeSettingsState(zoomScale: $zoomScale, showUnknown: $showUnknown, numberOfGenerations: $numberOfGenerations, isLinkCopied: $isLinkCopied, isPublic: $isPublic, langOpt: $langOpt, isShareLink: $isShareLink, hideSidbar: $hideSidbar)';
   }
 
   @override
@@ -1554,12 +1765,22 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
                 other.isPublic == isPublic) &&
             (identical(other.langOpt, langOpt) || other.langOpt == langOpt) &&
             (identical(other.isShareLink, isShareLink) ||
-                other.isShareLink == isShareLink));
+                other.isShareLink == isShareLink) &&
+            (identical(other.hideSidbar, hideSidbar) ||
+                other.hideSidbar == hideSidbar));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, zoomScale, showUnknown,
-      numberOfGenerations, isLinkCopied, isPublic, langOpt, isShareLink);
+  int get hashCode => Object.hash(
+      runtimeType,
+      zoomScale,
+      showUnknown,
+      numberOfGenerations,
+      isLinkCopied,
+      isPublic,
+      langOpt,
+      isShareLink,
+      hideSidbar);
 
   @JsonKey(ignore: true)
   @override
@@ -1577,7 +1798,8 @@ abstract class _TreeSettingsState implements TreeSettingsState {
       required final bool isLinkCopied,
       required final bool isPublic,
       required final int langOpt,
-      required final bool isShareLink}) = _$TreeSettingsStateImpl;
+      required final bool isShareLink,
+      final bool hideSidbar}) = _$TreeSettingsStateImpl;
 
   @override
   double get zoomScale;
@@ -1593,6 +1815,8 @@ abstract class _TreeSettingsState implements TreeSettingsState {
   int get langOpt;
   @override
   bool get isShareLink;
+  @override
+  bool get hideSidbar;
   @override
   @JsonKey(ignore: true)
   _$$TreeSettingsStateImplCopyWith<_$TreeSettingsStateImpl> get copyWith =>

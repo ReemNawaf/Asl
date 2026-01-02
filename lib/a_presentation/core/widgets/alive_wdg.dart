@@ -27,6 +27,7 @@ class AliveWidget extends StatelessWidget {
         Row(
           children: [
             AliveButton(
+              isEditing: isEditing,
               onTap: () => isEditing ? aliveOrDead(isAliveSelected: true) : {},
               color: color,
               text: getTr(context, 'alive')!,
@@ -34,6 +35,7 @@ class AliveWidget extends StatelessWidget {
             ),
             const SizedBox(width: 16.0),
             AliveButton(
+              isEditing: isEditing,
               onTap: () => isEditing ? aliveOrDead(isAliveSelected: false) : {},
               color: color,
               text: getTr(context, 'dead')!,
@@ -47,33 +49,37 @@ class AliveWidget extends StatelessWidget {
 }
 
 class AliveButton extends StatelessWidget {
-  const AliveButton({
-    super.key,
-    required this.color,
-    required this.text,
-    required this.selected,
-    required this.onTap,
-  });
+  const AliveButton(
+      {super.key,
+      required this.color,
+      required this.text,
+      required this.selected,
+      required this.onTap,
+      required this.isEditing});
 
   final MaterialColor color;
   final String text;
   final bool selected;
   final Function() onTap;
+  final bool isEditing;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: selected ? color[300] : color[600],
-          borderRadius: BorderRadius.circular(8.0),
+    return MouseRegion(
+      cursor: isEditing ? SystemMouseCursors.click : SystemMouseCursors.basic,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: selected ? color[300] : color[600],
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          height: 33,
+          width: 94,
+          child: Text(text),
         ),
-        height: 33,
-        width: 94,
-        child: Text(text),
       ),
     );
   }
