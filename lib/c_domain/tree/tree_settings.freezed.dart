@@ -19,7 +19,7 @@ mixin _$TreeSettings {
   UniqueId? get treeId => throw _privateConstructorUsedError;
   int get numberOfGenerationOpt => throw _privateConstructorUsedError;
   int get langOpt => throw _privateConstructorUsedError;
-  int get shareOpt => throw _privateConstructorUsedError;
+  bool get isPublic => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $TreeSettingsCopyWith<$Res> {
       {UniqueId? treeId,
       int numberOfGenerationOpt,
       int langOpt,
-      int shareOpt,
+      bool isPublic,
       bool isShowUnknown});
 }
 
@@ -57,7 +57,7 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
     Object? treeId = freezed,
     Object? numberOfGenerationOpt = null,
     Object? langOpt = null,
-    Object? shareOpt = null,
+    Object? isPublic = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_value.copyWith(
@@ -73,10 +73,10 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
               as int,
-      shareOpt: null == shareOpt
-          ? _value.shareOpt
-          : shareOpt // ignore: cast_nullable_to_non_nullable
-              as int,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$$TreeSettingsImplCopyWith<$Res>
       {UniqueId? treeId,
       int numberOfGenerationOpt,
       int langOpt,
-      int shareOpt,
+      bool isPublic,
       bool isShowUnknown});
 }
 
@@ -115,7 +115,7 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
     Object? treeId = freezed,
     Object? numberOfGenerationOpt = null,
     Object? langOpt = null,
-    Object? shareOpt = null,
+    Object? isPublic = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_$TreeSettingsImpl(
@@ -131,10 +131,10 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
               as int,
-      shareOpt: null == shareOpt
-          ? _value.shareOpt
-          : shareOpt // ignore: cast_nullable_to_non_nullable
-              as int,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
@@ -150,7 +150,7 @@ class _$TreeSettingsImpl extends _TreeSettings {
       {this.treeId,
       required this.numberOfGenerationOpt,
       required this.langOpt,
-      required this.shareOpt,
+      required this.isPublic,
       required this.isShowUnknown})
       : super._();
 
@@ -161,13 +161,13 @@ class _$TreeSettingsImpl extends _TreeSettings {
   @override
   final int langOpt;
   @override
-  final int shareOpt;
+  final bool isPublic;
   @override
   final bool isShowUnknown;
 
   @override
   String toString() {
-    return 'TreeSettings(treeId: $treeId, numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, shareOpt: $shareOpt, isShowUnknown: $isShowUnknown)';
+    return 'TreeSettings(treeId: $treeId, numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown)';
   }
 
   @override
@@ -179,15 +179,15 @@ class _$TreeSettingsImpl extends _TreeSettings {
             (identical(other.numberOfGenerationOpt, numberOfGenerationOpt) ||
                 other.numberOfGenerationOpt == numberOfGenerationOpt) &&
             (identical(other.langOpt, langOpt) || other.langOpt == langOpt) &&
-            (identical(other.shareOpt, shareOpt) ||
-                other.shareOpt == shareOpt) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic) &&
             (identical(other.isShowUnknown, isShowUnknown) ||
                 other.isShowUnknown == isShowUnknown));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, treeId, numberOfGenerationOpt,
-      langOpt, shareOpt, isShowUnknown);
+      langOpt, isPublic, isShowUnknown);
 
   @JsonKey(ignore: true)
   @override
@@ -201,7 +201,7 @@ abstract class _TreeSettings extends TreeSettings {
       {final UniqueId? treeId,
       required final int numberOfGenerationOpt,
       required final int langOpt,
-      required final int shareOpt,
+      required final bool isPublic,
       required final bool isShowUnknown}) = _$TreeSettingsImpl;
   const _TreeSettings._() : super._();
 
@@ -212,7 +212,7 @@ abstract class _TreeSettings extends TreeSettings {
   @override
   int get langOpt;
   @override
-  int get shareOpt;
+  bool get isPublic;
   @override
   bool get isShowUnknown;
   @override

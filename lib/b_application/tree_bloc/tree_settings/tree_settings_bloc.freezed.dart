@@ -25,7 +25,8 @@ mixin _$TreeSettingsEvent {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,7 +38,7 @@ mixin _$TreeSettingsEvent {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,7 +50,7 @@ mixin _$TreeSettingsEvent {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) =>
@@ -206,7 +207,8 @@ class _$InitializedImpl implements _Initialized {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) {
     return initialized(treeSettings, isShareLink);
@@ -221,7 +223,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) {
     return initialized?.call(treeSettings, isShareLink);
@@ -236,7 +238,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) {
@@ -379,7 +381,8 @@ class _$ZoomChangedImpl implements _ZoomChanged {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) {
     return zoomChanged(zoomScale);
@@ -394,7 +397,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) {
     return zoomChanged?.call(zoomScale);
@@ -409,7 +412,7 @@ class _$ZoomChangedImpl implements _ZoomChanged {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) {
@@ -562,7 +565,8 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) {
     return numberOfGenerationsChanged(treeId, option);
@@ -577,7 +581,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) {
     return numberOfGenerationsChanged?.call(treeId, option);
@@ -592,7 +596,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) {
@@ -744,7 +748,8 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) {
     return showUnknownChanged(treeId, isShow);
@@ -759,7 +764,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) {
     return showUnknownChanged?.call(treeId, isShow);
@@ -774,7 +779,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) {
@@ -891,7 +896,8 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) {
     return sharedLinkCopied();
@@ -906,7 +912,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) {
     return sharedLinkCopied?.call();
@@ -921,7 +927,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) {
@@ -991,7 +997,7 @@ abstract class _$$UpdateShareSettingsImplCopyWith<$Res> {
           $Res Function(_$UpdateShareSettingsImpl) then) =
       __$$UpdateShareSettingsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int shareOption});
+  $Res call({UniqueId treeId, bool isPublic});
 }
 
 /// @nodoc
@@ -1005,13 +1011,18 @@ class __$$UpdateShareSettingsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shareOption = null,
+    Object? treeId = null,
+    Object? isPublic = null,
   }) {
     return _then(_$UpdateShareSettingsImpl(
-      null == shareOption
-          ? _value.shareOption
-          : shareOption // ignore: cast_nullable_to_non_nullable
-              as int,
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1019,14 +1030,17 @@ class __$$UpdateShareSettingsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
-  const _$UpdateShareSettingsImpl(this.shareOption);
+  const _$UpdateShareSettingsImpl(
+      {required this.treeId, required this.isPublic});
 
   @override
-  final int shareOption;
+  final UniqueId treeId;
+  @override
+  final bool isPublic;
 
   @override
   String toString() {
-    return 'TreeSettingsEvent.updateShareSettings(shareOption: $shareOption)';
+    return 'TreeSettingsEvent.updateShareSettings(treeId: $treeId, isPublic: $isPublic)';
   }
 
   @override
@@ -1034,12 +1048,13 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateShareSettingsImpl &&
-            (identical(other.shareOption, shareOption) ||
-                other.shareOption == shareOption));
+            (identical(other.treeId, treeId) || other.treeId == treeId) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shareOption);
+  int get hashCode => Object.hash(runtimeType, treeId, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -1058,10 +1073,11 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) {
-    return updateShareSettings(shareOption);
+    return updateShareSettings(treeId, isPublic);
   }
 
   @override
@@ -1073,10 +1089,10 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) {
-    return updateShareSettings?.call(shareOption);
+    return updateShareSettings?.call(treeId, isPublic);
   }
 
   @override
@@ -1088,12 +1104,12 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) {
     if (updateShareSettings != null) {
-      return updateShareSettings(shareOption);
+      return updateShareSettings(treeId, isPublic);
     }
     return orElse();
   }
@@ -1149,10 +1165,12 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
 }
 
 abstract class _UpdateShareSettings implements TreeSettingsEvent {
-  const factory _UpdateShareSettings(final int shareOption) =
-      _$UpdateShareSettingsImpl;
+  const factory _UpdateShareSettings(
+      {required final UniqueId treeId,
+      required final bool isPublic}) = _$UpdateShareSettingsImpl;
 
-  int get shareOption;
+  UniqueId get treeId;
+  bool get isPublic;
   @JsonKey(ignore: true)
   _$$UpdateShareSettingsImplCopyWith<_$UpdateShareSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1231,7 +1249,8 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId, bool isShow) showUnknownChanged,
     required TResult Function() sharedLinkCopied,
-    required TResult Function(int shareOption) updateShareSettings,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
     required TResult Function(bool isShareLink) updateIsShareLink,
   }) {
     return updateIsShareLink(isShareLink);
@@ -1246,7 +1265,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult? Function()? sharedLinkCopied,
-    TResult? Function(int shareOption)? updateShareSettings,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
   }) {
     return updateIsShareLink?.call(isShareLink);
@@ -1261,7 +1280,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId, bool isShow)? showUnknownChanged,
     TResult Function()? sharedLinkCopied,
-    TResult Function(int shareOption)? updateShareSettings,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
     required TResult orElse(),
   }) {
@@ -1337,7 +1356,7 @@ mixin _$TreeSettingsState {
   bool get showUnknown => throw _privateConstructorUsedError;
   int get numberOfGenerations => throw _privateConstructorUsedError;
   bool get isLinkCopied => throw _privateConstructorUsedError;
-  int get shareOption => throw _privateConstructorUsedError;
+  bool get isPublic => throw _privateConstructorUsedError;
   int get langOpt => throw _privateConstructorUsedError;
   bool get isShareLink => throw _privateConstructorUsedError;
 
@@ -1357,7 +1376,7 @@ abstract class $TreeSettingsStateCopyWith<$Res> {
       bool showUnknown,
       int numberOfGenerations,
       bool isLinkCopied,
-      int shareOption,
+      bool isPublic,
       int langOpt,
       bool isShareLink});
 }
@@ -1379,7 +1398,7 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
     Object? showUnknown = null,
     Object? numberOfGenerations = null,
     Object? isLinkCopied = null,
-    Object? shareOption = null,
+    Object? isPublic = null,
     Object? langOpt = null,
     Object? isShareLink = null,
   }) {
@@ -1400,10 +1419,10 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
           ? _value.isLinkCopied
           : isLinkCopied // ignore: cast_nullable_to_non_nullable
               as bool,
-      shareOption: null == shareOption
-          ? _value.shareOption
-          : shareOption // ignore: cast_nullable_to_non_nullable
-              as int,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       langOpt: null == langOpt
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
@@ -1429,7 +1448,7 @@ abstract class _$$TreeSettingsStateImplCopyWith<$Res>
       bool showUnknown,
       int numberOfGenerations,
       bool isLinkCopied,
-      int shareOption,
+      bool isPublic,
       int langOpt,
       bool isShareLink});
 }
@@ -1449,7 +1468,7 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
     Object? showUnknown = null,
     Object? numberOfGenerations = null,
     Object? isLinkCopied = null,
-    Object? shareOption = null,
+    Object? isPublic = null,
     Object? langOpt = null,
     Object? isShareLink = null,
   }) {
@@ -1470,10 +1489,10 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
           ? _value.isLinkCopied
           : isLinkCopied // ignore: cast_nullable_to_non_nullable
               as bool,
-      shareOption: null == shareOption
-          ? _value.shareOption
-          : shareOption // ignore: cast_nullable_to_non_nullable
-              as int,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       langOpt: null == langOpt
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
@@ -1494,7 +1513,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
       required this.showUnknown,
       required this.numberOfGenerations,
       required this.isLinkCopied,
-      required this.shareOption,
+      required this.isPublic,
       required this.langOpt,
       required this.isShareLink});
 
@@ -1507,7 +1526,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
   @override
   final bool isLinkCopied;
   @override
-  final int shareOption;
+  final bool isPublic;
   @override
   final int langOpt;
   @override
@@ -1515,7 +1534,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
 
   @override
   String toString() {
-    return 'TreeSettingsState(zoomScale: $zoomScale, showUnknown: $showUnknown, numberOfGenerations: $numberOfGenerations, isLinkCopied: $isLinkCopied, shareOption: $shareOption, langOpt: $langOpt, isShareLink: $isShareLink)';
+    return 'TreeSettingsState(zoomScale: $zoomScale, showUnknown: $showUnknown, numberOfGenerations: $numberOfGenerations, isLinkCopied: $isLinkCopied, isPublic: $isPublic, langOpt: $langOpt, isShareLink: $isShareLink)';
   }
 
   @override
@@ -1531,8 +1550,8 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
                 other.numberOfGenerations == numberOfGenerations) &&
             (identical(other.isLinkCopied, isLinkCopied) ||
                 other.isLinkCopied == isLinkCopied) &&
-            (identical(other.shareOption, shareOption) ||
-                other.shareOption == shareOption) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic) &&
             (identical(other.langOpt, langOpt) || other.langOpt == langOpt) &&
             (identical(other.isShareLink, isShareLink) ||
                 other.isShareLink == isShareLink));
@@ -1540,7 +1559,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
 
   @override
   int get hashCode => Object.hash(runtimeType, zoomScale, showUnknown,
-      numberOfGenerations, isLinkCopied, shareOption, langOpt, isShareLink);
+      numberOfGenerations, isLinkCopied, isPublic, langOpt, isShareLink);
 
   @JsonKey(ignore: true)
   @override
@@ -1556,7 +1575,7 @@ abstract class _TreeSettingsState implements TreeSettingsState {
       required final bool showUnknown,
       required final int numberOfGenerations,
       required final bool isLinkCopied,
-      required final int shareOption,
+      required final bool isPublic,
       required final int langOpt,
       required final bool isShareLink}) = _$TreeSettingsStateImpl;
 
@@ -1569,7 +1588,7 @@ abstract class _TreeSettingsState implements TreeSettingsState {
   @override
   bool get isLinkCopied;
   @override
-  int get shareOption;
+  bool get isPublic;
   @override
   int get langOpt;
   @override

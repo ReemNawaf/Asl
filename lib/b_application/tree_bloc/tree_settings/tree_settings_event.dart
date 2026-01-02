@@ -22,8 +22,9 @@ class TreeSettingsEvent with _$TreeSettingsEvent {
   const factory TreeSettingsEvent.sharedLinkCopied() = _SharedLinkCopied;
 
   /// Update sharing settings
-  const factory TreeSettingsEvent.updateShareSettings(int shareOption) =
-      _UpdateShareSettings;
+  const factory TreeSettingsEvent.updateShareSettings(
+      {required UniqueId treeId,
+      required bool isPublic}) = _UpdateShareSettings;
 
   /// Update as share link
   const factory TreeSettingsEvent.updateIsShareLink(bool isShareLink) =

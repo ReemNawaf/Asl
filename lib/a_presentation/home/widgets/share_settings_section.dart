@@ -31,7 +31,6 @@ class ShareSettingsSection extends StatelessWidget {
         }
       },
       builder: (_, state) {
-        final isPublic = state.shareOption == 1;
         print('state.isShareLink ${state.isShareLink}');
         final localTree = context.read<LocalTreeBloc>().state;
 
@@ -58,7 +57,7 @@ class ShareSettingsSection extends StatelessWidget {
 
               Container(
                 decoration: BoxDecoration(
-                  color: isPublic ? kLeafColors[810] : kRootColors[810],
+                  color: state.isPublic ? kLeafColors[810] : kRootColors[810],
                   borderRadius: BorderRadius.circular(14.0),
                 ),
                 padding:
@@ -72,16 +71,18 @@ class ShareSettingsSection extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(6.0),
                           decoration: BoxDecoration(
-                            color:
-                                isPublic ? kLeafColors[820] : kRootColors[820],
+                            color: state.isPublic
+                                ? kLeafColors[820]
+                                : kRootColors[820],
                             shape: BoxShape.circle,
                           ),
                           child: SvgPicture.asset(
-                            isPublic
+                            state.isPublic
                                 ? 'assets/icons/glob.svg'
                                 : 'assets/icons/lock.svg',
-                            color:
-                                isPublic ? kLeafColors[830] : kRootColors[830],
+                            color: state.isPublic
+                                ? kLeafColors[830]
+                                : kRootColors[830],
                             height: 30,
                             width: 30,
                           ),
@@ -95,11 +96,15 @@ class ShareSettingsSection extends StatelessWidget {
                                 width: 80,
                                 height: 20,
                                 child: ShareOptions(
-                                    shareOption: state.shareOption)),
+                                  treeId: localTree.selectedTreeId!,
+                                  isPublic: state.isPublic,
+                                )),
                             kVSpacer5,
                             Text(
-                              getTr(context,
-                                  SHARE_OPTIONS[state.shareOption]['des']!)!,
+                              getTr(
+                                  context,
+                                  SHARE_OPTIONS[state.isPublic ? 1 : 0]
+                                      ['des']!)!,
                               style: kCaption2Style.copyWith(
                                   color: kBlacksColor[600]),
                             ),
@@ -107,7 +112,7 @@ class ShareSettingsSection extends StatelessWidget {
                         )
                       ],
                     ),
-                    if (isPublic)
+                    if (state.isPublic)
                       SmallAppButton(
                         onPressed: () async {
                           final link = buildTreeLink(treeId);

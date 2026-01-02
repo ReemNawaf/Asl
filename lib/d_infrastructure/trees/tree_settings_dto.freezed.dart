@@ -22,7 +22,7 @@ TreeSettingsDto _$TreeSettingsDtoFromJson(Map<String, dynamic> json) {
 mixin _$TreeSettingsDto {
   int get numberOfGenerationOpt => throw _privateConstructorUsedError;
   int get langOpt => throw _privateConstructorUsedError;
-  int get shareOpt => throw _privateConstructorUsedError;
+  bool get isPublic => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $TreeSettingsDtoCopyWith<$Res> {
   $Res call(
       {int numberOfGenerationOpt,
       int langOpt,
-      int shareOpt,
+      bool isPublic,
       bool isShowUnknown});
 }
 
@@ -59,7 +59,7 @@ class _$TreeSettingsDtoCopyWithImpl<$Res, $Val extends TreeSettingsDto>
   $Res call({
     Object? numberOfGenerationOpt = null,
     Object? langOpt = null,
-    Object? shareOpt = null,
+    Object? isPublic = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_value.copyWith(
@@ -71,10 +71,10 @@ class _$TreeSettingsDtoCopyWithImpl<$Res, $Val extends TreeSettingsDto>
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
               as int,
-      shareOpt: null == shareOpt
-          ? _value.shareOpt
-          : shareOpt // ignore: cast_nullable_to_non_nullable
-              as int,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$TreeSettingsDtoImplCopyWith<$Res>
   $Res call(
       {int numberOfGenerationOpt,
       int langOpt,
-      int shareOpt,
+      bool isPublic,
       bool isShowUnknown});
 }
 
@@ -111,7 +111,7 @@ class __$$TreeSettingsDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? numberOfGenerationOpt = null,
     Object? langOpt = null,
-    Object? shareOpt = null,
+    Object? isPublic = null,
     Object? isShowUnknown = null,
   }) {
     return _then(_$TreeSettingsDtoImpl(
@@ -123,10 +123,10 @@ class __$$TreeSettingsDtoImplCopyWithImpl<$Res>
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
               as int,
-      shareOpt: null == shareOpt
-          ? _value.shareOpt
-          : shareOpt // ignore: cast_nullable_to_non_nullable
-              as int,
+      isPublic: null == isPublic
+          ? _value.isPublic
+          : isPublic // ignore: cast_nullable_to_non_nullable
+              as bool,
       isShowUnknown: null == isShowUnknown
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
@@ -141,7 +141,7 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
   const _$TreeSettingsDtoImpl(
       {required this.numberOfGenerationOpt,
       required this.langOpt,
-      required this.shareOpt,
+      required this.isPublic,
       required this.isShowUnknown})
       : super._();
 
@@ -153,13 +153,13 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
   @override
   final int langOpt;
   @override
-  final int shareOpt;
+  final bool isPublic;
   @override
   final bool isShowUnknown;
 
   @override
   String toString() {
-    return 'TreeSettingsDto(numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, shareOpt: $shareOpt, isShowUnknown: $isShowUnknown)';
+    return 'TreeSettingsDto(numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown)';
   }
 
   @override
@@ -170,8 +170,8 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
             (identical(other.numberOfGenerationOpt, numberOfGenerationOpt) ||
                 other.numberOfGenerationOpt == numberOfGenerationOpt) &&
             (identical(other.langOpt, langOpt) || other.langOpt == langOpt) &&
-            (identical(other.shareOpt, shareOpt) ||
-                other.shareOpt == shareOpt) &&
+            (identical(other.isPublic, isPublic) ||
+                other.isPublic == isPublic) &&
             (identical(other.isShowUnknown, isShowUnknown) ||
                 other.isShowUnknown == isShowUnknown));
   }
@@ -179,7 +179,7 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, numberOfGenerationOpt, langOpt, shareOpt, isShowUnknown);
+      runtimeType, numberOfGenerationOpt, langOpt, isPublic, isShowUnknown);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +200,7 @@ abstract class _TreeSettingsDto extends TreeSettingsDto {
   const factory _TreeSettingsDto(
       {required final int numberOfGenerationOpt,
       required final int langOpt,
-      required final int shareOpt,
+      required final bool isPublic,
       required final bool isShowUnknown}) = _$TreeSettingsDtoImpl;
   const _TreeSettingsDto._() : super._();
 
@@ -212,7 +212,7 @@ abstract class _TreeSettingsDto extends TreeSettingsDto {
   @override
   int get langOpt;
   @override
-  int get shareOpt;
+  bool get isPublic;
   @override
   bool get isShowUnknown;
   @override

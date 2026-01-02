@@ -39,7 +39,7 @@ abstract class ITreeRepository {
   });
   Future<void> updateShareSettings({
     required UniqueId treeId,
-    required int option,
+    required bool isPublic,
   });
   Future<void> updateIsShowUnknown({
     required UniqueId treeId,

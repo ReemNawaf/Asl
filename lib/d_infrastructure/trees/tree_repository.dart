@@ -409,11 +409,11 @@ class TreeRepository implements ITreeRepository {
   @override
   Future<Either<TreeFailure, Unit>> updateShareSettings({
     required UniqueId treeId,
-    required int option,
+    required bool isPublic,
   }) async {
     try {
       await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
-        'treeSettings.shareOpt': option,
+        'treeSettings.isPublic': isPublic,
       });
       return right(unit);
     } on FirebaseException catch (e) {
@@ -473,7 +473,7 @@ class TreeRepository implements ITreeRepository {
         numberOfGenerationOpt:
             data['treeSettings']['numberOfGenerationOpt'] as int,
         isShowUnknown: data['treeSettings']['isShowUnknown'] as bool? ?? true,
-        shareOpt: data['treeSettings']['shareOpt'] as int,
+        isPublic: data['treeSettings']['isPublic'] as bool,
         langOpt: 0,
       );
 
