@@ -6,6 +6,7 @@ import 'package:asl/a_presentation/node/node_card/grandchild_node.dart';
 import 'package:asl/a_presentation/node/node_card/mirror_node.dart';
 import 'package:asl/a_presentation/node/node_card/partner_node.dart';
 import 'package:asl/a_presentation/node/node_card/root_node.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -25,6 +26,29 @@ class TreeView extends StatelessWidget {
         if (state.graph != null && state.builder != null) {
           debugPrint(
               'LOG | Tree View is rebuilt ${state.graph!.nodes.length} nodes');
+
+          // memoize so we don't recompute for every rebuild node
+          final Map<String, String?> fatherNameCache = {};
+
+          String? fatherNameOf(String realNodeIdKey) {
+            final store = context.read<LocalTreeBloc>().state.store;
+            return fatherNameCache.putIfAbsent(realNodeIdKey, () {
+              final n = store.nodesById[realNodeIdKey];
+              final upper = n?.upperFamily;
+              if (n == null || upper == null) return null;
+
+              final rel = store.relationsById[upper.getOrCrash()];
+              if (rel == null) return null;
+
+              final fatherIdKey = rel.father.getOrCrash();
+              final father = store.nodesById[fatherIdKey];
+              if (father == null) return null;
+
+              // adjust if your firstName is a ValueObject
+              return father.firstName.getOrCrash();
+            });
+          }
+
           return GraphView(
             graph: state.graph!,
             algorithm: BuchheimWalkerAlgorithm(
@@ -50,6 +74,7 @@ class TreeView extends StatelessWidget {
 
               final nodeId = realId ?? tnode.nodeId.getOrCrash();
               final idKey = nodeId; // use REAL id when mirror
+              final fatherName = fatherNameOf(nodeId);
 
               final key = context.read<DrawTreeBloc>().keyForNode(idKey,
                   mirrorNode: nodeType == NodeType.partnerMirror,
@@ -61,7 +86,10 @@ class TreeView extends StatelessWidget {
                     child: RootNode(node: tnode, pageContext: context)),
                 NodeType.partner => KeyedSubtree(
                     key: key,
-                    child: PartnerNode(node: tnode, pageContext: context)),
+                    child: PartnerNode(
+                        node: tnode,
+                        pageContext: context,
+                        fatherName: fatherName)),
                 NodeType.partnerMirror => tnode.gender == Gender.female
                     ?
                     // the mirror node is female
@@ -72,6 +100,7 @@ class TreeView extends StatelessWidget {
                             nodeId: UniqueId.fromUniqueString(nodeId)),
                         pageContext: context,
                         noChildren: false,
+                        fatherName: fatherName,
                       )
                     // the mirror node is male
                     // the partner node is female
@@ -83,13 +112,20 @@ class TreeView extends StatelessWidget {
                             nodeId: UniqueId.fromUniqueString(nodeId)),
                         pageContext: context,
                         noChildren: true,
+                        fatherName: fatherName,
                       ),
                 NodeType.child => KeyedSubtree(
                     key: key,
-                    child: ChildNode(node: tnode, pageContext: context)),
+                    child: ChildNode(
+                        node: tnode,
+                        pageContext: context,
+                        fatherName: fatherName)),
                 NodeType.grandchild => KeyedSubtree(
                     key: key,
-                    child: GrandchildNode(node: tnode, pageContext: context)),
+                    child: GrandchildNode(
+                        node: tnode,
+                        pageContext: context,
+                        fatherName: fatherName)),
                 _ => const SizedBox(),
               };
             },

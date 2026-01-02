@@ -9,10 +9,12 @@ class ChildNode extends StatelessWidget {
     super.key,
     required this.node,
     required this.pageContext,
+    required this.fatherName,
     // this.image,
   });
   final TNode node;
   final BuildContext pageContext;
+  final String? fatherName;
   // final String? image;
 
   @override
@@ -20,6 +22,7 @@ class ChildNode extends StatelessWidget {
     return AppNode(
       type: NodeType.child,
       name: node.firstName.getOrCrash(),
+      fatherName: fatherName,
       relation: node.gender == Gender.female ? 'الابنة' : 'الابن',
       color: kStemColors,
       yearOfBirth: node.birthDate,

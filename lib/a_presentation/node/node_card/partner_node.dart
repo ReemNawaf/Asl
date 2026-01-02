@@ -9,11 +9,13 @@ class PartnerNode extends StatelessWidget {
     super.key,
     required this.node,
     required this.pageContext,
+    required this.fatherName,
     // this.image,
   });
   final TNode node;
   final BuildContext pageContext;
   // final String? image;
+  final String? fatherName;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class PartnerNode extends StatelessWidget {
       yearOfBirth: node.birthDate,
       yearOfDeath: node.deathDate,
       isAlive: node.isAlive,
+      fatherName: fatherName,
       hasImage: false,
       gender: node.gender,
       node: node,

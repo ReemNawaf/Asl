@@ -9,11 +9,13 @@ class GrandchildNode extends StatelessWidget {
     super.key,
     required this.node,
     required this.pageContext,
+    required this.fatherName,
 
     // this.image,
   });
   final TNode node;
   final BuildContext pageContext;
+  final String? fatherName;
   // final String? image;
 
   @override
@@ -25,6 +27,7 @@ class GrandchildNode extends StatelessWidget {
       color: kLeafColors,
       yearOfBirth: node.birthDate,
       yearOfDeath: node.deathDate,
+      fatherName: fatherName,
       isAlive: node.isAlive,
       hasImage: false,
       gender: node.gender,
