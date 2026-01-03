@@ -11,42 +11,48 @@ class SmallScreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kWhitesColor[600],
       body: Container(
+        alignment: Alignment.center,
+        width: size.width,
+        height: size.height,
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const LogoSloganWidget(),
-            kVSpacer10,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 100.0),
-              child: Divider(
-                color: kRootColors[600],
-                thickness: 2,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const LogoSloganWidget(),
+              kVSpacer10,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                child: Divider(
+                  color: kRootColors[600],
+                  thickness: 2,
+                ),
               ),
-            ),
-            kVSpacer20,
-            Text(
-              '${getTr(context, 'required_bigger_screen_title')!} 🌴✨',
-              style: kHeadlineSmall.copyWith(fontSize: 24),
-            ),
-            kVSpacer30,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70.0),
-              child: Text(
-                '${getTr(context, 'required_bigger_screen_des_1')!} ${getTr(context, 'required_bigger_screen_des_2')!}',
-                style: kBodyLarge.copyWith(wordSpacing: 2.0, height: 1.8),
-                textAlign: TextAlign.center,
+              kVSpacer20,
+              Text(
+                '${getTr(context, 'required_bigger_screen_title')!} 🌴✨',
+                style: kHeadlineSmall.copyWith(fontSize: 24),
               ),
-            ),
-            kVSpacer20,
-            InfoContainer(
-              info:
-                  '${getTr(context, 'we_recommend_using_screen_with_width')} $MIM_WIDTH ${getTr(context, 'and_height')} $MIM_HEIGHT ${getTr(context, 'or_larger')}',
-            ),
-          ],
+              kVSpacer30,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 70.0),
+                child: Text(
+                  '${getTr(context, 'required_bigger_screen_des_1')!} ${getTr(context, 'required_bigger_screen_des_2')!}',
+                  style: kBodyLarge.copyWith(wordSpacing: 2.0, height: 1.8),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              kVSpacer20,
+              InfoContainer(
+                info:
+                    '${getTr(context, 'we_recommend_using_screen_with_width')} $MIM_WIDTH ${getTr(context, 'and_height')} $MIM_HEIGHT ${getTr(context, 'or_larger')}',
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,12 +1,10 @@
-import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/core/widgets/des_loading_wdg.dart';
+import 'package:asl/a_presentation/home/home_page_center.dart';
+import 'package:asl/a_presentation/home/tree_search_bar.dart';
 import 'package:asl/a_presentation/home/widgets/side_bar.dart';
 import 'package:asl/a_presentation/routes/app_router.dart';
-import 'package:asl/a_presentation/tree/interactive_viewer.dart';
-import 'package:asl/a_presentation/tree/widgets/add_new_tree.dart';
+import 'package:asl/a_presentation/splash/small_screen_page.dart';
 import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
-import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:auto_route/auto_route.dart';
@@ -23,7 +21,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final local = Localizations.localeOf(context);
-
+    if (size.height < MIM_HEIGHT || size.width < MIM_WIDTH) {
+      return const SmallScreenPage();
+    }
     return Scaffold(
       body: Stack(
         children: [
@@ -39,50 +39,8 @@ class HomePage extends StatelessWidget {
                       width: size.width * (state.hideSidbar ? 0.82 : 0.82),
                       child: Stack(
                         children: [
-                          SizedBox(
-                            width:
-                                size.width * (state.hideSidbar ? 0.82 : 0.82),
-                            child: BlocBuilder<LocalTreeBloc, LocalTreeState>(
-                              builder: (context, state) {
-                                context.read<TreeSettingsBloc>().add(
-                                    TreeSettingsEvent.initialized(
-                                        state.settings));
-
-                                if (state.isLoadingTrees) {
-                                  return const DescriptiveLoadingWidget(
-                                      loading: TreeDisplayLoading.LoadAllTree);
-                                } else if (state.isLoadingTree) {
-                                  return const DescriptiveLoadingWidget(
-                                      loading: TreeDisplayLoading.LoadTreeNode);
-                                } else if (state.trees.isNotEmpty) {
-                                  if (state.selectedTreeId != null) {
-                                    return const InteractiveView();
-                                  } else {
-                                    return const SizedBox();
-                                  }
-                                } else {
-                                  print('--- state $state');
-                                  return Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        AddNewTree(size: size),
-                                      ],
-                                    ),
-                                  );
-                                }
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 14.0, right: 14.0, top: 14.0),
-                            child: TextField(
-                              textAlign: TextAlign.right,
-                              decoration: kSearchBarInputDecor(context),
-                            ),
-                          ),
+                          HomePageCenter(size: size, state: state),
+                          const TreeSearchBar(),
                           Container(
                             alignment: local.languageCode == arabic
                                 ? Alignment.bottomLeft

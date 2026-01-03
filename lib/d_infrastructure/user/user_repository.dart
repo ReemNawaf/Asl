@@ -1,7 +1,6 @@
 import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:asl/c_domain/app_user/i_user_repo.dart';
 import 'package:asl/c_domain/app_user/user.dart';
@@ -25,14 +24,19 @@ class UserRepository implements IUserRepository {
           await userDocRef.get() as DocumentSnapshot<Map<String, dynamic>>;
       return right<UserFailure, AppUser>(
           AppUserDto.fromFirestore(userDoc).toDomain());
-    } catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(PERMISSION_DENIED_CP) ||
-              e.message!.contains(PERMISSION_DENIED_SM))) {
+    } on FirebaseException catch (e) {
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const UserFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const UserFailure.insufficientPermission());
-      } else {
-        return left(const UserFailure.unexpected());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const UserFailure.unableToUpdate());
       }
+      return left(const UserFailure.unexpected());
+    } catch (e) {
+      return left(const UserFailure.unexpected());
     }
   }
 
@@ -46,14 +50,19 @@ class UserRepository implements IUserRepository {
       await userDocRef.set(appUserDto.toJson());
 
       return right(unit);
-    } on PlatformException catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(PERMISSION_DENIED_CP) ||
-              e.message!.contains(PERMISSION_DENIED_SM))) {
+    } on FirebaseException catch (e) {
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const UserFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const UserFailure.insufficientPermission());
-      } else {
-        return left(const UserFailure.unexpected());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const UserFailure.unableToUpdate());
       }
+      return left(const UserFailure.unexpected());
+    } catch (e) {
+      return left(const UserFailure.unexpected());
     }
   }
 
@@ -66,18 +75,19 @@ class UserRepository implements IUserRepository {
       await userDocRef.update(appUserDto.toJson());
 
       return right(unit);
-    } on PlatformException catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(PERMISSION_DENIED_CP) ||
-              e.message!.contains(PERMISSION_DENIED_SM))) {
+    } on FirebaseException catch (e) {
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const UserFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const UserFailure.insufficientPermission());
-      } else if (e is FirebaseException &&
-          (e.message!.contains(NOT_FOUND_CP) ||
-              e.message!.contains('not-found'))) {
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
         return left(const UserFailure.unableToUpdate());
-      } else {
-        return left(const UserFailure.unexpected());
       }
+      return left(const UserFailure.unexpected());
+    } catch (e) {
+      return left(const UserFailure.unexpected());
     }
   }
 
@@ -89,18 +99,19 @@ class UserRepository implements IUserRepository {
       await userDocRef.delete();
 
       return right(unit);
-    } on PlatformException catch (e) {
-      if (e is FirebaseException &&
-          (e.message!.contains(PERMISSION_DENIED_CP) ||
-              e.message!.contains(PERMISSION_DENIED_SM))) {
+    } on FirebaseException catch (e) {
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const UserFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const UserFailure.insufficientPermission());
-      } else if (e is FirebaseException &&
-          (e.message!.contains(NOT_FOUND_CP) ||
-              e.message!.contains('not-found'))) {
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
         return left(const UserFailure.unableToUpdate());
-      } else {
-        return left(const UserFailure.unexpected());
       }
+      return left(const UserFailure.unexpected());
+    } catch (e) {
+      return left(const UserFailure.unexpected());
     }
   }
 }

@@ -33,14 +33,11 @@ class TreeRepository implements ITreeRepository {
   Future<Either<TreeFailure, List<Tree>>> getAll() async {
     try {
       final userRepository = UserRepository(_firestore);
-
       final appUserEither = await userRepository.get();
-
       return await appUserEither.fold(
-        (failure) async => left(const TreeFailure.unexpected()),
+        (failure) async => left(const TreeFailure.networkError()),
         (appUser) async {
           final treeCol = _firestore.treesCollection();
-
           // Fetch all trees in parallel
           final treeDocs = await Future.wait(
             appUser.trees.map(
@@ -59,7 +56,9 @@ class TreeRepository implements ITreeRepository {
         },
       );
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -91,7 +90,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(TNodeDto.fromFirestore(doc).toDomain());
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TNodeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TNodeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -111,10 +112,14 @@ class TreeRepository implements ITreeRepository {
     try {
       final treeDoc = _firestore.treesCollection().doc(treeId.asKey());
 
+      // Force server-only requests to detect network errors
+      // When offline, this will throw FirebaseException instead of returning empty cache
+      const serverSource = GetOptions(source: Source.server);
+
       // Fetch both subcollections in parallel
       final results = await Future.wait([
-        treeDoc.collection(NODES_COLLECTION).get(),
-        treeDoc.collection(RELATIONS_COLLECTION).get(),
+        treeDoc.collection(NODES_COLLECTION).get(serverSource),
+        treeDoc.collection(RELATIONS_COLLECTION).get(serverSource),
       ]);
 
       final nodesSnap = results[0];
@@ -131,7 +136,9 @@ class TreeRepository implements ITreeRepository {
 
       return right((nodes: nodes, relations: relations));
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -160,7 +167,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(result);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TNodeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TNodeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -291,7 +300,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -320,7 +331,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(tree);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -345,7 +358,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -369,7 +384,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -393,7 +410,9 @@ class TreeRepository implements ITreeRepository {
       });
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -418,7 +437,9 @@ class TreeRepository implements ITreeRepository {
       });
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -443,7 +464,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||
@@ -480,7 +503,9 @@ class TreeRepository implements ITreeRepository {
 
       return right(settings);
     } on FirebaseException catch (e) {
-      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
           e.message!.contains(PERMISSION_DENIED_SM)) {
         return left(const TreeFailure.insufficientPermission());
       } else if (e.message!.contains(NOT_FOUND_CP) ||

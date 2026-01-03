@@ -10,7 +10,7 @@ import 'package:dartz/dartz.dart' as z;
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
-import 'package:asl/b_application/user_bloc/user_form/user_form_bloc.dart';
+import 'package:asl/b_application/user_form/user_form_bloc.dart';
 import 'package:asl/c_domain/app_user/user.dart';
 import 'package:asl/injection.dart';
 import 'package:asl/localization/app_localization.dart';

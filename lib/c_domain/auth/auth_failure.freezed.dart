@@ -24,6 +24,10 @@ mixin _$AuthFailure {
     required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() accountDoesNotExist,
     required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +38,10 @@ mixin _$AuthFailure {
     TResult? Function()? invalidEmailAndPasswordCombination,
     TResult? Function()? accountDoesNotExist,
     TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +52,10 @@ mixin _$AuthFailure {
     TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? accountDoesNotExist,
     TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +68,11 @@ mixin _$AuthFailure {
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
     required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +84,10 @@ mixin _$AuthFailure {
         invalidEmailAndPasswordCombination,
     TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +99,10 @@ mixin _$AuthFailure {
         invalidEmailAndPasswordCombination,
     TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +170,10 @@ class _$CancelledByUserImpl implements CancelledByUser {
     required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() accountDoesNotExist,
     required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
   }) {
     return cancelledByUser();
   }
@@ -158,6 +187,10 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult? Function()? invalidEmailAndPasswordCombination,
     TResult? Function()? accountDoesNotExist,
     TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
   }) {
     return cancelledByUser?.call();
   }
@@ -171,6 +204,10 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? accountDoesNotExist,
     TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -189,6 +226,11 @@ class _$CancelledByUserImpl implements CancelledByUser {
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
     required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
   }) {
     return cancelledByUser(this);
   }
@@ -203,6 +245,10 @@ class _$CancelledByUserImpl implements CancelledByUser {
         invalidEmailAndPasswordCombination,
     TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
   }) {
     return cancelledByUser?.call(this);
   }
@@ -217,6 +263,10 @@ class _$CancelledByUserImpl implements CancelledByUser {
         invalidEmailAndPasswordCombination,
     TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -274,6 +324,10 @@ class _$ServerErrorImpl implements ServerError {
     required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() accountDoesNotExist,
     required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
   }) {
     return serverError();
   }
@@ -287,6 +341,10 @@ class _$ServerErrorImpl implements ServerError {
     TResult? Function()? invalidEmailAndPasswordCombination,
     TResult? Function()? accountDoesNotExist,
     TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
   }) {
     return serverError?.call();
   }
@@ -300,6 +358,10 @@ class _$ServerErrorImpl implements ServerError {
     TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? accountDoesNotExist,
     TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -318,6 +380,11 @@ class _$ServerErrorImpl implements ServerError {
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
     required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
   }) {
     return serverError(this);
   }
@@ -332,6 +399,10 @@ class _$ServerErrorImpl implements ServerError {
         invalidEmailAndPasswordCombination,
     TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
   }) {
     return serverError?.call(this);
   }
@@ -346,6 +417,10 @@ class _$ServerErrorImpl implements ServerError {
         invalidEmailAndPasswordCombination,
     TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -403,6 +478,10 @@ class _$EmailAlreadyInUseImpl implements EmailAlreadyInUse {
     required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() accountDoesNotExist,
     required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
   }) {
     return emailAlreadyInUse();
   }
@@ -416,6 +495,10 @@ class _$EmailAlreadyInUseImpl implements EmailAlreadyInUse {
     TResult? Function()? invalidEmailAndPasswordCombination,
     TResult? Function()? accountDoesNotExist,
     TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -429,6 +512,10 @@ class _$EmailAlreadyInUseImpl implements EmailAlreadyInUse {
     TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? accountDoesNotExist,
     TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -447,6 +534,11 @@ class _$EmailAlreadyInUseImpl implements EmailAlreadyInUse {
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
     required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -461,6 +553,10 @@ class _$EmailAlreadyInUseImpl implements EmailAlreadyInUse {
         invalidEmailAndPasswordCombination,
     TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -475,6 +571,10 @@ class _$EmailAlreadyInUseImpl implements EmailAlreadyInUse {
         invalidEmailAndPasswordCombination,
     TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -537,6 +637,10 @@ class _$InvalidEmailAndPasswordCombinationImpl
     required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() accountDoesNotExist,
     required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
   }) {
     return invalidEmailAndPasswordCombination();
   }
@@ -550,6 +654,10 @@ class _$InvalidEmailAndPasswordCombinationImpl
     TResult? Function()? invalidEmailAndPasswordCombination,
     TResult? Function()? accountDoesNotExist,
     TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
   }) {
     return invalidEmailAndPasswordCombination?.call();
   }
@@ -563,6 +671,10 @@ class _$InvalidEmailAndPasswordCombinationImpl
     TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? accountDoesNotExist,
     TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -581,6 +693,11 @@ class _$InvalidEmailAndPasswordCombinationImpl
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
     required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
   }) {
     return invalidEmailAndPasswordCombination(this);
   }
@@ -595,6 +712,10 @@ class _$InvalidEmailAndPasswordCombinationImpl
         invalidEmailAndPasswordCombination,
     TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
   }) {
     return invalidEmailAndPasswordCombination?.call(this);
   }
@@ -609,6 +730,10 @@ class _$InvalidEmailAndPasswordCombinationImpl
         invalidEmailAndPasswordCombination,
     TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -668,6 +793,10 @@ class _$AccountDoesNotExistImpl implements AccountDoesNotExist {
     required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() accountDoesNotExist,
     required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
   }) {
     return accountDoesNotExist();
   }
@@ -681,6 +810,10 @@ class _$AccountDoesNotExistImpl implements AccountDoesNotExist {
     TResult? Function()? invalidEmailAndPasswordCombination,
     TResult? Function()? accountDoesNotExist,
     TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
   }) {
     return accountDoesNotExist?.call();
   }
@@ -694,6 +827,10 @@ class _$AccountDoesNotExistImpl implements AccountDoesNotExist {
     TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? accountDoesNotExist,
     TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (accountDoesNotExist != null) {
@@ -712,6 +849,11 @@ class _$AccountDoesNotExistImpl implements AccountDoesNotExist {
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
     required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
   }) {
     return accountDoesNotExist(this);
   }
@@ -726,6 +868,10 @@ class _$AccountDoesNotExistImpl implements AccountDoesNotExist {
         invalidEmailAndPasswordCombination,
     TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
   }) {
     return accountDoesNotExist?.call(this);
   }
@@ -740,6 +886,10 @@ class _$AccountDoesNotExistImpl implements AccountDoesNotExist {
         invalidEmailAndPasswordCombination,
     TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (accountDoesNotExist != null) {
@@ -797,6 +947,10 @@ class _$AccountDoesExistImpl implements AccountDoesExist {
     required TResult Function() invalidEmailAndPasswordCombination,
     required TResult Function() accountDoesNotExist,
     required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
   }) {
     return accountDoesExist();
   }
@@ -810,6 +964,10 @@ class _$AccountDoesExistImpl implements AccountDoesExist {
     TResult? Function()? invalidEmailAndPasswordCombination,
     TResult? Function()? accountDoesNotExist,
     TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
   }) {
     return accountDoesExist?.call();
   }
@@ -823,6 +981,10 @@ class _$AccountDoesExistImpl implements AccountDoesExist {
     TResult Function()? invalidEmailAndPasswordCombination,
     TResult Function()? accountDoesNotExist,
     TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (accountDoesExist != null) {
@@ -841,6 +1003,11 @@ class _$AccountDoesExistImpl implements AccountDoesExist {
         invalidEmailAndPasswordCombination,
     required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
     required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
   }) {
     return accountDoesExist(this);
   }
@@ -855,6 +1022,10 @@ class _$AccountDoesExistImpl implements AccountDoesExist {
         invalidEmailAndPasswordCombination,
     TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
   }) {
     return accountDoesExist?.call(this);
   }
@@ -869,6 +1040,10 @@ class _$AccountDoesExistImpl implements AccountDoesExist {
         invalidEmailAndPasswordCombination,
     TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
     TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (accountDoesExist != null) {
@@ -880,4 +1055,623 @@ class _$AccountDoesExistImpl implements AccountDoesExist {
 
 abstract class AccountDoesExist implements AuthFailure {
   const factory AccountDoesExist() = _$AccountDoesExistImpl;
+}
+
+/// @nodoc
+abstract class _$$NetworkErrorImplCopyWith<$Res> {
+  factory _$$NetworkErrorImplCopyWith(
+          _$NetworkErrorImpl value, $Res Function(_$NetworkErrorImpl) then) =
+      __$$NetworkErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NetworkErrorImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$NetworkErrorImpl>
+    implements _$$NetworkErrorImplCopyWith<$Res> {
+  __$$NetworkErrorImplCopyWithImpl(
+      _$NetworkErrorImpl _value, $Res Function(_$NetworkErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NetworkErrorImpl implements NetworkError {
+  const _$NetworkErrorImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.networkError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NetworkErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() accountDoesNotExist,
+    required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+  }) {
+    return networkError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? invalidEmailAndPasswordCombination,
+    TResult? Function()? accountDoesNotExist,
+    TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+  }) {
+    return networkError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountDoesNotExist,
+    TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (networkError != null) {
+      return networkError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
+    required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+  }) {
+    return networkError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+  }) {
+    return networkError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (networkError != null) {
+      return networkError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NetworkError implements AuthFailure {
+  const factory NetworkError() = _$NetworkErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.unexpected()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() accountDoesNotExist,
+    required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+  }) {
+    return unexpected();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? invalidEmailAndPasswordCombination,
+    TResult? Function()? accountDoesNotExist,
+    TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+  }) {
+    return unexpected?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountDoesNotExist,
+    TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (unexpected != null) {
+      return unexpected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
+    required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+  }) {
+    return unexpected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+  }) {
+    return unexpected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (unexpected != null) {
+      return unexpected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Unexpected implements AuthFailure {
+  const factory _Unexpected() = _$UnexpectedImpl;
+}
+
+/// @nodoc
+abstract class _$$InsufficientPermissionImplCopyWith<$Res> {
+  factory _$$InsufficientPermissionImplCopyWith(
+          _$InsufficientPermissionImpl value,
+          $Res Function(_$InsufficientPermissionImpl) then) =
+      __$$InsufficientPermissionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InsufficientPermissionImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$InsufficientPermissionImpl>
+    implements _$$InsufficientPermissionImplCopyWith<$Res> {
+  __$$InsufficientPermissionImplCopyWithImpl(
+      _$InsufficientPermissionImpl _value,
+      $Res Function(_$InsufficientPermissionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InsufficientPermissionImpl implements _InsufficientPermission {
+  const _$InsufficientPermissionImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.insufficientPermission()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InsufficientPermissionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() accountDoesNotExist,
+    required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+  }) {
+    return insufficientPermission();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? invalidEmailAndPasswordCombination,
+    TResult? Function()? accountDoesNotExist,
+    TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+  }) {
+    return insufficientPermission?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountDoesNotExist,
+    TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (insufficientPermission != null) {
+      return insufficientPermission();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
+    required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+  }) {
+    return insufficientPermission(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+  }) {
+    return insufficientPermission?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (insufficientPermission != null) {
+      return insufficientPermission(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InsufficientPermission implements AuthFailure {
+  const factory _InsufficientPermission() = _$InsufficientPermissionImpl;
+}
+
+/// @nodoc
+abstract class _$$UnableToUpdateImplCopyWith<$Res> {
+  factory _$$UnableToUpdateImplCopyWith(_$UnableToUpdateImpl value,
+          $Res Function(_$UnableToUpdateImpl) then) =
+      __$$UnableToUpdateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnableToUpdateImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$UnableToUpdateImpl>
+    implements _$$UnableToUpdateImplCopyWith<$Res> {
+  __$$UnableToUpdateImplCopyWithImpl(
+      _$UnableToUpdateImpl _value, $Res Function(_$UnableToUpdateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UnableToUpdateImpl implements _UnableToUpdate {
+  const _$UnableToUpdateImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.unableToUpdate()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnableToUpdateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() accountDoesNotExist,
+    required TResult Function() accountDoesExist,
+    required TResult Function() networkError,
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+  }) {
+    return unableToUpdate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? invalidEmailAndPasswordCombination,
+    TResult? Function()? accountDoesNotExist,
+    TResult? Function()? accountDoesExist,
+    TResult? Function()? networkError,
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+  }) {
+    return unableToUpdate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? accountDoesNotExist,
+    TResult Function()? accountDoesExist,
+    TResult Function()? networkError,
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (unableToUpdate != null) {
+      return unableToUpdate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(AccountDoesNotExist value) accountDoesNotExist,
+    required TResult Function(AccountDoesExist value) accountDoesExist,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+  }) {
+    return unableToUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult? Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult? Function(AccountDoesExist value)? accountDoesExist,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+  }) {
+    return unableToUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(AccountDoesNotExist value)? accountDoesNotExist,
+    TResult Function(AccountDoesExist value)? accountDoesExist,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    required TResult orElse(),
+  }) {
+    if (unableToUpdate != null) {
+      return unableToUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnableToUpdate implements AuthFailure {
+  const factory _UnableToUpdate() = _$UnableToUpdateImpl;
 }

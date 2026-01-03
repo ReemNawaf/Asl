@@ -149,5 +149,17 @@
   "sorry_there_is_no_tree_under_this_link": "نعتذر لا توجد شجرة بهذا العنوان",
   "the_link_is_incorrect_or_tree_is_not_available": "قد يكون الرابط غير صحيح أو أن الشجرة ليست متاحة للمشاركة",
   "ask_tree_editor_to_send_the_right_link": "اسأل محرر الشجرة لإرسال الرابط الصحيح",
-  "go_to_home_page": "العودة للصفحة الرئيسية" 
+  "go_to_home_page": "العودة للصفحة الرئيسية",
+  
+  "network_error_short": "تعذّر الاتصال بالإنترنت.",
+  "network_error_long": "تأكّد من اتصال الشبكة ثم حاول مرة أخرى.",
+
+  "unexpected_long": "جرّب مرة أخرى، وإذا استمرت المشكلة تواصل معنا.",
+  "unexpected_short": "حدث خطأ غير متوقع.",
+
+  "unable_to_update_short": "تعذّر حفظ التغييرات.",
+  "unable_to_update_long": "حاول بعد قليل، أو أعد فتح الصفحة إذا لم تُحل المشكلة.",
+
+  "insufficient_permission_short": "ليس لديك صلاحية لتنفيذ هذه العملية.",
+  "insufficient_permission_long": "اطلب من مالك الشجرة منحك صلاحية الوصول."
 }

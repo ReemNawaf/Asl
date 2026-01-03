@@ -26,9 +26,7 @@ import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart'
     as _i5;
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart'
     as _i21;
-import 'package:asl/b_application/user_bloc/user_form/user_form_bloc.dart'
-    as _i26;
-import 'package:asl/b_application/user_bloc/user_watcher_bloc.dart' as _i27;
+import 'package:asl/b_application/user_form/user_form_bloc.dart' as _i26;
 import 'package:asl/c_domain/app_user/i_user_repo.dart' as _i19;
 import 'package:asl/c_domain/auth/i_auth_facade.dart' as _i13;
 import 'package:asl/c_domain/node/i_node_repository.dart' as _i15;
@@ -36,7 +34,7 @@ import 'package:asl/c_domain/relation/i_relation_repository.dart' as _i17;
 import 'package:asl/c_domain/tree/i_tree_repository.dart' as _i11;
 import 'package:asl/d_infrastructure/auth/firebase_auth_facade.dart' as _i14;
 import 'package:asl/d_infrastructure/core/firebase_injectable_module.dart'
-    as _i28;
+    as _i27;
 import 'package:asl/d_infrastructure/node/node_repository.dart' as _i16;
 import 'package:asl/d_infrastructure/relation/relation_repository.dart' as _i18;
 import 'package:asl/d_infrastructure/trees/tree_repository.dart' as _i12;
@@ -96,10 +94,8 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i26.UserFormBloc>(
         () => _i26.UserFormBloc(gh<_i19.IUserRepository>()));
-    gh.factory<_i27.UserWatcherBloc>(
-        () => _i27.UserWatcherBloc(gh<_i19.IUserRepository>()));
     return this;
   }
 }
 
-class _$FirebaseInjectableModule extends _i28.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i27.FirebaseInjectableModule {}

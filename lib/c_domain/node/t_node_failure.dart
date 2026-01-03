@@ -8,4 +8,5 @@ abstract class TNodeFailure with _$TNodeFailure {
   const factory TNodeFailure.insufficientPermission() = _InsufficientPermission;
   const factory TNodeFailure.unableToUpdate() = _UnableToUpdate;
   const factory TNodeFailure.nodeNotExist() = _NodeNotExist;
+  const factory TNodeFailure.networkError() = _NetworkError;
 }
