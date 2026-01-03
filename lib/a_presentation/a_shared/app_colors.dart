@@ -29,6 +29,7 @@ const MaterialColor kWhitesColor = MaterialColor(
     400: Color(0xFFEEEEEE), //  3
     500: Color(0xFFFFF5EE), //  red
     600: Color(0xFFFFFAF5), //  red
+    700: Color(0xFFFFFDFB), //  red
   },
 );
 

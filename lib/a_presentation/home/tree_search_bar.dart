@@ -1,14 +1,15 @@
+import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_lineage.dart';
-import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
 import 'package:asl/c_domain/search_tree/person_search_item.dart';
-import 'package:asl/c_domain/tree/tree_draw.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class TreeSearchBar extends StatefulWidget {
   const TreeSearchBar({
@@ -70,13 +71,14 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
             return Padding(
               padding: FieldPadding,
               child: Material(
+                color: kWhitesColor[700],
                 elevation: 8,
                 borderRadius: BorderRadius.circular(12),
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   shrinkWrap: true,
                   itemCount: options.length > 10 ? 10 : options.length,
-                  separatorBuilder: (_, __) => const Divider(height: 1),
+                  separatorBuilder: (_, __) => kAppDivider,
                   itemBuilder: (context, i) {
                     final o = options.elementAt(i);
                     return GestureDetector(
@@ -122,8 +124,26 @@ class SearchItem extends StatelessWidget {
         stopAtNodeId: context.read<LocalTreeBloc>().state.mainRootId,
         gender: item.gender);
 
-    return SizedBox(
-      child: Text(fullName, textAlign: TextAlign.right),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+      child: Row(
+        children: [
+          Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2.0),
+              decoration: BoxDecoration(
+                  color: kRootColors[600], borderRadius: kAppBorderRadius),
+              child: SvgPicture.asset('assets/avatars/${item.gender.name}.svg',
+                  color: kRootColors[300], height: 35, width: 35)),
+          kHSpacer10,
+          Text(
+            fullName,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: kCalloutStyle,
+          ),
+        ],
+      ),
     );
   }
 }
