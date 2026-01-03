@@ -33,7 +33,6 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
   ) {
     final treeSettings = event.treeSettings ?? TreeSettings.empty();
     emit(state.copyWith(
-      zoomScale: ZOOM_DEF,
       showUnknown: treeSettings.isShowUnknown,
       numberOfGenerations: treeSettings.numberOfGenerationOpt,
       isPublic: treeSettings.isPublic,

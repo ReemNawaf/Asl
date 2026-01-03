@@ -7,14 +7,12 @@ abstract class DrawTreeState with _$DrawTreeState {
     BuchheimWalkerConfiguration? builder,
     required TransformationController controller,
     required GlobalKey viewerKey,
-    required GlobalKey rootKey,
   }) = _DrawTreeState;
 
   factory DrawTreeState.initial() {
     return DrawTreeState(
       controller: TransformationController(),
       viewerKey: GlobalKey(),
-      rootKey: GlobalKey(),
     );
   }
 }

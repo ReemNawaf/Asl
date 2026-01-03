@@ -83,7 +83,7 @@ class TreeDraw {
   int _childCutoffGen(int totalGenerations) {
     // Example: total=10 => cutoff=6 (60%), so gen 7..10 => grandchild
     // Keep at least 1 so first descendant generation is always "child"
-    final cutoff = (totalGenerations * 0.6).floor();
+    final cutoff = (totalGenerations * 0.5).floor();
     return cutoff < 1 ? 1 : cutoff;
   }
 
@@ -133,7 +133,7 @@ class TreeDraw {
     required int parentRelationsCount,
     required int currentGen,
     required int? maxGen,
-    required int childCutoffGen, // ✅ NEW
+    required int childCutoffGen,
     required bool isShowUnknown,
     required BuildContext context,
   }) {
