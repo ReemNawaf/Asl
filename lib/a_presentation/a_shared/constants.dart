@@ -2,8 +2,8 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 
-const int MIM_HEIGHT = 620;
-const int MIM_WIDTH = 920;
+const int MIM_HEIGHT = 690;
+const int MIM_WIDTH = 1050;
 const double PAN_HEIGHT = 500;
 const double PAN_SM_HEIGHT = 580;
 const double PAN_WIDTH = 700;

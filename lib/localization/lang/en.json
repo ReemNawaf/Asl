@@ -149,5 +149,17 @@
     "sorry_there_is_no_tree_under_this_link": "Sorry there is no tree under this link",
     "the_link_is_incorrect_or_tree_is_not_available": "The link may be incorrect or the tree is no longer available.",
     "ask_tree_editor_to_send_the_right_link": "Ask tree editor to send the right link",
-    "go_to_home_page": "Go to Home Page"
-}
+    "go_to_home_page": "Go to Home Page",
+    
+    "network_error_short": "No internet connection.",
+    "network_error_long": "Check your connection and try again.",
+
+    "unexpected_short": "Something went wrong.",
+    "unexpected_long": "Try again, and contact support if the issue persists.",
+
+    "unable_to_update_short": "Couldn’t save changes.",
+    "unable_to_update_long": "Please try again shortly, or refresh the page if it keeps happening.",
+
+    "insufficient_permission_short": "You don’t have permission to do this.",
+    "insufficient_permission_long": "Ask the tree owner to grant you access."
+  }

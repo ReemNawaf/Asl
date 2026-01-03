@@ -26,6 +26,7 @@ class InteractiveView extends StatelessWidget {
                 ),
               );
         }
+
         return BlocListener<TreeSettingsBloc, TreeSettingsState>(
           listener: (context, state) => context
               .read<DrawTreeBloc>()

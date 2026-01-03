@@ -27,15 +27,20 @@ class SplashPage extends StatelessWidget {
                 // context.router.push(const HomeRoute());
               },
               unauthenticated: (_) {
-                context.router.replace(const AuthRoute());
+                final currentRoute = context.router.current.name;
+                if (currentRoute != TreeRoute.name) {
+                  context.router.replace(const AuthRoute());
+                }
               },
             );
           },
           child: Scaffold(
-            body: Container(
-              alignment: AlignmentDirectional.center,
-              width: screenWidth(MediaQuery.of(context).size),
-              child: CircularProgressIndicator(color: kRootColors[600]),
+            body: Center(
+              child: Container(
+                alignment: AlignmentDirectional.center,
+                width: screenWidth(MediaQuery.of(context).size),
+                child: CircularProgressIndicator(color: kRootColors[600]),
+              ),
             ),
           ),
         ),

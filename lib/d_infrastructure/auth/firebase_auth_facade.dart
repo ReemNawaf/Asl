@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -57,14 +58,23 @@ class FirebaseAuthFacade implements IAuthFacade {
       //  Adding a new user
       await createNewUserInFirstore(userCredential: authUserCredential);
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE' ||
+    } on FirebaseException catch (e) {
+      if (e.message!.toLowerCase().contains(NETWORK) &&
+          e.message!.toLowerCase().contains(ERROR)) {
+        return left(const AuthFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const AuthFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const AuthFailure.unableToUpdate());
+      } else if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE' ||
           e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
-      } else {
-        // the general one
-        return left(const AuthFailure.serverError());
       }
+      return left(const AuthFailure.serverError());
+    } catch (e) {
+      return left(const AuthFailure.unexpected());
     }
   }
 
@@ -86,9 +96,18 @@ class FirebaseAuthFacade implements IAuthFacade {
       await prefs.setBool('auth', true);
 
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      // For security purposes || or is used to check email and password as a compenation
-      if ((e.code == 'wrong-password' ||
+    } on FirebaseException catch (e) {
+      print('ee dd ${e.message}');
+      if (e.message!.toLowerCase().contains(NETWORK) &&
+          e.message!.toLowerCase().contains(ERROR)) {
+        return left(const AuthFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const AuthFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const AuthFailure.unableToUpdate());
+      } else if ((e.code == 'wrong-password' ||
           e.code == 'invalid-credential' ||
           e.code == 'user-not-found')) {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());

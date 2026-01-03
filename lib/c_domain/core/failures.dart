@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'failures.freezed.dart';
 
-// General Fialure
+// General Failure
 @freezed
 abstract class ValueFailure<T> with _$ValueFailure<T> {
   // all failure here in single class;
@@ -68,14 +68,5 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     const factory AuthValueFailure.shortPassword({
       required T failedValue,
     }) = ShortPassword<T>;
-  }
-
-  // Category Failure
-  @freezed
-  abstract class CategoryValueFailure<T> with _$CategoryValueFailure<T> {
-    // category specific conditions
-    const factory CategoryValueFailure.exceedingLength({
-      required T failedValue,
-    }) = ExceedingLength<T>;
   }
 */

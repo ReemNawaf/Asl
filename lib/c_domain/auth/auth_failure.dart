@@ -19,4 +19,9 @@ abstract class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.accountDoesNotExist() = AccountDoesNotExist;
   const factory AuthFailure.accountDoesExist() = AccountDoesExist;
+  const factory AuthFailure.networkError() = NetworkError;
+
+  const factory AuthFailure.unexpected() = _Unexpected;
+  const factory AuthFailure.insufficientPermission() = _InsufficientPermission;
+  const factory AuthFailure.unableToUpdate() = _UnableToUpdate;
 }
