@@ -1,8 +1,6 @@
 import 'dart:collection';
 
-import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
-import 'package:flutter/material.dart';
 
 enum Generation { root, parents, grandchildren }
 
@@ -152,30 +150,4 @@ int numberOfGenerations({
 
   final maxDepth = dfsDepth(rootIdKey); // 0 means only root
   return maxDepth + 1;
-}
-
-void zoomToScale({
-  required GlobalKey viewerKey,
-  required TransformationController controller,
-  required double newScale,
-}) {
-  final viewerCtx = viewerKey.currentContext;
-  if (viewerCtx == null) return;
-
-  final viewerBox = viewerCtx.findRenderObject() as RenderBox?;
-  if (viewerBox == null || !viewerBox.hasSize) return;
-
-  final clamped = newScale.clamp(MIN_ZOOM, MAX_ZOOM).toDouble();
-
-  // viewport center in viewport coordinates
-  final viewportCenter = viewerBox.size.center(Offset.zero);
-
-  // scene point currently under the viewport center
-  final sceneCenter = controller.toScene(viewportCenter);
-
-  // keep sceneCenter under the viewport center after scaling
-  controller.value = Matrix4.identity()
-    ..translate(viewportCenter.dx, viewportCenter.dy)
-    ..scale(clamped)
-    ..translate(-sceneCenter.dx, -sceneCenter.dy);
 }
