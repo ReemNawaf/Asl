@@ -82,16 +82,16 @@ class TreeView extends StatelessWidget {
                   final idKey = nodeId; // use REAL id when mirror
                   final fatherName = fatherNameOf(nodeId);
 
-                  final key = context.read<DrawTreeBloc>().keyForNode(idKey,
+                  final nodeKey = context.read<DrawTreeBloc>().keyForNode(idKey,
                       mirrorNode: nodeType == NodeType.partnerMirror,
                       drawingId: id);
 
                   return switch (nodeType) {
                     NodeType.root => KeyedSubtree(
-                        key: context.read<DrawTreeBloc>().state.rootKey,
+                        key: nodeKey,
                         child: RootNode(node: tnode, pageContext: context)),
                     NodeType.partner => KeyedSubtree(
-                        key: key,
+                        key: nodeKey,
                         child: PartnerNode(
                             node: tnode,
                             pageContext: context,
@@ -121,13 +121,13 @@ class TreeView extends StatelessWidget {
                             fatherName: fatherName,
                           ),
                     NodeType.child => KeyedSubtree(
-                        key: key,
+                        key: nodeKey,
                         child: ChildNode(
                             node: tnode,
                             pageContext: context,
                             fatherName: fatherName)),
                     NodeType.grandchild => KeyedSubtree(
-                        key: key,
+                        key: nodeKey,
                         child: GrandchildNode(
                             node: tnode,
                             pageContext: context,

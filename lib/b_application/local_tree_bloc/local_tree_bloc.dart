@@ -479,6 +479,10 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         }
       },
 
+      searchTree: (e) {
+        // emit(state.copyWith(nodeFocusId: e.nodeId));
+      },
+
       // --------------------------------------------
       // E) INTERNAL / SYSTEM
       // --------------------------------------------

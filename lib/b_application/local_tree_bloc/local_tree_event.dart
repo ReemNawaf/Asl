@@ -100,4 +100,11 @@ class LocalTreeEvent with _$LocalTreeEvent {
     required bool success,
     required int pendingSyncCount,
   }) = _SyncFinished;
+
+  // F. SEARCH
+
+  /// Search for a node by name
+  const factory LocalTreeEvent.searchTree({
+    required UniqueId nodeId,
+  }) = _SearchTree;
 }

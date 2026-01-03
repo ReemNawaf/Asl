@@ -52,15 +52,16 @@ class InteractiveView extends StatelessWidget {
               }
             },
             child: InteractiveViewer(
-                key: context.read<DrawTreeBloc>().state.viewerKey,
-                constrained: false,
-                transformationController:
-                    context.read<DrawTreeBloc>().state.controller,
-                alignment: Alignment.center,
-                boundaryMargin: const EdgeInsets.all(1000),
-                minScale: MIN_ZOOM,
-                maxScale: MAX_ZOOM,
-                child: const TreeView()),
+              key: context.read<DrawTreeBloc>().state.viewerKey,
+              constrained: false,
+              transformationController:
+                  context.read<DrawTreeBloc>().state.controller,
+              alignment: Alignment.center,
+              boundaryMargin: const EdgeInsets.all(5000),
+              minScale: MIN_ZOOM,
+              maxScale: MAX_ZOOM,
+              child: const TreeView(),
+            ),
           ),
         );
       },

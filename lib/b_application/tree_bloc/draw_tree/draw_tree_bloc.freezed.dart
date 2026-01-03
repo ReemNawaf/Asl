@@ -559,8 +559,6 @@ mixin _$DrawTreeState {
   TransformationController get controller => throw _privateConstructorUsedError;
   GlobalKey<State<StatefulWidget>> get viewerKey =>
       throw _privateConstructorUsedError;
-  GlobalKey<State<StatefulWidget>> get rootKey =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DrawTreeStateCopyWith<DrawTreeState> get copyWith =>
@@ -577,8 +575,7 @@ abstract class $DrawTreeStateCopyWith<$Res> {
       {Graph? graph,
       BuchheimWalkerConfiguration? builder,
       TransformationController controller,
-      GlobalKey<State<StatefulWidget>> viewerKey,
-      GlobalKey<State<StatefulWidget>> rootKey});
+      GlobalKey<State<StatefulWidget>> viewerKey});
 }
 
 /// @nodoc
@@ -598,7 +595,6 @@ class _$DrawTreeStateCopyWithImpl<$Res, $Val extends DrawTreeState>
     Object? builder = freezed,
     Object? controller = null,
     Object? viewerKey = null,
-    Object? rootKey = null,
   }) {
     return _then(_value.copyWith(
       graph: freezed == graph
@@ -617,10 +613,6 @@ class _$DrawTreeStateCopyWithImpl<$Res, $Val extends DrawTreeState>
           ? _value.viewerKey
           : viewerKey // ignore: cast_nullable_to_non_nullable
               as GlobalKey<State<StatefulWidget>>,
-      rootKey: null == rootKey
-          ? _value.rootKey
-          : rootKey // ignore: cast_nullable_to_non_nullable
-              as GlobalKey<State<StatefulWidget>>,
     ) as $Val);
   }
 }
@@ -637,8 +629,7 @@ abstract class _$$DrawTreeStateImplCopyWith<$Res>
       {Graph? graph,
       BuchheimWalkerConfiguration? builder,
       TransformationController controller,
-      GlobalKey<State<StatefulWidget>> viewerKey,
-      GlobalKey<State<StatefulWidget>> rootKey});
+      GlobalKey<State<StatefulWidget>> viewerKey});
 }
 
 /// @nodoc
@@ -656,7 +647,6 @@ class __$$DrawTreeStateImplCopyWithImpl<$Res>
     Object? builder = freezed,
     Object? controller = null,
     Object? viewerKey = null,
-    Object? rootKey = null,
   }) {
     return _then(_$DrawTreeStateImpl(
       graph: freezed == graph
@@ -675,10 +665,6 @@ class __$$DrawTreeStateImplCopyWithImpl<$Res>
           ? _value.viewerKey
           : viewerKey // ignore: cast_nullable_to_non_nullable
               as GlobalKey<State<StatefulWidget>>,
-      rootKey: null == rootKey
-          ? _value.rootKey
-          : rootKey // ignore: cast_nullable_to_non_nullable
-              as GlobalKey<State<StatefulWidget>>,
     ));
   }
 }
@@ -690,8 +676,7 @@ class _$DrawTreeStateImpl implements _DrawTreeState {
       {this.graph,
       this.builder,
       required this.controller,
-      required this.viewerKey,
-      required this.rootKey});
+      required this.viewerKey});
 
   @override
   final Graph? graph;
@@ -701,12 +686,10 @@ class _$DrawTreeStateImpl implements _DrawTreeState {
   final TransformationController controller;
   @override
   final GlobalKey<State<StatefulWidget>> viewerKey;
-  @override
-  final GlobalKey<State<StatefulWidget>> rootKey;
 
   @override
   String toString() {
-    return 'DrawTreeState(graph: $graph, builder: $builder, controller: $controller, viewerKey: $viewerKey, rootKey: $rootKey)';
+    return 'DrawTreeState(graph: $graph, builder: $builder, controller: $controller, viewerKey: $viewerKey)';
   }
 
   @override
@@ -719,13 +702,12 @@ class _$DrawTreeStateImpl implements _DrawTreeState {
             (identical(other.controller, controller) ||
                 other.controller == controller) &&
             (identical(other.viewerKey, viewerKey) ||
-                other.viewerKey == viewerKey) &&
-            (identical(other.rootKey, rootKey) || other.rootKey == rootKey));
+                other.viewerKey == viewerKey));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, graph, builder, controller, viewerKey, rootKey);
+      Object.hash(runtimeType, graph, builder, controller, viewerKey);
 
   @JsonKey(ignore: true)
   @override
@@ -739,8 +721,7 @@ abstract class _DrawTreeState implements DrawTreeState {
           {final Graph? graph,
           final BuchheimWalkerConfiguration? builder,
           required final TransformationController controller,
-          required final GlobalKey<State<StatefulWidget>> viewerKey,
-          required final GlobalKey<State<StatefulWidget>> rootKey}) =
+          required final GlobalKey<State<StatefulWidget>> viewerKey}) =
       _$DrawTreeStateImpl;
 
   @override
@@ -751,8 +732,6 @@ abstract class _DrawTreeState implements DrawTreeState {
   TransformationController get controller;
   @override
   GlobalKey<State<StatefulWidget>> get viewerKey;
-  @override
-  GlobalKey<State<StatefulWidget>> get rootKey;
   @override
   @JsonKey(ignore: true)
   _$$DrawTreeStateImplCopyWith<_$DrawTreeStateImpl> get copyWith =>

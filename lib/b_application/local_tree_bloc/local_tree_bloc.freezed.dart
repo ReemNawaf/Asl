@@ -39,6 +39,7 @@ mixin _$LocalTreeEvent {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +65,7 @@ mixin _$LocalTreeEvent {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +91,7 @@ mixin _$LocalTreeEvent {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +116,7 @@ mixin _$LocalTreeEvent {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -135,6 +139,7 @@ mixin _$LocalTreeEvent {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -157,6 +162,7 @@ mixin _$LocalTreeEvent {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -245,6 +251,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return loadAllTrees();
   }
@@ -273,6 +280,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return loadAllTrees?.call();
   }
@@ -301,6 +309,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (loadAllTrees != null) {
@@ -331,6 +340,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return loadAllTrees(this);
   }
@@ -356,6 +366,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return loadAllTrees?.call(this);
   }
@@ -381,6 +392,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (loadAllTrees != null) {
@@ -487,6 +499,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return loadTree(treeId);
   }
@@ -515,6 +528,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return loadTree?.call(treeId);
   }
@@ -543,6 +557,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (loadTree != null) {
@@ -573,6 +588,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return loadTree(this);
   }
@@ -598,6 +614,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return loadTree?.call(this);
   }
@@ -623,6 +640,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (loadTree != null) {
@@ -743,6 +761,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return selectTree(treeId, rootId);
   }
@@ -771,6 +790,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return selectTree?.call(treeId, rootId);
   }
@@ -799,6 +819,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (selectTree != null) {
@@ -829,6 +850,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return selectTree(this);
   }
@@ -854,6 +876,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return selectTree?.call(this);
   }
@@ -879,6 +902,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (selectTree != null) {
@@ -1021,6 +1045,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return createTree(tree, root);
   }
@@ -1049,6 +1074,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return createTree?.call(tree, root);
   }
@@ -1077,6 +1103,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (createTree != null) {
@@ -1107,6 +1134,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return createTree(this);
   }
@@ -1132,6 +1160,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return createTree?.call(this);
   }
@@ -1157,6 +1186,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (createTree != null) {
@@ -1280,6 +1310,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return updateTree(tree);
   }
@@ -1308,6 +1339,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return updateTree?.call(tree);
   }
@@ -1336,6 +1368,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (updateTree != null) {
@@ -1366,6 +1399,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return updateTree(this);
   }
@@ -1391,6 +1425,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return updateTree?.call(this);
   }
@@ -1416,6 +1451,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (updateTree != null) {
@@ -1527,6 +1563,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return deleteTree(treeId);
   }
@@ -1555,6 +1592,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return deleteTree?.call(treeId);
   }
@@ -1583,6 +1621,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteTree != null) {
@@ -1613,6 +1652,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return deleteTree(this);
   }
@@ -1638,6 +1678,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return deleteTree?.call(this);
   }
@@ -1663,6 +1704,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteTree != null) {
@@ -1785,6 +1827,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return updateNode(node);
   }
@@ -1813,6 +1856,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return updateNode?.call(node);
   }
@@ -1841,6 +1885,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (updateNode != null) {
@@ -1871,6 +1916,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return updateNode(this);
   }
@@ -1896,6 +1942,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return updateNode?.call(this);
   }
@@ -1921,6 +1968,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (updateNode != null) {
@@ -2083,6 +2131,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return addPartners(node, partnersList, relationsList);
   }
@@ -2111,6 +2160,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return addPartners?.call(node, partnersList, relationsList);
   }
@@ -2139,6 +2189,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (addPartners != null) {
@@ -2169,6 +2220,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return addPartners(this);
   }
@@ -2194,6 +2246,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return addPartners?.call(this);
   }
@@ -2219,6 +2272,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (addPartners != null) {
@@ -2378,6 +2432,7 @@ class _$AddExistingPartnerImpl
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return addExistingPartner(node, partnerId, relation);
   }
@@ -2406,6 +2461,7 @@ class _$AddExistingPartnerImpl
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return addExistingPartner?.call(node, partnerId, relation);
   }
@@ -2434,6 +2490,7 @@ class _$AddExistingPartnerImpl
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (addExistingPartner != null) {
@@ -2464,6 +2521,7 @@ class _$AddExistingPartnerImpl
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return addExistingPartner(this);
   }
@@ -2489,6 +2547,7 @@ class _$AddExistingPartnerImpl
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return addExistingPartner?.call(this);
   }
@@ -2514,6 +2573,7 @@ class _$AddExistingPartnerImpl
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (addExistingPartner != null) {
@@ -2637,6 +2697,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return addChildren(children);
   }
@@ -2665,6 +2726,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return addChildren?.call(children);
   }
@@ -2693,6 +2755,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (addChildren != null) {
@@ -2723,6 +2786,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return addChildren(this);
   }
@@ -2748,6 +2812,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return addChildren?.call(this);
   }
@@ -2773,6 +2838,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (addChildren != null) {
@@ -2885,6 +2951,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return deleteNode(nodeId);
   }
@@ -2913,6 +2980,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return deleteNode?.call(nodeId);
   }
@@ -2941,6 +3009,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteNode != null) {
@@ -2971,6 +3040,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return deleteNode(this);
   }
@@ -2996,6 +3066,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return deleteNode?.call(this);
   }
@@ -3021,6 +3092,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteNode != null) {
@@ -3143,6 +3215,7 @@ class _$DeleteChildrenImpl
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return deleteChildren(children);
   }
@@ -3171,6 +3244,7 @@ class _$DeleteChildrenImpl
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return deleteChildren?.call(children);
   }
@@ -3199,6 +3273,7 @@ class _$DeleteChildrenImpl
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteChildren != null) {
@@ -3229,6 +3304,7 @@ class _$DeleteChildrenImpl
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return deleteChildren(this);
   }
@@ -3254,6 +3330,7 @@ class _$DeleteChildrenImpl
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return deleteChildren?.call(this);
   }
@@ -3279,6 +3356,7 @@ class _$DeleteChildrenImpl
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteChildren != null) {
@@ -3402,6 +3480,7 @@ class _$DeleteRelationsImpl
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return deleteRelations(relations);
   }
@@ -3430,6 +3509,7 @@ class _$DeleteRelationsImpl
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return deleteRelations?.call(relations);
   }
@@ -3458,6 +3538,7 @@ class _$DeleteRelationsImpl
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteRelations != null) {
@@ -3488,6 +3569,7 @@ class _$DeleteRelationsImpl
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return deleteRelations(this);
   }
@@ -3513,6 +3595,7 @@ class _$DeleteRelationsImpl
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return deleteRelations?.call(this);
   }
@@ -3538,6 +3621,7 @@ class _$DeleteRelationsImpl
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (deleteRelations != null) {
@@ -3653,6 +3737,7 @@ class _$ChangeFocusRootImpl
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return changeFocusRoot(nodeId);
   }
@@ -3681,6 +3766,7 @@ class _$ChangeFocusRootImpl
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return changeFocusRoot?.call(nodeId);
   }
@@ -3709,6 +3795,7 @@ class _$ChangeFocusRootImpl
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (changeFocusRoot != null) {
@@ -3739,6 +3826,7 @@ class _$ChangeFocusRootImpl
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return changeFocusRoot(this);
   }
@@ -3764,6 +3852,7 @@ class _$ChangeFocusRootImpl
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return changeFocusRoot?.call(this);
   }
@@ -3789,6 +3878,7 @@ class _$ChangeFocusRootImpl
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (changeFocusRoot != null) {
@@ -3876,6 +3966,7 @@ class _$ResetFocusRootImpl
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return resetFocusRoot();
   }
@@ -3904,6 +3995,7 @@ class _$ResetFocusRootImpl
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return resetFocusRoot?.call();
   }
@@ -3932,6 +4024,7 @@ class _$ResetFocusRootImpl
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (resetFocusRoot != null) {
@@ -3962,6 +4055,7 @@ class _$ResetFocusRootImpl
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return resetFocusRoot(this);
   }
@@ -3987,6 +4081,7 @@ class _$ResetFocusRootImpl
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return resetFocusRoot?.call(this);
   }
@@ -4012,6 +4107,7 @@ class _$ResetFocusRootImpl
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (resetFocusRoot != null) {
@@ -4123,6 +4219,7 @@ class _$ChangeGenerationLimitImpl
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return changeGenerationLimit(generations);
   }
@@ -4151,6 +4248,7 @@ class _$ChangeGenerationLimitImpl
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return changeGenerationLimit?.call(generations);
   }
@@ -4179,6 +4277,7 @@ class _$ChangeGenerationLimitImpl
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (changeGenerationLimit != null) {
@@ -4209,6 +4308,7 @@ class _$ChangeGenerationLimitImpl
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return changeGenerationLimit(this);
   }
@@ -4234,6 +4334,7 @@ class _$ChangeGenerationLimitImpl
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return changeGenerationLimit?.call(this);
   }
@@ -4259,6 +4360,7 @@ class _$ChangeGenerationLimitImpl
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (changeGenerationLimit != null) {
@@ -4374,6 +4476,7 @@ class _$ToggleShowUnknownImpl
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return toggleShowUnknown(show);
   }
@@ -4402,6 +4505,7 @@ class _$ToggleShowUnknownImpl
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return toggleShowUnknown?.call(show);
   }
@@ -4430,6 +4534,7 @@ class _$ToggleShowUnknownImpl
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (toggleShowUnknown != null) {
@@ -4460,6 +4565,7 @@ class _$ToggleShowUnknownImpl
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return toggleShowUnknown(this);
   }
@@ -4485,6 +4591,7 @@ class _$ToggleShowUnknownImpl
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return toggleShowUnknown?.call(this);
   }
@@ -4510,6 +4617,7 @@ class _$ToggleShowUnknownImpl
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (toggleShowUnknown != null) {
@@ -4633,6 +4741,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     required TResult Function(int generations) changeGenerationLimit,
     required TResult Function(bool show) toggleShowUnknown,
     required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
   }) {
     return syncFinished(success, pendingSyncCount);
   }
@@ -4661,6 +4770,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult? Function(int generations)? changeGenerationLimit,
     TResult? Function(bool show)? toggleShowUnknown,
     TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
   }) {
     return syncFinished?.call(success, pendingSyncCount);
   }
@@ -4689,6 +4799,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult Function(int generations)? changeGenerationLimit,
     TResult Function(bool show)? toggleShowUnknown,
     TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
     required TResult orElse(),
   }) {
     if (syncFinished != null) {
@@ -4719,6 +4830,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
         changeGenerationLimit,
     required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
     required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
   }) {
     return syncFinished(this);
   }
@@ -4744,6 +4856,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
   }) {
     return syncFinished?.call(this);
   }
@@ -4769,6 +4882,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
     TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
     TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
     required TResult orElse(),
   }) {
     if (syncFinished != null) {
@@ -4787,6 +4901,260 @@ abstract class _SyncFinished implements LocalTreeEvent {
   int get pendingSyncCount;
   @JsonKey(ignore: true)
   _$$SyncFinishedImplCopyWith<_$SyncFinishedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchTreeImplCopyWith<$Res> {
+  factory _$$SearchTreeImplCopyWith(
+          _$SearchTreeImpl value, $Res Function(_$SearchTreeImpl) then) =
+      __$$SearchTreeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniqueId nodeId});
+}
+
+/// @nodoc
+class __$$SearchTreeImplCopyWithImpl<$Res>
+    extends _$LocalTreeEventCopyWithImpl<$Res, _$SearchTreeImpl>
+    implements _$$SearchTreeImplCopyWith<$Res> {
+  __$$SearchTreeImplCopyWithImpl(
+      _$SearchTreeImpl _value, $Res Function(_$SearchTreeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nodeId = null,
+  }) {
+    return _then(_$SearchTreeImpl(
+      nodeId: null == nodeId
+          ? _value.nodeId
+          : nodeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
+  const _$SearchTreeImpl({required this.nodeId});
+
+  @override
+  final UniqueId nodeId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LocalTreeEvent.searchTree(nodeId: $nodeId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LocalTreeEvent.searchTree'))
+      ..add(DiagnosticsProperty('nodeId', nodeId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchTreeImpl &&
+            (identical(other.nodeId, nodeId) || other.nodeId == nodeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, nodeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchTreeImplCopyWith<_$SearchTreeImpl> get copyWith =>
+      __$$SearchTreeImplCopyWithImpl<_$SearchTreeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
+    required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
+    required TResult Function(Tree tree, TNode root) createTree,
+    required TResult Function(Tree tree) updateTree,
+    required TResult Function(UniqueId treeId) deleteTree,
+    required TResult Function(TNode node) updateNode,
+    required TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)
+        addPartners,
+    required TResult Function(TNode node, UniqueId partnerId, Relation relation)
+        addExistingPartner,
+    required TResult Function(List<TNode> children) addChildren,
+    required TResult Function(UniqueId nodeId) deleteNode,
+    required TResult Function(List<TNode> children) deleteChildren,
+    required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeId) changeFocusRoot,
+    required TResult Function() resetFocusRoot,
+    required TResult Function(int generations) changeGenerationLimit,
+    required TResult Function(bool show) toggleShowUnknown,
+    required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
+  }) {
+    return searchTree(nodeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
+    TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult? Function(Tree tree, TNode root)? createTree,
+    TResult? Function(Tree tree)? updateTree,
+    TResult? Function(UniqueId treeId)? deleteTree,
+    TResult? Function(TNode node)? updateNode,
+    TResult? Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult? Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult? Function(List<TNode> children)? addChildren,
+    TResult? Function(UniqueId nodeId)? deleteNode,
+    TResult? Function(List<TNode> children)? deleteChildren,
+    TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeId)? changeFocusRoot,
+    TResult? Function()? resetFocusRoot,
+    TResult? Function(int generations)? changeGenerationLimit,
+    TResult? Function(bool show)? toggleShowUnknown,
+    TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
+  }) {
+    return searchTree?.call(nodeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
+    TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult Function(Tree tree, TNode root)? createTree,
+    TResult Function(Tree tree)? updateTree,
+    TResult Function(UniqueId treeId)? deleteTree,
+    TResult Function(TNode node)? updateNode,
+    TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult Function(List<TNode> children)? addChildren,
+    TResult Function(UniqueId nodeId)? deleteNode,
+    TResult Function(List<TNode> children)? deleteChildren,
+    TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeId)? changeFocusRoot,
+    TResult Function()? resetFocusRoot,
+    TResult Function(int generations)? changeGenerationLimit,
+    TResult Function(bool show)? toggleShowUnknown,
+    TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
+    required TResult orElse(),
+  }) {
+    if (searchTree != null) {
+      return searchTree(nodeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
+    required TResult Function(_SelectTree value) selectTree,
+    required TResult Function(_CreateTree value) createTree,
+    required TResult Function(_UpdateTree value) updateTree,
+    required TResult Function(_DeleteTree value) deleteTree,
+    required TResult Function(_UpdateNode value) updateNode,
+    required TResult Function(_AddPartner value) addPartners,
+    required TResult Function(_AddExistingPartner value) addExistingPartner,
+    required TResult Function(_AddChild value) addChildren,
+    required TResult Function(_DeleteNode value) deleteNode,
+    required TResult Function(_DeleteChildren value) deleteChildren,
+    required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
+    required TResult Function(_ResetFocusRoot value) resetFocusRoot,
+    required TResult Function(_ChangeGenerationLimit value)
+        changeGenerationLimit,
+    required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
+    required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
+  }) {
+    return searchTree(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
+    TResult? Function(_SelectTree value)? selectTree,
+    TResult? Function(_CreateTree value)? createTree,
+    TResult? Function(_UpdateTree value)? updateTree,
+    TResult? Function(_DeleteTree value)? deleteTree,
+    TResult? Function(_UpdateNode value)? updateNode,
+    TResult? Function(_AddPartner value)? addPartners,
+    TResult? Function(_AddExistingPartner value)? addExistingPartner,
+    TResult? Function(_AddChild value)? addChildren,
+    TResult? Function(_DeleteNode value)? deleteNode,
+    TResult? Function(_DeleteChildren value)? deleteChildren,
+    TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
+  }) {
+    return searchTree?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
+    TResult Function(_SelectTree value)? selectTree,
+    TResult Function(_CreateTree value)? createTree,
+    TResult Function(_UpdateTree value)? updateTree,
+    TResult Function(_DeleteTree value)? deleteTree,
+    TResult Function(_UpdateNode value)? updateNode,
+    TResult Function(_AddPartner value)? addPartners,
+    TResult Function(_AddExistingPartner value)? addExistingPartner,
+    TResult Function(_AddChild value)? addChildren,
+    TResult Function(_DeleteNode value)? deleteNode,
+    TResult Function(_DeleteChildren value)? deleteChildren,
+    TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
+    required TResult orElse(),
+  }) {
+    if (searchTree != null) {
+      return searchTree(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchTree implements LocalTreeEvent {
+  const factory _SearchTree({required final UniqueId nodeId}) =
+      _$SearchTreeImpl;
+
+  UniqueId get nodeId;
+  @JsonKey(ignore: true)
+  _$$SearchTreeImplCopyWith<_$SearchTreeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
