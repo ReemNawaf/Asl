@@ -56,6 +56,7 @@ class _SignInFormState extends State<SignInForm> {
               (either) => either.fold(
                 // when there is failure
                 (failure) {
+                  print('failure $failure');
                   appSnackBar(
                     context,
                     text: failure.map(
@@ -68,6 +69,13 @@ class _SignInFormState extends State<SignInForm> {
                           getTr(context, 'something_went_wrong')!,
                       accountDoesExist: (_) => getTr(context,
                           'this_account_is_already_registered_please_log_in')!,
+                      networkError: (_) =>
+                          getTr(context, 'network_error_short')!,
+                      unexpected: (_) => getTr(context, 'unexpected_short')!,
+                      insufficientPermission: (_) =>
+                          getTr(context, 'insufficient_permission_short')!,
+                      unableToUpdate: (_) =>
+                          getTr(context, 'unable_to_update_short')!,
                       accountDoesNotExist: (_) => getTr(
                           context, 'account_is_not_registered_please_sign_up')!,
                     ),
