@@ -36,7 +36,6 @@ class HomePage extends StatelessWidget {
                 BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
                   builder: (context, state) {
                     return SizedBox(
-                      width: size.width * (state.hideSidbar ? 0.983 : 0.82),
                       child: Stack(
                         children: [
                           HomePageCenter(size: size, state: state),

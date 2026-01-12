@@ -23,7 +23,7 @@ class FirstName extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  static const maxLength = 12;
+  static const maxLength = 100;
 
   factory FirstName(String input) {
     return FirstName._(

@@ -21,6 +21,7 @@ class ShareSettingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<TreeSettingsBloc, TreeSettingsState>(
+      listenWhen: (prev, curr) => prev.isShareLink != curr.isShareLink,
       listener: (context, state) {
         if (state.isLinkCopied) {
           appSnackBar(
@@ -54,7 +55,6 @@ class ShareSettingsSection extends StatelessWidget {
                 style: kFootnoteStyle.copyWith(color: kBlacksColor),
               ),
               kVSpacer10,
-
               Container(
                 decoration: BoxDecoration(
                   color: state.isPublic ? kLeafColors[810] : kRootColors[810],
@@ -136,11 +136,6 @@ class ShareSettingsSection extends StatelessWidget {
                   ],
                 ),
               ),
-
-              // Text(
-              //   'مشاركة مع أشخاص',
-              //   style: kFootnoteStyle.copyWith(color: kBlacksColor[200]),
-              // ),
             ],
           );
         } else {
