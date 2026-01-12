@@ -6,13 +6,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:asl/b_application/auth_bloc/sign_in_form/sign_in_form_bloc.dart';
 
 class ActionButton extends StatelessWidget {
-  const ActionButton({
-    super.key,
-    required AuthMode authMode,
-    required this.screenSize,
-    required this.isLoading,
-  }) : _authMode = authMode;
+  const ActionButton(
+      {super.key,
+      required AuthMode authMode,
+      required this.screenSize,
+      required this.isLoading,
+      required this.formKey})
+      : _authMode = authMode;
 
+  final GlobalKey<FormState> formKey;
   final AuthMode _authMode;
   final Size screenSize;
   final bool isLoading;
@@ -21,13 +23,15 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
       onPressed: () {
-        _authMode == AuthMode.signin
-            ? context
-                .read<SignInFormBloc>()
-                .add(const SignInFormEvent.signInWithEmailAndPasswordPressed())
-            : context.read<SignInFormBloc>().add(
-                const SignInFormEvent.registerWithEmailAndPasswordPressed());
-        FocusScope.of(context).unfocus();
+        // Validate the form first
+        if (formKey.currentState?.validate() ?? false) {
+          _authMode == AuthMode.signin
+              ? context.read<SignInFormBloc>().add(
+                  const SignInFormEvent.signInWithEmailAndPasswordPressed())
+              : context.read<SignInFormBloc>().add(
+                  const SignInFormEvent.registerWithEmailAndPasswordPressed());
+          FocusScope.of(context).unfocus();
+        }
       },
       label: _authMode == AuthMode.signin ? 'تسجيل الدخول' : 'تسجيل',
       isLoading: context.read<SignInFormBloc>().state.isSubmitting,
