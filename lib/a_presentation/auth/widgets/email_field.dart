@@ -27,7 +27,7 @@ class EmailField extends StatelessWidget {
           .read<SignInFormBloc>()
           .add(SignInFormEvent.emailChanged(value!.trim())),
       validator: (_) {
-        // context.read<SignInFormBloc>().state.emailAddress.value
+        // state.emailAddress.value
         return context.read<SignInFormBloc>().state.emailAddress.value.fold(
               (f) => f.maybeMap(
                 empty: (_) => getTr(context, 'email_cannot_be_empty'),
@@ -37,8 +37,7 @@ class EmailField extends StatelessWidget {
               (_) => null,
             );
       },
-      isValid: !context.read<SignInFormBloc>().state.isValidated ||
-          context.read<SignInFormBloc>().state.emailAddress.isValid(),
+      isValid: false,
 
       // for the email to not be null, when the user hit 'Forgot Password'
       // before onSave for triggered

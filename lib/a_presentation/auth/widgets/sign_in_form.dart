@@ -67,6 +67,8 @@ class _SignInFormState extends State<SignInForm> {
                           getTr(context, 'email_or_password_is_not_correct')!,
                       serverError: (_) =>
                           getTr(context, 'something_went_wrong')!,
+                      accountDoesNotExist: (_) => getTr(
+                          context, 'account_is_not_registered_please_sign_up')!,
                       accountDoesExist: (_) => getTr(context,
                           'this_account_is_already_registered_please_log_in')!,
                       networkError: (_) =>
@@ -76,8 +78,6 @@ class _SignInFormState extends State<SignInForm> {
                           getTr(context, 'insufficient_permission_short')!,
                       unableToUpdate: (_) =>
                           getTr(context, 'unable_to_update_short')!,
-                      accountDoesNotExist: (_) => getTr(
-                          context, 'account_is_not_registered_please_sign_up')!,
                     ),
                     type: SnackBarType.error,
                   );
@@ -112,17 +112,16 @@ class _SignInFormState extends State<SignInForm> {
                           emailFocusNode: _emailFocusNode,
                           passwordFocusNode: _passwordFocusNode,
                         ),
-                        kVSpacer10,
                         PasswordField(
                           passwordController: _passwordController,
                           passwordFocusNode: _passwordFocusNode,
                           authMode: _authMode,
                         ),
-                        if (_authMode == AuthMode.signin) kVSpacer30,
                         ActionButton(
                           isLoading: state.isSubmitting,
                           authMode: _authMode,
                           screenSize: screenSize,
+                          formKey: _formKey,
                         ),
                         kVSpacer20,
                         signInWithGoogleBtn(context, () {

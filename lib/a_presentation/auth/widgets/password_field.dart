@@ -42,13 +42,11 @@ class PasswordField extends StatelessWidget {
           controller: passwordController,
           focusNode: passwordFocusNode,
           fieldType: FieldType.password,
-          isValid: !context.read<SignInFormBloc>().state.isValidated ||
-              context.read<SignInFormBloc>().state.password.isValid(),
+          isValid: false,
         ),
 
         //  CONFIRM PASSWORD FIELD
-        if (authMode == AuthMode.signup) ...[
-          kVSpacer10,
+        if (authMode == AuthMode.signup)
           AppFormField(
             label: getTr(context, 'password')!,
             hint: '**************',
@@ -63,7 +61,6 @@ class PasswordField extends StatelessWidget {
             },
             fieldType: FieldType.password,
           ),
-        ]
       ],
     );
   }
