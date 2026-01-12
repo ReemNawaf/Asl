@@ -52,140 +52,153 @@ class TreePage extends StatelessWidget {
             create: (context) => getIt<ChildFormBloc>()),
       ],
       child: Scaffold(
-        body: BlocBuilder<LocalTreeBloc, LocalTreeState>(
-          builder: (context, state) {
-            if (state.isLoadingTree) {
-              return const Center(
-                child: DescriptiveLoadingWidget(
-                    loading: TreeDisplayLoading.LoadTreeNode),
-              );
-            } else {
-              if (state.selectedTreeId != null) {
-                context.read<TreeSettingsBloc>().add(
-                      TreeSettingsEvent.initialized(state.settings,
-                          isShareLink: true),
-                    );
-                debugPrint(
-                    'TreePage LocalTreeBloc hash: ${context.read<LocalTreeBloc>().hashCode}');
-
-                return size.height < MIM_HEIGHT || size.width < MIM_WIDTH
-                    ? const SmallScreenPage()
-                    : BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
-                        builder: (context, settingsState) {
-                          return Row(
-                            children: [
-                              if (!settingsState.hideSidbar)
-                                Container(
-                                  color: kWhitesColor[600],
-                                  width: size.width * 0.16,
-                                  height: size.height,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 20, horizontal: 14.0),
-                                    width: 200.0,
-                                    child: Column(
-                                      children: [
-                                        if (state.trees.isNotEmpty)
-                                          ListTreeItem(
-                                            id: state.trees.first.treeId,
-                                            treeName: state.trees.first.treeName
-                                                .getOrCrash(),
-                                            rootLetter: state
-                                                .trees.first.fullName
-                                                .getOrCrash()
-                                                .substring(0, 1),
-                                          )
-                                        else
-                                          const SizedBox(),
-                                        const Spacer(),
-                                        const LayersWidget(),
-                                        const Spacer(),
-                                        const SettingsButton(),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              Container(
-                                width: 20,
-                                height: size.height,
-                                color: kWhitesColor[500],
-                                child: RawMaterialButton(
-                                  onPressed: () =>
-                                      context.read<TreeSettingsBloc>().add(
-                                            const TreeSettingsEvent
-                                                .updateHideSideBar(),
-                                          ),
-                                  padding: EdgeInsets.only(
-                                      right: settingsState.hideSidbar ? 0 : 6),
-                                  elevation: 0,
-                                  hoverElevation: 0,
-                                  focusElevation: 0,
-                                  highlightElevation: 0,
-                                  constraints: const BoxConstraints(
-                                      minWidth: 0, minHeight: 0),
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  splashColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  child: Icon(
-                                    settingsState.hideSidbar
-                                        ? Icons.arrow_forward_ios
-                                        : Icons.arrow_back_ios,
-                                    color: kRootColors[400],
-                                    weight: 20,
-                                    grade: 25,
-                                    size: 18,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: size.width *
-                                    (settingsState.hideSidbar ? 0.983 : 0.82),
-                                child: Stack(
-                                  children: [
-                                    SizedBox(
-                                      width: size.width *
-                                          (settingsState.hideSidbar
-                                              ? 0.983
-                                              : 0.82),
-                                      child: const InteractiveView(),
-                                    ),
-                                    const TreeSearchBar(),
-                                    Container(
-                                      width: 150,
-                                      padding: EdgeInsets.only(
-                                          right: 20, top: size.height - 85),
-                                      child: BlocBuilder<TreeSettingsBloc,
-                                          TreeSettingsState>(
-                                        builder: (context, state) {
-                                          return Slider(
-                                            min: MIN_ZOOM,
-                                            max: MAX_ZOOM,
-                                            value: state.zoomScale,
-                                            label:
-                                                "${state.zoomScale.toStringAsFixed(2)}x",
-                                            onChanged: (newScale) {
-                                              context
-                                                  .read<TreeSettingsBloc>()
-                                                  .add(TreeSettingsEvent
-                                                      .zoomChanged(newScale));
-                                            },
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-              } else {
-                return const TreeNotFoundPage();
-              }
+        body: BlocListener<LocalTreeBloc, LocalTreeState>(
+          listenWhen: (previous, current) {
+            // Only react when settings actually change in LocalTreeBloc
+            return previous.settings != current.settings;
+          },
+          listener: (context, state) {
+            // Initialize settings only when they change
+            if (state.settings != null) {
+              context.read<TreeSettingsBloc>().add(
+                    TreeSettingsEvent.initialized(state.settings,
+                        isShareLink: true),
+                  );
             }
           },
+          child: BlocBuilder<LocalTreeBloc, LocalTreeState>(
+            builder: (context, state) {
+              if (state.isLoadingTree) {
+                return const Center(
+                  child: DescriptiveLoadingWidget(
+                      loading: TreeDisplayLoading.LoadTreeNode),
+                );
+              } else {
+                if (state.selectedTreeId != null) {
+                  debugPrint(
+                      'TreePage LocalTreeBloc hash: ${context.read<LocalTreeBloc>().hashCode}');
+
+                  return size.height < MIM_HEIGHT || size.width < MIM_WIDTH
+                      ? const SmallScreenPage()
+                      : BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
+                          builder: (context, settingsState) {
+                            return Row(
+                              children: [
+                                if (!settingsState.hideSidbar)
+                                  Container(
+                                    color: kWhitesColor[600],
+                                    width: size.width * 0.16,
+                                    height: size.height,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20, horizontal: 14.0),
+                                      width: 200.0,
+                                      child: Column(
+                                        children: [
+                                          if (state.trees.isNotEmpty)
+                                            ListTreeItem(
+                                              id: state.trees.first.treeId,
+                                              treeName: state
+                                                  .trees.first.treeName
+                                                  .getOrCrash(),
+                                              rootLetter: state
+                                                  .trees.first.fullName
+                                                  .getOrCrash()
+                                                  .substring(0, 1),
+                                            )
+                                          else
+                                            const SizedBox(),
+                                          const Spacer(),
+                                          const LayersWidget(),
+                                          const Spacer(),
+                                          const SettingsButton(),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                Container(
+                                  width: 20,
+                                  height: size.height,
+                                  color: kWhitesColor[500],
+                                  child: RawMaterialButton(
+                                    onPressed: () =>
+                                        context.read<TreeSettingsBloc>().add(
+                                              const TreeSettingsEvent
+                                                  .updateHideSideBar(),
+                                            ),
+                                    padding: EdgeInsets.only(
+                                        right:
+                                            settingsState.hideSidbar ? 0 : 6),
+                                    elevation: 0,
+                                    hoverElevation: 0,
+                                    focusElevation: 0,
+                                    highlightElevation: 0,
+                                    constraints: const BoxConstraints(
+                                        minWidth: 0, minHeight: 0),
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    child: Icon(
+                                      settingsState.hideSidbar
+                                          ? Icons.arrow_forward_ios
+                                          : Icons.arrow_back_ios,
+                                      color: kRootColors[400],
+                                      weight: 20,
+                                      grade: 25,
+                                      size: 18,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: size.width *
+                                      (settingsState.hideSidbar ? 0.983 : 0.82),
+                                  child: Stack(
+                                    children: [
+                                      SizedBox(
+                                        width: size.width *
+                                            (settingsState.hideSidbar
+                                                ? 0.983
+                                                : 0.82),
+                                        child: const InteractiveView(),
+                                      ),
+                                      const TreeSearchBar(),
+                                      Container(
+                                        width: 150,
+                                        padding: EdgeInsets.only(
+                                            right: 20, top: size.height - 85),
+                                        child: BlocBuilder<TreeSettingsBloc,
+                                            TreeSettingsState>(
+                                          builder: (context, state) {
+                                            return Slider(
+                                              min: MIN_ZOOM,
+                                              max: MAX_ZOOM,
+                                              value: state.zoomScale,
+                                              label:
+                                                  "${state.zoomScale.toStringAsFixed(2)}x",
+                                              onChanged: (newScale) {
+                                                context
+                                                    .read<TreeSettingsBloc>()
+                                                    .add(TreeSettingsEvent
+                                                        .zoomChanged(newScale));
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                } else {
+                  return const TreeNotFoundPage();
+                }
+              }
+            },
+          ),
         ),
       ),
     );

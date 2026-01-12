@@ -20,51 +20,61 @@ class HomePageCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: size.width * (state.hideSidbar ? 0.82 : 0.82),
-      child: BlocBuilder<LocalTreeBloc, LocalTreeState>(
-        builder: (context, state) {
-          context
-              .read<TreeSettingsBloc>()
-              .add(TreeSettingsEvent.initialized(state.settings));
-
-          // when there is a network error
-          if (state.treeFailureOption.isSome()) {
-            return NetworkError(state: state);
-          }
-          // when loading all trees
-          else if (state.isLoadingTrees) {
-            return const DescriptiveLoadingWidget(
-              loading: TreeDisplayLoading.LoadAllTree,
-            );
-          }
-          // when loading a tree nodes
-          else if (state.isLoadingTree) {
-            return const DescriptiveLoadingWidget(
-                loading: TreeDisplayLoading.LoadTreeNode);
-          }
-          // when the trees are loaded
-          else if (state.trees.isNotEmpty) {
-            // when no tree is selected, select the first tree
-            if (state.selectedTreeId == null) {
-              final t = state.trees.first;
-              context.read<LocalTreeBloc>().add(LocalTreeEvent.selectTree(
-                  treeId: t.treeId, rootId: t.rootId));
-            }
-            // when the trees are loaded and a tree is selected, show the interactive view
-            return const InteractiveView();
-          }
-          //
-          else {
-            return Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AddNewTree(size: size),
-                ],
-              ),
-            );
+      width: size.width * (state.hideSidbar ? 0.983 : 0.82),
+      child: BlocListener<LocalTreeBloc, LocalTreeState>(
+        listenWhen: (previous, current) {
+          // Only react when settings actually change in LocalTreeBloc
+          return previous.settings != current.settings;
+        },
+        listener: (context, state) {
+          // Initialize settings only when they change
+          if (state.settings != null) {
+            context
+                .read<TreeSettingsBloc>()
+                .add(TreeSettingsEvent.initialized(state.settings));
           }
         },
+        child: BlocBuilder<LocalTreeBloc, LocalTreeState>(
+          builder: (context, state) {
+            // when there is a network error
+            if (state.treeFailureOption.isSome()) {
+              return NetworkError(state: state);
+            }
+            // when loading all trees
+            else if (state.isLoadingTrees) {
+              return const DescriptiveLoadingWidget(
+                loading: TreeDisplayLoading.LoadAllTree,
+              );
+            }
+            // when loading a tree nodes
+            else if (state.isLoadingTree) {
+              return const DescriptiveLoadingWidget(
+                  loading: TreeDisplayLoading.LoadTreeNode);
+            }
+            // when the trees are loaded
+            else if (state.trees.isNotEmpty) {
+              // when no tree is selected, select the first tree
+              if (state.selectedTreeId == null) {
+                final t = state.trees.first;
+                context.read<LocalTreeBloc>().add(LocalTreeEvent.selectTree(
+                    treeId: t.treeId, rootId: t.rootId));
+              }
+              // when the trees are loaded and a tree is selected, show the interactive view
+              return const InteractiveView();
+            }
+            //
+            else {
+              return Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AddNewTree(size: size),
+                  ],
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }

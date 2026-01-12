@@ -58,6 +58,8 @@ class ChildrenWidget extends StatelessWidget {
                   ...?tempRelationChildren
                 ];
 
+                print('allChildren: $allChildren');
+
                 final deleted = state.deletedChildren
                     .map((i) => i.nodeId.getOrCrash())
                     .toList();

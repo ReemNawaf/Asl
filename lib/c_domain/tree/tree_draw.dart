@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class TreeDraw {
+  String? _rootKey;
   Graph graph = Graph()..isTree = true;
   BuchheimWalkerConfiguration builder = BuchheimWalkerConfiguration();
 
@@ -41,6 +42,7 @@ class TreeDraw {
     _childrenDrawnForRelation.clear();
 
     final startKey = rootId.asKey();
+    _rootKey = startKey;
     final startNode = store.nodesById[startKey];
     if (startNode == null) return graph;
 
@@ -204,6 +206,7 @@ class TreeDraw {
     final motherKey = relation.mother.asKey();
 
     String? partnerKey;
+
     if (currentNodeKey == fatherKey) {
       partnerKey = motherKey;
     } else if (currentNodeKey == motherKey) {
@@ -212,11 +215,14 @@ class TreeDraw {
 
     // 1) partner (same gen) + MIRROR if partner already exists in tree
     String? partnerDisplayKey; // could be real nodeKey OR mirrorKey
+    bool partnerIsMirror = false;
 
     if (partnerKey != null) {
       final partnerNode = store.nodesById[partnerKey];
       if (partnerNode != null) {
         final shouldMirror = partnerNode.upperFamily != null;
+        partnerIsMirror = shouldMirror;
+
         // your rule: only mirror if partner is an existing node in the tree
 
         if (shouldMirror) {
@@ -242,50 +248,92 @@ class TreeDraw {
     // 2) children (next gen)
     if (maxGen != null && currentGen >= maxGen) return;
 
-// Mother info
+    // Root-mother special case:
+    // If the ROOT is a female, attach children under her partner (father),
+    // even if the partner is a mirror.
+    final bool isRootMother =
+        (currentNodeKey == _rootKey && currentNode.gender == Gender.female);
+
+    final bool currentIsMother = currentNodeKey == motherKey;
+
+    // NEW RULE:
+    // if current node is the mother AND partner is a REAL node (not mirror)
+    // then children attach under that partner node.
+    final bool useUnmirroredPartnerAsChildrenParent =
+        currentIsMother && partnerDisplayKey != null && !partnerIsMirror;
+
+    // Mother info
     final motherNode = store.nodesById[motherKey];
     final motherHasMirror =
         motherNode != null && motherNode.upperFamily != null;
 
-    // RULE:
-    // If motherHasMirror, we want children under the MIRROR mother.
-    // But the mirror mother is only created when we traverse from the OTHER side (usually father side).
-    // So: if we are currently at the REAL mother node, skip drawing children here,
-    // and let the father-side traversal draw them under the mirror mother.
-    if (motherHasMirror && currentNodeKey == motherKey) {
+    // If mother has mirror, normally we skip drawing children at the real mother
+    // to avoid duplication. BUT if she's the root mother, we DO NOT skip here.
+    if (!isRootMother &&
+        motherHasMirror &&
+        currentIsMother &&
+        !useUnmirroredPartnerAsChildrenParent) {
       return;
     }
 
-    // Now apply the "draw once" guard (only after we confirm this is the correct place to draw)
+    // Now apply the "draw once" guard
     if (_childrenDrawnForRelation.contains(relationKey)) return;
     _childrenDrawnForRelation.add(relationKey);
 
     final childKeys = store.childrenIdsOfRelationKey(relationKey);
 
-    // Children parent must ALWAYS be the mother (real or mirror)
+// Decide where children attach
     String childrenParentKey;
+    Gender? parentGender;
+    int parentRelationsCount;
 
-    // If mother has mirror → parent must be the mirror mother (it should be partnerDisplayKey here)
-    if (motherHasMirror &&
-        partnerDisplayKey != null &&
-        partnerKey == motherKey) {
-      childrenParentKey = partnerDisplayKey; // mirror mother
-    } else {
-      // mother has no mirror → parent is the real mother (if present), else fallback
-      childrenParentKey = motherKey;
+    // ✅ Special rule: root mother => children under partner (father display key)
+    if (isRootMother) {
+      // partnerKey should be the father in this case (since current is mother)
+      // and partnerDisplayKey already may be real father or mirror father.
+      final fatherNode = store.nodesById[fatherKey];
 
-      // ensure real mother node exists in graph if we will attach children to it
-      final realMother = store.nodesById[motherKey];
-      if (realMother != null) {
-        _ensureGraphNode(node: realMother, nodeType: NodeType.partner);
+      // If partnerDisplayKey doesn't exist for some reason, fallback to real father if present.
+      if (partnerDisplayKey != null) {
+        childrenParentKey = partnerDisplayKey; // mirror or real father
+      } else if (fatherNode != null) {
+        childrenParentKey = fatherKey;
+        _ensureGraphNode(node: fatherNode, nodeType: NodeType.partner);
       } else {
-        childrenParentKey = currentNodeKey; // fallback if mother missing
+        // last fallback: attach to current node
+        childrenParentKey = currentNodeKey;
+      }
+
+      parentGender = fatherNode?.gender ?? Gender.male;
+      parentRelationsCount = fatherNode?.relations.length ?? 0;
+    } else {
+      // ✅ NEW rule first: mother + unmirrored partner => children under partner
+      if (useUnmirroredPartnerAsChildrenParent) {
+        childrenParentKey = partnerDisplayKey; // real partner node
+        final fatherNode = store.nodesById[fatherKey];
+        parentGender = fatherNode?.gender ?? Gender.male;
+        parentRelationsCount = fatherNode?.relations.length ?? 0;
+      } else {
+        // ✅ Existing default: children under mother (real or mirror)
+        if (motherHasMirror &&
+            partnerDisplayKey != null &&
+            partnerKey == motherKey) {
+          childrenParentKey = partnerDisplayKey; // mirror mother
+        } else {
+          childrenParentKey = motherKey;
+
+          final realMother = store.nodesById[motherKey];
+          if (realMother != null) {
+            _ensureGraphNode(node: realMother, nodeType: NodeType.partner);
+          } else {
+            childrenParentKey = currentNodeKey;
+          }
+        }
+
+        parentGender = motherNode?.gender;
+        parentRelationsCount = motherNode?.relations.length ?? 0;
       }
     }
-
-// Labels should reflect "mother"
-    final parentGender = motherNode?.gender;
-    final parentRelationsCount = motherNode?.relations.length ?? 0;
 
     for (final childKey in childKeys) {
       final childNode = store.nodesById[childKey];
@@ -293,9 +341,6 @@ class TreeDraw {
 
       final nextGen = currentGen + 1;
 
-      // Here is the split:
-      // gen <= childCutoffGen => child
-      // gen > childCutoffGen  => grandchild
       final childType =
           nextGen <= childCutoffGen ? NodeType.child : NodeType.grandchild;
 

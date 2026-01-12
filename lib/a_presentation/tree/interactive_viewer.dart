@@ -57,7 +57,8 @@ class InteractiveView extends StatelessWidget {
               transformationController:
                   context.read<DrawTreeBloc>().state.controller,
               alignment: Alignment.center,
-              boundaryMargin: const EdgeInsets.all(5000),
+              boundaryMargin:
+                  const EdgeInsets.symmetric(horizontal: 90000, vertical: 5000),
               minScale: MIN_ZOOM,
               maxScale: MAX_ZOOM,
               child: const TreeView(),

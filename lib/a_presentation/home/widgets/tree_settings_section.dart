@@ -43,8 +43,6 @@ class TreeSettingsSection extends StatelessWidget {
               height: 30,
               child: BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
                   builder: (context, state) {
-                final generationOption =
-                    NUM_GEN_OPTIONS[state.numberOfGenerations];
                 return DropdownButton(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 0.0),
@@ -60,13 +58,15 @@ class TreeSettingsSection extends StatelessWidget {
                           ))
                       .toList(),
                   isExpanded: true,
-                  value: generationOption['value'] as String,
+                  value: NUM_GEN_OPTIONS[state.numberOfGenerations]['value']
+                      as String,
                   onChanged: (String? value) {
-                    final option = NUM_GEN_OPTIONS
+                    final index = NUM_GEN_OPTIONS
                         .indexWhere((item) => value == item['value']);
+
                     context.read<TreeSettingsBloc>().add(
                           TreeSettingsEvent.numberOfGenerationsChanged(
-                              treeId: treeId!, option: option),
+                              treeId: treeId!, option: index),
                         );
                   },
                   underline: const SizedBox(),
