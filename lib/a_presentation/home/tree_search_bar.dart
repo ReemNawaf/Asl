@@ -33,82 +33,88 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return BlocBuilder<LocalTreeBloc, LocalTreeState>(
       builder: (context, state) {
         // when loading all trees
 
         final searchIndex = buildSearchIndex(state.store);
 
-        return SizedBox(
-          width: MediaQuery.of(context).size.width * CENTER_WIDTH,
-          child: Autocomplete<PersonSearchItem>(
-            optionsBuilder: (TextEditingValue value) {
-              final q = normalize(value.text);
-              if (q.isEmpty) return const Iterable<PersonSearchItem>.empty();
+        return BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
+            builder: (context, state) {
+          return SizedBox(
+            width: state.hideSidbar
+                ? size.width * (SIDE_BAR_WIDTH + CENTER_WIDTH) - ARROW_BTN_WIDTH
+                : size.width * CENTER_WIDTH,
+            child: Autocomplete<PersonSearchItem>(
+              optionsBuilder: (TextEditingValue value) {
+                final q = normalize(value.text);
+                if (q.isEmpty) return const Iterable<PersonSearchItem>.empty();
 
-              // fast filter (startsWith or contains)
-              final matches =
-                  searchIndex.where((e) => e.normalized.contains(q));
+                // fast filter (startsWith or contains)
+                final matches =
+                    searchIndex.where((e) => e.normalized.contains(q));
 
-              // limit list so UI stays smooth
-              return matches.take(20);
-            },
-            displayStringForOption: (o) => o.displayName,
-            fieldViewBuilder: (context, textController, focusNode, onSubmit) {
-              // keep external controller in sync (optional)
-              textController.value = _controller.value;
-              textController
-                  .addListener(() => _controller.value = textController.value);
+                // limit list so UI stays smooth
+                return matches.take(20);
+              },
+              displayStringForOption: (o) => o.displayName,
+              fieldViewBuilder: (context, textController, focusNode, onSubmit) {
+                // keep external controller in sync (optional)
+                textController.value = _controller.value;
+                textController.addListener(
+                    () => _controller.value = textController.value);
 
-              return Padding(
-                padding: FieldPadding,
-                child: TextField(
-                  controller: textController,
-                  focusNode: focusNode,
-                  textAlign: TextAlign.right,
-                  decoration: kSearchBarInputDecor(context),
-                ),
-              );
-            },
-            optionsViewBuilder: (context, onSelected, options) {
-              return Padding(
-                padding: FieldPadding,
-                child: Material(
-                  color: kWhitesColor[700],
-                  elevation: 8,
-                  borderRadius: BorderRadius.circular(12),
-                  child: ListView.separated(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    shrinkWrap: true,
-                    itemCount: options.length > 10 ? 10 : options.length,
-                    separatorBuilder: (_, __) => kAppDivider,
-                    itemBuilder: (context, i) {
-                      final o = options.elementAt(i);
-                      return GestureDetector(
-                        onTap: () => onSelected(o),
-                        child: SearchItem(item: o),
-                      );
-                    },
+                return Padding(
+                  padding: FieldPadding,
+                  child: TextField(
+                    controller: textController,
+                    focusNode: focusNode,
+                    textAlign: TextAlign.right,
+                    decoration: kSearchBarInputDecor(context),
                   ),
-                ),
-              );
-            },
-            onSelected: (o) {
-              // 1) close keyboard
-              _focusNode.unfocus();
+                );
+              },
+              optionsViewBuilder: (context, onSelected, options) {
+                return Padding(
+                  padding: FieldPadding,
+                  child: Material(
+                    color: kWhitesColor[700],
+                    elevation: 8,
+                    borderRadius: BorderRadius.circular(12),
+                    child: ListView.separated(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      shrinkWrap: true,
+                      itemCount: options.length > 10 ? 10 : options.length,
+                      separatorBuilder: (_, __) => kAppDivider,
+                      itemBuilder: (context, i) {
+                        final o = options.elementAt(i);
+                        return GestureDetector(
+                          onTap: () => onSelected(o),
+                          child: SearchItem(item: o),
+                        );
+                      },
+                    ),
+                  ),
+                );
+              },
+              onSelected: (o) {
+                // 1) close keyboard
+                _focusNode.unfocus();
 
-              // zoom to default
-              context
-                  .read<TreeSettingsBloc>()
-                  .add(const TreeSettingsEvent.zoomChanged(ZOOM_DEF));
+                // zoom to default
+                context
+                    .read<TreeSettingsBloc>()
+                    .add(const TreeSettingsEvent.zoomChanged(ZOOM_DEF));
 
-              // 2) call your action: center tree / open node panel / highlight
-              context
-                  .read<DrawTreeBloc>()
-                  .navigateToNode(o.nodeId.getOrCrash());
-            },
-          ),
-        );
+                // 2) call your action: center tree / open node panel / highlight
+                context
+                    .read<DrawTreeBloc>()
+                    .navigateToNode(o.nodeId.getOrCrash());
+              },
+            ),
+          );
+        });
       },
     );
   }
