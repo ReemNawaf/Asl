@@ -1,6 +1,5 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/core/widgets/des_loading_wdg.dart';
 import 'package:asl/a_presentation/home/widgets/network_error_wdg.dart';
 import 'package:asl/a_presentation/node/node_card/child_node.dart';
 import 'package:asl/a_presentation/node/node_card/grandchild_node.dart';

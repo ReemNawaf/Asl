@@ -24,19 +24,17 @@ class SideBar extends StatelessWidget {
             if (!state.hideSidbar)
               Container(
                 color: kWhitesColor[600],
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 20, horizontal: 14.0),
-                  width: size.width * SIDE_BAR_WIDTH - ARROW_BTN_WIDTH,
-                  child: const Column(
-                    children: [
-                      TreeList(),
-                      Spacer(),
-                      LayersWidget(),
-                      Spacer(),
-                      SettingsButton(),
-                    ],
-                  ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 14.0),
+                width: size.width * SIDE_BAR_WIDTH - ARROW_BTN_WIDTH,
+                child: const Column(
+                  children: [
+                    TreeList(),
+                    Spacer(),
+                    LayersWidget(),
+                    Spacer(),
+                    SettingsButton(),
+                  ],
                 ),
               ),
             Container(

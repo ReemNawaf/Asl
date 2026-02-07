@@ -87,37 +87,34 @@ class TreePage extends StatelessWidget {
                                 if (!settingsState.hideSidbar)
                                   Container(
                                     color: kWhitesColor[600],
-                                    width: size.width * 0.16,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20, horizontal: 14.0),
+                                    width: size.width * SIDE_BAR_WIDTH -
+                                        ARROW_BTN_WIDTH,
                                     height: size.height,
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20, horizontal: 14.0),
-                                      width: 200.0,
-                                      child: Column(
-                                        children: [
-                                          if (state.trees.isNotEmpty)
-                                            ListTreeItem(
-                                              id: state.trees.first.treeId,
-                                              treeName: state
-                                                  .trees.first.treeName
-                                                  .getOrCrash(),
-                                              rootLetter: state
-                                                  .trees.first.fullName
-                                                  .getOrCrash()
-                                                  .substring(0, 1),
-                                            )
-                                          else
-                                            const SizedBox(),
-                                          const Spacer(),
-                                          const LayersWidget(),
-                                          const Spacer(),
-                                          const SettingsButton(),
-                                        ],
-                                      ),
+                                    child: Column(
+                                      children: [
+                                        if (state.trees.isNotEmpty)
+                                          ListTreeItem(
+                                            id: state.trees.first.treeId,
+                                            treeName: state.trees.first.treeName
+                                                .getOrCrash(),
+                                            rootLetter: state
+                                                .trees.first.fullName
+                                                .getOrCrash()
+                                                .substring(0, 1),
+                                          )
+                                        else
+                                          const SizedBox(),
+                                        const Spacer(),
+                                        const LayersWidget(),
+                                        const Spacer(),
+                                        const SettingsButton(),
+                                      ],
                                     ),
                                   ),
                                 Container(
-                                  width: 20,
+                                  width: ARROW_BTN_WIDTH,
                                   height: size.height,
                                   color: kWhitesColor[500],
                                   child: RawMaterialButton(
@@ -150,44 +147,42 @@ class TreePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: size.width *
-                                      (settingsState.hideSidbar ? 0.983 : 0.82),
-                                  child: Stack(
-                                    children: [
-                                      SizedBox(
-                                        width: size.width *
-                                            (settingsState.hideSidbar
-                                                ? 0.983
-                                                : 0.82),
-                                        child: const InteractiveView(),
+                                Stack(
+                                  children: [
+                                    SizedBox(
+                                      width: settingsState.hideSidbar
+                                          ? size.width *
+                                                  (SIDE_BAR_WIDTH +
+                                                      CENTER_WIDTH) -
+                                              ARROW_BTN_WIDTH
+                                          : size.width * CENTER_WIDTH,
+                                      child: const InteractiveView(),
+                                    ),
+                                    const TreeSearchBar(),
+                                    Container(
+                                      width: 150,
+                                      padding: EdgeInsets.only(
+                                          right: 20, top: size.height - 85),
+                                      child: BlocBuilder<TreeSettingsBloc,
+                                          TreeSettingsState>(
+                                        builder: (context, state) {
+                                          return Slider(
+                                            min: MIN_ZOOM,
+                                            max: MAX_ZOOM,
+                                            value: state.zoomScale,
+                                            label:
+                                                "${state.zoomScale.toStringAsFixed(2)}x",
+                                            onChanged: (newScale) {
+                                              context
+                                                  .read<TreeSettingsBloc>()
+                                                  .add(TreeSettingsEvent
+                                                      .zoomChanged(newScale));
+                                            },
+                                          );
+                                        },
                                       ),
-                                      const TreeSearchBar(),
-                                      Container(
-                                        width: 150,
-                                        padding: EdgeInsets.only(
-                                            right: 20, top: size.height - 85),
-                                        child: BlocBuilder<TreeSettingsBloc,
-                                            TreeSettingsState>(
-                                          builder: (context, state) {
-                                            return Slider(
-                                              min: MIN_ZOOM,
-                                              max: MAX_ZOOM,
-                                              value: state.zoomScale,
-                                              label:
-                                                  "${state.zoomScale.toStringAsFixed(2)}x",
-                                              onChanged: (newScale) {
-                                                context
-                                                    .read<TreeSettingsBloc>()
-                                                    .add(TreeSettingsEvent
-                                                        .zoomChanged(newScale));
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             );
