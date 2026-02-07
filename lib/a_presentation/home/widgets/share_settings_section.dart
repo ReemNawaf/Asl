@@ -32,7 +32,6 @@ class ShareSettingsSection extends StatelessWidget {
         }
       },
       builder: (_, state) {
-        print('state.isShareLink ${state.isShareLink}');
         final localTree = context.read<LocalTreeBloc>().state;
 
         if (!state.isShareLink && localTree.selectedTreeId != null) {

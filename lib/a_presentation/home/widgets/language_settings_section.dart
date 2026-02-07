@@ -13,14 +13,8 @@ class LanguageSettingsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void changeLanguage(String languageCode) {
-      final temp = Locale(languageCode);
-      // to add it to shared preference
-      setLocale(languageCode);
-      MyApp.setLocale(context, temp);
-    }
-
     final local = Localizations.localeOf(context);
+    print('4: ${local.languageCode}');
     return Row(
       children: [
         Text(
@@ -46,7 +40,13 @@ class LanguageSettingsSection extends StatelessWidget {
                 .toList(),
             isExpanded: true,
             value: local.languageCode,
-            onChanged: (String? value) => changeLanguage(value ?? arabic),
+            onChanged: (String? value) {
+              print(value);
+              changeLanguage(
+                context,
+                value ?? arabic,
+              );
+            },
             underline: const SizedBox(),
             icon: const Icon(Icons.expand_more_rounded),
             dropdownColor: kWhitesColor[600],
@@ -57,4 +57,16 @@ class LanguageSettingsSection extends StatelessWidget {
       ],
     );
   }
+}
+
+void changeLanguage(
+  BuildContext contextPage,
+  String languageCode,
+) {
+  print('2: $languageCode');
+  final temp = Locale(languageCode);
+  // to add it to shared preference
+  setLocale(languageCode);
+  print('3: $temp');
+  MyApp.setLocale(contextPage, temp);
 }

@@ -1,7 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
-import 'package:asl/a_presentation/home/widgets/language_settings_section.dart';
 import 'package:asl/a_presentation/home/widgets/share_settings_section.dart';
 import 'package:asl/a_presentation/home/widgets/tree_settings_section.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
@@ -59,12 +58,12 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                   contextPage: contextPage,
                 ),
                 kVSpacer10,
-                kAppDivider,
-                kVSpacer10,
-                LanguageSettingsSection(
-                  dialogContext: dialogContext,
-                  contextPage: contextPage,
-                ),
+                // kAppDivider,
+                // kVSpacer10,
+                // LanguageSettingsSection(
+                //   dialogContext: dialogContext,
+                //   contextPage: contextPage,
+                // ),
                 kVSpacer10,
                 ShareSettingsSection(
                     dialogContext: dialogContext, contextPage: contextPage),
