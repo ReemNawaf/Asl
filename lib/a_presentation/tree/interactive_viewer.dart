@@ -28,11 +28,47 @@ class InteractiveView extends StatelessWidget {
         }
 
         return BlocListener<TreeSettingsBloc, TreeSettingsState>(
-          listener: (context, state) => context
-              .read<DrawTreeBloc>()
-              .state
-              .controller
-              .value = Matrix4.identity()..scale(state.zoomScale),
+          listener: (context, state) {
+            // Use post-frame callback to ensure layout is complete
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              final drawTreeBloc = context.read<DrawTreeBloc>();
+              final controller = drawTreeBloc.state.controller;
+              final viewerKey = drawTreeBloc.state.viewerKey;
+
+              // Get the viewer context to calculate viewport center
+              final viewerContext = viewerKey.currentContext;
+              if (viewerContext == null) {
+                // Fallback: scale from origin if context not available
+                controller.value = Matrix4.identity()..scale(state.zoomScale);
+                return;
+              }
+
+              final viewerBox = viewerContext.findRenderObject() as RenderBox?;
+              if (viewerBox == null || !viewerBox.hasSize) {
+                // Fallback: scale from origin if box not available
+                controller.value = Matrix4.identity()..scale(state.zoomScale);
+                return;
+              }
+
+              // Get viewport center
+              final viewportCenter = viewerBox.size.center(Offset.zero);
+
+              // Convert viewport center to scene coordinates using current transform
+              final scenePoint = controller.toScene(viewportCenter);
+
+              // Calculate the new translation to keep the scene point at viewport center
+              // Formula: newTranslation = viewportCenter - (scenePoint * newScale)
+              final newTranslationX =
+                  viewportCenter.dx - (scenePoint.dx * state.zoomScale);
+              final newTranslationY =
+                  viewportCenter.dy - (scenePoint.dy * state.zoomScale);
+
+              // Create new transform: translate first, then scale
+              controller.value = Matrix4.identity()
+                ..translate(newTranslationX, newTranslationY)
+                ..scale(state.zoomScale);
+            });
+          },
           child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
             listenWhen: (prev, curr) =>
                 prev.numberOfGenerations != curr.numberOfGenerations,

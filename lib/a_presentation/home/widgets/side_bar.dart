@@ -18,58 +18,60 @@ class SideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
       builder: (context, state) {
-        return Row(
-          children: [
-            if (!state.hideSidbar)
+        return SizedBox(
+          width: size.width * 0.18,
+          height: size.height,
+          child: Row(
+            children: [
+              if (!state.hideSidbar)
+                Container(
+                  color: kWhitesColor[600],
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 14.0),
+                    width: size.width * 0.16,
+                    child: const Column(
+                      children: [
+                        TreeList(),
+                        Spacer(),
+                        LayersWidget(),
+                        Spacer(),
+                        SettingsButton(),
+                      ],
+                    ),
+                  ),
+                ),
               Container(
-                color: kWhitesColor[600],
-                width: size.width * 0.16,
+                width: 20,
                 height: size.height,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 20, horizontal: 14.0),
-                  width: 200.0,
-                  child: const Column(
-                    children: [
-                      TreeList(),
-                      Spacer(),
-                      LayersWidget(),
-                      Spacer(),
-                      SettingsButton(),
-                    ],
+                color: kWhitesColor[500],
+                child: RawMaterialButton(
+                  onPressed: () => context.read<TreeSettingsBloc>().add(
+                        const TreeSettingsEvent.updateHideSideBar(),
+                      ),
+                  padding: EdgeInsets.only(right: state.hideSidbar ? 0 : 6),
+                  elevation: 0,
+                  hoverElevation: 0,
+                  focusElevation: 0,
+                  highlightElevation: 0,
+                  constraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Icon(
+                    state.hideSidbar
+                        ? Icons.arrow_forward_ios
+                        : Icons.arrow_back_ios,
+                    color: kRootColors[400],
+                    weight: 20,
+                    grade: 25,
+                    size: 18,
                   ),
                 ),
               ),
-            Container(
-              width: 20,
-              height: size.height,
-              color: kWhitesColor[500],
-              child: RawMaterialButton(
-                onPressed: () => context.read<TreeSettingsBloc>().add(
-                      const TreeSettingsEvent.updateHideSideBar(),
-                    ),
-                padding: EdgeInsets.only(right: state.hideSidbar ? 0 : 6),
-                elevation: 0,
-                hoverElevation: 0,
-                focusElevation: 0,
-                highlightElevation: 0,
-                constraints: const BoxConstraints(minWidth: 0, minHeight: 0),
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                child: Icon(
-                  state.hideSidbar
-                      ? Icons.arrow_forward_ios
-                      : Icons.arrow_back_ios,
-                  color: kRootColors[400],
-                  weight: 20,
-                  grade: 25,
-                  size: 18,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );
