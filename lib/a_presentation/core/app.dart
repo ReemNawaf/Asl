@@ -123,7 +123,7 @@ class _MyAppState extends State<MyApp> {
           Locale(english, 'US'), // english, United States
         ],
         localeResolutionCallback: (deviceLocale, supportedLocales) {
-          return _locale;
+          return supportedLocales.first;
         },
       ),
     );
