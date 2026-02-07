@@ -18,7 +18,7 @@ class ChildNode extends StatelessWidget {
   // final String? image;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext _) {
     return AppNode(
       type: NodeType.child,
       name: node.firstName.getOrCrash(),

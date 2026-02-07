@@ -18,10 +18,12 @@ class InfoPanel extends StatelessWidget {
     super.key,
     required this.color,
     required this.contextDialog,
+    required this.pageContext,
   });
 
   final MaterialColor color;
   final BuildContext contextDialog;
+  final BuildContext pageContext;
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +179,10 @@ class InfoPanel extends StatelessWidget {
                   ],
                 ),
                 kVSpacer20,
-                TreeButton(color: color),
+                TreeButton(
+                    color: color,
+                    contextDialog: contextDialog,
+                    pageContext: pageContext),
                 NodeIdWidget(
                   contextDialog: contextDialog,
                   id: state.node!.nodeId.getOrCrash(),

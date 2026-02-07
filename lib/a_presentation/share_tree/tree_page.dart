@@ -68,6 +68,8 @@ class TreePage extends StatelessWidget {
           },
           child: BlocBuilder<LocalTreeBloc, LocalTreeState>(
             builder: (context, state) {
+              debugPrint(
+                  'TreePage bloc instance: ${context.read<LocalTreeBloc>().hashCode}');
               if (state.isLoadingTree) {
                 return const Center(
                   child: DescriptiveLoadingWidget(
@@ -75,9 +77,6 @@ class TreePage extends StatelessWidget {
                 );
               } else {
                 if (state.selectedTreeId != null) {
-                  debugPrint(
-                      'TreePage LocalTreeBloc hash: ${context.read<LocalTreeBloc>().hashCode}');
-
                   return size.height < MIM_HEIGHT || size.width < MIM_WIDTH
                       ? const SmallScreenPage()
                       : BlocBuilder<TreeSettingsBloc, TreeSettingsState>(

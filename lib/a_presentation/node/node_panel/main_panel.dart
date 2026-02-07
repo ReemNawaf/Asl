@@ -9,6 +9,7 @@ import 'package:asl/a_presentation/node/node_panel/node_info_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/notes_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/parents_brothers_panel.dart';
 import 'package:asl/a_presentation/node/node_panel/relations_panel.dart';
+import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
@@ -26,21 +27,24 @@ class MainPanel extends StatelessWidget {
     required this.type,
     required this.node,
     required this.hasImage,
+    required this.pageContext,
   });
 
   final MaterialColor color;
   final NodeType type;
   final TNode node;
   final bool hasImage;
+  final BuildContext pageContext;
 
   bool showEditingIcon(NodeFormState state) {
-    // if the panel is not eddditng, and not in the second tab, then show the icon
+    // if the panel is not editing, and not in the second tab, and user is authenticated, then show the icon
     return !state.isEditing && state.currentPanel != 1;
   }
 
   @override
   Widget build(BuildContext context) {
     debugPrint('LOG | Node ${node.firstName.getOrCrash()} is opened');
+
     return MultiBlocListener(
       listeners: [
         BlocListener<NodeFormBloc, NodeFormState>(
@@ -122,129 +126,153 @@ class MainPanel extends StatelessWidget {
                 child: SizedBox(
                   width: PAN_WIDTH,
                   height: PAN_HEIGHT,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 35),
-                          SizedBox(
-                            width: PAN_WIDTH - 97,
-                            height: 50,
-                            child: TabBar(
-                              unselectedLabelColor: kBlacksColor[600],
-                              indicatorColor: kBlacksColor,
-                              indicatorWeight: 2.5,
-                              labelPadding:
-                                  const EdgeInsets.symmetric(horizontal: 24.0),
-                              padding: EdgeInsets.zero,
-                              indicatorPadding:
-                                  const EdgeInsets.symmetric(horizontal: 5.0),
-                              labelColor: kBlacksColor,
-                              labelStyle: kBodyMedium.copyWith(
-                                  fontWeight: FontWeight.w900),
-                              unselectedLabelStyle: kBodyMedium,
-                              dividerColor: Colors.transparent,
-                              indicatorSize: TabBarIndicatorSize.label,
-                              dividerHeight: 0.0,
-                              isScrollable: true,
-                              tabs: [
-                                Tab(text: getTr(context, 'personal_info')),
-                                Tab(
-                                    text:
-                                        getTr(context, 'parents_and_siblings')),
-                                if (type != NodeType.partner)
+                  child: BlocBuilder<AuthBloc, AuthState>(
+                      builder: (authContext, authState) {
+                    final isAuth = authState.maybeMap(
+                      authenticated: (_) => true,
+                      orElse: () => false,
+                    );
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const SizedBox(width: 35),
+                            SizedBox(
+                              width: PAN_WIDTH - 97,
+                              height: 50,
+                              child: TabBar(
+                                unselectedLabelColor: kBlacksColor[600],
+                                indicatorColor: kBlacksColor,
+                                indicatorWeight: 2.5,
+                                labelPadding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                padding: EdgeInsets.zero,
+                                indicatorPadding:
+                                    const EdgeInsets.symmetric(horizontal: 5.0),
+                                labelColor: kBlacksColor,
+                                labelStyle: kBodyMedium.copyWith(
+                                    fontWeight: FontWeight.w900),
+                                unselectedLabelStyle: kBodyMedium,
+                                dividerColor: Colors.transparent,
+                                indicatorSize: TabBarIndicatorSize.label,
+                                dividerHeight: 0.0,
+                                isScrollable: true,
+                                tabs: [
+                                  Tab(text: getTr(context, 'personal_info')),
                                   Tab(
-                                      text:
-                                          '${getTr(context, 'add')!} ${getNodeRelationPanelTitle(context, node.gender)} ${getTr(context, 'and_children')!}'),
-                                Tab(text: getTr(context, 'brief_and_notes')!),
-                              ],
-                              onTap: (index) {
-                                context.read<NodeFormBloc>().add(
-                                    NodeFormEvent.updateCurrentPanel(index));
+                                      text: getTr(
+                                          context, 'parents_and_siblings')),
+                                  if (type != NodeType.partner)
+                                    Tab(
+                                        text:
+                                            '${getTr(context, 'add')!} ${getNodeRelationPanelTitle(context, node.gender)} ${getTr(context, 'and_children')!}'),
+                                  Tab(text: getTr(context, 'brief_and_notes')!),
+                                ],
+                                onTap: (index) {
+                                  context.read<NodeFormBloc>().add(
+                                      NodeFormEvent.updateCurrentPanel(index));
+                                },
+                              ),
+                            ),
+                            const SizedBox(width: 18),
+                            // Edit Button
+                            if (isAuth)
+                              BlocBuilder<NodeFormBloc, NodeFormState>(
+                                builder: (context, state) {
+                                  return showEditingIcon(state)
+                                      ? IconOnlyButton(
+                                          onPressed: () => context
+                                              .read<NodeFormBloc>()
+                                              .add(NodeFormEvent.edited(
+                                                  !state.isEditing)),
+                                          icon: const Icon(Icons.edit,
+                                              size: 24.0),
+                                        )
+                                      : const SizedBox();
+                                },
+                              ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: PAN_HEIGHT - 106,
+                              width: PAN_WIDTH - 53,
+                              margin: const EdgeInsets.only(right: 80),
+                              child: TabBarView(
+                                children: [
+                                  InfoPanel(
+                                      color: color,
+                                      contextDialog: context,
+                                      pageContext: pageContext),
+                                  ParentsSiblingsPanel(
+                                    personId: node.nodeId,
+                                    treeId: node.treeId,
+                                    store: context
+                                        .read<LocalTreeBloc>()
+                                        .state
+                                        .store,
+                                    color: color,
+                                  ),
+                                  if (type != NodeType.partner)
+                                    RelationsPanel(color: color, node: node),
+                                  NotesPanel(color: color),
+                                ],
+                              ),
+                            ),
+                            // Saving Button
+                            BlocBuilder<NodeFormBloc, NodeFormState>(
+                              builder: (context, state) {
+                                return Container(
+                                  alignment: Alignment.bottomLeft,
+                                  width: PAN_WIDTH,
+                                  height: 40,
+                                  child: isAuth
+                                      ? AppButton(
+                                          onPressed: () {
+                                            if (showEditingIcon(state)) {
+                                              Navigator.pop(context);
+
+                                              // Save all the added partner and children
+                                              context
+                                                  .read<PartnerFormBloc>()
+                                                  .add(const PartnerFormEvent
+                                                      .saved());
+
+                                              context.read<ChildFormBloc>().add(
+                                                  const ChildFormEvent.saved());
+                                            } else {
+                                              context.read<NodeFormBloc>().add(
+                                                  const NodeFormEvent.saved());
+                                            }
+                                          },
+                                          label: showEditingIcon(state)
+                                              ? getTr(context, 'done')!
+                                              : getTr(context, 'save')!,
+                                          fillColor: color,
+                                        )
+                                      : Container(
+                                          alignment: Alignment.bottomLeft,
+                                          width: PAN_WIDTH,
+                                          height: 40,
+                                          child: AppButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            label: getTr(context, 'done')!,
+                                            fillColor: color,
+                                          )),
+                                );
                               },
                             ),
-                          ),
-                          const SizedBox(width: 18),
-                          // Edit Button
-                          BlocBuilder<NodeFormBloc, NodeFormState>(
-                            builder: (context, state) {
-                              return showEditingIcon(state)
-                                  ? IconOnlyButton(
-                                      onPressed: () => context
-                                          .read<NodeFormBloc>()
-                                          .add(NodeFormEvent.edited(
-                                              !state.isEditing)),
-                                      icon: const Icon(Icons.edit, size: 24.0),
-                                    )
-                                  : const SizedBox();
-                            },
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: PAN_HEIGHT - 106,
-                            width: PAN_WIDTH - 53,
-                            margin: const EdgeInsets.only(right: 80),
-                            child: TabBarView(
-                              children: [
-                                InfoPanel(color: color, contextDialog: context),
-                                ParentsSiblingsPanel(
-                                  personId: node.nodeId,
-                                  treeId: node.treeId,
-                                  store:
-                                      context.read<LocalTreeBloc>().state.store,
-                                  color: color,
-                                ),
-                                if (type != NodeType.partner)
-                                  RelationsPanel(color: color, node: node),
-                                NotesPanel(color: color),
-                              ],
-                            ),
-                          ),
-                          // Saving Button
-                          BlocBuilder<NodeFormBloc, NodeFormState>(
-                            builder: (context, state) {
-                              return Container(
-                                alignment: Alignment.bottomLeft,
-                                width: PAN_WIDTH,
-                                height: 40,
-                                child: AppButton(
-                                  onPressed: () {
-                                    if (showEditingIcon(state)) {
-                                      Navigator.pop(context);
-
-                                      // Save all the added partner and children
-                                      context
-                                          .read<PartnerFormBloc>()
-                                          .add(const PartnerFormEvent.saved());
-
-                                      context
-                                          .read<ChildFormBloc>()
-                                          .add(const ChildFormEvent.saved());
-                                    } else {
-                                      context
-                                          .read<NodeFormBloc>()
-                                          .add(const NodeFormEvent.saved());
-                                    }
-                                  },
-                                  label: showEditingIcon(state)
-                                      ? getTr(context, 'done')!
-                                      : getTr(context, 'save')!,
-                                  fillColor: color,
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                          ],
+                        ),
+                      ],
+                    );
+                  }),
                 ),
               ),
             ),

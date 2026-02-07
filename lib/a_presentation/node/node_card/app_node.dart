@@ -53,7 +53,7 @@ class AppNode extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () => showPanel(
-          context,
+          pageContext,
           size,
           color,
           hasImage,
@@ -186,6 +186,7 @@ void showPanel(BuildContext contextPage, Size size, MaterialColor color,
             create: (context) =>
                 getIt<NodeFormBloc>()..add(NodeFormEvent.initialized(node)),
             child: MainPanel(
+              pageContext: contextPage,
               color: color,
               type: type,
               node: node,

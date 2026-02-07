@@ -189,66 +189,92 @@ class _InteractiveViewState extends State<InteractiveView> {
               ),
             );
           }
-          return BlocListener<TreeSettingsBloc, TreeSettingsState>(
-            listenWhen: (prev, curr) =>
-                (curr.zoomScale - prev.zoomScale).abs() > 0.0001,
-            listener: (context, state) {
-              _handleSliderZoom(state.zoomScale);
-            },
-            child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
-              listenWhen: (prev, curr) =>
-                  prev.numberOfGenerations != curr.numberOfGenerations,
+          return BlocListener<LocalTreeBloc, LocalTreeState>(
+              // Listen for store changes (when nodes are updated)
+              listenWhen: (prev, curr) {
+                // Redraw tree when store changes (node updates, additions, deletions)
+                return prev.store != curr.store &&
+                    curr.focusRootId != null &&
+                    curr.store.nodesById.isNotEmpty;
+              },
               listener: (context, state) {
-                // Reset zoom/pan
-                setState(() {
-                  _scale = ZOOM_DEF;
-                  _pan = Offset.zero;
+                // Redraw tree with updated store
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (mounted && state.focusRootId != null) {
+                    context.read<DrawTreeBloc>().add(
+                          DrawTreeEvent.drawNewTree(
+                            store: state.store,
+                            rootId: state.focusRootId!,
+                            maxGenerations: NUM_GEN_OPTIONS[state
+                                .settings!.numberOfGenerationOpt]['number'],
+                            context: context,
+                          ),
+                        );
+                  }
                 });
-                _syncController();
+              },
+              child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+                listenWhen: (prev, curr) =>
+                    (curr.zoomScale - prev.zoomScale).abs() > 0.0001,
+                listener: (context, state) {
+                  _handleSliderZoom(state.zoomScale);
+                },
+                child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+                  listenWhen: (prev, curr) =>
+                      prev.numberOfGenerations != curr.numberOfGenerations,
+                  listener: (context, state) {
+                    debugPrint('🔄 Reset due to generation change');
 
-                if (treeState.focusRootId != null) {
-                  debugPrint('REDRAWING TREE | ${treeState.focusRootId}');
-                  context.read<DrawTreeBloc>().add(
-                        DrawTreeEvent.drawNewTree(
-                          store: treeState.store,
-                          rootId: treeState.focusRootId!,
-                          maxGenerations:
-                              NUM_GEN_OPTIONS[state.numberOfGenerations]
-                                  ['number'],
-                          context: context,
+                    // Reset zoom/pan
+                    setState(() {
+                      _scale = ZOOM_DEF;
+                      _pan = Offset.zero;
+                    });
+                    _syncController();
+
+                    if (treeState.focusRootId != null) {
+                      debugPrint('REDRAWING TREE | ${treeState.focusRootId}');
+                      context.read<DrawTreeBloc>().add(
+                            DrawTreeEvent.drawNewTree(
+                              store: treeState.store,
+                              rootId: treeState.focusRootId!,
+                              maxGenerations:
+                                  NUM_GEN_OPTIONS[state.numberOfGenerations]
+                                      ['number'],
+                              context: context,
+                            ),
+                          );
+                    }
+                  },
+                  // ── Replace InteractiveViewer with manual Transform ──
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return GestureDetector(
+                        key: _viewportKey,
+                        onScaleStart: _onScaleStart,
+                        onScaleUpdate: _onScaleUpdate,
+                        onScaleEnd: _onScaleEnd,
+                        behavior: HitTestBehavior.opaque,
+                        child: ClipRect(
+                          child: OverflowBox(
+                            alignment: Alignment.topLeft,
+                            minWidth: 0,
+                            minHeight: 0,
+                            maxWidth: double.infinity,
+                            maxHeight: double.infinity,
+                            child: Transform(
+                              transform: Matrix4.identity()
+                                ..translate(_pan.dx, _pan.dy)
+                                ..scale(_scale),
+                              child: const TreeView(),
+                            ),
+                          ),
                         ),
                       );
-                }
-              },
-              // ── Replace InteractiveViewer with manual Transform ──
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return GestureDetector(
-                    key: _viewportKey,
-                    onScaleStart: _onScaleStart,
-                    onScaleUpdate: _onScaleUpdate,
-                    onScaleEnd: _onScaleEnd,
-                    behavior: HitTestBehavior.opaque,
-                    child: ClipRect(
-                      child: OverflowBox(
-                        alignment: Alignment.topLeft,
-                        minWidth: 0,
-                        minHeight: 0,
-                        maxWidth: double.infinity,
-                        maxHeight: double.infinity,
-                        child: Transform(
-                          transform: Matrix4.identity()
-                            ..translate(_pan.dx, _pan.dy)
-                            ..scale(_scale),
-                          child: const TreeView(),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          );
+                    },
+                  ),
+                ),
+              ));
         });
       },
     );

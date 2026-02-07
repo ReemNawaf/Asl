@@ -22,7 +22,7 @@ class TreeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalTreeBloc, LocalTreeState>(
-      builder: (context, treeState) {
+      builder: (_, treeState) {
         if (treeState.treeFailureOption.isSome()) {
           return NetworkError(state: treeState);
         }

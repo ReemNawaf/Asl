@@ -8,8 +8,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TreeButton extends StatelessWidget {
-  const TreeButton({super.key, required this.color});
+  const TreeButton(
+      {super.key,
+      required this.color,
+      required this.pageContext,
+      required this.contextDialog});
   final MaterialColor color;
+  final BuildContext pageContext;
+  final BuildContext contextDialog;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +23,11 @@ class TreeButton extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {
+          final bloc = pageContext.read<LocalTreeBloc>();
+          debugPrint('TreeButton bloc instance: ${bloc.hashCode}');
+
           final cNode = context.read<NodeFormBloc>().state.node;
-          context
-              .read<LocalTreeBloc>()
-              .add(LocalTreeEvent.changeFocusRoot(nodeId: cNode!.nodeId));
+          bloc.add(LocalTreeEvent.changeFocusRoot(nodeId: cNode!.nodeId));
           Navigator.pop(context);
         },
         child: Container(
