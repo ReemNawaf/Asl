@@ -1,11 +1,9 @@
-import 'dart:async';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/tree/tree_view.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InteractiveView extends StatefulWidget {
