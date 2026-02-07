@@ -40,7 +40,7 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
         final searchIndex = buildSearchIndex(state.store);
 
         return SizedBox(
-          width: MediaQuery.of(context).size.width * 0.82,
+          width: MediaQuery.of(context).size.width * CENTER_WIDTH,
           child: Autocomplete<PersonSearchItem>(
             optionsBuilder: (TextEditingValue value) {
               final q = normalize(value.text);

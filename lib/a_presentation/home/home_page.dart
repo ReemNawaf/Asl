@@ -41,7 +41,8 @@ class HomePage extends StatelessWidget {
                           HomePageCenter(size: size, state: state),
                           const TreeSearchBar(),
                           Container(
-                            width: MediaQuery.of(context).size.width * 0.82,
+                            width: MediaQuery.of(context).size.width *
+                                CENTER_WIDTH,
                             alignment: local.languageCode == arabic
                                 ? Alignment.bottomLeft
                                 : Alignment.bottomRight,

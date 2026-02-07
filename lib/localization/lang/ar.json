@@ -162,5 +162,7 @@
   "unable_to_update_long": "حاول بعد قليل، أو أعد فتح الصفحة إذا لم تُحل المشكلة.",
 
   "insufficient_permission_short": "ليس لديك صلاحية لتنفيذ هذه العملية.",
-  "insufficient_permission_long": "اطلب من مالك الشجرة منحك صلاحية الوصول."
+  "insufficient_permission_long": "اطلب من مالك الشجرة منحك صلاحية الوصول.",
+
+  "go_to_main_tree": "عد إلى الشجرة الأصلية"
 }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
 import 'package:asl/c_domain/tree/tree_draw.dart';
@@ -23,6 +22,8 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
   }
 
   final Map<String, GlobalKey> _nodeKeys = {}; // mutable, NOT in state
+  void Function(Offset scenePoint, {double? scale})? navigateToScenePoint;
+  GlobalKey? viewportKey;
 
   GlobalKey keyForNode(String nodeIdKey,
       {required bool mirrorNode, required String drawingId}) {
@@ -37,46 +38,34 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
 
   bool navigateToNode(String nodeId) {
     final key = tryGetKey(nodeId);
-    if (key == null) return false;
+    if (key == null || navigateToScenePoint == null || viewportKey == null) {
+      return false;
+    }
 
     void attempt(int triesLeft) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        final viewerCtx = state.viewerKey.currentContext;
-        if (viewerCtx == null) return;
-
-        final viewerBox = viewerCtx.findRenderObject() as RenderBox?;
-        if (viewerBox == null || !viewerBox.hasSize) return;
-
-        final nodeCtx = key.currentContext;
-        final nodeBox = nodeCtx?.findRenderObject() as RenderBox?;
-
-        if (nodeCtx == null || nodeBox == null || !nodeBox.hasSize) {
+        final nodeBox = key.currentContext?.findRenderObject() as RenderBox?;
+        if (nodeBox == null || !nodeBox.hasSize) {
           if (triesLeft > 0) attempt(triesLeft - 1);
           return;
         }
 
-        // Node center in GLOBAL coords
+        final viewerBox =
+            viewportKey!.currentContext?.findRenderObject() as RenderBox?;
+        if (viewerBox == null || !viewerBox.hasSize) return;
+
         final nodeCenterGlobal =
             nodeBox.localToGlobal(nodeBox.size.center(Offset.zero));
+        final viewerTopLeft = viewerBox.localToGlobal(Offset.zero);
+        final nodeInViewport = nodeCenterGlobal - viewerTopLeft;
 
-        // Convert to VIEWPORT coords (relative to viewer)
-        final viewerTopLeftGlobal = viewerBox.localToGlobal(Offset.zero);
-        final nodeCenterInViewport = nodeCenterGlobal - viewerTopLeftGlobal;
+        final scenePoint = state.controller.toScene(nodeInViewport);
 
-        // Convert viewport -> scene using current transform
-        final scenePoint = state.controller.toScene(nodeCenterInViewport);
-
-        // Center that scene point with DEFAULT zoom
-        final viewportCenter = viewerBox.size.center(Offset.zero);
-
-        state.controller.value = Matrix4.identity()
-          ..translate(viewportCenter.dx, viewportCenter.dy)
-          ..scale(ZOOM_DEF)
-          ..translate(-scenePoint.dx, -scenePoint.dy);
+        navigateToScenePoint!(scenePoint);
       });
     }
 
-    attempt(2);
+    attempt(3);
     return true;
   }
 

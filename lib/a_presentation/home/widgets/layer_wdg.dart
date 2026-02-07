@@ -18,62 +18,81 @@ class LayersWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 25.0,
-              width: 25.0,
-              child: SvgPicture.asset('assets/icons/layer.svg'),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              getTr(context, 'generations')!,
-              style: kBodyLarge.copyWith(
-                  color: kBlacksColor[200], fontWeight: FontWeight.w800),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16.0),
-        AppButton(
-          onPressed: () =>
-              zoomToNode(context, generation: Generation.grandchildren),
-          label: getTr(context, 'grandchildren')!,
-          textColor: kLeafColors[200]!,
-          fillColor: kLeafColors[700]!,
-          icon: SvgPicture.asset('assets/icons/leaf.svg'),
-          hasIcon: true,
-        ),
-        const SizedBox(height: 16.0),
-        AppButton(
-          onPressed: () => zoomToNode(context, generation: Generation.parents),
-          label: getTr(context, 'parents')!,
-          textColor: kStemColors[200]!,
-          fillColor: kStemColors[600]!,
-          icon: SvgPicture.asset('assets/icons/stem.svg'),
-          hasIcon: true,
-        ),
-        const SizedBox(height: 16.0),
-        AppButton(
-          onPressed: () => zoomToNode(context, generation: Generation.root),
-          label: getTr(context, 'grandparents')!,
-          textColor: kRootColors[200]!,
-          fillColor: kRootColors[600]!,
-          icon: SvgPicture.asset('assets/icons/root.svg'),
-          hasIcon: true,
-        ),
-      ],
-    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 25.0,
+            width: 25.0,
+            child: SvgPicture.asset('assets/icons/layer.svg'),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            getTr(context, 'generations')!,
+            style: kBodyLarge.copyWith(
+                color: kBlacksColor[200], fontWeight: FontWeight.w800),
+          ),
+        ],
+      ),
+      const SizedBox(height: 16.0),
+      AppButton(
+        onPressed: () =>
+            zoomToNode(context, generation: Generation.grandchildren),
+        label: getTr(context, 'grandchildren')!,
+        textColor: kLeafColors[200]!,
+        fillColor: kLeafColors[700]!,
+        icon: SvgPicture.asset('assets/icons/leaf.svg'),
+        hasIcon: true,
+      ),
+      const SizedBox(height: 16.0),
+      AppButton(
+        onPressed: () => zoomToNode(context, generation: Generation.parents),
+        label: getTr(context, 'parents')!,
+        textColor: kStemColors[200]!,
+        fillColor: kStemColors[600]!,
+        icon: SvgPicture.asset('assets/icons/stem.svg'),
+        hasIcon: true,
+      ),
+      const SizedBox(height: 16.0),
+      AppButton(
+        onPressed: () => zoomToNode(context, generation: Generation.root),
+        label: getTr(context, 'grandparents')!,
+        textColor: kRootColors[200]!,
+        fillColor: kRootColors[600]!,
+        icon: SvgPicture.asset('assets/icons/root.svg'),
+        hasIcon: true,
+      ),
+      BlocBuilder<LocalTreeBloc, LocalTreeState>(builder: (context, state) {
+        final mainRootId = state.mainRootId?.getOrCrash();
+        final focusRootId = state.focusRootId?.getOrCrash();
+
+        if (focusRootId != mainRootId) {
+          return Column(children: [
+            const SizedBox(height: 20.0),
+            GestureDetector(
+                onTap: () => context.read<LocalTreeBloc>().add(
+                    LocalTreeEvent.changeFocusRoot(nodeId: state.mainRootId!)),
+                child: Text(
+                  getTr(context, 'go_to_main_tree')!,
+                  style: kCalloutStyle.copyWith(
+                    decoration: TextDecoration.underline,
+                    color: kBlacksColor[400],
+                  ),
+                )),
+          ]);
+        } else {
+          return const SizedBox();
+        }
+      }),
+    ]);
   }
 }
 
 void zoomToNode(BuildContext context, {required Generation generation}) {
   final local = context.read<LocalTreeBloc>().state;
   final rootIdKey =
-      context.read<LocalTreeBloc>().state.mainRootId?.getOrCrash();
+      context.read<LocalTreeBloc>().state.focusRootId?.getOrCrash();
 
   if (rootIdKey == null) return;
   String? nodeId = rootIdKey;
@@ -83,6 +102,7 @@ void zoomToNode(BuildContext context, {required Generation generation}) {
     rootIdKey: rootIdKey,
     target: generation,
   );
+  print('nodeId: $nodeId');
 
   // zoom to default
   context

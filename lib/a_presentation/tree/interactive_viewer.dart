@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/core/widgets/des_loading_wdg.dart';
 import 'package:asl/a_presentation/tree/tree_view.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
@@ -14,7 +15,7 @@ class InteractiveView extends StatefulWidget {
 }
 
 class _InteractiveViewState extends State<InteractiveView> {
-  bool _hasDrawnInitialTree = false;
+  String? _currentRootId;
 
   // ── Pan / Zoom state ──
   Offset _pan = Offset.zero; // translation in viewport coords
@@ -28,12 +29,22 @@ class _InteractiveViewState extends State<InteractiveView> {
   // Key for the viewport container (replaces viewerKey for sizing)
   final GlobalKey _viewportKey = GlobalKey();
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   // ── Helpers ──
+
+  // Add to the state fields at the top:
+  void _navigateToScenePoint(Offset scenePoint, {double? scale}) {
+    final center = _viewportCenter();
+    if (center == null) return;
+
+    final targetScale = (scale ?? ZOOM_DEF).clamp(MIN_ZOOM, MAX_ZOOM);
+
+    setState(() {
+      _scale = targetScale;
+      _pan = center - scenePoint * targetScale;
+    });
+
+    _syncController();
+  }
 
   /// Applies a new scale, keeping [focalPoint] (in viewport coords) fixed.
   void _zoomTo(double newScale, Offset focalPoint) {
@@ -119,16 +130,42 @@ class _InteractiveViewState extends State<InteractiveView> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        final bloc = context.read<DrawTreeBloc>();
+        bloc.navigateToScenePoint = _navigateToScenePoint;
+        bloc.viewportKey = _viewportKey;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    context.read<DrawTreeBloc>().navigateToScenePoint = null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalTreeBloc, LocalTreeState>(
       builder: (context, treeState) {
         // Only draw tree once when widget first loads
-        if (treeState.focusRootId != null && !_hasDrawnInitialTree) {
-          _hasDrawnInitialTree = true;
-          debugPrint('DRAWING INITIAL TREE | ${treeState.focusRootId}');
+        if (treeState.focusRootId != null &&
+            treeState.focusRootId?.getOrCrash() != _currentRootId) {
+          _currentRootId = treeState.focusRootId?.getOrCrash();
+          debugPrint('DRAWING TREE | root changed to $_currentRootId');
 
+          // Reset pan/zoom when root changes
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (mounted) {
+              setState(() {
+                _scale = ZOOM_DEF;
+                _pan = Offset.zero;
+              });
+              _syncController();
+
               context.read<DrawTreeBloc>().add(
                     DrawTreeEvent.drawNewTree(
                       store: treeState.store,
@@ -142,68 +179,77 @@ class _InteractiveViewState extends State<InteractiveView> {
           });
         }
 
-        return BlocListener<TreeSettingsBloc, TreeSettingsState>(
-          listenWhen: (prev, curr) =>
-              (curr.zoomScale - prev.zoomScale).abs() > 0.0001,
-          listener: (context, state) {
-            _handleSliderZoom(state.zoomScale);
-          },
-          child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+        return BlocBuilder<DrawTreeBloc, DrawTreeState>(
+            builder: (context, drawTreeState) {
+          // Show loading when graph is not ready
+          if (drawTreeState.graph == null || drawTreeState.builder == null) {
+            return const Center(
+              child: DescriptiveLoadingWidget(
+                loading: TreeDisplayLoading.DrawTree,
+              ),
+            );
+          }
+          return BlocListener<TreeSettingsBloc, TreeSettingsState>(
             listenWhen: (prev, curr) =>
-                prev.numberOfGenerations != curr.numberOfGenerations,
+                (curr.zoomScale - prev.zoomScale).abs() > 0.0001,
             listener: (context, state) {
-              debugPrint('🔄 Reset due to generation change');
-
-              // Reset zoom/pan
-              setState(() {
-                _scale = ZOOM_DEF;
-                _pan = Offset.zero;
-              });
-              _syncController();
-
-              if (treeState.focusRootId != null) {
-                debugPrint('REDRAWING TREE | ${treeState.focusRootId}');
-                context.read<DrawTreeBloc>().add(
-                      DrawTreeEvent.drawNewTree(
-                        store: treeState.store,
-                        rootId: treeState.focusRootId!,
-                        maxGenerations:
-                            NUM_GEN_OPTIONS[state.numberOfGenerations]
-                                ['number'],
-                        context: context,
-                      ),
-                    );
-              }
+              _handleSliderZoom(state.zoomScale);
             },
-            // ── Replace InteractiveViewer with manual Transform ──
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return GestureDetector(
-                  key: _viewportKey,
-                  onScaleStart: _onScaleStart,
-                  onScaleUpdate: _onScaleUpdate,
-                  onScaleEnd: _onScaleEnd,
-                  behavior: HitTestBehavior.opaque,
-                  child: ClipRect(
-                    child: OverflowBox(
-                      alignment: Alignment.topLeft,
-                      minWidth: 0,
-                      minHeight: 0,
-                      maxWidth: double.infinity,
-                      maxHeight: double.infinity,
-                      child: Transform(
-                        transform: Matrix4.identity()
-                          ..translate(_pan.dx, _pan.dy)
-                          ..scale(_scale),
-                        child: const TreeView(),
+            child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+              listenWhen: (prev, curr) =>
+                  prev.numberOfGenerations != curr.numberOfGenerations,
+              listener: (context, state) {
+                // Reset zoom/pan
+                setState(() {
+                  _scale = ZOOM_DEF;
+                  _pan = Offset.zero;
+                });
+                _syncController();
+
+                if (treeState.focusRootId != null) {
+                  debugPrint('REDRAWING TREE | ${treeState.focusRootId}');
+                  context.read<DrawTreeBloc>().add(
+                        DrawTreeEvent.drawNewTree(
+                          store: treeState.store,
+                          rootId: treeState.focusRootId!,
+                          maxGenerations:
+                              NUM_GEN_OPTIONS[state.numberOfGenerations]
+                                  ['number'],
+                          context: context,
+                        ),
+                      );
+                }
+              },
+              // ── Replace InteractiveViewer with manual Transform ──
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return GestureDetector(
+                    key: _viewportKey,
+                    onScaleStart: _onScaleStart,
+                    onScaleUpdate: _onScaleUpdate,
+                    onScaleEnd: _onScaleEnd,
+                    behavior: HitTestBehavior.opaque,
+                    child: ClipRect(
+                      child: OverflowBox(
+                        alignment: Alignment.topLeft,
+                        minWidth: 0,
+                        minHeight: 0,
+                        maxWidth: double.infinity,
+                        maxHeight: double.infinity,
+                        child: Transform(
+                          transform: Matrix4.identity()
+                            ..translate(_pan.dx, _pan.dy)
+                            ..scale(_scale),
+                          child: const TreeView(),
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        );
+          );
+        });
       },
     );
   }

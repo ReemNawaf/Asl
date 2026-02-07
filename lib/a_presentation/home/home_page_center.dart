@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/des_loading_wdg.dart';
 import 'package:asl/a_presentation/home/widgets/network_error_wdg.dart';
 import 'package:asl/a_presentation/tree/interactive_viewer.dart';
@@ -20,7 +21,9 @@ class HomePageCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: size.width * (state.hideSidbar ? 0.983 : 0.82),
+      width: state.hideSidbar
+          ? size.width * (SIDE_BAR_WIDTH + CENTER_WIDTH) - ARROW_BTN_WIDTH
+          : size.width * CENTER_WIDTH,
       child: BlocListener<LocalTreeBloc, LocalTreeState>(
         listenWhen: (previous, current) {
           // Only react when settings actually change in LocalTreeBloc

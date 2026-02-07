@@ -162,5 +162,7 @@
     "unable_to_update_long": "Please try again shortly, or refresh the page if it keeps happening.",
 
     "insufficient_permission_short": "You don’t have permission to do this.",
-    "insufficient_permission_long": "Ask the tree owner to grant you access."
+    "insufficient_permission_long": "Ask the tree owner to grant you access.",
+
+    "go_to_main_tree": "Go to the main tree"
   }

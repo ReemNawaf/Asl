@@ -16,6 +16,10 @@ const ZOOM_DEF = 1.0;
 
 const double transactionCardHeight = 75.0;
 
+const double SIDE_BAR_WIDTH = 0.19;
+const double CENTER_WIDTH = 0.81;
+const double ARROW_BTN_WIDTH = 20;
+
 // Adding Forms
 enum AddingFrom { cameraPage, homePage, other }
 
