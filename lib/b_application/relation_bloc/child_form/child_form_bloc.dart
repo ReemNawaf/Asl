@@ -153,6 +153,9 @@ class ChildFormBloc extends Bloc<ChildFormEvent, ChildFormState> {
           addedFailureOrSuccessOption: addedFailureOrSuccess,
           deletedFailureOrSuccessOption: deletedFailureOrSuccess,
         ));
+
+        add(ChildFormEvent.addChild(
+            treeId: state.tempChild.treeId, relationId: state.relationId));
       },
       deleltChild: (e) {
         List<TNode> deleteList = [...state.deletedChildren, e.node];

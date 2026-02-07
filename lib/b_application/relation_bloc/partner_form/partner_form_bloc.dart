@@ -205,6 +205,8 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           addedFailureOrSuccessOption: addedFailureOrSuccess,
           deletedFailureOrSuccessOption: deletedFailureOrSuccess,
         ));
+
+        add(PartnerFormEvent.addPartner(state.node!));
       },
       deleltPartner: (e) {
         List<Relation> deleteList = [...state.deletedPartners, e.relation];

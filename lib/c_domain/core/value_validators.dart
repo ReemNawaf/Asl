@@ -41,7 +41,7 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
 }
 
 Either<ValueFailure<String>, String> validateNameLength(String input) {
-  if (input.length > 2) {
+  if (input.length > 1) {
     return right(input);
   } else {
     return left(ValueFailure.shortName(failedValue: input));
