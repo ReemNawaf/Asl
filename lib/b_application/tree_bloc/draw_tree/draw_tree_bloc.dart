@@ -65,7 +65,7 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
       });
     }
 
-    attempt(3);
+    attempt(2);
     return true;
   }
 

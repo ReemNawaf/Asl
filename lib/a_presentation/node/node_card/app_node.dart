@@ -3,6 +3,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/node/node_panel/main_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
+import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/injection.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -27,6 +28,7 @@ class AppNode extends StatelessWidget {
     this.image,
     required this.pageContext,
     this.mirrorNodeNoChildren = false,
+    this.goToNode = false,
   });
 
   final NodeType type;
@@ -43,6 +45,7 @@ class AppNode extends StatelessWidget {
   final TNode node;
   final BuildContext pageContext;
   final bool mirrorNodeNoChildren;
+  final bool goToNode;
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +55,18 @@ class AppNode extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => showPanel(
-          pageContext,
-          size,
-          color,
-          hasImage,
-          node,
-          type,
-        ),
+        onTap: () => goToNode
+            ? context
+                .read<DrawTreeBloc>()
+                .navigateToNode(node.nodeId.getOrCrash())
+            : showPanel(
+                pageContext,
+                size,
+                color,
+                hasImage,
+                node,
+                type,
+              ),
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
