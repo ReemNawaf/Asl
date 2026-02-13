@@ -10,6 +10,11 @@ abstract class INodeRepository {
   Future<Either<TNodeFailure, Unit>> update(
       {required UniqueId treeId, required TNode node});
 
+  Future<Either<TNodeFailure, Unit>> changeIsUnknown(
+      {required UniqueId treeId,
+      required UniqueId nodeId,
+      required bool isUnknown});
+
   Future<Either<TNodeFailure, Unit>> delete(
       {required UniqueId treeId, required UniqueId nodeId});
 }

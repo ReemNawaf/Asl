@@ -6,8 +6,10 @@ import 'package:asl/a_presentation/node/node_card/grandchild_node.dart';
 import 'package:asl/a_presentation/node/node_card/mirror_node.dart';
 import 'package:asl/a_presentation/node/node_card/partner_node.dart';
 import 'package:asl/a_presentation/node/node_card/root_node.dart';
+import 'package:asl/a_presentation/node/node_card/unknown_partner_node.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:flutter/material.dart';
@@ -53,85 +55,99 @@ class TreeView extends StatelessWidget {
               });
             }
 
-            return GraphView(
-              graph: state.graph!,
-              algorithm: BuchheimWalkerAlgorithm(
-                state.builder!,
-                TreeEdgeRenderer(state.builder!),
-              ),
+            return BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
+              builder: (context, treeSettingsState) {
+                return GraphView(
+                  graph: state.graph!,
+                  algorithm: BuchheimWalkerAlgorithm(
+                    state.builder!,
+                    TreeEdgeRenderer(state.builder!),
+                  ),
 
-              // Styling
-              paint: Paint()
-                ..color = kBlacksColor
-                ..strokeWidth = 2
-                ..style = PaintingStyle.stroke,
+                  // Styling
+                  paint: Paint()
+                    ..color = kBlacksColor
+                    ..strokeWidth = 2
+                    ..style = PaintingStyle.stroke,
 
-              builder: (Node node) {
-                final nodeType = node.key!.value['type'] as NodeType;
+                  builder: (Node node) {
+                    final nodeType = node.key!.value['type'] as NodeType;
 
-                // Mirror & real both carry a tnode
-                final tnode = node.key!.value['tnode'] as TNode;
+                    // Mirror & real both carry a tnode
+                    final tnode = node.key!.value['tnode'] as TNode;
 
-                // real id for mirror nodes
-                final realId = node.key!.value['realId'] as String?;
-                final id = node.key!.value['id'] as String;
+                    // real id for mirror nodes
+                    final realId = node.key!.value['realId'] as String?;
+                    final id = node.key!.value['id'] as String;
 
-                final nodeId = realId ?? tnode.nodeId.getOrCrash();
-                final idKey = nodeId; // use REAL id when mirror
-                final fatherName = fatherNameOf(nodeId);
+                    final nodeId = realId ?? tnode.nodeId.getOrCrash();
+                    final idKey = nodeId; // use REAL id when mirror
+                    final fatherName = fatherNameOf(nodeId);
 
-                final nodeKey = context.read<DrawTreeBloc>().keyForNode(idKey,
-                    mirrorNode: nodeType == NodeType.partnerMirror,
-                    drawingId: id);
+                    final nodeKey = context.read<DrawTreeBloc>().keyForNode(
+                        idKey,
+                        mirrorNode: nodeType == NodeType.partnerMirror,
+                        drawingId: id);
 
-                return switch (nodeType) {
-                  NodeType.root => KeyedSubtree(
-                      key: nodeKey,
-                      child: RootNode(node: tnode, pageContext: context)),
-                  NodeType.partner => KeyedSubtree(
-                      key: nodeKey,
-                      child: PartnerNode(
-                          node: tnode,
-                          pageContext: context,
-                          fatherName: fatherName)),
-                  NodeType.partnerMirror => tnode.gender == Gender.female
-                      ?
-                      // the mirror node is female
-                      // the partner node is male
-                      // children drawn under them
-                      MirrorNode(
-                          node: tnode.copyWith(
-                              nodeId: UniqueId.fromUniqueString(nodeId)),
-                          pageContext: context,
-                          noChildren: false,
-                          fatherName: fatherName,
-                        )
-                      // the mirror node is male
-                      // the partner node is female
-                      // children won't drawn
-                      // colored in new color to show
+                    final showUnknown = treeSettingsState.showUnknown;
 
-                      : MirrorNode(
-                          node: tnode.copyWith(
-                              nodeId: UniqueId.fromUniqueString(nodeId)),
-                          pageContext: context,
-                          noChildren: true,
-                          fatherName: fatherName,
+                    return switch (nodeType) {
+                      NodeType.root => KeyedSubtree(
+                          key: nodeKey,
+                          child: RootNode(node: tnode, pageContext: context)),
+                      NodeType.partner => KeyedSubtree(
+                          key: nodeKey,
+                          child: !showUnknown && tnode.isUnknown
+                              ? UnknownPartnerNode(
+                                  pageContext: context,
+                                  node: tnode,
+                                )
+                              : PartnerNode(
+                                  node: tnode,
+                                  pageContext: context,
+                                  fatherName: fatherName,
+                                ),
                         ),
-                  NodeType.child => KeyedSubtree(
-                      key: nodeKey,
-                      child: ChildNode(
-                          node: tnode,
-                          pageContext: context,
-                          fatherName: fatherName)),
-                  NodeType.grandchild => KeyedSubtree(
-                      key: nodeKey,
-                      child: GrandchildNode(
-                          node: tnode,
-                          pageContext: context,
-                          fatherName: fatherName)),
-                  _ => const SizedBox(),
-                };
+                      NodeType.partnerMirror => tnode.gender == Gender.female
+                          ?
+                          // the mirror node is female
+                          // the partner node is male
+                          // children drawn under them
+                          MirrorNode(
+                              node: tnode.copyWith(
+                                  nodeId: UniqueId.fromUniqueString(nodeId)),
+                              pageContext: context,
+                              noChildren: false,
+                              fatherName: fatherName,
+                            )
+                          // the mirror node is male
+                          // the partner node is female
+                          // children won't drawn
+                          // colored in new color to show
+
+                          : MirrorNode(
+                              node: tnode.copyWith(
+                                  nodeId: UniqueId.fromUniqueString(nodeId)),
+                              pageContext: context,
+                              noChildren: true,
+                              fatherName: fatherName,
+                            ),
+                      NodeType.child => KeyedSubtree(
+                          key: nodeKey,
+                          child: ChildNode(
+                              node: tnode,
+                              pageContext: context,
+                              fatherName: fatherName)),
+                      NodeType.grandchild => KeyedSubtree(
+                          key: nodeKey,
+                          child: GrandchildNode(
+                              node: tnode,
+                              pageContext: context,
+                              fatherName: fatherName)),
+                      _ => const SizedBox(),
+                    };
+                  },
+                );
               },
             );
           },

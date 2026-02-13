@@ -14,6 +14,7 @@ import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart'
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/zoom_bloc/tree_zoom_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/injection.dart';
 import 'package:auto_route/auto_route.dart';
@@ -162,8 +163,8 @@ class TreePage extends StatelessWidget {
                                       width: 150,
                                       padding: EdgeInsets.only(
                                           right: 20, top: size.height - 85),
-                                      child: BlocBuilder<TreeSettingsBloc,
-                                          TreeSettingsState>(
+                                      child: BlocBuilder<TreeZoomBloc,
+                                          TreeZoomState>(
                                         builder: (context, state) {
                                           return Slider(
                                             min: MIN_ZOOM,
@@ -172,10 +173,9 @@ class TreePage extends StatelessWidget {
                                             label:
                                                 "${state.zoomScale.toStringAsFixed(2)}x",
                                             onChanged: (newScale) {
-                                              context
-                                                  .read<TreeSettingsBloc>()
-                                                  .add(TreeSettingsEvent
-                                                      .zoomChanged(newScale));
+                                              context.read<TreeZoomBloc>().add(
+                                                  TreeZoomEvent.zoomChanged(
+                                                      newScale));
                                             },
                                           );
                                         },

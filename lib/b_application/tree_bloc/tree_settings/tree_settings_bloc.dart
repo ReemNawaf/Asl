@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/tree/i_tree_repository.dart';
 import 'package:asl/c_domain/tree/tree_settings.dart';
@@ -18,7 +17,6 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
 
   TreeSettingsBloc(this._treeRepository) : super(TreeSettingsState.initial()) {
     on<_Initialized>(_onInitialized);
-    on<_ZoomChanged>(_onZoomChanged);
     on<_NumberOfGenerationsChanged>(_onNumberOfGenerationsChanged);
     on<_ShowUnknownChanged>(_onShowUnknownChanged);
     on<_SharedLinkCopied>(_onSharedLinkCopied);
@@ -40,13 +38,6 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
     ));
   }
 
-  void _onZoomChanged(
-    _ZoomChanged event,
-    Emitter<TreeSettingsState> emit,
-  ) {
-    emit(state.copyWith(zoomScale: event.zoomScale));
-  }
-
   void _onNumberOfGenerationsChanged(
     _NumberOfGenerationsChanged event,
     Emitter<TreeSettingsState> emit,
@@ -63,9 +54,9 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
     _ShowUnknownChanged event,
     Emitter<TreeSettingsState> emit,
   ) {
-    emit(state.copyWith(showUnknown: event.isShow));
+    emit(state.copyWith(showUnknown: !state.showUnknown));
     unawaited(_treeRepository.updateIsShowUnknown(
-        treeId: event.treeId, isShowUnknown: event.isShow));
+        treeId: event.treeId, isShowUnknown: state.showUnknown));
   }
 
   void _onSharedLinkCopied(

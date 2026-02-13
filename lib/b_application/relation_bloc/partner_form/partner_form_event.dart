@@ -13,9 +13,12 @@ abstract class PartnerFormEvent with _$PartnerFormEvent {
   const factory PartnerFormEvent.changeName(String name) = _ChangedName;
   const factory PartnerFormEvent.addPartnerByNodeId(
       {required TNode? partner, required TNode node}) = _AddPartnerByNodeId;
+  const factory PartnerFormEvent.addUnknownPartner({required TNode node}) =
+      _AddUnknownPartner;
   const factory PartnerFormEvent.showPartnerByNodeId(bool isAdding) =
       _ShowPartnerByNodeId;
-
+  const factory PartnerFormEvent.showUnknownPartner(bool isAdding) =
+      _ShowUnknownPartner;
   const factory PartnerFormEvent.changeMarriageDate(DateTime? date) =
       _ChangeMarriageDate;
   const factory PartnerFormEvent.changeRelationEndDate(DateTime? date) =

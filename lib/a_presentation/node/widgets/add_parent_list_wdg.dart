@@ -6,6 +6,7 @@ import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/relation/relation.dart';
+import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +27,9 @@ class AddParentDropListWidget extends StatelessWidget {
           .map((Relation? re) => DropdownMenuItem<UniqueId>(
                 value: re!.relationId,
                 child: ListParentItem(
-                    name: re.partnerNode!.firstName.getOrCrash()),
+                    name: re.partnerNode!.isUnknown
+                        ? getTr(context, 'no_name_provided')!
+                        : re.partnerNode!.firstName.getOrCrash()),
               ))
           .toList();
 

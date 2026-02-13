@@ -90,10 +90,9 @@ class TreeSettingsSection extends StatelessWidget {
             BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
               builder: (context, state) {
                 return Switch(
-                  value: !state.showUnknown,
+                  value: state.showUnknown,
                   onChanged: (value) => context.read<TreeSettingsBloc>().add(
-                        TreeSettingsEvent.showUnknownChanged(
-                            treeId: treeId!, isShow: value),
+                        TreeSettingsEvent.showUnknownChanged(treeId: treeId!),
                       ),
                   activeColor: kLeafColors[300],
                   inactiveThumbColor: kBlacksColor[400],

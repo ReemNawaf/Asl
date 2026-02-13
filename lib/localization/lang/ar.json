@@ -164,5 +164,17 @@
   "insufficient_permission_short": "ليس لديك صلاحية لتنفيذ هذه العملية.",
   "insufficient_permission_long": "اطلب من مالك الشجرة منحك صلاحية الوصول.",
 
-  "go_to_main_tree": "عد إلى الشجرة الأصلية"
+  "go_to_main_tree": "عد إلى الشجرة الأصلية",
+
+  "unknown_partner_name_female": "لم يذكر اسم الزوجة",
+  "unknown_partner_name_male": "لم يذكر اسم الزوج",
+  "add_unknown_partner": "أضف بدون اسم",
+
+  "known_partner_name_female": "ذكر اسم الزوجة",
+  "known_partner_name_male": "ذكر اسم الزوج",
+
+  "add_known_partner": "أضف بالاسم",
+
+  "no_name_provided": "لم يذكر الاسم"
+
 }

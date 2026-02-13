@@ -22,6 +22,7 @@ _$TNodeDtoImpl _$$TNodeDtoImplFromJson(Map<String, dynamic> json) =>
           .map((e) => e as String)
           .toList(),
       notes: json['notes'] as String?,
+      isUnknown: json['isUnknown'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$TNodeDtoImplToJson(_$TNodeDtoImpl instance) =>
@@ -37,4 +38,5 @@ Map<String, dynamic> _$$TNodeDtoImplToJson(_$TNodeDtoImpl instance) =>
       'relations': instance.relations,
       'fosterChildren': instance.fosterChildren,
       'notes': instance.notes,
+      'isUnknown': instance.isUnknown,
     };

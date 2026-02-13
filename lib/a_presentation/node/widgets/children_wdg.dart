@@ -81,7 +81,9 @@ class ChildrenWidget extends StatelessWidget {
                               ),
                               kHSpacer5,
                               Text(
-                                partner.firstName.getOrCrash(),
+                                partner.isUnknown
+                                    ? getTr(context, 'no_name_provided')!
+                                    : partner.firstName.getOrCrash(),
                                 style: kBodyLarge,
                               ),
                             ],

@@ -6,6 +6,7 @@ import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.d
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/zoom_bloc/tree_zoom_bloc.dart';
 import 'package:dartz/dartz.dart' as z;
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
@@ -69,6 +70,7 @@ class _MyAppState extends State<MyApp> {
         ),
         BlocProvider<TreeSettingsBloc>(
             create: (context) => getIt<TreeSettingsBloc>()),
+        BlocProvider<TreeZoomBloc>(create: (cttx) => TreeZoomBloc()),
         BlocProvider<SignInFormBloc>(
             create: (context) => getIt<SignInFormBloc>()),
         BlocProvider<TreeFormBloc>(create: (cttx) => TreeFormBloc()),

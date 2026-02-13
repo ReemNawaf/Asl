@@ -6,6 +6,7 @@ import 'package:asl/a_presentation/routes/app_router.dart';
 import 'package:asl/a_presentation/splash/small_screen_page.dart';
 import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/zoom_bloc/tree_zoom_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -64,8 +65,7 @@ class HomePage extends StatelessWidget {
                             width: 150,
                             padding: EdgeInsets.only(
                                 right: 20, top: size.height - 85),
-                            child: BlocBuilder<TreeSettingsBloc,
-                                TreeSettingsState>(
+                            child: BlocBuilder<TreeZoomBloc, TreeZoomState>(
                               builder: (context, state) {
                                 return Slider(
                                   min: MIN_ZOOM,
@@ -74,9 +74,8 @@ class HomePage extends StatelessWidget {
                                   label:
                                       "${state.zoomScale.toStringAsFixed(2)}x",
                                   onChanged: (newScale) {
-                                    context.read<TreeSettingsBloc>().add(
-                                        TreeSettingsEvent.zoomChanged(
-                                            newScale));
+                                    context.read<TreeZoomBloc>().add(
+                                        TreeZoomEvent.zoomChanged(newScale));
                                   },
                                 );
                               },

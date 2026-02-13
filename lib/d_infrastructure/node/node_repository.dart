@@ -97,6 +97,44 @@ class NodeRepository implements INodeRepository {
   }
 
   @override
+  Future<Either<TNodeFailure, Unit>> changeIsUnknown({
+    required UniqueId nodeId,
+    required bool isUnknown,
+    required UniqueId treeId,
+  }) async {
+    try {
+      final docRef = _firestore
+          .treesCollection()
+          .doc(treeId.getOrCrash())
+          .collection(NODES_COLLECTION)
+          .doc(nodeId.getOrCrash());
+
+      // Safety check: ensure node exists before update
+      final existing = await docRef.get();
+      if (!existing.exists) {
+        return left(const TNodeFailure.unableToUpdate());
+      }
+
+      await docRef.update({
+        'isUnknown': isUnknown,
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TNodeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TNodeFailure.unableToUpdate());
+      }
+      return left(const TNodeFailure.unexpected());
+    } catch (_) {
+      return left(const TNodeFailure.unexpected());
+    }
+  }
+
+  @override
   Future<Either<TNodeFailure, Unit>> delete(
       {required UniqueId nodeId, required UniqueId treeId}) async {
     try {

@@ -29,7 +29,12 @@ class ParentsSiblingsPanel extends StatelessWidget {
       treeId: treeId,
       personId: personId,
     );
-
+    final fatherName = uFamily != null && uFamily.father.isUnknown
+        ? getTr(context, 'no_name_provided')!
+        : uFamily?.father.firstName.getOrCrash();
+    final motherName = uFamily != null && uFamily.mother.isUnknown
+        ? getTr(context, 'no_name_provided')!
+        : uFamily?.father.firstName.getOrCrash();
     final size = MediaQuery.of(context).size;
     if (uFamily != null) {
       return Container(
@@ -55,7 +60,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                         label: getTr(context, 'father')!,
                         hint: '',
                         onSaved: (_) {},
-                        initialValue: uFamily.father.firstName.getOrCrash(),
+                        initialValue: fatherName,
                         validator: (_) => '',
                         isEditing: false,
                       ),
@@ -68,7 +73,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
                         label: getTr(context, 'mother')!,
                         hint: '',
                         onSaved: (_) {},
-                        initialValue: uFamily.mother.firstName.getOrCrash(),
+                        initialValue: motherName,
                         validator: (_) => '',
                         isEditing: false,
                       ),
@@ -88,9 +93,12 @@ class ParentsSiblingsPanel extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final stepMother =
                         uFamily.fatherHalfSiblings[index].partner;
+
+                    final stepMotherName = stepMother.isUnknown
+                        ? getTr(context, 'no_name_provided')!
+                        : stepMother.firstName.getOrCrash();
                     return BrotherSisterssWidget(
-                      title:
-                          'الأخوان والأخوات من زوجة الأب ${stepMother.firstName.getOrCrash()}',
+                      title: 'الأخوان والأخوات من زوجة الأب $stepMotherName',
                       size: size,
                       brotherSisters:
                           uFamily.fatherHalfSiblings[index].halfSiblings,
@@ -101,9 +109,11 @@ class ParentsSiblingsPanel extends StatelessWidget {
                 itemCount: uFamily.motherHalfSiblings.length,
                 itemBuilder: (context, index) {
                   final stepfather = uFamily.motherHalfSiblings[index].partner;
+                  final stepfatherName = stepfather.isUnknown
+                      ? getTr(context, 'no_name_provided')!
+                      : stepfather.firstName.getOrCrash();
                   return BrotherSisterssWidget(
-                    title:
-                        'الأخوان والأخوات من زوج الأم ${stepfather.firstName.getOrCrash()}',
+                    title: 'الأخوان والأخوات من زوج الأم $stepfatherName',
                     size: size,
                     brotherSisters:
                         uFamily.motherHalfSiblings[index].halfSiblings,

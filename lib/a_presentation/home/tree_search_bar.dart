@@ -5,6 +5,7 @@ import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/zoom_bloc/tree_zoom_bloc.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_lineage.dart';
 import 'package:asl/c_domain/search_tree/person_search_item.dart';
 import 'package:flutter/material.dart';
@@ -104,8 +105,8 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
 
                 // zoom to default
                 context
-                    .read<TreeSettingsBloc>()
-                    .add(const TreeSettingsEvent.zoomChanged(ZOOM_DEF));
+                    .read<TreeZoomBloc>()
+                    .add(const TreeZoomEvent.zoomChanged(ZOOM_DEF));
 
                 // 2) call your action: center tree / open node panel / highlight
                 context

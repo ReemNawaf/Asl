@@ -41,13 +41,17 @@ String normalize(String s) {
 }
 
 List<PersonSearchItem> buildSearchIndex(TreeGraphStore store) {
-  return store.nodesById.values.map((n) {
-    final name = n.firstName.getOrCrash();
-    return PersonSearchItem(
-      nodeId: n.nodeId,
+  final searchIndex = <PersonSearchItem>[];
+
+  for (final node in store.nodesById.values) {
+    if (node.isUnknown) continue;
+    final name = node.firstName.getOrCrash();
+    searchIndex.add(PersonSearchItem(
+      nodeId: node.nodeId,
+      gender: node.gender,
       displayName: name,
-      gender: n.gender,
       normalized: normalize(name),
-    );
-  }).toList();
+    ));
+  }
+  return searchIndex;
 }

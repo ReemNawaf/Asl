@@ -19,6 +19,7 @@ abstract class TNode implements _$TNode {
     required FullName firstName,
     DateTime? birthDate,
     DateTime? deathDate,
+    required bool isUnknown,
     required bool isAlive,
     required Gender gender,
     UniqueId? upperFamily,
@@ -39,6 +40,7 @@ abstract class TNode implements _$TNode {
         fosterChildren: [],
         relationsObject: [],
         notes: NodeNotes(''),
+        isUnknown: false,
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure
@@ -55,6 +57,7 @@ abstract class TNode implements _$TNode {
       nodeId: n.nodeId,
       isTreeRoot: n.isTreeRoot,
       firstName: n.firstName,
+      isUnknown: n.isUnknown,
       isAlive: n.isAlive,
       gender: n.gender,
       upperFamily: n.upperFamily,

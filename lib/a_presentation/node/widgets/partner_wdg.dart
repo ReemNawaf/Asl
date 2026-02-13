@@ -70,7 +70,9 @@ class PartnerWidget extends StatelessWidget {
                     final partner = sinRelation.partnerNode!;
 
                     final name = TextEditingController(
-                        text: partner.firstName.getOrCrash());
+                        text: partner.isUnknown
+                            ? getTr(context, 'no_name_provided')!
+                            : partner.firstName.getOrCrash());
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

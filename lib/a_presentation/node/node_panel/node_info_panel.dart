@@ -1,4 +1,5 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/node/node_panel/node_alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
@@ -61,7 +62,9 @@ class InfoPanel extends StatelessWidget {
                         label: getTr(context, 'first_name')!,
                         hint: getTr(context, 'first_name_example')!,
                         initialValue: state.node!.firstName.isValid()
-                            ? state.node!.firstName.getOrCrash()
+                            ? (state.node!.isUnknown
+                                ? getTr(context, 'no_name_provided')!
+                                : state.node!.firstName.getOrCrash())
                             : '',
                         onChanged: (value) => context
                             .read<NodeFormBloc>()
@@ -100,6 +103,47 @@ class InfoPanel extends StatelessWidget {
                           color: color,
                           ctx: context,
                           isEditing: state.isEditing,
+                        ),
+                      ),
+                    if (state.isEditing)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 34.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              node.isUnknown
+                                  ? (node.gender == Gender.male
+                                      ? getTr(
+                                          context, 'known_partner_name_male')!
+                                      : getTr(context,
+                                          'known_partner_name_female')!)
+                                  : (node.gender == Gender.male
+                                      ? getTr(context,
+                                          'unknown_partner_name_female')!
+                                      : getTr(context,
+                                          'unknown_partner_name_male')!),
+                              style: kFootnoteStyle.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  wordSpacing: 2.0),
+                            ),
+                            kHSpacer5,
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () => context.read<NodeFormBloc>().add(
+                                    NodeFormEvent.changeIsUnknown(
+                                        !node.isUnknown)),
+                                child: Text(
+                                  '${node.isUnknown ? getTr(context, "add_known_partner")! : getTr(context, 'add_unknown_partner')!}.',
+                                  style: kFootnoteStyle.copyWith(
+                                    color: color,
+                                    fontWeight: FontWeight.bold,
+                                    wordSpacing: 2.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                   ],
@@ -169,7 +213,7 @@ class InfoPanel extends StatelessWidget {
                     ),
                     kHSpacer20,
                     Padding(
-                      padding: const EdgeInsets.only(top: 14.0),
+                      padding: const EdgeInsets.only(top: 6.0),
                       child: NodeAliveBtn(
                         color: color,
                         ctx: context,
@@ -183,12 +227,13 @@ class InfoPanel extends StatelessWidget {
                     color: color,
                     contextDialog: contextDialog,
                     pageContext: pageContext),
-                NodeIdWidget(
-                  contextDialog: contextDialog,
-                  id: state.node!.nodeId.getOrCrash(),
-                  color: color,
-                  name: fullName,
-                ),
+                if (!state.node!.isUnknown)
+                  NodeIdWidget(
+                    contextDialog: contextDialog,
+                    id: state.node!.nodeId.getOrCrash(),
+                    color: color,
+                    name: fullName,
+                  ),
               ],
             ),
           ),

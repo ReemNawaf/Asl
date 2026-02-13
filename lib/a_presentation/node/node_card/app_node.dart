@@ -107,7 +107,11 @@ class AppNode extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Text(
-                      fatherName != null ? '$name $fatherName' : name,
+                      node.isUnknown
+                          ? getTr(context, 'no_name_provided')!
+                          : fatherName != null
+                              ? '$name $fatherName'
+                              : name,
                       style: kCalloutStyle,
                       textAlign: TextAlign.center,
                     ),

@@ -29,6 +29,15 @@ class AddPartnerWidget extends StatelessWidget {
         .add(PartnerFormEvent.showPartnerByNodeId(isAdding));
   }
 
+  void addUnknownPartner(BuildContext context, bool isAdding) {
+    context
+        .read<PartnerFormBloc>()
+        .add(PartnerFormEvent.showUnknownPartner(isAdding));
+    context
+        .read<PartnerFormBloc>()
+        .add(PartnerFormEvent.addUnknownPartner(node: node));
+  }
+
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
@@ -36,6 +45,7 @@ class AddPartnerWidget extends StatelessWidget {
     return BlocBuilder<PartnerFormBloc, PartnerFormState>(
       builder: (context, state) {
         final isAddingPartner = state.isPartnerById;
+        final isAddingUnknownPartner = state.isAddingUnknownPartner;
 
         return Form(
           autovalidateMode: state.showErrorMessages,
@@ -43,55 +53,72 @@ class AddPartnerWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: isAddingPartner
-                    ? () => addPartnerById(context, false)
-                    : () => addPartnerById(context, true),
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: isAddingPartner
-                      ? TextSpan(
-                          text: node.gender == Gender.male
-                              ? getTr(context, 'wife_is_not_in_the_tree')
-                              : getTr(context, 'husband_is_not_in_the_tree'),
-                          style: kFootnoteStyle.copyWith(
-                              fontWeight: FontWeight.bold, wordSpacing: 2.0),
-                          children: [
-                            TextSpan(
-                              text: ' ${getTr(context, "add_new_member")!}',
-                              style: kFootnoteStyle.copyWith(
-                                color: color,
-                                fontWeight: FontWeight.bold,
-                                wordSpacing: 2.0,
-                              ),
-                            ),
-                          ],
-                        )
-                      : TextSpan(
-                          text: node.gender == Gender.male
-                              ? getTr(context, 'wife_is_in_the_tree')!
-                              : getTr(context, 'husband_is_in_the_tree')!,
-                          style: kFootnoteStyle.copyWith(
-                              fontWeight: FontWeight.bold, wordSpacing: 2.0),
-                          children: [
-                            TextSpan(
-                              text: ' ${getTr(context, 'add_with_id')!}',
-                              style: kFootnoteStyle.copyWith(
-                                color: color,
-                                fontWeight: FontWeight.bold,
-                                wordSpacing: 2.0,
-                              ),
-                            ),
-                          ],
+              Row(
+                children: [
+                  Text(
+                    isAddingPartner
+                        ? (node.gender == Gender.male
+                            ? getTr(context, 'wife_is_not_in_the_tree')!
+                            : getTr(context, 'husband_is_not_in_the_tree')!)
+                        : (node.gender == Gender.male
+                            ? getTr(context, 'wife_is_in_the_tree')!
+                            : getTr(context, 'husband_is_in_the_tree')!),
+                    style: kFootnoteStyle.copyWith(
+                        fontWeight: FontWeight.bold, wordSpacing: 2.0),
+                  ),
+                  kHSpacer5,
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: isAddingPartner
+                          ? () => addPartnerById(context, false)
+                          : () => addPartnerById(context, true),
+                      child: Text(
+                        '${isAddingPartner ? getTr(context, "add_new_member")! : getTr(context, 'add_with_id')!}.',
+                        style: kFootnoteStyle.copyWith(
+                          color: color,
+                          fontWeight: FontWeight.bold,
+                          wordSpacing: 2.0,
                         ),
-                ),
+                      ),
+                    ),
+                  ),
+                  kHSpacer5,
+                  Text(
+                    isAddingUnknownPartner
+                        ? (node.gender == Gender.male
+                            ? getTr(context, 'known_partner_name_female')!
+                            : getTr(context, 'known_partner_name_male')!)
+                        : (node.gender == Gender.male
+                            ? getTr(context, 'unknown_partner_name_female')!
+                            : getTr(context, 'unknown_partner_name_male')!),
+                    style: kFootnoteStyle.copyWith(
+                        fontWeight: FontWeight.bold, wordSpacing: 2.0),
+                  ),
+                  kHSpacer5,
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: isAddingUnknownPartner
+                          ? () => addUnknownPartner(context, false)
+                          : () => addUnknownPartner(context, true),
+                      child: Text(
+                        '${isAddingUnknownPartner ? getTr(context, "add_known_partner")! : getTr(context, 'add_unknown_partner')!}.',
+                        style: kFootnoteStyle.copyWith(
+                          color: color,
+                          fontWeight: FontWeight.bold,
+                          wordSpacing: 2.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               kVSpacer20,
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   PartnerName(
-                    isAddingPartner: isAddingPartner,
                     node: node,
                     state: state,
                     color: color,
@@ -176,13 +203,11 @@ class AddPartnerWidget extends StatelessWidget {
 class PartnerName extends StatelessWidget {
   const PartnerName({
     super.key,
-    required this.isAddingPartner,
     required this.node,
     required this.state,
     required this.color,
   });
 
-  final bool isAddingPartner;
   final TNode node;
   final PartnerFormState state;
   final Color color;
@@ -204,6 +229,7 @@ class PartnerName extends StatelessWidget {
                   .state
                   .store
                   .getNodeByKey(value.trim());
+
               context.read<PartnerFormBloc>().add(
                   PartnerFormEvent.addPartnerByNodeId(
                       node: node, partner: partner));
@@ -221,6 +247,19 @@ class PartnerName extends StatelessWidget {
                 style: kValidationTextStyle),
           ),
       ],
+    );
+
+    var addUnknownPartnerWidget = Opacity(
+      opacity: 0.5,
+      child: AppFormField(
+        label: node.gender == Gender.male
+            ? getTr(context, 'add_wife')!
+            : getTr(context, 'add_husband')!,
+        hint: '',
+        validator: (_) => null,
+        isEditing: false,
+        initialValue: getTr(context, 'no_name_provided')!,
+      ),
     );
 
     var appFormField = AppFormField(
@@ -255,19 +294,25 @@ class PartnerName extends StatelessWidget {
     );
 
     var displayPartnerNameWidget = AppFormField(
-      label: 'اسم زوج${node.gender == Gender.male ? 'ة' : ''}',
+      label: node.gender == Gender.male
+          ? getTr(context, 'add_wife')!
+          : getTr(context, 'add_husband')!,
       hint: '',
       validator: (_) => null,
       isEditing: false,
       initialValue: state.partner.firstName.isValid()
-          ? state.partner.firstName.getOrCrash()
+          ? (state.partner.isUnknown
+              ? getTr(context, 'no_name_provided')!
+              : state.partner.firstName.getOrCrash())
           : '',
     );
 
     return SizedBox(
         width: 250,
         child: state.partnerNotExist == null || state.partnerNotExist == true
-            ? (isAddingPartner ? addPartnerById : appFormField)
+            ? (state.isAddingUnknownPartner
+                ? addUnknownPartnerWidget
+                : (state.isPartnerById ? addPartnerById : appFormField))
             : state.partnerNotExist == false
                 ? displayPartnerNameWidget
                 : null);

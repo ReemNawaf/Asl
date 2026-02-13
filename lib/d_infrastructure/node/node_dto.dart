@@ -26,6 +26,7 @@ abstract class TNodeDto implements _$TNodeDto {
     required List<String> relations,
     required List<String> fosterChildren,
     required String? notes,
+    @Default(false) bool? isUnknown,
   }) = _TNodeDto;
 
   //  converting Entity => DTO
@@ -33,6 +34,7 @@ abstract class TNodeDto implements _$TNodeDto {
     return TNodeDto(
       nodeId: node.nodeId.getOrCrash(),
       treeId: node.treeId.getOrCrash(),
+      isUnknown: node.isUnknown,
       firstName: node.firstName.getOrCrash(),
       birthDate: node.birthDate == null
           ? null
@@ -58,6 +60,7 @@ abstract class TNodeDto implements _$TNodeDto {
         birthDate: birthDate == null ? null : DateTime.parse(birthDate!),
         deathDate: deathDate == null ? null : DateTime.parse(deathDate!),
         isAlive: isAlive,
+        isUnknown: isUnknown ?? false,
         gender: Gender.values.byName(gender),
         upperFamily: upperFamily != null
             ? UniqueId.fromUniqueString(upperFamily!)

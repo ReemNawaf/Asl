@@ -93,6 +93,14 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: null,
         ));
       },
+      changeIsUnknown: (e) {
+        emit(state.copyWith(
+          node: state.node!.copyWith(isUnknown: e.isUnknown),
+          isSaving: false,
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: null,
+        ));
+      },
       notesChanged: (e) {
         emit(state.copyWith(
           node: state.node!.copyWith(notes: NodeNotes(e.notes ?? '')),

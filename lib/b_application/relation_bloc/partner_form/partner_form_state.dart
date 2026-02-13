@@ -16,6 +16,7 @@ abstract class PartnerFormState with _$PartnerFormState {
     required bool isViewing,
     required bool isCreated,
     required bool isPartnerById,
+    required bool isAddingUnknownPartner,
     bool? partnerNotExist,
     required Either<RelationFailure, List<Object>>? addedFailureOrSuccessOption,
     required Either<RelationFailure, List<Relation>>?
@@ -36,6 +37,7 @@ abstract class PartnerFormState with _$PartnerFormState {
       isPartnerById: false,
       isViewing: false,
       isCreated: false,
+      isAddingUnknownPartner: false,
       addedFailureOrSuccessOption: null,
       deletedFailureOrSuccessOption: null);
 }

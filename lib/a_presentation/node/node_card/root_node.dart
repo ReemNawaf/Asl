@@ -20,6 +20,7 @@ class RootNode extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppNode(
       type: NodeType.root,
+
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'الجدة' : 'الجد',
       yearOfBirth: node.birthDate,

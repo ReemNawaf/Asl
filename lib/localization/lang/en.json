@@ -164,5 +164,16 @@
     "insufficient_permission_short": "You don’t have permission to do this.",
     "insufficient_permission_long": "Ask the tree owner to grant you access.",
 
-    "go_to_main_tree": "Go to the main tree"
+    "go_to_main_tree": "Go to the main tree",
+
+    "unknown_partner_name_female": "The wife name wasn't provided",
+    "unknown_partner_name_male": "The husband name wasn't provided",
+    "add_unknown_partner": "Add without name",
+
+     "known_partner_name_female": "The wife name was provided",
+    "known_partner_name_male": "The husband name was provided",
+
+    "add_known_partner": "Add with name",
+    "no_name_provided": "No name was provided"
+
   }

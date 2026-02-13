@@ -4,6 +4,7 @@ import 'package:asl/a_presentation/tree/tree_view.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/zoom_bloc/tree_zoom_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -213,7 +214,7 @@ class _InteractiveViewState extends State<InteractiveView> {
                   }
                 });
               },
-              child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+              child: BlocListener<TreeZoomBloc, TreeZoomState>(
                 listenWhen: (prev, curr) =>
                     (curr.zoomScale - prev.zoomScale).abs() > 0.0001,
                 listener: (context, state) {

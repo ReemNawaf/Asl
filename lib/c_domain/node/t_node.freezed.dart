@@ -22,6 +22,7 @@ mixin _$TNode {
   FullName get firstName => throw _privateConstructorUsedError;
   DateTime? get birthDate => throw _privateConstructorUsedError;
   DateTime? get deathDate => throw _privateConstructorUsedError;
+  bool get isUnknown => throw _privateConstructorUsedError;
   bool get isAlive => throw _privateConstructorUsedError;
   Gender get gender => throw _privateConstructorUsedError;
   UniqueId? get upperFamily => throw _privateConstructorUsedError;
@@ -47,6 +48,7 @@ abstract class $TNodeCopyWith<$Res> {
       FullName firstName,
       DateTime? birthDate,
       DateTime? deathDate,
+      bool isUnknown,
       bool isAlive,
       Gender gender,
       UniqueId? upperFamily,
@@ -75,6 +77,7 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
     Object? firstName = null,
     Object? birthDate = freezed,
     Object? deathDate = freezed,
+    Object? isUnknown = null,
     Object? isAlive = null,
     Object? gender = null,
     Object? upperFamily = freezed,
@@ -108,6 +111,10 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
           ? _value.deathDate
           : deathDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isUnknown: null == isUnknown
+          ? _value.isUnknown
+          : isUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
       isAlive: null == isAlive
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
@@ -154,6 +161,7 @@ abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
       FullName firstName,
       DateTime? birthDate,
       DateTime? deathDate,
+      bool isUnknown,
       bool isAlive,
       Gender gender,
       UniqueId? upperFamily,
@@ -180,6 +188,7 @@ class __$$TNodeImplCopyWithImpl<$Res>
     Object? firstName = null,
     Object? birthDate = freezed,
     Object? deathDate = freezed,
+    Object? isUnknown = null,
     Object? isAlive = null,
     Object? gender = null,
     Object? upperFamily = freezed,
@@ -213,6 +222,10 @@ class __$$TNodeImplCopyWithImpl<$Res>
           ? _value.deathDate
           : deathDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isUnknown: null == isUnknown
+          ? _value.isUnknown
+          : isUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
       isAlive: null == isAlive
           ? _value.isAlive
           : isAlive // ignore: cast_nullable_to_non_nullable
@@ -255,6 +268,7 @@ class _$TNodeImpl extends _TNode {
       required this.firstName,
       this.birthDate,
       this.deathDate,
+      required this.isUnknown,
       required this.isAlive,
       required this.gender,
       this.upperFamily,
@@ -277,6 +291,8 @@ class _$TNodeImpl extends _TNode {
   @override
   final DateTime? deathDate;
   @override
+  final bool isUnknown;
+  @override
   final bool isAlive;
   @override
   final Gender gender;
@@ -294,7 +310,7 @@ class _$TNodeImpl extends _TNode {
 
   @override
   String toString() {
-    return 'TNode(treeId: $treeId, nodeId: $nodeId, isTreeRoot: $isTreeRoot, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren, notes: $notes, relationsObject: $relationsObject)';
+    return 'TNode(treeId: $treeId, nodeId: $nodeId, isTreeRoot: $isTreeRoot, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isUnknown: $isUnknown, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren, notes: $notes, relationsObject: $relationsObject)';
   }
 
   @override
@@ -312,6 +328,8 @@ class _$TNodeImpl extends _TNode {
                 other.birthDate == birthDate) &&
             (identical(other.deathDate, deathDate) ||
                 other.deathDate == deathDate) &&
+            (identical(other.isUnknown, isUnknown) ||
+                other.isUnknown == isUnknown) &&
             (identical(other.isAlive, isAlive) || other.isAlive == isAlive) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.upperFamily, upperFamily) ||
@@ -333,6 +351,7 @@ class _$TNodeImpl extends _TNode {
       firstName,
       birthDate,
       deathDate,
+      isUnknown,
       isAlive,
       gender,
       upperFamily,
@@ -356,6 +375,7 @@ abstract class _TNode extends TNode {
       required final FullName firstName,
       final DateTime? birthDate,
       final DateTime? deathDate,
+      required final bool isUnknown,
       required final bool isAlive,
       required final Gender gender,
       final UniqueId? upperFamily,
@@ -377,6 +397,8 @@ abstract class _TNode extends TNode {
   DateTime? get birthDate;
   @override
   DateTime? get deathDate;
+  @override
+  bool get isUnknown;
   @override
   bool get isAlive;
   @override

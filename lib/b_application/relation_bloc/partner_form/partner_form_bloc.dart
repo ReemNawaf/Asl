@@ -39,6 +39,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           relations: [],
           fosterChildren: [],
           relationsObject: [],
+          isUnknown: false,
         );
         final father = isFather ? e.node.nodeId : partner.nodeId;
         final mother = isFather ? partner.nodeId : e.node.nodeId;
@@ -64,7 +65,35 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
         ));
       },
       showPartnerByNodeId: (e) {
-        emit(state.copyWith(isPartnerById: e.isAdding));
+        if (e.isAdding) {
+          emit(state.copyWith(
+            isPartnerById: true,
+            isAddingUnknownPartner: false,
+          ));
+        } else {
+          emit(state.copyWith(
+            isPartnerById: false,
+            isAddingUnknownPartner: false,
+            partnerNotExist: null,
+          ));
+          add(PartnerFormEvent.addPartner(state.node!));
+        }
+      },
+      showUnknownPartner: (e) {
+        if (e.isAdding) {
+          emit(state.copyWith(
+            isAddingUnknownPartner: true,
+            isPartnerById: false,
+            partnerNotExist: null,
+          ));
+        } else {
+          emit(state.copyWith(
+            isAddingUnknownPartner: false,
+            isPartnerById: false,
+            partnerNotExist: null,
+          ));
+          add(PartnerFormEvent.addPartner(state.node!));
+        }
       },
       addPartnerByNodeId: (e) async {
         final partner = e.partner;
@@ -106,6 +135,50 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
             showErrorMessages: AutovalidateMode.disabled,
           ));
         }
+      },
+      addUnknownPartner: (e) async {
+        final partner = TNode(
+          treeId: e.node.treeId,
+          nodeId: UniqueId(),
+          firstName: FullName('unknown'),
+          isAlive: true,
+          gender: e.node.gender == Gender.male ? Gender.female : Gender.male,
+          relations: [],
+          fosterChildren: [],
+          isUnknown: true,
+          relationsObject: [],
+        );
+
+        // if the id is valid, then create a relation and add the relation and the partner node to the list
+        final isFather = e.node.gender == Gender.male;
+
+        final father = isFather ? e.node.nodeId : partner.nodeId;
+        final mother = isFather ? partner.nodeId : e.node.nodeId;
+
+        // Add Relation
+        final relation = Relation(
+          treeId: e.node.treeId,
+          partnerTreeId: partner.treeId,
+          relationId: UniqueId(),
+          marriageStatus: MarriageStatus.married,
+          father: father,
+          mother: mother,
+          children: [],
+          childrenNodes: [],
+        );
+        emit(state.copyWith(
+          relation: relation,
+          partner: partner,
+          node: e.node,
+          isEditing: false,
+          isAdding: false,
+          // Empty the state lists
+          partnersList: [],
+          relationsList: [],
+          deletedPartners: [],
+          partnerNotExist: null,
+          showErrorMessages: AutovalidateMode.disabled,
+        ));
       },
       edited: (e) {
         emit(state.copyWith(
