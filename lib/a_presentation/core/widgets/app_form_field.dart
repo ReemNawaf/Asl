@@ -63,7 +63,7 @@ class AppFormField extends StatelessWidget {
           child: TextFormField(
             obscureText: fieldType == FieldType.password,
             cursorColor: kBlacksColor,
-            cursorHeight: 15.0,
+            cursorHeight: kCursorHeight,
             initialValue: initialValue,
             style: kCalloutStyle,
             readOnly: !isEditing,

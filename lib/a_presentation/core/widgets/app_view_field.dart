@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
@@ -19,7 +20,7 @@ class AppViewField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       cursorColor: kBlacksColor,
-      cursorHeight: 20.0,
+      cursorHeight: kCursorHeight,
       initialValue: initialValue,
       style: kCalloutStyle,
       readOnly: true,

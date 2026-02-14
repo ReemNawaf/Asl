@@ -148,18 +148,18 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
           nodeFailureOption: none(),
         ));
 
-        // TODO: make then in parallel
-        // 2. load the tree nodes
-        final eitherGraph = await _treeRepo.getTreeGraph(treeId: e.treeId);
+        // 2. Load tree graph and settings in parallel
+        final graphFuture = _treeRepo.getTreeGraph(treeId: e.treeId);
 
-        //  3. load settings
-        TreeSettings settings;
-        try {
-          settings = (await _treeRepo.loadSettings(e.treeId))
-              .fold((_) => TreeSettings.empty(), (r) => r);
-        } catch (_) {
-          settings = TreeSettings.empty();
-        }
+        final settingsFuture = _treeRepo
+            .loadSettings(e.treeId)
+            .then(
+              (either) => either.fold((_) => TreeSettings.empty(), (r) => r),
+            )
+            .catchError((_) => TreeSettings.empty());
+
+        final eitherGraph = await graphFuture;
+        final settings = await settingsFuture;
 
         eitherGraph.fold(
           (f) => emit(state.copyWith(
@@ -441,6 +441,54 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         unawaited(_syncDeleteRelationsCascade(relations: e.relations));
       },
 
+      changeOrderInFamily: (e) async {
+        final selectedTreeId = state.selectedTreeId;
+        if (selectedTreeId == null) return;
+
+        // Local-first store update (O(1))
+        final nextStore = applyChangeOrderInFamily(
+          store: state.store,
+          relationId: e.relationId,
+          nodeId: e.nodeId,
+          order: e.order,
+        );
+
+        emit(state.copyWith(store: nextStore));
+
+        // Background sync
+        _syncStart(emit);
+        unawaited(_syncChangeOrderInFamily(
+          selectedTreeId,
+          e.nodeId,
+          e.relationId,
+          e.order,
+        ));
+      },
+
+      changePartnerOrder: (e) async {
+        final selectedTreeId = state.selectedTreeId;
+        if (selectedTreeId == null) return;
+
+        // Local-first store update (O(1))
+        final nextStore = applyChangePartnerOrder(
+          store: state.store,
+          nodeId: e.nodeId,
+          relationId: e.relationId,
+          order: e.order,
+        );
+
+        emit(state.copyWith(store: nextStore));
+
+        // Background sync
+        _syncStart(emit);
+        unawaited(_syncChangePartnerOrder(
+          selectedTreeId,
+          e.nodeId,
+          e.relationId,
+          e.order,
+        ));
+      },
+
       // --------------------------------------------
       // D) VIEW / PROJECTION
       // --------------------------------------------
@@ -633,5 +681,49 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
       success: success,
       pendingSyncCount: nextCount < 0 ? 0 : nextCount,
     ));
+  }
+
+  Future<void> _syncChangeOrderInFamily(
+    UniqueId treeId,
+    UniqueId nodeId,
+    UniqueId relationId,
+    int order,
+  ) async {
+    try {
+      final either = await _nodeRepo.changeOrderInFamily(
+        treeId: treeId,
+        nodeId: nodeId,
+        relationId: relationId,
+        order: order,
+      );
+      either.fold(
+        (_) => _syncEnd(false),
+        (_) => _syncEnd(true),
+      );
+    } catch (_) {
+      _syncEnd(false);
+    }
+  }
+
+  Future<void> _syncChangePartnerOrder(
+    UniqueId treeId,
+    UniqueId nodeId,
+    UniqueId relationId,
+    int order,
+  ) async {
+    try {
+      final either = await _nodeRepo.changePartnerOrder(
+        treeId: treeId,
+        nodeId: nodeId,
+        relationId: relationId,
+        order: order,
+      );
+      either.fold(
+        (_) => _syncEnd(false),
+        (_) => _syncEnd(true),
+      );
+    } catch (_) {
+      _syncEnd(false);
+    }
   }
 }

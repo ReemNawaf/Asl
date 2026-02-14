@@ -1,11 +1,13 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
-import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/node/node_panel/node_alive_btn.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
+import 'package:asl/a_presentation/node/widgets/change_unknown_status.dart';
+import 'package:asl/a_presentation/node/widgets/child_order.dart';
 import 'package:asl/a_presentation/node/widgets/node_gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
 import 'package:asl/a_presentation/node/widgets/node_id_wdg.dart';
+import 'package:asl/a_presentation/node/widgets/partner_order.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_lineage.dart';
@@ -20,11 +22,13 @@ class InfoPanel extends StatelessWidget {
     required this.color,
     required this.contextDialog,
     required this.pageContext,
+    required this.type,
   });
 
   final MaterialColor color;
   final BuildContext contextDialog;
   final BuildContext pageContext;
+  final NodeType type;
 
   @override
   Widget build(BuildContext context) {
@@ -104,50 +108,28 @@ class InfoPanel extends StatelessWidget {
                           ctx: context,
                           isEditing: state.isEditing,
                         ),
-                      ),
-                    if (state.isEditing)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 34.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              node.isUnknown
-                                  ? (node.gender == Gender.male
-                                      ? getTr(
-                                          context, 'known_partner_name_male')!
-                                      : getTr(context,
-                                          'known_partner_name_female')!)
-                                  : (node.gender == Gender.male
-                                      ? getTr(context,
-                                          'unknown_partner_name_female')!
-                                      : getTr(context,
-                                          'unknown_partner_name_male')!),
-                              style: kFootnoteStyle.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  wordSpacing: 2.0),
-                            ),
-                            kHSpacer5,
-                            MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: GestureDetector(
-                                onTap: () => context.read<NodeFormBloc>().add(
-                                    NodeFormEvent.changeIsUnknown(
-                                        !node.isUnknown)),
-                                child: Text(
-                                  '${node.isUnknown ? getTr(context, "add_known_partner")! : getTr(context, 'add_unknown_partner')!}.',
-                                  style: kFootnoteStyle.copyWith(
-                                    color: color,
-                                    fontWeight: FontWeight.bold,
-                                    wordSpacing: 2.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      )
                   ],
                 ),
+                BlocBuilder<LocalTreeBloc, LocalTreeState>(
+                  builder: (context, treeState) {
+                    return Row(
+                      children: [
+                        if (node.upperFamily != null &&
+                            type != NodeType.partner)
+                          ChildPartner(
+                              node: node, treeState: treeState, state: state)
+                        else if (state.isEditing)
+                          ChangeUnknownStatus(node: node, color: color),
+                      ],
+                    );
+                  },
+                ),
+                kVSpacer10,
+                if (state.node!.relations.isNotEmpty) ...[
+                  PartnerOrder(node: node, state: state),
+                  kVSpacer10,
+                ],
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

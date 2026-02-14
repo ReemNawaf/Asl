@@ -27,7 +27,7 @@ class NotesPanel extends StatelessWidget {
               maxLines: 10,
               maxLength: NODE_BRIEF_MAX_LENGTH,
               cursorColor: kBlacksColor,
-              cursorHeight: 15.0,
+              cursorHeight: kCursorHeight,
               initialValue: state.node!.notes?.getOrCrash(),
               style: kCalloutStyle,
               readOnly: !state.isEditing,

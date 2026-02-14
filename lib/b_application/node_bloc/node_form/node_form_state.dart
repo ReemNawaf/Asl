@@ -10,12 +10,13 @@ abstract class NodeFormState with _$NodeFormState {
     required bool addPartner,
     required bool addChild,
     required int currentPanel,
+    int? childOrder,
+    Map<String, int>? partnerOrders,
     required Either<TNodeFailure, TNode>? saveFailureOrSuccessOption,
   }) = _NodeFormState;
 
   factory NodeFormState.initial() => const NodeFormState(
         showErrorMessages: AutovalidateMode.disabled,
-
         // is it editing or view
         isEditing: false,
 

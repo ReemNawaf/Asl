@@ -55,6 +55,18 @@ class LocalTreeEvent with _$LocalTreeEvent {
     required Relation relation,
   }) = _AddExistingPartner;
 
+  const factory LocalTreeEvent.changeOrderInFamily({
+    required UniqueId nodeId,
+    required UniqueId relationId,
+    required int order,
+  }) = _ChangeOrderInFamily;
+
+  const factory LocalTreeEvent.changePartnerOrder({
+    required UniqueId relationId,
+    required UniqueId nodeId,
+    required int order,
+  }) = _ChangePartnerOrder;
+
   /// Add child to an existing relation
   const factory LocalTreeEvent.addChildren({
     required List<TNode> children,

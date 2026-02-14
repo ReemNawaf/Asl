@@ -28,6 +28,8 @@ mixin _$NodeFormEvent {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -48,6 +50,8 @@ mixin _$NodeFormEvent {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -68,6 +72,8 @@ mixin _$NodeFormEvent {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -89,6 +95,8 @@ mixin _$NodeFormEvent {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -109,6 +117,8 @@ mixin _$NodeFormEvent {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -129,6 +139,8 @@ mixin _$NodeFormEvent {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -242,6 +254,8 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -265,6 +279,8 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -288,6 +304,8 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -315,6 +333,8 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -338,6 +358,8 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -361,6 +383,8 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -433,6 +457,8 @@ class _$EndedImpl implements _Ended {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -456,6 +482,8 @@ class _$EndedImpl implements _Ended {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -479,6 +507,8 @@ class _$EndedImpl implements _Ended {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -506,6 +536,8 @@ class _$EndedImpl implements _Ended {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -529,6 +561,8 @@ class _$EndedImpl implements _Ended {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -552,6 +586,8 @@ class _$EndedImpl implements _Ended {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -646,6 +682,8 @@ class _$AddedImpl implements _Added {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -669,6 +707,8 @@ class _$AddedImpl implements _Added {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -692,6 +732,8 @@ class _$AddedImpl implements _Added {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -719,6 +761,8 @@ class _$AddedImpl implements _Added {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -742,6 +786,8 @@ class _$AddedImpl implements _Added {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -765,6 +811,8 @@ class _$AddedImpl implements _Added {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -864,6 +912,8 @@ class _$EditedImpl implements _Edited {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -887,6 +937,8 @@ class _$EditedImpl implements _Edited {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -910,6 +962,8 @@ class _$EditedImpl implements _Edited {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -937,6 +991,8 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -960,6 +1016,8 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -983,6 +1041,8 @@ class _$EditedImpl implements _Edited {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -1083,6 +1143,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -1106,6 +1168,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -1129,6 +1193,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -1156,6 +1222,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -1179,6 +1247,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -1202,6 +1272,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -1302,6 +1374,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -1325,6 +1399,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -1348,6 +1424,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -1375,6 +1453,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -1398,6 +1478,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -1421,6 +1503,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -1520,6 +1604,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -1543,6 +1629,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -1566,6 +1654,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -1593,6 +1683,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -1616,6 +1708,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -1639,6 +1733,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -1739,6 +1835,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -1762,6 +1860,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -1785,6 +1885,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -1812,6 +1914,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -1835,6 +1939,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -1858,6 +1964,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -1957,6 +2065,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -1980,6 +2090,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -2003,6 +2115,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -2030,6 +2144,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -2053,6 +2169,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -2076,6 +2194,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -2176,6 +2296,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -2199,6 +2321,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -2222,6 +2346,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -2249,6 +2375,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -2272,6 +2400,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -2295,6 +2425,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -2317,6 +2449,479 @@ abstract class _ChangedIsUnknown implements NodeFormEvent {
   bool get isUnknown;
   @JsonKey(ignore: true)
   _$$ChangedIsUnknownImplCopyWith<_$ChangedIsUnknownImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeChildOrderImplCopyWith<$Res> {
+  factory _$$ChangeChildOrderImplCopyWith(_$ChangeChildOrderImpl value,
+          $Res Function(_$ChangeChildOrderImpl) then) =
+      __$$ChangeChildOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int order});
+}
+
+/// @nodoc
+class __$$ChangeChildOrderImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$ChangeChildOrderImpl>
+    implements _$$ChangeChildOrderImplCopyWith<$Res> {
+  __$$ChangeChildOrderImplCopyWithImpl(_$ChangeChildOrderImpl _value,
+      $Res Function(_$ChangeChildOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? order = null,
+  }) {
+    return _then(_$ChangeChildOrderImpl(
+      null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeChildOrderImpl implements _ChangeChildOrder {
+  const _$ChangeChildOrderImpl(this.order);
+
+  @override
+  final int order;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.changeChildOrder(order: $order)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeChildOrderImpl &&
+            (identical(other.order, order) || other.order == order));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, order);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeChildOrderImplCopyWith<_$ChangeChildOrderImpl> get copyWith =>
+      __$$ChangeChildOrderImplCopyWithImpl<_$ChangeChildOrderImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) initialized,
+    required TResult Function() ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(bool isEditing) edited,
+    required TResult Function(int panelIndex) updateCurrentPanel,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(String? notes) notesChanged,
+    required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
+    required TResult Function() saved,
+  }) {
+    return changeChildOrder(order);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? initialized,
+    TResult? Function()? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(bool isEditing)? edited,
+    TResult? Function(int panelIndex)? updateCurrentPanel,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(String? notes)? notesChanged,
+    TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
+    TResult? Function()? saved,
+  }) {
+    return changeChildOrder?.call(order);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? initialized,
+    TResult Function()? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(bool isEditing)? edited,
+    TResult Function(int panelIndex)? updateCurrentPanel,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(String? notes)? notesChanged,
+    TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (changeChildOrder != null) {
+      return changeChildOrder(order);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_UpdateCurrentPanel value) updateCurrentPanel,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_NotesChanged value) notesChanged,
+    required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return changeChildOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_NotesChanged value)? notesChanged,
+    TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return changeChildOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_NotesChanged value)? notesChanged,
+    TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (changeChildOrder != null) {
+      return changeChildOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeChildOrder implements NodeFormEvent {
+  const factory _ChangeChildOrder(final int order) = _$ChangeChildOrderImpl;
+
+  int get order;
+  @JsonKey(ignore: true)
+  _$$ChangeChildOrderImplCopyWith<_$ChangeChildOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangePartnerOrderImplCopyWith<$Res> {
+  factory _$$ChangePartnerOrderImplCopyWith(_$ChangePartnerOrderImpl value,
+          $Res Function(_$ChangePartnerOrderImpl) then) =
+      __$$ChangePartnerOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String relationId, int order});
+}
+
+/// @nodoc
+class __$$ChangePartnerOrderImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$ChangePartnerOrderImpl>
+    implements _$$ChangePartnerOrderImplCopyWith<$Res> {
+  __$$ChangePartnerOrderImplCopyWithImpl(_$ChangePartnerOrderImpl _value,
+      $Res Function(_$ChangePartnerOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? relationId = null,
+    Object? order = null,
+  }) {
+    return _then(_$ChangePartnerOrderImpl(
+      relationId: null == relationId
+          ? _value.relationId
+          : relationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
+  const _$ChangePartnerOrderImpl(
+      {required this.relationId, required this.order});
+
+  @override
+  final String relationId;
+  @override
+  final int order;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.changePartnerOrder(relationId: $relationId, order: $order)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePartnerOrderImpl &&
+            (identical(other.relationId, relationId) ||
+                other.relationId == relationId) &&
+            (identical(other.order, order) || other.order == order));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, relationId, order);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePartnerOrderImplCopyWith<_$ChangePartnerOrderImpl> get copyWith =>
+      __$$ChangePartnerOrderImplCopyWithImpl<_$ChangePartnerOrderImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) initialized,
+    required TResult Function() ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(bool isEditing) edited,
+    required TResult Function(int panelIndex) updateCurrentPanel,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(String? notes) notesChanged,
+    required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
+    required TResult Function() saved,
+  }) {
+    return changePartnerOrder(relationId, order);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? initialized,
+    TResult? Function()? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(bool isEditing)? edited,
+    TResult? Function(int panelIndex)? updateCurrentPanel,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(String? notes)? notesChanged,
+    TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
+    TResult? Function()? saved,
+  }) {
+    return changePartnerOrder?.call(relationId, order);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? initialized,
+    TResult Function()? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(bool isEditing)? edited,
+    TResult Function(int panelIndex)? updateCurrentPanel,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(String? notes)? notesChanged,
+    TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (changePartnerOrder != null) {
+      return changePartnerOrder(relationId, order);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_UpdateCurrentPanel value) updateCurrentPanel,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_NotesChanged value) notesChanged,
+    required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return changePartnerOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_NotesChanged value)? notesChanged,
+    TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return changePartnerOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_NotesChanged value)? notesChanged,
+    TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (changePartnerOrder != null) {
+      return changePartnerOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangePartnerOrder implements NodeFormEvent {
+  const factory _ChangePartnerOrder(
+      {required final String relationId,
+      required final int order}) = _$ChangePartnerOrderImpl;
+
+  String get relationId;
+  int get order;
+  @JsonKey(ignore: true)
+  _$$ChangePartnerOrderImplCopyWith<_$ChangePartnerOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2395,6 +3000,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -2418,6 +3025,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -2441,6 +3050,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -2468,6 +3079,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -2491,6 +3104,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -2514,6 +3129,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -2586,6 +3203,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -2609,6 +3228,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -2632,6 +3253,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -2659,6 +3282,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -2682,6 +3307,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -2705,6 +3332,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -2798,6 +3427,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -2821,6 +3452,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -2844,6 +3477,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -2871,6 +3506,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -2894,6 +3531,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -2917,6 +3556,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -3016,6 +3657,8 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -3039,6 +3682,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -3062,6 +3707,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -3089,6 +3736,8 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -3112,6 +3761,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -3135,6 +3786,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -3234,6 +3887,8 @@ class _$AddChildImpl implements _AddChild {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -3257,6 +3912,8 @@ class _$AddChildImpl implements _AddChild {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -3280,6 +3937,8 @@ class _$AddChildImpl implements _AddChild {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -3307,6 +3966,8 @@ class _$AddChildImpl implements _AddChild {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -3330,6 +3991,8 @@ class _$AddChildImpl implements _AddChild {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -3353,6 +4016,8 @@ class _$AddChildImpl implements _AddChild {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -3425,6 +4090,8 @@ class _$SavedImpl implements _Saved {
     required TResult Function(DateTime? date) deathDateChanged,
     required TResult Function(String? notes) notesChanged,
     required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(String relationId, int order) changePartnerOrder,
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
@@ -3448,6 +4115,8 @@ class _$SavedImpl implements _Saved {
     TResult? Function(DateTime? date)? deathDateChanged,
     TResult? Function(String? notes)? notesChanged,
     TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(String relationId, int order)? changePartnerOrder,
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
@@ -3471,6 +4140,8 @@ class _$SavedImpl implements _Saved {
     TResult Function(DateTime? date)? deathDateChanged,
     TResult Function(String? notes)? notesChanged,
     TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(String relationId, int order)? changePartnerOrder,
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
@@ -3498,6 +4169,8 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_DeathDateChanged value) deathDateChanged,
     required TResult Function(_NotesChanged value) notesChanged,
     required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
@@ -3521,6 +4194,8 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_DeathDateChanged value)? deathDateChanged,
     TResult? Function(_NotesChanged value)? notesChanged,
     TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
@@ -3544,6 +4219,8 @@ class _$SavedImpl implements _Saved {
     TResult Function(_DeathDateChanged value)? deathDateChanged,
     TResult Function(_NotesChanged value)? notesChanged,
     TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
@@ -3572,6 +4249,8 @@ mixin _$NodeFormState {
   bool get addPartner => throw _privateConstructorUsedError;
   bool get addChild => throw _privateConstructorUsedError;
   int get currentPanel => throw _privateConstructorUsedError;
+  int? get childOrder => throw _privateConstructorUsedError;
+  Map<String, int>? get partnerOrders => throw _privateConstructorUsedError;
   Either<TNodeFailure, TNode>? get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -3594,6 +4273,8 @@ abstract class $NodeFormStateCopyWith<$Res> {
       bool addPartner,
       bool addChild,
       int currentPanel,
+      int? childOrder,
+      Map<String, int>? partnerOrders,
       Either<TNodeFailure, TNode>? saveFailureOrSuccessOption});
 
   $TNodeCopyWith<$Res>? get node;
@@ -3619,6 +4300,8 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
+    Object? childOrder = freezed,
+    Object? partnerOrders = freezed,
     Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -3650,6 +4333,14 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
           ? _value.currentPanel
           : currentPanel // ignore: cast_nullable_to_non_nullable
               as int,
+      childOrder: freezed == childOrder
+          ? _value.childOrder
+          : childOrder // ignore: cast_nullable_to_non_nullable
+              as int?,
+      partnerOrders: freezed == partnerOrders
+          ? _value.partnerOrders
+          : partnerOrders // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>?,
       saveFailureOrSuccessOption: freezed == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -3686,6 +4377,8 @@ abstract class _$$NodeFormStateImplCopyWith<$Res>
       bool addPartner,
       bool addChild,
       int currentPanel,
+      int? childOrder,
+      Map<String, int>? partnerOrders,
       Either<TNodeFailure, TNode>? saveFailureOrSuccessOption});
 
   @override
@@ -3710,6 +4403,8 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
+    Object? childOrder = freezed,
+    Object? partnerOrders = freezed,
     Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_$NodeFormStateImpl(
@@ -3741,6 +4436,14 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
           ? _value.currentPanel
           : currentPanel // ignore: cast_nullable_to_non_nullable
               as int,
+      childOrder: freezed == childOrder
+          ? _value.childOrder
+          : childOrder // ignore: cast_nullable_to_non_nullable
+              as int?,
+      partnerOrders: freezed == partnerOrders
+          ? _value._partnerOrders
+          : partnerOrders // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>?,
       saveFailureOrSuccessOption: freezed == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -3760,7 +4463,10 @@ class _$NodeFormStateImpl implements _NodeFormState {
       required this.addPartner,
       required this.addChild,
       required this.currentPanel,
-      required this.saveFailureOrSuccessOption});
+      this.childOrder,
+      final Map<String, int>? partnerOrders,
+      required this.saveFailureOrSuccessOption})
+      : _partnerOrders = partnerOrders;
 
   @override
   final TNode? node;
@@ -3777,11 +4483,23 @@ class _$NodeFormStateImpl implements _NodeFormState {
   @override
   final int currentPanel;
   @override
+  final int? childOrder;
+  final Map<String, int>? _partnerOrders;
+  @override
+  Map<String, int>? get partnerOrders {
+    final value = _partnerOrders;
+    if (value == null) return null;
+    if (_partnerOrders is EqualUnmodifiableMapView) return _partnerOrders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  @override
   final Either<TNodeFailure, TNode>? saveFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, addPartner: $addPartner, addChild: $addChild, currentPanel: $currentPanel, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, addPartner: $addPartner, addChild: $addChild, currentPanel: $currentPanel, childOrder: $childOrder, partnerOrders: $partnerOrders, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -3802,6 +4520,10 @@ class _$NodeFormStateImpl implements _NodeFormState {
                 other.addChild == addChild) &&
             (identical(other.currentPanel, currentPanel) ||
                 other.currentPanel == currentPanel) &&
+            (identical(other.childOrder, childOrder) ||
+                other.childOrder == childOrder) &&
+            const DeepCollectionEquality()
+                .equals(other._partnerOrders, _partnerOrders) &&
             (identical(other.saveFailureOrSuccessOption,
                     saveFailureOrSuccessOption) ||
                 other.saveFailureOrSuccessOption ==
@@ -3818,6 +4540,8 @@ class _$NodeFormStateImpl implements _NodeFormState {
       addPartner,
       addChild,
       currentPanel,
+      childOrder,
+      const DeepCollectionEquality().hash(_partnerOrders),
       saveFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -3836,6 +4560,8 @@ abstract class _NodeFormState implements NodeFormState {
       required final bool addPartner,
       required final bool addChild,
       required final int currentPanel,
+      final int? childOrder,
+      final Map<String, int>? partnerOrders,
       required final Either<TNodeFailure, TNode>?
           saveFailureOrSuccessOption}) = _$NodeFormStateImpl;
 
@@ -3853,6 +4579,10 @@ abstract class _NodeFormState implements NodeFormState {
   bool get addChild;
   @override
   int get currentPanel;
+  @override
+  int? get childOrder;
+  @override
+  Map<String, int>? get partnerOrders;
   @override
   Either<TNodeFailure, TNode>? get saveFailureOrSuccessOption;
   @override

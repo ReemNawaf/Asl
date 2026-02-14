@@ -71,6 +71,7 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
                   child: TextField(
                     controller: textController,
                     focusNode: focusNode,
+                    cursorHeight: kCursorHeight,
                     textAlign: TextAlign.right,
                     decoration: kSearchBarInputDecor(context),
                   ),

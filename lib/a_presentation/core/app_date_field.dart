@@ -64,7 +64,7 @@ class AppDateField extends StatelessWidget {
             child: TextFormField(
               style: kBodyMedium.copyWith(color: kBlacksColor),
               cursorColor: kRootColors,
-              cursorHeight: 20.0,
+              cursorHeight: kCursorHeight,
               controller: dateController,
               decoration: kAppFormsInputDecor(
                 hint: hint,

@@ -27,7 +27,7 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
     await event.map(
       initialized: (e) {
         emit(state.copyWith(
-          node: e.node.copyWith(notes: e.node.notes ?? NodeNotes('input')),
+          node: e.node.copyWith(notes: e.node.notes ?? NodeNotes('')),
           isSaving: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
@@ -128,6 +128,22 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
       makeItRoot: (e) {
         emit(state.copyWith(
           node: state.node!.copyWith(isTreeRoot: true),
+          isSaving: false,
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: null,
+        ));
+      },
+      changeChildOrder: (e) {
+        emit(state.copyWith(
+          childOrder: e.order,
+          isSaving: false,
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: null,
+        ));
+      },
+      changePartnerOrder: (e) {
+        emit(state.copyWith(
+          partnerOrders: {...state.partnerOrders ?? {}, e.relationId: e.order},
           isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: null,

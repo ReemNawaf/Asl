@@ -100,6 +100,106 @@ TreeGraphStore linkRelationToNode(
   );
 }
 
+/// Local mutation for changing the order of a child in a relation's children list:
+/// - Finds the child nodeId in the relation's children list
+/// - Removes it from its current position
+/// - Inserts it at the new order position
+/// - Updates both the relation snapshot and the childrenIdsByRelationId index
+TreeGraphStore applyChangeOrderInFamily({
+  required TreeGraphStore store,
+  required UniqueId relationId,
+  required UniqueId nodeId,
+  required int order,
+}) {
+  final rKey = relationId.asKey();
+  final nodeKey = nodeId.asKey();
+
+  // Get the relation
+  final relation = store.relationsById[rKey];
+  if (relation == null) {
+    // Relation not found, return store unchanged
+    return store;
+  }
+
+  // Get current children list
+  final currentChildren = List<UniqueId>.from(relation.children);
+
+  // Find the index of the node to reorder
+  final currentIndex = currentChildren.indexWhere(
+    (id) => id.asKey() == nodeKey,
+  );
+
+  if (currentIndex == -1) {
+    // Node not found in children list, return store unchanged
+    return store;
+  }
+
+  // Remove from current position
+  currentChildren.removeAt(currentIndex);
+
+  // Clamp order to valid range
+  final clampedOrder = order.clamp(0, currentChildren.length);
+
+  // Insert at new position
+  currentChildren.insert(clampedOrder, nodeId);
+
+  // Update relation with new children order
+  final updatedRelation = relation.copyWith(children: currentChildren);
+
+  // Upsert the relation (this updates both relationsById and childrenIdsByRelationId)
+  return upsertRelation(store, updatedRelation);
+}
+
+/// Local mutation for changing the order of a relation in a node's relations list:
+/// - Finds the relationId in the node's relations list
+/// - Removes it from its current position
+/// - Inserts it at the new order position
+/// - Updates both the node snapshot and the relationIdsByNodeId index
+TreeGraphStore applyChangePartnerOrder({
+  required TreeGraphStore store,
+  required UniqueId nodeId,
+  required UniqueId relationId,
+  required int order,
+}) {
+  final nodeKey = nodeId.asKey();
+  final relationKey = relationId.asKey();
+
+  // Get the node
+  final node = store.nodesById[nodeKey];
+  if (node == null) {
+    // Node not found, return store unchanged
+    return store;
+  }
+
+  // Get current relations list
+  final currentRelations = List<UniqueId>.from(node.relations);
+
+  // Find the index of the relationId to reorder
+  final currentIndex = currentRelations.indexWhere(
+    (id) => id.asKey() == relationKey,
+  );
+
+  if (currentIndex == -1) {
+    // Relation not found in node's relations list, return store unchanged
+    return store;
+  }
+
+  // Remove from current position
+  currentRelations.removeAt(currentIndex);
+
+  // Clamp order to valid range
+  final clampedOrder = order.clamp(0, currentRelations.length);
+
+  // Insert at new position
+  currentRelations.insert(clampedOrder, relationId);
+
+  // Update node with new relations order
+  final updatedNode = node.copyWith(relations: currentRelations);
+
+  // Upsert the node (this updates both nodesById and relationIdsByNodeId)
+  return upsertNode(store, updatedNode);
+}
+
 /// Local mutation for adding partners + relations (lists):
 /// - upsert each partner node
 /// - upsert each relation (children ids list)

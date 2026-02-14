@@ -174,6 +174,10 @@
     "known_partner_name_male": "The husband name was provided",
 
     "add_known_partner": "Add with name",
-    "no_name_provided": "No name was provided"
-
+    "no_name_provided": "No name was provided",
+    "siblings": "Siblings",
+    "brothers_and_sisters_from_step_mother": "Brothers and sisters from step mother",
+    "brothers_and_sisters_from_step_father": "Brothers and sisters from step father",
+    "order_in_the_family_female": "His order in the family",
+    "order_in_the_family_male": "Her order in the family"
   }

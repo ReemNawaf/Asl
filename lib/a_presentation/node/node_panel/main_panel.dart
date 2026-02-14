@@ -36,15 +36,22 @@ class MainPanel extends StatelessWidget {
   final bool hasImage;
   final BuildContext pageContext;
 
-  bool showEditingIcon(NodeFormState state) {
-    // if the panel is not editing, and not in the second tab, and user is authenticated, then show the icon
-    return !state.isEditing && state.currentPanel != 1;
-  }
+  bool showEditingIcon(NodeFormState state) =>
+      !state.isEditing && state.currentPanel != 1;
 
   @override
   Widget build(BuildContext context) {
     debugPrint('LOG | Node ${node.firstName.getOrCrash()} is opened');
 
+    int numberOfTabs = 4;
+    if (type == NodeType.partner) {
+      numberOfTabs--;
+    }
+    if (node.upperFamily == null) {
+      numberOfTabs--;
+    }
+
+    // Here the actual call for backend update for node, partners and children
     return MultiBlocListener(
       listeners: [
         BlocListener<NodeFormBloc, NodeFormState>(
@@ -52,9 +59,20 @@ class MainPanel extends StatelessWidget {
             state.saveFailureOrSuccessOption?.fold(
               (_) {},
               // send updated node to LocalTreeBloc
-              (unit) => ctx
-                  .read<LocalTreeBloc>()
-                  .add(LocalTreeEvent.updateNode(node: unit)),
+              (unit) {
+                ctx
+                    .read<LocalTreeBloc>()
+                    .add(LocalTreeEvent.updateNode(node: unit));
+                if (node.upperFamily != null && state.childOrder != null) {
+                  ctx
+                      .read<LocalTreeBloc>()
+                      .add(LocalTreeEvent.changeOrderInFamily(
+                        nodeId: node.nodeId,
+                        relationId: node.upperFamily!,
+                        order: state.childOrder!,
+                      ));
+                }
+              },
             );
           },
         ),
@@ -122,7 +140,7 @@ class MainPanel extends StatelessWidget {
 
               //  Make Tabs
               child: DefaultTabController(
-                length: type != NodeType.partner ? 4 : 3,
+                length: numberOfTabs,
                 child: SizedBox(
                   width: PAN_WIDTH,
                   height: PAN_HEIGHT,
@@ -161,9 +179,10 @@ class MainPanel extends StatelessWidget {
                                 isScrollable: true,
                                 tabs: [
                                   Tab(text: getTr(context, 'personal_info')),
-                                  Tab(
-                                      text: getTr(
-                                          context, 'parents_and_siblings')),
+                                  if (node.upperFamily != null)
+                                    Tab(
+                                        text: getTr(
+                                            context, 'parents_and_siblings')),
                                   if (type != NodeType.partner)
                                     Tab(
                                         text:
@@ -208,16 +227,18 @@ class MainPanel extends StatelessWidget {
                                   InfoPanel(
                                       color: color,
                                       contextDialog: context,
-                                      pageContext: pageContext),
-                                  ParentsSiblingsPanel(
-                                    personId: node.nodeId,
-                                    treeId: node.treeId,
-                                    store: context
-                                        .read<LocalTreeBloc>()
-                                        .state
-                                        .store,
-                                    color: color,
-                                  ),
+                                      pageContext: pageContext,
+                                      type: type),
+                                  if (node.upperFamily != null)
+                                    ParentsSiblingsPanel(
+                                      personId: node.nodeId,
+                                      treeId: node.treeId,
+                                      store: context
+                                          .read<LocalTreeBloc>()
+                                          .state
+                                          .store,
+                                      color: color,
+                                    ),
                                   if (type != NodeType.partner)
                                     RelationsPanel(color: color, node: node),
                                   NotesPanel(color: color),

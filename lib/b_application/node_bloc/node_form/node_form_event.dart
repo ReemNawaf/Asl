@@ -23,6 +23,10 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.changeIsUnknown(bool isUnknown) =
       _ChangedIsUnknown;
 
+  const factory NodeFormEvent.changeChildOrder(int order) = _ChangeChildOrder;
+  const factory NodeFormEvent.changePartnerOrder(
+      {required String relationId, required int order}) = _ChangePartnerOrder;
+
   const factory NodeFormEvent.changeIsAvlive(bool isAlive) = _ChangedIsAvlive;
   const factory NodeFormEvent.makeItRoot() = _MakeItRoot;
   const factory NodeFormEvent.changeGender(Gender gender) = _ChangedGender;

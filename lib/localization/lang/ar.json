@@ -175,6 +175,11 @@
 
   "add_known_partner": "أضف بالاسم",
 
-  "no_name_provided": "لم يذكر الاسم"
+  "no_name_provided": "لم يذكر الاسم",
+  "siblings": "الأشقاء",
+  "brothers_and_sisters_from_step_mother": "الأخوان والأخوات من زوجة الأب",
+  "brothers_and_sisters_from_step_father": "الأخوان والأخوات من زوج الأم",
+  "order_in_the_family_female": "ترتيبها في العائلة",
+  "order_in_the_family_male": "ترتيبه في العائلة"
 
 }

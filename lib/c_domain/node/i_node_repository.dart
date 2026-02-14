@@ -10,10 +10,17 @@ abstract class INodeRepository {
   Future<Either<TNodeFailure, Unit>> update(
       {required UniqueId treeId, required TNode node});
 
-  Future<Either<TNodeFailure, Unit>> changeIsUnknown(
+  Future<Either<TNodeFailure, Unit>> changeOrderInFamily(
       {required UniqueId treeId,
+      required UniqueId relationId,
       required UniqueId nodeId,
-      required bool isUnknown});
+      required int order});
+  Future<Either<TNodeFailure, Unit>> changePartnerOrder({
+    required UniqueId nodeId,
+    required UniqueId relationId,
+    required int order,
+    required UniqueId treeId,
+  });
 
   Future<Either<TNodeFailure, Unit>> delete(
       {required UniqueId treeId, required UniqueId nodeId});

@@ -67,6 +67,9 @@ const kHSpacer60 = SizedBox(width: 60.0);
 
 const kAppHPadding = EdgeInsets.symmetric(horizontal: 24.0);
 
+const kCursorHeight = 18.0;
+const kTextFieldHeight = 35.0;
+
 final kRoundedRectangleBorder = RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(14.0),
     side: const BorderSide(
