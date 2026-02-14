@@ -184,14 +184,11 @@ class _InteractiveViewState extends State<InteractiveView> {
         return BlocListener<DrawTreeBloc, DrawTreeState>(
           listenWhen: (previous, current) {
             // Listen when graph becomes ready and we need to navigate
-
             return _shouldNavigateToRoot &&
                 current.graph != null &&
                 current.builder != null;
           },
           listener: (context, state) {
-            print('000000000');
-
             if (_shouldNavigateToRoot && treeState.focusRootId != null) {
               _shouldNavigateToRoot = false;
               final rootId = treeState.focusRootId!.getOrCrash();

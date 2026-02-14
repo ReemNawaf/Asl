@@ -36,8 +36,7 @@ class MainPanel extends StatelessWidget {
   final bool hasImage;
   final BuildContext pageContext;
 
-  bool showEditingIcon(NodeFormState state) =>
-      !state.isEditing && state.currentPanel != 1;
+  bool showEditingIcon(NodeFormState state) => !state.isEditing;
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
-import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/app_btn.dart';
-import 'package:asl/a_presentation/core/widgets/icon_btn.dart';
 import 'package:asl/a_presentation/core/widgets/sm_app_btn.dart';
 import 'package:asl/a_presentation/home/widgets/share_settings_section.dart';
 import 'package:asl/a_presentation/home/widgets/tree_settings_section.dart';
@@ -34,16 +32,15 @@ class SettingsButton extends StatelessWidget {
 }
 
 Future<dynamic> showSettingsPanel(BuildContext contextPage) {
-  final local = Localizations.localeOf(contextPage);
-
   return showDialog(
     context: contextPage,
     useRootNavigator: false,
     builder: (BuildContext dialogContext) {
       return BlocBuilder<LocalTreeBloc, LocalTreeState>(
           builder: (context, state) {
-        final showTreeSettings = state.selectedTreeId != null;
-
+        final showTreeSettings = state.settings != null && !state.isLoadingTree;
+        print(
+            '--- showTreeSettings: ${state.settings}, isLoadingTree: ${state.isLoadingTree}');
         return Scaffold(
           backgroundColor: Colors.transparent,
           body: AlertDialog(
@@ -55,7 +52,7 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                 alignment: Alignment.topRight,
                 padding: const EdgeInsets.all(16.0),
                 width: PAN_SM_WIDTH,
-                height: PAN_SM_HEIGHT,
+                height: PAN_SM_HEIGHT - 20,
                 child: Column(
                   children: [
                     if (showTreeSettings) ...[

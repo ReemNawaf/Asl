@@ -99,7 +99,7 @@ class PartnerOrder extends StatelessWidget {
                       ),
                     ),
                     kHSpacer20,
-                    Text('حالة الزواج'),
+                    Text(getTr(context, 'marriage_status')!),
                   ],
                 );
               },
