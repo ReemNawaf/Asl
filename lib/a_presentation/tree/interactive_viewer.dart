@@ -17,6 +17,7 @@ class InteractiveView extends StatefulWidget {
 
 class _InteractiveViewState extends State<InteractiveView> {
   String? _currentRootId;
+  bool _shouldNavigateToRoot = true;
 
   // ── Pan / Zoom state ──
   Offset _pan = Offset.zero; // translation in viewport coords
@@ -180,103 +181,135 @@ class _InteractiveViewState extends State<InteractiveView> {
           });
         }
 
-        return BlocBuilder<DrawTreeBloc, DrawTreeState>(
-            builder: (context, drawTreeState) {
-          // Show loading when graph is not ready
-          if (drawTreeState.graph == null || drawTreeState.builder == null) {
-            return const Center(
-              child: DescriptiveLoadingWidget(
-                loading: TreeDisplayLoading.DrawTree,
-              ),
-            );
-          }
-          return BlocListener<LocalTreeBloc, LocalTreeState>(
-              // Listen for store changes (when nodes are updated)
-              listenWhen: (prev, curr) {
-                // Redraw tree when store changes (node updates, additions, deletions)
-                return prev.store != curr.store &&
-                    curr.focusRootId != null &&
-                    curr.store.nodesById.isNotEmpty;
-              },
-              listener: (context, state) {
-                // Redraw tree with updated store
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (mounted && state.focusRootId != null) {
-                    context.read<DrawTreeBloc>().add(
-                          DrawTreeEvent.drawNewTree(
-                            store: state.store,
-                            rootId: state.focusRootId!,
-                            maxGenerations: NUM_GEN_OPTIONS[state
-                                .settings!.numberOfGenerationOpt]['number'],
-                            context: context,
-                          ),
-                        );
-                  }
-                });
-              },
-              child: BlocListener<TreeZoomBloc, TreeZoomState>(
-                listenWhen: (prev, curr) =>
-                    (curr.zoomScale - prev.zoomScale).abs() > 0.0001,
-                listener: (context, state) {
-                  _handleSliderZoom(state.zoomScale);
-                },
-                child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
-                  listenWhen: (prev, curr) =>
-                      prev.numberOfGenerations != curr.numberOfGenerations,
-                  listener: (context, state) {
-                    debugPrint('🔄 Reset due to generation change');
+        return BlocListener<DrawTreeBloc, DrawTreeState>(
+          listenWhen: (previous, current) {
+            // Listen when graph becomes ready and we need to navigate
 
-                    // Reset zoom/pan
-                    setState(() {
-                      _scale = ZOOM_DEF;
-                      _pan = Offset.zero;
+            return _shouldNavigateToRoot &&
+                current.graph != null &&
+                current.builder != null;
+          },
+          listener: (context, state) {
+            print('000000000');
+
+            if (_shouldNavigateToRoot && treeState.focusRootId != null) {
+              _shouldNavigateToRoot = false;
+              final rootId = treeState.focusRootId!.getOrCrash();
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (mounted) {
+                  // Try to navigate to root, with retries if needed
+                  final drawTreeBloc = context.read<DrawTreeBloc>();
+                  final navigated = drawTreeBloc.navigateToNode(rootId);
+                  if (!navigated) {
+                    // If navigation failed (node keys not ready yet), retry after a short delay
+                    Future.delayed(const Duration(milliseconds: 200), () {
+                      if (mounted) {
+                        drawTreeBloc.navigateToNode(rootId);
+                      }
                     });
-                    _syncController();
-
-                    if (treeState.focusRootId != null) {
-                      debugPrint('REDRAWING TREE | ${treeState.focusRootId}');
+                  }
+                }
+              });
+            }
+          },
+          child: BlocBuilder<DrawTreeBloc, DrawTreeState>(
+              builder: (context, drawTreeState) {
+            // Show loading when graph is not ready
+            if (drawTreeState.graph == null || drawTreeState.builder == null) {
+              return const Center(
+                child: DescriptiveLoadingWidget(
+                  loading: TreeDisplayLoading.DrawTree,
+                ),
+              );
+            }
+            return BlocListener<LocalTreeBloc, LocalTreeState>(
+                // Listen for store changes (when nodes are updated)
+                listenWhen: (prev, curr) {
+                  // Redraw tree when store changes (node updates, additions, deletions)
+                  return prev.store != curr.store &&
+                      curr.focusRootId != null &&
+                      curr.store.nodesById.isNotEmpty;
+                },
+                listener: (context, state) {
+                  // Redraw tree with updated store
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (mounted && state.focusRootId != null) {
                       context.read<DrawTreeBloc>().add(
                             DrawTreeEvent.drawNewTree(
-                              store: treeState.store,
-                              rootId: treeState.focusRootId!,
-                              maxGenerations:
-                                  NUM_GEN_OPTIONS[state.numberOfGenerations]
-                                      ['number'],
+                              store: state.store,
+                              rootId: state.focusRootId!,
+                              maxGenerations: NUM_GEN_OPTIONS[state
+                                  .settings!.numberOfGenerationOpt]['number'],
                               context: context,
                             ),
                           );
                     }
+                  });
+                },
+                child: BlocListener<TreeZoomBloc, TreeZoomState>(
+                  listenWhen: (prev, curr) =>
+                      (curr.zoomScale - prev.zoomScale).abs() > 0.0001,
+                  listener: (context, state) {
+                    _handleSliderZoom(state.zoomScale);
                   },
-                  // ── Replace InteractiveViewer with manual Transform ──
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return GestureDetector(
-                        key: _viewportKey,
-                        onScaleStart: _onScaleStart,
-                        onScaleUpdate: _onScaleUpdate,
-                        onScaleEnd: _onScaleEnd,
-                        behavior: HitTestBehavior.opaque,
-                        child: ClipRect(
-                          child: OverflowBox(
-                            alignment: Alignment.topLeft,
-                            minWidth: 0,
-                            minHeight: 0,
-                            maxWidth: double.infinity,
-                            maxHeight: double.infinity,
-                            child: Transform(
-                              transform: Matrix4.identity()
-                                ..translate(_pan.dx, _pan.dy)
-                                ..scale(_scale),
-                              child: const TreeView(),
+                  child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
+                    listenWhen: (prev, curr) =>
+                        prev.numberOfGenerations != curr.numberOfGenerations,
+                    listener: (context, state) {
+                      debugPrint('🔄 Reset due to generation change');
+
+                      // Reset zoom/pan
+                      setState(() {
+                        _scale = ZOOM_DEF;
+                        _pan = Offset.zero;
+                      });
+                      _syncController();
+
+                      if (treeState.focusRootId != null) {
+                        debugPrint('REDRAWING TREE | ${treeState.focusRootId}');
+                        context.read<DrawTreeBloc>().add(
+                              DrawTreeEvent.drawNewTree(
+                                store: treeState.store,
+                                rootId: treeState.focusRootId!,
+                                maxGenerations:
+                                    NUM_GEN_OPTIONS[state.numberOfGenerations]
+                                        ['number'],
+                                context: context,
+                              ),
+                            );
+                      }
+                    },
+                    // ── Replace InteractiveViewer with manual Transform ──
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return GestureDetector(
+                          key: _viewportKey,
+                          onScaleStart: _onScaleStart,
+                          onScaleUpdate: _onScaleUpdate,
+                          onScaleEnd: _onScaleEnd,
+                          behavior: HitTestBehavior.opaque,
+                          child: ClipRect(
+                            child: OverflowBox(
+                              alignment: Alignment.topLeft,
+                              minWidth: 0,
+                              minHeight: 0,
+                              maxWidth: double.infinity,
+                              maxHeight: double.infinity,
+                              child: Transform(
+                                transform: Matrix4.identity()
+                                  ..translate(_pan.dx, _pan.dy)
+                                  ..scale(_scale),
+                                child: const TreeView(),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ));
-        });
+                ));
+          }),
+        );
       },
     );
   }

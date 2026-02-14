@@ -2,7 +2,7 @@ import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 
-const int MIM_HEIGHT = 690;
+const int MIM_HEIGHT = 640;
 const int MIM_WIDTH = 1050;
 const double PAN_HEIGHT = 500;
 const double PAN_SM_HEIGHT = 580;
@@ -12,7 +12,7 @@ const int NODE_BRIEF_MAX_LENGTH = 5000;
 
 const MIN_ZOOM = 0.05;
 const MAX_ZOOM = 2.0;
-const ZOOM_DEF = 1.0;
+const ZOOM_DEF = 0.5;
 
 const double transactionCardHeight = 75.0;
 

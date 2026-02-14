@@ -56,11 +56,10 @@ class SmallAppButton extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: 20.0,
                       width: 20.0,
                       child: icon ?? const SizedBox(),
                     ),
-                    kHSpacer10,
+                    kHSpacer5,
                     text,
                   ],
                 )),

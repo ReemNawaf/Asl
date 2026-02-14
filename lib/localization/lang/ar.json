@@ -137,49 +137,40 @@
   "show_unknown_description": "إظهار الأعضاء المجهولين على الشجرة",
   "choose_display_language": "اختر لغة العرض",
   "display": "عرض",
-   "add": "إضافة",
+  "add": "إضافة",
   "create_family_tree": "إنشاء شجرة عائلة",
   "root_has_no_parents_siblings": "هذا العضو هو جذر العائلة. لا توجد معلومات عن الوالدين والأخوة",
   "children_under_father_tree": "الأبناء تحت\nشجرة الأب",
   "brief_about_the_member": "نبذة عن العضو",
   "brief_too_long": "النبذة طويلة جدًا",
   "write_about_the_member": "اكتب عن العضو",
-  "load_all_trees": "جاري تحميل كل الأشجار", 
+  "load_all_trees": "جاري تحميل كل الأشجار",
   "load_tree_nodes": "جاري تحميل معلومات أعضاء الشجرة",
   "draw_tree": "جاري رسم الشجرة",
   "sorry_there_is_no_tree_under_this_link": "نعتذر لا توجد شجرة بهذا العنوان",
   "the_link_is_incorrect_or_tree_is_not_available": "قد يكون الرابط غير صحيح أو أن الشجرة ليست متاحة للمشاركة",
   "ask_tree_editor_to_send_the_right_link": "اسأل محرر الشجرة لإرسال الرابط الصحيح",
   "go_to_home_page": "العودة للصفحة الرئيسية",
-  
   "network_error_short": "تعذّر الاتصال بالإنترنت.",
   "network_error_long": "تأكّد من اتصال الشبكة ثم حاول مرة أخرى.",
-
   "unexpected_long": "جرّب مرة أخرى، وإذا استمرت المشكلة تواصل معنا.",
   "unexpected_short": "حدث خطأ غير متوقع.",
-
   "unable_to_update_short": "تعذّر حفظ التغييرات.",
   "unable_to_update_long": "حاول بعد قليل، أو أعد فتح الصفحة إذا لم تُحل المشكلة.",
-
   "insufficient_permission_short": "ليس لديك صلاحية لتنفيذ هذه العملية.",
   "insufficient_permission_long": "اطلب من مالك الشجرة منحك صلاحية الوصول.",
-
   "go_to_main_tree": "عد إلى الشجرة الأصلية",
-
   "unknown_partner_name_female": "لم يذكر اسم الزوجة",
   "unknown_partner_name_male": "لم يذكر اسم الزوج",
   "add_unknown_partner": "أضف بدون اسم",
-
   "known_partner_name_female": "ذكر اسم الزوجة",
   "known_partner_name_male": "ذكر اسم الزوج",
-
   "add_known_partner": "أضف بالاسم",
-
   "no_name_provided": "لم يذكر الاسم",
   "siblings": "الأشقاء",
   "brothers_and_sisters_from_step_mother": "الأخوان والأخوات من زوجة الأب",
   "brothers_and_sisters_from_step_father": "الأخوان والأخوات من زوج الأم",
   "order_in_the_family_female": "ترتيبها في العائلة",
-  "order_in_the_family_male": "ترتيبه في العائلة"
-
+  "order_in_the_family_male": "ترتيبه في العائلة",
+  "logout": "تسجيل الخروج"
 }

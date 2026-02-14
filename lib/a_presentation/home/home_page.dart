@@ -2,12 +2,10 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/home/home_page_center.dart';
 import 'package:asl/a_presentation/home/tree_search_bar.dart';
 import 'package:asl/a_presentation/home/widgets/side_bar.dart';
-import 'package:asl/a_presentation/routes/app_router.dart';
+import 'package:asl/a_presentation/home/widgets/tree_info_panel.dart';
 import 'package:asl/a_presentation/splash/small_screen_page.dart';
-import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/zoom_bloc/tree_zoom_bloc.dart';
-import 'package:asl/localization/localization_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,26 +39,7 @@ class HomePage extends StatelessWidget {
                         children: [
                           HomePageCenter(size: size, state: state),
                           const TreeSearchBar(),
-                          Container(
-                            width: state.hideSidbar
-                                ? size.width * (SIDE_BAR_WIDTH + CENTER_WIDTH) -
-                                    ARROW_BTN_WIDTH
-                                : size.width * CENTER_WIDTH,
-                            alignment: local.languageCode == arabic
-                                ? Alignment.bottomLeft
-                                : Alignment.bottomRight,
-                            padding:
-                                const EdgeInsets.only(left: 20, bottom: 18),
-                            child: IconButton(
-                              icon: const Icon(Icons.logout_outlined),
-                              onPressed: () {
-                                context
-                                    .read<AuthBloc>()
-                                    .add(const AuthEvent.singedOut());
-                                context.router.push(const AuthRoute());
-                              },
-                            ),
-                          ),
+                          TreeInfoPanel(size: size, local: local, state: state),
                           Container(
                             width: 150,
                             padding: EdgeInsets.only(
