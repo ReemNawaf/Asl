@@ -67,6 +67,11 @@ class LocalTreeEvent with _$LocalTreeEvent {
     required int order,
   }) = _ChangePartnerOrder;
 
+  const factory LocalTreeEvent.changePartnerMarriageStatus({
+    required UniqueId relationId,
+    required MarriageStatus status,
+  }) = _ChangePartnerMarriageStatus;
+
   /// Add child to an existing relation
   const factory LocalTreeEvent.addChildren({
     required List<TNode> children,

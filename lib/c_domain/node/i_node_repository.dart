@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
@@ -20,6 +21,12 @@ abstract class INodeRepository {
     required UniqueId relationId,
     required int order,
     required UniqueId treeId,
+  });
+
+  Future<Either<TNodeFailure, Unit>> changePartnerMarriageStatus({
+    required UniqueId treeId,
+    required UniqueId relationId,
+    required MarriageStatus status,
   });
 
   Future<Either<TNodeFailure, Unit>> delete(

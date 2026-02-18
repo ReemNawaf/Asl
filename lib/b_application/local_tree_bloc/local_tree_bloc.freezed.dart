@@ -34,6 +34,8 @@ mixin _$LocalTreeEvent {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -64,6 +66,8 @@ mixin _$LocalTreeEvent {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -94,6 +98,8 @@ mixin _$LocalTreeEvent {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -120,6 +126,8 @@ mixin _$LocalTreeEvent {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -146,6 +154,8 @@ mixin _$LocalTreeEvent {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -171,6 +181,8 @@ mixin _$LocalTreeEvent {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -264,6 +276,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -297,6 +311,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -330,6 +346,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -362,6 +380,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -391,6 +411,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -419,6 +441,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -530,6 +554,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -563,6 +589,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -596,6 +624,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -628,6 +658,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -657,6 +689,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -685,6 +719,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -810,6 +846,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -843,6 +881,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -876,6 +916,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -908,6 +950,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -937,6 +981,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -965,6 +1011,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -1112,6 +1160,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -1145,6 +1195,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -1178,6 +1230,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -1210,6 +1264,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -1239,6 +1295,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -1267,6 +1325,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -1395,6 +1455,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -1428,6 +1490,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -1461,6 +1525,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -1493,6 +1559,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -1522,6 +1590,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -1550,6 +1620,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -1666,6 +1738,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -1699,6 +1773,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -1732,6 +1808,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -1764,6 +1842,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -1793,6 +1873,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -1821,6 +1903,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -1948,6 +2032,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -1981,6 +2067,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -2014,6 +2102,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -2046,6 +2136,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -2075,6 +2167,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -2103,6 +2197,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -2270,6 +2366,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -2303,6 +2401,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -2336,6 +2436,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -2368,6 +2470,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -2397,6 +2501,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -2425,6 +2531,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -2589,6 +2697,8 @@ class _$AddExistingPartnerImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -2622,6 +2732,8 @@ class _$AddExistingPartnerImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -2655,6 +2767,8 @@ class _$AddExistingPartnerImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -2687,6 +2801,8 @@ class _$AddExistingPartnerImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -2716,6 +2832,8 @@ class _$AddExistingPartnerImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -2744,6 +2862,8 @@ class _$AddExistingPartnerImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -2888,6 +3008,8 @@ class _$ChangeOrderInFamilyImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -2921,6 +3043,8 @@ class _$ChangeOrderInFamilyImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -2954,6 +3078,8 @@ class _$ChangeOrderInFamilyImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -2986,6 +3112,8 @@ class _$ChangeOrderInFamilyImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -3015,6 +3143,8 @@ class _$ChangeOrderInFamilyImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -3043,6 +3173,8 @@ class _$ChangeOrderInFamilyImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -3187,6 +3319,8 @@ class _$ChangePartnerOrderImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -3220,6 +3354,8 @@ class _$ChangePartnerOrderImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -3253,6 +3389,8 @@ class _$ChangePartnerOrderImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -3285,6 +3423,8 @@ class _$ChangePartnerOrderImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -3314,6 +3454,8 @@ class _$ChangePartnerOrderImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -3342,6 +3484,8 @@ class _$ChangePartnerOrderImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -3373,6 +3517,311 @@ abstract class _ChangePartnerOrder implements LocalTreeEvent {
   @JsonKey(ignore: true)
   _$$ChangePartnerOrderImplCopyWith<_$ChangePartnerOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangePartnerMarriageStatusImplCopyWith<$Res> {
+  factory _$$ChangePartnerMarriageStatusImplCopyWith(
+          _$ChangePartnerMarriageStatusImpl value,
+          $Res Function(_$ChangePartnerMarriageStatusImpl) then) =
+      __$$ChangePartnerMarriageStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniqueId relationId, MarriageStatus status});
+}
+
+/// @nodoc
+class __$$ChangePartnerMarriageStatusImplCopyWithImpl<$Res>
+    extends _$LocalTreeEventCopyWithImpl<$Res,
+        _$ChangePartnerMarriageStatusImpl>
+    implements _$$ChangePartnerMarriageStatusImplCopyWith<$Res> {
+  __$$ChangePartnerMarriageStatusImplCopyWithImpl(
+      _$ChangePartnerMarriageStatusImpl _value,
+      $Res Function(_$ChangePartnerMarriageStatusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? relationId = null,
+    Object? status = null,
+  }) {
+    return _then(_$ChangePartnerMarriageStatusImpl(
+      relationId: null == relationId
+          ? _value.relationId
+          : relationId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MarriageStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangePartnerMarriageStatusImpl
+    with DiagnosticableTreeMixin
+    implements _ChangePartnerMarriageStatus {
+  const _$ChangePartnerMarriageStatusImpl(
+      {required this.relationId, required this.status});
+
+  @override
+  final UniqueId relationId;
+  @override
+  final MarriageStatus status;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LocalTreeEvent.changePartnerMarriageStatus(relationId: $relationId, status: $status)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'LocalTreeEvent.changePartnerMarriageStatus'))
+      ..add(DiagnosticsProperty('relationId', relationId))
+      ..add(DiagnosticsProperty('status', status));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePartnerMarriageStatusImpl &&
+            (identical(other.relationId, relationId) ||
+                other.relationId == relationId) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, relationId, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePartnerMarriageStatusImplCopyWith<_$ChangePartnerMarriageStatusImpl>
+      get copyWith => __$$ChangePartnerMarriageStatusImplCopyWithImpl<
+          _$ChangePartnerMarriageStatusImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
+    required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
+    required TResult Function(Tree tree, TNode root) createTree,
+    required TResult Function(Tree tree) updateTree,
+    required TResult Function(UniqueId treeId) deleteTree,
+    required TResult Function(TNode node) updateNode,
+    required TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)
+        addPartners,
+    required TResult Function(TNode node, UniqueId partnerId, Relation relation)
+        addExistingPartner,
+    required TResult Function(UniqueId nodeId, UniqueId relationId, int order)
+        changeOrderInFamily,
+    required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
+        changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
+    required TResult Function(List<TNode> children) addChildren,
+    required TResult Function(UniqueId nodeId) deleteNode,
+    required TResult Function(List<TNode> children) deleteChildren,
+    required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeId) changeFocusRoot,
+    required TResult Function() resetFocusRoot,
+    required TResult Function(int generations) changeGenerationLimit,
+    required TResult Function(bool show) toggleShowUnknown,
+    required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
+  }) {
+    return changePartnerMarriageStatus(relationId, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
+    TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult? Function(Tree tree, TNode root)? createTree,
+    TResult? Function(Tree tree)? updateTree,
+    TResult? Function(UniqueId treeId)? deleteTree,
+    TResult? Function(TNode node)? updateNode,
+    TResult? Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult? Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult? Function(UniqueId nodeId, UniqueId relationId, int order)?
+        changeOrderInFamily,
+    TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
+        changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
+    TResult? Function(List<TNode> children)? addChildren,
+    TResult? Function(UniqueId nodeId)? deleteNode,
+    TResult? Function(List<TNode> children)? deleteChildren,
+    TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeId)? changeFocusRoot,
+    TResult? Function()? resetFocusRoot,
+    TResult? Function(int generations)? changeGenerationLimit,
+    TResult? Function(bool show)? toggleShowUnknown,
+    TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
+  }) {
+    return changePartnerMarriageStatus?.call(relationId, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
+    TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult Function(Tree tree, TNode root)? createTree,
+    TResult Function(Tree tree)? updateTree,
+    TResult Function(UniqueId treeId)? deleteTree,
+    TResult Function(TNode node)? updateNode,
+    TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult Function(UniqueId nodeId, UniqueId relationId, int order)?
+        changeOrderInFamily,
+    TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
+        changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
+    TResult Function(List<TNode> children)? addChildren,
+    TResult Function(UniqueId nodeId)? deleteNode,
+    TResult Function(List<TNode> children)? deleteChildren,
+    TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeId)? changeFocusRoot,
+    TResult Function()? resetFocusRoot,
+    TResult Function(int generations)? changeGenerationLimit,
+    TResult Function(bool show)? toggleShowUnknown,
+    TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
+    required TResult orElse(),
+  }) {
+    if (changePartnerMarriageStatus != null) {
+      return changePartnerMarriageStatus(relationId, status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
+    required TResult Function(_SelectTree value) selectTree,
+    required TResult Function(_CreateTree value) createTree,
+    required TResult Function(_UpdateTree value) updateTree,
+    required TResult Function(_DeleteTree value) deleteTree,
+    required TResult Function(_UpdateNode value) updateNode,
+    required TResult Function(_AddPartner value) addPartners,
+    required TResult Function(_AddExistingPartner value) addExistingPartner,
+    required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
+    required TResult Function(_AddChild value) addChildren,
+    required TResult Function(_DeleteNode value) deleteNode,
+    required TResult Function(_DeleteChildren value) deleteChildren,
+    required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
+    required TResult Function(_ResetFocusRoot value) resetFocusRoot,
+    required TResult Function(_ChangeGenerationLimit value)
+        changeGenerationLimit,
+    required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
+    required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
+  }) {
+    return changePartnerMarriageStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
+    TResult? Function(_SelectTree value)? selectTree,
+    TResult? Function(_CreateTree value)? createTree,
+    TResult? Function(_UpdateTree value)? updateTree,
+    TResult? Function(_DeleteTree value)? deleteTree,
+    TResult? Function(_UpdateNode value)? updateNode,
+    TResult? Function(_AddPartner value)? addPartners,
+    TResult? Function(_AddExistingPartner value)? addExistingPartner,
+    TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult? Function(_AddChild value)? addChildren,
+    TResult? Function(_DeleteNode value)? deleteNode,
+    TResult? Function(_DeleteChildren value)? deleteChildren,
+    TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
+  }) {
+    return changePartnerMarriageStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
+    TResult Function(_SelectTree value)? selectTree,
+    TResult Function(_CreateTree value)? createTree,
+    TResult Function(_UpdateTree value)? updateTree,
+    TResult Function(_DeleteTree value)? deleteTree,
+    TResult Function(_UpdateNode value)? updateNode,
+    TResult Function(_AddPartner value)? addPartners,
+    TResult Function(_AddExistingPartner value)? addExistingPartner,
+    TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult Function(_AddChild value)? addChildren,
+    TResult Function(_DeleteNode value)? deleteNode,
+    TResult Function(_DeleteChildren value)? deleteChildren,
+    TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
+    required TResult orElse(),
+  }) {
+    if (changePartnerMarriageStatus != null) {
+      return changePartnerMarriageStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangePartnerMarriageStatus implements LocalTreeEvent {
+  const factory _ChangePartnerMarriageStatus(
+          {required final UniqueId relationId,
+          required final MarriageStatus status}) =
+      _$ChangePartnerMarriageStatusImpl;
+
+  UniqueId get relationId;
+  MarriageStatus get status;
+  @JsonKey(ignore: true)
+  _$$ChangePartnerMarriageStatusImplCopyWith<_$ChangePartnerMarriageStatusImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3470,6 +3919,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -3503,6 +3954,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -3536,6 +3989,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -3568,6 +4023,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -3597,6 +4054,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -3625,6 +4084,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -3742,6 +4203,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -3775,6 +4238,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -3808,6 +4273,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -3840,6 +4307,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -3869,6 +4338,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -3897,6 +4368,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -4024,6 +4497,8 @@ class _$DeleteChildrenImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -4057,6 +4532,8 @@ class _$DeleteChildrenImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -4090,6 +4567,8 @@ class _$DeleteChildrenImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -4122,6 +4601,8 @@ class _$DeleteChildrenImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -4151,6 +4632,8 @@ class _$DeleteChildrenImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -4179,6 +4662,8 @@ class _$DeleteChildrenImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -4307,6 +4792,8 @@ class _$DeleteRelationsImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -4340,6 +4827,8 @@ class _$DeleteRelationsImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -4373,6 +4862,8 @@ class _$DeleteRelationsImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -4405,6 +4896,8 @@ class _$DeleteRelationsImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -4434,6 +4927,8 @@ class _$DeleteRelationsImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -4462,6 +4957,8 @@ class _$DeleteRelationsImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -4582,6 +5079,8 @@ class _$ChangeFocusRootImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -4615,6 +5114,8 @@ class _$ChangeFocusRootImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -4648,6 +5149,8 @@ class _$ChangeFocusRootImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -4680,6 +5183,8 @@ class _$ChangeFocusRootImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -4709,6 +5214,8 @@ class _$ChangeFocusRootImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -4737,6 +5244,8 @@ class _$ChangeFocusRootImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -4829,6 +5338,8 @@ class _$ResetFocusRootImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -4862,6 +5373,8 @@ class _$ResetFocusRootImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -4895,6 +5408,8 @@ class _$ResetFocusRootImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -4927,6 +5442,8 @@ class _$ResetFocusRootImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -4956,6 +5473,8 @@ class _$ResetFocusRootImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -4984,6 +5503,8 @@ class _$ResetFocusRootImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -5100,6 +5621,8 @@ class _$ChangeGenerationLimitImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -5133,6 +5656,8 @@ class _$ChangeGenerationLimitImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -5166,6 +5691,8 @@ class _$ChangeGenerationLimitImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -5198,6 +5725,8 @@ class _$ChangeGenerationLimitImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -5227,6 +5756,8 @@ class _$ChangeGenerationLimitImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -5255,6 +5786,8 @@ class _$ChangeGenerationLimitImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -5375,6 +5908,8 @@ class _$ToggleShowUnknownImpl
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -5408,6 +5943,8 @@ class _$ToggleShowUnknownImpl
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -5441,6 +5978,8 @@ class _$ToggleShowUnknownImpl
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -5473,6 +6012,8 @@ class _$ToggleShowUnknownImpl
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -5502,6 +6043,8 @@ class _$ToggleShowUnknownImpl
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -5530,6 +6073,8 @@ class _$ToggleShowUnknownImpl
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -5658,6 +6203,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -5691,6 +6238,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -5724,6 +6273,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -5756,6 +6307,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -5785,6 +6338,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -5813,6 +6368,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
@@ -5932,6 +6489,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
         changeOrderInFamily,
     required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
         changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
     required TResult Function(List<TNode> children) addChildren,
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
@@ -5965,6 +6524,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
         changeOrderInFamily,
     TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult? Function(List<TNode> children)? addChildren,
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
@@ -5998,6 +6559,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
         changeOrderInFamily,
     TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
         changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
     TResult Function(List<TNode> children)? addChildren,
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
@@ -6030,6 +6593,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     required TResult Function(_AddExistingPartner value) addExistingPartner,
     required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
     required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
     required TResult Function(_AddChild value) addChildren,
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
@@ -6059,6 +6624,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     TResult? Function(_AddExistingPartner value)? addExistingPartner,
     TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult? Function(_AddChild value)? addChildren,
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
@@ -6087,6 +6654,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     TResult Function(_AddExistingPartner value)? addExistingPartner,
     TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
     TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
     TResult Function(_AddChild value)? addChildren,
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,

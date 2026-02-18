@@ -32,9 +32,13 @@ class HomePageCenter extends StatelessWidget {
         listener: (context, state) {
           // Initialize settings only when they change
           if (state.settings != null) {
-            context
-                .read<TreeSettingsBloc>()
-                .add(TreeSettingsEvent.initialized(state.settings));
+            // Schedule for next frame to avoid accessing context during disposal
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!context.mounted) return;
+              context
+                  .read<TreeSettingsBloc>()
+                  .add(TreeSettingsEvent.initialized(state.settings!));
+            });
           }
         },
         child: BlocBuilder<LocalTreeBloc, LocalTreeState>(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
 import 'package:asl/c_domain/tree/value_objects.dart';
@@ -142,8 +143,38 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         ));
       },
       changePartnerOrder: (e) {
+        final relationInfo = state.relationInfo ?? {};
+
+        final newRelationInfo = {
+          ...relationInfo,
+          e.relationId: {
+            'partner': e.partnerId,
+            'order': e.order,
+            'status': relationInfo[e.relationId]?['status'] ?? e.status,
+          },
+        };
+
         emit(state.copyWith(
-          partnerOrders: {...state.partnerOrders ?? {}, e.relationId: e.order},
+          relationInfo: newRelationInfo,
+          isSaving: false,
+          // to get rid of any previous failure
+          saveFailureOrSuccessOption: null,
+        ));
+      },
+      changePartnerMarriageStatus: (e) {
+        final relationInfo = state.relationInfo ?? {};
+
+        final newRelationInfo = {
+          ...relationInfo,
+          e.relationId: {
+            'partner': e.partnerId,
+            'order': relationInfo[e.relationId]?['order'] ?? e.order,
+            'status': e.status,
+          },
+        };
+
+        emit(state.copyWith(
+          relationInfo: newRelationInfo,
           isSaving: false,
           // to get rid of any previous failure
           saveFailureOrSuccessOption: null,

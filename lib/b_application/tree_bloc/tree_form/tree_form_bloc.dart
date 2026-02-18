@@ -84,7 +84,6 @@ class TreeFormBloc extends Bloc<TreeFormEvent, TreeFormState> {
         ));
       },
       saved: (e) async {
-        print('--- create tree ----');
         Either<TreeFailure, TNode>? failureOrSuccess;
         bool isCreated = false;
 

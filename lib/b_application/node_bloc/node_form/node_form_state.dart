@@ -11,7 +11,7 @@ abstract class NodeFormState with _$NodeFormState {
     required bool addChild,
     required int currentPanel,
     int? childOrder,
-    Map<String, int>? partnerOrders,
+    Map<UniqueId, Map<String, dynamic>>? relationInfo,
     required Either<TNodeFailure, TNode>? saveFailureOrSuccessOption,
   }) = _NodeFormState;
 

@@ -21,12 +21,11 @@ class ShareSettingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<TreeSettingsBloc, TreeSettingsState>(
-      listenWhen: (prev, curr) => prev.isShareLink != curr.isShareLink,
       listener: (context, state) {
         if (state.isLinkCopied) {
           appSnackBar(
             dialogContext,
-            text: getTr(context, 'link_copied')!,
+            text: getTr(contextPage, 'link_copied')!,
             type: SnackBarType.success,
           );
         }

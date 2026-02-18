@@ -25,7 +25,16 @@ abstract class NodeFormEvent with _$NodeFormEvent {
 
   const factory NodeFormEvent.changeChildOrder(int order) = _ChangeChildOrder;
   const factory NodeFormEvent.changePartnerOrder(
-      {required String relationId, required int order}) = _ChangePartnerOrder;
+      {required UniqueId relationId,
+      required int order,
+      required UniqueId partnerId,
+      MarriageStatus? status}) = _ChangePartnerOrder;
+
+  const factory NodeFormEvent.changePartnerMarriageStatus(
+      {required UniqueId relationId,
+      required MarriageStatus status,
+      required UniqueId partnerId,
+      int? order}) = _ChangePartnerMarriageStatus;
 
   const factory NodeFormEvent.changeIsAvlive(bool isAlive) = _ChangedIsAvlive;
   const factory NodeFormEvent.makeItRoot() = _MakeItRoot;

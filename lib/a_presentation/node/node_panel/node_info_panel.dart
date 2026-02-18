@@ -59,44 +59,48 @@ class InfoPanel extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: 250,
-                      height: 90,
-                      child: AppFormField(
-                        label: getTr(context, 'first_name')!,
-                        hint: getTr(context, 'first_name_example')!,
-                        initialValue: state.node!.firstName.isValid()
-                            ? (state.node!.isUnknown
-                                ? getTr(context, 'no_name_provided')!
-                                : state.node!.firstName.getOrCrash())
-                            : '',
-                        onChanged: (value) => context
-                            .read<NodeFormBloc>()
-                            .add(NodeFormEvent.firstNameChanged(value!.trim())),
-                        validator: (_) {
-                          return context
+                    Opacity(
+                      opacity: node.isUnknown ? 0.5 : 1,
+                      child: SizedBox(
+                        width: 250,
+                        height: 90,
+                        child: AppFormField(
+                          label: getTr(context, 'first_name')!,
+                          hint: getTr(context, 'first_name_example')!,
+                          initialValue: state.node!.firstName.isValid()
+                              ? (state.node!.isUnknown
+                                  ? getTr(context, 'no_name_provided')!
+                                  : state.node!.firstName.getOrCrash())
+                              : '',
+                          onChanged: (value) => context
                               .read<NodeFormBloc>()
-                              .state
-                              .node!
-                              .firstName
-                              .value
-                              .fold(
-                                (f) => f.maybeMap(
-                                  empty: (_) =>
-                                      getTr(context, 'name_cannot_be_empty'),
-                                  spacedName: (_) => getTr(context,
-                                      'first_name_cannot_contain_spaces'),
-                                  shortName: (_) =>
-                                      getTr(context, 'name_too_short'),
-                                  exceedingLength: (_) =>
-                                      getTr(context, 'name_too_long')!,
-                                  orElse: () => null,
-                                ),
-                                (_) => null,
-                              );
-                        },
-                        isValid: state.node!.firstName.isValid(),
-                        isEditing: state.isEditing,
+                              .add(NodeFormEvent.firstNameChanged(
+                                  value!.trim())),
+                          validator: (_) {
+                            return context
+                                .read<NodeFormBloc>()
+                                .state
+                                .node!
+                                .firstName
+                                .value
+                                .fold(
+                                  (f) => f.maybeMap(
+                                    empty: (_) =>
+                                        getTr(context, 'name_cannot_be_empty'),
+                                    spacedName: (_) => getTr(context,
+                                        'first_name_cannot_contain_spaces'),
+                                    shortName: (_) =>
+                                        getTr(context, 'name_too_short'),
+                                    exceedingLength: (_) =>
+                                        getTr(context, 'name_too_long')!,
+                                    orElse: () => null,
+                                  ),
+                                  (_) => null,
+                                );
+                          },
+                          isValid: state.node!.firstName.isValid(),
+                          isEditing: state.isEditing && !node.isUnknown,
+                        ),
                       ),
                     ),
                     kHSpacer20,
@@ -125,10 +129,10 @@ class InfoPanel extends StatelessWidget {
                     );
                   },
                 ),
-                kVSpacer10,
+                kVSpacer20,
                 if (state.node!.relations.isNotEmpty) ...[
-                  PartnerOrder(node: node, state: state),
-                  kVSpacer10,
+                  PartnerOrder(node: node, state: state, color: color),
+                  kVSpacer20,
                 ],
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,

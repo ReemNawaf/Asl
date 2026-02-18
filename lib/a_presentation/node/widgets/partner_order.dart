@@ -14,10 +14,12 @@ class PartnerOrder extends StatelessWidget {
     super.key,
     required this.node,
     required this.state,
+    required this.color,
   });
 
   final TNode node;
   final NodeFormState state;
+  final MaterialColor color;
 
   @override
   Widget build(BuildContext context) {
@@ -27,66 +29,110 @@ class PartnerOrder extends StatelessWidget {
             .map((r) => treeState.store.relationsById[r.getOrCrash()])
             .toList();
 
-        return Padding(
-          padding: const EdgeInsets.only(top: 2.0),
-          child: SizedBox(
-            width: 210,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: node.relations.length,
-              itemBuilder: (context, index) {
-                final r = relations[index];
+        return SizedBox(
+          width: PAN_WIDTH - 106,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: node.relations.length,
+            itemBuilder: (context, index) {
+              final r = relations[index];
 
-                final partner =
-                    node.gender == Gender.male ? r?.mother : r?.father;
+              final partner =
+                  node.gender == Gender.male ? r?.mother : r?.father;
 
-                final partnerName = treeState
-                    .store.nodesById[partner?.getOrCrash() ?? '']?.firstName
-                    .getOrCrash();
+              if (partner == null || r == null) {
+                return const SizedBox();
+              }
 
-                final partnerRelations = treeState
-                    .store.nodesById[partner?.getOrCrash() ?? '']?.relations;
+              final partnerName = treeState
+                  .store.nodesById[partner.getOrCrash()]?.firstName
+                  .getOrCrash();
 
-                final partnerRelationsList = List.generate(
-                    partnerRelations?.length ?? 0, (index) => index + 1);
+              final partnerRelations =
+                  treeState.store.nodesById[partner.getOrCrash()]?.relations;
 
-                final partnerRelationsItems = partnerRelationsList
-                    .map((int i) => DropdownMenuItem<int>(
-                          value: i - 1,
-                          child: Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 40),
-                              width: 120,
-                              child: Text(i.toString())),
-                        ))
-                    .toList();
+              final partnerRelationsList = List.generate(
+                  partnerRelations?.length ?? 0, (index) => index + 1);
 
-                if ((partnerRelations?.length ?? 0) < 2) {
-                  return const SizedBox();
-                }
+              final partnerRelationsItems = partnerRelationsList
+                  .map((int i) => DropdownMenuItem<int>(
+                        value: i - 1,
+                        child: OrderItem(label: i.toString()),
+                      ))
+                  .toList();
 
-                return Row(
+              final relationStatusItems = relationStatus
+                  .map((status) => DropdownMenuItem<MarriageStatus>(
+                        value: status,
+                        child: OrderItem(
+                            label: getMarriageSt(context, status, node.gender)),
+                      ))
+                  .toList();
+
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: Row(
                   children: [
-                    Text(partnerName ?? ''),
+                    Text(
+                        '${node.gender == Gender.male ? getTr(context, 'as_husband') : getTr(context, 'as_wife')} $partnerName'),
+                    kHSpacer15,
+                    if ((partnerRelations?.length ?? 0) >= 2) ...[
+                      kHSpacer10,
+                      Text(node.gender == Gender.male
+                          ? getTr(context, 'his_order')!
+                          : getTr(context, 'her_order')!),
+                      kHSpacer15,
+                      Container(
+                        decoration: kAppFormsDecor,
+                        height: kTextFieldHeight,
+                        width: ORDER_DROPDOWN_OUTER_WIDTH,
+                        child: DropdownButton<int>(
+                          items: partnerRelationsItems,
+                          isExpanded: false,
+                          value: state.relationInfo?[r.relationId]?['order'] ??
+                              partnerRelations?.indexOf(r.relationId),
+                          onChanged: state.isEditing
+                              ? (value) {
+                                  context.read<NodeFormBloc>().add(
+                                      NodeFormEvent.changePartnerOrder(
+                                          relationId: r.relationId,
+                                          partnerId: partner,
+                                          order: value ?? 0,
+                                          status: r.marriageStatus));
+                                }
+                              : null,
+                          underline: const SizedBox(),
+                          icon: const Icon(Icons.expand_more_rounded),
+                          dropdownColor: kWhitesColor[600],
+                          borderRadius:
+                              BorderRadius.circular(kAppCircularRadius),
+                          style: kBodyMedium,
+                          elevation: 1,
+                          padding: EdgeInsets.zero,
+                        ),
+                      ),
+                      kHSpacer20,
+                    ],
+                    Text(getTr(context, 'marriage_status')!),
+                    kHSpacer15,
                     Container(
                       decoration: kAppFormsDecor,
                       height: kTextFieldHeight,
-                      width: 150,
-                      child: DropdownButton<int>(
-                        items: partnerRelationsItems,
+                      width: ORDER_DROPDOWN_OUTER_WIDTH,
+                      child: DropdownButton<MarriageStatus>(
+                        items: relationStatusItems,
                         isExpanded: false,
-                        value: state.partnerOrders?[
-                                r?.relationId.getOrCrash() ?? ''] ??
-                            partnerRelations?.indexOf(r!.relationId),
+                        value: state.relationInfo?[r.relationId]?['status'] ??
+                            r.marriageStatus,
                         onChanged: state.isEditing
                             ? (value) {
                                 context.read<NodeFormBloc>().add(
-                                    NodeFormEvent.changePartnerOrder(
-                                        relationId: relations[index]
-                                                ?.relationId
-                                                .getOrCrash() ??
-                                            '',
-                                        order: value ?? 0));
+                                    NodeFormEvent.changePartnerMarriageStatus(
+                                        relationId: r.relationId,
+                                        partnerId: partner,
+                                        status: value ?? MarriageStatus.married,
+                                        order: partnerRelations
+                                            ?.indexOf(r.relationId)));
                               }
                             : null,
                         underline: const SizedBox(),
@@ -98,12 +144,10 @@ class PartnerOrder extends StatelessWidget {
                         padding: EdgeInsets.zero,
                       ),
                     ),
-                    kHSpacer20,
-                    Text(getTr(context, 'marriage_status')!),
                   ],
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         );
       },
@@ -111,84 +155,18 @@ class PartnerOrder extends StatelessWidget {
   }
 }
 
-class AliveWidget extends StatelessWidget {
-  const AliveWidget({
+class OrderItem extends StatelessWidget {
+  const OrderItem({
     super.key,
-    required this.color,
-    required this.isAlive,
-    required this.aliveOrDead,
-    required this.isEditing,
+    required this.label,
   });
 
-  final bool isEditing;
-  final MaterialColor color;
-  final bool isAlive;
-  final Function({required bool isAliveSelected}) aliveOrDead;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(getTr(context, 'status')!, style: kFootnoteStyle),
-        kVSpacer5,
-        Row(
-          children: [
-            AliveButton(
-              isEditing: isEditing,
-              onTap: () => isEditing ? aliveOrDead(isAliveSelected: true) : {},
-              color: color,
-              text: getTr(context, 'alive')!,
-              selected: isAlive,
-            ),
-            const SizedBox(width: 16.0),
-            AliveButton(
-              isEditing: isEditing,
-              onTap: () => isEditing ? aliveOrDead(isAliveSelected: false) : {},
-              color: color,
-              text: getTr(context, 'dead')!,
-              selected: !isAlive,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class AliveButton extends StatelessWidget {
-  const AliveButton(
-      {super.key,
-      required this.color,
-      required this.text,
-      required this.selected,
-      required this.onTap,
-      required this.isEditing});
-
-  final MaterialColor color;
-  final String text;
-  final bool selected;
-  final Function() onTap;
-  final bool isEditing;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: isEditing ? SystemMouseCursors.click : SystemMouseCursors.basic,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: selected ? color[300] : color[600],
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          height: 33,
-          width: 94,
-          child: Text(text),
-        ),
-      ),
-    );
+    return SizedBox(
+        width: ORDER_DROPDOWN_INNER_WIDTH,
+        child: Text(label, textAlign: TextAlign.center));
   }
 }

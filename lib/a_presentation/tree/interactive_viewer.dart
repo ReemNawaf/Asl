@@ -31,6 +31,9 @@ class _InteractiveViewState extends State<InteractiveView> {
   // Key for the viewport container (replaces viewerKey for sizing)
   final GlobalKey _viewportKey = GlobalKey();
 
+  // Save reference to bloc for safe disposal
+  DrawTreeBloc? _drawTreeBloc;
+
   // ── Helpers ──
 
   // Add to the state fields at the top:
@@ -137,6 +140,7 @@ class _InteractiveViewState extends State<InteractiveView> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         final bloc = context.read<DrawTreeBloc>();
+        _drawTreeBloc = bloc; // Also save here as fallback
         bloc.navigateToScenePoint = _navigateToScenePoint;
         bloc.viewportKey = _viewportKey;
       }
@@ -144,8 +148,16 @@ class _InteractiveViewState extends State<InteractiveView> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Save reference to bloc when dependencies are available
+    _drawTreeBloc ??= context.read<DrawTreeBloc>();
+  }
+
+  @override
   void dispose() {
-    context.read<DrawTreeBloc>().navigateToScenePoint = null;
+    // Use saved reference instead of accessing context
+    _drawTreeBloc?.navigateToScenePoint = null;
     super.dispose();
   }
 

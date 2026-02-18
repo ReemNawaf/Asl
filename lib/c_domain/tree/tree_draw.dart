@@ -34,6 +34,7 @@ class TreeDraw {
     required int? maxGenerations, // null = unlimited
     bool isShowUnknown = true,
     required BuildContext context,
+    bool isRTL = true,
   }) {
     graph = Graph()..isTree = true;
     _graphNodesById.clear();
@@ -62,18 +63,18 @@ class TreeDraw {
     final childCutoffGen = _childCutoffGen(totalGenerations);
 
     _drawFromNode(
-      store: store,
-      nodeKey: startKey,
-      nodeType: NodeType.root,
-      parentKey: null,
-      parentGender: null,
-      parentRelationsCount: startNode.relations.length,
-      currentGen: 0,
-      maxGen: maxGenerations,
-      childCutoffGen: childCutoffGen, // pass cutoff
-      isShowUnknown: isShowUnknown,
-      context: context,
-    );
+        store: store,
+        nodeKey: startKey,
+        nodeType: NodeType.root,
+        parentKey: null,
+        parentGender: null,
+        parentRelationsCount: startNode.relations.length,
+        currentGen: 0,
+        maxGen: maxGenerations,
+        childCutoffGen: childCutoffGen, // pass cutoff
+        isShowUnknown: isShowUnknown,
+        context: context,
+        isRTL: isRTL);
 
     return graph;
   }
@@ -138,6 +139,7 @@ class TreeDraw {
     required int childCutoffGen,
     required bool isShowUnknown,
     required BuildContext context,
+    required bool isRTL,
   }) {
     if (_visitedNodes.contains(nodeKey)) {
       if (parentKey != null) {
@@ -170,7 +172,13 @@ class TreeDraw {
       );
     }
 
-    final relationIds = store.relationIdsOfNodeKey(nodeKey);
+    var relationIds = store.relationIdsOfNodeKey(nodeKey);
+
+    // Reverse relations to draw partners from right to left
+    if (isRTL) {
+      relationIds = relationIds.reversed.toList();
+    }
+
     for (final relKey in relationIds) {
       final relation = store.relationsById[relKey];
       if (relation == null) continue;
@@ -186,6 +194,7 @@ class TreeDraw {
         childCutoffGen: childCutoffGen, // pass down
         isShowUnknown: isShowUnknown,
         context: context,
+        isRTL: isRTL,
       );
     }
   }
@@ -201,6 +210,7 @@ class TreeDraw {
     required int childCutoffGen, // NEW
     required bool isShowUnknown,
     required BuildContext context,
+    required bool isRTL,
   }) {
     final fatherKey = relation.father.asKey();
     final motherKey = relation.mother.asKey();
@@ -280,9 +290,14 @@ class TreeDraw {
     if (_childrenDrawnForRelation.contains(relationKey)) return;
     _childrenDrawnForRelation.add(relationKey);
 
-    final childKeys = store.childrenIdsOfRelationKey(relationKey);
+    var childKeys = store.childrenIdsOfRelationKey(relationKey);
 
-// Decide where children attach
+    // Reverse children to draw from right to left
+    if (isRTL) {
+      childKeys = childKeys.reversed.toList();
+    }
+
+    // Decide where children attach
     String childrenParentKey;
     Gender? parentGender;
     int parentRelationsCount;
@@ -356,6 +371,7 @@ class TreeDraw {
         childCutoffGen: childCutoffGen,
         isShowUnknown: isShowUnknown,
         context: context,
+        isRTL: isRTL,
       );
     }
   }

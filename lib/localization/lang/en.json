@@ -172,5 +172,9 @@
   "brothers_and_sisters_from_step_father": "Brothers and sisters from step father",
   "order_in_the_family_female": "His order in the family",
   "order_in_the_family_male": "Her order in the family",
-  "logout": "Logout"
+  "logout": "Logout",
+  "her_order": "Her order",
+  "his_order": "His order",
+  "as_wife": "As wife of",
+  "as_husband": "As husband of"
 }

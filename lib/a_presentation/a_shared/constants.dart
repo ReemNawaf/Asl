@@ -19,6 +19,8 @@ const double transactionCardHeight = 75.0;
 const double SIDE_BAR_WIDTH = 0.19;
 const double CENTER_WIDTH = 0.81;
 const double ARROW_BTN_WIDTH = 20;
+const double ORDER_DROPDOWN_INNER_WIDTH = 60;
+const double ORDER_DROPDOWN_OUTER_WIDTH = 90;
 
 // Adding Forms
 enum AddingFrom { cameraPage, homePage, other }
@@ -32,6 +34,12 @@ enum FieldType { email, password, text }
 enum AuthMode { signin, signup }
 
 enum MarriageStatus { married, divorced, widowhood }
+
+final relationStatus = [
+  MarriageStatus.married,
+  MarriageStatus.divorced,
+  MarriageStatus.widowhood,
+];
 
 String getMarriageSt(BuildContext ctx, MarriageStatus status, Gender gender) {
   String key = 'male_married';

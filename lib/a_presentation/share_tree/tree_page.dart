@@ -109,7 +109,6 @@ class TreePage extends StatelessWidget {
                                         const Spacer(),
                                         const LayersWidget(),
                                         const Spacer(),
-                                        const SettingsButton(),
                                       ],
                                     ),
                                   ),

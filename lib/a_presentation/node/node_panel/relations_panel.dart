@@ -23,20 +23,25 @@ class RelationsPanel extends StatelessWidget {
     super.key,
     required this.color,
     required this.node,
+    required this.mainContext,
   });
 
   final MaterialColor color;
   final TNode node;
+  final BuildContext mainContext;
 
   @override
   Widget build(BuildContext context) {
-    final store = context.watch<LocalTreeBloc>().state.store;
+    final store = mainContext.read<LocalTreeBloc>().state.store;
+
+    print('--- store: $store');
 
     final relations = TreeGraphUIQueries.relationsOfNode(
       store: store,
       nodeId: node.nodeId,
     );
 
+    print('--- relations: ${store.relationsById.keys}');
     return Container(
       padding: const EdgeInsets.only(left: 10.0, top: 20.0),
       height: PAN_HEIGHT,
@@ -53,7 +58,6 @@ class RelationsPanel extends StatelessWidget {
                   orElse: () => false,
                 );
 
-                print('--- isAuth: $isAuth');
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,45 +129,47 @@ class RelationsPanel extends StatelessWidget {
                                 node: node,
                                 allRelations: allRelations,
                               ),
-                            if (isAuth && allRelations.isNotEmpty)
-                              AddMemberButton(
-                                onPressed: () {
-                                  if (state.addChild) {
-                                    // Add the child to the temp children list
-                                    context.read<ChildFormBloc>().add(
-                                          const ChildFormEvent.addChildToList(),
-                                        );
+                            if (isAuth)
+                              if (allRelations.isNotEmpty)
+                                AddMemberButton(
+                                  onPressed: () {
+                                    if (state.addChild) {
+                                      // Add the child to the temp children list
+                                      context.read<ChildFormBloc>().add(
+                                            const ChildFormEvent
+                                                .addChildToList(),
+                                          );
 
-                                    final val = context
-                                        .read<ChildFormBloc>()
-                                        .state
-                                        .tempChild
-                                        .firstName
-                                        .isValid();
+                                      final val = context
+                                          .read<ChildFormBloc>()
+                                          .state
+                                          .tempChild
+                                          .firstName
+                                          .isValid();
 
-                                    // Make the child add button showing add new child
-                                    context
-                                        .read<NodeFormBloc>()
-                                        .add(NodeFormEvent.addChild(!val));
-                                  } else {
-                                    // Add empty child to be ready to add to it
-                                    context.read<ChildFormBloc>().add(
-                                        ChildFormEvent.addChild(
-                                            treeId: allRelations[0].treeId,
-                                            relationId:
-                                                allRelations[0].relationId));
+                                      // Make the child add button showing add new child
+                                      context
+                                          .read<NodeFormBloc>()
+                                          .add(NodeFormEvent.addChild(!val));
+                                    } else {
+                                      // Add empty child to be ready to add to it
+                                      context.read<ChildFormBloc>().add(
+                                          ChildFormEvent.addChild(
+                                              treeId: allRelations[0].treeId,
+                                              relationId:
+                                                  allRelations[0].relationId));
 
-                                    context.read<NodeFormBloc>().add(
-                                        const NodeFormEvent.addChild(true));
-                                  }
-                                },
-                                label: getTr(context, 'add_child')!,
-                                color: color,
-                              )
-                            else
-                              Text(node.gender == Gender.male
-                                  ? getTr(context, 'add_wife_first')!
-                                  : getTr(context, 'add_husband_first')!)
+                                      context.read<NodeFormBloc>().add(
+                                          const NodeFormEvent.addChild(true));
+                                    }
+                                  },
+                                  label: getTr(context, 'add_child')!,
+                                  color: color,
+                                )
+                              else
+                                Text(node.gender == Gender.male
+                                    ? getTr(context, 'add_wife_first')!
+                                    : getTr(context, 'add_husband_first')!)
                           ],
                         );
                       },

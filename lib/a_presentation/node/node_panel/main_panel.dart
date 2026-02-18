@@ -14,6 +14,7 @@ import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -63,13 +64,32 @@ class MainPanel extends StatelessWidget {
                     .read<LocalTreeBloc>()
                     .add(LocalTreeEvent.updateNode(node: unit));
                 if (node.upperFamily != null && state.childOrder != null) {
-                  ctx
-                      .read<LocalTreeBloc>()
-                      .add(LocalTreeEvent.changeOrderInFamily(
-                        nodeId: node.nodeId,
-                        relationId: node.upperFamily!,
-                        order: state.childOrder!,
-                      ));
+                  ctx.read<LocalTreeBloc>().add(
+                        LocalTreeEvent.changeOrderInFamily(
+                          nodeId: node.nodeId,
+                          relationId: node.upperFamily!,
+                          order: state.childOrder!,
+                        ),
+                      );
+                }
+
+                if (node.upperFamily != null && state.relationInfo != null) {
+                  for (UniqueId key in state.relationInfo!.keys) {
+                    final relationInfo = state.relationInfo![key]!;
+                    ctx.read<LocalTreeBloc>().add(
+                          LocalTreeEvent.changePartnerOrder(
+                            relationId: key,
+                            nodeId: relationInfo['partner']!,
+                            order: relationInfo['order']!,
+                          ),
+                        );
+                    ctx.read<LocalTreeBloc>().add(
+                          LocalTreeEvent.changePartnerMarriageStatus(
+                            relationId: key,
+                            status: relationInfo['status']!,
+                          ),
+                        );
+                  }
                 }
               },
             );
@@ -239,7 +259,10 @@ class MainPanel extends StatelessWidget {
                                       color: color,
                                     ),
                                   if (type != NodeType.partner)
-                                    RelationsPanel(color: color, node: node),
+                                    RelationsPanel(
+                                        color: color,
+                                        node: node,
+                                        mainContext: pageContext),
                                   NotesPanel(color: color),
                                 ],
                               ),

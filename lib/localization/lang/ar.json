@@ -172,5 +172,9 @@
   "brothers_and_sisters_from_step_father": "الأخوان والأخوات من زوج الأم",
   "order_in_the_family_female": "ترتيبها في العائلة",
   "order_in_the_family_male": "ترتيبه في العائلة",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "her_order": "ترتيبها",
+  "his_order": "ترتيبه",
+  "as_wife": "كزوجة",
+  "as_husband": "كزوج"
 }

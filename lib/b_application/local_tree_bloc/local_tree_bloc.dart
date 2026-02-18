@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_builder.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_mutations.dart';
@@ -489,6 +490,28 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         ));
       },
 
+      changePartnerMarriageStatus: (e) async {
+        final selectedTreeId = state.selectedTreeId;
+        if (selectedTreeId == null) return;
+
+        // Local-first store update (O(1))
+        final nextStore = applyChangePartnerMarriageStatus(
+          store: state.store,
+          relationId: e.relationId,
+          status: e.status,
+        );
+
+        emit(state.copyWith(store: nextStore));
+
+        // Background sync
+        _syncStart(emit);
+        unawaited(_syncChangePartnerMarriageStatus(
+          selectedTreeId,
+          e.relationId,
+          e.status,
+        ));
+      },
+
       // --------------------------------------------
       // D) VIEW / PROJECTION
       // --------------------------------------------
@@ -718,6 +741,74 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         relationId: relationId,
         order: order,
       );
+      either.fold(
+        (_) => _syncEnd(false),
+        (_) => _syncEnd(true),
+      );
+    } catch (_) {
+      _syncEnd(false);
+    }
+  }
+
+  Future<void> _syncChangePartnerMarriageStatus(
+    UniqueId treeId,
+    UniqueId relationId,
+    MarriageStatus status,
+  ) async {
+    try {
+      // Get the relation from the repository to ensure we have the latest data
+      final eitherRelation = await _relationRepo.get(
+        treeId: treeId,
+        relationId: relationId,
+      );
+
+      final relation = eitherRelation.fold(
+        (_) => null,
+        (r) => r,
+      );
+
+      if (relation == null) {
+        _syncEnd(false);
+        return;
+      }
+
+      // Update the relation with the new marriage status
+      final updatedRelation = relation.copyWith(marriageStatus: status);
+
+      // Get the partner node - try from store first, then fetch if needed
+      TNode? partner;
+
+      // Try to get partner from store using relation's partnerNode or by ID
+      if (relation.partnerNode != null) {
+        partner = relation.partnerNode;
+      } else {
+        // Get partner ID from relation (mother or father depending on context)
+        // For simplicity, we'll try to get it from the store first
+        final partnerId =
+            relation.mother; // or relation.father, depending on your logic
+        partner = state.store.nodesById[partnerId.asKey()];
+
+        // If not in store, fetch it
+        if (partner == null) {
+          final eitherPartner = await _treeRepo.getNode(
+            treeId: relation.partnerTreeId,
+            nodeId: partnerId,
+          );
+          partner = eitherPartner.fold((_) => null, (r) => r);
+        }
+      }
+
+      if (partner == null) {
+        _syncEnd(false);
+        return;
+      }
+
+      // Update the relation using the repository
+      final either = await _relationRepo.update(
+        partner: partner,
+        relation: updatedRelation,
+      );
+
       either.fold(
         (_) => _syncEnd(false),
         (_) => _syncEnd(true),

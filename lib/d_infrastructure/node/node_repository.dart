@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/strings.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/i_node_repository.dart';
@@ -214,6 +215,47 @@ class NodeRepository implements INodeRepository {
       // Update the node document with the reordered relations array
       await nodeDocRef.update({
         'relations': reorderedRelations,
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TNodeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TNodeFailure.unableToUpdate());
+      }
+      return left(const TNodeFailure.unexpected());
+    } catch (_) {
+      return left(const TNodeFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<TNodeFailure, Unit>> changePartnerMarriageStatus({
+    required UniqueId treeId,
+    required UniqueId relationId,
+    required MarriageStatus status,
+  }) async {
+    try {
+      print('changePartnerMarriageStatus: $treeId, $relationId, $status');
+
+      final relationDocRef = _firestore
+          .treesCollection()
+          .doc(treeId.getOrCrash())
+          .collection(RELATIONS_COLLECTION)
+          .doc(relationId.getOrCrash());
+
+      final existing = await relationDocRef.get();
+      if (!existing.exists) {
+        return left(const TNodeFailure.unableToUpdate());
+      }
+
+      // Update the relation document with the new marriage status
+      // Store as string (enum name) to match RelationDto format
+      await relationDocRef.update({
+        'marriageStatus': status.name,
       });
 
       return right(unit);

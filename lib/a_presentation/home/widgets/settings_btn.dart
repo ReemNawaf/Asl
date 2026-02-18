@@ -39,8 +39,7 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
       return BlocBuilder<LocalTreeBloc, LocalTreeState>(
           builder: (context, state) {
         final showTreeSettings = state.settings != null && !state.isLoadingTree;
-        print(
-            '--- showTreeSettings: ${state.settings}, isLoadingTree: ${state.isLoadingTree}');
+
         return Scaffold(
           backgroundColor: Colors.transparent,
           body: AlertDialog(

@@ -2,6 +2,7 @@
 // Canonical store mutations (O(1))
 // ============================================================
 
+import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
 import 'package:asl/c_domain/node/t_node.dart';
@@ -529,6 +530,31 @@ TreeGraphStore applyDeleteRelationsCascade({
   }
 
   return next;
+}
+
+/// Local mutation for changing the marriage status of a relation:
+/// - Finds the relation by relationId
+/// - Updates the relation's marriageStatus field
+/// - Updates the relation in the store
+TreeGraphStore applyChangePartnerMarriageStatus({
+  required TreeGraphStore store,
+  required UniqueId relationId,
+  required MarriageStatus status,
+}) {
+  final rKey = relationId.asKey();
+
+  // Get the relation
+  final relation = store.relationsById[rKey];
+  if (relation == null) {
+    // Relation not found, return store unchanged
+    return store;
+  }
+
+  // Update relation with new marriage status
+  final updatedRelation = relation.copyWith(marriageStatus: status);
+
+  // Upsert the updated relation (this updates both relationsById and childrenIdsByRelationId)
+  return upsertRelation(store, updatedRelation);
 }
 
 /// Remove relationKey from:
