@@ -78,30 +78,44 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
                 );
               },
               optionsViewBuilder: (context, onSelected, options) {
+                const itemHeight = 48.0;
+                const separatorHeight = 1.0; // kAppDivider height
+                const verticalPadding = 16.0; // 8 top + 8 bottom
+                final itemCount = options.length > 10 ? 10 : options.length;
+
+                // Calculate exact height needed
+                final contentHeight = (itemCount * itemHeight) +
+                    ((itemCount - 1) * separatorHeight) +
+                    verticalPadding;
+
                 final maxHeight = MediaQuery.of(context).size.height * 0.4;
+                final height = contentHeight.clamp(0.0, maxHeight);
+
                 return Padding(
                   padding: FieldPadding,
-                  child: Material(
-                    color: kWhitesColor[700],
-                    elevation: 8,
-                    borderRadius: BorderRadius.circular(12),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: maxHeight),
-                      child: ListView.separated(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        shrinkWrap: true,
-                        itemCount: options.length > 10 ? 10 : options.length,
-                        separatorBuilder: (_, __) => kAppDivider,
-                        itemBuilder: (context, i) {
-                          final o = options.elementAt(i);
-                          return SizedBox(
-                            height: 48,
-                            child: GestureDetector(
-                              onTap: () => onSelected(o),
-                              child: SearchItem(item: o),
-                            ),
-                          );
-                        },
+                  child: Align(
+                    alignment: AlignmentDirectional.topStart,
+                    child: Material(
+                      color: kWhitesColor[700],
+                      elevation: 8,
+                      borderRadius: BorderRadius.circular(12),
+                      child: SizedBox(
+                        height: height,
+                        child: ListView.separated(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          itemCount: itemCount,
+                          separatorBuilder: (_, __) => kAppDivider,
+                          itemBuilder: (context, i) {
+                            final o = options.elementAt(i);
+                            return SizedBox(
+                              height: 48,
+                              child: GestureDetector(
+                                onTap: () => onSelected(o),
+                                child: SearchItem(item: o),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
