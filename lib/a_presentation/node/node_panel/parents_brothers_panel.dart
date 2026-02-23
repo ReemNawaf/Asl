@@ -1,29 +1,30 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
-
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/siblings_wdg.dart';
+import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
-import 'package:asl/c_domain/local_tree_views/tree_graph_store.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_ufamily_builder.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ParentsSiblingsPanel extends StatelessWidget {
   const ParentsSiblingsPanel({
     super.key,
     required this.color,
-    required this.store,
     required this.treeId,
     required this.personId,
+    required this.mainContext,
   });
 
   final MaterialColor color;
-  final TreeGraphStore store;
   final UniqueId treeId;
   final UniqueId personId;
+  final BuildContext mainContext;
 
   @override
   Widget build(BuildContext context) {
+    final store = mainContext.read<LocalTreeBloc>().state.store;
     final uFamily = TreeGraphUFamilyBuilder.build(
       store: store,
       treeId: treeId,
