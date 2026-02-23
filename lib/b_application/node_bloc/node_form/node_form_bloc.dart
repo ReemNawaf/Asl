@@ -180,6 +180,34 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: null,
         ));
       },
+      showLinkToExistingNode: (e) {
+        if (e.isAdding) {
+          emit(state.copyWith(
+            isLinkToExistingNode: true,
+            node: state.node!.copyWith(isUnknown: false),
+          ));
+        } else {
+          emit(state.copyWith(
+            isLinkToExistingNode: false,
+            linkToExistingNodeNotExist: null,
+            existingNode: null,
+          ));
+        }
+      },
+      linkToExistingNode: (e) {
+        final existingNode = e.getNodeByKey(e.newNodeId);
+
+        if (existingNode != null) {
+          emit(state.copyWith(
+            existingNode: existingNode,
+            linkToExistingNodeNotExist: false,
+          ));
+        } else {
+          emit(state.copyWith(
+            linkToExistingNodeNotExist: true,
+          ));
+        }
+      },
       saved: (e) async {
         Either<TNodeFailure, TNode>? failureOrSuccess;
         emit(state.copyWith(

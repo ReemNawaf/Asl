@@ -91,6 +91,17 @@ class MainPanel extends StatelessWidget {
                         );
                   }
                 }
+
+                // Replace currentNode in all its relations with the existing node in the tree store
+                if (state.linkToExistingNodeNotExist == false &&
+                    state.existingNode != null) {
+                  context.read<LocalTreeBloc>().add(
+                        LocalTreeEvent.replaceNodeWithExisting(
+                          nodeIdToReplace: node.nodeId,
+                          existingNodeId: state.existingNode!.nodeId,
+                        ),
+                      );
+                }
               },
             );
           },

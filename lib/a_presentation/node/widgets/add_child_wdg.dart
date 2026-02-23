@@ -3,7 +3,7 @@ import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/add_parent_list_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/child_alive_btn.dart';
 import 'package:asl/a_presentation/node/widgets/child_gender_btn.dart';
-import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/localization/localization_constants.dart';

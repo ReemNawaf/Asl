@@ -95,7 +95,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           add(PartnerFormEvent.addPartner(state.node!));
         }
       },
-      addPartnerByNodeId: (e) async {
+      addPartnerByNodeId: (e) {
         final partner = e.partner;
 
         if (partner != null) {
@@ -136,7 +136,7 @@ class PartnerFormBloc extends Bloc<PartnerFormEvent, PartnerFormState> {
           ));
         }
       },
-      addUnknownPartner: (e) async {
+      addUnknownPartner: (e) {
         final partner = TNode(
           treeId: e.node.treeId,
           nodeId: UniqueId(),

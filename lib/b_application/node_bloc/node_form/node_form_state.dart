@@ -10,12 +10,16 @@ abstract class NodeFormState with _$NodeFormState {
     required bool addPartner,
     required bool addChild,
     required int currentPanel,
+    required bool isLinkToExistingNode,
+    TNode? existingNode,
+    bool? linkToExistingNodeNotExist,
     int? childOrder,
     Map<UniqueId, Map<String, dynamic>>? relationInfo,
     required Either<TNodeFailure, TNode>? saveFailureOrSuccessOption,
   }) = _NodeFormState;
 
   factory NodeFormState.initial() => const NodeFormState(
+        isLinkToExistingNode: false,
         showErrorMessages: AutovalidateMode.disabled,
         // is it editing or view
         isEditing: false,

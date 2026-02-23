@@ -3,7 +3,7 @@ import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/a_shared/ui_helpers.dart';
-import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/child_form/child_form_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/relation/relation.dart';
 import 'package:asl/localization/localization_constants.dart';

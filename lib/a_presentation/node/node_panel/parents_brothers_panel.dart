@@ -35,7 +35,7 @@ class ParentsSiblingsPanel extends StatelessWidget {
         : uFamily?.father.firstName.getOrCrash();
     final motherName = uFamily != null && uFamily.mother.isUnknown
         ? getTr(context, 'no_name_provided')!
-        : uFamily?.father.firstName.getOrCrash();
+        : uFamily?.mother.firstName.getOrCrash();
     final size = MediaQuery.of(context).size;
 
     return Container(

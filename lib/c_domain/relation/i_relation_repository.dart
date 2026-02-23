@@ -34,6 +34,17 @@ abstract class IRelationRepository {
   Future<Either<RelationFailure, Unit>> deleteRelation(
       {required List<Relation> relations});
 
+  /// Replaces [nodeIdToReplace] with [existingNodeId] in each relation doc
+  /// in [relationIds]: fetches the doc, and if father or mother equals
+  /// [nodeIdToReplace], updates it to [existingNodeId]. Then deletes the
+  /// node doc for [nodeIdToReplace] from the nodes collection.
+  Future<Either<RelationFailure, Unit>> replaceNodeWithExisting({
+    required UniqueId treeId,
+    required UniqueId nodeIdToReplace,
+    required UniqueId existingNodeId,
+    required List<UniqueId> relationIds,
+  });
+
   // Create & Delete Child
   Future<Either<TNodeFailure, Unit>> addChildren({
     required List<TNode> children,

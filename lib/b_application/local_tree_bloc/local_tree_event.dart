@@ -90,8 +90,13 @@ class LocalTreeEvent with _$LocalTreeEvent {
     required List<Relation> relations,
   }) = _DeleteRelations;
 
-  // D. VIEW / PROJECTION
+  /// Replace a node with an existing node in all relations (merge duplicate into existing).
+  const factory LocalTreeEvent.replaceNodeWithExisting({
+    required UniqueId nodeIdToReplace,
+    required UniqueId existingNodeId,
+  }) = _ReplaceNodeWithExisting;
 
+  // D. VIEW / PROJECTION
   /// Change focus root
   const factory LocalTreeEvent.changeFocusRoot({
     required UniqueId nodeId,

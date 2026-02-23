@@ -592,4 +592,95 @@ TreeGraphStore _unlinkRelationFromNode(
   );
 }
 
+/// Replaces one node with an existing node in the entire store:
+/// - In every relation: if father or mother equals [nodeIdToReplace], use [existingNodeId] instead.
+/// - In every relation's children list: replace [nodeIdToReplace] with [existingNodeId].
+/// - Merges relation ids from the replaced node into the existing node's adjacency and snapshot.
+/// - Removes [nodeIdToReplace] from the store.
+TreeGraphStore applyReplaceNodeWithExisting({
+  required TreeGraphStore store,
+  required UniqueId nodeIdToReplace,
+  required UniqueId existingNodeId,
+}) {
+  final replaceKey = nodeIdToReplace.asKey();
+  final existingKey = existingNodeId.asKey();
+
+  if (replaceKey == existingKey) return store;
+
+  final existingNode = store.nodesById[existingKey];
+  if (existingNode == null) return store;
+
+  // 1) Update all relations: swap father/mother/children from replaced to existing
+  final nextRelationsById = <String, Relation>{...store.relationsById};
+  final nextChildrenIdsByRelationId = <String, List<String>>{
+    ...store.childrenIdsByRelationId,
+  };
+
+  for (final entry in nextRelationsById.entries) {
+    final rKey = entry.key;
+    Relation rel = entry.value;
+
+    bool changed = false;
+    UniqueId newFather = rel.father;
+    UniqueId newMother = rel.mother;
+    if (rel.father.asKey() == replaceKey) {
+      newFather = existingNodeId;
+      changed = true;
+    }
+    if (rel.mother.asKey() == replaceKey) {
+      newMother = existingNodeId;
+      changed = true;
+    }
+    List<UniqueId> newChildren = rel.children;
+    final childKeys = rel.children.map((c) => c.asKey()).toList();
+    if (childKeys.contains(replaceKey)) {
+      newChildren = rel.children
+          .map((id) => id.asKey() == replaceKey ? existingNodeId : id)
+          .toList();
+      changed = true;
+    }
+
+    if (changed) {
+      rel = rel.copyWith(
+        father: newFather,
+        mother: newMother,
+        children: newChildren,
+      );
+      nextRelationsById[rKey] = rel;
+      nextChildrenIdsByRelationId[rKey] =
+          newChildren.map((c) => c.asKey()).toList();
+    }
+  }
+
+  // 2) Merge relation ids: existing node gets replaced node's relation ids too
+  final replacedRelIds = store.relationIdsByNodeId[replaceKey] ?? const [];
+  final existingRelIds = store.relationIdsByNodeId[existingKey] ?? const [];
+  final mergedRelIds = _unique([...existingRelIds, ...replacedRelIds]);
+
+  final nextRelationIdsByNodeId = <String, List<String>>{
+    ...store.relationIdsByNodeId,
+  };
+  nextRelationIdsByNodeId[existingKey] = mergedRelIds;
+  nextRelationIdsByNodeId.remove(replaceKey);
+
+  // 3) Update existing node snapshot with merged relations
+  final mergedRelationIds = mergedRelIds
+      .map((k) => UniqueId.fromUniqueString(k))
+      .toSet()
+      .toList();
+  final updatedExistingNode =
+      existingNode.copyWith(relations: mergedRelationIds);
+  final nextNodesById = <String, TNode>{...store.nodesById}
+    ..[existingKey] = updatedExistingNode
+    ..remove(replaceKey);
+
+  return _copyStore(
+    store,
+    nodesById: nextNodesById,
+    relationsById: nextRelationsById,
+    relationIdsByNodeId: nextRelationIdsByNodeId,
+    childrenIdsByRelationId: nextChildrenIdsByRelationId,
+  );
+}
+
 List<String> _unique(List<String> items) => items.toSet().toList();

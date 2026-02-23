@@ -442,6 +442,30 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         unawaited(_syncDeleteRelationsCascade(relations: e.relations));
       },
 
+      replaceNodeWithExisting: (e) async {
+        final selectedTreeId = state.selectedTreeId;
+        if (selectedTreeId == null) return;
+
+        final relationIds = (state.store.relationIdsByNodeId[e.nodeIdToReplace.asKey()] ?? const [])
+            .map((k) => UniqueId.fromUniqueString(k))
+            .toList();
+
+        final nextStore = applyReplaceNodeWithExisting(
+          store: state.store,
+          nodeIdToReplace: e.nodeIdToReplace,
+          existingNodeId: e.existingNodeId,
+        );
+        emit(state.copyWith(store: nextStore));
+
+        _syncStart(emit);
+        unawaited(_syncReplaceNodeWithExisting(
+          treeId: selectedTreeId,
+          nodeIdToReplace: e.nodeIdToReplace,
+          existingNodeId: e.existingNodeId,
+          relationIds: relationIds,
+        ));
+      },
+
       changeOrderInFamily: (e) async {
         final selectedTreeId = state.selectedTreeId;
         if (selectedTreeId == null) return;
@@ -629,6 +653,28 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
   Future<void> _syncDeleteNode(UniqueId treeId, UniqueId nodeId) async {
     try {
       final either = await _nodeRepo.delete(treeId: treeId, nodeId: nodeId);
+      either.fold(
+        (_) => _syncEnd(false),
+        (_) => _syncEnd(true),
+      );
+    } catch (_) {
+      _syncEnd(false);
+    }
+  }
+
+  Future<void> _syncReplaceNodeWithExisting({
+    required UniqueId treeId,
+    required UniqueId nodeIdToReplace,
+    required UniqueId existingNodeId,
+    required List<UniqueId> relationIds,
+  }) async {
+    try {
+      final either = await _relationRepo.replaceNodeWithExisting(
+        treeId: treeId,
+        nodeIdToReplace: nodeIdToReplace,
+        existingNodeId: existingNodeId,
+        relationIds: relationIds,
+      );
       either.fold(
         (_) => _syncEnd(false),
         (_) => _syncEnd(true),

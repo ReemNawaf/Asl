@@ -23,8 +23,8 @@ mixin _$PartnerFormEvent {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -40,8 +40,8 @@ mixin _$PartnerFormEvent {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -57,8 +57,8 @@ mixin _$PartnerFormEvent {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -75,8 +75,8 @@ mixin _$PartnerFormEvent {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -93,8 +93,8 @@ mixin _$PartnerFormEvent {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -110,8 +110,8 @@ mixin _$PartnerFormEvent {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -220,8 +220,8 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -240,8 +240,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -260,8 +260,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -284,8 +284,8 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -305,8 +305,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -325,8 +325,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -448,8 +448,8 @@ class _$DeleltPartnerImpl implements _DeleltPartner {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -468,8 +468,8 @@ class _$DeleltPartnerImpl implements _DeleltPartner {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -488,8 +488,8 @@ class _$DeleltPartnerImpl implements _DeleltPartner {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -512,8 +512,8 @@ class _$DeleltPartnerImpl implements _DeleltPartner {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -533,8 +533,8 @@ class _$DeleltPartnerImpl implements _DeleltPartner {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -553,8 +553,8 @@ class _$DeleltPartnerImpl implements _DeleltPartner {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -661,8 +661,8 @@ class _$EditedImpl implements _Edited {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -681,8 +681,8 @@ class _$EditedImpl implements _Edited {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -701,8 +701,8 @@ class _$EditedImpl implements _Edited {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -725,8 +725,8 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -746,8 +746,8 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -766,8 +766,8 @@ class _$EditedImpl implements _Edited {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -861,8 +861,8 @@ class _$ChangedNameImpl implements _ChangedName {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -881,8 +881,8 @@ class _$ChangedNameImpl implements _ChangedName {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -901,8 +901,8 @@ class _$ChangedNameImpl implements _ChangedName {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -925,8 +925,8 @@ class _$ChangedNameImpl implements _ChangedName {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -946,8 +946,8 @@ class _$ChangedNameImpl implements _ChangedName {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -966,8 +966,8 @@ class _$ChangedNameImpl implements _ChangedName {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -1093,8 +1093,8 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1113,8 +1113,8 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1133,8 +1133,8 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1157,8 +1157,8 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -1178,8 +1178,8 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -1198,8 +1198,8 @@ class _$AddPartnerByNodeIdImpl implements _AddPartnerByNodeId {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -1224,6 +1224,209 @@ abstract class _AddPartnerByNodeId implements PartnerFormEvent {
   TNode get node;
   @JsonKey(ignore: true)
   _$$AddPartnerByNodeIdImplCopyWith<_$AddPartnerByNodeIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShowPartnerByNodeIdImplCopyWith<$Res> {
+  factory _$$ShowPartnerByNodeIdImplCopyWith(_$ShowPartnerByNodeIdImpl value,
+          $Res Function(_$ShowPartnerByNodeIdImpl) then) =
+      __$$ShowPartnerByNodeIdImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isAdding});
+}
+
+/// @nodoc
+class __$$ShowPartnerByNodeIdImplCopyWithImpl<$Res>
+    extends _$PartnerFormEventCopyWithImpl<$Res, _$ShowPartnerByNodeIdImpl>
+    implements _$$ShowPartnerByNodeIdImplCopyWith<$Res> {
+  __$$ShowPartnerByNodeIdImplCopyWithImpl(_$ShowPartnerByNodeIdImpl _value,
+      $Res Function(_$ShowPartnerByNodeIdImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isAdding = null,
+  }) {
+    return _then(_$ShowPartnerByNodeIdImpl(
+      null == isAdding
+          ? _value.isAdding
+          : isAdding // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
+  const _$ShowPartnerByNodeIdImpl(this.isAdding);
+
+  @override
+  final bool isAdding;
+
+  @override
+  String toString() {
+    return 'PartnerFormEvent.showPartnerByNodeId(isAdding: $isAdding)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowPartnerByNodeIdImpl &&
+            (identical(other.isAdding, isAdding) ||
+                other.isAdding == isAdding));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isAdding);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShowPartnerByNodeIdImplCopyWith<_$ShowPartnerByNodeIdImpl> get copyWith =>
+      __$$ShowPartnerByNodeIdImplCopyWithImpl<_$ShowPartnerByNodeIdImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) addPartner,
+    required TResult Function(TNode partner, Relation relation) deleltPartner,
+    required TResult Function(TNode partner) edited,
+    required TResult Function(String name) changeName,
+    required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
+    required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
+    required TResult Function(bool isAdding) showUnknownPartner,
+    required TResult Function(DateTime? date) changeMarriageDate,
+    required TResult Function(DateTime? date) changeRelationEndDate,
+    required TResult Function(MarriageStatus status) changeMarriageStatus,
+    required TResult Function() addPartnertoList,
+    required TResult Function() saved,
+  }) {
+    return showPartnerByNodeId(isAdding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? addPartner,
+    TResult? Function(TNode partner, Relation relation)? deleltPartner,
+    TResult? Function(TNode partner)? edited,
+    TResult? Function(String name)? changeName,
+    TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
+    TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
+    TResult? Function(bool isAdding)? showUnknownPartner,
+    TResult? Function(DateTime? date)? changeMarriageDate,
+    TResult? Function(DateTime? date)? changeRelationEndDate,
+    TResult? Function(MarriageStatus status)? changeMarriageStatus,
+    TResult? Function()? addPartnertoList,
+    TResult? Function()? saved,
+  }) {
+    return showPartnerByNodeId?.call(isAdding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? addPartner,
+    TResult Function(TNode partner, Relation relation)? deleltPartner,
+    TResult Function(TNode partner)? edited,
+    TResult Function(String name)? changeName,
+    TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
+    TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
+    TResult Function(bool isAdding)? showUnknownPartner,
+    TResult Function(DateTime? date)? changeMarriageDate,
+    TResult Function(DateTime? date)? changeRelationEndDate,
+    TResult Function(MarriageStatus status)? changeMarriageStatus,
+    TResult Function()? addPartnertoList,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (showPartnerByNodeId != null) {
+      return showPartnerByNodeId(isAdding);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_DeleltPartner value) deleltPartner,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_ChangedName value) changeName,
+    required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
+    required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
+    required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
+    required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
+    required TResult Function(_ChangeRelationEndDate value)
+        changeRelationEndDate,
+    required TResult Function(_ChangeMarriageStatus value) changeMarriageStatus,
+    required TResult Function(_AddPartnertoList value) addPartnertoList,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return showPartnerByNodeId(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_DeleltPartner value)? deleltPartner,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_ChangedName value)? changeName,
+    TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
+    TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
+    TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
+    TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
+    TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
+    TResult? Function(_ChangeMarriageStatus value)? changeMarriageStatus,
+    TResult? Function(_AddPartnertoList value)? addPartnertoList,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return showPartnerByNodeId?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_DeleltPartner value)? deleltPartner,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_ChangedName value)? changeName,
+    TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
+    TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
+    TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
+    TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
+    TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
+    TResult Function(_ChangeMarriageStatus value)? changeMarriageStatus,
+    TResult Function(_AddPartnertoList value)? addPartnertoList,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (showPartnerByNodeId != null) {
+      return showPartnerByNodeId(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowPartnerByNodeId implements PartnerFormEvent {
+  const factory _ShowPartnerByNodeId(final bool isAdding) =
+      _$ShowPartnerByNodeIdImpl;
+
+  bool get isAdding;
+  @JsonKey(ignore: true)
+  _$$ShowPartnerByNodeIdImplCopyWith<_$ShowPartnerByNodeIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1307,8 +1510,8 @@ class _$AddUnknownPartnerImpl implements _AddUnknownPartner {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1327,8 +1530,8 @@ class _$AddUnknownPartnerImpl implements _AddUnknownPartner {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1347,8 +1550,8 @@ class _$AddUnknownPartnerImpl implements _AddUnknownPartner {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1371,8 +1574,8 @@ class _$AddUnknownPartnerImpl implements _AddUnknownPartner {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -1392,8 +1595,8 @@ class _$AddUnknownPartnerImpl implements _AddUnknownPartner {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -1412,8 +1615,8 @@ class _$AddUnknownPartnerImpl implements _AddUnknownPartner {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -1436,209 +1639,6 @@ abstract class _AddUnknownPartner implements PartnerFormEvent {
   TNode get node;
   @JsonKey(ignore: true)
   _$$AddUnknownPartnerImplCopyWith<_$AddUnknownPartnerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ShowPartnerByNodeIdImplCopyWith<$Res> {
-  factory _$$ShowPartnerByNodeIdImplCopyWith(_$ShowPartnerByNodeIdImpl value,
-          $Res Function(_$ShowPartnerByNodeIdImpl) then) =
-      __$$ShowPartnerByNodeIdImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool isAdding});
-}
-
-/// @nodoc
-class __$$ShowPartnerByNodeIdImplCopyWithImpl<$Res>
-    extends _$PartnerFormEventCopyWithImpl<$Res, _$ShowPartnerByNodeIdImpl>
-    implements _$$ShowPartnerByNodeIdImplCopyWith<$Res> {
-  __$$ShowPartnerByNodeIdImplCopyWithImpl(_$ShowPartnerByNodeIdImpl _value,
-      $Res Function(_$ShowPartnerByNodeIdImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isAdding = null,
-  }) {
-    return _then(_$ShowPartnerByNodeIdImpl(
-      null == isAdding
-          ? _value.isAdding
-          : isAdding // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ShowPartnerByNodeIdImpl implements _ShowPartnerByNodeId {
-  const _$ShowPartnerByNodeIdImpl(this.isAdding);
-
-  @override
-  final bool isAdding;
-
-  @override
-  String toString() {
-    return 'PartnerFormEvent.showPartnerByNodeId(isAdding: $isAdding)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ShowPartnerByNodeIdImpl &&
-            (identical(other.isAdding, isAdding) ||
-                other.isAdding == isAdding));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, isAdding);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ShowPartnerByNodeIdImplCopyWith<_$ShowPartnerByNodeIdImpl> get copyWith =>
-      __$$ShowPartnerByNodeIdImplCopyWithImpl<_$ShowPartnerByNodeIdImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(TNode node) addPartner,
-    required TResult Function(TNode partner, Relation relation) deleltPartner,
-    required TResult Function(TNode partner) edited,
-    required TResult Function(String name) changeName,
-    required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
-    required TResult Function(bool isAdding) showPartnerByNodeId,
-    required TResult Function(bool isAdding) showUnknownPartner,
-    required TResult Function(DateTime? date) changeMarriageDate,
-    required TResult Function(DateTime? date) changeRelationEndDate,
-    required TResult Function(MarriageStatus status) changeMarriageStatus,
-    required TResult Function() addPartnertoList,
-    required TResult Function() saved,
-  }) {
-    return showPartnerByNodeId(isAdding);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TNode node)? addPartner,
-    TResult? Function(TNode partner, Relation relation)? deleltPartner,
-    TResult? Function(TNode partner)? edited,
-    TResult? Function(String name)? changeName,
-    TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
-    TResult? Function(bool isAdding)? showPartnerByNodeId,
-    TResult? Function(bool isAdding)? showUnknownPartner,
-    TResult? Function(DateTime? date)? changeMarriageDate,
-    TResult? Function(DateTime? date)? changeRelationEndDate,
-    TResult? Function(MarriageStatus status)? changeMarriageStatus,
-    TResult? Function()? addPartnertoList,
-    TResult? Function()? saved,
-  }) {
-    return showPartnerByNodeId?.call(isAdding);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TNode node)? addPartner,
-    TResult Function(TNode partner, Relation relation)? deleltPartner,
-    TResult Function(TNode partner)? edited,
-    TResult Function(String name)? changeName,
-    TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
-    TResult Function(bool isAdding)? showPartnerByNodeId,
-    TResult Function(bool isAdding)? showUnknownPartner,
-    TResult Function(DateTime? date)? changeMarriageDate,
-    TResult Function(DateTime? date)? changeRelationEndDate,
-    TResult Function(MarriageStatus status)? changeMarriageStatus,
-    TResult Function()? addPartnertoList,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (showPartnerByNodeId != null) {
-      return showPartnerByNodeId(isAdding);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddPartner value) addPartner,
-    required TResult Function(_DeleltPartner value) deleltPartner,
-    required TResult Function(_Edited value) edited,
-    required TResult Function(_ChangedName value) changeName,
-    required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
-    required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
-    required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
-    required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
-    required TResult Function(_ChangeRelationEndDate value)
-        changeRelationEndDate,
-    required TResult Function(_ChangeMarriageStatus value) changeMarriageStatus,
-    required TResult Function(_AddPartnertoList value) addPartnertoList,
-    required TResult Function(_Saved value) saved,
-  }) {
-    return showPartnerByNodeId(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddPartner value)? addPartner,
-    TResult? Function(_DeleltPartner value)? deleltPartner,
-    TResult? Function(_Edited value)? edited,
-    TResult? Function(_ChangedName value)? changeName,
-    TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
-    TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
-    TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
-    TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
-    TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
-    TResult? Function(_ChangeMarriageStatus value)? changeMarriageStatus,
-    TResult? Function(_AddPartnertoList value)? addPartnertoList,
-    TResult? Function(_Saved value)? saved,
-  }) {
-    return showPartnerByNodeId?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddPartner value)? addPartner,
-    TResult Function(_DeleltPartner value)? deleltPartner,
-    TResult Function(_Edited value)? edited,
-    TResult Function(_ChangedName value)? changeName,
-    TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
-    TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
-    TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
-    TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
-    TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
-    TResult Function(_ChangeMarriageStatus value)? changeMarriageStatus,
-    TResult Function(_AddPartnertoList value)? addPartnertoList,
-    TResult Function(_Saved value)? saved,
-    required TResult orElse(),
-  }) {
-    if (showPartnerByNodeId != null) {
-      return showPartnerByNodeId(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ShowPartnerByNodeId implements PartnerFormEvent {
-  const factory _ShowPartnerByNodeId(final bool isAdding) =
-      _$ShowPartnerByNodeIdImpl;
-
-  bool get isAdding;
-  @JsonKey(ignore: true)
-  _$$ShowPartnerByNodeIdImplCopyWith<_$ShowPartnerByNodeIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1713,8 +1713,8 @@ class _$ShowUnknownPartnerImpl implements _ShowUnknownPartner {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1733,8 +1733,8 @@ class _$ShowUnknownPartnerImpl implements _ShowUnknownPartner {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1753,8 +1753,8 @@ class _$ShowUnknownPartnerImpl implements _ShowUnknownPartner {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1777,8 +1777,8 @@ class _$ShowUnknownPartnerImpl implements _ShowUnknownPartner {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -1798,8 +1798,8 @@ class _$ShowUnknownPartnerImpl implements _ShowUnknownPartner {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -1818,8 +1818,8 @@ class _$ShowUnknownPartnerImpl implements _ShowUnknownPartner {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -1915,8 +1915,8 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -1935,8 +1935,8 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -1955,8 +1955,8 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -1979,8 +1979,8 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -2000,8 +2000,8 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2020,8 +2020,8 @@ class _$ChangeMarriageDateImpl implements _ChangeMarriageDate {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2118,8 +2118,8 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -2138,8 +2138,8 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -2158,8 +2158,8 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -2182,8 +2182,8 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -2203,8 +2203,8 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2223,8 +2223,8 @@ class _$ChangeRelationEndDateImpl implements _ChangeRelationEndDate {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2321,8 +2321,8 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -2341,8 +2341,8 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -2361,8 +2361,8 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -2385,8 +2385,8 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -2406,8 +2406,8 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2426,8 +2426,8 @@ class _$ChangeMarriageStatusImpl implements _ChangeMarriageStatus {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2496,8 +2496,8 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -2516,8 +2516,8 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -2536,8 +2536,8 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -2560,8 +2560,8 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -2581,8 +2581,8 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2601,8 +2601,8 @@ class _$AddPartnertoListImpl implements _AddPartnertoList {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2665,8 +2665,8 @@ class _$SavedImpl implements _Saved {
     required TResult Function(TNode partner) edited,
     required TResult Function(String name) changeName,
     required TResult Function(TNode? partner, TNode node) addPartnerByNodeId,
-    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showPartnerByNodeId,
+    required TResult Function(TNode node) addUnknownPartner,
     required TResult Function(bool isAdding) showUnknownPartner,
     required TResult Function(DateTime? date) changeMarriageDate,
     required TResult Function(DateTime? date) changeRelationEndDate,
@@ -2685,8 +2685,8 @@ class _$SavedImpl implements _Saved {
     TResult? Function(TNode partner)? edited,
     TResult? Function(String name)? changeName,
     TResult? Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showPartnerByNodeId,
+    TResult? Function(TNode node)? addUnknownPartner,
     TResult? Function(bool isAdding)? showUnknownPartner,
     TResult? Function(DateTime? date)? changeMarriageDate,
     TResult? Function(DateTime? date)? changeRelationEndDate,
@@ -2705,8 +2705,8 @@ class _$SavedImpl implements _Saved {
     TResult Function(TNode partner)? edited,
     TResult Function(String name)? changeName,
     TResult Function(TNode? partner, TNode node)? addPartnerByNodeId,
-    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showPartnerByNodeId,
+    TResult Function(TNode node)? addUnknownPartner,
     TResult Function(bool isAdding)? showUnknownPartner,
     TResult Function(DateTime? date)? changeMarriageDate,
     TResult Function(DateTime? date)? changeRelationEndDate,
@@ -2729,8 +2729,8 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_Edited value) edited,
     required TResult Function(_ChangedName value) changeName,
     required TResult Function(_AddPartnerByNodeId value) addPartnerByNodeId,
-    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowPartnerByNodeId value) showPartnerByNodeId,
+    required TResult Function(_AddUnknownPartner value) addUnknownPartner,
     required TResult Function(_ShowUnknownPartner value) showUnknownPartner,
     required TResult Function(_ChangeMarriageDate value) changeMarriageDate,
     required TResult Function(_ChangeRelationEndDate value)
@@ -2750,8 +2750,8 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_Edited value)? edited,
     TResult? Function(_ChangedName value)? changeName,
     TResult? Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult? Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult? Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult? Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult? Function(_ChangeRelationEndDate value)? changeRelationEndDate,
@@ -2770,8 +2770,8 @@ class _$SavedImpl implements _Saved {
     TResult Function(_Edited value)? edited,
     TResult Function(_ChangedName value)? changeName,
     TResult Function(_AddPartnerByNodeId value)? addPartnerByNodeId,
-    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowPartnerByNodeId value)? showPartnerByNodeId,
+    TResult Function(_AddUnknownPartner value)? addUnknownPartner,
     TResult Function(_ShowUnknownPartner value)? showUnknownPartner,
     TResult Function(_ChangeMarriageDate value)? changeMarriageDate,
     TResult Function(_ChangeRelationEndDate value)? changeRelationEndDate,

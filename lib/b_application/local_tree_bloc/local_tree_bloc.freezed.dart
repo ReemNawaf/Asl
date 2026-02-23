@@ -40,6 +40,8 @@ mixin _$LocalTreeEvent {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -72,6 +74,8 @@ mixin _$LocalTreeEvent {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -104,6 +108,8 @@ mixin _$LocalTreeEvent {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -132,6 +138,8 @@ mixin _$LocalTreeEvent {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -160,6 +168,7 @@ mixin _$LocalTreeEvent {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -187,6 +196,7 @@ mixin _$LocalTreeEvent {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -282,6 +292,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -317,6 +329,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -352,6 +366,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -386,6 +402,8 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -417,6 +435,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -447,6 +466,7 @@ class _$LoadAllTreesImpl with DiagnosticableTreeMixin implements _LoadAllTrees {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -560,6 +580,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -595,6 +617,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -630,6 +654,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -664,6 +690,8 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -695,6 +723,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -725,6 +754,7 @@ class _$LoadTreeImpl with DiagnosticableTreeMixin implements _LoadTree {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -852,6 +882,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -887,6 +919,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -922,6 +956,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -956,6 +992,8 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -987,6 +1025,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -1017,6 +1056,7 @@ class _$SelectTreeImpl with DiagnosticableTreeMixin implements _SelectTree {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -1166,6 +1206,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -1201,6 +1243,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -1236,6 +1280,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -1270,6 +1316,8 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -1301,6 +1349,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -1331,6 +1380,7 @@ class _$CreateTreeImpl with DiagnosticableTreeMixin implements _CreateTree {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -1461,6 +1511,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -1496,6 +1548,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -1531,6 +1585,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -1565,6 +1621,8 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -1596,6 +1654,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -1626,6 +1685,7 @@ class _$UpdateTreeImpl with DiagnosticableTreeMixin implements _UpdateTree {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -1744,6 +1804,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -1779,6 +1841,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -1814,6 +1878,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -1848,6 +1914,8 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -1879,6 +1947,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -1909,6 +1978,7 @@ class _$DeleteTreeImpl with DiagnosticableTreeMixin implements _DeleteTree {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -2038,6 +2108,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -2073,6 +2145,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -2108,6 +2182,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -2142,6 +2218,8 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -2173,6 +2251,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -2203,6 +2282,7 @@ class _$UpdateNodeImpl with DiagnosticableTreeMixin implements _UpdateNode {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -2372,6 +2452,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -2407,6 +2489,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -2442,6 +2526,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -2476,6 +2562,8 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -2507,6 +2595,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -2537,6 +2626,7 @@ class _$AddPartnerImpl with DiagnosticableTreeMixin implements _AddPartner {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -2703,6 +2793,8 @@ class _$AddExistingPartnerImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -2738,6 +2830,8 @@ class _$AddExistingPartnerImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -2773,6 +2867,8 @@ class _$AddExistingPartnerImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -2807,6 +2903,8 @@ class _$AddExistingPartnerImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -2838,6 +2936,7 @@ class _$AddExistingPartnerImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -2868,6 +2967,7 @@ class _$AddExistingPartnerImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -3014,6 +3114,8 @@ class _$ChangeOrderInFamilyImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -3049,6 +3151,8 @@ class _$ChangeOrderInFamilyImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -3084,6 +3188,8 @@ class _$ChangeOrderInFamilyImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -3118,6 +3224,8 @@ class _$ChangeOrderInFamilyImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -3149,6 +3257,7 @@ class _$ChangeOrderInFamilyImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -3179,6 +3288,7 @@ class _$ChangeOrderInFamilyImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -3325,6 +3435,8 @@ class _$ChangePartnerOrderImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -3360,6 +3472,8 @@ class _$ChangePartnerOrderImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -3395,6 +3509,8 @@ class _$ChangePartnerOrderImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -3429,6 +3545,8 @@ class _$ChangePartnerOrderImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -3460,6 +3578,7 @@ class _$ChangePartnerOrderImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -3490,6 +3609,7 @@ class _$ChangePartnerOrderImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -3631,6 +3751,8 @@ class _$ChangePartnerMarriageStatusImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -3666,6 +3788,8 @@ class _$ChangePartnerMarriageStatusImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -3701,6 +3825,8 @@ class _$ChangePartnerMarriageStatusImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -3735,6 +3861,8 @@ class _$ChangePartnerMarriageStatusImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -3766,6 +3894,7 @@ class _$ChangePartnerMarriageStatusImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -3796,6 +3925,7 @@ class _$ChangePartnerMarriageStatusImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -3925,6 +4055,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -3960,6 +4092,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -3995,6 +4129,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -4029,6 +4165,8 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -4060,6 +4198,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4090,6 +4229,7 @@ class _$AddChildImpl with DiagnosticableTreeMixin implements _AddChild {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4209,6 +4349,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -4244,6 +4386,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -4279,6 +4423,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -4313,6 +4459,8 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -4344,6 +4492,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4374,6 +4523,7 @@ class _$DeleteNodeImpl with DiagnosticableTreeMixin implements _DeleteNode {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4503,6 +4653,8 @@ class _$DeleteChildrenImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -4538,6 +4690,8 @@ class _$DeleteChildrenImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -4573,6 +4727,8 @@ class _$DeleteChildrenImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -4607,6 +4763,8 @@ class _$DeleteChildrenImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -4638,6 +4796,7 @@ class _$DeleteChildrenImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4668,6 +4827,7 @@ class _$DeleteChildrenImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4798,6 +4958,8 @@ class _$DeleteRelationsImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -4833,6 +4995,8 @@ class _$DeleteRelationsImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -4868,6 +5032,8 @@ class _$DeleteRelationsImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -4902,6 +5068,8 @@ class _$DeleteRelationsImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -4933,6 +5101,7 @@ class _$DeleteRelationsImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4963,6 +5132,7 @@ class _$DeleteRelationsImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -4986,6 +5156,320 @@ abstract class _DeleteRelations implements LocalTreeEvent {
   @JsonKey(ignore: true)
   _$$DeleteRelationsImplCopyWith<_$DeleteRelationsImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReplaceNodeWithExistingImplCopyWith<$Res> {
+  factory _$$ReplaceNodeWithExistingImplCopyWith(
+          _$ReplaceNodeWithExistingImpl value,
+          $Res Function(_$ReplaceNodeWithExistingImpl) then) =
+      __$$ReplaceNodeWithExistingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniqueId nodeIdToReplace, UniqueId existingNodeId});
+}
+
+/// @nodoc
+class __$$ReplaceNodeWithExistingImplCopyWithImpl<$Res>
+    extends _$LocalTreeEventCopyWithImpl<$Res, _$ReplaceNodeWithExistingImpl>
+    implements _$$ReplaceNodeWithExistingImplCopyWith<$Res> {
+  __$$ReplaceNodeWithExistingImplCopyWithImpl(
+      _$ReplaceNodeWithExistingImpl _value,
+      $Res Function(_$ReplaceNodeWithExistingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nodeIdToReplace = null,
+    Object? existingNodeId = null,
+  }) {
+    return _then(_$ReplaceNodeWithExistingImpl(
+      nodeIdToReplace: null == nodeIdToReplace
+          ? _value.nodeIdToReplace
+          : nodeIdToReplace // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      existingNodeId: null == existingNodeId
+          ? _value.existingNodeId
+          : existingNodeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReplaceNodeWithExistingImpl
+    with DiagnosticableTreeMixin
+    implements _ReplaceNodeWithExisting {
+  const _$ReplaceNodeWithExistingImpl(
+      {required this.nodeIdToReplace, required this.existingNodeId});
+
+  @override
+  final UniqueId nodeIdToReplace;
+  @override
+  final UniqueId existingNodeId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LocalTreeEvent.replaceNodeWithExisting(nodeIdToReplace: $nodeIdToReplace, existingNodeId: $existingNodeId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'LocalTreeEvent.replaceNodeWithExisting'))
+      ..add(DiagnosticsProperty('nodeIdToReplace', nodeIdToReplace))
+      ..add(DiagnosticsProperty('existingNodeId', existingNodeId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReplaceNodeWithExistingImpl &&
+            (identical(other.nodeIdToReplace, nodeIdToReplace) ||
+                other.nodeIdToReplace == nodeIdToReplace) &&
+            (identical(other.existingNodeId, existingNodeId) ||
+                other.existingNodeId == existingNodeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, nodeIdToReplace, existingNodeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReplaceNodeWithExistingImplCopyWith<_$ReplaceNodeWithExistingImpl>
+      get copyWith => __$$ReplaceNodeWithExistingImplCopyWithImpl<
+          _$ReplaceNodeWithExistingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAllTrees,
+    required TResult Function(UniqueId treeId) loadTree,
+    required TResult Function(UniqueId treeId, UniqueId rootId) selectTree,
+    required TResult Function(Tree tree, TNode root) createTree,
+    required TResult Function(Tree tree) updateTree,
+    required TResult Function(UniqueId treeId) deleteTree,
+    required TResult Function(TNode node) updateNode,
+    required TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)
+        addPartners,
+    required TResult Function(TNode node, UniqueId partnerId, Relation relation)
+        addExistingPartner,
+    required TResult Function(UniqueId nodeId, UniqueId relationId, int order)
+        changeOrderInFamily,
+    required TResult Function(UniqueId relationId, UniqueId nodeId, int order)
+        changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status)
+        changePartnerMarriageStatus,
+    required TResult Function(List<TNode> children) addChildren,
+    required TResult Function(UniqueId nodeId) deleteNode,
+    required TResult Function(List<TNode> children) deleteChildren,
+    required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
+    required TResult Function(UniqueId nodeId) changeFocusRoot,
+    required TResult Function() resetFocusRoot,
+    required TResult Function(int generations) changeGenerationLimit,
+    required TResult Function(bool show) toggleShowUnknown,
+    required TResult Function(bool success, int pendingSyncCount) syncFinished,
+    required TResult Function(UniqueId nodeId) searchTree,
+  }) {
+    return replaceNodeWithExisting(nodeIdToReplace, existingNodeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadAllTrees,
+    TResult? Function(UniqueId treeId)? loadTree,
+    TResult? Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult? Function(Tree tree, TNode root)? createTree,
+    TResult? Function(Tree tree)? updateTree,
+    TResult? Function(UniqueId treeId)? deleteTree,
+    TResult? Function(TNode node)? updateNode,
+    TResult? Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult? Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult? Function(UniqueId nodeId, UniqueId relationId, int order)?
+        changeOrderInFamily,
+    TResult? Function(UniqueId relationId, UniqueId nodeId, int order)?
+        changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
+    TResult? Function(List<TNode> children)? addChildren,
+    TResult? Function(UniqueId nodeId)? deleteNode,
+    TResult? Function(List<TNode> children)? deleteChildren,
+    TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
+    TResult? Function(UniqueId nodeId)? changeFocusRoot,
+    TResult? Function()? resetFocusRoot,
+    TResult? Function(int generations)? changeGenerationLimit,
+    TResult? Function(bool show)? toggleShowUnknown,
+    TResult? Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult? Function(UniqueId nodeId)? searchTree,
+  }) {
+    return replaceNodeWithExisting?.call(nodeIdToReplace, existingNodeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAllTrees,
+    TResult Function(UniqueId treeId)? loadTree,
+    TResult Function(UniqueId treeId, UniqueId rootId)? selectTree,
+    TResult Function(Tree tree, TNode root)? createTree,
+    TResult Function(Tree tree)? updateTree,
+    TResult Function(UniqueId treeId)? deleteTree,
+    TResult Function(TNode node)? updateNode,
+    TResult Function(
+            TNode node, List<TNode> partnersList, List<Relation> relationsList)?
+        addPartners,
+    TResult Function(TNode node, UniqueId partnerId, Relation relation)?
+        addExistingPartner,
+    TResult Function(UniqueId nodeId, UniqueId relationId, int order)?
+        changeOrderInFamily,
+    TResult Function(UniqueId relationId, UniqueId nodeId, int order)?
+        changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status)?
+        changePartnerMarriageStatus,
+    TResult Function(List<TNode> children)? addChildren,
+    TResult Function(UniqueId nodeId)? deleteNode,
+    TResult Function(List<TNode> children)? deleteChildren,
+    TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
+    TResult Function(UniqueId nodeId)? changeFocusRoot,
+    TResult Function()? resetFocusRoot,
+    TResult Function(int generations)? changeGenerationLimit,
+    TResult Function(bool show)? toggleShowUnknown,
+    TResult Function(bool success, int pendingSyncCount)? syncFinished,
+    TResult Function(UniqueId nodeId)? searchTree,
+    required TResult orElse(),
+  }) {
+    if (replaceNodeWithExisting != null) {
+      return replaceNodeWithExisting(nodeIdToReplace, existingNodeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadAllTrees value) loadAllTrees,
+    required TResult Function(_LoadTree value) loadTree,
+    required TResult Function(_SelectTree value) selectTree,
+    required TResult Function(_CreateTree value) createTree,
+    required TResult Function(_UpdateTree value) updateTree,
+    required TResult Function(_DeleteTree value) deleteTree,
+    required TResult Function(_UpdateNode value) updateNode,
+    required TResult Function(_AddPartner value) addPartners,
+    required TResult Function(_AddExistingPartner value) addExistingPartner,
+    required TResult Function(_ChangeOrderInFamily value) changeOrderInFamily,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
+    required TResult Function(_AddChild value) addChildren,
+    required TResult Function(_DeleteNode value) deleteNode,
+    required TResult Function(_DeleteChildren value) deleteChildren,
+    required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
+    required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
+    required TResult Function(_ResetFocusRoot value) resetFocusRoot,
+    required TResult Function(_ChangeGenerationLimit value)
+        changeGenerationLimit,
+    required TResult Function(_ToggleShowUnknown value) toggleShowUnknown,
+    required TResult Function(_SyncFinished value) syncFinished,
+    required TResult Function(_SearchTree value) searchTree,
+  }) {
+    return replaceNodeWithExisting(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadAllTrees value)? loadAllTrees,
+    TResult? Function(_LoadTree value)? loadTree,
+    TResult? Function(_SelectTree value)? selectTree,
+    TResult? Function(_CreateTree value)? createTree,
+    TResult? Function(_UpdateTree value)? updateTree,
+    TResult? Function(_DeleteTree value)? deleteTree,
+    TResult? Function(_UpdateNode value)? updateNode,
+    TResult? Function(_AddPartner value)? addPartners,
+    TResult? Function(_AddExistingPartner value)? addExistingPartner,
+    TResult? Function(_ChangeOrderInFamily value)? changeOrderInFamily,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult? Function(_AddChild value)? addChildren,
+    TResult? Function(_DeleteNode value)? deleteNode,
+    TResult? Function(_DeleteChildren value)? deleteChildren,
+    TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
+    TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult? Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult? Function(_SyncFinished value)? syncFinished,
+    TResult? Function(_SearchTree value)? searchTree,
+  }) {
+    return replaceNodeWithExisting?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadAllTrees value)? loadAllTrees,
+    TResult Function(_LoadTree value)? loadTree,
+    TResult Function(_SelectTree value)? selectTree,
+    TResult Function(_CreateTree value)? createTree,
+    TResult Function(_UpdateTree value)? updateTree,
+    TResult Function(_DeleteTree value)? deleteTree,
+    TResult Function(_UpdateNode value)? updateNode,
+    TResult Function(_AddPartner value)? addPartners,
+    TResult Function(_AddExistingPartner value)? addExistingPartner,
+    TResult Function(_ChangeOrderInFamily value)? changeOrderInFamily,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult Function(_AddChild value)? addChildren,
+    TResult Function(_DeleteNode value)? deleteNode,
+    TResult Function(_DeleteChildren value)? deleteChildren,
+    TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
+    TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
+    TResult Function(_ResetFocusRoot value)? resetFocusRoot,
+    TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
+    TResult Function(_ToggleShowUnknown value)? toggleShowUnknown,
+    TResult Function(_SyncFinished value)? syncFinished,
+    TResult Function(_SearchTree value)? searchTree,
+    required TResult orElse(),
+  }) {
+    if (replaceNodeWithExisting != null) {
+      return replaceNodeWithExisting(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReplaceNodeWithExisting implements LocalTreeEvent {
+  const factory _ReplaceNodeWithExisting(
+      {required final UniqueId nodeIdToReplace,
+      required final UniqueId existingNodeId}) = _$ReplaceNodeWithExistingImpl;
+
+  UniqueId get nodeIdToReplace;
+  UniqueId get existingNodeId;
+  @JsonKey(ignore: true)
+  _$$ReplaceNodeWithExistingImplCopyWith<_$ReplaceNodeWithExistingImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -5085,6 +5569,8 @@ class _$ChangeFocusRootImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -5120,6 +5606,8 @@ class _$ChangeFocusRootImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -5155,6 +5643,8 @@ class _$ChangeFocusRootImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -5189,6 +5679,8 @@ class _$ChangeFocusRootImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -5220,6 +5712,7 @@ class _$ChangeFocusRootImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -5250,6 +5743,7 @@ class _$ChangeFocusRootImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -5344,6 +5838,8 @@ class _$ResetFocusRootImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -5379,6 +5875,8 @@ class _$ResetFocusRootImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -5414,6 +5912,8 @@ class _$ResetFocusRootImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -5448,6 +5948,8 @@ class _$ResetFocusRootImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -5479,6 +5981,7 @@ class _$ResetFocusRootImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -5509,6 +6012,7 @@ class _$ResetFocusRootImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -5627,6 +6131,8 @@ class _$ChangeGenerationLimitImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -5662,6 +6168,8 @@ class _$ChangeGenerationLimitImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -5697,6 +6205,8 @@ class _$ChangeGenerationLimitImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -5731,6 +6241,8 @@ class _$ChangeGenerationLimitImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -5762,6 +6274,7 @@ class _$ChangeGenerationLimitImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -5792,6 +6305,7 @@ class _$ChangeGenerationLimitImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -5914,6 +6428,8 @@ class _$ToggleShowUnknownImpl
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -5949,6 +6465,8 @@ class _$ToggleShowUnknownImpl
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -5984,6 +6502,8 @@ class _$ToggleShowUnknownImpl
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -6018,6 +6538,8 @@ class _$ToggleShowUnknownImpl
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -6049,6 +6571,7 @@ class _$ToggleShowUnknownImpl
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -6079,6 +6602,7 @@ class _$ToggleShowUnknownImpl
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -6209,6 +6733,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -6244,6 +6770,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -6279,6 +6807,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -6313,6 +6843,8 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -6344,6 +6876,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -6374,6 +6907,7 @@ class _$SyncFinishedImpl with DiagnosticableTreeMixin implements _SyncFinished {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -6495,6 +7029,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     required TResult Function(UniqueId nodeId) deleteNode,
     required TResult Function(List<TNode> children) deleteChildren,
     required TResult Function(List<Relation> relations) deleteRelations,
+    required TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)
+        replaceNodeWithExisting,
     required TResult Function(UniqueId nodeId) changeFocusRoot,
     required TResult Function() resetFocusRoot,
     required TResult Function(int generations) changeGenerationLimit,
@@ -6530,6 +7066,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     TResult? Function(UniqueId nodeId)? deleteNode,
     TResult? Function(List<TNode> children)? deleteChildren,
     TResult? Function(List<Relation> relations)? deleteRelations,
+    TResult? Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult? Function(UniqueId nodeId)? changeFocusRoot,
     TResult? Function()? resetFocusRoot,
     TResult? Function(int generations)? changeGenerationLimit,
@@ -6565,6 +7103,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     TResult Function(UniqueId nodeId)? deleteNode,
     TResult Function(List<TNode> children)? deleteChildren,
     TResult Function(List<Relation> relations)? deleteRelations,
+    TResult Function(UniqueId nodeIdToReplace, UniqueId existingNodeId)?
+        replaceNodeWithExisting,
     TResult Function(UniqueId nodeId)? changeFocusRoot,
     TResult Function()? resetFocusRoot,
     TResult Function(int generations)? changeGenerationLimit,
@@ -6599,6 +7139,8 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     required TResult Function(_DeleteNode value) deleteNode,
     required TResult Function(_DeleteChildren value) deleteChildren,
     required TResult Function(_DeleteRelations value) deleteRelations,
+    required TResult Function(_ReplaceNodeWithExisting value)
+        replaceNodeWithExisting,
     required TResult Function(_ChangeFocusRoot value) changeFocusRoot,
     required TResult Function(_ResetFocusRoot value) resetFocusRoot,
     required TResult Function(_ChangeGenerationLimit value)
@@ -6630,6 +7172,7 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     TResult? Function(_DeleteNode value)? deleteNode,
     TResult? Function(_DeleteChildren value)? deleteChildren,
     TResult? Function(_DeleteRelations value)? deleteRelations,
+    TResult? Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult? Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult? Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult? Function(_ChangeGenerationLimit value)? changeGenerationLimit,
@@ -6660,6 +7203,7 @@ class _$SearchTreeImpl with DiagnosticableTreeMixin implements _SearchTree {
     TResult Function(_DeleteNode value)? deleteNode,
     TResult Function(_DeleteChildren value)? deleteChildren,
     TResult Function(_DeleteRelations value)? deleteRelations,
+    TResult Function(_ReplaceNodeWithExisting value)? replaceNodeWithExisting,
     TResult Function(_ChangeFocusRoot value)? changeFocusRoot,
     TResult Function(_ResetFocusRoot value)? resetFocusRoot,
     TResult Function(_ChangeGenerationLimit value)? changeGenerationLimit,

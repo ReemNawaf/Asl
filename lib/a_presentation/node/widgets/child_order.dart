@@ -10,8 +10,8 @@ import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChildPartner extends StatelessWidget {
-  const ChildPartner({
+class ChildOrder extends StatelessWidget {
+  const ChildOrder({
     super.key,
     required this.node,
     required this.state,

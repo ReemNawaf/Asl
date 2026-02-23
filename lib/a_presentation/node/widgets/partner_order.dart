@@ -30,7 +30,7 @@ class PartnerOrder extends StatelessWidget {
             .toList();
 
         return SizedBox(
-          width: PAN_WIDTH - 106,
+          width: PAN_WIDTH - 96,
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: node.relations.length,
@@ -81,7 +81,7 @@ class PartnerOrder extends StatelessWidget {
                       Text(node.gender == Gender.male
                           ? getTr(context, 'his_order')!
                           : getTr(context, 'her_order')!),
-                      kHSpacer15,
+                      kHSpacer28,
                       Container(
                         decoration: kAppFormsDecor,
                         height: kTextFieldHeight,

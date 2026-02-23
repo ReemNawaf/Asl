@@ -325,6 +325,61 @@ class RelationRepository implements IRelationRepository {
   }
 
   @override
+  Future<Either<RelationFailure, Unit>> replaceNodeWithExisting({
+    required UniqueId treeId,
+    required UniqueId nodeIdToReplace,
+    required UniqueId existingNodeId,
+    required List<UniqueId> relationIds,
+  }) async {
+    try {
+      final treeIdVal = treeId.getOrCrash();
+      final replaceVal = nodeIdToReplace.getOrCrash();
+      final existingVal = existingNodeId.getOrCrash();
+      if (replaceVal == existingVal) return right(unit);
+
+      final treeRef = _firestore.treesCollection().doc(treeIdVal);
+      final relationsCol = treeRef.collection(RELATIONS_COLLECTION);
+      final batch = _firestore.batch();
+
+      for (final relationId in relationIds) {
+        final relationIdVal = relationId.getOrCrash();
+        final relationRef = relationsCol.doc(relationIdVal);
+        final doc = await relationRef.get();
+
+        if (!doc.exists || doc.data() == null) continue;
+
+        final data = doc.data()!;
+        final father = data['father'] as String?;
+        final mother = data['mother'] as String?;
+
+        if (father == replaceVal) {
+          batch.update(relationRef, {'father': existingVal});
+        } else if (mother == replaceVal) {
+          batch.update(relationRef, {'mother': existingVal});
+        }
+      }
+
+      final nodeToDeleteRef =
+          treeRef.collection(NODES_COLLECTION).doc(replaceVal);
+      batch.delete(nodeToDeleteRef);
+
+      await batch.commit();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      final msg = e.message ?? '';
+      if (msg.contains(PERMISSION_DENIED_CP) ||
+          msg.contains(PERMISSION_DENIED_SM)) {
+        return left(const RelationFailure.insufficientPermission());
+      } else if (msg.contains(NOT_FOUND_CP) || msg.contains(NOT_FOUND_SM)) {
+        return left(const RelationFailure.unableToUpdate());
+      }
+      return left(const RelationFailure.unexpected());
+    } catch (_) {
+      return left(const RelationFailure.unexpected());
+    }
+  }
+
+  @override
   Future<Either<RelationFailure, Unit>> deleteRelation({
     required List<Relation> relations,
   }) async {

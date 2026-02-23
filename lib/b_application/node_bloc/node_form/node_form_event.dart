@@ -40,6 +40,13 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.makeItRoot() = _MakeItRoot;
   const factory NodeFormEvent.changeGender(Gender gender) = _ChangedGender;
 
+  const factory NodeFormEvent.linkToExistingNode(
+      {required TNode? Function(String nodeKey) getNodeByKey,
+      required String newNodeId}) = _LinkToExistingNode;
+
+  const factory NodeFormEvent.showLinkToExistingNode(bool isAdding) =
+      _ShowLinkToExistingNode;
+
   // toggle to show the widgets for adding new partner in relation panel
   const factory NodeFormEvent.addPartner(bool isAdding) = _AddPartner;
 

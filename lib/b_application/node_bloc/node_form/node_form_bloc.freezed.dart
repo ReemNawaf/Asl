@@ -38,6 +38,10 @@ mixin _$NodeFormEvent {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -65,6 +69,9 @@ mixin _$NodeFormEvent {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -92,6 +99,9 @@ mixin _$NodeFormEvent {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -117,6 +127,9 @@ mixin _$NodeFormEvent {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -141,6 +154,8 @@ mixin _$NodeFormEvent {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -165,6 +180,8 @@ mixin _$NodeFormEvent {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -285,6 +302,10 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -315,6 +336,9 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -345,6 +369,9 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -376,6 +403,9 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -403,6 +433,8 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -430,6 +462,8 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -509,6 +543,10 @@ class _$EndedImpl implements _Ended {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -539,6 +577,9 @@ class _$EndedImpl implements _Ended {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -569,6 +610,9 @@ class _$EndedImpl implements _Ended {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -600,6 +644,9 @@ class _$EndedImpl implements _Ended {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -627,6 +674,8 @@ class _$EndedImpl implements _Ended {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -654,6 +703,8 @@ class _$EndedImpl implements _Ended {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -755,6 +806,10 @@ class _$AddedImpl implements _Added {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -785,6 +840,9 @@ class _$AddedImpl implements _Added {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -815,6 +873,9 @@ class _$AddedImpl implements _Added {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -846,6 +907,9 @@ class _$AddedImpl implements _Added {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -873,6 +937,8 @@ class _$AddedImpl implements _Added {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -900,6 +966,8 @@ class _$AddedImpl implements _Added {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -1006,6 +1074,10 @@ class _$EditedImpl implements _Edited {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -1036,6 +1108,9 @@ class _$EditedImpl implements _Edited {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -1066,6 +1141,9 @@ class _$EditedImpl implements _Edited {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -1097,6 +1175,9 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -1124,6 +1205,8 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -1151,6 +1234,8 @@ class _$EditedImpl implements _Edited {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -1258,6 +1343,10 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -1288,6 +1377,9 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -1318,6 +1410,9 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -1349,6 +1444,9 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -1376,6 +1474,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -1403,6 +1503,8 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -1510,6 +1612,10 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -1540,6 +1646,9 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -1570,6 +1679,9 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -1601,6 +1713,9 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -1628,6 +1743,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -1655,6 +1772,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -1761,6 +1880,10 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -1791,6 +1914,9 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -1821,6 +1947,9 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -1852,6 +1981,9 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -1879,6 +2011,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -1906,6 +2040,8 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -2013,6 +2149,10 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -2043,6 +2183,9 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -2073,6 +2216,9 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -2104,6 +2250,9 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -2131,6 +2280,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -2158,6 +2309,8 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -2264,6 +2417,10 @@ class _$NotesChangedImpl implements _NotesChanged {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -2294,6 +2451,9 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -2324,6 +2484,9 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -2355,6 +2518,9 @@ class _$NotesChangedImpl implements _NotesChanged {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -2382,6 +2548,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -2409,6 +2577,8 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -2516,6 +2686,10 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -2546,6 +2720,9 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -2576,6 +2753,9 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -2607,6 +2787,9 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -2634,6 +2817,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -2661,6 +2846,8 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -2768,6 +2955,10 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -2798,6 +2989,9 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -2828,6 +3022,9 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -2859,6 +3056,9 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -2886,6 +3086,8 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -2913,6 +3115,8 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -3054,6 +3258,10 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -3084,6 +3292,9 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -3114,6 +3325,9 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -3145,6 +3359,9 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -3172,6 +3389,8 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -3199,6 +3418,8 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -3350,6 +3571,10 @@ class _$ChangePartnerMarriageStatusImpl
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -3380,6 +3605,9 @@ class _$ChangePartnerMarriageStatusImpl
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -3411,6 +3639,9 @@ class _$ChangePartnerMarriageStatusImpl
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -3442,6 +3673,9 @@ class _$ChangePartnerMarriageStatusImpl
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -3469,6 +3703,8 @@ class _$ChangePartnerMarriageStatusImpl
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -3496,6 +3732,8 @@ class _$ChangePartnerMarriageStatusImpl
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -3609,6 +3847,10 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -3639,6 +3881,9 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -3669,6 +3914,9 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -3700,6 +3948,9 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -3727,6 +3978,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -3754,6 +4007,8 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -3833,6 +4088,10 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -3863,6 +4122,9 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -3893,6 +4155,9 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -3924,6 +4189,9 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -3951,6 +4219,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -3978,6 +4248,8 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -4078,6 +4350,10 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -4108,6 +4384,9 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -4138,6 +4417,9 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -4169,6 +4451,9 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -4196,6 +4481,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -4223,6 +4510,8 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -4242,6 +4531,560 @@ abstract class _ChangedGender implements NodeFormEvent {
   @JsonKey(ignore: true)
   _$$ChangedGenderImplCopyWith<_$ChangedGenderImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LinkToExistingNodeImplCopyWith<$Res> {
+  factory _$$LinkToExistingNodeImplCopyWith(_$LinkToExistingNodeImpl value,
+          $Res Function(_$LinkToExistingNodeImpl) then) =
+      __$$LinkToExistingNodeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TNode? Function(String) getNodeByKey, String newNodeId});
+}
+
+/// @nodoc
+class __$$LinkToExistingNodeImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$LinkToExistingNodeImpl>
+    implements _$$LinkToExistingNodeImplCopyWith<$Res> {
+  __$$LinkToExistingNodeImplCopyWithImpl(_$LinkToExistingNodeImpl _value,
+      $Res Function(_$LinkToExistingNodeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? getNodeByKey = null,
+    Object? newNodeId = null,
+  }) {
+    return _then(_$LinkToExistingNodeImpl(
+      getNodeByKey: null == getNodeByKey
+          ? _value.getNodeByKey
+          : getNodeByKey // ignore: cast_nullable_to_non_nullable
+              as TNode? Function(String),
+      newNodeId: null == newNodeId
+          ? _value.newNodeId
+          : newNodeId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LinkToExistingNodeImpl implements _LinkToExistingNode {
+  const _$LinkToExistingNodeImpl(
+      {required this.getNodeByKey, required this.newNodeId});
+
+  @override
+  final TNode? Function(String) getNodeByKey;
+  @override
+  final String newNodeId;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.linkToExistingNode(getNodeByKey: $getNodeByKey, newNodeId: $newNodeId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LinkToExistingNodeImpl &&
+            (identical(other.getNodeByKey, getNodeByKey) ||
+                other.getNodeByKey == getNodeByKey) &&
+            (identical(other.newNodeId, newNodeId) ||
+                other.newNodeId == newNodeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, getNodeByKey, newNodeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LinkToExistingNodeImplCopyWith<_$LinkToExistingNodeImpl> get copyWith =>
+      __$$LinkToExistingNodeImplCopyWithImpl<_$LinkToExistingNodeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) initialized,
+    required TResult Function() ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(bool isEditing) edited,
+    required TResult Function(int panelIndex) updateCurrentPanel,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(String? notes) notesChanged,
+    required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(UniqueId relationId, int order,
+            UniqueId partnerId, MarriageStatus? status)
+        changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)
+        changePartnerMarriageStatus,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
+    required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
+    required TResult Function() saved,
+  }) {
+    return linkToExistingNode(getNodeByKey, newNodeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? initialized,
+    TResult? Function()? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(bool isEditing)? edited,
+    TResult? Function(int panelIndex)? updateCurrentPanel,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(String? notes)? notesChanged,
+    TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(UniqueId relationId, int order, UniqueId partnerId,
+            MarriageStatus? status)?
+        changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)?
+        changePartnerMarriageStatus,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
+    TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
+    TResult? Function()? saved,
+  }) {
+    return linkToExistingNode?.call(getNodeByKey, newNodeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? initialized,
+    TResult Function()? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(bool isEditing)? edited,
+    TResult Function(int panelIndex)? updateCurrentPanel,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(String? notes)? notesChanged,
+    TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(UniqueId relationId, int order, UniqueId partnerId,
+            MarriageStatus? status)?
+        changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)?
+        changePartnerMarriageStatus,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
+    TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (linkToExistingNode != null) {
+      return linkToExistingNode(getNodeByKey, newNodeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_UpdateCurrentPanel value) updateCurrentPanel,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_NotesChanged value) notesChanged,
+    required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return linkToExistingNode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_NotesChanged value)? notesChanged,
+    TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return linkToExistingNode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_NotesChanged value)? notesChanged,
+    TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (linkToExistingNode != null) {
+      return linkToExistingNode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LinkToExistingNode implements NodeFormEvent {
+  const factory _LinkToExistingNode(
+      {required final TNode? Function(String) getNodeByKey,
+      required final String newNodeId}) = _$LinkToExistingNodeImpl;
+
+  TNode? Function(String) get getNodeByKey;
+  String get newNodeId;
+  @JsonKey(ignore: true)
+  _$$LinkToExistingNodeImplCopyWith<_$LinkToExistingNodeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShowLinkToExistingNodeImplCopyWith<$Res> {
+  factory _$$ShowLinkToExistingNodeImplCopyWith(
+          _$ShowLinkToExistingNodeImpl value,
+          $Res Function(_$ShowLinkToExistingNodeImpl) then) =
+      __$$ShowLinkToExistingNodeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isAdding});
+}
+
+/// @nodoc
+class __$$ShowLinkToExistingNodeImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$ShowLinkToExistingNodeImpl>
+    implements _$$ShowLinkToExistingNodeImplCopyWith<$Res> {
+  __$$ShowLinkToExistingNodeImplCopyWithImpl(
+      _$ShowLinkToExistingNodeImpl _value,
+      $Res Function(_$ShowLinkToExistingNodeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isAdding = null,
+  }) {
+    return _then(_$ShowLinkToExistingNodeImpl(
+      null == isAdding
+          ? _value.isAdding
+          : isAdding // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowLinkToExistingNodeImpl implements _ShowLinkToExistingNode {
+  const _$ShowLinkToExistingNodeImpl(this.isAdding);
+
+  @override
+  final bool isAdding;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.showLinkToExistingNode(isAdding: $isAdding)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowLinkToExistingNodeImpl &&
+            (identical(other.isAdding, isAdding) ||
+                other.isAdding == isAdding));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isAdding);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShowLinkToExistingNodeImplCopyWith<_$ShowLinkToExistingNodeImpl>
+      get copyWith => __$$ShowLinkToExistingNodeImplCopyWithImpl<
+          _$ShowLinkToExistingNodeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) initialized,
+    required TResult Function() ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(bool isEditing) edited,
+    required TResult Function(int panelIndex) updateCurrentPanel,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(String? notes) notesChanged,
+    required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(UniqueId relationId, int order,
+            UniqueId partnerId, MarriageStatus? status)
+        changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)
+        changePartnerMarriageStatus,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
+    required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
+    required TResult Function() saved,
+  }) {
+    return showLinkToExistingNode(isAdding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? initialized,
+    TResult? Function()? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(bool isEditing)? edited,
+    TResult? Function(int panelIndex)? updateCurrentPanel,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(String? notes)? notesChanged,
+    TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(UniqueId relationId, int order, UniqueId partnerId,
+            MarriageStatus? status)?
+        changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)?
+        changePartnerMarriageStatus,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
+    TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
+    TResult? Function()? saved,
+  }) {
+    return showLinkToExistingNode?.call(isAdding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? initialized,
+    TResult Function()? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(bool isEditing)? edited,
+    TResult Function(int panelIndex)? updateCurrentPanel,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(String? notes)? notesChanged,
+    TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(UniqueId relationId, int order, UniqueId partnerId,
+            MarriageStatus? status)?
+        changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)?
+        changePartnerMarriageStatus,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
+    TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (showLinkToExistingNode != null) {
+      return showLinkToExistingNode(isAdding);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_UpdateCurrentPanel value) updateCurrentPanel,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_NotesChanged value) notesChanged,
+    required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return showLinkToExistingNode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_NotesChanged value)? notesChanged,
+    TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return showLinkToExistingNode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_NotesChanged value)? notesChanged,
+    TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (showLinkToExistingNode != null) {
+      return showLinkToExistingNode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowLinkToExistingNode implements NodeFormEvent {
+  const factory _ShowLinkToExistingNode(final bool isAdding) =
+      _$ShowLinkToExistingNodeImpl;
+
+  bool get isAdding;
+  @JsonKey(ignore: true)
+  _$$ShowLinkToExistingNodeImplCopyWith<_$ShowLinkToExistingNodeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4329,6 +5172,10 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -4359,6 +5206,9 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -4389,6 +5239,9 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -4420,6 +5273,9 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -4447,6 +5303,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -4474,6 +5332,8 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -4580,6 +5440,10 @@ class _$AddChildImpl implements _AddChild {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -4610,6 +5474,9 @@ class _$AddChildImpl implements _AddChild {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -4640,6 +5507,9 @@ class _$AddChildImpl implements _AddChild {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -4671,6 +5541,9 @@ class _$AddChildImpl implements _AddChild {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -4698,6 +5571,8 @@ class _$AddChildImpl implements _AddChild {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -4725,6 +5600,8 @@ class _$AddChildImpl implements _AddChild {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -4804,6 +5681,10 @@ class _$SavedImpl implements _Saved {
     required TResult Function(bool isAlive) changeIsAvlive,
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
     required TResult Function(bool isAdding) addPartner,
     required TResult Function(bool isAdding) addChild,
     required TResult Function() saved,
@@ -4834,6 +5715,9 @@ class _$SavedImpl implements _Saved {
     TResult? Function(bool isAlive)? changeIsAvlive,
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
     TResult? Function(bool isAdding)? addPartner,
     TResult? Function(bool isAdding)? addChild,
     TResult? Function()? saved,
@@ -4864,6 +5748,9 @@ class _$SavedImpl implements _Saved {
     TResult Function(bool isAlive)? changeIsAvlive,
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
     TResult Function(bool isAdding)? addPartner,
     TResult Function(bool isAdding)? addChild,
     TResult Function()? saved,
@@ -4895,6 +5782,9 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
     required TResult Function(_AddPartner value) addPartner,
     required TResult Function(_AddChild value) addChild,
     required TResult Function(_Saved value) saved,
@@ -4922,6 +5812,8 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
     TResult? Function(_AddChild value)? addChild,
     TResult? Function(_Saved value)? saved,
@@ -4949,6 +5841,8 @@ class _$SavedImpl implements _Saved {
     TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
     TResult Function(_AddChild value)? addChild,
     TResult Function(_Saved value)? saved,
@@ -4974,6 +5868,9 @@ mixin _$NodeFormState {
   bool get addPartner => throw _privateConstructorUsedError;
   bool get addChild => throw _privateConstructorUsedError;
   int get currentPanel => throw _privateConstructorUsedError;
+  bool get isLinkToExistingNode => throw _privateConstructorUsedError;
+  TNode? get existingNode => throw _privateConstructorUsedError;
+  bool? get linkToExistingNodeNotExist => throw _privateConstructorUsedError;
   int? get childOrder => throw _privateConstructorUsedError;
   Map<UniqueId, Map<String, dynamic>>? get relationInfo =>
       throw _privateConstructorUsedError;
@@ -4999,11 +5896,15 @@ abstract class $NodeFormStateCopyWith<$Res> {
       bool addPartner,
       bool addChild,
       int currentPanel,
+      bool isLinkToExistingNode,
+      TNode? existingNode,
+      bool? linkToExistingNodeNotExist,
       int? childOrder,
       Map<UniqueId, Map<String, dynamic>>? relationInfo,
       Either<TNodeFailure, TNode>? saveFailureOrSuccessOption});
 
   $TNodeCopyWith<$Res>? get node;
+  $TNodeCopyWith<$Res>? get existingNode;
 }
 
 /// @nodoc
@@ -5026,6 +5927,9 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
+    Object? isLinkToExistingNode = null,
+    Object? existingNode = freezed,
+    Object? linkToExistingNodeNotExist = freezed,
     Object? childOrder = freezed,
     Object? relationInfo = freezed,
     Object? saveFailureOrSuccessOption = freezed,
@@ -5059,6 +5963,18 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
           ? _value.currentPanel
           : currentPanel // ignore: cast_nullable_to_non_nullable
               as int,
+      isLinkToExistingNode: null == isLinkToExistingNode
+          ? _value.isLinkToExistingNode
+          : isLinkToExistingNode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      existingNode: freezed == existingNode
+          ? _value.existingNode
+          : existingNode // ignore: cast_nullable_to_non_nullable
+              as TNode?,
+      linkToExistingNodeNotExist: freezed == linkToExistingNodeNotExist
+          ? _value.linkToExistingNodeNotExist
+          : linkToExistingNodeNotExist // ignore: cast_nullable_to_non_nullable
+              as bool?,
       childOrder: freezed == childOrder
           ? _value.childOrder
           : childOrder // ignore: cast_nullable_to_non_nullable
@@ -5085,6 +6001,18 @@ class _$NodeFormStateCopyWithImpl<$Res, $Val extends NodeFormState>
       return _then(_value.copyWith(node: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TNodeCopyWith<$Res>? get existingNode {
+    if (_value.existingNode == null) {
+      return null;
+    }
+
+    return $TNodeCopyWith<$Res>(_value.existingNode!, (value) {
+      return _then(_value.copyWith(existingNode: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -5103,12 +6031,17 @@ abstract class _$$NodeFormStateImplCopyWith<$Res>
       bool addPartner,
       bool addChild,
       int currentPanel,
+      bool isLinkToExistingNode,
+      TNode? existingNode,
+      bool? linkToExistingNodeNotExist,
       int? childOrder,
       Map<UniqueId, Map<String, dynamic>>? relationInfo,
       Either<TNodeFailure, TNode>? saveFailureOrSuccessOption});
 
   @override
   $TNodeCopyWith<$Res>? get node;
+  @override
+  $TNodeCopyWith<$Res>? get existingNode;
 }
 
 /// @nodoc
@@ -5129,6 +6062,9 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
     Object? addPartner = null,
     Object? addChild = null,
     Object? currentPanel = null,
+    Object? isLinkToExistingNode = null,
+    Object? existingNode = freezed,
+    Object? linkToExistingNodeNotExist = freezed,
     Object? childOrder = freezed,
     Object? relationInfo = freezed,
     Object? saveFailureOrSuccessOption = freezed,
@@ -5162,6 +6098,18 @@ class __$$NodeFormStateImplCopyWithImpl<$Res>
           ? _value.currentPanel
           : currentPanel // ignore: cast_nullable_to_non_nullable
               as int,
+      isLinkToExistingNode: null == isLinkToExistingNode
+          ? _value.isLinkToExistingNode
+          : isLinkToExistingNode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      existingNode: freezed == existingNode
+          ? _value.existingNode
+          : existingNode // ignore: cast_nullable_to_non_nullable
+              as TNode?,
+      linkToExistingNodeNotExist: freezed == linkToExistingNodeNotExist
+          ? _value.linkToExistingNodeNotExist
+          : linkToExistingNodeNotExist // ignore: cast_nullable_to_non_nullable
+              as bool?,
       childOrder: freezed == childOrder
           ? _value.childOrder
           : childOrder // ignore: cast_nullable_to_non_nullable
@@ -5189,6 +6137,9 @@ class _$NodeFormStateImpl implements _NodeFormState {
       required this.addPartner,
       required this.addChild,
       required this.currentPanel,
+      required this.isLinkToExistingNode,
+      this.existingNode,
+      this.linkToExistingNodeNotExist,
       this.childOrder,
       final Map<UniqueId, Map<String, dynamic>>? relationInfo,
       required this.saveFailureOrSuccessOption})
@@ -5209,6 +6160,12 @@ class _$NodeFormStateImpl implements _NodeFormState {
   @override
   final int currentPanel;
   @override
+  final bool isLinkToExistingNode;
+  @override
+  final TNode? existingNode;
+  @override
+  final bool? linkToExistingNodeNotExist;
+  @override
   final int? childOrder;
   final Map<UniqueId, Map<String, dynamic>>? _relationInfo;
   @override
@@ -5225,7 +6182,7 @@ class _$NodeFormStateImpl implements _NodeFormState {
 
   @override
   String toString() {
-    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, addPartner: $addPartner, addChild: $addChild, currentPanel: $currentPanel, childOrder: $childOrder, relationInfo: $relationInfo, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'NodeFormState(node: $node, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, addPartner: $addPartner, addChild: $addChild, currentPanel: $currentPanel, isLinkToExistingNode: $isLinkToExistingNode, existingNode: $existingNode, linkToExistingNodeNotExist: $linkToExistingNodeNotExist, childOrder: $childOrder, relationInfo: $relationInfo, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -5246,6 +6203,14 @@ class _$NodeFormStateImpl implements _NodeFormState {
                 other.addChild == addChild) &&
             (identical(other.currentPanel, currentPanel) ||
                 other.currentPanel == currentPanel) &&
+            (identical(other.isLinkToExistingNode, isLinkToExistingNode) ||
+                other.isLinkToExistingNode == isLinkToExistingNode) &&
+            (identical(other.existingNode, existingNode) ||
+                other.existingNode == existingNode) &&
+            (identical(other.linkToExistingNodeNotExist,
+                    linkToExistingNodeNotExist) ||
+                other.linkToExistingNodeNotExist ==
+                    linkToExistingNodeNotExist) &&
             (identical(other.childOrder, childOrder) ||
                 other.childOrder == childOrder) &&
             const DeepCollectionEquality()
@@ -5266,6 +6231,9 @@ class _$NodeFormStateImpl implements _NodeFormState {
       addPartner,
       addChild,
       currentPanel,
+      isLinkToExistingNode,
+      existingNode,
+      linkToExistingNodeNotExist,
       childOrder,
       const DeepCollectionEquality().hash(_relationInfo),
       saveFailureOrSuccessOption);
@@ -5286,6 +6254,9 @@ abstract class _NodeFormState implements NodeFormState {
       required final bool addPartner,
       required final bool addChild,
       required final int currentPanel,
+      required final bool isLinkToExistingNode,
+      final TNode? existingNode,
+      final bool? linkToExistingNodeNotExist,
       final int? childOrder,
       final Map<UniqueId, Map<String, dynamic>>? relationInfo,
       required final Either<TNodeFailure, TNode>?
@@ -5305,6 +6276,12 @@ abstract class _NodeFormState implements NodeFormState {
   bool get addChild;
   @override
   int get currentPanel;
+  @override
+  bool get isLinkToExistingNode;
+  @override
+  TNode? get existingNode;
+  @override
+  bool? get linkToExistingNodeNotExist;
   @override
   int? get childOrder;
   @override

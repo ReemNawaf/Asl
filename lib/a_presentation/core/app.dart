@@ -1,8 +1,8 @@
 import 'package:asl/b_application/auth_bloc/sign_in_form/sign_in_form_bloc.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';

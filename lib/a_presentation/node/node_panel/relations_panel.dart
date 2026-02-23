@@ -9,8 +9,8 @@ import 'package:asl/a_presentation/node/widgets/partner_wdg.dart';
 import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/child_form/child_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/child_form/child_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_ui_queries.dart';
 
 import 'package:asl/c_domain/node/t_node.dart';
@@ -34,14 +34,11 @@ class RelationsPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final store = mainContext.read<LocalTreeBloc>().state.store;
 
-    print('--- store: $store');
-
     final relations = TreeGraphUIQueries.relationsOfNode(
       store: store,
       nodeId: node.nodeId,
     );
 
-    print('--- relations: ${store.relationsById.keys}');
     return Container(
       padding: const EdgeInsets.only(left: 10.0, top: 20.0),
       height: PAN_HEIGHT,

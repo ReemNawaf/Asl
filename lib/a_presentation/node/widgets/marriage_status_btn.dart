@@ -1,6 +1,6 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
-import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

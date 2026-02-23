@@ -1,3 +1,4 @@
+import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 
@@ -6,7 +7,7 @@ import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/marriage_status_btn.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
-import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,6 @@ class AddPartnerWidget extends StatelessWidget {
 
   final TNode node;
   final MaterialColor color;
-
-  void addPartnerById(BuildContext context, bool isAdding) {
-    context
-        .read<PartnerFormBloc>()
-        .add(PartnerFormEvent.showPartnerByNodeId(isAdding));
-  }
 
   void addUnknownPartner(BuildContext context, bool isAdding) {
     context
@@ -53,7 +48,10 @@ class AddPartnerWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Divider(color: kRootColors[400], thickness: 1),
+              kVSpacer10,
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     isAddingPartner
@@ -198,6 +196,12 @@ class AddPartnerWidget extends StatelessWidget {
       },
     );
   }
+}
+
+void addPartnerById(BuildContext context, bool isAdding) {
+  context
+      .read<PartnerFormBloc>()
+      .add(PartnerFormEvent.showPartnerByNodeId(isAdding));
 }
 
 class PartnerName extends StatelessWidget {

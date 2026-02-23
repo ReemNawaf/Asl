@@ -7,7 +7,7 @@ import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/core/widgets/icon_only_btn.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-import 'package:asl/b_application/relation_bloc/partner_form/partner_form_bloc.dart';
+import 'package:asl/b_application/node_bloc/partner_form/partner_form_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/relation/relation.dart';

@@ -146,5 +146,5 @@ class ShareSettingsSection extends StatelessWidget {
 
 String buildTreeLink(String treeId) {
   // production domain (or swap per env)
-  return 'https://asl.reemnawaf.me/trees/$treeId';
+  return 'https://tree.aasl.app/trees/$treeId';
 }

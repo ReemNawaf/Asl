@@ -70,6 +70,7 @@ const kHSpacer10 = SizedBox(width: 10.0);
 const kHSpacer15 = SizedBox(width: 15.0);
 const kHSpacer20 = SizedBox(width: 20.0);
 const kHSpacer24 = SizedBox(width: 24.0);
+const kHSpacer28 = SizedBox(width: 28.0);
 const kHSpacer40 = SizedBox(width: 40.0);
 const kHSpacer60 = SizedBox(width: 60.0);
 
