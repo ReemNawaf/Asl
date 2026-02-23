@@ -4,6 +4,7 @@ import 'package:asl/a_presentation/a_shared/text_styles.dart';
 import 'package:asl/a_presentation/node/node_panel/main_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
+import 'package:asl/b_application/tree_bloc/tree_settings/zoom_bloc/tree_zoom_bloc.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/injection.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -55,18 +56,26 @@ class AppNode extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => goToNode
-            ? context
-                .read<DrawTreeBloc>()
-                .navigateToNode(node.nodeId.getOrCrash())
-            : showPanel(
-                pageContext,
-                size,
-                color,
-                hasImage,
-                node,
-                type,
-              ),
+        onTap: goToNode
+            ? () {
+                // zoom to default
+                context
+                    .read<TreeZoomBloc>()
+                    .add(const TreeZoomEvent.zoomChanged(ZOOM_DEF));
+
+                // 2) call your action: center tree / open node panel / highlight
+                context
+                    .read<DrawTreeBloc>()
+                    .navigateToNode(node.nodeId.getOrCrash());
+              }
+            : () => showPanel(
+                  pageContext,
+                  size,
+                  color,
+                  hasImage,
+                  node,
+                  type,
+                ),
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [

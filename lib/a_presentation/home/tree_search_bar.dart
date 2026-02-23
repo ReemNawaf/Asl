@@ -88,7 +88,7 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
                     ((itemCount - 1) * separatorHeight) +
                     verticalPadding;
 
-                final maxHeight = MediaQuery.of(context).size.height * 0.4;
+                final maxHeight = MediaQuery.of(context).size.height;
                 final height = contentHeight.clamp(0.0, maxHeight);
 
                 return Padding(
