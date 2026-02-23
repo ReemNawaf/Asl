@@ -94,9 +94,12 @@ class _TreeSearchBarState extends State<TreeSearchBar> {
                         separatorBuilder: (_, __) => kAppDivider,
                         itemBuilder: (context, i) {
                           final o = options.elementAt(i);
-                          return GestureDetector(
-                            onTap: () => onSelected(o),
-                            child: SearchItem(item: o),
+                          return SizedBox(
+                            height: 48,
+                            child: GestureDetector(
+                              onTap: () => onSelected(o),
+                              child: SearchItem(item: o),
+                            ),
                           );
                         },
                       ),
@@ -143,8 +146,9 @@ class SearchItem extends StatelessWidget {
         gender: item.gender);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 6.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
               padding:
@@ -154,11 +158,13 @@ class SearchItem extends StatelessWidget {
               child: SvgPicture.asset('assets/avatars/${item.gender.name}.svg',
                   color: kRootColors[300], height: 35, width: 35)),
           kHSpacer10,
-          Text(
-            fullName,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: kCalloutStyle,
+          Expanded(
+            child: Text(
+              fullName,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: kCalloutStyle.copyWith(height: 1.2),
+            ),
           ),
         ],
       ),
