@@ -26,7 +26,7 @@ jobs:
           flutter build web --release
 
       - name: Deploy Firebase Hosting
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@v15.8.0
         with:
           args: deploy --only hosting:a-292e9
         env:
