@@ -1,9 +1,9 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
-import 'package:asl/a_presentation/core/widgets/app_btn.dart';
+// import 'package:asl/a_presentation/core/widgets/app_btn.dart';
 import 'package:asl/b_application/auth_bloc/auth_bloc.dart';
-import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
+// import 'package:asl/b_application/tree_bloc/tree_form/tree_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
@@ -66,114 +66,115 @@ class InfoDialog extends StatelessWidget {
           length: 2,
           child: BlocBuilder<AuthBloc, AuthState>(
               builder: (authContext, authState) {
-            final isAuth = authState.maybeMap(
-              authenticated: (_) => true,
-              orElse: () => false,
-            );
-            return Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // const SizedBox(width: 35),
-                        SizedBox(
-                          width: PAN_WIDTH - 16,
-                          height: 50,
-                          child: TabBar(
-                            unselectedLabelColor: kBlacksColor[600],
-                            indicatorColor: kBlacksColor,
-                            indicatorWeight: 2.5,
-                            labelPadding:
-                                const EdgeInsets.symmetric(horizontal: 100.0),
-                            padding: EdgeInsets.zero,
-                            indicatorPadding:
-                                const EdgeInsets.symmetric(horizontal: 5.0),
-                            labelColor: kBlacksColor,
-                            labelStyle: kBodyMedium.copyWith(
-                                fontWeight: FontWeight.w900),
-                            unselectedLabelStyle: kBodyMedium,
-                            dividerColor: Colors.transparent,
-                            indicatorSize: TabBarIndicatorSize.label,
-                            dividerHeight: 0.0,
-                            isScrollable: true,
-                            tabs: [
-                              Tab(text: getTr(context, 'personal_info')),
-                              Tab(text: getTr(context, 'brief_and_notes')!),
-                            ],
-                          ),
-                        ),
-                        // const SizedBox(width: 18),
-                        // Edit Button
-                        // if (isAuth)
-                        //   BlocBuilder<NodeFormBloc, NodeFormState>(
-                        //     builder: (context, state) {
-                        //       return showEditingIcon(state)
-                        //           ? IconOnlyButton(
-                        //               onPressed: () => context
-                        //                   .read<NodeFormBloc>()
-                        //                   .add(NodeFormEvent.edited(
-                        //                       !state.isEditing)),
-                        //               icon:
-                        //                   const Icon(Icons.edit, size: 24.0),
-                        //             )
-                        //           : const SizedBox();
-                        //     },
-                        //   ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: PAN_HEIGHT - 66,
-                          width: PAN_WIDTH,
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: TabBarView(
-                            children: [
-                              TreeDocumentingInfo(),
-                              Icon(Icons.car_crash),
-                            ],
-                          ),
-                        ),
-                        // Saving Button
-                      ],
-                    ),
-                  ],
-                ),
-                BlocBuilder<TreeFormBloc, TreeFormState>(
-                  builder: (context, state) {
-                    return Container(
-                      alignment: Alignment.bottomLeft,
-                      width: PAN_WIDTH,
-                      height: 40,
-                      child: isAuth
-                          ? AppButton(
-                              onPressed: () {},
-                              label: getTr(context, 'done')!,
-                              // label: showEditingIcon(state)
-                              //     ? getTr(context, 'done')!
-                              //     : getTr(context, 'save')!,
-                              fillColor: kRootColors,
-                            )
-                          : Container(
-                              alignment: Alignment.bottomLeft,
-                              width: PAN_WIDTH,
-                              height: 40,
-                              child: AppButton(
-                                onPressed: () => Navigator.pop(context),
-                                label: getTr(context, 'done')!,
-                                fillColor: kRootColors,
-                              )),
-                    );
-                  },
-                ),
-              ],
-            );
+            // final isAuth = authState.maybeMap(
+            //   authenticated: (_) => true,
+            //   orElse: () => false,
+            // );
+            return SizedBox();
+            // Stack(
+            //   alignment: Alignment.bottomLeft,
+            //   children: [
+            // Column(
+            //   crossAxisAlignment: CrossAxisAlignment.end,
+            //   children: [
+            //     Row(
+            //       crossAxisAlignment: CrossAxisAlignment.center,
+            //       children: [
+            //         // const SizedBox(width: 35),
+            //         SizedBox(
+            //           width: PAN_WIDTH - 16,
+            //           height: 50,
+            //           child: TabBar(
+            //             unselectedLabelColor: kBlacksColor[600],
+            //             indicatorColor: kBlacksColor,
+            //             indicatorWeight: 2.5,
+            //             labelPadding:
+            //                 const EdgeInsets.symmetric(horizontal: 100.0),
+            //             padding: EdgeInsets.zero,
+            //             indicatorPadding:
+            //                 const EdgeInsets.symmetric(horizontal: 5.0),
+            //             labelColor: kBlacksColor,
+            //             labelStyle: kBodyMedium.copyWith(
+            //                 fontWeight: FontWeight.w900),
+            //             unselectedLabelStyle: kBodyMedium,
+            //             dividerColor: Colors.transparent,
+            //             indicatorSize: TabBarIndicatorSize.label,
+            //             dividerHeight: 0.0,
+            //             isScrollable: true,
+            //             tabs: [
+            //               Tab(text: getTr(context, 'personal_info')),
+            //               Tab(text: getTr(context, 'brief_and_notes')!),
+            //             ],
+            //           ),
+            //         ),
+            //         // const SizedBox(width: 18),
+            //         // Edit Button
+            //         // if (isAuth)
+            //         //   BlocBuilder<NodeFormBloc, NodeFormState>(
+            //         //     builder: (context, state) {
+            //         //       return showEditingIcon(state)
+            //         //           ? IconOnlyButton(
+            //         //               onPressed: () => context
+            //         //                   .read<NodeFormBloc>()
+            //         //                   .add(NodeFormEvent.edited(
+            //         //                       !state.isEditing)),
+            //         //               icon:
+            //         //                   const Icon(Icons.edit, size: 24.0),
+            //         //             )
+            //         //           : const SizedBox();
+            //         //     },
+            //         //   ),
+            //       ],
+            //     ),
+            //     Column(
+            //       mainAxisAlignment: MainAxisAlignment.end,
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Container(
+            //           height: PAN_HEIGHT - 66,
+            //           width: PAN_WIDTH,
+            //           padding: const EdgeInsets.symmetric(horizontal: 24),
+            //           child: TabBarView(
+            //             children: [
+            //               TreeDocumentingInfo(),
+            //               Icon(Icons.car_crash),
+            //             ],
+            //           ),
+            //         ),
+            //         // Saving Button
+            //       ],
+            //     ),
+            //   ],
+            // ),
+            // BlocBuilder<TreeFormBloc, TreeFormState>(
+            //   builder: (context, state) {
+            //     return Container(
+            //       alignment: Alignment.bottomLeft,
+            //       width: PAN_WIDTH,
+            //       height: 40,
+            //       child: isAuth
+            //           ? AppButton(
+            //               onPressed: () {},
+            //               label: getTr(context, 'done')!,
+            //               // label: showEditingIcon(state)
+            //               //     ? getTr(context, 'done')!
+            //               //     : getTr(context, 'save')!,
+            //               fillColor: kRootColors,
+            //             )
+            //           : Container(
+            //               alignment: Alignment.bottomLeft,
+            //               width: PAN_WIDTH,
+            //               height: 40,
+            //               child: AppButton(
+            //                 onPressed: () => Navigator.pop(context),
+            //                 label: getTr(context, 'done')!,
+            //                 fillColor: kRootColors,
+            //               )),
+            //     );
+            //   },
+            // ),
+            // ],
+            // );
           }),
         ),
       ),
@@ -208,7 +209,7 @@ class TreeDocumentingInfo extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   label: Text('نواف عوض',
                       style: kBodyMedium.copyWith(color: kLeafColors[200])),
-                  backgroundColor: kLeafColors[300]!.withValues(alpha: 0.5),
+                  backgroundColor: kLeafColors[300]!.withOpacity(0.5),
                   side: BorderSide.none,
                 ),
               ),
@@ -229,7 +230,7 @@ class TreeDocumentingInfo extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   label: Text('نواف عوض',
                       style: kBodyMedium.copyWith(color: kLeafColors[200])),
-                  backgroundColor: kLeafColors[300]!.withValues(alpha: 0.5),
+                  backgroundColor: kLeafColors[300]!.withOpacity(0.5),
                   side: BorderSide.none,
                 ),
               ),
