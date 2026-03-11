@@ -301,6 +301,13 @@ class MainPanel extends StatelessWidget {
                                         if (showEditingIcon(state)) {
                                           Navigator.pop(context);
 
+                                          context.read<NodeFormBloc>().add(
+                                              const NodeFormEvent.addChild(
+                                                  false));
+                                          context.read<NodeFormBloc>().add(
+                                              const NodeFormEvent.addPartner(
+                                                  false));
+
                                           // Save all the added partner and children
                                           context.read<PartnerFormBloc>().add(
                                               const PartnerFormEvent.saved());

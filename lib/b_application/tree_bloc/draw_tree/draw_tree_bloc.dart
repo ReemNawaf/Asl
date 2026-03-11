@@ -83,6 +83,7 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
             store: e.store,
             maxGenerations: e.maxGenerations,
             isShowUnknown: e.isShowUnknown ?? true,
+            drawPartner: e.drawPartner ?? true,
             context: e.context);
         emit(state.copyWith(graph: graph, builder: treeDraw.builder));
       },
@@ -93,6 +94,7 @@ class DrawTreeBloc extends Bloc<DrawTreeEvent, DrawTreeState> {
             store: e.store,
             maxGenerations: e.maxGenerations,
             isShowUnknown: e.isShowUnknown ?? true,
+            drawPartner: e.drawPartner ?? true,
             context: e.context);
         emit(state.copyWith(graph: graph, builder: treeDraw.builder));
       },

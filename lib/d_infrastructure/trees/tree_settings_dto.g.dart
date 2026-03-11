@@ -13,6 +13,7 @@ _$TreeSettingsDtoImpl _$$TreeSettingsDtoImplFromJson(
       langOpt: (json['langOpt'] as num).toInt(),
       isPublic: json['isPublic'] as bool,
       isShowUnknown: json['isShowUnknown'] as bool,
+      isDrawingPartner: json['isDrawingPartner'] as bool?,
     );
 
 Map<String, dynamic> _$$TreeSettingsDtoImplToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$TreeSettingsDtoImplToJson(
       'langOpt': instance.langOpt,
       'isPublic': instance.isPublic,
       'isShowUnknown': instance.isShowUnknown,
+      'isDrawingPartner': instance.isDrawingPartner,
     };

@@ -180,12 +180,22 @@ class _InteractiveViewState extends State<InteractiveView> {
               });
               _syncController();
 
+              // Use treeState.settings (loaded with tree) when available;
+              // TreeSettingsBloc may not be initialized yet on first load.
+              final settings = treeState.settings;
+              final showUnknown = settings?.isShowUnknown ??
+                  context.read<TreeSettingsBloc>().state.showUnknown;
+              final drawPartner = settings?.isDrawingPartner ??
+                  context.read<TreeSettingsBloc>().state.drawPartner;
+
               context.read<DrawTreeBloc>().add(
                     DrawTreeEvent.drawNewTree(
                       store: treeState.store,
                       rootId: treeState.focusRootId!,
                       maxGenerations: NUM_GEN_OPTIONS[
                           treeState.settings!.numberOfGenerationOpt]['number'],
+                      isShowUnknown: showUnknown,
+                      drawPartner: drawPartner,
                       context: context,
                     ),
                   );
@@ -243,12 +253,21 @@ class _InteractiveViewState extends State<InteractiveView> {
                   // Redraw tree with updated store
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     if (mounted && state.focusRootId != null) {
+                      // Prefer LocalTreeBloc settings (loaded with tree)
+                      final settings = state.settings;
+                      final showUnknown = settings?.isShowUnknown ??
+                          context.read<TreeSettingsBloc>().state.showUnknown;
+                      final drawPartner = settings?.isDrawingPartner ??
+                          context.read<TreeSettingsBloc>().state.drawPartner;
+
                       context.read<DrawTreeBloc>().add(
                             DrawTreeEvent.drawNewTree(
                               store: state.store,
                               rootId: state.focusRootId!,
                               maxGenerations: NUM_GEN_OPTIONS[state
                                   .settings!.numberOfGenerationOpt]['number'],
+                              isShowUnknown: showUnknown,
+                              drawPartner: drawPartner,
                               context: context,
                             ),
                           );
@@ -263,9 +282,10 @@ class _InteractiveViewState extends State<InteractiveView> {
                   },
                   child: BlocListener<TreeSettingsBloc, TreeSettingsState>(
                     listenWhen: (prev, curr) =>
-                        prev.numberOfGenerations != curr.numberOfGenerations,
+                        prev.numberOfGenerations != curr.numberOfGenerations ||
+                        prev.drawPartner != curr.drawPartner,
                     listener: (context, state) {
-                      debugPrint('🔄 Reset due to generation change');
+                      debugPrint('🔄 Reset due to settings change');
 
                       // Reset zoom/pan
                       setState(() {
@@ -283,6 +303,8 @@ class _InteractiveViewState extends State<InteractiveView> {
                                 maxGenerations:
                                     NUM_GEN_OPTIONS[state.numberOfGenerations]
                                         ['number'],
+                                isShowUnknown: state.showUnknown,
+                                drawPartner: state.drawPartner,
                                 context: context,
                               ),
                             );

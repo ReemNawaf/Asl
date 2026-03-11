@@ -23,6 +23,7 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
     on<_UpdateShareSettings>(_onUpdateShareSettings);
     on<_UpdateIsShareLink>(_onUpdateIsShareLink);
     on<_UpdateHideSideBar>(_onUpdateHideSidebar);
+    on<_DrawPartnerChanged>(_onDrawPartnerChanged);
   }
 
   void _onInitialized(
@@ -35,6 +36,7 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
       numberOfGenerations: treeSettings.numberOfGenerationOpt,
       isPublic: treeSettings.isPublic,
       isShareLink: event.isShareLink ?? false,
+      drawPartner: treeSettings.isDrawingPartner,
     ));
   }
 
@@ -89,8 +91,16 @@ class TreeSettingsBloc extends Bloc<TreeSettingsEvent, TreeSettingsState> {
   ) {
     emit(state.copyWith(hideSidbar: !state.hideSidbar));
   }
-}
 
+  void _onDrawPartnerChanged(
+    _DrawPartnerChanged event,
+    Emitter<TreeSettingsState> emit,
+  ) {
+    emit(state.copyWith(drawPartner: !state.drawPartner));
+    unawaited(_treeRepository.updateDrawPartner(
+        treeId: event.treeId, isDrawingPartner: state.drawPartner));
+  }
+}
 // enum isPublic { everyone, restricted }
 
 const List<Map<String, String>> SHARE_OPTIONS = [

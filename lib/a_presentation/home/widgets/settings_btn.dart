@@ -35,23 +35,31 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
   return showDialog(
     context: contextPage,
     useRootNavigator: false,
+    barrierDismissible: true,
     builder: (BuildContext dialogContext) {
       return BlocBuilder<LocalTreeBloc, LocalTreeState>(
           builder: (context, state) {
         final showTreeSettings = state.settings != null && !state.isLoadingTree;
 
-        return Scaffold(
-          backgroundColor: Colors.transparent,
-          body: AlertDialog(
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned.fill(
+              child: GestureDetector(
+                onTap: () => Navigator.of(dialogContext).pop(),
+                behavior: HitTestBehavior.opaque,
+              ),
+            ),
+            AlertDialog(
             backgroundColor: kWhitesColor[600],
             shape: kRoundedRectangleBorder,
             scrollable: true,
-            content: SingleChildScrollView(
-              child: Container(
-                alignment: Alignment.topRight,
-                padding: const EdgeInsets.all(16.0),
-                width: PAN_SM_WIDTH,
-                height: PAN_SM_HEIGHT - 20,
+            content: Container(
+              alignment: Alignment.topRight,
+              padding: const EdgeInsets.all(16.0),
+              width: PAN_SM_WIDTH,
+              height: PAN_SM_HEIGHT - 20,
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     if (showTreeSettings) ...[
@@ -65,13 +73,12 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                           contextPage: contextPage),
                       kVSpacer10,
                     ],
-                    // kAppDivider,
-                    // kVSpacer10,
+                    kAppDivider,
+                    kVSpacer10,
                     // LanguageSettingsSection(
                     //   dialogContext: dialogContext,
                     //   contextPage: contextPage,
                     // ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -91,28 +98,12 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
                         ),
                       ],
                     ),
-
-                    const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SizedBox(
-                          width: 40,
-                          height: 40,
-                          child: AppButton(
-                            onPressed: () => Navigator.of(dialogContext).pop(),
-                            label: getTr(contextPage, 'done')!,
-                            fillColor: kRootColors[600]!,
-                            textColor: kBlacksColor,
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
             ),
-          ),
+            ),
+          ],
         );
       });
     },

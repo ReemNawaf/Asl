@@ -10,6 +10,7 @@ abstract class TreeSettings implements _$TreeSettings {
   const factory TreeSettings({
     UniqueId? treeId,
     required int numberOfGenerationOpt,
+    required bool isDrawingPartner,
     required int langOpt,
     required bool isPublic,
     required bool isShowUnknown,
@@ -19,6 +20,7 @@ abstract class TreeSettings implements _$TreeSettings {
         treeId: null,
         numberOfGenerationOpt: 0,
         langOpt: 0,
+        isDrawingPartner: true,
         isPublic: false,
         isShowUnknown: false,
       );

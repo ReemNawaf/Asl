@@ -101,6 +101,28 @@ class TreeSettingsSection extends StatelessWidget {
             ),
           ],
         ),
+        kVSpacer10,
+        Row(
+          children: [
+            Text(
+              getTr(context, 'show_partners_description')!,
+              style: kBodyMedium.copyWith(color: kBlacksColor[200]),
+            ),
+            const Spacer(),
+            BlocBuilder<TreeSettingsBloc, TreeSettingsState>(
+              builder: (context, state) {
+                return Switch(
+                  value: state.drawPartner,
+                  onChanged: (value) => context.read<TreeSettingsBloc>().add(
+                        TreeSettingsEvent.drawPartnerChanged(treeId: treeId!),
+                      ),
+                  activeColor: kLeafColors[300],
+                  inactiveThumbColor: kBlacksColor[400],
+                );
+              },
+            ),
+          ],
+        ),
       ],
     );
   }

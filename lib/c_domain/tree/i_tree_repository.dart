@@ -45,5 +45,11 @@ abstract class ITreeRepository {
     required UniqueId treeId,
     required bool isShowUnknown,
   });
+
+  Future<void> updateDrawPartner({
+    required UniqueId treeId,
+    required bool isDrawingPartner,
+  });
+
   Future<Either<TreeFailure, TreeSettings>> loadSettings(UniqueId treeId);
 }

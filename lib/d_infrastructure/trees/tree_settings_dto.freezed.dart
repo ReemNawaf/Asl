@@ -24,6 +24,7 @@ mixin _$TreeSettingsDto {
   int get langOpt => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
+  bool? get isDrawingPartner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $TreeSettingsDtoCopyWith<$Res> {
       {int numberOfGenerationOpt,
       int langOpt,
       bool isPublic,
-      bool isShowUnknown});
+      bool isShowUnknown,
+      bool? isDrawingPartner});
 }
 
 /// @nodoc
@@ -61,6 +63,7 @@ class _$TreeSettingsDtoCopyWithImpl<$Res, $Val extends TreeSettingsDto>
     Object? langOpt = null,
     Object? isPublic = null,
     Object? isShowUnknown = null,
+    Object? isDrawingPartner = freezed,
   }) {
     return _then(_value.copyWith(
       numberOfGenerationOpt: null == numberOfGenerationOpt
@@ -79,6 +82,10 @@ class _$TreeSettingsDtoCopyWithImpl<$Res, $Val extends TreeSettingsDto>
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
               as bool,
+      isDrawingPartner: freezed == isDrawingPartner
+          ? _value.isDrawingPartner
+          : isDrawingPartner // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -95,7 +102,8 @@ abstract class _$$TreeSettingsDtoImplCopyWith<$Res>
       {int numberOfGenerationOpt,
       int langOpt,
       bool isPublic,
-      bool isShowUnknown});
+      bool isShowUnknown,
+      bool? isDrawingPartner});
 }
 
 /// @nodoc
@@ -113,6 +121,7 @@ class __$$TreeSettingsDtoImplCopyWithImpl<$Res>
     Object? langOpt = null,
     Object? isPublic = null,
     Object? isShowUnknown = null,
+    Object? isDrawingPartner = freezed,
   }) {
     return _then(_$TreeSettingsDtoImpl(
       numberOfGenerationOpt: null == numberOfGenerationOpt
@@ -131,6 +140,10 @@ class __$$TreeSettingsDtoImplCopyWithImpl<$Res>
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
               as bool,
+      isDrawingPartner: freezed == isDrawingPartner
+          ? _value.isDrawingPartner
+          : isDrawingPartner // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -142,7 +155,8 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
       {required this.numberOfGenerationOpt,
       required this.langOpt,
       required this.isPublic,
-      required this.isShowUnknown})
+      required this.isShowUnknown,
+      this.isDrawingPartner})
       : super._();
 
   factory _$TreeSettingsDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -156,10 +170,12 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
   final bool isPublic;
   @override
   final bool isShowUnknown;
+  @override
+  final bool? isDrawingPartner;
 
   @override
   String toString() {
-    return 'TreeSettingsDto(numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown)';
+    return 'TreeSettingsDto(numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown, isDrawingPartner: $isDrawingPartner)';
   }
 
   @override
@@ -173,13 +189,15 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
             (identical(other.isShowUnknown, isShowUnknown) ||
-                other.isShowUnknown == isShowUnknown));
+                other.isShowUnknown == isShowUnknown) &&
+            (identical(other.isDrawingPartner, isDrawingPartner) ||
+                other.isDrawingPartner == isDrawingPartner));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, numberOfGenerationOpt, langOpt, isPublic, isShowUnknown);
+  int get hashCode => Object.hash(runtimeType, numberOfGenerationOpt, langOpt,
+      isPublic, isShowUnknown, isDrawingPartner);
 
   @JsonKey(ignore: true)
   @override
@@ -201,7 +219,8 @@ abstract class _TreeSettingsDto extends TreeSettingsDto {
       {required final int numberOfGenerationOpt,
       required final int langOpt,
       required final bool isPublic,
-      required final bool isShowUnknown}) = _$TreeSettingsDtoImpl;
+      required final bool isShowUnknown,
+      final bool? isDrawingPartner}) = _$TreeSettingsDtoImpl;
   const _TreeSettingsDto._() : super._();
 
   factory _TreeSettingsDto.fromJson(Map<String, dynamic> json) =
@@ -215,6 +234,8 @@ abstract class _TreeSettingsDto extends TreeSettingsDto {
   bool get isPublic;
   @override
   bool get isShowUnknown;
+  @override
+  bool? get isDrawingPartner;
   @override
   @JsonKey(ignore: true)
   _$$TreeSettingsDtoImplCopyWith<_$TreeSettingsDtoImpl> get copyWith =>

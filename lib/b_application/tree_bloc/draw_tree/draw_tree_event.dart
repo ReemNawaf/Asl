@@ -6,6 +6,7 @@ abstract class DrawTreeEvent with _$DrawTreeEvent {
   const factory DrawTreeEvent.initialized({
     int? maxGenerations,
     bool? isShowUnknown,
+    bool? drawPartner,
     required TreeGraphStore store,
     required UniqueId rootId,
     required BuildContext context,
@@ -13,6 +14,7 @@ abstract class DrawTreeEvent with _$DrawTreeEvent {
   const factory DrawTreeEvent.drawNewTree({
     int? maxGenerations,
     bool? isShowUnknown,
+    bool? drawPartner,
     required TreeGraphStore store,
     required UniqueId rootId,
     required BuildContext context,

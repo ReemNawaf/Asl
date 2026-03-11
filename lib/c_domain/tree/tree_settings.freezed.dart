@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TreeSettings {
   UniqueId? get treeId => throw _privateConstructorUsedError;
   int get numberOfGenerationOpt => throw _privateConstructorUsedError;
+  bool get isDrawingPartner => throw _privateConstructorUsedError;
   int get langOpt => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
@@ -36,6 +37,7 @@ abstract class $TreeSettingsCopyWith<$Res> {
   $Res call(
       {UniqueId? treeId,
       int numberOfGenerationOpt,
+      bool isDrawingPartner,
       int langOpt,
       bool isPublic,
       bool isShowUnknown});
@@ -56,6 +58,7 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
   $Res call({
     Object? treeId = freezed,
     Object? numberOfGenerationOpt = null,
+    Object? isDrawingPartner = null,
     Object? langOpt = null,
     Object? isPublic = null,
     Object? isShowUnknown = null,
@@ -69,6 +72,10 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
           ? _value.numberOfGenerationOpt
           : numberOfGenerationOpt // ignore: cast_nullable_to_non_nullable
               as int,
+      isDrawingPartner: null == isDrawingPartner
+          ? _value.isDrawingPartner
+          : isDrawingPartner // ignore: cast_nullable_to_non_nullable
+              as bool,
       langOpt: null == langOpt
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
@@ -96,6 +103,7 @@ abstract class _$$TreeSettingsImplCopyWith<$Res>
   $Res call(
       {UniqueId? treeId,
       int numberOfGenerationOpt,
+      bool isDrawingPartner,
       int langOpt,
       bool isPublic,
       bool isShowUnknown});
@@ -114,6 +122,7 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
   $Res call({
     Object? treeId = freezed,
     Object? numberOfGenerationOpt = null,
+    Object? isDrawingPartner = null,
     Object? langOpt = null,
     Object? isPublic = null,
     Object? isShowUnknown = null,
@@ -127,6 +136,10 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
           ? _value.numberOfGenerationOpt
           : numberOfGenerationOpt // ignore: cast_nullable_to_non_nullable
               as int,
+      isDrawingPartner: null == isDrawingPartner
+          ? _value.isDrawingPartner
+          : isDrawingPartner // ignore: cast_nullable_to_non_nullable
+              as bool,
       langOpt: null == langOpt
           ? _value.langOpt
           : langOpt // ignore: cast_nullable_to_non_nullable
@@ -149,6 +162,7 @@ class _$TreeSettingsImpl extends _TreeSettings {
   const _$TreeSettingsImpl(
       {this.treeId,
       required this.numberOfGenerationOpt,
+      required this.isDrawingPartner,
       required this.langOpt,
       required this.isPublic,
       required this.isShowUnknown})
@@ -159,6 +173,8 @@ class _$TreeSettingsImpl extends _TreeSettings {
   @override
   final int numberOfGenerationOpt;
   @override
+  final bool isDrawingPartner;
+  @override
   final int langOpt;
   @override
   final bool isPublic;
@@ -167,7 +183,7 @@ class _$TreeSettingsImpl extends _TreeSettings {
 
   @override
   String toString() {
-    return 'TreeSettings(treeId: $treeId, numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown)';
+    return 'TreeSettings(treeId: $treeId, numberOfGenerationOpt: $numberOfGenerationOpt, isDrawingPartner: $isDrawingPartner, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown)';
   }
 
   @override
@@ -178,6 +194,8 @@ class _$TreeSettingsImpl extends _TreeSettings {
             (identical(other.treeId, treeId) || other.treeId == treeId) &&
             (identical(other.numberOfGenerationOpt, numberOfGenerationOpt) ||
                 other.numberOfGenerationOpt == numberOfGenerationOpt) &&
+            (identical(other.isDrawingPartner, isDrawingPartner) ||
+                other.isDrawingPartner == isDrawingPartner) &&
             (identical(other.langOpt, langOpt) || other.langOpt == langOpt) &&
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
@@ -187,7 +205,7 @@ class _$TreeSettingsImpl extends _TreeSettings {
 
   @override
   int get hashCode => Object.hash(runtimeType, treeId, numberOfGenerationOpt,
-      langOpt, isPublic, isShowUnknown);
+      isDrawingPartner, langOpt, isPublic, isShowUnknown);
 
   @JsonKey(ignore: true)
   @override
@@ -200,6 +218,7 @@ abstract class _TreeSettings extends TreeSettings {
   const factory _TreeSettings(
       {final UniqueId? treeId,
       required final int numberOfGenerationOpt,
+      required final bool isDrawingPartner,
       required final int langOpt,
       required final bool isPublic,
       required final bool isShowUnknown}) = _$TreeSettingsImpl;
@@ -209,6 +228,8 @@ abstract class _TreeSettings extends TreeSettings {
   UniqueId? get treeId;
   @override
   int get numberOfGenerationOpt;
+  @override
+  bool get isDrawingPartner;
   @override
   int get langOpt;
   @override

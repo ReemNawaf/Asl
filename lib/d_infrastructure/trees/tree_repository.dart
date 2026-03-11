@@ -51,7 +51,6 @@ class TreeRepository implements ITreeRepository {
                     doc as DocumentSnapshot<Map<String, dynamic>>,
                   ).toDomain())
               .toList();
-
           return right(trees);
         },
       );
@@ -480,6 +479,33 @@ class TreeRepository implements ITreeRepository {
   }
 
   @override
+  Future<Either<TreeFailure, Unit>> updateDrawPartner({
+    required UniqueId treeId,
+    required bool isDrawingPartner,
+  }) async {
+    try {
+      await _firestore.treesCollection().doc(treeId.getOrCrash()).update({
+        'treeSettings.isDrawingPartner': isDrawingPartner,
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TreeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
+    }
+  }
+
+  @override
   Future<Either<TreeFailure, TreeSettings>> loadSettings(
     UniqueId treeId,
   ) async {
@@ -494,6 +520,8 @@ class TreeRepository implements ITreeRepository {
       }
 
       final settings = TreeSettings(
+        isDrawingPartner:
+            data['treeSettings']['isDrawingPartner'] as bool? ?? true,
         numberOfGenerationOpt:
             data['treeSettings']['numberOfGenerationOpt'] as int,
         isShowUnknown: data['treeSettings']['isShowUnknown'] as bool? ?? true,

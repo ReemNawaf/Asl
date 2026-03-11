@@ -70,7 +70,7 @@ class InfoDialog extends StatelessWidget {
             //   authenticated: (_) => true,
             //   orElse: () => false,
             // );
-            return SizedBox();
+            return const SizedBox();
             // Stack(
             //   alignment: Alignment.bottomLeft,
             //   children: [

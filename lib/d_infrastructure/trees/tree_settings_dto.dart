@@ -14,6 +14,7 @@ abstract class TreeSettingsDto with _$TreeSettingsDto {
     required int langOpt,
     required bool isPublic,
     required bool isShowUnknown,
+    bool? isDrawingPartner,
   }) = _TreeSettingsDto;
 
   factory TreeSettingsDto.fromDomain(TreeSettings settings) {
@@ -22,11 +23,13 @@ abstract class TreeSettingsDto with _$TreeSettingsDto {
       langOpt: settings.langOpt,
       isPublic: settings.isPublic,
       isShowUnknown: settings.isShowUnknown,
+      isDrawingPartner: settings.isDrawingPartner,
     );
   }
 
   TreeSettings toDomain({required UniqueId treeId}) {
     return TreeSettings(
+      isDrawingPartner: isDrawingPartner ?? true,
       treeId: treeId,
       numberOfGenerationOpt: numberOfGenerationOpt,
       langOpt: langOpt,

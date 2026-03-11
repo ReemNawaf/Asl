@@ -23,6 +23,7 @@ mixin _$TreeSettingsEvent {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -36,6 +37,7 @@ mixin _$TreeSettingsEvent {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -48,6 +50,7 @@ mixin _$TreeSettingsEvent {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -61,6 +64,7 @@ mixin _$TreeSettingsEvent {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -73,6 +77,7 @@ mixin _$TreeSettingsEvent {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -85,6 +90,7 @@ mixin _$TreeSettingsEvent {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -205,6 +211,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -221,6 +228,7 @@ class _$InitializedImpl implements _Initialized {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -236,6 +244,7 @@ class _$InitializedImpl implements _Initialized {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -255,6 +264,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -270,6 +280,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -285,6 +296,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -391,6 +403,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -407,6 +420,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -422,6 +436,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -441,6 +456,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -456,6 +472,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -471,6 +488,7 @@ class _$NumberOfGenerationsChangedImpl implements _NumberOfGenerationsChanged {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -566,6 +584,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -582,6 +601,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -597,6 +617,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -616,6 +637,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -631,6 +653,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -646,6 +669,7 @@ class _$ShowUnknownChangedImpl implements _ShowUnknownChanged {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -666,6 +690,185 @@ abstract class _ShowUnknownChanged implements TreeSettingsEvent {
   UniqueId get treeId;
   @JsonKey(ignore: true)
   _$$ShowUnknownChangedImplCopyWith<_$ShowUnknownChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DrawPartnerChangedImplCopyWith<$Res> {
+  factory _$$DrawPartnerChangedImplCopyWith(_$DrawPartnerChangedImpl value,
+          $Res Function(_$DrawPartnerChangedImpl) then) =
+      __$$DrawPartnerChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniqueId treeId});
+}
+
+/// @nodoc
+class __$$DrawPartnerChangedImplCopyWithImpl<$Res>
+    extends _$TreeSettingsEventCopyWithImpl<$Res, _$DrawPartnerChangedImpl>
+    implements _$$DrawPartnerChangedImplCopyWith<$Res> {
+  __$$DrawPartnerChangedImplCopyWithImpl(_$DrawPartnerChangedImpl _value,
+      $Res Function(_$DrawPartnerChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? treeId = null,
+  }) {
+    return _then(_$DrawPartnerChangedImpl(
+      treeId: null == treeId
+          ? _value.treeId
+          : treeId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DrawPartnerChangedImpl implements _DrawPartnerChanged {
+  const _$DrawPartnerChangedImpl({required this.treeId});
+
+  @override
+  final UniqueId treeId;
+
+  @override
+  String toString() {
+    return 'TreeSettingsEvent.drawPartnerChanged(treeId: $treeId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DrawPartnerChangedImpl &&
+            (identical(other.treeId, treeId) || other.treeId == treeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, treeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DrawPartnerChangedImplCopyWith<_$DrawPartnerChangedImpl> get copyWith =>
+      __$$DrawPartnerChangedImplCopyWithImpl<_$DrawPartnerChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TreeSettings? treeSettings, bool? isShareLink)
+        initialized,
+    required TResult Function(UniqueId treeId, int option)
+        numberOfGenerationsChanged,
+    required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
+    required TResult Function() sharedLinkCopied,
+    required TResult Function(UniqueId treeId, bool isPublic)
+        updateShareSettings,
+    required TResult Function(bool isShareLink) updateIsShareLink,
+    required TResult Function() updateHideSideBar,
+  }) {
+    return drawPartnerChanged(treeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TreeSettings? treeSettings, bool? isShareLink)?
+        initialized,
+    TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
+    TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
+    TResult? Function()? sharedLinkCopied,
+    TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
+    TResult? Function(bool isShareLink)? updateIsShareLink,
+    TResult? Function()? updateHideSideBar,
+  }) {
+    return drawPartnerChanged?.call(treeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TreeSettings? treeSettings, bool? isShareLink)?
+        initialized,
+    TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
+    TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
+    TResult Function()? sharedLinkCopied,
+    TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
+    TResult Function(bool isShareLink)? updateIsShareLink,
+    TResult Function()? updateHideSideBar,
+    required TResult orElse(),
+  }) {
+    if (drawPartnerChanged != null) {
+      return drawPartnerChanged(treeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_NumberOfGenerationsChanged value)
+        numberOfGenerationsChanged,
+    required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
+    required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
+    required TResult Function(_UpdateShareSettings value) updateShareSettings,
+    required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
+    required TResult Function(_UpdateHideSideBar value) updateHideSideBar,
+  }) {
+    return drawPartnerChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_NumberOfGenerationsChanged value)?
+        numberOfGenerationsChanged,
+    TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
+    TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
+    TResult? Function(_UpdateShareSettings value)? updateShareSettings,
+    TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult? Function(_UpdateHideSideBar value)? updateHideSideBar,
+  }) {
+    return drawPartnerChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_NumberOfGenerationsChanged value)?
+        numberOfGenerationsChanged,
+    TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
+    TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
+    TResult Function(_UpdateShareSettings value)? updateShareSettings,
+    TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
+    TResult Function(_UpdateHideSideBar value)? updateHideSideBar,
+    required TResult orElse(),
+  }) {
+    if (drawPartnerChanged != null) {
+      return drawPartnerChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DrawPartnerChanged implements TreeSettingsEvent {
+  const factory _DrawPartnerChanged({required final UniqueId treeId}) =
+      _$DrawPartnerChangedImpl;
+
+  UniqueId get treeId;
+  @JsonKey(ignore: true)
+  _$$DrawPartnerChangedImplCopyWith<_$DrawPartnerChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -712,6 +915,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -728,6 +932,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -743,6 +948,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -762,6 +968,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -777,6 +984,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -792,6 +1000,7 @@ class _$SharedLinkCopiedImpl implements _SharedLinkCopied {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -889,6 +1098,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -905,6 +1115,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -920,6 +1131,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -939,6 +1151,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -954,6 +1167,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -969,6 +1183,7 @@ class _$UpdateShareSettingsImpl implements _UpdateShareSettings {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -1065,6 +1280,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -1081,6 +1297,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -1096,6 +1313,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -1115,6 +1333,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -1130,6 +1349,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -1145,6 +1365,7 @@ class _$UpdateIsShareLinkImpl implements _UpdateIsShareLink {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -1211,6 +1432,7 @@ class _$UpdateHideSideBarImpl implements _UpdateHideSideBar {
     required TResult Function(UniqueId treeId, int option)
         numberOfGenerationsChanged,
     required TResult Function(UniqueId treeId) showUnknownChanged,
+    required TResult Function(UniqueId treeId) drawPartnerChanged,
     required TResult Function() sharedLinkCopied,
     required TResult Function(UniqueId treeId, bool isPublic)
         updateShareSettings,
@@ -1227,6 +1449,7 @@ class _$UpdateHideSideBarImpl implements _UpdateHideSideBar {
         initialized,
     TResult? Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult? Function(UniqueId treeId)? showUnknownChanged,
+    TResult? Function(UniqueId treeId)? drawPartnerChanged,
     TResult? Function()? sharedLinkCopied,
     TResult? Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult? Function(bool isShareLink)? updateIsShareLink,
@@ -1242,6 +1465,7 @@ class _$UpdateHideSideBarImpl implements _UpdateHideSideBar {
         initialized,
     TResult Function(UniqueId treeId, int option)? numberOfGenerationsChanged,
     TResult Function(UniqueId treeId)? showUnknownChanged,
+    TResult Function(UniqueId treeId)? drawPartnerChanged,
     TResult Function()? sharedLinkCopied,
     TResult Function(UniqueId treeId, bool isPublic)? updateShareSettings,
     TResult Function(bool isShareLink)? updateIsShareLink,
@@ -1261,6 +1485,7 @@ class _$UpdateHideSideBarImpl implements _UpdateHideSideBar {
     required TResult Function(_NumberOfGenerationsChanged value)
         numberOfGenerationsChanged,
     required TResult Function(_ShowUnknownChanged value) showUnknownChanged,
+    required TResult Function(_DrawPartnerChanged value) drawPartnerChanged,
     required TResult Function(_SharedLinkCopied value) sharedLinkCopied,
     required TResult Function(_UpdateShareSettings value) updateShareSettings,
     required TResult Function(_UpdateIsShareLink value) updateIsShareLink,
@@ -1276,6 +1501,7 @@ class _$UpdateHideSideBarImpl implements _UpdateHideSideBar {
     TResult? Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult? Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult? Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult? Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult? Function(_UpdateShareSettings value)? updateShareSettings,
     TResult? Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -1291,6 +1517,7 @@ class _$UpdateHideSideBarImpl implements _UpdateHideSideBar {
     TResult Function(_NumberOfGenerationsChanged value)?
         numberOfGenerationsChanged,
     TResult Function(_ShowUnknownChanged value)? showUnknownChanged,
+    TResult Function(_DrawPartnerChanged value)? drawPartnerChanged,
     TResult Function(_SharedLinkCopied value)? sharedLinkCopied,
     TResult Function(_UpdateShareSettings value)? updateShareSettings,
     TResult Function(_UpdateIsShareLink value)? updateIsShareLink,
@@ -1311,6 +1538,7 @@ abstract class _UpdateHideSideBar implements TreeSettingsEvent {
 /// @nodoc
 mixin _$TreeSettingsState {
   bool get showUnknown => throw _privateConstructorUsedError;
+  bool get drawPartner => throw _privateConstructorUsedError;
   int get numberOfGenerations => throw _privateConstructorUsedError;
   bool get isLinkCopied => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
@@ -1331,6 +1559,7 @@ abstract class $TreeSettingsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool showUnknown,
+      bool drawPartner,
       int numberOfGenerations,
       bool isLinkCopied,
       bool isPublic,
@@ -1353,6 +1582,7 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
   @override
   $Res call({
     Object? showUnknown = null,
+    Object? drawPartner = null,
     Object? numberOfGenerations = null,
     Object? isLinkCopied = null,
     Object? isPublic = null,
@@ -1364,6 +1594,10 @@ class _$TreeSettingsStateCopyWithImpl<$Res, $Val extends TreeSettingsState>
       showUnknown: null == showUnknown
           ? _value.showUnknown
           : showUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
+      drawPartner: null == drawPartner
+          ? _value.drawPartner
+          : drawPartner // ignore: cast_nullable_to_non_nullable
               as bool,
       numberOfGenerations: null == numberOfGenerations
           ? _value.numberOfGenerations
@@ -1403,6 +1637,7 @@ abstract class _$$TreeSettingsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool showUnknown,
+      bool drawPartner,
       int numberOfGenerations,
       bool isLinkCopied,
       bool isPublic,
@@ -1423,6 +1658,7 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? showUnknown = null,
+    Object? drawPartner = null,
     Object? numberOfGenerations = null,
     Object? isLinkCopied = null,
     Object? isPublic = null,
@@ -1434,6 +1670,10 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
       showUnknown: null == showUnknown
           ? _value.showUnknown
           : showUnknown // ignore: cast_nullable_to_non_nullable
+              as bool,
+      drawPartner: null == drawPartner
+          ? _value.drawPartner
+          : drawPartner // ignore: cast_nullable_to_non_nullable
               as bool,
       numberOfGenerations: null == numberOfGenerations
           ? _value.numberOfGenerations
@@ -1468,6 +1708,7 @@ class __$$TreeSettingsStateImplCopyWithImpl<$Res>
 class _$TreeSettingsStateImpl implements _TreeSettingsState {
   const _$TreeSettingsStateImpl(
       {required this.showUnknown,
+      required this.drawPartner,
       required this.numberOfGenerations,
       required this.isLinkCopied,
       required this.isPublic,
@@ -1477,6 +1718,8 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
 
   @override
   final bool showUnknown;
+  @override
+  final bool drawPartner;
   @override
   final int numberOfGenerations;
   @override
@@ -1493,7 +1736,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
 
   @override
   String toString() {
-    return 'TreeSettingsState(showUnknown: $showUnknown, numberOfGenerations: $numberOfGenerations, isLinkCopied: $isLinkCopied, isPublic: $isPublic, langOpt: $langOpt, isShareLink: $isShareLink, hideSidbar: $hideSidbar)';
+    return 'TreeSettingsState(showUnknown: $showUnknown, drawPartner: $drawPartner, numberOfGenerations: $numberOfGenerations, isLinkCopied: $isLinkCopied, isPublic: $isPublic, langOpt: $langOpt, isShareLink: $isShareLink, hideSidbar: $hideSidbar)';
   }
 
   @override
@@ -1503,6 +1746,8 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
             other is _$TreeSettingsStateImpl &&
             (identical(other.showUnknown, showUnknown) ||
                 other.showUnknown == showUnknown) &&
+            (identical(other.drawPartner, drawPartner) ||
+                other.drawPartner == drawPartner) &&
             (identical(other.numberOfGenerations, numberOfGenerations) ||
                 other.numberOfGenerations == numberOfGenerations) &&
             (identical(other.isLinkCopied, isLinkCopied) ||
@@ -1517,8 +1762,16 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, showUnknown, numberOfGenerations,
-      isLinkCopied, isPublic, langOpt, isShareLink, hideSidbar);
+  int get hashCode => Object.hash(
+      runtimeType,
+      showUnknown,
+      drawPartner,
+      numberOfGenerations,
+      isLinkCopied,
+      isPublic,
+      langOpt,
+      isShareLink,
+      hideSidbar);
 
   @JsonKey(ignore: true)
   @override
@@ -1531,6 +1784,7 @@ class _$TreeSettingsStateImpl implements _TreeSettingsState {
 abstract class _TreeSettingsState implements TreeSettingsState {
   const factory _TreeSettingsState(
       {required final bool showUnknown,
+      required final bool drawPartner,
       required final int numberOfGenerations,
       required final bool isLinkCopied,
       required final bool isPublic,
@@ -1540,6 +1794,8 @@ abstract class _TreeSettingsState implements TreeSettingsState {
 
   @override
   bool get showUnknown;
+  @override
+  bool get drawPartner;
   @override
   int get numberOfGenerations;
   @override

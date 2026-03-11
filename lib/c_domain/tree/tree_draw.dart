@@ -35,6 +35,8 @@ class TreeDraw {
     bool isShowUnknown = true,
     required BuildContext context,
     bool isRTL = true,
+    // when false, skip partners and connect children directly
+    bool drawPartner = true,
   }) {
     graph = Graph()..isTree = true;
     _graphNodesById.clear();
@@ -74,7 +76,8 @@ class TreeDraw {
         childCutoffGen: childCutoffGen, // pass cutoff
         isShowUnknown: isShowUnknown,
         context: context,
-        isRTL: isRTL);
+        isRTL: isRTL,
+        drawPartner: drawPartner);
 
     return graph;
   }
@@ -140,6 +143,7 @@ class TreeDraw {
     required bool isShowUnknown,
     required BuildContext context,
     required bool isRTL,
+    required bool drawPartner,
   }) {
     if (_visitedNodes.contains(nodeKey)) {
       if (parentKey != null) {
@@ -195,6 +199,7 @@ class TreeDraw {
         isShowUnknown: isShowUnknown,
         context: context,
         isRTL: isRTL,
+        drawPartner: drawPartner,
       );
     }
   }
@@ -211,6 +216,7 @@ class TreeDraw {
     required bool isShowUnknown,
     required BuildContext context,
     required bool isRTL,
+    required bool drawPartner,
   }) {
     final fatherKey = relation.father.asKey();
     final motherKey = relation.mother.asKey();
@@ -223,17 +229,17 @@ class TreeDraw {
       partnerKey = fatherKey;
     }
 
-    // 1) partner (same gen) + MIRROR if partner already exists in tree
+    // ================================================================
+    // 1) Partner drawing — only when drawPartner is true
+    // ================================================================
     String? partnerDisplayKey; // could be real nodeKey OR mirrorKey
     bool partnerIsMirror = false;
 
-    if (partnerKey != null) {
+    if (drawPartner && partnerKey != null) {
       final partnerNode = store.nodesById[partnerKey];
       if (partnerNode != null) {
         final shouldMirror = partnerNode.upperFamily != null;
         partnerIsMirror = shouldMirror;
-
-        // your rule: only mirror if partner is an existing node in the tree
 
         if (shouldMirror) {
           partnerDisplayKey = _mirrorKey(relationKey, partnerKey);
@@ -255,8 +261,67 @@ class TreeDraw {
       }
     }
 
-    // 2) children (next gen)
+    // ================================================================
+    // 2) Children (next gen)
+    // ================================================================
     if (maxGen != null && currentGen >= maxGen) return;
+
+    // ----------------------------------------------------------
+    // When drawPartner = false: simple path
+    //   - Skip all partner-based attachment logic
+    //   - Children connect directly to currentNodeKey
+    // ----------------------------------------------------------
+    if (!drawPartner) {
+      // If the partner exists in the tree, only the father (male parent)
+      // draws the children to avoid duplicates.
+      // If the partner does NOT exist, draw children regardless.
+      final bool partnerExistsInTree =
+          partnerKey != null && store.nodesById.containsKey(partnerKey);
+
+      if (partnerExistsInTree && currentNodeKey != fatherKey) {
+        // Current node is the mother and the father exists —
+        // skip here; the father's traversal will draw these children.
+        return;
+      }
+
+      if (_childrenDrawnForRelation.contains(relationKey)) return;
+      _childrenDrawnForRelation.add(relationKey);
+
+      var childKeys = store.childrenIdsOfRelationKey(relationKey);
+      if (isRTL) {
+        childKeys = childKeys.reversed.toList();
+      }
+
+      for (final childKey in childKeys) {
+        final childNode = store.nodesById[childKey];
+        if (childNode == null) continue;
+
+        final nextGen = currentGen + 1;
+        final childType =
+            nextGen <= childCutoffGen ? NodeType.child : NodeType.grandchild;
+
+        _drawFromNode(
+          store: store,
+          nodeKey: childKey,
+          nodeType: childType,
+          parentKey: currentNodeKey,
+          parentGender: currentNode.gender,
+          parentRelationsCount: currentNode.relations.length,
+          currentGen: nextGen,
+          maxGen: maxGen,
+          childCutoffGen: childCutoffGen,
+          isShowUnknown: isShowUnknown,
+          context: context,
+          isRTL: isRTL,
+          drawPartner: drawPartner,
+        );
+      }
+      return; // done for this relation
+    }
+
+    // ----------------------------------------------------------
+    // When drawPartner = true: original logic below
+    // ----------------------------------------------------------
 
     // Root-mother special case:
     // If the ROOT is a female, attach children under her partner (father),
@@ -372,6 +437,7 @@ class TreeDraw {
         isShowUnknown: isShowUnknown,
         context: context,
         isRTL: isRTL,
+        drawPartner: drawPartner,
       );
     }
   }

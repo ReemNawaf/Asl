@@ -4,6 +4,7 @@ part of 'tree_settings_bloc.dart';
 class TreeSettingsState with _$TreeSettingsState {
   const factory TreeSettingsState({
     required bool showUnknown,
+    required bool drawPartner,
     required int numberOfGenerations,
     required bool isLinkCopied,
     required bool isPublic,
@@ -14,6 +15,7 @@ class TreeSettingsState with _$TreeSettingsState {
 
   factory TreeSettingsState.initial() => const TreeSettingsState(
       showUnknown: true,
+      drawPartner: true,
       numberOfGenerations: 0,
       isPublic: false,
       hideSidbar: false,

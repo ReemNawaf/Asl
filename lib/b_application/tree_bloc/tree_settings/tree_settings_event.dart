@@ -15,6 +15,11 @@ class TreeSettingsEvent with _$TreeSettingsEvent {
   const factory TreeSettingsEvent.showUnknownChanged(
       {required UniqueId treeId}) = _ShowUnknownChanged;
 
+  /// User toggles drawing partners
+  const factory TreeSettingsEvent.drawPartnerChanged({
+    required UniqueId treeId,
+  }) = _DrawPartnerChanged;
+
   /// User toggles coping the share link
   const factory TreeSettingsEvent.sharedLinkCopied() = _SharedLinkCopied;
 
