@@ -273,32 +273,31 @@ class TreeRepository implements ITreeRepository {
       final user = userOption.getOrElse(
         () => throw NotAuthenticatedError(),
       );
-
       final userDoc = await _firestore.userDocument();
       final treeDto = TreeDto.fromDomain(
         tree.copyWith(creatorId: user.id),
       );
-
       final treesCol = _firestore.treesCollection();
       final rootDto = TNodeDto.fromDomain(root);
 
       // Create Tree document
       await treesCol.doc(treeDto.treeId).set(treeDto.toJson());
-
+      print('1111 treesCol $treesCol');
       // Create Root Node document
       await treesCol
           .doc(treeDto.treeId)
           .collection(NODES)
           .doc(rootDto.nodeId)
           .set(rootDto.toJson());
-
+      print('2222 rootDto $rootDto');
       // Update User document with treeId
       await userDoc.update({
         TREES: FieldValue.arrayUnion([treeDto.treeId]),
       });
-
+      print('3333 userDoc $userDoc');
       return right(unit);
     } on FirebaseException catch (e) {
+      print('4444 e $e');
       if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
         return left(const TreeFailure.networkError());
       } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
@@ -310,6 +309,7 @@ class TreeRepository implements ITreeRepository {
       }
       return left(const TreeFailure.unexpected());
     } catch (_) {
+      print('5555 _ $_');
       return left(const TreeFailure.unexpected());
     }
   }
