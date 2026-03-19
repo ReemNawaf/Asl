@@ -119,7 +119,7 @@ class AppNode extends StatelessWidget {
                       node.isUnknown
                           ? getTr(context, 'no_name_provided')!
                           : fatherName != null
-                              ? '$name $fatherName'
+                              ? '$name ${gender == Gender.female ? 'بنت' : 'بن'} $fatherName'
                               : name,
                       style: kCalloutStyle,
                       textAlign: TextAlign.center,
