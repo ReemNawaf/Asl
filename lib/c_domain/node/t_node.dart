@@ -27,6 +27,7 @@ abstract class TNode implements _$TNode {
     required List<UniqueId> fosterChildren,
     NodeNotes? notes,
     @unfreezed required List<Relation> relationsObject,
+    @Default(null) UniqueId? groupId,
   }) = _TNode;
 
   factory TNode.empty() => TNode(
@@ -41,6 +42,7 @@ abstract class TNode implements _$TNode {
         relationsObject: [],
         notes: NodeNotes(''),
         isUnknown: false,
+        groupId: null,
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure
@@ -52,20 +54,6 @@ abstract class TNode implements _$TNode {
   }
 
   factory TNode.setRelationObjects(TNode n, List<Relation> relation) {
-    return TNode(
-      treeId: n.treeId,
-      nodeId: n.nodeId,
-      isTreeRoot: n.isTreeRoot,
-      firstName: n.firstName,
-      isUnknown: n.isUnknown,
-      isAlive: n.isAlive,
-      gender: n.gender,
-      upperFamily: n.upperFamily,
-      relations: n.relations,
-      fosterChildren: n.fosterChildren,
-      birthDate: n.birthDate,
-      deathDate: n.deathDate,
-      relationsObject: relation,
-    );
+    return n.copyWith(relationsObject: relation);
   }
 }

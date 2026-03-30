@@ -177,5 +177,20 @@
   "his_order": "His order",
   "as_wife": "As wife of",
   "as_husband": "As husband of",
-  "show_partners_description": "Show partners on the tree"
+  "show_partners_description": "Show partners on the tree",
+  "tree_groups_title": "Member groups",
+  "tree_groups_description": "Create up to six named groups with color and icon. Assign members in the personal info tab.",
+  "tree_groups_empty_hint": "No groups yet. Add a group to get started.",
+  "tree_group_add": "Add group",
+  "tree_groups_save": "Save groups",
+  "tree_group_name_hint": "Group name",
+  "tree_group_pick_color": "Color",
+  "tree_group_pick_icon": "Icon",
+  "tree_group_remove": "Remove group",
+  "tree_group_name_empty": "Each group needs a name.",
+  "tree_group_name_duplicate": "Group names must be different.",
+  "tree_group_max_six": "You can add at most six groups.",
+  "tree_groups_save_failed": "Could not save groups. Try again.",
+  "tree_group_membership": "Group",
+  "tree_group_none": "None"
 }

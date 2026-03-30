@@ -14,6 +14,7 @@ import 'package:asl/d_infrastructure/core/firestore_helpers.dart';
 import 'package:asl/d_infrastructure/node/node_dto.dart';
 import 'package:asl/d_infrastructure/relation/relation_dto.dart';
 import 'package:asl/d_infrastructure/trees/tree_dtos.dart';
+import 'package:asl/d_infrastructure/trees/tree_settings_dto.dart';
 import 'package:asl/d_infrastructure/user/user_repository.dart';
 import 'package:asl/injection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -513,23 +514,113 @@ class TreeRepository implements ITreeRepository {
       final doc =
           await _firestore.treesCollection().doc(treeId.getOrCrash()).get();
 
-      final data = doc.data() as Map?;
-
-      if (data == null) {
-        return right(TreeSettings.empty());
+      final raw = doc.data();
+      if (raw == null) {
+        return right(TreeSettings.empty().copyWith(treeId: treeId));
       }
 
-      final settings = TreeSettings(
-        isDrawingPartner:
-            data['treeSettings']['isDrawingPartner'] as bool? ?? true,
-        numberOfGenerationOpt:
-            data['treeSettings']['numberOfGenerationOpt'] as int,
-        isShowUnknown: data['treeSettings']['isShowUnknown'] as bool? ?? true,
-        isPublic: data['treeSettings']['isPublic'] as bool,
-        langOpt: 0,
-      );
+      final data = Map<String, dynamic>.from(raw as Map);
+      final ts = data['treeSettings'];
+      if (ts is! Map) {
+        return right(TreeSettings.empty().copyWith(treeId: treeId));
+      }
 
-      return right(settings);
+      final m = Map<String, dynamic>.from(ts);
+      m.putIfAbsent('numberOfGenerationOpt', () => 0);
+      m.putIfAbsent('langOpt', () => 0);
+      m.putIfAbsent('isPublic', () => false);
+      m.putIfAbsent('isShowUnknown', () => true);
+      m.putIfAbsent('groups', () => <dynamic>[]);
+
+      try {
+        final dto = TreeSettingsDto.fromJson(m);
+        return right(dto.toDomain(treeId: treeId));
+      } catch (_) {
+        return right(TreeSettings.empty().copyWith(treeId: treeId));
+      }
+    } on FirebaseException catch (e) {
+      if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
+        return left(const TreeFailure.networkError());
+      } else if (e.message!.contains(PERMISSION_DENIED_CP) ||
+          e.message!.contains(PERMISSION_DENIED_SM)) {
+        return left(const TreeFailure.insufficientPermission());
+      } else if (e.message!.contains(NOT_FOUND_CP) ||
+          e.message!.contains(NOT_FOUND_SM)) {
+        return left(const TreeFailure.unableToUpdate());
+      }
+      return left(const TreeFailure.unexpected());
+    } catch (_) {
+      return left(const TreeFailure.unexpected());
+    }
+  }
+
+  Future<void> _clearRemovedGroupIdsFromNodes(
+    DocumentReference treeRef,
+    Set<String> removed,
+  ) async {
+    if (removed.isEmpty) return;
+
+    final nodesSnap = await treeRef.collection(NODES_COLLECTION).get();
+    WriteBatch batch = _firestore.batch();
+    var count = 0;
+    for (final nodeDoc in nodesSnap.docs) {
+      final gid = nodeDoc.data()['groupId'] as String?;
+      if (gid != null && removed.contains(gid)) {
+        batch.update(nodeDoc.reference, {'groupId': FieldValue.delete()});
+        count++;
+        if (count >= 450) {
+          await batch.commit();
+          batch = _firestore.batch();
+          count = 0;
+        }
+      }
+    }
+    if (count > 0) {
+      await batch.commit();
+    }
+  }
+
+  @override
+  Future<Either<TreeFailure, TreeSettings>> saveTreeGroups({
+    required UniqueId treeId,
+    required TreeSettings newSettings,
+  }) async {
+    try {
+      final treeRef = _firestore.treesCollection().doc(treeId.getOrCrash());
+      final snapshot = await treeRef.get();
+      final raw = snapshot.data();
+
+      final oldIds = <String>{};
+      if (raw != null) {
+        final data = Map<String, dynamic>.from(raw as Map);
+        if (data['treeSettings'] is Map) {
+          final ts = Map<String, dynamic>.from(data['treeSettings'] as Map);
+          final groupsJson = ts['groups'];
+          if (groupsJson is List) {
+            for (final e in groupsJson) {
+              if (e is Map && e['id'] is String) {
+                oldIds.add(e['id'] as String);
+              }
+            }
+          }
+        }
+      }
+
+      final newIds =
+          newSettings.groups.map((g) => g.id.getOrCrash()).toSet();
+      final removed = oldIds.difference(newIds);
+
+      final merged = newSettings.copyWith(treeId: treeId);
+
+      await treeRef.update({
+        'treeSettings': TreeSettingsDto.fromDomain(merged).toJson(),
+      });
+
+      if (removed.isNotEmpty) {
+        await _clearRemovedGroupIdsFromNodes(treeRef, removed);
+      }
+
+      return right(merged);
     } on FirebaseException catch (e) {
       if (e.message!.toLowerCase().contains(UNAVAILABLE)) {
         return left(const TreeFailure.networkError());

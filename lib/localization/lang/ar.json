@@ -177,5 +177,20 @@
   "his_order": "ترتيبه",
   "as_wife": "كزوجة",
   "as_husband": "كزوج",
-  "show_partners_description": "إظهار الشركاء على الشجرة"
+  "show_partners_description": "إظهار الشركاء على الشجرة",
+  "tree_groups_title": "مجموعات الأفراد",
+  "tree_groups_description": "أنشئ حتى ست مجموعات باسم ولون وأيقونة. عيّن الأفراد من تبويب المعلومات الشخصية.",
+  "tree_groups_empty_hint": "لا توجد مجموعات بعد. أضف مجموعة للبدء.",
+  "tree_group_add": "إضافة مجموعة",
+  "tree_groups_save": "حفظ المجموعات",
+  "tree_group_name_hint": "اسم المجموعة",
+  "tree_group_pick_color": "اللون",
+  "tree_group_pick_icon": "الأيقونة",
+  "tree_group_remove": "حذف المجموعة",
+  "tree_group_name_empty": "كل مجموعة تحتاج اسماً.",
+  "tree_group_name_duplicate": "يجب أن تختلف أسماء المجموعات.",
+  "tree_group_max_six": "يمكنك إضافة ست مجموعات كحد أقصى.",
+  "tree_groups_save_failed": "تعذر حفظ المجموعات. حاول مرة أخرى.",
+  "tree_group_membership": "المجموعة",
+  "tree_group_none": "بدون"
 }

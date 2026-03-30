@@ -574,6 +574,25 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         }
       },
 
+      treeGroupsSaved: (e) async {
+        var nextStore = state.store;
+        if (e.removedGroupIds.isNotEmpty) {
+          for (final entry in nextStore.nodesById.entries) {
+            final gid = entry.value.groupId?.asKey();
+            if (gid != null && e.removedGroupIds.contains(gid)) {
+              nextStore = upsertNode(
+                nextStore,
+                entry.value.copyWith(groupId: null),
+              );
+            }
+          }
+        }
+        emit(state.copyWith(
+          settings: e.newSettings,
+          store: nextStore,
+        ));
+      },
+
       searchTree: (e) {
         // emit(state.copyWith(nodeFocusId: e.nodeId));
       },

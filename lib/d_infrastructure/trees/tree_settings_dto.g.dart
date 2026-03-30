@@ -14,6 +14,10 @@ _$TreeSettingsDtoImpl _$$TreeSettingsDtoImplFromJson(
       isPublic: json['isPublic'] as bool,
       isShowUnknown: json['isShowUnknown'] as bool,
       isDrawingPartner: json['isDrawingPartner'] as bool?,
+      groups: (json['groups'] as List<dynamic>?)
+              ?.map((e) => TreeGroupDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <TreeGroupDto>[],
     );
 
 Map<String, dynamic> _$$TreeSettingsDtoImplToJson(
@@ -24,4 +28,5 @@ Map<String, dynamic> _$$TreeSettingsDtoImplToJson(
       'isPublic': instance.isPublic,
       'isShowUnknown': instance.isShowUnknown,
       'isDrawingPartner': instance.isDrawingPartner,
+      'groups': instance.groups.map((e) => e.toJson()).toList(),
     };

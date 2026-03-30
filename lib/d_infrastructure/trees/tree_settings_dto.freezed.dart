@@ -25,6 +25,7 @@ mixin _$TreeSettingsDto {
   bool get isPublic => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
   bool? get isDrawingPartner => throw _privateConstructorUsedError;
+  List<TreeGroupDto> get groups => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $TreeSettingsDtoCopyWith<$Res> {
       int langOpt,
       bool isPublic,
       bool isShowUnknown,
-      bool? isDrawingPartner});
+      bool? isDrawingPartner,
+      List<TreeGroupDto> groups});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$TreeSettingsDtoCopyWithImpl<$Res, $Val extends TreeSettingsDto>
     Object? isPublic = null,
     Object? isShowUnknown = null,
     Object? isDrawingPartner = freezed,
+    Object? groups = null,
   }) {
     return _then(_value.copyWith(
       numberOfGenerationOpt: null == numberOfGenerationOpt
@@ -86,6 +89,10 @@ class _$TreeSettingsDtoCopyWithImpl<$Res, $Val extends TreeSettingsDto>
           ? _value.isDrawingPartner
           : isDrawingPartner // ignore: cast_nullable_to_non_nullable
               as bool?,
+      groups: null == groups
+          ? _value.groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<TreeGroupDto>,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$TreeSettingsDtoImplCopyWith<$Res>
       int langOpt,
       bool isPublic,
       bool isShowUnknown,
-      bool? isDrawingPartner});
+      bool? isDrawingPartner,
+      List<TreeGroupDto> groups});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$TreeSettingsDtoImplCopyWithImpl<$Res>
     Object? isPublic = null,
     Object? isShowUnknown = null,
     Object? isDrawingPartner = freezed,
+    Object? groups = null,
   }) {
     return _then(_$TreeSettingsDtoImpl(
       numberOfGenerationOpt: null == numberOfGenerationOpt
@@ -144,20 +153,27 @@ class __$$TreeSettingsDtoImplCopyWithImpl<$Res>
           ? _value.isDrawingPartner
           : isDrawingPartner // ignore: cast_nullable_to_non_nullable
               as bool?,
+      groups: null == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<TreeGroupDto>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
   const _$TreeSettingsDtoImpl(
       {required this.numberOfGenerationOpt,
       required this.langOpt,
       required this.isPublic,
       required this.isShowUnknown,
-      this.isDrawingPartner})
-      : super._();
+      this.isDrawingPartner,
+      final List<TreeGroupDto> groups = const <TreeGroupDto>[]})
+      : _groups = groups,
+        super._();
 
   factory _$TreeSettingsDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$TreeSettingsDtoImplFromJson(json);
@@ -172,10 +188,18 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
   final bool isShowUnknown;
   @override
   final bool? isDrawingPartner;
+  final List<TreeGroupDto> _groups;
+  @override
+  @JsonKey()
+  List<TreeGroupDto> get groups {
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groups);
+  }
 
   @override
   String toString() {
-    return 'TreeSettingsDto(numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown, isDrawingPartner: $isDrawingPartner)';
+    return 'TreeSettingsDto(numberOfGenerationOpt: $numberOfGenerationOpt, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown, isDrawingPartner: $isDrawingPartner, groups: $groups)';
   }
 
   @override
@@ -191,13 +215,20 @@ class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
             (identical(other.isShowUnknown, isShowUnknown) ||
                 other.isShowUnknown == isShowUnknown) &&
             (identical(other.isDrawingPartner, isDrawingPartner) ||
-                other.isDrawingPartner == isDrawingPartner));
+                other.isDrawingPartner == isDrawingPartner) &&
+            const DeepCollectionEquality().equals(other._groups, _groups));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, numberOfGenerationOpt, langOpt,
-      isPublic, isShowUnknown, isDrawingPartner);
+  int get hashCode => Object.hash(
+      runtimeType,
+      numberOfGenerationOpt,
+      langOpt,
+      isPublic,
+      isShowUnknown,
+      isDrawingPartner,
+      const DeepCollectionEquality().hash(_groups));
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +251,8 @@ abstract class _TreeSettingsDto extends TreeSettingsDto {
       required final int langOpt,
       required final bool isPublic,
       required final bool isShowUnknown,
-      final bool? isDrawingPartner}) = _$TreeSettingsDtoImpl;
+      final bool? isDrawingPartner,
+      final List<TreeGroupDto> groups}) = _$TreeSettingsDtoImpl;
   const _TreeSettingsDto._() : super._();
 
   factory _TreeSettingsDto.fromJson(Map<String, dynamic> json) =
@@ -236,6 +268,8 @@ abstract class _TreeSettingsDto extends TreeSettingsDto {
   bool get isShowUnknown;
   @override
   bool? get isDrawingPartner;
+  @override
+  List<TreeGroupDto> get groups;
   @override
   @JsonKey(ignore: true)
   _$$TreeSettingsDtoImplCopyWith<_$TreeSettingsDtoImpl> get copyWith =>

@@ -23,6 +23,7 @@ _$TNodeDtoImpl _$$TNodeDtoImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       notes: json['notes'] as String?,
       isUnknown: json['isUnknown'] as bool? ?? false,
+      groupId: json['groupId'] as String?,
     );
 
 Map<String, dynamic> _$$TNodeDtoImplToJson(_$TNodeDtoImpl instance) =>
@@ -39,4 +40,5 @@ Map<String, dynamic> _$$TNodeDtoImplToJson(_$TNodeDtoImpl instance) =>
       'fosterChildren': instance.fosterChildren,
       'notes': instance.notes,
       'isUnknown': instance.isUnknown,
+      'groupId': instance.groupId,
     };

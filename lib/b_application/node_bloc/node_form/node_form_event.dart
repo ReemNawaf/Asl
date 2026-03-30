@@ -40,6 +40,9 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.makeItRoot() = _MakeItRoot;
   const factory NodeFormEvent.changeGender(Gender gender) = _ChangedGender;
 
+  const factory NodeFormEvent.groupIdChanged(UniqueId? groupId) =
+      _GroupIdChanged;
+
   const factory NodeFormEvent.linkToExistingNode(
       {required TNode? Function(String nodeKey) getNodeByKey,
       required String newNodeId}) = _LinkToExistingNode;

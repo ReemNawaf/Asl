@@ -32,6 +32,7 @@ mixin _$TNodeDto {
   List<String> get fosterChildren => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
   bool? get isUnknown => throw _privateConstructorUsedError;
+  String? get groupId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +57,8 @@ abstract class $TNodeDtoCopyWith<$Res> {
       List<String> relations,
       List<String> fosterChildren,
       String? notes,
-      bool? isUnknown});
+      bool? isUnknown,
+      String? groupId});
 }
 
 /// @nodoc
@@ -84,6 +86,7 @@ class _$TNodeDtoCopyWithImpl<$Res, $Val extends TNodeDto>
     Object? fosterChildren = null,
     Object? notes = freezed,
     Object? isUnknown = freezed,
+    Object? groupId = freezed,
   }) {
     return _then(_value.copyWith(
       nodeId: freezed == nodeId
@@ -134,6 +137,10 @@ class _$TNodeDtoCopyWithImpl<$Res, $Val extends TNodeDto>
           ? _value.isUnknown
           : isUnknown // ignore: cast_nullable_to_non_nullable
               as bool?,
+      groupId: freezed == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -158,7 +165,8 @@ abstract class _$$TNodeDtoImplCopyWith<$Res>
       List<String> relations,
       List<String> fosterChildren,
       String? notes,
-      bool? isUnknown});
+      bool? isUnknown,
+      String? groupId});
 }
 
 /// @nodoc
@@ -184,6 +192,7 @@ class __$$TNodeDtoImplCopyWithImpl<$Res>
     Object? fosterChildren = null,
     Object? notes = freezed,
     Object? isUnknown = freezed,
+    Object? groupId = freezed,
   }) {
     return _then(_$TNodeDtoImpl(
       nodeId: freezed == nodeId
@@ -234,6 +243,10 @@ class __$$TNodeDtoImplCopyWithImpl<$Res>
           ? _value.isUnknown
           : isUnknown // ignore: cast_nullable_to_non_nullable
               as bool?,
+      groupId: freezed == groupId
+          ? _value.groupId
+          : groupId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -253,7 +266,8 @@ class _$TNodeDtoImpl extends _TNodeDto {
       required final List<String> relations,
       required final List<String> fosterChildren,
       required this.notes,
-      this.isUnknown = false})
+      this.isUnknown = false,
+      this.groupId})
       : _relations = relations,
         _fosterChildren = fosterChildren,
         super._();
@@ -298,10 +312,12 @@ class _$TNodeDtoImpl extends _TNodeDto {
   @override
   @JsonKey()
   final bool? isUnknown;
+  @override
+  final String? groupId;
 
   @override
   String toString() {
-    return 'TNodeDto(nodeId: $nodeId, treeId: $treeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren, notes: $notes, isUnknown: $isUnknown)';
+    return 'TNodeDto(nodeId: $nodeId, treeId: $treeId, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren, notes: $notes, isUnknown: $isUnknown, groupId: $groupId)';
   }
 
   @override
@@ -327,7 +343,8 @@ class _$TNodeDtoImpl extends _TNodeDto {
                 .equals(other._fosterChildren, _fosterChildren) &&
             (identical(other.notes, notes) || other.notes == notes) &&
             (identical(other.isUnknown, isUnknown) ||
-                other.isUnknown == isUnknown));
+                other.isUnknown == isUnknown) &&
+            (identical(other.groupId, groupId) || other.groupId == groupId));
   }
 
   @JsonKey(ignore: true)
@@ -345,7 +362,8 @@ class _$TNodeDtoImpl extends _TNodeDto {
       const DeepCollectionEquality().hash(_relations),
       const DeepCollectionEquality().hash(_fosterChildren),
       notes,
-      isUnknown);
+      isUnknown,
+      groupId);
 
   @JsonKey(ignore: true)
   @override
@@ -374,7 +392,8 @@ abstract class _TNodeDto extends TNodeDto {
       required final List<String> relations,
       required final List<String> fosterChildren,
       required final String? notes,
-      final bool? isUnknown}) = _$TNodeDtoImpl;
+      final bool? isUnknown,
+      final String? groupId}) = _$TNodeDtoImpl;
   const _TNodeDto._() : super._();
 
   factory _TNodeDto.fromJson(Map<String, dynamic> json) =
@@ -404,6 +423,8 @@ abstract class _TNodeDto extends TNodeDto {
   String? get notes;
   @override
   bool? get isUnknown;
+  @override
+  String? get groupId;
   @override
   @JsonKey(ignore: true)
   _$$TNodeDtoImplCopyWith<_$TNodeDtoImpl> get copyWith =>

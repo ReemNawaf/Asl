@@ -115,6 +115,13 @@ class LocalTreeEvent with _$LocalTreeEvent {
     required bool show,
   }) = _ToggleShowUnknown;
 
+  /// After saving tree groups to Firestore: update settings and clear removed
+  /// group memberships in the local store.
+  const factory LocalTreeEvent.treeGroupsSaved({
+    required TreeSettings newSettings,
+    required Set<String> removedGroupIds,
+  }) = _TreeGroupsSaved;
+
   // E. INTERNAL / SYSTEM
 
   /// Background sync completed / failed

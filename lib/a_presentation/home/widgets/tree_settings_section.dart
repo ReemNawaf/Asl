@@ -1,6 +1,7 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/a_presentation/home/widgets/tree_groups_settings_section.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -123,6 +124,10 @@ class TreeSettingsSection extends StatelessWidget {
             ),
           ],
         ),
+        if (treeId != null) ...[
+          kVSpacer15,
+          TreeGroupsSettingsSection(treeId: treeId),
+        ],
       ],
     );
   }

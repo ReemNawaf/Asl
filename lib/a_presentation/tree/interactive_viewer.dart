@@ -1,6 +1,7 @@
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/widgets/des_loading_wdg.dart';
 import 'package:asl/a_presentation/tree/tree_view.dart';
+import 'package:asl/a_presentation/tree/widgets/tree_group_legend.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
@@ -313,27 +314,45 @@ class _InteractiveViewState extends State<InteractiveView> {
                     // ── Replace InteractiveViewer with manual Transform ──
                     child: LayoutBuilder(
                       builder: (context, constraints) {
-                        return GestureDetector(
-                          key: _viewportKey,
-                          onScaleStart: _onScaleStart,
-                          onScaleUpdate: _onScaleUpdate,
-                          onScaleEnd: _onScaleEnd,
-                          behavior: HitTestBehavior.opaque,
-                          child: ClipRect(
-                            child: OverflowBox(
-                              alignment: Alignment.topLeft,
-                              minWidth: 0,
-                              minHeight: 0,
-                              maxWidth: double.infinity,
-                              maxHeight: double.infinity,
-                              child: Transform(
-                                transform: Matrix4.identity()
-                                  ..translate(_pan.dx, _pan.dy)
-                                  ..scale(_scale),
-                                child: const TreeView(),
+                        return Stack(
+                          clipBehavior: Clip.none,
+                          alignment: Alignment.center,
+                          children: [
+                            GestureDetector(
+                              key: _viewportKey,
+                              onScaleStart: _onScaleStart,
+                              onScaleUpdate: _onScaleUpdate,
+                              onScaleEnd: _onScaleEnd,
+                              behavior: HitTestBehavior.opaque,
+                              child: ClipRect(
+                                child: OverflowBox(
+                                  alignment: Alignment.topLeft,
+                                  minWidth: 0,
+                                  minHeight: 0,
+                                  maxWidth: double.infinity,
+                                  maxHeight: double.infinity,
+                                  child: Transform(
+                                    transform: Matrix4.identity()
+                                      ..translate(_pan.dx, _pan.dy)
+                                      ..scale(_scale),
+                                    child: const TreeView(),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            const Positioned(
+                              left: 12,
+                              right: 12,
+                              bottom: 12,
+                              child: IgnorePointer(
+                                ignoring: true,
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: TreeGroupLegend(),
+                                ),
+                              ),
+                            ),
+                          ],
                         );
                       },
                     ),

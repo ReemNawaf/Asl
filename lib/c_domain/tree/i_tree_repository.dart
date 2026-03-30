@@ -52,4 +52,11 @@ abstract class ITreeRepository {
   });
 
   Future<Either<TreeFailure, TreeSettings>> loadSettings(UniqueId treeId);
+
+  /// Persists [newSettings.groups] on the tree document and clears [groupId]
+  /// on nodes whose group was removed.
+  Future<Either<TreeFailure, TreeSettings>> saveTreeGroups({
+    required UniqueId treeId,
+    required TreeSettings newSettings,
+  });
 }

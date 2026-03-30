@@ -7,6 +7,7 @@ import 'package:asl/a_presentation/node/node_card/mirror_node.dart';
 import 'package:asl/a_presentation/node/node_card/partner_node.dart';
 import 'package:asl/a_presentation/node/node_card/root_node.dart';
 import 'package:asl/a_presentation/node/node_card/unknown_partner_node.dart';
+import 'package:asl/a_presentation/tree/widgets/tree_group_palette.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
@@ -91,10 +92,17 @@ class TreeView extends StatelessWidget {
 
                     final showUnknown = treeSettingsState.showUnknown;
 
+                    final groups = treeState.settings?.groups ?? [];
+                    final groupAccent = treeGroupAccentForNode(tnode, groups);
+
                     return switch (nodeType) {
                       NodeType.root => KeyedSubtree(
                           key: nodeKey,
-                          child: RootNode(node: tnode, pageContext: context)),
+                          child: RootNode(
+                            node: tnode,
+                            pageContext: context,
+                            groupAccent: groupAccent,
+                          )),
                       NodeType.partner => KeyedSubtree(
                           key: nodeKey,
                           child: !showUnknown && tnode.isUnknown
@@ -106,6 +114,7 @@ class TreeView extends StatelessWidget {
                                   node: tnode,
                                   pageContext: context,
                                   fatherName: fatherName,
+                                  groupAccent: groupAccent,
                                 ),
                         ),
                       NodeType.partnerMirror => tnode.gender == Gender.female
@@ -119,6 +128,7 @@ class TreeView extends StatelessWidget {
                               pageContext: context,
                               noChildren: false,
                               fatherName: fatherName,
+                              groupAccent: groupAccent,
                             )
                           // the mirror node is male
                           // the partner node is female
@@ -131,19 +141,22 @@ class TreeView extends StatelessWidget {
                               pageContext: context,
                               noChildren: true,
                               fatherName: fatherName,
+                              groupAccent: groupAccent,
                             ),
                       NodeType.child => KeyedSubtree(
                           key: nodeKey,
                           child: ChildNode(
                               node: tnode,
                               pageContext: context,
-                              fatherName: fatherName)),
+                              fatherName: fatherName,
+                              groupAccent: groupAccent)),
                       NodeType.grandchild => KeyedSubtree(
                           key: nodeKey,
                           child: GrandchildNode(
                               node: tnode,
                               pageContext: context,
-                              fatherName: fatherName)),
+                              fatherName: fatherName,
+                              groupAccent: groupAccent)),
                       _ => const SizedBox(),
                     };
                   },

@@ -22,6 +22,7 @@ mixin _$TreeSettings {
   int get langOpt => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   bool get isShowUnknown => throw _privateConstructorUsedError;
+  List<TreeGroup> get groups => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TreeSettingsCopyWith<TreeSettings> get copyWith =>
@@ -40,7 +41,8 @@ abstract class $TreeSettingsCopyWith<$Res> {
       bool isDrawingPartner,
       int langOpt,
       bool isPublic,
-      bool isShowUnknown});
+      bool isShowUnknown,
+      List<TreeGroup> groups});
 }
 
 /// @nodoc
@@ -62,6 +64,7 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
     Object? langOpt = null,
     Object? isPublic = null,
     Object? isShowUnknown = null,
+    Object? groups = null,
   }) {
     return _then(_value.copyWith(
       treeId: freezed == treeId
@@ -88,6 +91,10 @@ class _$TreeSettingsCopyWithImpl<$Res, $Val extends TreeSettings>
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
               as bool,
+      groups: null == groups
+          ? _value.groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<TreeGroup>,
     ) as $Val);
   }
 }
@@ -106,7 +113,8 @@ abstract class _$$TreeSettingsImplCopyWith<$Res>
       bool isDrawingPartner,
       int langOpt,
       bool isPublic,
-      bool isShowUnknown});
+      bool isShowUnknown,
+      List<TreeGroup> groups});
 }
 
 /// @nodoc
@@ -126,6 +134,7 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
     Object? langOpt = null,
     Object? isPublic = null,
     Object? isShowUnknown = null,
+    Object? groups = null,
   }) {
     return _then(_$TreeSettingsImpl(
       treeId: freezed == treeId
@@ -152,6 +161,10 @@ class __$$TreeSettingsImplCopyWithImpl<$Res>
           ? _value.isShowUnknown
           : isShowUnknown // ignore: cast_nullable_to_non_nullable
               as bool,
+      groups: null == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<TreeGroup>,
     ));
   }
 }
@@ -165,8 +178,10 @@ class _$TreeSettingsImpl extends _TreeSettings {
       required this.isDrawingPartner,
       required this.langOpt,
       required this.isPublic,
-      required this.isShowUnknown})
-      : super._();
+      required this.isShowUnknown,
+      final List<TreeGroup> groups = const <TreeGroup>[]})
+      : _groups = groups,
+        super._();
 
   @override
   final UniqueId? treeId;
@@ -180,10 +195,18 @@ class _$TreeSettingsImpl extends _TreeSettings {
   final bool isPublic;
   @override
   final bool isShowUnknown;
+  final List<TreeGroup> _groups;
+  @override
+  @JsonKey()
+  List<TreeGroup> get groups {
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groups);
+  }
 
   @override
   String toString() {
-    return 'TreeSettings(treeId: $treeId, numberOfGenerationOpt: $numberOfGenerationOpt, isDrawingPartner: $isDrawingPartner, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown)';
+    return 'TreeSettings(treeId: $treeId, numberOfGenerationOpt: $numberOfGenerationOpt, isDrawingPartner: $isDrawingPartner, langOpt: $langOpt, isPublic: $isPublic, isShowUnknown: $isShowUnknown, groups: $groups)';
   }
 
   @override
@@ -200,12 +223,20 @@ class _$TreeSettingsImpl extends _TreeSettings {
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
             (identical(other.isShowUnknown, isShowUnknown) ||
-                other.isShowUnknown == isShowUnknown));
+                other.isShowUnknown == isShowUnknown) &&
+            const DeepCollectionEquality().equals(other._groups, _groups));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, treeId, numberOfGenerationOpt,
-      isDrawingPartner, langOpt, isPublic, isShowUnknown);
+  int get hashCode => Object.hash(
+      runtimeType,
+      treeId,
+      numberOfGenerationOpt,
+      isDrawingPartner,
+      langOpt,
+      isPublic,
+      isShowUnknown,
+      const DeepCollectionEquality().hash(_groups));
 
   @JsonKey(ignore: true)
   @override
@@ -221,7 +252,8 @@ abstract class _TreeSettings extends TreeSettings {
       required final bool isDrawingPartner,
       required final int langOpt,
       required final bool isPublic,
-      required final bool isShowUnknown}) = _$TreeSettingsImpl;
+      required final bool isShowUnknown,
+      final List<TreeGroup> groups}) = _$TreeSettingsImpl;
   const _TreeSettings._() : super._();
 
   @override
@@ -236,6 +268,8 @@ abstract class _TreeSettings extends TreeSettings {
   bool get isPublic;
   @override
   bool get isShowUnknown;
+  @override
+  List<TreeGroup> get groups;
   @override
   @JsonKey(ignore: true)
   _$$TreeSettingsImplCopyWith<_$TreeSettingsImpl> get copyWith =>

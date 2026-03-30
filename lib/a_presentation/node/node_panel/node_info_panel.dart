@@ -12,6 +12,7 @@ import 'package:asl/a_presentation/node/widgets/node_id_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/partner_order.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
+import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_lineage.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/localization/localization_constants.dart';
@@ -185,6 +186,59 @@ class InfoPanel extends StatelessWidget {
                     color: color,
                     contextDialog: contextDialog,
                     pageContext: pageContext),
+                BlocBuilder<LocalTreeBloc, LocalTreeState>(
+                  builder: (context, treeState) {
+                    final groups = treeState.settings?.groups ?? [];
+                    if (groups.isEmpty) return const SizedBox.shrink();
+
+                    final gid = node.groupId?.getOrCrash();
+                    final validIds =
+                        groups.map((g) => g.id.getOrCrash()).toSet();
+                    final selected =
+                        gid != null && validIds.contains(gid) ? gid : null;
+
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: SizedBox(
+                        width: 250,
+                        child: DropdownButtonFormField<String?>(
+                          value: selected,
+                          isExpanded: true,
+                          decoration: InputDecoration(
+                            labelText: getTr(context, 'tree_group_membership'),
+                            isDense: true,
+                          ),
+                          items: [
+                            DropdownMenuItem<String?>(
+                              value: null,
+                              child: Text(getTr(context, 'tree_group_none')!),
+                            ),
+                            ...groups.map(
+                              (g) => DropdownMenuItem<String?>(
+                                value: g.id.getOrCrash(),
+                                child: Text(
+                                  g.name,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ],
+                          onChanged: state.isEditing
+                              ? (v) {
+                                  context.read<NodeFormBloc>().add(
+                                        NodeFormEvent.groupIdChanged(
+                                          v == null
+                                              ? null
+                                              : UniqueId.fromUniqueString(v),
+                                        ),
+                                      );
+                                }
+                              : null,
+                        ),
+                      ),
+                    );
+                  },
+                ),
                 if (!state.node!.isUnknown)
                   NodeIdWidget(
                     contextDialog: contextDialog,

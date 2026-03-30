@@ -1,4 +1,5 @@
 import 'package:asl/c_domain/core/value_objects.dart';
+import 'package:asl/c_domain/tree/tree_group.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tree_settings.freezed.dart';
@@ -14,6 +15,7 @@ abstract class TreeSettings implements _$TreeSettings {
     required int langOpt,
     required bool isPublic,
     required bool isShowUnknown,
+    @Default(<TreeGroup>[]) List<TreeGroup> groups,
   }) = _TreeSettings;
 
   factory TreeSettings.empty() => const TreeSettings(
@@ -23,5 +25,6 @@ abstract class TreeSettings implements _$TreeSettings {
         isDrawingPartner: true,
         isPublic: false,
         isShowUnknown: false,
+        groups: [],
       );
 }

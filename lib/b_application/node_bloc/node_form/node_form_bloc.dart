@@ -94,6 +94,13 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: null,
         ));
       },
+      groupIdChanged: (e) {
+        emit(state.copyWith(
+          node: state.node!.copyWith(groupId: e.groupId),
+          isSaving: false,
+          saveFailureOrSuccessOption: null,
+        ));
+      },
       changeIsUnknown: (e) {
         emit(state.copyWith(
           node: state.node!.copyWith(isUnknown: e.isUnknown),

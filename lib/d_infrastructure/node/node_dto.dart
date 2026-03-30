@@ -27,6 +27,7 @@ abstract class TNodeDto implements _$TNodeDto {
     required List<String> fosterChildren,
     required String? notes,
     @Default(false) bool? isUnknown,
+    String? groupId,
   }) = _TNodeDto;
 
   //  converting Entity => DTO
@@ -48,6 +49,7 @@ abstract class TNodeDto implements _$TNodeDto {
       relations: node.relations.map((r) => r.getOrCrash()).toList(),
       fosterChildren: node.fosterChildren.map((e) => e.getOrCrash()).toList(),
       notes: node.notes != null ? node.notes!.getOrCrash() : '',
+      groupId: node.groupId?.getOrCrash(),
     );
   }
 
@@ -69,7 +71,9 @@ abstract class TNodeDto implements _$TNodeDto {
         fosterChildren:
             fosterChildren.map((e) => UniqueId.fromUniqueString(e)).toList(),
         relationsObject: [],
-        notes: NodeNotes(notes ?? ''));
+        notes: NodeNotes(notes ?? ''),
+        groupId: groupId != null ? UniqueId.fromUniqueString(groupId!) : null,
+    );
   }
 
   //  converting JSON => DTO
