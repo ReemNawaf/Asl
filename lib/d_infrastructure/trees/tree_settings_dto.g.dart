@@ -28,5 +28,5 @@ Map<String, dynamic> _$$TreeSettingsDtoImplToJson(
       'isPublic': instance.isPublic,
       'isShowUnknown': instance.isShowUnknown,
       'isDrawingPartner': instance.isDrawingPartner,
-      'groups': instance.groups.map((e) => e.toJson()).toList(),
+      'groups': instance.groups,
     };

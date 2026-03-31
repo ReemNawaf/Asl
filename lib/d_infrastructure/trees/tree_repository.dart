@@ -282,7 +282,7 @@ class TreeRepository implements ITreeRepository {
       final rootDto = TNodeDto.fromDomain(root);
 
       // Create Tree document
-      await treesCol.doc(treeDto.treeId).set(treeDto.toJson());
+      await treesCol.doc(treeDto.treeId).set(treeDto.toFirestoreMap());
       print('1111 treesCol $treesCol');
       // Create Root Node document
       await treesCol
@@ -354,7 +354,7 @@ class TreeRepository implements ITreeRepository {
       await _firestore
           .treesCollection()
           .doc(treeDto.treeId)
-          .update(treeDto.toJson());
+          .update(treeDto.toFirestoreMap());
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -613,7 +613,7 @@ class TreeRepository implements ITreeRepository {
       final merged = newSettings.copyWith(treeId: treeId);
 
       await treeRef.update({
-        'treeSettings': TreeSettingsDto.fromDomain(merged).toJson(),
+        'treeSettings': TreeSettingsDto.fromDomain(merged).toFirestoreMap(),
       });
 
       if (removed.isNotEmpty) {

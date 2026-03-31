@@ -45,3 +45,17 @@ abstract class TreeSettingsDto with _$TreeSettingsDto {
   factory TreeSettingsDto.fromJson(Map<String, dynamic> json) =>
       _$TreeSettingsDtoFromJson(json);
 }
+
+extension TreeSettingsDtoFirestoreX on TreeSettingsDto {
+  /// Firestore-safe map: nested `groups` must be `List<Map>`, not DTO instances.
+  Map<String, dynamic> toFirestoreMap() {
+    return {
+      'numberOfGenerationOpt': numberOfGenerationOpt,
+      'langOpt': langOpt,
+      'isPublic': isPublic,
+      'isShowUnknown': isShowUnknown,
+      'isDrawingPartner': isDrawingPartner,
+      'groups': groups.map((e) => e.toJson()).toList(),
+    };
+  }
+}

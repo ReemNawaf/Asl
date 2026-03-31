@@ -162,8 +162,7 @@ class __$$TreeSettingsDtoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class _$TreeSettingsDtoImpl extends _TreeSettingsDto {
   const _$TreeSettingsDtoImpl(
       {required this.numberOfGenerationOpt,

@@ -9,6 +9,7 @@ import 'package:asl/a_presentation/node/widgets/link_to_existing_node.dart';
 import 'package:asl/a_presentation/node/widgets/node_gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
 import 'package:asl/a_presentation/node/widgets/node_id_wdg.dart';
+import 'package:asl/a_presentation/node/node_person_titles.dart';
 import 'package:asl/a_presentation/node/widgets/partner_order.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
@@ -83,6 +84,42 @@ class InfoPanel extends StatelessWidget {
                       ),
                   ],
                 ),
+                if (!node.isUnknown) ...[
+                  kVSpacer15,
+                  SizedBox(
+                    width: 250,
+                    child: DropdownButtonFormField<String?>(
+                      value: normalizePersonTitleForGender(
+                        node.personTitle,
+                        node.gender,
+                      ),
+                      isExpanded: true,
+                      decoration: InputDecoration(
+                        labelText: getTr(context, 'person_title_label'),
+                        isDense: true,
+                      ),
+                      items: [
+                        DropdownMenuItem<String?>(
+                          value: null,
+                          child: Text(getTr(context, 'person_title_none')!),
+                        ),
+                        ...personTitlesForGender(node.gender).map(
+                          (t) => DropdownMenuItem<String?>(
+                            value: t,
+                            child: Text(t),
+                          ),
+                        ),
+                      ],
+                      onChanged: state.isEditing
+                          ? (v) {
+                              context.read<NodeFormBloc>().add(
+                                    NodeFormEvent.personTitleChanged(v),
+                                  );
+                            }
+                          : null,
+                    ),
+                  ),
+                ],
                 BlocBuilder<LocalTreeBloc, LocalTreeState>(
                   builder: (context, treeState) {
                     return Row(

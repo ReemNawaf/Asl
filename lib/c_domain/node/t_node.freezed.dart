@@ -33,6 +33,9 @@ mixin _$TNode {
   List<Relation> get relationsObject => throw _privateConstructorUsedError;
   UniqueId? get groupId => throw _privateConstructorUsedError;
 
+  /// Honorific / title (Arabic), optional; must match gender-specific list in UI.
+  String? get personTitle => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $TNodeCopyWith<TNode> get copyWith => throw _privateConstructorUsedError;
 }
@@ -57,7 +60,8 @@ abstract class $TNodeCopyWith<$Res> {
       List<UniqueId> fosterChildren,
       NodeNotes? notes,
       @unfreezed List<Relation> relationsObject,
-      UniqueId? groupId});
+      UniqueId? groupId,
+      String? personTitle});
 }
 
 /// @nodoc
@@ -88,6 +92,7 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
     Object? notes = freezed,
     Object? relationsObject = null,
     Object? groupId = freezed,
+    Object? personTitle = freezed,
   }) {
     return _then(_value.copyWith(
       treeId: null == treeId
@@ -150,6 +155,10 @@ class _$TNodeCopyWithImpl<$Res, $Val extends TNode>
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
               as UniqueId?,
+      personTitle: freezed == personTitle
+          ? _value.personTitle
+          : personTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -176,7 +185,8 @@ abstract class _$$TNodeImplCopyWith<$Res> implements $TNodeCopyWith<$Res> {
       List<UniqueId> fosterChildren,
       NodeNotes? notes,
       @unfreezed List<Relation> relationsObject,
-      UniqueId? groupId});
+      UniqueId? groupId,
+      String? personTitle});
 }
 
 /// @nodoc
@@ -205,6 +215,7 @@ class __$$TNodeImplCopyWithImpl<$Res>
     Object? notes = freezed,
     Object? relationsObject = null,
     Object? groupId = freezed,
+    Object? personTitle = freezed,
   }) {
     return _then(_$TNodeImpl(
       treeId: null == treeId
@@ -267,6 +278,10 @@ class __$$TNodeImplCopyWithImpl<$Res>
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
               as UniqueId?,
+      personTitle: freezed == personTitle
+          ? _value.personTitle
+          : personTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -289,7 +304,8 @@ class _$TNodeImpl extends _TNode {
       required this.fosterChildren,
       this.notes,
       @unfreezed required this.relationsObject,
-      this.groupId = null})
+      this.groupId = null,
+      this.personTitle = null})
       : super._();
 
   @override
@@ -325,9 +341,14 @@ class _$TNodeImpl extends _TNode {
   @JsonKey()
   final UniqueId? groupId;
 
+  /// Honorific / title (Arabic), optional; must match gender-specific list in UI.
+  @override
+  @JsonKey()
+  final String? personTitle;
+
   @override
   String toString() {
-    return 'TNode(treeId: $treeId, nodeId: $nodeId, isTreeRoot: $isTreeRoot, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isUnknown: $isUnknown, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren, notes: $notes, relationsObject: $relationsObject, groupId: $groupId)';
+    return 'TNode(treeId: $treeId, nodeId: $nodeId, isTreeRoot: $isTreeRoot, firstName: $firstName, birthDate: $birthDate, deathDate: $deathDate, isUnknown: $isUnknown, isAlive: $isAlive, gender: $gender, upperFamily: $upperFamily, relations: $relations, fosterChildren: $fosterChildren, notes: $notes, relationsObject: $relationsObject, groupId: $groupId, personTitle: $personTitle)';
   }
 
   @override
@@ -357,7 +378,9 @@ class _$TNodeImpl extends _TNode {
             (identical(other.notes, notes) || other.notes == notes) &&
             const DeepCollectionEquality()
                 .equals(other.relationsObject, relationsObject) &&
-            (identical(other.groupId, groupId) || other.groupId == groupId));
+            (identical(other.groupId, groupId) || other.groupId == groupId) &&
+            (identical(other.personTitle, personTitle) ||
+                other.personTitle == personTitle));
   }
 
   @override
@@ -377,7 +400,8 @@ class _$TNodeImpl extends _TNode {
       const DeepCollectionEquality().hash(fosterChildren),
       notes,
       const DeepCollectionEquality().hash(relationsObject),
-      groupId);
+      groupId,
+      personTitle);
 
   @JsonKey(ignore: true)
   @override
@@ -402,7 +426,8 @@ abstract class _TNode extends TNode {
       required final List<UniqueId> fosterChildren,
       final NodeNotes? notes,
       @unfreezed required final List<Relation> relationsObject,
-      final UniqueId? groupId}) = _$TNodeImpl;
+      final UniqueId? groupId,
+      final String? personTitle}) = _$TNodeImpl;
   const _TNode._() : super._();
 
   @override
@@ -436,6 +461,10 @@ abstract class _TNode extends TNode {
   List<Relation> get relationsObject;
   @override
   UniqueId? get groupId;
+  @override
+
+  /// Honorific / title (Arabic), optional; must match gender-specific list in UI.
+  String? get personTitle;
   @override
   @JsonKey(ignore: true)
   _$$TNodeImplCopyWith<_$TNodeImpl> get copyWith =>

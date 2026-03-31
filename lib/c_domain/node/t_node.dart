@@ -28,6 +28,8 @@ abstract class TNode implements _$TNode {
     NodeNotes? notes,
     @unfreezed required List<Relation> relationsObject,
     @Default(null) UniqueId? groupId,
+    /// Honorific / title (Arabic), optional; must match gender-specific list in UI.
+    @Default(null) String? personTitle,
   }) = _TNode;
 
   factory TNode.empty() => TNode(
@@ -43,6 +45,7 @@ abstract class TNode implements _$TNode {
         notes: NodeNotes(''),
         isUnknown: false,
         groupId: null,
+        personTitle: null,
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

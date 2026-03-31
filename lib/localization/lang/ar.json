@@ -192,5 +192,7 @@
   "tree_group_max_six": "يمكنك إضافة ست مجموعات كحد أقصى.",
   "tree_groups_save_failed": "تعذر حفظ المجموعات. حاول مرة أخرى.",
   "tree_group_membership": "المجموعة",
-  "tree_group_none": "بدون"
+  "tree_group_none": "بدون",
+  "person_title_label": "اللقب",
+  "person_title_none": "بدون"
 }

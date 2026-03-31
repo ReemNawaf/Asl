@@ -39,6 +39,7 @@ mixin _$NodeFormEvent {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -71,6 +72,7 @@ mixin _$NodeFormEvent {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -102,6 +104,7 @@ mixin _$NodeFormEvent {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -131,6 +134,7 @@ mixin _$NodeFormEvent {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -159,6 +163,7 @@ mixin _$NodeFormEvent {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -186,6 +191,7 @@ mixin _$NodeFormEvent {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -309,6 +315,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -344,6 +351,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -378,6 +386,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -413,6 +422,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -444,6 +454,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -474,6 +485,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -556,6 +568,7 @@ class _$EndedImpl implements _Ended {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -591,6 +604,7 @@ class _$EndedImpl implements _Ended {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -625,6 +639,7 @@ class _$EndedImpl implements _Ended {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -660,6 +675,7 @@ class _$EndedImpl implements _Ended {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -691,6 +707,7 @@ class _$EndedImpl implements _Ended {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -721,6 +738,7 @@ class _$EndedImpl implements _Ended {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -825,6 +843,7 @@ class _$AddedImpl implements _Added {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -860,6 +879,7 @@ class _$AddedImpl implements _Added {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -894,6 +914,7 @@ class _$AddedImpl implements _Added {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -929,6 +950,7 @@ class _$AddedImpl implements _Added {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -960,6 +982,7 @@ class _$AddedImpl implements _Added {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -990,6 +1013,7 @@ class _$AddedImpl implements _Added {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -1099,6 +1123,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -1134,6 +1159,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -1168,6 +1194,7 @@ class _$EditedImpl implements _Edited {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -1203,6 +1230,7 @@ class _$EditedImpl implements _Edited {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -1234,6 +1262,7 @@ class _$EditedImpl implements _Edited {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -1264,6 +1293,7 @@ class _$EditedImpl implements _Edited {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -1374,6 +1404,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -1409,6 +1440,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -1443,6 +1475,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -1478,6 +1511,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -1509,6 +1543,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -1539,6 +1574,7 @@ class _$UpdateCurrentPanelImpl implements _UpdateCurrentPanel {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -1649,6 +1685,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -1684,6 +1721,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -1718,6 +1756,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -1753,6 +1792,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -1784,6 +1824,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -1814,6 +1855,7 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -1923,6 +1965,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -1958,6 +2001,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -1992,6 +2036,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -2027,6 +2072,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -2058,6 +2104,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -2088,6 +2135,7 @@ class _$BirthDateChangedImpl implements _BirthDateChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -2198,6 +2246,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -2233,6 +2282,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -2267,6 +2317,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -2302,6 +2353,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -2333,6 +2385,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -2363,6 +2416,7 @@ class _$DeathDateChangedImpl implements _DeathDateChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -2472,6 +2526,7 @@ class _$NotesChangedImpl implements _NotesChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -2507,6 +2562,7 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -2541,6 +2597,7 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -2576,6 +2633,7 @@ class _$NotesChangedImpl implements _NotesChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -2607,6 +2665,7 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -2637,6 +2696,7 @@ class _$NotesChangedImpl implements _NotesChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -2747,6 +2807,7 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -2782,6 +2843,7 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -2816,6 +2878,7 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -2851,6 +2914,7 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -2882,6 +2946,7 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -2912,6 +2977,7 @@ class _$ChangedIsUnknownImpl implements _ChangedIsUnknown {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -3022,6 +3088,7 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -3057,6 +3124,7 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -3091,6 +3159,7 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -3126,6 +3195,7 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -3157,6 +3227,7 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -3187,6 +3258,7 @@ class _$ChangeChildOrderImpl implements _ChangeChildOrder {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -3331,6 +3403,7 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -3366,6 +3439,7 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -3400,6 +3474,7 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -3435,6 +3510,7 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -3466,6 +3542,7 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -3496,6 +3573,7 @@ class _$ChangePartnerOrderImpl implements _ChangePartnerOrder {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -3650,6 +3728,7 @@ class _$ChangePartnerMarriageStatusImpl
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -3685,6 +3764,7 @@ class _$ChangePartnerMarriageStatusImpl
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -3720,6 +3800,7 @@ class _$ChangePartnerMarriageStatusImpl
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -3755,6 +3836,7 @@ class _$ChangePartnerMarriageStatusImpl
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -3786,6 +3868,7 @@ class _$ChangePartnerMarriageStatusImpl
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -3816,6 +3899,7 @@ class _$ChangePartnerMarriageStatusImpl
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -3932,6 +4016,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -3967,6 +4052,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -4001,6 +4087,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -4036,6 +4123,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -4067,6 +4155,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -4097,6 +4186,7 @@ class _$ChangedIsAvliveImpl implements _ChangedIsAvlive {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -4179,6 +4269,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -4214,6 +4305,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -4248,6 +4340,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -4283,6 +4376,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -4314,6 +4408,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -4344,6 +4439,7 @@ class _$MakeItRootImpl implements _MakeItRoot {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -4447,6 +4543,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -4482,6 +4579,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -4516,6 +4614,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -4551,6 +4650,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -4582,6 +4682,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -4612,6 +4713,7 @@ class _$ChangedGenderImpl implements _ChangedGender {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -4721,6 +4823,7 @@ class _$GroupIdChangedImpl implements _GroupIdChanged {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -4756,6 +4859,7 @@ class _$GroupIdChangedImpl implements _GroupIdChanged {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -4790,6 +4894,7 @@ class _$GroupIdChangedImpl implements _GroupIdChanged {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -4825,6 +4930,7 @@ class _$GroupIdChangedImpl implements _GroupIdChanged {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -4856,6 +4962,7 @@ class _$GroupIdChangedImpl implements _GroupIdChanged {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -4886,6 +4993,7 @@ class _$GroupIdChangedImpl implements _GroupIdChanged {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -4906,6 +5014,288 @@ abstract class _GroupIdChanged implements NodeFormEvent {
   UniqueId? get groupId;
   @JsonKey(ignore: true)
   _$$GroupIdChangedImplCopyWith<_$GroupIdChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PersonTitleChangedImplCopyWith<$Res> {
+  factory _$$PersonTitleChangedImplCopyWith(_$PersonTitleChangedImpl value,
+          $Res Function(_$PersonTitleChangedImpl) then) =
+      __$$PersonTitleChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? personTitle});
+}
+
+/// @nodoc
+class __$$PersonTitleChangedImplCopyWithImpl<$Res>
+    extends _$NodeFormEventCopyWithImpl<$Res, _$PersonTitleChangedImpl>
+    implements _$$PersonTitleChangedImplCopyWith<$Res> {
+  __$$PersonTitleChangedImplCopyWithImpl(_$PersonTitleChangedImpl _value,
+      $Res Function(_$PersonTitleChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? personTitle = freezed,
+  }) {
+    return _then(_$PersonTitleChangedImpl(
+      freezed == personTitle
+          ? _value.personTitle
+          : personTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PersonTitleChangedImpl implements _PersonTitleChanged {
+  const _$PersonTitleChangedImpl(this.personTitle);
+
+  @override
+  final String? personTitle;
+
+  @override
+  String toString() {
+    return 'NodeFormEvent.personTitleChanged(personTitle: $personTitle)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersonTitleChangedImpl &&
+            (identical(other.personTitle, personTitle) ||
+                other.personTitle == personTitle));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, personTitle);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersonTitleChangedImplCopyWith<_$PersonTitleChangedImpl> get copyWith =>
+      __$$PersonTitleChangedImplCopyWithImpl<_$PersonTitleChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TNode node) initialized,
+    required TResult Function() ended,
+    required TResult Function(Option<TNode> initialNodeOption) added,
+    required TResult Function(bool isEditing) edited,
+    required TResult Function(int panelIndex) updateCurrentPanel,
+    required TResult Function(String title) firstNameChanged,
+    required TResult Function(DateTime? date) birthDateChanged,
+    required TResult Function(DateTime? date) deathDateChanged,
+    required TResult Function(String? notes) notesChanged,
+    required TResult Function(bool isUnknown) changeIsUnknown,
+    required TResult Function(int order) changeChildOrder,
+    required TResult Function(UniqueId relationId, int order,
+            UniqueId partnerId, MarriageStatus? status)
+        changePartnerOrder,
+    required TResult Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)
+        changePartnerMarriageStatus,
+    required TResult Function(bool isAlive) changeIsAvlive,
+    required TResult Function() makeItRoot,
+    required TResult Function(Gender gender) changeGender,
+    required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
+    required TResult Function(
+            TNode? Function(String) getNodeByKey, String newNodeId)
+        linkToExistingNode,
+    required TResult Function(bool isAdding) showLinkToExistingNode,
+    required TResult Function(bool isAdding) addPartner,
+    required TResult Function(bool isAdding) addChild,
+    required TResult Function() saved,
+  }) {
+    return personTitleChanged(personTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TNode node)? initialized,
+    TResult? Function()? ended,
+    TResult? Function(Option<TNode> initialNodeOption)? added,
+    TResult? Function(bool isEditing)? edited,
+    TResult? Function(int panelIndex)? updateCurrentPanel,
+    TResult? Function(String title)? firstNameChanged,
+    TResult? Function(DateTime? date)? birthDateChanged,
+    TResult? Function(DateTime? date)? deathDateChanged,
+    TResult? Function(String? notes)? notesChanged,
+    TResult? Function(bool isUnknown)? changeIsUnknown,
+    TResult? Function(int order)? changeChildOrder,
+    TResult? Function(UniqueId relationId, int order, UniqueId partnerId,
+            MarriageStatus? status)?
+        changePartnerOrder,
+    TResult? Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)?
+        changePartnerMarriageStatus,
+    TResult? Function(bool isAlive)? changeIsAvlive,
+    TResult? Function()? makeItRoot,
+    TResult? Function(Gender gender)? changeGender,
+    TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
+    TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult? Function(bool isAdding)? showLinkToExistingNode,
+    TResult? Function(bool isAdding)? addPartner,
+    TResult? Function(bool isAdding)? addChild,
+    TResult? Function()? saved,
+  }) {
+    return personTitleChanged?.call(personTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TNode node)? initialized,
+    TResult Function()? ended,
+    TResult Function(Option<TNode> initialNodeOption)? added,
+    TResult Function(bool isEditing)? edited,
+    TResult Function(int panelIndex)? updateCurrentPanel,
+    TResult Function(String title)? firstNameChanged,
+    TResult Function(DateTime? date)? birthDateChanged,
+    TResult Function(DateTime? date)? deathDateChanged,
+    TResult Function(String? notes)? notesChanged,
+    TResult Function(bool isUnknown)? changeIsUnknown,
+    TResult Function(int order)? changeChildOrder,
+    TResult Function(UniqueId relationId, int order, UniqueId partnerId,
+            MarriageStatus? status)?
+        changePartnerOrder,
+    TResult Function(UniqueId relationId, MarriageStatus status,
+            UniqueId partnerId, int? order)?
+        changePartnerMarriageStatus,
+    TResult Function(bool isAlive)? changeIsAvlive,
+    TResult Function()? makeItRoot,
+    TResult Function(Gender gender)? changeGender,
+    TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
+    TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
+        linkToExistingNode,
+    TResult Function(bool isAdding)? showLinkToExistingNode,
+    TResult Function(bool isAdding)? addPartner,
+    TResult Function(bool isAdding)? addChild,
+    TResult Function()? saved,
+    required TResult orElse(),
+  }) {
+    if (personTitleChanged != null) {
+      return personTitleChanged(personTitle);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Ended value) ended,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Edited value) edited,
+    required TResult Function(_UpdateCurrentPanel value) updateCurrentPanel,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_BirthDateChanged value) birthDateChanged,
+    required TResult Function(_DeathDateChanged value) deathDateChanged,
+    required TResult Function(_NotesChanged value) notesChanged,
+    required TResult Function(_ChangedIsUnknown value) changeIsUnknown,
+    required TResult Function(_ChangeChildOrder value) changeChildOrder,
+    required TResult Function(_ChangePartnerOrder value) changePartnerOrder,
+    required TResult Function(_ChangePartnerMarriageStatus value)
+        changePartnerMarriageStatus,
+    required TResult Function(_ChangedIsAvlive value) changeIsAvlive,
+    required TResult Function(_MakeItRoot value) makeItRoot,
+    required TResult Function(_ChangedGender value) changeGender,
+    required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
+    required TResult Function(_LinkToExistingNode value) linkToExistingNode,
+    required TResult Function(_ShowLinkToExistingNode value)
+        showLinkToExistingNode,
+    required TResult Function(_AddPartner value) addPartner,
+    required TResult Function(_AddChild value) addChild,
+    required TResult Function(_Saved value) saved,
+  }) {
+    return personTitleChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Ended value)? ended,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Edited value)? edited,
+    TResult? Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_BirthDateChanged value)? birthDateChanged,
+    TResult? Function(_DeathDateChanged value)? deathDateChanged,
+    TResult? Function(_NotesChanged value)? notesChanged,
+    TResult? Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult? Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult? Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult? Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult? Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult? Function(_MakeItRoot value)? makeItRoot,
+    TResult? Function(_ChangedGender value)? changeGender,
+    TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
+    TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
+    TResult? Function(_AddPartner value)? addPartner,
+    TResult? Function(_AddChild value)? addChild,
+    TResult? Function(_Saved value)? saved,
+  }) {
+    return personTitleChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Ended value)? ended,
+    TResult Function(_Added value)? added,
+    TResult Function(_Edited value)? edited,
+    TResult Function(_UpdateCurrentPanel value)? updateCurrentPanel,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_BirthDateChanged value)? birthDateChanged,
+    TResult Function(_DeathDateChanged value)? deathDateChanged,
+    TResult Function(_NotesChanged value)? notesChanged,
+    TResult Function(_ChangedIsUnknown value)? changeIsUnknown,
+    TResult Function(_ChangeChildOrder value)? changeChildOrder,
+    TResult Function(_ChangePartnerOrder value)? changePartnerOrder,
+    TResult Function(_ChangePartnerMarriageStatus value)?
+        changePartnerMarriageStatus,
+    TResult Function(_ChangedIsAvlive value)? changeIsAvlive,
+    TResult Function(_MakeItRoot value)? makeItRoot,
+    TResult Function(_ChangedGender value)? changeGender,
+    TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
+    TResult Function(_LinkToExistingNode value)? linkToExistingNode,
+    TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
+    TResult Function(_AddPartner value)? addPartner,
+    TResult Function(_AddChild value)? addChild,
+    TResult Function(_Saved value)? saved,
+    required TResult orElse(),
+  }) {
+    if (personTitleChanged != null) {
+      return personTitleChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PersonTitleChanged implements NodeFormEvent {
+  const factory _PersonTitleChanged(final String? personTitle) =
+      _$PersonTitleChangedImpl;
+
+  String? get personTitle;
+  @JsonKey(ignore: true)
+  _$$PersonTitleChangedImplCopyWith<_$PersonTitleChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -5006,6 +5396,7 @@ class _$LinkToExistingNodeImpl implements _LinkToExistingNode {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -5041,6 +5432,7 @@ class _$LinkToExistingNodeImpl implements _LinkToExistingNode {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -5075,6 +5467,7 @@ class _$LinkToExistingNodeImpl implements _LinkToExistingNode {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -5110,6 +5503,7 @@ class _$LinkToExistingNodeImpl implements _LinkToExistingNode {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -5141,6 +5535,7 @@ class _$LinkToExistingNodeImpl implements _LinkToExistingNode {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -5171,6 +5566,7 @@ class _$LinkToExistingNodeImpl implements _LinkToExistingNode {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -5286,6 +5682,7 @@ class _$ShowLinkToExistingNodeImpl implements _ShowLinkToExistingNode {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -5321,6 +5718,7 @@ class _$ShowLinkToExistingNodeImpl implements _ShowLinkToExistingNode {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -5355,6 +5753,7 @@ class _$ShowLinkToExistingNodeImpl implements _ShowLinkToExistingNode {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -5390,6 +5789,7 @@ class _$ShowLinkToExistingNodeImpl implements _ShowLinkToExistingNode {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -5421,6 +5821,7 @@ class _$ShowLinkToExistingNodeImpl implements _ShowLinkToExistingNode {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -5451,6 +5852,7 @@ class _$ShowLinkToExistingNodeImpl implements _ShowLinkToExistingNode {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -5561,6 +5963,7 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -5596,6 +5999,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -5630,6 +6034,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -5665,6 +6070,7 @@ class _$AddPartnerImpl implements _AddPartner {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -5696,6 +6102,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -5726,6 +6133,7 @@ class _$AddPartnerImpl implements _AddPartner {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -5835,6 +6243,7 @@ class _$AddChildImpl implements _AddChild {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -5870,6 +6279,7 @@ class _$AddChildImpl implements _AddChild {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -5904,6 +6314,7 @@ class _$AddChildImpl implements _AddChild {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -5939,6 +6350,7 @@ class _$AddChildImpl implements _AddChild {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -5970,6 +6382,7 @@ class _$AddChildImpl implements _AddChild {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -6000,6 +6413,7 @@ class _$AddChildImpl implements _AddChild {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,
@@ -6082,6 +6496,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function() makeItRoot,
     required TResult Function(Gender gender) changeGender,
     required TResult Function(UniqueId? groupId) groupIdChanged,
+    required TResult Function(String? personTitle) personTitleChanged,
     required TResult Function(
             TNode? Function(String) getNodeByKey, String newNodeId)
         linkToExistingNode,
@@ -6117,6 +6532,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function()? makeItRoot,
     TResult? Function(Gender gender)? changeGender,
     TResult? Function(UniqueId? groupId)? groupIdChanged,
+    TResult? Function(String? personTitle)? personTitleChanged,
     TResult? Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult? Function(bool isAdding)? showLinkToExistingNode,
@@ -6151,6 +6567,7 @@ class _$SavedImpl implements _Saved {
     TResult Function()? makeItRoot,
     TResult Function(Gender gender)? changeGender,
     TResult Function(UniqueId? groupId)? groupIdChanged,
+    TResult Function(String? personTitle)? personTitleChanged,
     TResult Function(TNode? Function(String) getNodeByKey, String newNodeId)?
         linkToExistingNode,
     TResult Function(bool isAdding)? showLinkToExistingNode,
@@ -6186,6 +6603,7 @@ class _$SavedImpl implements _Saved {
     required TResult Function(_MakeItRoot value) makeItRoot,
     required TResult Function(_ChangedGender value) changeGender,
     required TResult Function(_GroupIdChanged value) groupIdChanged,
+    required TResult Function(_PersonTitleChanged value) personTitleChanged,
     required TResult Function(_LinkToExistingNode value) linkToExistingNode,
     required TResult Function(_ShowLinkToExistingNode value)
         showLinkToExistingNode,
@@ -6217,6 +6635,7 @@ class _$SavedImpl implements _Saved {
     TResult? Function(_MakeItRoot value)? makeItRoot,
     TResult? Function(_ChangedGender value)? changeGender,
     TResult? Function(_GroupIdChanged value)? groupIdChanged,
+    TResult? Function(_PersonTitleChanged value)? personTitleChanged,
     TResult? Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult? Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult? Function(_AddPartner value)? addPartner,
@@ -6247,6 +6666,7 @@ class _$SavedImpl implements _Saved {
     TResult Function(_MakeItRoot value)? makeItRoot,
     TResult Function(_ChangedGender value)? changeGender,
     TResult Function(_GroupIdChanged value)? groupIdChanged,
+    TResult Function(_PersonTitleChanged value)? personTitleChanged,
     TResult Function(_LinkToExistingNode value)? linkToExistingNode,
     TResult Function(_ShowLinkToExistingNode value)? showLinkToExistingNode,
     TResult Function(_AddPartner value)? addPartner,

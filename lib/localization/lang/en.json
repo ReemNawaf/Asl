@@ -192,5 +192,7 @@
   "tree_group_max_six": "You can add at most six groups.",
   "tree_groups_save_failed": "Could not save groups. Try again.",
   "tree_group_membership": "Group",
-  "tree_group_none": "None"
+  "tree_group_none": "None",
+  "person_title_label": "Title",
+  "person_title_none": "None"
 }

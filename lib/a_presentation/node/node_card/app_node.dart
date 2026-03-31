@@ -13,6 +13,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+String treeNodeDisplayNameLine(
+  BuildContext context,
+  TNode node,
+  String name,
+  String? fatherName,
+) {
+  final title = node.personTitle?.trim();
+  final prefix = (title != null && title.isNotEmpty) ? '$title ' : '';
+  if (node.isUnknown) {
+    return getTr(context, 'no_name_provided')!;
+  }
+  if (fatherName != null) {
+    return '$prefix$name ${node.gender == Gender.female ? 'بنت' : 'بن'} $fatherName';
+  }
+  return '$prefix$name';
+}
+
 class AppNode extends StatelessWidget {
   const AppNode({
     super.key,
@@ -114,13 +131,15 @@ class AppNode extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Text(
-                      node.isUnknown
-                          ? getTr(context, 'no_name_provided')!
-                          : fatherName != null
-                              ? '$name ${gender == Gender.female ? 'بنت' : 'بن'} $fatherName'
-                              : name,
+                      treeNodeDisplayNameLine(
+                        context,
+                        node,
+                        name,
+                        fatherName,
+                      ),
                       style: kCalloutStyle,
                       textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   const SizedBox(height: 8),

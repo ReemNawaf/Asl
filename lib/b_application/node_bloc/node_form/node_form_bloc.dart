@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:asl/a_presentation/a_shared/constants.dart';
+import 'package:asl/a_presentation/node/node_person_titles.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/node/t_node_failure.dart';
@@ -27,8 +28,13 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
   ) async {
     await event.map(
       initialized: (e) {
+        final n = e.node.copyWith(
+          notes: e.node.notes ?? NodeNotes(''),
+          personTitle:
+              normalizePersonTitleForGender(e.node.personTitle, e.node.gender),
+        );
         emit(state.copyWith(
-          node: e.node.copyWith(notes: e.node.notes ?? NodeNotes('')),
+          node: n,
           isSaving: false,
           showErrorMessages: AutovalidateMode.disabled,
         ));
@@ -87,10 +93,18 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
         ));
       },
       changeGender: (e) {
+        final n = state.node!;
+        final normalized = normalizePersonTitleForGender(n.personTitle, e.gender);
         emit(state.copyWith(
-          node: state.node!.copyWith(gender: e.gender),
+          node: n.copyWith(gender: e.gender, personTitle: normalized),
           isSaving: false,
-          // to get rid of any previous failure
+          saveFailureOrSuccessOption: null,
+        ));
+      },
+      personTitleChanged: (e) {
+        emit(state.copyWith(
+          node: state.node!.copyWith(personTitle: e.personTitle),
+          isSaving: false,
           saveFailureOrSuccessOption: null,
         ));
       },

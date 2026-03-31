@@ -56,3 +56,17 @@ abstract class TreeDto implements _$TreeDto {
     return TreeDto.fromJson(doc.data()!).copyWith(treeId: doc.id);
   }
 }
+
+extension TreeDtoFirestoreX on TreeDto {
+  /// Firestore-safe JSON; [treeSettings] uses [TreeSettingsDto.toFirestoreMap].
+  Map<String, dynamic> toFirestoreMap() {
+    return {
+      'treeId': treeId,
+      'creatorId': creatorId,
+      'rootId': rootId,
+      'treeName': treeName,
+      'fullName': fullName,
+      'treeSettings': treeSettings.toFirestoreMap(),
+    };
+  }
+}
