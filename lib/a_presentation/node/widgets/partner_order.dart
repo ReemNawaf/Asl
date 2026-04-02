@@ -166,7 +166,12 @@ class OrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: ORDER_DROPDOWN_INNER_WIDTH,
-        child: Text(label, textAlign: TextAlign.center));
+      width: ORDER_DROPDOWN_INNER_WIDTH,
+      child: Text(
+        label,
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
   }
 }

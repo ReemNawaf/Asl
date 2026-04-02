@@ -80,6 +80,7 @@ class _TreeGroupsSettingsSectionState extends State<TreeGroupsSettingsSection> {
         _nameControllers[k] = TextEditingController(text: g.name);
       }
     }
+    // TODO: remove this
     setState(() {
       _draft
         ..clear()
@@ -303,7 +304,8 @@ class _TreeGroupsSettingsSectionState extends State<TreeGroupsSettingsSection> {
                         index: index,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10, right: 4),
-                          child: Icon(Icons.drag_handle, color: kBlacksColor[400]),
+                          child:
+                              Icon(Icons.drag_handle, color: kBlacksColor[400]),
                         ),
                       ),
                       Expanded(

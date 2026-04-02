@@ -7,7 +7,7 @@ import 'package:asl/a_presentation/node/widgets/display_note_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/link_to_existing_node.dart';
 import 'package:asl/a_presentation/node/widgets/node_gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
-import 'package:asl/a_presentation/node/widgets/node_group_wdg.dart';
+import 'package:asl/a_presentation/node/widgets/node_group_field.dart';
 import 'package:asl/a_presentation/node/widgets/node_id_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/node_name_field.dart';
 import 'package:asl/a_presentation/node/widgets/node_title_field.dart';
@@ -176,10 +176,7 @@ class InfoPanel extends StatelessWidget {
                 // Group + Display Note (4)
                 Row(
                   children: [
-                    NodeGroupWidget(
-                        node: node,
-                        groupId: node.groupId,
-                        isEditing: state.isEditing),
+                    NodeGroupField(node: node, isEditing: state.isEditing),
                     DisplayNoteField(
                       key: ValueKey(node.nodeId.getOrCrash()),
                       initialNote: node.displayNote,
