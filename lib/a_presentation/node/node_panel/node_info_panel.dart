@@ -1,21 +1,20 @@
-import 'package:asl/a_presentation/a_shared/box_dec.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/core/app_date_field.dart';
 import 'package:asl/a_presentation/node/node_panel/node_alive_btn.dart';
-import 'package:asl/a_presentation/core/widgets/app_form_field.dart';
 import 'package:asl/a_presentation/node/widgets/change_unknown_status.dart';
 import 'package:asl/a_presentation/node/widgets/child_order.dart';
+import 'package:asl/a_presentation/node/widgets/display_note_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/link_to_existing_node.dart';
 import 'package:asl/a_presentation/node/widgets/node_gender_btn.dart';
 import 'package:asl/a_presentation/core/widgets/tree_btn.dart';
+import 'package:asl/a_presentation/node/widgets/node_group_wdg.dart';
 import 'package:asl/a_presentation/node/widgets/node_id_wdg.dart';
-import 'package:asl/a_presentation/node/node_person_titles.dart';
+import 'package:asl/a_presentation/node/widgets/node_name_field.dart';
+import 'package:asl/a_presentation/node/widgets/node_title_field.dart';
 import 'package:asl/a_presentation/node/widgets/partner_order.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
-import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/local_tree_views/tree_graph_lineage.dart';
-import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,72 +61,21 @@ class InfoPanel extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 kVSpacer30,
+                // Node Name + Title (1)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     NodeName(node: node, state: state, color: color),
                     kHSpacer20,
-                    if (node.upperFamily == null &&
-                        type == NodeType.partner &&
-                        state.isEditing)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ChangeUnknownStatus(node: node, color: color),
-                            kVSpacer5,
-                            LinkToExistingNode(node: node, color: color),
-                          ],
-                        ),
-                      ),
+                    NodeTtitle(
+                        node: node,
+                        personTitle: node.personTitle,
+                        gender: node.gender,
+                        isEditing: state.isEditing),
                   ],
                 ),
-                if (!node.isUnknown) ...[
-                  kVSpacer15,
-                  SizedBox(
-                    width: 250,
-                    child: DropdownButtonFormField<String?>(
-                      value: normalizePersonTitleForGender(
-                        node.personTitle,
-                        node.gender,
-                      ),
-                      isExpanded: true,
-                      decoration: InputDecoration(
-                        labelText: getTr(context, 'person_title_label'),
-                        isDense: true,
-                      ),
-                      items: [
-                        DropdownMenuItem<String?>(
-                          value: null,
-                          child: Text(getTr(context, 'person_title_none')!),
-                        ),
-                        ...personTitlesForGender(node.gender).map(
-                          (t) => DropdownMenuItem<String?>(
-                            value: t,
-                            child: Text(t),
-                          ),
-                        ),
-                      ],
-                      onChanged: state.isEditing
-                          ? (v) {
-                              context.read<NodeFormBloc>().add(
-                                    NodeFormEvent.personTitleChanged(v),
-                                  );
-                            }
-                          : null,
-                    ),
-                  ),
-                  kVSpacer15,
-                  _DisplayNoteField(
-                    key: ValueKey(node.nodeId.getOrCrash()),
-                    initialNote: node.displayNote,
-                    isEditing: state.isEditing,
-                    label: getTr(context, 'display_note_label')!,
-                    hint: getTr(context, 'display_note_hint')!,
-                  ),
-                ],
+                // Child Order + Gender (2)
                 BlocBuilder<LocalTreeBloc, LocalTreeState>(
                   builder: (context, treeState) {
                     return Row(
@@ -149,9 +97,8 @@ class InfoPanel extends StatelessWidget {
                     );
                   },
                 ),
+                // Birth Date + Status + Death Date (3)
                 if (childOrderVisible || genderBtnVisible) kVSpacer20,
-                if (state.node!.relations.isNotEmpty)
-                  PartnerOrder(node: node, state: state, color: color),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,64 +173,50 @@ class InfoPanel extends StatelessWidget {
                     ),
                   ],
                 ),
-                kVSpacer20,
+                // Group + Display Note (4)
+                Row(
+                  children: [
+                    NodeGroupWidget(
+                        node: node,
+                        groupId: node.groupId,
+                        isEditing: state.isEditing),
+                    DisplayNoteField(
+                      key: ValueKey(node.nodeId.getOrCrash()),
+                      initialNote: node.displayNote,
+                      isEditing: state.isEditing,
+                      label: getTr(context, 'display_note_label')!,
+                      hint: getTr(context, 'display_note_hint')!,
+                    ),
+                  ],
+                ),
+                // Partner Order (5)
+                kVSpacer30,
+                if (state.node!.relations.isNotEmpty)
+                  PartnerOrder(node: node, state: state, color: color),
+
+                // Change Unknown Status + Link To Existing Node (6)
+                if (node.upperFamily == null &&
+                    type == NodeType.partner &&
+                    state.isEditing)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ChangeUnknownStatus(node: node, color: color),
+                        kVSpacer5,
+                        LinkToExistingNode(node: node, color: color),
+                      ],
+                    ),
+                  ),
+
+                // Tree Button (7)
                 TreeButton(
                     color: color,
                     contextDialog: contextDialog,
                     pageContext: pageContext),
-                BlocBuilder<LocalTreeBloc, LocalTreeState>(
-                  builder: (context, treeState) {
-                    final groups = treeState.settings?.groups ?? [];
-                    if (groups.isEmpty) return const SizedBox.shrink();
 
-                    final gid = node.groupId?.getOrCrash();
-                    final validIds =
-                        groups.map((g) => g.id.getOrCrash()).toSet();
-                    final selected =
-                        gid != null && validIds.contains(gid) ? gid : null;
-
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: SizedBox(
-                        width: 250,
-                        child: DropdownButtonFormField<String?>(
-                          value: selected,
-                          isExpanded: true,
-                          decoration: InputDecoration(
-                            labelText: getTr(context, 'tree_group_membership'),
-                            isDense: true,
-                          ),
-                          items: [
-                            DropdownMenuItem<String?>(
-                              value: null,
-                              child: Text(getTr(context, 'tree_group_none')!),
-                            ),
-                            ...groups.map(
-                              (g) => DropdownMenuItem<String?>(
-                                value: g.id.getOrCrash(),
-                                child: Text(
-                                  g.name,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                          ],
-                          onChanged: state.isEditing
-                              ? (v) {
-                                  context.read<NodeFormBloc>().add(
-                                        NodeFormEvent.groupIdChanged(
-                                          v == null
-                                              ? null
-                                              : UniqueId.fromUniqueString(v),
-                                        ),
-                                      );
-                                }
-                              : null,
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                // Node ID (8)
                 if (!state.node!.isUnknown)
                   NodeIdWidget(
                     contextDialog: contextDialog,
@@ -296,198 +229,6 @@ class InfoPanel extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class NodeName extends StatelessWidget {
-  const NodeName({
-    super.key,
-    required this.node,
-    required this.state,
-    required this.color,
-  });
-
-  final TNode node;
-  final NodeFormState state;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    var linkToExistingNodeWidget = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppFormField(
-          label: node.gender == Gender.male
-              ? getTr(context, 'add_with_husband_id')!
-              : getTr(context, 'add_with_wife_id')!,
-          hint: getTr(context, 'input_member_id')!,
-          onChanged: (value) {
-            if (value != null && value.trim().length == 36) {
-              context.read<NodeFormBloc>().add(NodeFormEvent.linkToExistingNode(
-                    getNodeByKey:
-                        context.read<LocalTreeBloc>().state.store.getNodeByKey,
-                    newNodeId: value.trim(),
-                  ));
-            }
-          },
-          isValid: true,
-          validator: (_) {
-            return null;
-          },
-        ),
-        if (state.linkToExistingNodeNotExist != null &&
-            state.linkToExistingNodeNotExist!)
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: Text(getTr(context, 'node_not_exist')!,
-                style: kValidationTextStyle),
-          ),
-      ],
-    );
-
-    var addUnknownPartnerWidget = Opacity(
-      opacity: 0.5,
-      child: AppFormField(
-        label: getTr(context, 'first_name')!,
-        hint: '',
-        validator: (_) => null,
-        isEditing: false,
-        initialValue: getTr(context, 'no_name_provided')!,
-      ),
-    );
-
-    var appFormField = AppFormField(
-      label: getTr(context, 'first_name')!,
-      hint: getTr(context, 'first_name_example')!,
-      initialValue: state.node!.firstName.isValid()
-          ? state.node!.firstName.getOrCrash()
-          : '',
-      onChanged: (value) => context
-          .read<NodeFormBloc>()
-          .add(NodeFormEvent.firstNameChanged(value!.trim())),
-      validator: (_) {
-        return context.read<NodeFormBloc>().state.node!.firstName.value.fold(
-              (f) => f.maybeMap(
-                empty: (_) => getTr(context, 'name_cannot_be_empty'),
-                spacedName: (_) =>
-                    getTr(context, 'first_name_cannot_contain_spaces'),
-                shortName: (_) => getTr(context, 'name_too_short'),
-                exceedingLength: (_) => getTr(context, 'name_too_long')!,
-                orElse: () => null,
-              ),
-              (_) => null,
-            );
-      },
-      isValid: state.node!.firstName.isValid(),
-      isEditing: state.isEditing,
-    );
-
-    final noShowingExistingNode = state.linkToExistingNodeNotExist == null ||
-        state.linkToExistingNodeNotExist == true;
-    final showFieldToFillExistingNodeId = state.isLinkToExistingNode;
-
-    return Opacity(
-      opacity: node.isUnknown ? 0.5 : 1,
-      child: SizedBox(
-          width: 250,
-          height: 90,
-          child: noShowingExistingNode
-              ? (state.node!.isUnknown
-                  ? addUnknownPartnerWidget
-                  : (showFieldToFillExistingNodeId
-                      ? linkToExistingNodeWidget
-                      : appFormField))
-              : state.linkToExistingNodeNotExist == false
-                  ? AppFormField(
-                      label: getTr(context, 'first_name')!,
-                      hint: '',
-                      validator: (_) => null,
-                      isEditing: false,
-                      initialValue: state.existingNode!.firstName.isValid()
-                          ? (state.existingNode!.isUnknown
-                              ? getTr(context, 'no_name_provided')!
-                              : state.existingNode!.firstName.getOrCrash())
-                          : '',
-                    )
-                  : null),
-    );
-  }
-}
-
-/// Short note shown left of the avatar on the tree card; max [NODE_DISPLAY_NOTE_MAX_LENGTH].
-class _DisplayNoteField extends StatefulWidget {
-  const _DisplayNoteField({
-    super.key,
-    required this.initialNote,
-    required this.isEditing,
-    required this.label,
-    required this.hint,
-  });
-
-  final String? initialNote;
-  final bool isEditing;
-  final String label;
-  final String hint;
-
-  @override
-  State<_DisplayNoteField> createState() => _DisplayNoteFieldState();
-}
-
-class _DisplayNoteFieldState extends State<_DisplayNoteField> {
-  late final TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: widget.initialNote ?? '');
-  }
-
-  @override
-  void didUpdateWidget(covariant _DisplayNoteField oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (!oldWidget.isEditing && widget.isEditing) {
-      _controller.text = widget.initialNote ?? '';
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final trimmed = widget.initialNote?.trim() ?? '';
-    if (!widget.isEditing && trimmed.isEmpty) {
-      return const SizedBox.shrink();
-    }
-
-    if (!widget.isEditing) {
-      return SizedBox(
-        width: 250,
-        child: Text(trimmed),
-      );
-    }
-
-    return SizedBox(
-      width: 250,
-      child: TextField(
-        controller: _controller,
-        maxLength: NODE_DISPLAY_NOTE_MAX_LENGTH,
-        maxLines: 2,
-        decoration: InputDecoration(
-          labelText: widget.label,
-          hintText: widget.hint,
-          isDense: true,
-        ),
-        onChanged: (v) {
-          context.read<NodeFormBloc>().add(
-                NodeFormEvent.displayNoteChanged(v),
-              );
-        },
-      ),
     );
   }
 }

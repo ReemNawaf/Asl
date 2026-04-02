@@ -25,7 +25,7 @@ class NodeIdWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        kVSpacer30,
+        // kVSpacer30,
         TitleAndCopyableValue(
           title: getTr(context, 'the_full_name_to_family_root')!,
           id: name,
