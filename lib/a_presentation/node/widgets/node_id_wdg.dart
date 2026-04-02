@@ -30,6 +30,7 @@ class NodeIdWidget extends StatelessWidget {
           title: getTr(context, 'the_full_name_to_family_root')!,
           id: name,
           color: color,
+          wrapLongText: true,
           callback: () async {
             await Clipboard.setData(ClipboardData(text: id));
             if (context.mounted) {
@@ -45,6 +46,7 @@ class NodeIdWidget extends StatelessWidget {
           title: getTr(context, 'member_id')!,
           id: id,
           color: color,
+          hasCopyIcon: true,
           callback: () async {
             await Clipboard.setData(ClipboardData(text: id));
             if (context.mounted) {
@@ -69,6 +71,8 @@ class TitleAndCopyableValue extends StatelessWidget {
     required this.id,
     required this.title,
     required this.callback,
+    this.wrapLongText = false,
+    this.hasCopyIcon = false,
   });
 
   final Color color;
@@ -76,8 +80,17 @@ class TitleAndCopyableValue extends StatelessWidget {
   final String title;
   final Function() callback;
 
+  /// When true (e.g. full name), the chip hugs short text and grows in width/height when needed (capped).
+  final bool wrapLongText;
+  final bool hasCopyIcon;
+
   @override
   Widget build(BuildContext context) {
+    final textStyle = kFootnoteStyle.copyWith(
+      color: kBlacksColor[200],
+      fontWeight: FontWeight.bold,
+    );
+
     return Center(
       child: Column(
         children: [
@@ -91,32 +104,46 @@ class TitleAndCopyableValue extends StatelessWidget {
           ),
           kVSpacer5,
           Container(
-            padding:
-                const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: color.withOpacity(0.2)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                kVSpacer20,
-                Text(
-                  id,
-                  style: kFootnoteStyle.copyWith(
-                      color: kBlacksColor[200], fontWeight: FontWeight.bold),
-                ),
-                kHSpacer5,
-                IconOnlyButton(
-                  onPressed: callback,
-                  icon: Icon(
-                    Icons.copy,
-                    size: 14.0,
-                    color: kBlacksColor[600],
-                  ),
-                )
-              ],
+            padding: EdgeInsets.symmetric(
+              vertical: wrapLongText ? 8.0 : 2.0,
+              horizontal: 16.0,
             ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+              color: color.withOpacity(0.2),
+            ),
+            child: hasCopyIcon
+                ? Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        id,
+                        textAlign: TextAlign.center,
+                        softWrap: true,
+                        style: textStyle,
+                      ),
+                      ...[
+                        kHSpacer5,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 2.0),
+                          child: IconOnlyButton(
+                            onPressed: callback,
+                            icon: Icon(
+                              Icons.copy,
+                              size: 14.0,
+                              color: kBlacksColor[600],
+                            ),
+                          ),
+                        ),
+                      ]
+                    ],
+                  )
+                : Text(
+                    id,
+                    textAlign: TextAlign.center,
+                    softWrap: true,
+                    style: textStyle,
+                  ),
           ),
         ],
       ),

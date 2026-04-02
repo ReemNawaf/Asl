@@ -30,6 +30,8 @@ abstract class TNode implements _$TNode {
     @Default(null) UniqueId? groupId,
     /// Honorific / title (Arabic), optional; must match gender-specific list in UI.
     @Default(null) String? personTitle,
+    /// Optional short text shown on the tree node (left of avatar); max length in UI.
+    @Default(null) String? displayNote,
   }) = _TNode;
 
   factory TNode.empty() => TNode(
@@ -46,6 +48,7 @@ abstract class TNode implements _$TNode {
         isUnknown: false,
         groupId: null,
         personTitle: null,
+        displayNote: null,
       );
 
   //  dynamic; the failure already handled, we just want to know if there is a failure

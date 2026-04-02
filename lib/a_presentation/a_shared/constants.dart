@@ -10,6 +10,9 @@ const double PAN_WIDTH = 700;
 const double PAN_SM_WIDTH = 500;
 const int NODE_BRIEF_MAX_LENGTH = 5000;
 
+/// Short note shown beside the avatar on the tree card (personal info panel).
+const int NODE_DISPLAY_NOTE_MAX_LENGTH = 30;
+
 const MIN_ZOOM = 0.05;
 const MAX_ZOOM = 2.0;
 const ZOOM_DEF = 0.5;

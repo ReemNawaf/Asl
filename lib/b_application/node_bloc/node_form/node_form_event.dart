@@ -46,6 +46,9 @@ abstract class NodeFormEvent with _$NodeFormEvent {
   const factory NodeFormEvent.personTitleChanged(String? personTitle) =
       _PersonTitleChanged;
 
+  const factory NodeFormEvent.displayNoteChanged(String? displayNote) =
+      _DisplayNoteChanged;
+
   const factory NodeFormEvent.linkToExistingNode(
       {required TNode? Function(String nodeKey) getNodeByKey,
       required String newNodeId}) = _LinkToExistingNode;

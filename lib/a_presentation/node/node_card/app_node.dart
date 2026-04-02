@@ -74,6 +74,7 @@ class AppNode extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     const kTextHeight = 30.0;
+    final displayNoteTrim = node.displayNote?.trim();
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -195,6 +196,19 @@ class AppNode extends StatelessWidget {
                 ],
               ),
             ),
+            if (displayNoteTrim != null && displayNoteTrim.isNotEmpty)
+              Positioned(
+                right: 190,
+                top: 2,
+                width: 65,
+                child: Text(
+                  displayNoteTrim,
+                  style: kFootnoteStyle.copyWith(color: color[200]),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.start,
+                ),
+              ),
             if (mirrorNodeNoChildren)
               Positioned(
                 right: 0,

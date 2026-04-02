@@ -29,6 +29,7 @@ abstract class TNodeDto implements _$TNodeDto {
     @Default(false) bool? isUnknown,
     String? groupId,
     String? personTitle,
+    String? displayNote,
   }) = _TNodeDto;
 
   //  converting Entity => DTO
@@ -52,6 +53,7 @@ abstract class TNodeDto implements _$TNodeDto {
       notes: node.notes != null ? node.notes!.getOrCrash() : '',
       groupId: node.groupId?.getOrCrash(),
       personTitle: node.personTitle,
+      displayNote: node.displayNote,
     );
   }
 
@@ -76,6 +78,7 @@ abstract class TNodeDto implements _$TNodeDto {
         notes: NodeNotes(notes ?? ''),
         groupId: groupId != null ? UniqueId.fromUniqueString(groupId!) : null,
         personTitle: personTitle,
+        displayNote: displayNote,
     );
   }
 

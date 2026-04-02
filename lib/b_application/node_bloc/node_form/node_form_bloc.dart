@@ -108,6 +108,19 @@ class NodeFormBloc extends Bloc<NodeFormEvent, NodeFormState> {
           saveFailureOrSuccessOption: null,
         ));
       },
+      displayNoteChanged: (e) {
+        var s = e.displayNote?.trim() ?? '';
+        if (s.length > NODE_DISPLAY_NOTE_MAX_LENGTH) {
+          s = s.substring(0, NODE_DISPLAY_NOTE_MAX_LENGTH);
+        }
+        emit(state.copyWith(
+          node: state.node!.copyWith(
+            displayNote: s.isEmpty ? null : s,
+          ),
+          isSaving: false,
+          saveFailureOrSuccessOption: null,
+        ));
+      },
       groupIdChanged: (e) {
         emit(state.copyWith(
           node: state.node!.copyWith(groupId: e.groupId),
