@@ -196,5 +196,5 @@
   "person_title_label": "Title",
   "person_title_none": "None",
   "display_note_label": "Tree card note",
-  "display_note_hint": "Shown to the left of the avatar on the tree (max 70 characters)."
+  "display_note_hint": "Shown to the left of the avatar on the tree (max 30 characters)."
 }

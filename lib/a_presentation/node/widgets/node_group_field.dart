@@ -35,12 +35,10 @@ class NodeGroupField extends StatelessWidget {
 
         final menuItems = <DropdownMenuItem<String?>>[
           DropdownMenuItem<String?>(
-            value: null,
-            child: Text(
-              getTr(context, 'tree_group_none')!,
-              style: kBodyMedium,
-            ),
-          ),
+              value: null,
+              child: AppDropDownItem(
+                label: getTr(context, 'tree_group_none')!,
+              )),
           ...groups.map(
             (TreeGroup g) => DropdownMenuItem<String?>(
               value: g.id.getOrCrash(),
@@ -54,7 +52,10 @@ class NodeGroupField extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(getTr(context, 'tree_group_membership')!),
+            Text(
+              getTr(context, 'tree_group_membership')!,
+              style: kFootnoteStyle.copyWith(fontWeight: FontWeight.bold),
+            ),
             kVSpacer5,
             Container(
               decoration: kAppFormsDecor,

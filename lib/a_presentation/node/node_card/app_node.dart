@@ -204,7 +204,7 @@ class AppNode extends StatelessWidget {
                 child: Text(
                   displayNoteTrim,
                   style: kFootnoteStyle.copyWith(color: color[200]),
-                  maxLines: 3,
+                  maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.start,
                 ),

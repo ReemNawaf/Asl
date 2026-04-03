@@ -175,17 +175,17 @@ class InfoPanel extends StatelessWidget {
                 ),
                 // Group + Display Note (4)
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     NodeGroupField(node: node, isEditing: state.isEditing),
+                    kHSpacer20,
                     DisplayNoteField(
-                      key: ValueKey(node.nodeId.getOrCrash()),
-                      initialNote: node.displayNote,
+                      node: node,
                       isEditing: state.isEditing,
-                      label: getTr(context, 'display_note_label')!,
-                      hint: getTr(context, 'display_note_hint')!,
                     ),
                   ],
                 ),
+
                 // Partner Order (5)
                 kVSpacer30,
                 if (state.node!.relations.isNotEmpty)

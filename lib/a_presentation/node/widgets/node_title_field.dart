@@ -29,9 +29,8 @@ class NodeTtitle extends StatelessWidget {
     final menuItems = <DropdownMenuItem<String?>>[
       DropdownMenuItem<String?>(
         value: null,
-        child: Text(
-          getTr(context, 'person_title_none')!,
-          style: kBodyMedium,
+        child: AppDropDownItem(
+          label: getTr(context, 'person_title_none')!,
         ),
       ),
       ...personTitlesForGender(gender).map(
@@ -45,7 +44,10 @@ class NodeTtitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(getTr(context, 'person_title_label')!),
+        Text(
+          getTr(context, 'person_title_label')!,
+          style: kFootnoteStyle.copyWith(fontWeight: FontWeight.bold),
+        ),
         kVSpacer5,
         Container(
           decoration: kAppFormsDecor,

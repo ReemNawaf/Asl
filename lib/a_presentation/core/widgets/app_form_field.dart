@@ -22,7 +22,9 @@ class AppFormField extends StatelessWidget {
     this.controller,
     this.focusNode,
     this.autovalidateMode,
+    this.maxLength,
     this.isEditing = true,
+    this.maxLines,
   });
 
   final String label;
@@ -44,19 +46,20 @@ class AppFormField extends StatelessWidget {
 
   final TextEditingController? controller;
   final FocusNode? focusNode;
+  final int? maxLength;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (withLabel) ...[
+        if (withLabel)
           Text(
             label,
             style: kFootnoteStyle.copyWith(fontWeight: FontWeight.bold),
             textAlign: TextAlign.start,
           ),
-        ],
         SizedBox(height: spacing),
         SizedBox(
           height: isValid ? 38.0 : 64.0,
@@ -67,6 +70,8 @@ class AppFormField extends StatelessWidget {
             initialValue: initialValue,
             style: kCalloutStyle,
             readOnly: !isEditing,
+            maxLength: maxLength,
+            maxLines: maxLines,
             decoration:
                 kAppFormsInputDecor(hint: hint, color: color, isDense: true),
             keyboardType: fieldType == FieldType.email
