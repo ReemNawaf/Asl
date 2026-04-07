@@ -13,7 +13,6 @@ class AppTextField extends StatelessWidget {
     this.onSaved,
     this.onFieldSubmitted,
     this.initialValue,
-    this.fieldType = FieldType.text,
     this.color,
     this.spacing = 6,
     this.isValid = true,
@@ -30,7 +29,6 @@ class AppTextField extends StatelessWidget {
   final double spacing;
   final String? initialValue;
   final Color? color;
-  final FieldType fieldType;
   final AutovalidateMode? autovalidateMode;
 
   final String? Function(String? value) validator;
@@ -48,24 +46,19 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: isValid ? 30.0 : 56.0,
+      height: isValid ? 36.0 : 62.0,
       child: TextFormField(
-        obscureText: fieldType == FieldType.password,
         cursorColor: kBlacksColor,
         cursorHeight: kCursorHeight,
         initialValue: initialValue,
-        style: kCalloutStyle,
+        style: kBodyMedium.copyWith(
+            fontWeight: FontWeight.w800, color: kBlacksColor),
         readOnly: !isEditing,
         maxLength: maxLength,
-        // Obscured fields must be single-line (TextFormField assertion).
-        maxLines: fieldType == FieldType.password ? 1 : maxLines,
+        keyboardType: TextInputType.text,
+        maxLines: maxLines,
         decoration:
             kAppFormsInputDecor(hint: hint, color: color, isDense: true),
-        keyboardType: fieldType == FieldType.email
-            ? TextInputType.emailAddress
-            : (fieldType == FieldType.password
-                ? TextInputType.visiblePassword
-                : TextInputType.multiline),
         onSaved: onSaved,
         validator: validator,
         onChanged: onChanged,

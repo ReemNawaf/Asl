@@ -111,39 +111,100 @@ class TreeGroupsSettingsBody extends StatelessWidget {
     );
   }
 
+  String _localizedSwatchName(BuildContext context, String colorKey) {
+    return getTr(context, 'tree_group_swatch_$colorKey')!;
+  }
+
   Future<void> _pickColor(BuildContext context, int index) async {
     final bloc = context.read<TreeGroupsSettingsBloc>();
+    final draft = List<TreeGroup>.from(bloc.state.draft);
+
+    bool colorTakenByAnotherRow(String colorKey) {
+      for (var i = 0; i < draft.length; i++) {
+        if (i == index) continue;
+        if (draft[i].colorKey == colorKey) return true;
+      }
+      return false;
+    }
+
     await showDialog<void>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text(getTr(ctx, 'tree_group_pick_color')!),
-        content: SizedBox(
-          width: 280,
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 4,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            children: kTreeGroupColorKeys.map((k) {
-              return InkWell(
-                onTap: () {
-                  bloc.add(
-                    TreeGroupsSettingsEvent.colorPicked(
-                      index: index,
-                      colorKey: k,
+      builder: (_) => ScaffoldMessenger(
+        child: Builder(
+          builder: (dialogCtx) => AlertDialog(
+            backgroundColor: kWhitesColor[600],
+            shape: kRoundedRectangleBorder,
+            title: Text(getTr(dialogCtx, 'tree_group_pick_color')!),
+            content: SizedBox(
+              width: 300,
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 10,
+                childAspectRatio: 0.78,
+                children: kTreeGroupColorKeys.map((k) {
+                  final taken = colorTakenByAnotherRow(k);
+                  return InkWell(
+                    borderRadius: BorderRadius.circular(8),
+                    onTap: () {
+                      if (taken) {
+                        ScaffoldMessenger.of(dialogCtx).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              getTr(
+                                dialogCtx,
+                                'tree_group_color_duplicate',
+                              )!,
+                            ),
+                          ),
+                        );
+                        return;
+                      }
+                      bloc.add(
+                        TreeGroupsSettingsEvent.colorPicked(
+                          index: index,
+                          colorKey: k,
+                        ),
+                      );
+                      Navigator.of(dialogCtx).pop();
+                    },
+                    child: Opacity(
+                      opacity: taken ? 0.38 : 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: treeGroupColorFromKey(k),
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                    color: kBlacksColor[300]!,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            _localizedSwatchName(dialogCtx, k),
+                            style: kFootnoteStyle.copyWith(
+                              color: kBlacksColor[200],
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   );
-                  Navigator.of(ctx).pop();
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: treeGroupColorFromKey(k),
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: kBlacksColor[300]!),
-                  ),
-                ),
-              );
-            }).toList(),
+                }).toList(),
+              ),
+            ),
           ),
         ),
       ),
@@ -182,6 +243,11 @@ class TreeGroupsSettingsBody extends StatelessWidget {
             Text(
               getTr(context, 'tree_groups_description')!,
               style: kCaption1Style.copyWith(color: kBlacksColor[400]),
+            ),
+            kVSpacer5,
+            Text(
+              getTr(context, 'tree_groups_rules_hint')!,
+              style: kFootnoteStyle.copyWith(color: kBlacksColor[400]),
             ),
             kVSpacer10,
             if (state.draft.isEmpty)
