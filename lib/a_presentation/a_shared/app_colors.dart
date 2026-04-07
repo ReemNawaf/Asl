@@ -112,6 +112,92 @@ const MaterialColor kMirrorColors = MaterialColor(
   },
 );
 
+// Groups Colors (300/400/600 are the design anchors; 200/500/700 are derived.)
+
+// Lavender
+const int kLavenderColor = 0xFFBDA2E6;
+const MaterialColor kLavenderColors = MaterialColor(
+  kLavenderColor,
+  <int, Color>{
+    200: Color(0xFF6B5590),
+    300: Color(0xFFBDA2E6),
+    400: Color(0xFFDBC5F6),
+    500: Color(0xFFE6D8FB),
+    600: Color(0xFFF1EAFF),
+    700: Color(0xFFF9F6FF),
+  },
+);
+
+// Teal
+const int kTealColor = 0xFF6DC6B8;
+const MaterialColor kTealColors = MaterialColor(
+  kTealColor,
+  <int, Color>{
+    200: Color(0xFF2E8578),
+    300: Color(0xFF6DC6B8),
+    400: Color(0xFF87CBBF),
+    500: Color(0xFFABD6D4),
+    600: Color(0xFFCEEEE8),
+    700: Color(0xFFF0FBF9),
+  },
+);
+
+// Orange
+const int kOrangeColor = 0xFFF9A172;
+const MaterialColor kOrangeColors = MaterialColor(
+  kOrangeColor,
+  <int, Color>{
+    200: Color(0xFFC96E40),
+    300: Color(0xFFF9A172),
+    400: Color(0xFFFFC5A8),
+    500: Color(0xFFFCD1B7),
+    600: Color(0xFFFFDDC6),
+    700: Color(0xFFFFF6F0),
+  },
+);
+
+// Coral
+const int kCoralColor = 0xFFFA9594;
+const MaterialColor kCoralColors = MaterialColor(
+  kCoralColor,
+  <int, Color>{
+    200: Color(0xFFB74D4C),
+    300: Color(0xFFFA9594),
+    400: Color(0xFFFFBBBC),
+    500: Color(0xFFFFC9CA),
+    600: Color(0xFFFFD7D8),
+    700: Color(0xFFFFF2F2),
+  },
+);
+
+// RoyaBlue
+const int kRoyaBluelColor = 0xFF77A8FD;
+const MaterialColor kRoyaBluelColors = MaterialColor(
+  kRoyaBluelColor,
+  <int, Color>{
+    200: Color(0xFF3D62C4),
+    300: Color(0xFF77A8FD),
+    400: Color(0xFF9FC2FF),
+    500: Color(0xFFB7D2FF),
+    600: Color(0xFFCFE1FF),
+    700: Color(0xFFE8F4FF),
+  },
+);
+
+// Olive (300 was given as "9AF76" — interpreted as A9AF76)
+const int kOliveColor = 0xFFA9AF76;
+const MaterialColor kOliveColors = MaterialColor(
+  kOliveColor,
+  <int, Color>{
+    200: Color(0xFF5F6645),
+    300: Color(0xFFA9AF76),
+    400: Color(0xFFC7D7AD),
+    500: Color(0xFFCFDBBA),
+    600: Color(0xFFE9F2DA),
+    700: Color(0xFFEEF4E8),
+  },
+);
+
 // Color(0xFFC7C7C7),
 // Color(0xFFE0E0E0),
 // Color(0xFFDFDFDF),

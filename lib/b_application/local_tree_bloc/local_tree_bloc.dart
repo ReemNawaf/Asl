@@ -574,23 +574,26 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         }
       },
 
+      saveTreeGroups: (e) async {
+        final treeId = state.selectedTreeId;
+        if (treeId == null) return;
+        final oldIds = state.settings?.groups.map((g) => g.id.getOrCrash()).toSet() ?? {};
+        final result = await _treeRepo.saveTreeGroups(
+          treeId: treeId,
+          newSettings: e.newSettings,
+        );
+        result.fold(
+          (f) => emit(state.copyWith(treeFailureOption: some(f))),
+          (saved) {
+            final newIds = saved.groups.map((g) => g.id.getOrCrash()).toSet();
+            final removed = oldIds.difference(newIds);
+            _applyTreeGroupsSettings(emit, saved, removed);
+          },
+        );
+      },
+
       treeGroupsSaved: (e) async {
-        var nextStore = state.store;
-        if (e.removedGroupIds.isNotEmpty) {
-          for (final entry in nextStore.nodesById.entries) {
-            final gid = entry.value.groupId?.asKey();
-            if (gid != null && e.removedGroupIds.contains(gid)) {
-              nextStore = upsertNode(
-                nextStore,
-                entry.value.copyWith(groupId: null),
-              );
-            }
-          }
-        }
-        emit(state.copyWith(
-          settings: e.newSettings,
-          store: nextStore,
-        ));
+        _applyTreeGroupsSettings(emit, e.newSettings, e.removedGroupIds);
       },
 
       searchTree: (e) {
@@ -607,6 +610,30 @@ class LocalTreeBloc extends Bloc<LocalTreeEvent, LocalTreeState> {
         ));
       },
     );
+  }
+
+  void _applyTreeGroupsSettings(
+    Emitter<LocalTreeState> emit,
+    TreeSettings newSettings,
+    Set<String> removedGroupIds,
+  ) {
+    var nextStore = state.store;
+    if (removedGroupIds.isNotEmpty) {
+      for (final entry in nextStore.nodesById.entries) {
+        final gid = entry.value.groupId?.asKey();
+        if (gid != null && removedGroupIds.contains(gid)) {
+          nextStore = upsertNode(
+            nextStore,
+            entry.value.copyWith(groupId: null),
+          );
+        }
+      }
+    }
+    emit(state.copyWith(
+      settings: newSettings,
+      store: nextStore,
+      treeFailureOption: none(),
+    ));
   }
 
   // ============================================================

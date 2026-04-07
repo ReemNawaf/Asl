@@ -41,7 +41,10 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
           builder: (context, state) {
         final showTreeSettings = state.settings != null && !state.isLoadingTree;
 
-        return Stack(
+        // Nested messenger so SnackBars show above this dialog (root messenger
+        // renders behind the modal).
+        return ScaffoldMessenger(
+          child: Stack(
           alignment: Alignment.center,
           children: [
             Positioned.fill(
@@ -104,6 +107,7 @@ Future<dynamic> showSettingsPanel(BuildContext contextPage) {
             ),
             ),
           ],
+        ),
         );
       });
     },

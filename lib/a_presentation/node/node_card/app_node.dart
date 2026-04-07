@@ -1,7 +1,6 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
-import 'package:asl/a_presentation/tree/widgets/tree_group_palette.dart';
 import 'package:asl/a_presentation/node/node_panel/main_panel.dart';
 import 'package:asl/b_application/node_bloc/node_form/node_form_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
@@ -30,6 +29,10 @@ String treeNodeDisplayNameLine(
   return '$prefix$name';
 }
 
+/// Avatar block: square size and lift above the name card.
+const double _kAvatarSize = 110;
+const double _kAvatarMarginBottom = 70;
+
 class AppNode extends StatelessWidget {
   const AppNode({
     super.key,
@@ -48,11 +51,7 @@ class AppNode extends StatelessWidget {
     required this.pageContext,
     this.mirrorNodeNoChildren = false,
     this.goToNode = false,
-    this.groupAccent,
   });
-
-  /// When set, draws a colored ring around the avatar and a small group icon badge.
-  final TreeGroupNodeAccent? groupAccent;
 
   final NodeType type;
   final String? fatherName;
@@ -116,8 +115,7 @@ class AppNode extends StatelessWidget {
               color: color,
               gender: gender,
               image: image,
-              marginBottom: 70,
-              groupAccent: groupAccent,
+              marginBottom: _kAvatarMarginBottom,
             ),
             Padding(
               padding: const EdgeInsets.all(12),
@@ -218,10 +216,6 @@ class AppNode extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-            if (groupAccent != null)
-              _GroupIconBadge(
-                accent: groupAccent!,
-              ),
           ],
         ),
       ),
@@ -229,31 +223,21 @@ class AppNode extends StatelessWidget {
   }
 }
 
-/// Matches [AppNode] layout: total width 250, avatar 110×110, avatar lifted [kAvatarMarginBottom].
-const double _kAppNodeWidth = 250;
-const double _kAvatarSize = 110;
-const double _kAvatarMarginBottom = 70;
-
 class _AvatarBlock extends StatelessWidget {
   const _AvatarBlock({
     required this.color,
     required this.gender,
     required this.image,
     required this.marginBottom,
-    this.groupAccent,
   });
 
   final MaterialColor color;
   final Gender gender;
   final String? image;
   final double marginBottom;
-  final TreeGroupNodeAccent? groupAccent;
 
   @override
   Widget build(BuildContext context) {
-    final accent = groupAccent;
-
-    // Group ring is the actual border of the 110×110 square (no outer gap).
     final Widget avatar = Container(
       width: _kAvatarSize,
       height: _kAvatarSize,
@@ -261,8 +245,8 @@ class _AvatarBlock extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.0),
         border: Border.all(
-          color: accent != null ? accent.ringColor : kBlacksColor[100]!,
-          width: accent != null ? 3 : 2,
+          color: kBlacksColor[100]!,
+          width: 2,
         ),
         color: color[500]!,
       ),
@@ -272,42 +256,6 @@ class _AvatarBlock extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: marginBottom),
       child: avatar,
-    );
-  }
-}
-
-/// Sits in the node [Stack] last so it paints above avatar, name panel, and labels.
-/// Placed at the avatar’s bottom-right (same geometry as [_kAppNodeWidth] / [_kAvatarSize] / [_kAvatarMarginBottom]).
-class _GroupIconBadge extends StatelessWidget {
-  const _GroupIconBadge({required this.accent});
-
-  final TreeGroupNodeAccent accent;
-
-  static const double _badge = 26;
-
-  @override
-  Widget build(BuildContext context) {
-    const insetFromRight = (_kAppNodeWidth - _kAvatarSize) / 2;
-    return Positioned(
-      right: insetFromRight - _badge / 2,
-      bottom: _kAvatarMarginBottom - _badge / 2,
-      child: Material(
-        color: kWhitesColor[100],
-        shape: CircleBorder(
-          side: BorderSide(color: accent.ringColor, width: 2),
-        ),
-        elevation: 2,
-        shadowColor: const Color.fromRGBO(72, 76, 82, 0.35),
-        child: SizedBox(
-          width: _badge,
-          height: _badge,
-          child: Icon(
-            accent.icon,
-            size: 14,
-            color: kBlacksColor[200],
-          ),
-        ),
-      ),
     );
   }
 }

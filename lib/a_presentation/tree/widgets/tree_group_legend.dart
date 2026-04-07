@@ -65,7 +65,6 @@ class TreeGroupLegend extends StatelessWidget {
                   .map(
                     (g) => _LegendItem(
                       color: treeGroupColorFromKey(g.colorKey),
-                      icon: treeGroupIconFromKey(g.iconKey),
                       label: g.name,
                     ),
                   )
@@ -81,12 +80,10 @@ class TreeGroupLegend extends StatelessWidget {
 class _LegendItem extends StatelessWidget {
   const _LegendItem({
     required this.color,
-    required this.icon,
     required this.label,
   });
 
   final Color color;
-  final IconData icon;
   final String label;
 
   @override
@@ -102,7 +99,6 @@ class _LegendItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
             border: Border.all(color: color, width: 1.5),
           ),
-          child: Icon(icon, size: 14, color: kBlacksColor[200]),
         ),
         const SizedBox(width: 6),
         Text(

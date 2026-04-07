@@ -3,6 +3,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/node/node_card/app_node.dart';
 import 'package:asl/a_presentation/tree/widgets/tree_group_palette.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/tree/tree_group.dart';
 import 'package:flutter/material.dart';
 
 class PartnerNode extends StatelessWidget {
@@ -11,12 +12,12 @@ class PartnerNode extends StatelessWidget {
     required this.node,
     required this.pageContext,
     required this.fatherName,
-    this.groupAccent,
+    required this.groups,
     // this.image,
   });
   final TNode node;
   final BuildContext pageContext;
-  final TreeGroupNodeAccent? groupAccent;
+  final List<TreeGroup> groups;
   // final String? image;
   final String? fatherName;
 
@@ -26,7 +27,7 @@ class PartnerNode extends StatelessWidget {
       type: NodeType.partner,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'زوجة' : 'زوج',
-      color: kOutColors,
+      color: materialColorForNodeGroup(node, kOutColors, groups),
       yearOfBirth: node.birthDate,
       yearOfDeath: node.deathDate,
       isAlive: node.isAlive,
@@ -35,7 +36,6 @@ class PartnerNode extends StatelessWidget {
       gender: node.gender,
       node: node,
       pageContext: pageContext,
-      groupAccent: groupAccent,
       //image: image,
     );
   }

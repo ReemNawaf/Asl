@@ -3,104 +3,82 @@ import 'package:asl/c_domain/node/t_node.dart';
 import 'package:asl/c_domain/tree/tree_group.dart';
 import 'package:flutter/material.dart';
 
-/// Resolved group styling for drawing on a tree node (avatar ring + badge).
-class TreeGroupNodeAccent {
-  const TreeGroupNodeAccent({
-    required this.ringColor,
-    required this.icon,
-  });
-
-  final Color ringColor;
-  final IconData icon;
+/// Full [MaterialColor] for a group key (node card uses the same swatch ladder as roles).
+/// Legacy keys are mapped like [treeGroupColorFromKey].
+MaterialColor treeGroupMaterialColorFromKey(String key) {
+  switch (key) {
+    case 'olive':
+    case 'blueGrey':
+      return kOliveColors;
+    case 'amber':
+      return kOrangeColors;
+    case 'teal':
+    case 'cyan':
+      return kTealColors;
+    case 'terracotta':
+    case 'brown':
+      return kRoyaBluelColors;
+    case 'lavender':
+    case 'indigo':
+    case 'deepPurple':
+      return kLavenderColors;
+    case 'rose':
+    case 'pink':
+      return kCoralColors;
+    default:
+      return kStemColors;
+  }
 }
 
-/// Returns accent when [node.groupId] matches a group in [groups]; otherwise null.
-TreeGroupNodeAccent? treeGroupAccentForNode(TNode node, List<TreeGroup> groups) {
+/// Node card palette: use the group’s [MaterialColor] when [node] belongs to a [groups] entry.
+MaterialColor materialColorForNodeGroup(
+  TNode node,
+  MaterialColor defaultPalette,
+  List<TreeGroup> groups,
+) {
   final gid = node.groupId?.getOrCrash();
-  if (gid == null) return null;
+  if (gid == null) return defaultPalette;
   for (final g in groups) {
     if (g.id.getOrCrash() == gid) {
-      return TreeGroupNodeAccent(
-        ringColor: treeGroupColorFromKey(g.colorKey),
-        icon: treeGroupIconFromKey(g.iconKey),
-      );
+      return treeGroupMaterialColorFromKey(g.colorKey);
     }
   }
-  return null;
+  return defaultPalette;
 }
 
-/// Curated keys for tree groups (colors distinct from node card palette:
-/// root / stem / leaf / out / mirror).
+/// Six curated keys matching [kOliveColors] … [kCoralColors] in app_colors.dart.
 const List<String> kTreeGroupColorKeys = [
-  'indigo',
-  'teal',
-  'deepPurple',
-  'pink',
-  'brown',
-  'blueGrey',
+  'olive',
   'amber',
-  'cyan',
+  'teal',
+  'terracotta',
+  'lavender',
+  'rose',
 ];
 
-const List<String> kTreeGroupIconKeys = [
-  'label',
-  'people',
-  'star',
-  'favorite',
-  'home',
-  'work',
-  'school',
-  'flag',
-  'place',
-  'celebration',
-];
-
+/// Ring / swatch color for a group. Uses 300 swatch (main tone) per palette.
+/// Legacy keys from the old 8 Material [Colors.*] options are mapped so existing data still renders.
 Color treeGroupColorFromKey(String key) {
   switch (key) {
-    case 'indigo':
-      return Colors.indigo[400]!;
-    case 'teal':
-      return Colors.teal[400]!;
-    case 'deepPurple':
-      return Colors.deepPurple[400]!;
-    case 'pink':
-      return Colors.pink[400]!;
-    case 'brown':
-      return Colors.brown[400]!;
+    case 'olive':
     case 'blueGrey':
-      return Colors.blueGrey[400]!;
+      return kOliveColors[300]!;
     case 'amber':
-      return Colors.amber[700]!;
+      return kOrangeColors[300]!;
+    case 'teal':
     case 'cyan':
-      return Colors.cyan[600]!;
+      return kTealColors[300]!;
+    case 'terracotta':
+    case 'brown':
+      return kRoyaBluelColors[300]!;
+    case 'lavender':
+    case 'indigo':
+    case 'deepPurple':
+      return kLavenderColors[300]!;
+    case 'rose':
+    case 'pink':
+      return kCoralColors[300]!;
     default:
       return kBlacksColor[400]!;
-  }
-}
-
-IconData treeGroupIconFromKey(String key) {
-  switch (key) {
-    case 'label':
-      return Icons.label_outline;
-    case 'people':
-      return Icons.people_outline;
-    case 'star':
-      return Icons.star_outline;
-    case 'favorite':
-      return Icons.favorite_outline;
-    case 'home':
-      return Icons.home_outlined;
-    case 'work':
-      return Icons.work_outline;
-    case 'school':
-      return Icons.school_outlined;
-    case 'flag':
-      return Icons.flag_outlined;
-    case 'place':
-      return Icons.place_outlined;
-    case 'celebration':
-      return Icons.celebration_outlined;
-    default:
-      return Icons.circle_outlined;
   }
 }

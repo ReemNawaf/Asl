@@ -7,12 +7,12 @@ import 'package:asl/a_presentation/node/node_card/mirror_node.dart';
 import 'package:asl/a_presentation/node/node_card/partner_node.dart';
 import 'package:asl/a_presentation/node/node_card/root_node.dart';
 import 'package:asl/a_presentation/node/node_card/unknown_partner_node.dart';
-import 'package:asl/a_presentation/tree/widgets/tree_group_palette.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/draw_tree/draw_tree_bloc.dart';
 import 'package:asl/b_application/tree_bloc/tree_settings/tree_settings_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/tree/tree_group.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphview/GraphView.dart';
@@ -92,8 +92,8 @@ class TreeView extends StatelessWidget {
 
                     final showUnknown = treeSettingsState.showUnknown;
 
-                    final groups = treeState.settings?.groups ?? [];
-                    final groupAccent = treeGroupAccentForNode(tnode, groups);
+                    final List<TreeGroup> groups =
+                        treeState.settings?.groups ?? const [];
 
                     return switch (nodeType) {
                       NodeType.root => KeyedSubtree(
@@ -101,7 +101,7 @@ class TreeView extends StatelessWidget {
                           child: RootNode(
                             node: tnode,
                             pageContext: context,
-                            groupAccent: groupAccent,
+                            groups: groups,
                           )),
                       NodeType.partner => KeyedSubtree(
                           key: nodeKey,
@@ -109,12 +109,13 @@ class TreeView extends StatelessWidget {
                               ? UnknownPartnerNode(
                                   pageContext: context,
                                   node: tnode,
+                                  groups: groups,
                                 )
                               : PartnerNode(
                                   node: tnode,
                                   pageContext: context,
                                   fatherName: fatherName,
-                                  groupAccent: groupAccent,
+                                  groups: groups,
                                 ),
                         ),
                       NodeType.partnerMirror => tnode.gender == Gender.female
@@ -128,7 +129,7 @@ class TreeView extends StatelessWidget {
                               pageContext: context,
                               noChildren: false,
                               fatherName: fatherName,
-                              groupAccent: groupAccent,
+                              groups: groups,
                             )
                           // the mirror node is male
                           // the partner node is female
@@ -141,7 +142,7 @@ class TreeView extends StatelessWidget {
                               pageContext: context,
                               noChildren: true,
                               fatherName: fatherName,
-                              groupAccent: groupAccent,
+                              groups: groups,
                             ),
                       NodeType.child => KeyedSubtree(
                           key: nodeKey,
@@ -149,14 +150,14 @@ class TreeView extends StatelessWidget {
                               node: tnode,
                               pageContext: context,
                               fatherName: fatherName,
-                              groupAccent: groupAccent)),
+                              groups: groups)),
                       NodeType.grandchild => KeyedSubtree(
                           key: nodeKey,
                           child: GrandchildNode(
                               node: tnode,
                               pageContext: context,
                               fatherName: fatherName,
-                              groupAccent: groupAccent)),
+                              groups: groups)),
                       _ => const SizedBox(),
                     };
                   },

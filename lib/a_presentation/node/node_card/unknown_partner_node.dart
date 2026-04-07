@@ -1,7 +1,9 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/node/node_card/app_node.dart';
+import 'package:asl/a_presentation/tree/widgets/tree_group_palette.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/tree/tree_group.dart';
 import 'package:flutter/material.dart';
 
 class UnknownPartnerNode extends StatelessWidget {
@@ -9,16 +11,18 @@ class UnknownPartnerNode extends StatelessWidget {
     super.key,
     required this.pageContext,
     required this.node,
+    required this.groups,
   });
 
   final BuildContext pageContext;
   final TNode node;
+  final List<TreeGroup> groups;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    const color = kOutColors;
+    final color = materialColorForNodeGroup(node, kOutColors, groups);
     return SizedBox(
       height: 175,
       width: 250,

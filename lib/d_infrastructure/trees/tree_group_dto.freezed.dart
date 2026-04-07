@@ -23,7 +23,6 @@ mixin _$TreeGroupDto {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get colorKey => throw _privateConstructorUsedError;
-  String get iconKey => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +36,7 @@ abstract class $TreeGroupDtoCopyWith<$Res> {
           TreeGroupDto value, $Res Function(TreeGroupDto) then) =
       _$TreeGroupDtoCopyWithImpl<$Res, TreeGroupDto>;
   @useResult
-  $Res call({String id, String name, String colorKey, String iconKey});
+  $Res call({String id, String name, String colorKey});
 }
 
 /// @nodoc
@@ -56,7 +55,6 @@ class _$TreeGroupDtoCopyWithImpl<$Res, $Val extends TreeGroupDto>
     Object? id = null,
     Object? name = null,
     Object? colorKey = null,
-    Object? iconKey = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -71,10 +69,6 @@ class _$TreeGroupDtoCopyWithImpl<$Res, $Val extends TreeGroupDto>
           ? _value.colorKey
           : colorKey // ignore: cast_nullable_to_non_nullable
               as String,
-      iconKey: null == iconKey
-          ? _value.iconKey
-          : iconKey // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -87,7 +81,7 @@ abstract class _$$TreeGroupDtoImplCopyWith<$Res>
       __$$TreeGroupDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String colorKey, String iconKey});
+  $Res call({String id, String name, String colorKey});
 }
 
 /// @nodoc
@@ -104,7 +98,6 @@ class __$$TreeGroupDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? colorKey = null,
-    Object? iconKey = null,
   }) {
     return _then(_$TreeGroupDtoImpl(
       id: null == id
@@ -119,10 +112,6 @@ class __$$TreeGroupDtoImplCopyWithImpl<$Res>
           ? _value.colorKey
           : colorKey // ignore: cast_nullable_to_non_nullable
               as String,
-      iconKey: null == iconKey
-          ? _value.iconKey
-          : iconKey // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -131,10 +120,7 @@ class __$$TreeGroupDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TreeGroupDtoImpl extends _TreeGroupDto {
   const _$TreeGroupDtoImpl(
-      {required this.id,
-      required this.name,
-      required this.colorKey,
-      required this.iconKey})
+      {required this.id, required this.name, required this.colorKey})
       : super._();
 
   factory _$TreeGroupDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -146,12 +132,10 @@ class _$TreeGroupDtoImpl extends _TreeGroupDto {
   final String name;
   @override
   final String colorKey;
-  @override
-  final String iconKey;
 
   @override
   String toString() {
-    return 'TreeGroupDto(id: $id, name: $name, colorKey: $colorKey, iconKey: $iconKey)';
+    return 'TreeGroupDto(id: $id, name: $name, colorKey: $colorKey)';
   }
 
   @override
@@ -162,13 +146,12 @@ class _$TreeGroupDtoImpl extends _TreeGroupDto {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.colorKey, colorKey) ||
-                other.colorKey == colorKey) &&
-            (identical(other.iconKey, iconKey) || other.iconKey == iconKey));
+                other.colorKey == colorKey));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, colorKey, iconKey);
+  int get hashCode => Object.hash(runtimeType, id, name, colorKey);
 
   @JsonKey(ignore: true)
   @override
@@ -188,8 +171,7 @@ abstract class _TreeGroupDto extends TreeGroupDto {
   const factory _TreeGroupDto(
       {required final String id,
       required final String name,
-      required final String colorKey,
-      required final String iconKey}) = _$TreeGroupDtoImpl;
+      required final String colorKey}) = _$TreeGroupDtoImpl;
   const _TreeGroupDto._() : super._();
 
   factory _TreeGroupDto.fromJson(Map<String, dynamic> json) =
@@ -201,8 +183,6 @@ abstract class _TreeGroupDto extends TreeGroupDto {
   String get name;
   @override
   String get colorKey;
-  @override
-  String get iconKey;
   @override
   @JsonKey(ignore: true)
   _$$TreeGroupDtoImplCopyWith<_$TreeGroupDtoImpl> get copyWith =>

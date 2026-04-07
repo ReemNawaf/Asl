@@ -13,21 +13,18 @@ abstract class TreeGroupDto with _$TreeGroupDto {
     required String id,
     required String name,
     required String colorKey,
-    required String iconKey,
   }) = _TreeGroupDto;
 
   factory TreeGroupDto.fromDomain(TreeGroup g) => TreeGroupDto(
         id: g.id.getOrCrash(),
         name: g.name,
         colorKey: g.colorKey,
-        iconKey: g.iconKey,
       );
 
   TreeGroup toDomain() => TreeGroup(
         id: UniqueId.fromUniqueString(id),
         name: name,
         colorKey: colorKey,
-        iconKey: iconKey,
       );
 
   factory TreeGroupDto.fromJson(Map<String, dynamic> json) =>

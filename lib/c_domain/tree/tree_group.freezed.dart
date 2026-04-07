@@ -19,7 +19,6 @@ mixin _$TreeGroup {
   UniqueId get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get colorKey => throw _privateConstructorUsedError;
-  String get iconKey => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TreeGroupCopyWith<TreeGroup> get copyWith =>
@@ -31,7 +30,7 @@ abstract class $TreeGroupCopyWith<$Res> {
   factory $TreeGroupCopyWith(TreeGroup value, $Res Function(TreeGroup) then) =
       _$TreeGroupCopyWithImpl<$Res, TreeGroup>;
   @useResult
-  $Res call({UniqueId id, String name, String colorKey, String iconKey});
+  $Res call({UniqueId id, String name, String colorKey});
 }
 
 /// @nodoc
@@ -50,7 +49,6 @@ class _$TreeGroupCopyWithImpl<$Res, $Val extends TreeGroup>
     Object? id = null,
     Object? name = null,
     Object? colorKey = null,
-    Object? iconKey = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -65,10 +63,6 @@ class _$TreeGroupCopyWithImpl<$Res, $Val extends TreeGroup>
           ? _value.colorKey
           : colorKey // ignore: cast_nullable_to_non_nullable
               as String,
-      iconKey: null == iconKey
-          ? _value.iconKey
-          : iconKey // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -81,7 +75,7 @@ abstract class _$$TreeGroupImplCopyWith<$Res>
       __$$TreeGroupImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId id, String name, String colorKey, String iconKey});
+  $Res call({UniqueId id, String name, String colorKey});
 }
 
 /// @nodoc
@@ -98,7 +92,6 @@ class __$$TreeGroupImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? colorKey = null,
-    Object? iconKey = null,
   }) {
     return _then(_$TreeGroupImpl(
       id: null == id
@@ -113,10 +106,6 @@ class __$$TreeGroupImplCopyWithImpl<$Res>
           ? _value.colorKey
           : colorKey // ignore: cast_nullable_to_non_nullable
               as String,
-      iconKey: null == iconKey
-          ? _value.iconKey
-          : iconKey // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -125,10 +114,7 @@ class __$$TreeGroupImplCopyWithImpl<$Res>
 
 class _$TreeGroupImpl implements _TreeGroup {
   const _$TreeGroupImpl(
-      {required this.id,
-      required this.name,
-      required this.colorKey,
-      required this.iconKey});
+      {required this.id, required this.name, required this.colorKey});
 
   @override
   final UniqueId id;
@@ -136,12 +122,10 @@ class _$TreeGroupImpl implements _TreeGroup {
   final String name;
   @override
   final String colorKey;
-  @override
-  final String iconKey;
 
   @override
   String toString() {
-    return 'TreeGroup(id: $id, name: $name, colorKey: $colorKey, iconKey: $iconKey)';
+    return 'TreeGroup(id: $id, name: $name, colorKey: $colorKey)';
   }
 
   @override
@@ -152,12 +136,11 @@ class _$TreeGroupImpl implements _TreeGroup {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.colorKey, colorKey) ||
-                other.colorKey == colorKey) &&
-            (identical(other.iconKey, iconKey) || other.iconKey == iconKey));
+                other.colorKey == colorKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, colorKey, iconKey);
+  int get hashCode => Object.hash(runtimeType, id, name, colorKey);
 
   @JsonKey(ignore: true)
   @override
@@ -170,8 +153,7 @@ abstract class _TreeGroup implements TreeGroup {
   const factory _TreeGroup(
       {required final UniqueId id,
       required final String name,
-      required final String colorKey,
-      required final String iconKey}) = _$TreeGroupImpl;
+      required final String colorKey}) = _$TreeGroupImpl;
 
   @override
   UniqueId get id;
@@ -179,8 +161,6 @@ abstract class _TreeGroup implements TreeGroup {
   String get name;
   @override
   String get colorKey;
-  @override
-  String get iconKey;
   @override
   @JsonKey(ignore: true)
   _$$TreeGroupImplCopyWith<_$TreeGroupImpl> get copyWith =>

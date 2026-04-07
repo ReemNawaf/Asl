@@ -1,203 +1,118 @@
 import 'package:asl/a_presentation/a_shared/app_colors.dart';
 import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/a_shared/text_styles.dart';
+import 'package:asl/a_presentation/core/widgets/app_text_field.dart';
 import 'package:asl/a_presentation/tree/widgets/tree_group_palette.dart';
 import 'package:asl/b_application/local_tree_bloc/local_tree_bloc.dart';
+import 'package:asl/b_application/tree_groups_settings_bloc/tree_groups_settings_bloc.dart';
 import 'package:asl/c_domain/core/value_objects.dart';
-import 'package:asl/c_domain/tree/i_tree_repository.dart';
 import 'package:asl/c_domain/tree/tree_group.dart';
-import 'package:asl/injection.dart';
 import 'package:asl/localization/localization_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// Local draft state; save persists via [ITreeRepository.saveTreeGroups] and
-/// refreshes [LocalTreeBloc].
-class TreeGroupsSettingsSection extends StatefulWidget {
-  const TreeGroupsSettingsSection({
-    super.key,
-    required this.treeId,
-  });
-
-  final UniqueId treeId;
+class TreeGroupsSettingsSection extends StatelessWidget {
+  const TreeGroupsSettingsSection({super.key});
 
   @override
-  State<TreeGroupsSettingsSection> createState() =>
-      _TreeGroupsSettingsSectionState();
-}
+  Widget build(BuildContext context) {
+    final initialGroups =
+        context.read<LocalTreeBloc>().state.settings?.groups ?? [];
 
-class _TreeGroupsSettingsSectionState extends State<TreeGroupsSettingsSection> {
-  final List<TreeGroup> _draft = [];
-  final Map<String, TextEditingController> _nameControllers = {};
-  bool _linked = false;
-  bool _saving = false;
-
-  @override
-  void dispose() {
-    for (final c in _nameControllers.values) {
-      c.dispose();
-    }
-    super.dispose();
-  }
-
-  TextEditingController _controllerFor(TreeGroup g) {
-    final k = g.id.getOrCrash();
-    return _nameControllers.putIfAbsent(
-      k,
-      () => TextEditingController(text: g.name),
+    return BlocProvider(
+      create: (context) => TreeGroupsSettingsBloc(
+        dispatchLocalTree: (e) => context.read<LocalTreeBloc>().add(e),
+        initialGroups: initialGroups,
+        onSaveFailed: () {
+          if (!context.mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(getTr(context, 'tree_groups_save_failed')!),
+            ),
+          );
+        },
+      ),
+      child: BlocListener<LocalTreeBloc, LocalTreeState>(
+        listenWhen: (prev, curr) =>
+            prev.settings?.groups != curr.settings?.groups,
+        listener: (context, state) {
+          context.read<TreeGroupsSettingsBloc>().add(
+                TreeGroupsSettingsEvent.syncedFromSettings(
+                  state.settings?.groups ?? [],
+                ),
+              );
+        },
+        child: BlocListener<LocalTreeBloc, LocalTreeState>(
+          listenWhen: (prev, curr) =>
+              prev.treeFailureOption != curr.treeFailureOption &&
+              curr.treeFailureOption.isSome(),
+          listener: (context, state) {
+            final groupsBloc = context.read<TreeGroupsSettingsBloc>();
+            if (groupsBloc.state.saving) {
+              groupsBloc.add(const TreeGroupsSettingsEvent.savePersistFailed());
+            }
+          },
+          child: const TreeGroupsSettingsBody(),
+        ),
+      ),
     );
   }
+}
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_linked) return;
-    _linked = true;
-    final s = context.read<LocalTreeBloc>().state.settings;
-    if (s != null) {
-      for (final g in s.groups) {
-        _nameControllers[g.id.getOrCrash()] =
-            TextEditingController(text: g.name);
-      }
-      _draft.addAll(s.groups);
-    }
-  }
+class TreeGroupsSettingsBody extends StatelessWidget {
+  const TreeGroupsSettingsBody({super.key});
 
-  void _syncDraftFromBloc() {
-    final s = context.read<LocalTreeBloc>().state.settings;
-    if (s == null) return;
-    final nextIds = s.groups.map((g) => g.id.getOrCrash()).toSet();
-    for (final k in _nameControllers.keys.toList()) {
-      if (!nextIds.contains(k)) {
-        _nameControllers.remove(k)?.dispose();
-      }
-    }
-    for (final g in s.groups) {
-      final k = g.id.getOrCrash();
-      if (_nameControllers.containsKey(k)) {
-        _nameControllers[k]!.text = g.name;
-      } else {
-        _nameControllers[k] = TextEditingController(text: g.name);
-      }
-    }
-    // TODO: remove this
-    setState(() {
-      _draft
-        ..clear()
-        ..addAll(s.groups);
-    });
-  }
-
-  Future<void> _save() async {
-    final settings = context.read<LocalTreeBloc>().state.settings;
-    if (settings == null) return;
-
+  String? _validateForSave(BuildContext context, TreeGroupsSettingsBloc bloc) {
     final trimmed = <TreeGroup>[];
-    for (final g in _draft) {
-      final k = g.id.getOrCrash();
-      final text = (_nameControllers[k]?.text ?? g.name).trim();
+    for (final g in bloc.state.draft) {
+      final text = bloc.controllerFor(g).text.trim();
       trimmed.add(g.copyWith(name: text));
     }
-
     for (final g in trimmed) {
       if (g.name.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(getTr(context, 'tree_group_name_empty')!)),
-        );
-        return;
+        return getTr(context, 'tree_group_name_empty')!;
       }
     }
     final lower = trimmed.map((g) => g.name.toLowerCase()).toList();
     if (lower.length != lower.toSet().length) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(getTr(context, 'tree_group_name_duplicate')!)),
-      );
-      return;
+      return getTr(context, 'tree_group_name_duplicate')!;
     }
     if (trimmed.length > 6) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(getTr(context, 'tree_group_max_six')!)),
-      );
-      return;
+      return getTr(context, 'tree_group_max_six')!;
     }
+    final colorKeys = trimmed.map((g) => g.colorKey).toList();
+    if (colorKeys.length != colorKeys.toSet().length) {
+      return getTr(context, 'tree_group_color_duplicate')!;
+    }
+    return null;
+  }
 
-    setState(() => _saving = true);
-    final merged = settings.copyWith(groups: trimmed);
-    final result = await getIt<ITreeRepository>().saveTreeGroups(
-      treeId: widget.treeId,
-      newSettings: merged,
-    );
+  String? _firstUnusedColorKey(TreeGroupsSettingsBloc bloc) {
+    final used = bloc.state.draft.map((g) => g.colorKey).toSet();
+    for (final k in kTreeGroupColorKeys) {
+      if (!used.contains(k)) return k;
+    }
+    return null;
+  }
 
-    if (!mounted) return;
-
-    result.fold(
-      (_) {
-        setState(() => _saving = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(getTr(context, 'tree_groups_save_failed')!)),
-        );
-      },
-      (saved) {
-        final oldIds = settings.groups.map((g) => g.id.getOrCrash()).toSet();
-        final newIds = saved.groups.map((g) => g.id.getOrCrash()).toSet();
-        final removed = oldIds.difference(newIds);
-        context.read<LocalTreeBloc>().add(
-              LocalTreeEvent.treeGroupsSaved(
-                newSettings: saved,
-                removedGroupIds: removed,
-              ),
-            );
-        setState(() {
-          _saving = false;
-          _draft
-            ..clear()
-            ..addAll(saved.groups);
-          for (final g in saved.groups) {
-            final k = g.id.getOrCrash();
-            if (_nameControllers.containsKey(k)) {
-              _nameControllers[k]!.text = g.name;
-            } else {
-              _nameControllers[k] = TextEditingController(text: g.name);
-            }
-          }
-          final keep = saved.groups.map((g) => g.id.getOrCrash()).toSet();
-          for (final k in _nameControllers.keys.toList()) {
-            if (!keep.contains(k)) {
-              _nameControllers.remove(k)?.dispose();
-            }
-          }
-        });
-      },
+  void _addGroup(BuildContext context) {
+    final bloc = context.read<TreeGroupsSettingsBloc>();
+    if (!bloc.state.isEditing) return;
+    if (bloc.state.draft.length >= 6) return;
+    final colorKey = _firstUnusedColorKey(bloc) ?? kTreeGroupColorKeys.first;
+    bloc.add(
+      TreeGroupsSettingsEvent.groupAdded(
+        TreeGroup(
+          id: UniqueId(),
+          name: '',
+          colorKey: colorKey,
+        ),
+      ),
     );
   }
 
-  void _addGroup() {
-    if (_draft.length >= 6) return;
-    final ng = TreeGroup(
-      id: UniqueId(),
-      name: '',
-      colorKey: kTreeGroupColorKeys.first,
-      iconKey: kTreeGroupIconKeys.first,
-    );
-    _nameControllers[ng.id.getOrCrash()] = TextEditingController();
-    setState(() => _draft.add(ng));
-  }
-
-  void _removeAt(int i) {
-    final id = _draft[i].id.getOrCrash();
-    _nameControllers.remove(id)?.dispose();
-    setState(() => _draft.removeAt(i));
-  }
-
-  void _onReorder(int oldIndex, int newIndex) {
-    setState(() {
-      if (newIndex > oldIndex) newIndex--;
-      final g = _draft.removeAt(oldIndex);
-      _draft.insert(newIndex, g);
-    });
-  }
-
-  Future<void> _pickColor(int index) async {
+  Future<void> _pickColor(BuildContext context, int index) async {
+    final bloc = context.read<TreeGroupsSettingsBloc>();
     await showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -212,8 +127,11 @@ class _TreeGroupsSettingsSectionState extends State<TreeGroupsSettingsSection> {
             children: kTreeGroupColorKeys.map((k) {
               return InkWell(
                 onTap: () {
-                  setState(
-                    () => _draft[index] = _draft[index].copyWith(colorKey: k),
+                  bloc.add(
+                    TreeGroupsSettingsEvent.colorPicked(
+                      index: index,
+                      colorKey: k,
+                    ),
                   );
                   Navigator.of(ctx).pop();
                 },
@@ -232,150 +150,166 @@ class _TreeGroupsSettingsSectionState extends State<TreeGroupsSettingsSection> {
     );
   }
 
-  Future<void> _pickIcon(int index) async {
-    await showDialog<void>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text(getTr(ctx, 'tree_group_pick_icon')!),
-        content: SizedBox(
-          width: 280,
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 5,
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
-            children: kTreeGroupIconKeys.map((k) {
-              return InkWell(
-                onTap: () {
-                  setState(
-                    () => _draft[index] = _draft[index].copyWith(iconKey: k),
-                  );
-                  Navigator.of(ctx).pop();
-                },
-                child: Icon(treeGroupIconFromKey(k), color: kBlacksColor[200]),
-              );
-            }).toList(),
-          ),
-        ),
-      ),
-    );
+  void _save(BuildContext context) {
+    final settings = context.read<LocalTreeBloc>().state.settings;
+    if (settings == null) return;
+
+    final bloc = context.read<TreeGroupsSettingsBloc>();
+    if (!bloc.state.isEditing || bloc.state.saving) return;
+
+    final err = _validateForSave(context, bloc);
+    if (err != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(err)),
+      );
+      return;
+    }
+
+    bloc.add(TreeGroupsSettingsEvent.saveRequested(settings: settings));
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LocalTreeBloc, LocalTreeState>(
-      listenWhen: (p, c) => p.settings?.groups != c.settings?.groups,
-      listener: (context, state) {
-        if (!_saving) _syncDraftFromBloc();
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          kVSpacer15,
-          Text(getTr(context, 'tree_groups_title')!, style: kBodyLarge),
-          kVSpacer5,
-          Text(
-            getTr(context, 'tree_groups_description')!,
-            style: kCaption1Style.copyWith(color: kBlacksColor[400]),
-          ),
-          kVSpacer10,
-          if (_draft.isEmpty)
+    return BlocBuilder<TreeGroupsSettingsBloc, TreeGroupsSettingsState>(
+      builder: (context, state) {
+        final bloc = context.read<TreeGroupsSettingsBloc>();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            kVSpacer15,
+            Text(getTr(context, 'tree_groups_title')!, style: kBodyLarge),
+            kVSpacer5,
             Text(
-              getTr(context, 'tree_groups_empty_hint')!,
-              style: kFootnoteStyle.copyWith(color: kBlacksColor[400]),
+              getTr(context, 'tree_groups_description')!,
+              style: kCaption1Style.copyWith(color: kBlacksColor[400]),
             ),
-          ReorderableListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            buildDefaultDragHandles: false,
-            itemCount: _draft.length,
-            onReorder: _onReorder,
-            itemBuilder: (context, index) {
-              final g = _draft[index];
-              return Material(
-                key: ValueKey(g.id.getOrCrash()),
-                color: Colors.transparent,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ReorderableDragStartListener(
-                        index: index,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 10, right: 4),
-                          child:
-                              Icon(Icons.drag_handle, color: kBlacksColor[400]),
-                        ),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          controller: _controllerFor(g),
-                          style: kBodyMedium,
-                          decoration: InputDecoration(
-                            hintText: getTr(context, 'tree_group_name_hint'),
-                            isDense: true,
+            kVSpacer10,
+            if (state.draft.isEmpty)
+              Text(
+                getTr(context, 'tree_groups_empty_hint')!,
+                style: kFootnoteStyle.copyWith(color: kBlacksColor[400]),
+              ),
+            ReorderableListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              buildDefaultDragHandles: false,
+              itemCount: state.draft.length,
+              onReorder: state.isEditing
+                  ? (oldIndex, newIndex) {
+                      context.read<TreeGroupsSettingsBloc>().add(
+                            TreeGroupsSettingsEvent.reorder(
+                              oldIndex: oldIndex,
+                              newIndex: newIndex,
+                            ),
+                          );
+                    }
+                  : (_, __) {},
+              itemBuilder: (context, index) {
+                final g = state.draft[index];
+                final editing = state.isEditing;
+                final dragChild = Padding(
+                  padding: const EdgeInsets.only(right: 9),
+                  child: Icon(
+                    Icons.drag_indicator,
+                    size: 18,
+                    color: editing
+                        ? kBlacksColor[600]
+                        : kBlacksColor[600]!.withOpacity(0.35),
+                  ),
+                );
+                return Material(
+                  key: ValueKey(g.id.getOrCrash()),
+                  color: Colors.transparent,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Row(
+                      children: [
+                        if (editing)
+                          ReorderableDragStartListener(
+                            index: index,
+                            child: dragChild,
                           ),
-                        ),
-                      ),
-                      IconButton(
-                        tooltip: getTr(context, 'tree_group_pick_color'),
-                        onPressed: () => _pickColor(index),
-                        icon: Container(
-                          width: 28,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: treeGroupColorFromKey(g.colorKey)
-                                .withOpacity(0.4),
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(
-                              color: treeGroupColorFromKey(g.colorKey),
+                        IconButton(
+                          tooltip: getTr(context, 'tree_group_pick_color'),
+                          onPressed:
+                              editing ? () => _pickColor(context, index) : null,
+                          icon: Container(
+                            width: 28,
+                            height: 28,
+                            decoration: BoxDecoration(
+                              color: treeGroupColorFromKey(g.colorKey)
+                                  .withOpacity(0.4),
+                              borderRadius: BorderRadius.circular(4),
+                              border: Border.all(
+                                color: treeGroupColorFromKey(g.colorKey),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      IconButton(
-                        tooltip: getTr(context, 'tree_group_pick_icon'),
-                        onPressed: () => _pickIcon(index),
-                        icon: Icon(
-                          treeGroupIconFromKey(g.iconKey),
-                          color: kBlacksColor[200],
+                        Expanded(
+                          child: AppTextField(
+                            hint: getTr(context, 'tree_group_name_hint')!,
+                            controller: bloc.controllerFor(g),
+                            isEditing: editing,
+                            validator: (value) => value?.isEmpty ?? true
+                                ? getTr(context, 'tree_group_name_empty')!
+                                : null,
+                          ),
                         ),
-                      ),
-                      IconButton(
-                        tooltip: getTr(context, 'tree_group_remove'),
-                        onPressed: () => _removeAt(index),
-                        icon: Icon(Icons.close, color: kRedColors[400]),
-                      ),
-                    ],
+                        if (editing)
+                          IconButton(
+                            tooltip: getTr(context, 'tree_group_remove'),
+                            onPressed: () {
+                              context.read<TreeGroupsSettingsBloc>().add(
+                                    TreeGroupsSettingsEvent.removeAt(index),
+                                  );
+                            },
+                            icon: Icon(
+                              Icons.close_rounded,
+                              size: 20,
+                              color: kBlacksColor[600],
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-          ),
-          Row(
-            children: [
-              if (_draft.length < 6)
-                TextButton.icon(
-                  onPressed: _addGroup,
-                  icon: const Icon(Icons.add),
-                  label: Text(getTr(context, 'tree_group_add')!),
-                ),
-              const Spacer(),
-              TextButton(
-                onPressed: _saving ? null : _save,
-                child: _saving
-                    ? const SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : Text(getTr(context, 'tree_groups_save')!),
-              ),
-            ],
-          ),
-        ],
-      ),
+                );
+              },
+            ),
+            Row(
+              children: [
+                if (state.isEditing && state.draft.length < 6)
+                  TextButton.icon(
+                    onPressed: () => _addGroup(context),
+                    icon: const Icon(Icons.add),
+                    label: Text(getTr(context, 'tree_group_add')!),
+                  ),
+                const Spacer(),
+                if (state.isEditing)
+                  TextButton(
+                    onPressed: state.saving ? null : () => _save(context),
+                    child: state.saving
+                        ? const SizedBox(
+                            width: 18,
+                            height: 18,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : Text(getTr(context, 'tree_groups_save')!),
+                  )
+                else
+                  TextButton(
+                    onPressed: state.saving
+                        ? null
+                        : () => context.read<TreeGroupsSettingsBloc>().add(
+                              const TreeGroupsSettingsEvent.editingSet(true),
+                            ),
+                    child: Text(getTr(context, 'tree_groups_edit')!),
+                  ),
+              ],
+            ),
+          ],
+        );
+      },
     );
   }
 }

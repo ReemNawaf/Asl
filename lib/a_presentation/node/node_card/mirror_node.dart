@@ -3,6 +3,7 @@ import 'package:asl/a_presentation/a_shared/constants.dart';
 import 'package:asl/a_presentation/node/node_card/app_node.dart';
 import 'package:asl/a_presentation/tree/widgets/tree_group_palette.dart';
 import 'package:asl/c_domain/node/t_node.dart';
+import 'package:asl/c_domain/tree/tree_group.dart';
 import 'package:flutter/material.dart';
 
 class MirrorNode extends StatelessWidget {
@@ -12,12 +13,12 @@ class MirrorNode extends StatelessWidget {
     required this.pageContext,
     required this.noChildren,
     required this.fatherName,
-    this.groupAccent,
+    required this.groups,
     // this.image,
   });
   final TNode node;
   final BuildContext pageContext;
-  final TreeGroupNodeAccent? groupAccent;
+  final List<TreeGroup> groups;
   final bool noChildren;
   final String? fatherName;
   // final String? image;
@@ -29,7 +30,7 @@ class MirrorNode extends StatelessWidget {
       type: NodeType.partner,
       name: node.firstName.getOrCrash(),
       relation: node.gender == Gender.female ? 'زوجة' : 'زوج',
-      color: kMirrorColors,
+      color: materialColorForNodeGroup(node, kMirrorColors, groups),
       yearOfBirth: node.birthDate,
       yearOfDeath: node.deathDate,
       isAlive: node.isAlive,
@@ -39,7 +40,6 @@ class MirrorNode extends StatelessWidget {
       node: node,
       pageContext: pageContext,
       mirrorNodeNoChildren: noChildren,
-      groupAccent: groupAccent,
       //image: image,
     );
   }

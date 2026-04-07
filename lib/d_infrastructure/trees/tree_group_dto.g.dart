@@ -11,7 +11,6 @@ _$TreeGroupDtoImpl _$$TreeGroupDtoImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       colorKey: json['colorKey'] as String,
-      iconKey: json['iconKey'] as String,
     );
 
 Map<String, dynamic> _$$TreeGroupDtoImplToJson(_$TreeGroupDtoImpl instance) =>
@@ -19,5 +18,4 @@ Map<String, dynamic> _$$TreeGroupDtoImplToJson(_$TreeGroupDtoImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'colorKey': instance.colorKey,
-      'iconKey': instance.iconKey,
     };

@@ -126,7 +126,7 @@ class TreeSettingsSection extends StatelessWidget {
         ),
         if (treeId != null) ...[
           kVSpacer15,
-          TreeGroupsSettingsSection(treeId: treeId),
+          const TreeGroupsSettingsSection(),
         ],
       ],
     );
